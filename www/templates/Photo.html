@@ -1,0 +1,11 @@
+<ion-view view-title="拍照" cache-view="false" >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <ion-content >
+        <input type="file" capture="camera" accept="image/*"/>
+        <video id="video" autoplay="" style='width:480px;height:640px'></video>
+        <button id="paizhao">拍照</button>
+        <canvas id="canvas" width="480" height="640"></canvas>
+    </ion-content>
+</ion-view>

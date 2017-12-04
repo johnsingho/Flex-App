@@ -1,0 +1,20 @@
+<ion-view view-title="考勤查询" cache-view="false"  hide-tabs>
+    <ion-content class="padding" style="border:1px;">
+        <label class="item item-input item-select">
+            <div class="input-label">
+             <h3 style="font-size:18px; text-align:left;font-weight:bold">选择时长</h3>
+            </div>
+        <select  ng-model="day"  ng-change="selday(day)">
+            <option selected="">三天</option>
+            <option >七天</option>
+            <option>一个月</option>
+            <option>两个月</option>
+        </select>
+        </label>
+    <p style="font-size: 13px;color: red">请遵守公司信息保密政策，未经授权严禁转载分享</p>
+        <ion-list>
+            <ion-item class="item item-divider">考勤记录，共{{kqcount}}条</ion-item>
+            <ion-item class="item" ng-repeat="kq in kqjl track by $index"><p>{{kq.OpDT  | date:"yyyy-MM-dd HH:mm:ss"}}</p></ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

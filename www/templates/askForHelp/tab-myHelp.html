@@ -1,0 +1,67 @@
+<ion-view view-title="我的求助" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+   <ion-content>
+
+    <div class="list" ng-repeat="help in myHelp">
+      <!--<div style="TEXT-ALIGN: center;">-->
+        <!--<em class="agotime" style="font-size: 12px"  am-time-ago="idea.CreateDate"></em>-->
+      <!--</div>-->
+        <!-- Left -->
+        <div class="receiver">
+            <div>
+                <img src="img/user.jpg">
+                <p>我：</p>
+            </div>
+
+            <div style="width: 250px">
+                <div class="right_triangle"></div>
+                <span><em class="agotime" style="font-size: 10px;color:dimgray"  am-time-ago="help.CreateDate"></em> {{help.Content}} </span>
+            </div>
+
+        </div>
+        <!-- Right -->
+        <!--<div class="sender">-->
+        <div class="sender" ng-if="help.Reply1!==null">
+
+            <div>
+                <img src="img/user.jpg">
+                <p>管理员：</p>
+            </div>
+            <div style="width: 250px">
+                <div class="left_triangle"></div>
+                <span> <em class="agotime" style="font-size: 10px;color: dimgray"  am-time-ago="help.ReplyDate1"></em>  {{help.Reply1}} </span>
+            </div>
+        </div>
+        <!-- Right -->
+        <!--<div class="sender">-->
+        <div class="sender" ng-if="help.Reply2!==null">
+
+            <div>
+                <img src="img/user.jpg">
+                <p>管理员：</p>
+            </div>
+            <div style="width: 250px">
+                <div class="left_triangle"></div>
+                <span> <em class="agotime" style="font-size: 10px;color: dimgray"  am-time-ago="help.ReplyDate2"></em>  {{help.Reply2}} </span>
+            </div>
+        </div>
+        <!-- Right -->
+        <!--<div class="sender">-->
+        <div class="sender" ng-if="help.Reply3!==null">
+
+            <div>
+                <img src="img/user.jpg">
+                <p>管理员：</p>
+            </div>
+            <div style="width: 250px">
+                <div class="left_triangle"></div>
+                <span> <em class="agotime" style="font-size: 10px;color: dimgray"  am-time-ago="help.ReplyDate3"></em>  {{help.Reply3}} </span>
+            </div>
+        </div>
+
+    </div>
+    </ion-content>
+
+</ion-view>

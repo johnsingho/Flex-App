@@ -1,0 +1,42 @@
+<ion-view view-title="我的订单" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <ion-content class="padding" style="background-color:#c0c0c0">
+
+        <div class="list card"  ng-repeat="order in myOrderList">
+            <div class="item">
+                <h2>订单号：{{order.OrderNumber}}</h2>
+                <p style="font-size: 10px">订单时间：{{order.CreateDate | date:"yyyy-MM-dd HH:mm"}} 就餐时间：{{order.MealTime | date:"yyyy-MM-dd HH:mm"}}</p>
+                <p style="font-size: 10px">就餐人数：{{order.mealPerson}}</p>
+                <p style="font-size: 10px">备注：{{order.Remark}}</p>
+            </div>
+
+            <div class="item">
+                <div ng-bind-html="order.foodName"></div>
+            </div>
+
+            <div >
+                <div class="row" style="text-align: left">
+                    <div class="col col-75 "  style=";Margin-left:1px" >
+                        共{{order.MealCount}}份 总计{{order.MealPay}}元
+                    </div>
+                    <div  class="col" style=";Margin-left:2px" >
+                        <div ng-if="order.Status=='未完成'"> <button style="width: 80px"  class="button button-small button-outline button-positive" ng-click="cancelOrder(order.OrderNumber,order.MealTime)">取消</button></div>
+                        <div ng-if="order.Status!='未完成'"><label>{{order.Status}}</label></div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+    </ion-content>
+
+</ion-view>

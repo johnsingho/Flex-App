@@ -1,0 +1,31 @@
+<ion-view view-title="园区公告" cache-view="false" >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <ion-content scroll="true" overflow-scroll="true" >
+
+        <!--<div class="list">-->
+
+            <!--<a class="item item-thumbnail-left" href="#">-->
+                <!--<img src="cover.jpg">-->
+                <!--<h2>Pretty Hate Machine</h2>-->
+                <!--<p>Nine Inch Nails</p>-->
+            <!--</a>-->
+        <!--</div>-->
+
+        <ion-list>
+            <ion-item ng-repeat="notice in noticeList" class="item item-thumbnail-left"  ng-click="open(notice)">
+                <img src="{{notice.ImgPath}}">
+                <h3>{{notice.NoticeTitle}}</h3>
+                <br>
+                <p>{{notice.CreateDate| date:"yyyy-MM-dd"}}</p>
+
+
+                <!--<i class="icon ion-ios-list-outline"></i>-->
+                 <!--<h2>{{notice.NoticeTitle}}</h2>-->
+                 <!--<p>{{notice.NoticeTypeName}}</p>-->
+                <!--<i class="icon ion-ios-arrow-forward"></i>-->
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,89 @@
+<ion-view view-title="拼车" cache-view="false">
+
+    <ion-content scroll="true" overflow-scroll="true" style="background-color:#c0c0c0">
+        <ion-refresher
+                pulling-text="刷新"
+                on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-list >
+            <ion-item  >
+
+                <div class="item item-avatar">
+                    <img ng-if="carInfo.IsHaveCar==1"  src="img/ShareCar/chezhu.png">
+                    <img  ng-if="carInfo.IsHaveCar==0"  src="img/ShareCar/chengke.jpg">
+                    <h2 ng-if="carInfo.IsHaveCar==1">车主发布</h2>
+                    <h2 ng-if="carInfo.IsHaveCar==0">乘客发布</h2>
+                </div>
+                <div class="item item-body">
+                    <p style="Margin:1px">
+                        姓名：{{carInfo.Chinese_Name}}
+                    </p>
+                    <p style="Margin:1px">
+                        联系电话：{{carInfo.MobileNo}}
+                    </p>
+                    <p style="Margin:1px" ng-if="carInfo.IsHaveCar==1">
+                        车牌：{{carInfo.CarNo}}
+                    </p>
+                </div>
+
+                <div class="item item-body">
+                    <p style="Margin:1px">
+                        时间：{{carInfo.TimeStart | date:"yy-MM-dd HH:mm"}}~{{carInfo.EndTime | date:"yy-MM-dd HH:mm"}}
+                    </p>
+                    <p style="Margin:1px">
+                        起点：{{carInfo.StartingPoint}}
+                    </p>
+                    <p style="Margin:1px">
+                        终点：{{carInfo.EndPoint}}
+                    </p>
+                    <p  style="Margin:1px" ng-if="carInfo.IsHaveCar==1">
+                        途径点：{{carInfo.MidPoint}}
+                    </p>
+                    <p style="Margin:1px">
+                        座位数：{{carInfo.SeatNumber}}
+                    </p>
+                    <p style="Margin:1px">
+                        详细：{{carInfo.Description}}
+                    </p>
+                </div>
+
+
+            </ion-item>
+        </ion-list>
+
+        <ion-list>
+            <!--<div class="item item-divider">-->
+                <!--回复-->
+            <!--</div>-->
+            <ion-item  ng-repeat="reply in replyList" class="item">
+                <div class="item item-avatar item-text-wrap" >
+                    <img  src="img/user.jpg">
+                    <h2>{{reply.Chinese_Name}}</h2>
+                    <h5>{{reply.CreateDate| date:"yyyy-MM-dd HH:mm"}}</h5>
+                    <p> {{reply.Reply_Content}}</p>
+                    <p ng-bind-html="reply.Reply_All" style="background-color: gainsboro"></p>
+
+                    <div style="float:right;"><a style="text-decoration:underline;" ng-click="replyTo(reply)">回复</a></div>
+                </div>
+                <!--<div class="item item-body">-->
+                    <!---->
+
+                <!--</div>-->
+
+            </ion-item>
+        </ion-list>
+
+<br>
+        <br>
+    </ion-content>
+    <div class="bar bar-subfooter">
+        <h2 class="title">
+            <label class="item item-input" style="width: 90%">
+            <textarea rows="5" style="font-size:80%" placeholder="发表回帖"  ng-model="Submitdata.ReplyContent"></textarea>
+        </label>
+        </h2>
+
+        <button  class="button button-balanced pull-right" ng-click="submitReply()">回复</button>
+    </div>
+
+</ion-view>

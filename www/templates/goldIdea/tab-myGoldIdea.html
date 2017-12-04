@@ -1,0 +1,67 @@
+<ion-view view-title="我的金点子" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+   <ion-content>
+
+    <div class="list" ng-repeat="idea in goldIdea">
+      <!--<div style="TEXT-ALIGN: center;">-->
+        <!--<em class="agotime" style="font-size: 12px"  am-time-ago="idea.CreateDate"></em>-->
+      <!--</div>-->
+        <!-- Left -->
+        <div class="receiver">
+            <div>
+                <img src="img/user.jpg">
+                <p>我：</p>
+            </div>
+
+            <div style="width: 250px">
+                <div class="right_triangle"></div>
+                <span><em class="agotime" style="font-size: 10px;color:dimgray"  am-time-ago="idea.CreateDate"></em> {{idea.GoldIdea}} </span>
+            </div>
+
+        </div>
+        <!-- Right -->
+        <!--<div class="sender">-->
+        <div class="sender" ng-if="idea.Reply1!==null">
+
+            <div>
+                <img src="img/user.jpg">
+                <p>管理员：</p>
+            </div>
+            <div style="width: 250px">
+                <div class="left_triangle"></div>
+                <span> <em class="agotime" style="font-size: 10px;color: dimgray"  am-time-ago="idea.ReplyDate1"></em>  {{idea.Reply1}} </span>
+            </div>
+        </div>
+        <!-- Right -->
+        <!--<div class="sender">-->
+        <div class="sender" ng-if="idea.Reply2!==null">
+
+            <div>
+                <img src="img/user.jpg">
+                <p>管理员：</p>
+            </div>
+            <div style="width: 250px">
+                <div class="left_triangle"></div>
+                <span> <em class="agotime" style="font-size: 10px;color: dimgray"  am-time-ago="idea.ReplyDate2"></em>  {{idea.Reply2}} </span>
+            </div>
+        </div>
+        <!-- Right -->
+        <!--<div class="sender">-->
+        <div class="sender" ng-if="idea.Reply3!==null">
+
+            <div>
+                <img src="img/user.jpg">
+                <p>管理员：</p>
+            </div>
+            <div style="width: 250px">
+                <div class="left_triangle"></div>
+                <span> <em class="agotime" style="font-size: 10px;color: dimgray"  am-time-ago="idea.ReplyDate3"></em>  {{idea.Reply3}} </span>
+            </div>
+        </div>
+
+    </div>
+    </ion-content>
+
+</ion-view>

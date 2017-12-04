@@ -1,0 +1,41 @@
+<ion-view view-title="我的评分" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <ion-content style="background: #f4f4f4">
+        <div class="list" style="border:1px solid #dcd4d4;">
+            <div class="box">
+                <h4 style="margin-left:3px;">积分详情</h4>
+                <div class="row">
+                    <div class="col">今日积分：{{pointInfo.DailyPoints}}</div>
+                    <div class="col">本周积分：{{pointInfo.WeeklyPoints}}</div>
+                </div>
+                <div class="row">
+                    <div class="col">月度积分：{{pointInfo.MonthlyPoints}}</div>
+                    <div class="col">年度积分：{{pointInfo.Points}}</div>
+                </div>
+            </div>
+        </div>
+
+        <ion-list>
+            <ion-item class="item-divider item-gap">钱包余额：{{RedEnvelopSum}}元</ion-item>
+            <ion-item class="item-divider item-gap">明细记录：</ion-item>
+
+            <ion-item  ng-repeat="loginfo in RedEnvelopLog track by $index">
+                <div class="row">
+                    <div class="col col-25"><p><em class="agotime" am-time-ago="loginfo.CreateDate"></em></p></div>
+                    <div class="col col-75"><p>{{loginfo.Content}}</p></div>
+                </div>
+            </ion-item>
+            <!--<div class="list">-->
+            <!---->
+            <!--<div class="item item-accordion"  bindonce ng-repeat="loginfo in RedEnvelopLog track by $index" >-->
+            <!--<div class="row" style="cursor:pointer;" >-->
+            <!--<div class="col col-25"><em class="agotime" am-time-ago="loginfo.CreateDate"></em></div>-->
+            <!--<div class="col col-75">{{loginfo.Content}} 分</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+        </ion-list>
+    </ion-content>
+</ion-view>

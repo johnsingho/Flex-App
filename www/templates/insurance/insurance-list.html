@@ -1,0 +1,15 @@
+<ion-view view-title="保险知识" cache-view="false" >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <ion-content scroll="true" overflow-scroll="true" >
+
+        <ion-list>
+            <ion-item ng-repeat="insurance in InsuranceList" class="item"  ng-click="open(insurance)">
+
+                <h3>{{insurance.InsuranceTitle}}</h3>
+
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

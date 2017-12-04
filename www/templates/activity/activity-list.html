@@ -1,0 +1,71 @@
+<ion-view view-title="活动" cache-view="false" >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <ion-content scroll="true" overflow-scroll="true" >
+
+        <ion-list ng-if="shouCj">
+            <ion-item  class="item item-thumbnail-left"  ng-click="openCJ()">
+                <img src="img/choujiang.jpg">
+                <h1>抽奖</h1>
+                <br>
+                <p></p>
+            </ion-item>
+        </ion-list>
+        <!--<ion-list>-->
+            <!--<ion-item ng-repeat="activity in activityList" class="item item-thumbnail-left"  ng-click="open(activity)">-->
+                <!--<img src="{{activity.ImgPath}}">-->
+                <!--<h3>{{activity.ActivityTitle}}</h3>-->
+                <!--<br>-->
+                <!--<p>{{activity.CreateDate| date:"yyyy-MM-dd"}}</p>-->
+
+
+                <!--&lt;!&ndash;<i class="icon ion-ios-list-outline"></i>&ndash;&gt;-->
+                 <!--&lt;!&ndash;<h2>{{notice.NoticeTitle}}</h2>&ndash;&gt;-->
+                 <!--&lt;!&ndash;<p>{{notice.NoticeTypeName}}</p>&ndash;&gt;-->
+                <!--&lt;!&ndash;<i class="icon ion-ios-arrow-forward"></i>&ndash;&gt;-->
+            <!--</ion-item>-->
+        <!--</ion-list>-->
+
+
+
+        <!--<div>-->
+            <!--<section class="wx96Diy cur" data-source="bj.96weixin.com">-->
+                <!--<section style="padding: 40px 0 0 0;margin: 10px 0;">-->
+                    <!--<section style="padding: 10px;color: rgb(110, 156, 40);border-radius: 15px;background-color: rgb(229, 243, 208);" class="96wx-bgc">-->
+                        <!--<section style="padding: 15px 10px;margin: 0px;">-->
+                            <!--<section style="margin-top: -65px;padding: 0px;float: right;clear: none;">-->
+                                <!--<img class="96wx-img" style="border-color: rgb(229, 243, 208);padding: 0px; margin: 0px;" data-wxsrc="https://mmbiz.qlogo.cn/mmbiz/yqVAqoZvDibHXI5ekoKR1icA9n2tIN2MaflBiacic2AZBCqHwcWYjQMaCkfXMPdNIwlRdUjFRbyIRHzdAB4iaHx3ziaw/0?wx_fmt=gif" src="http://newcdn.96weixin.com/sucai-n/qita/112.gif"/>-->
+                            <!--</section>-->
+                            <!--<section style="margin-top: -65px;padding: 0px;clear: none;">-->
+                                <!--<img class="96wx-img" style="border-color:rgb(229, 243, 208); color:inherit; margin:0px; padding:0px" data-wxsrc="https://mmbiz.qlogo.cn/mmbiz/yqVAqoZvDibHnypFEgvQricska2TLhZuNMic5upuu0zickPibwaDvN6lmgxdW3hKvt0MWibOak4MH9KaMrI5gxw3r8YQ/0?wx_fmt=gif" src="http://newcdn.96weixin.com/sucai-n/qita/113.gif"/>-->
+                            <!--</section>-->
+                            <!--<section style="padding: 10px;margin: 0px;">-->
+                                <!--<p style="text-align: justify; line-height: 2em;">-->
+                                    <!--大家好！我是安全生产月，已经16岁了。在伟创力珠海安全生产月来临之际，我们发起安全生产月系列活动，活动主题为全面落实企业安全生产主体责任，旨在提升安全意识，鼓励大家具备“安全第一”的心态。 安全生产月系列活动之网上答题竞赛，参与活动即可赢取现金红包，活动时间：7月24、26、28、31号，8月1、2、3、4号。期待您的参与！-->
+                                <!--</p>-->
+                            <!--</section>-->
+                        <!--</section>-->
+                    <!--</section>-->
+                    <!--<section style="margin-top: -2px;">-->
+                        <!--<section style="width: 0px;height: 0px;clear: both;"></section>-->
+                    <!--</section>-->
+                <!--</section>-->
+            <!--</section>-->
+            <!--<p>-->
+                <!--<br/>-->
+            <!--</p>-->
+        <!--</div>-->
+
+
+        <!--有奖活动-->
+        <div class="list list-inset">
+
+            <div class="item" ng-repeat="resear in researchList" ng-click="openDC(resear)">
+                {{resear.ResearchName}} ({{resear.ActivateDate}}开始)
+            </div>
+
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,35 @@
+<ion-view view-title="我的消息" cache-view="false" >
+    <ion-content scroll="true" lazy-scroll>
+
+        <!--<ion-list>-->
+            <!--<ion-item ng-repeat="msg in msgList" class="item item-avatar" ng-model="interview" ng-click="open(msg)">-->
+                <!--<img src="{{msg.Img}}">-->
+
+                <!--<div style="float:left;"><h2>{{msg.Type}}</h2></div >-->
+                <!--<div style="float:right;"><p>{{msg.IsReadStatus}}</p></div>-->
+                <!--<div ><p>{{msg.Titel}}</p></div >-->
+                <!--&lt;!&ndash;<div style="float:right;"> <p>{{msg.CreateDate | date:"MM-dd hh:mm"}}</p></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="col col-60"></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="col"> </div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="col col-60"> <p></p></div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="col"></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+            <!--</ion-item>-->
+        <!--</ion-list>-->
+
+        <ion-list rj-close-back-drop>
+            <ion-item class="item-avatar" ng-class="{'rj-item-top': message.isTop}" ng-repeat="msg in msgList"  ng-model="interview" ng-click="open(msg)" >
+                <img ng-src="{{msg.Img}}">
+                <h2 ng-bind="msg.Type"></h2>
+                <p class="rj-list-p">{{msg.Titel}}</p>
+                <span class="rj-push-right-top"><em class="agotime" am-time-ago="msg.CreateDate"></em></span>
+                <span class="rj-push-right">{{msg.IsReadStatus}}</span>
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

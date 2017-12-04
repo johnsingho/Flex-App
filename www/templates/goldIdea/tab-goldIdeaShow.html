@@ -1,0 +1,35 @@
+<ion-view title="金点子精选" cache-view="false" >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <ion-content class="padding" style="background-color:lavender" >
+
+        <div class="list card" ng-if="goldIdeaShow">
+            <ion-list>
+                <ion-item ng-repeat="goldIdea in goldIdeaShow track by $index"  >
+
+            <div class="item item-avatar">
+                <img src="img/jiangzhang.png">
+                <h2>工号：{{goldIdea.WorkdayNo}}</h2>
+                <h2>姓名：{{goldIdea.CName}}</h2>
+            </div>
+
+            <div class="item item-body">
+                {{goldIdea.GoldIdea}}
+            </div>
+
+            <a class="item item-icon-left assertive" style="font-size:12px;" href="#">
+                奖励：
+                <i style="font-size:12px;" class="icon ion-social-yen-outline"></i>
+                {{goldIdea.Bonuses}}
+            </a>
+                </ion-item>
+
+            </ion-list>
+        </div>
+
+
+
+    </ion-content>
+    </div>
+</ion-view>

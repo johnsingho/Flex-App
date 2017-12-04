@@ -1,0 +1,32 @@
+<ion-content scroll="false" cache-view="false">
+    <ion-side-menus >
+        <ion-side-menu-content>
+            <ion-nav-bar class="bar-positive" animation="nav-title-slide-ios7">
+                <ion-nav-back-button>
+                </ion-nav-back-button>
+                <!--<ion-nav-buttons side="left">-->
+                    <!--<button class="button button-icon button-clear" menu-toggle="left">菜单</button>-->
+                <!--</ion-nav-buttons>-->
+
+            </ion-nav-bar>
+            <ion-nav-view animation="slide-left-right"></ion-nav-view>
+        </ion-side-menu-content>
+
+        <ion-side-menu side="left">
+            <ion-header-bar class="bar-positive">
+                <h1 class="title">Menu</h1>
+            </ion-header-bar>
+            <ion-content>
+                <ion-list>
+                    <ion-item menu-close href="#menu/tab/home">主页</ion-item>
+                    <!--<a href="#about" class="item" menu-toggle="left">关于积分</a>-->
+                    <a href="#password" ng-if="accessToken!=null" class="item" >修改密码</a>
+                    <!--<a ng-if="accessToken==null" nav-clear menu-close class="item" href="#signin">登录</a>-->
+                    <a ng-if="accessToken!=null" nav-clear class="item" ng-click="signOut()">注销</a>
+                    <a nav-clear class="item" ng-click="quit()">退出</a>
+                    <!--<a nav-clear class="item" href="https://zhmobile.flextronics.com/Home/nav.html">退出</a>-->
+                </ion-list>
+            </ion-content>
+        </ion-side-menu>
+    </ion-side-menus>
+</ion-content>

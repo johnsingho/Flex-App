@@ -1,0 +1,45 @@
+<ion-view title="我的消息" cache-view="false"  hide-tabs>
+    <ion-content class="padding" style="background-color:#c0c0c0" >
+
+        <div class="list card">
+
+            <div class="item item-avatar">
+               <img src="img/sms.jpg">
+                <h2>{{MsgDetails.Type}}</h2>
+                <p>发送人:{{MsgDetails.CreateUser}}</p>
+            </div>
+
+            <div class="item item-body" style="height: 350px">
+                {{MsgDetails.MsgMainContent}}
+            </div>
+
+            <a class="item item-icon-left assertive" href="#">
+                <i class="icon ion-ios-time-outline"></i>
+                {{MsgDetails.CreateDate| date:"yyyy-MM-dd hh:mm:ss"}}
+            </a>
+
+        </div>
+
+        <!--<div class="list card">-->
+            <!--<div class="item item-body">-->
+                <!--<div class="row"  >-->
+                    <!--<div class="col col-20"><p>类型：</p></div>-->
+                    <!--<div class="col"> <h3 style="color: blue">{{MsgDetails.Type}}</h3></div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="item item-body">-->
+                <!--<div class="row">-->
+                    <!--<div class="col col-20"><p>发送人：</p></div>-->
+                    <!--<div class="col">  <h3 style="color: blue">{{MsgDetails.CreateUser}}</h3></div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="item item-body">-->
+                <!--<h3 style="line-height:150%;">{{MsgDetails.MsgMainContent}}</h3>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--</div>-->
+
+    </ion-content>
+    </div>
+</ion-view>

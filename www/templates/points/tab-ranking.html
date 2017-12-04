@@ -1,0 +1,55 @@
+<ion-view title="排行榜">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <ion-content scroll="true" lazy-scroll>
+        <!--<ion-refresher on-refresh="doRefresh()"></ion-refresher>-->
+        <h3>月度积分排行</h3>
+        <canvas ng-if="Rank" id="line" class="chart chart-line" chart-data="monthData"
+                chart-labels="labels" chart-legend="true" chart-series="series"
+                chart-click="onClick" >
+        </canvas>
+        <h3>年度积分排行</h3>
+        <canvas  ng-if="Rank" id="line2" class="chart chart-line" chart-data="yearData"
+                chart-labels="labels" chart-legend="true" chart-series="series"
+                chart-click="onClick" >
+        </canvas>
+
+
+        <!--<div class="list">-->
+            <!--<label class="item item-input item-select">-->
+                <!--<div class="input-label">-->
+                    <!--选择评分类型-->
+                <!--</div>-->
+                <!--<select ng-options='t.name for t in items'   ng-model="items.item"-->
+                <!--ng-change="selEvaluateUpdate()">-->
+                <!--</select>-->
+            <!--</label>-->
+            <!--<label class="item item-input item-select">-->
+                <!--<div class="input-label">-->
+                    <!--选择榜单-->
+                <!--</div>-->
+                <!--<select ng-options='t.LotDate for t in scoreOrderList'   ng-model="scoreOrderList.item"-->
+                        <!--ng-change="selOrderUpdate()">-->
+                <!--</select>-->
+            <!--</label>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="col"><h5>{{Language.ranking.workdayNo}}</h5></div>-->
+            <!--<div class="col"><h5>{{Language.ranking.cName}}</h5></div>-->
+            <!--<div class="col"><h5>{{Language.ranking.sumScore}}</h5></div>-->
+            <!--<div class="col"><h5>{{Language.ranking.times}}</h5></div>-->
+        <!--</div>-->
+		<!--<div class="list">-->
+            <!--<div class="item item-ranking"  bindonce ng-repeat="ranking in scoreOrderDetails" >-->
+                <!--<div class="row" >-->
+                    <!--<div class="col" style="text-align:left"><h4>{{ranking.WorkdayNO}}</h4></div>-->
+                    <!--<div class="col"><h4>{{ranking.CName}}</h4></div>-->
+                    <!--<div class="col"><h4>{{ranking.SumScore}}</h4></div>-->
+                    <!--<div class="col"><h4>{{ranking.Count}}</h4></div>-->
+                <!--</div>-->
+            <!--</div>-->
+		<!--</div>-->
+        <!--<ion-infinite-scroll ng-if="more" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>-->
+    </ion-content>
+</ion-view>

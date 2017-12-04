@@ -1,0 +1,16 @@
+<ion-view view-title="员工手册" cache-view="false" >
+    <ion-nav-buttons side="left">
+        <!--<button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>-->
+    </ion-nav-buttons>
+    <ion-content scroll="true" overflow-scroll="true" >
+
+        <div class="list list-inset">
+
+            <div class="item" ng-repeat="info in handBookItem1List" ng-click="open(info)">
+                {{info.Item1}}
+            </div>
+
+        </div>
+
+    </ion-content>
+</ion-view>

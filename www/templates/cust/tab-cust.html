@@ -1,0 +1,30 @@
+<ion-view view-title="消费查询" cache-view="false"  hide-tabs>
+    <ion-content class="padding" style="border:1px;">
+        <label class="item item-input item-select">
+            <div class="input-label">
+             <h3 style="font-size:18px; text-align:left;font-weight:bold">选择时长</h3>
+            </div>
+        <select  ng-model="day"  ng-change="selday(day)">
+            <option selected="">三天</option>
+            <option >七天</option>
+            <option>一个月</option>
+            <option>两个月</option>
+        </select>
+        </label>
+
+        <ion-list>
+            <ion-item class="item item-divider">消费记录，共{{custCount}}条，卡余额：{{oddfare}}元</ion-item>
+            <ion-item ng-if="custList" ng-repeat="cust in custList" class="item">
+                <div class="row">
+                    <div class="col"><h3 style="color: {{cust.DscrpColor}}">{{cust.Dscrp}}{{cust.Opfare}}元</h3></div>
+                    <div class="col"> <h3>{{cust.Opdt | date:"yyyy-MM-dd HH:mm:ss"}}</h3></div>
+                </div>
+
+                <div class="row">
+                    <div class="col col-50"> <h3>地点：{{cust.TERMNAME}}</h3></div>
+
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,1246 @@
+[
+  {
+    "file": ".idea/.name",
+    "hash": "4eae35f1b35977a00ebd8086c259d4c9"
+  },
+  {
+    "file": ".idea/encodings.xml",
+    "hash": "bbfed8a9adc106b97e3149400e5f242b"
+  },
+  {
+    "file": ".idea/misc.xml",
+    "hash": "00f0e40c7e1a56b3157e780023236ed0"
+  },
+  {
+    "file": ".idea/modules.xml",
+    "hash": "73cedbb5b0f5638d0f51d3862c697989"
+  },
+  {
+    "file": ".idea/scopes/scope_settings.xml",
+    "hash": "95f1e22026cc07a685a2932349ceb6ca"
+  },
+  {
+    "file": ".idea/vcs.xml",
+    "hash": "1d4d6f24f3ff67f10d99846d61c76662"
+  },
+  {
+    "file": ".idea/workspace.xml",
+    "hash": "09c9c4d8bd39b0ba78ba666aa7790137"
+  },
+  {
+    "file": ".idea/www.iml",
+    "hash": "07b1dcc90395701344d49084b5166275"
+  },
+  {
+    "file": ".vs/config/applicationhost.config",
+    "hash": "2c14de4e38beaa371804b3734af1436a"
+  },
+  {
+    "file": "css/animate.min.css",
+    "hash": "8f639b916ea1d3736d948ba423ef8ea6"
+  },
+  {
+    "file": "css/ionic.app.css",
+    "hash": "95fdfe295f66ef9841f758cb03d6230d"
+  },
+  {
+    "file": "css/style.css",
+    "hash": "31c4456d146485aeea9f68e8849d6de5"
+  },
+  {
+    "file": "fonts/Slide-icons.dev.svg",
+    "hash": "154a2dcb4eafb70d19db61e5987e818c"
+  },
+  {
+    "file": "fonts/Slide-icons.eot",
+    "hash": "b23ad76ae7feccb761c4bbda2f244686"
+  },
+  {
+    "file": "fonts/Slide-icons.svg",
+    "hash": "94a32ec8732ab1c475c4dcdf81d5ff4d"
+  },
+  {
+    "file": "fonts/Slide-icons.ttf",
+    "hash": "91b8c773cbdd91d7dc0c0953fff8769e"
+  },
+  {
+    "file": "fonts/Slide-icons.woff",
+    "hash": "ff60229f915eaa59a03ff99f4c02e139"
+  },
+  {
+    "file": "hongbao.html",
+    "hash": "207a82ffd888b3ee9373f41aa80a2712"
+  },
+  {
+    "file": "hongbaoChoujiang.html",
+    "hash": "8fe29d39086103ed5c7cb38b0a058594"
+  },
+  {
+    "file": "img/asd23.png",
+    "hash": "9d1e299ae25d33051fad7ca8f0b375cc"
+  },
+  {
+    "file": "img/B11WorkShop/1carWechat.jpg",
+    "hash": "9f726d63710f2bdd8ff04906513d5fdb"
+  },
+  {
+    "file": "img/B11WorkShop/2CarWechat.jpg",
+    "hash": "82427115552d7343a72ea55162a92f00"
+  },
+  {
+    "file": "img/B11WorkShop/3CarWechat.jpg",
+    "hash": "1a8a0680b31c147fe7f2bbda14393fb8"
+  },
+  {
+    "file": "img/B11WorkShop/Agenda2.jpg",
+    "hash": "0d5668d5fe72e320bf25bd9598233077"
+  },
+  {
+    "file": "img/B11WorkShop/Ariel Chen.jpg",
+    "hash": "f31876423f306a7e1d271d073218b1f8"
+  },
+  {
+    "file": "img/B11WorkShop/Contacts.jpg",
+    "hash": "480207779cf385578ce67a44ca875659"
+  },
+  {
+    "file": "img/B11WorkShop/Hotel.jpg",
+    "hash": "8b4e6b161489d87db646735572cbdf5e"
+  },
+  {
+    "file": "img/B11WorkShop/picHotel.jpg",
+    "hash": "0402c6a6954559da9819d7ceae43ed50"
+  },
+  {
+    "file": "img/B11WorkShop/Transport.jpg",
+    "hash": "7d74ef051606105c9f88e2c145400570"
+  },
+  {
+    "file": "img/B11WorkShop/Volunteer.jpg",
+    "hash": "fc4ea8366f20f123d346b6a3b60280a6"
+  },
+  {
+    "file": "img/B11WorkShop/Wendy Xie.jpg",
+    "hash": "f84fc8175a74a361d3354e07918c2dfe"
+  },
+  {
+    "file": "img/B11WorkShop/workGroup/workGroup1.JPG",
+    "hash": "72702dc15839e7ee96678dda64d91943"
+  },
+  {
+    "file": "img/B11WorkShop/workGroup/workGroup2.JPG",
+    "hash": "3923a9866f422e8b53345fbfddce507a"
+  },
+  {
+    "file": "img/B11WorkShop/workGroup/workGroup3.JPG",
+    "hash": "3874b4db5714ebd5369116a3a5959b1b"
+  },
+  {
+    "file": "img/B11WorkShop/workGroup/workGroup4.JPG",
+    "hash": "593b1538bbedfe828e6643b5044f0bd4"
+  },
+  {
+    "file": "img/B11WorkShop/workGroup/workGroup5.JPG",
+    "hash": "db29d5925410ec4238cae99095d6b3e7"
+  },
+  {
+    "file": "img/B11WorkShop/workshop3.jpg",
+    "hash": "c5979eb4302503390988b0025ded065f"
+  },
+  {
+    "file": "img/B15Like.jpg",
+    "hash": "79302aa076ca0b7038ca71fd1d5c2a46"
+  },
+  {
+    "file": "img/B15Phone.jpg",
+    "hash": "32fd61e08126e22cf1a807e07272901b"
+  },
+  {
+    "file": "img/back_pressed.png",
+    "hash": "51a848b76904a1e0976a7512de675ccb"
+  },
+  {
+    "file": "img/back_pressed@2x.png",
+    "hash": "51a848b76904a1e0976a7512de675ccb"
+  },
+  {
+    "file": "img/back.png",
+    "hash": "2f97c7e0e09f309697cf17e802f5100f"
+  },
+  {
+    "file": "img/back@2x.png",
+    "hash": "2f97c7e0e09f309697cf17e802f5100f"
+  },
+  {
+    "file": "img/CarImg/Slide1.JPG",
+    "hash": "2e110423af63c9475c6b17c04068b522"
+  },
+  {
+    "file": "img/CarImg/Slide10.JPG",
+    "hash": "7a4006244e71b1f2ca067b9dc5d2c775"
+  },
+  {
+    "file": "img/CarImg/Slide11.JPG",
+    "hash": "a0e2963485fbfee91f402fc309fe92ca"
+  },
+  {
+    "file": "img/CarImg/Slide12.JPG",
+    "hash": "b37e8a048c9e73a0d8c551b0ebee8b4d"
+  },
+  {
+    "file": "img/CarImg/Slide13.JPG",
+    "hash": "47f07ea244c4a36846bf2edcfe033a0f"
+  },
+  {
+    "file": "img/CarImg/Slide14.JPG",
+    "hash": "2dca81bf7de0c7c9f7c592492a0373bc"
+  },
+  {
+    "file": "img/CarImg/Slide15.JPG",
+    "hash": "f29eb8fb0627802522c056ac791300d9"
+  },
+  {
+    "file": "img/CarImg/Slide16.JPG",
+    "hash": "aff6af1e5bf47080178e99b64ff46add"
+  },
+  {
+    "file": "img/CarImg/Slide17.JPG",
+    "hash": "7d40063ab847780e1ef0127649695367"
+  },
+  {
+    "file": "img/CarImg/Slide2.JPG",
+    "hash": "8ad7a9599775a3ef531a28eed4cb8c45"
+  },
+  {
+    "file": "img/CarImg/Slide3.JPG",
+    "hash": "a331c27b276ab74c485e48623a7135f4"
+  },
+  {
+    "file": "img/CarImg/Slide4.JPG",
+    "hash": "87523f168726255facce60f0845141b3"
+  },
+  {
+    "file": "img/CarImg/Slide5.JPG",
+    "hash": "82e83549242f9014173d825e233df59d"
+  },
+  {
+    "file": "img/CarImg/Slide6.JPG",
+    "hash": "e8e5e50fa52a248c3896bebfc5a0df2f"
+  },
+  {
+    "file": "img/CarImg/Slide7.JPG",
+    "hash": "8bcb056731dcd841d49028997a1b9ce6"
+  },
+  {
+    "file": "img/CarImg/Slide8.JPG",
+    "hash": "efa48cbf5d3486950f21740a32ffd9b9"
+  },
+  {
+    "file": "img/CarImg/Slide9.JPG",
+    "hash": "23c991b07836b810235f7e6507e3f738"
+  },
+  {
+    "file": "img/choujiang.jpg",
+    "hash": "62cc596d4d749dc5458402c61f12dda8"
+  },
+  {
+    "file": "img/CJBJ.jpg",
+    "hash": "d98faddb3289f37f103f5ada2a9eee1b"
+  },
+  {
+    "file": "img/close_1.png",
+    "hash": "461b2c4b7ea04109f261e99c55b9e676"
+  },
+  {
+    "file": "img/close_pressed.png",
+    "hash": "8cfbc5d7903ac1903ec2d4b622e06a4c"
+  },
+  {
+    "file": "img/close_pressed@2x.png",
+    "hash": "8cfbc5d7903ac1903ec2d4b622e06a4c"
+  },
+  {
+    "file": "img/close.png",
+    "hash": "2ccbc6742107ace16e9ef4592f9d0f05"
+  },
+  {
+    "file": "img/close@2x.png",
+    "hash": "461b2c4b7ea04109f261e99c55b9e676"
+  },
+  {
+    "file": "img/close1.png",
+    "hash": "461b2c4b7ea04109f261e99c55b9e676"
+  },
+  {
+    "file": "img/close1@2x.png",
+    "hash": "461b2c4b7ea04109f261e99c55b9e676"
+  },
+  {
+    "file": "img/goldIdear.png",
+    "hash": "8015cb0e8565002f391f8d2d70ab746b"
+  },
+  {
+    "file": "img/goodJob.png",
+    "hash": "f52caaf2cbac5752fd47510ce6e5e794"
+  },
+  {
+    "file": "img/help.jpg",
+    "hash": "0f1294b5baa1ed99aeadccf4f4b8562c"
+  },
+  {
+    "file": "img/inbuding.jpg",
+    "hash": "a252596121072ed9a19e7046fda1e2e6"
+  },
+  {
+    "file": "img/jiangzhang.png",
+    "hash": "6aee7332ac108ed3d91a07c9fab36c27"
+  },
+  {
+    "file": "img/msg.jpg",
+    "hash": "f05ba55b7a75853b162d1df4b826e9fa"
+  },
+  {
+    "file": "img/point1.jpg",
+    "hash": "5f947c23caeb06d80d7751ec1bc95296"
+  },
+  {
+    "file": "img/redbeg.png",
+    "hash": "9d1e299ae25d33051fad7ca8f0b375cc"
+  },
+  {
+    "file": "img/rexian.jpg",
+    "hash": "e8cfbf1883762eaa3565bbcaf5799bff"
+  },
+  {
+    "file": "img/ShareCar/chengke.jpg",
+    "hash": "75412dcd1bfeb7bd7e5c5c796bc4c9c7"
+  },
+  {
+    "file": "img/ShareCar/chezhu.png",
+    "hash": "73d94d3a881e4593748b6052d82e151f"
+  },
+  {
+    "file": "img/siginbg1.jpg",
+    "hash": "dadebb8e6001a1a8ec32b15569dee6b4"
+  },
+  {
+    "file": "img/sms.jpg",
+    "hash": "a8482c22f173df5b602496ef7c902f1d"
+  },
+  {
+    "file": "img/user-100.png",
+    "hash": "890a3bc313599392dd8a13ccefc55e69"
+  },
+  {
+    "file": "img/user.jpg",
+    "hash": "9773f695ca01a796c0c7240acdce5d30"
+  },
+  {
+    "file": "index.html",
+    "hash": "af6ae548eb961c0048103cd4a3ff3606"
+  },
+  {
+    "file": "js/app-conf.js",
+    "hash": "db7afedc736cc02355b29a6e522c2b85"
+  },
+  {
+    "file": "js/app.js",
+    "hash": "fb623f81531d43f4aab8d036dfd4a8dd"
+  },
+  {
+    "file": "js/controller/appControllers.js",
+    "hash": "f34beefa2e131427b7bbaf46d9dccbbf"
+  },
+  {
+    "file": "js/controller/B11WorkShopController.js",
+    "hash": "b0fab211ef78a1af1863537c0e821e5f"
+  },
+  {
+    "file": "js/controller/businiess2Controllers.js",
+    "hash": "2b0eb10f57c322dfa5387b0eb78d742d"
+  },
+  {
+    "file": "js/controller/businiessControllers.js",
+    "hash": "08a9ef1c560fe61137dd3baa28fe5255"
+  },
+  {
+    "file": "js/controller/pointsControllers.js",
+    "hash": "3f74613e8e5b91e8f3324812d3b5ba1e"
+  },
+  {
+    "file": "js/controller/sharCarController.js",
+    "hash": "3adaaa769bb509deb6f16d995d71aefd"
+  },
+  {
+    "file": "js/directive.js",
+    "hash": "a64d7288abab04aee6b07c6782b00bb1"
+  },
+  {
+    "file": "js/index.js",
+    "hash": "b8c5e2632d603c02453d6b364a65054a"
+  },
+  {
+    "file": "js/jquery-2.2.2.min.js",
+    "hash": "1d35678c5edbb639ab7aa5cce0856f57"
+  },
+  {
+    "file": "js/lightGallery/css/lightgallery.min.css",
+    "hash": "36cb8db2fed5da1be11eeab404edcb42"
+  },
+  {
+    "file": "js/lightGallery/fonts/lg.eot",
+    "hash": "c853a32787dade9fa720183374ee452a"
+  },
+  {
+    "file": "js/lightGallery/fonts/lg.svg",
+    "hash": "c30beeb89783034a9993759ede9fd69a"
+  },
+  {
+    "file": "js/lightGallery/fonts/lg.ttf",
+    "hash": "54d58ad47ad02fc0f30c926645110b60"
+  },
+  {
+    "file": "js/lightGallery/fonts/lg.woff",
+    "hash": "47aae6af0370e6acb0805e359db12687"
+  },
+  {
+    "file": "js/lightGallery/img/loading.gif",
+    "hash": "bbdac9cda255c54bfd809110aff87898"
+  },
+  {
+    "file": "js/lightGallery/img/video-play.png",
+    "hash": "dc34cc9c99e935cd9c88c036e34103f5"
+  },
+  {
+    "file": "js/lightGallery/img/vimeo-play.png",
+    "hash": "dfe7764b4fe444c3880736ac6131f5b4"
+  },
+  {
+    "file": "js/lightGallery/img/youtube-play.png",
+    "hash": "e6f0c233c87ddefab049c991c61e2d69"
+  },
+  {
+    "file": "js/lightGallery/jquery.mousewheel.min.js",
+    "hash": "639d1c35a685d111aa4a509a2dbf660c"
+  },
+  {
+    "file": "js/lightGallery/js/lg-autoplay.min.js",
+    "hash": "2a44b8eae48138aca0271782127fe53d"
+  },
+  {
+    "file": "js/lightGallery/js/lg-fullscreen.min.js",
+    "hash": "35c82845a79ec9ef25f0950c2a280cbf"
+  },
+  {
+    "file": "js/lightGallery/js/lg-pager.min.js",
+    "hash": "8760655608f9c8732110b3c95d75337e"
+  },
+  {
+    "file": "js/lightGallery/js/lg-thumbnail.min.js",
+    "hash": "df902d1bcc017d19444213337c8c310a"
+  },
+  {
+    "file": "js/lightGallery/js/lg-video.min.js",
+    "hash": "e14a369f3582554117125d3161d63490"
+  },
+  {
+    "file": "js/lightGallery/js/lg-zoom.min.js",
+    "hash": "8edbc55df75cafa55573bfebf096475c"
+  },
+  {
+    "file": "js/lightGallery/js/lightgallery-all.min.js",
+    "hash": "09d12d1d3238a02730d190a040f2e572"
+  },
+  {
+    "file": "js/lightGallery/js/lightgallery.min.js",
+    "hash": "9c5d681f2b7331b3511f915b0f83cd4a"
+  },
+  {
+    "file": "js/linq.min.js",
+    "hash": "ea54188beaaa06f0ceaa38f65c273c87"
+  },
+  {
+    "file": "js/router.js",
+    "hash": "a0124a86161db128d07295bc712533db"
+  },
+  {
+    "file": "js/service/appServices.js",
+    "hash": "79eeb3149799d504d3b559861976fb6c"
+  },
+  {
+    "file": "js/service/businessServices.js",
+    "hash": "a5ba1f05305502775de384e5c698f89e"
+  },
+  {
+    "file": "js/service/pointsServices.js",
+    "hash": "0eacea1f52062f13eaa6daba069c2755"
+  },
+  {
+    "file": "js/timeLine/css/style.css",
+    "hash": "53f7eb10b5a3e235e084eb5951f52037"
+  },
+  {
+    "file": "js/timeLine/images/icon7.png",
+    "hash": "1231b57aa721c7e2ee9a9e565e6c7e13"
+  },
+  {
+    "file": "js/timeLine/images/icon9.png",
+    "hash": "cc1cee503dcc1479840f8b7f45c52f0f"
+  },
+  {
+    "file": "js/timeLine/images/line4.png",
+    "hash": "47dc0372d7c8537fe838531c14710be4"
+  },
+  {
+    "file": "lib/angular-animate/.bower.json",
+    "hash": "010b867dbb2c1b49a5a9cb0c76d49f57"
+  },
+  {
+    "file": "lib/angular-animate/angular-animate.min.js",
+    "hash": "aaf1ba9258e668a19657f3abdfc34934"
+  },
+  {
+    "file": "lib/angular-animate/angular-animate.min.js.map",
+    "hash": "74e55d013380f71c07963279659b9439"
+  },
+  {
+    "file": "lib/angular-animate/bower.json",
+    "hash": "99f3d881eb7d15c0164d4d770e20234b"
+  },
+  {
+    "file": "lib/angular-animate/index.js",
+    "hash": "1bcc4e661ab8ddc751d1a9a8942b370b"
+  },
+  {
+    "file": "lib/angular-animate/README.md",
+    "hash": "58710557c21dbca7678a772110df57fd"
+  },
+  {
+    "file": "lib/angular-sanitize/.bower.json",
+    "hash": "f8c204ac6e58f1f7f0fb7938e065ada4"
+  },
+  {
+    "file": "lib/angular-sanitize/angular-sanitize.min.js",
+    "hash": "0839c9b8fa725970d0d02022feeb3969"
+  },
+  {
+    "file": "lib/angular-sanitize/angular-sanitize.min.js.map",
+    "hash": "aa406c67c713af72a1cf857c56740308"
+  },
+  {
+    "file": "lib/angular-sanitize/bower.json",
+    "hash": "72782671a28b37fae23b0afe3a54fcbd"
+  },
+  {
+    "file": "lib/angular-sanitize/index.js",
+    "hash": "349b703c665246d4f1919931c6c3fb54"
+  },
+  {
+    "file": "lib/angular-sanitize/README.md",
+    "hash": "0393eb3f95cb21bf3463828d73d897de"
+  },
+  {
+    "file": "lib/angular-timeline/dist/angular-timeline-animations.css",
+    "hash": "4a7abd381ec95c38245490fd0379ee78"
+  },
+  {
+    "file": "lib/angular-timeline/dist/angular-timeline-bootstrap.css",
+    "hash": "a80908537a2cb4a18df45a435776abe0"
+  },
+  {
+    "file": "lib/angular-timeline/dist/angular-timeline.css",
+    "hash": "6862240f339df30652ee2b7492c2df9b"
+  },
+  {
+    "file": "lib/angular-timeline/dist/angular-timeline.js",
+    "hash": "c9f4312d25e1451c2922d023d5351a7d"
+  },
+  {
+    "file": "lib/angular-timeline/dist/bootstrap.min.css",
+    "hash": "53721f01e2dfd5e95450b1cfd5601021"
+  },
+  {
+    "file": "lib/angular-ui-router/.bower.json",
+    "hash": "1944660830eb287a439e9b64493680b8"
+  },
+  {
+    "file": "lib/angular-ui-router/api/angular-ui-router.d.ts",
+    "hash": "c06948a70fbce386351b5e86e26b1e34"
+  },
+  {
+    "file": "lib/angular-ui-router/bower.json",
+    "hash": "0e375aa5429ed49e31819d44bc1a28e9"
+  },
+  {
+    "file": "lib/angular-ui-router/CHANGELOG.md",
+    "hash": "9b835ba94bdb9bed629c1ff48b4c5a59"
+  },
+  {
+    "file": "lib/angular-ui-router/CONTRIBUTING.md",
+    "hash": "5aae5da7663eca1ed79d21b150c609c7"
+  },
+  {
+    "file": "lib/angular-ui-router/LICENSE",
+    "hash": "a15eea38307d9c2119d5a9e16211f29a"
+  },
+  {
+    "file": "lib/angular-ui-router/README.md",
+    "hash": "956d62926dce204f4659b0d619f2c0c1"
+  },
+  {
+    "file": "lib/angular-ui-router/release/angular-ui-router.js",
+    "hash": "749a18f80f375e3049975f190a7bfc4e"
+  },
+  {
+    "file": "lib/angular-ui-router/release/angular-ui-router.min.js",
+    "hash": "04c594b762aba521277ee747b28745d5"
+  },
+  {
+    "file": "lib/angular-ui-router/src/common.js",
+    "hash": "7cef018108cb4f4571f22b00d9324b82"
+  },
+  {
+    "file": "lib/angular-ui-router/src/resolve.js",
+    "hash": "8b3e76a8e9242408f366a840cd202105"
+  },
+  {
+    "file": "lib/angular-ui-router/src/state.js",
+    "hash": "3de988c7a35995b2c910258776d8d086"
+  },
+  {
+    "file": "lib/angular-ui-router/src/stateDirectives.js",
+    "hash": "9827d4eb264a7fb3d05f1b910b1391f3"
+  },
+  {
+    "file": "lib/angular-ui-router/src/stateFilters.js",
+    "hash": "84bba4f51e00086d8fe2f93fa1efbf15"
+  },
+  {
+    "file": "lib/angular-ui-router/src/templateFactory.js",
+    "hash": "8299e97e32fcfd3cc983df3085cc1369"
+  },
+  {
+    "file": "lib/angular-ui-router/src/urlMatcherFactory.js",
+    "hash": "f93993b00aa676ee329141ef294488e6"
+  },
+  {
+    "file": "lib/angular-ui-router/src/urlRouter.js",
+    "hash": "34193659b7b21f4f451f20a2878c00c0"
+  },
+  {
+    "file": "lib/angular-ui-router/src/view.js",
+    "hash": "64214a63924fc3eb6588ed7726485d2b"
+  },
+  {
+    "file": "lib/angular-ui-router/src/viewDirective.js",
+    "hash": "83174466bc2791816e67939b0243ed28"
+  },
+  {
+    "file": "lib/angular-ui-router/src/viewScroll.js",
+    "hash": "a899f6b7b01fe905406c4373a0603a23"
+  },
+  {
+    "file": "lib/angular/.bower.json",
+    "hash": "b95a8fb43f8e4d490f759f705cdd4df6"
+  },
+  {
+    "file": "lib/angular/angular-csp.css",
+    "hash": "3c6496d2475bec5850eec95eb066944a"
+  },
+  {
+    "file": "lib/angular/angular.min.js",
+    "hash": "f363ad9d29fbebc0f5f4c96a23e577cd"
+  },
+  {
+    "file": "lib/angular/angular.min.js.gzip",
+    "hash": "790eb99faad383550550eca0fb24b57f"
+  },
+  {
+    "file": "lib/angular/angular.min.js.map",
+    "hash": "c24bff63ea8a613ee3c0efe50cd5feb0"
+  },
+  {
+    "file": "lib/angular/bower.json",
+    "hash": "7cdb3fe2b03ebf26021e376c0a3046bc"
+  },
+  {
+    "file": "lib/angular/index.js",
+    "hash": "4a6b945464e73d96c4eddaff73a45417"
+  },
+  {
+    "file": "lib/angular/README.md",
+    "hash": "1875d8cc22054116d6aadb363f501fbf"
+  },
+  {
+    "file": "lib/Chart/angular-chart.min.css",
+    "hash": "91556ca1a3ae31529e0790b5836e7822"
+  },
+  {
+    "file": "lib/Chart/angular-chart.min.js",
+    "hash": "041db285c8b8eef45239f8242400b873"
+  },
+  {
+    "file": "lib/Chart/Chart.js",
+    "hash": "5efc2341472b1693f580c512b46dfbef"
+  },
+  {
+    "file": "lib/ionic/css/ionic.css",
+    "hash": "7b1af845bd7f0968bbc17b9a88746137"
+  },
+  {
+    "file": "lib/ionic/css/ionic.min.css",
+    "hash": "69b6aba4f6d47c03b5be1fbd5aed153b"
+  },
+  {
+    "file": "lib/ionic/fonts/ionicons.eot",
+    "hash": "2c2ae068be3b089e0a5b59abb1831550"
+  },
+  {
+    "file": "lib/ionic/fonts/ionicons.svg",
+    "hash": "621bd386841f74e0053cb8e67f8a0604"
+  },
+  {
+    "file": "lib/ionic/fonts/ionicons.ttf",
+    "hash": "24712f6c47821394fba7942fbb52c3b2"
+  },
+  {
+    "file": "lib/ionic/fonts/ionicons.woff",
+    "hash": "05acfdb568b3df49ad31355b19495d4a"
+  },
+  {
+    "file": "lib/ionic/js/angular-ui/angular-ui-router.min.js",
+    "hash": "83f32131b638a8686a43510fbd645b1b"
+  },
+  {
+    "file": "lib/ionic/js/angular/angular-animate.min.js",
+    "hash": "abf4748a7ef6bb5b610ecb5ab749afae"
+  },
+  {
+    "file": "lib/ionic/js/angular/angular-resource.min.js",
+    "hash": "97796a250538882e4d26ddf37e05f208"
+  },
+  {
+    "file": "lib/ionic/js/angular/angular-sanitize.min.js",
+    "hash": "bacfe60d661bf26faa119cebc50c6518"
+  },
+  {
+    "file": "lib/ionic/js/angular/angular.min.js",
+    "hash": "d2342622316f832ef1333c74e41354ca"
+  },
+  {
+    "file": "lib/ionic/js/ionic-angular.min.js",
+    "hash": "c81f119bbecf436bfaa17c28ff3ef095"
+  },
+  {
+    "file": "lib/ionic/js/ionic.bundle.min.js",
+    "hash": "e0cc14dc4c94a45d368932afd38c0614"
+  },
+  {
+    "file": "lib/ionic/js/ionic.min.js",
+    "hash": "bbf477571ff58642f262d70a93694f6d"
+  },
+  {
+    "file": "lib/ionic/scss/_action-sheet.scss",
+    "hash": "d0c6449f31db02323aa6e7f56ef55e67"
+  },
+  {
+    "file": "lib/ionic/scss/_animations.scss",
+    "hash": "5596f74cb1ee03f9faf453ad4ee11807"
+  },
+  {
+    "file": "lib/ionic/scss/_backdrop.scss",
+    "hash": "7ff048e091b39f6615db62ee136ef040"
+  },
+  {
+    "file": "lib/ionic/scss/_badge.scss",
+    "hash": "c7b1b0e3049754fc22b45730e6c560fa"
+  },
+  {
+    "file": "lib/ionic/scss/_bar.scss",
+    "hash": "aac5621aef2e18ec8b1357dbab753000"
+  },
+  {
+    "file": "lib/ionic/scss/_button-bar.scss",
+    "hash": "797376c7cc46dbec7589be9ecacd6689"
+  },
+  {
+    "file": "lib/ionic/scss/_button.scss",
+    "hash": "78ec8db7cd9d771f011dcff61e8f81fd"
+  },
+  {
+    "file": "lib/ionic/scss/_checkbox.scss",
+    "hash": "89a0987dd24210f16863d7ba2c7312bd"
+  },
+  {
+    "file": "lib/ionic/scss/_form.scss",
+    "hash": "169f7a6e449aa9e1bed20a1f30887c97"
+  },
+  {
+    "file": "lib/ionic/scss/_grid.scss",
+    "hash": "9a87c565e397bb73b7f467726a63e01c"
+  },
+  {
+    "file": "lib/ionic/scss/_items.scss",
+    "hash": "e4c46d2f4ba12769d254cc066cd27989"
+  },
+  {
+    "file": "lib/ionic/scss/_list.scss",
+    "hash": "0ab8daf57764aac25bf68aa0b0e6c776"
+  },
+  {
+    "file": "lib/ionic/scss/_loading.scss",
+    "hash": "9f23e266d43a432bbf07a8677d1d1592"
+  },
+  {
+    "file": "lib/ionic/scss/_menu.scss",
+    "hash": "c12d33c8bea78495b2571665e35cb192"
+  },
+  {
+    "file": "lib/ionic/scss/_mixins.scss",
+    "hash": "2f2cd7b2b96f1af3142c30138b2f2b0c"
+  },
+  {
+    "file": "lib/ionic/scss/_modal.scss",
+    "hash": "38e8624ef28a495e7a01341915516bd1"
+  },
+  {
+    "file": "lib/ionic/scss/_platform.scss",
+    "hash": "db73214ac171e89a966c24d5320fe096"
+  },
+  {
+    "file": "lib/ionic/scss/_popover.scss",
+    "hash": "924a0474d4e58b3280e7d1ebf1938a55"
+  },
+  {
+    "file": "lib/ionic/scss/_popup.scss",
+    "hash": "988126e645408f1e5a270934520c20ac"
+  },
+  {
+    "file": "lib/ionic/scss/_progress.scss",
+    "hash": "19a19537d8e9483db7bde8a7febd43f6"
+  },
+  {
+    "file": "lib/ionic/scss/_radio.scss",
+    "hash": "9e5544332590f92c25ea065140610b03"
+  },
+  {
+    "file": "lib/ionic/scss/_range.scss",
+    "hash": "ae2eb0fc86bdcef56346885dcb76370f"
+  },
+  {
+    "file": "lib/ionic/scss/_refresher.scss",
+    "hash": "23c7b98a85caf376b414f4ed5a713831"
+  },
+  {
+    "file": "lib/ionic/scss/_reset.scss",
+    "hash": "319f0fb2d58da7fc89222752c5e527a4"
+  },
+  {
+    "file": "lib/ionic/scss/_scaffolding.scss",
+    "hash": "9bb74fc2540444de042fd9949101762f"
+  },
+  {
+    "file": "lib/ionic/scss/_select.scss",
+    "hash": "7b40e394e01f33ebc89fcfc89f826410"
+  },
+  {
+    "file": "lib/ionic/scss/_slide-box.scss",
+    "hash": "ae10f39144dc0f6b5b24fb6e811e992a"
+  },
+  {
+    "file": "lib/ionic/scss/_slides.scss",
+    "hash": "504700ae567875f003c7fd1571a482e1"
+  },
+  {
+    "file": "lib/ionic/scss/_spinner.scss",
+    "hash": "472ae7eb35a68c22078b1d56b10f35be"
+  },
+  {
+    "file": "lib/ionic/scss/_tabs.scss",
+    "hash": "5d92af59a2653b035857d6a77e606520"
+  },
+  {
+    "file": "lib/ionic/scss/_toggle.scss",
+    "hash": "09146009f139820a34375ec3dc70c5a0"
+  },
+  {
+    "file": "lib/ionic/scss/_transitions.scss",
+    "hash": "c060678db2049bbca8833bf769d65dd1"
+  },
+  {
+    "file": "lib/ionic/scss/_type.scss",
+    "hash": "db602af625137bdc4d95b262d77a15c1"
+  },
+  {
+    "file": "lib/ionic/scss/_util.scss",
+    "hash": "c7af3ffdcc728e1c6f44061ed6120c15"
+  },
+  {
+    "file": "lib/ionic/scss/_variables.scss",
+    "hash": "92a9250ee7fe39133f561297266b180e"
+  },
+  {
+    "file": "lib/ionic/scss/ionic.scss",
+    "hash": "a102a720475b3304d099fc3c94e7f619"
+  },
+  {
+    "file": "lib/ionic/scss/ionicons/_ionicons-font.scss",
+    "hash": "9a1734051fa60f52fdbdd74001b0f0e0"
+  },
+  {
+    "file": "lib/ionic/scss/ionicons/_ionicons-icons.scss",
+    "hash": "fcdab55027fe7da71f277ee58fad686a"
+  },
+  {
+    "file": "lib/ionic/scss/ionicons/_ionicons-variables.scss",
+    "hash": "0af49648c5756e4a96eb1eb70f016ee3"
+  },
+  {
+    "file": "lib/ionic/scss/ionicons/ionicons.scss",
+    "hash": "37204d759a9eb7bfc074034fd1bf95fb"
+  },
+  {
+    "file": "lib/ionic/version.json",
+    "hash": "2230fb053b68d338caf012e86feff1f5"
+  },
+  {
+    "file": "lib/ng-bindonce/bindonce.min.js",
+    "hash": "c74d20356db6c718bfcd079a09605c0c"
+  },
+  {
+    "file": "lib/ng-local-storage/angular-local-storage.min.js",
+    "hash": "ac6d8bb2774a1073a41e7c22fc4f6f9c"
+  },
+  {
+    "file": "lib/ng-moment/angular-moment.min.js",
+    "hash": "fcb4adcb12f47ff5cd86d1eaea1119fd"
+  },
+  {
+    "file": "lib/ng-moment/angular-moment.min.js.map",
+    "hash": "0f7f164d914b798c7ce9a77739e8059d"
+  },
+  {
+    "file": "lib/ng-moment/moment.min.js",
+    "hash": "8c2def395d7e125976ea5faf56596aa9"
+  },
+  {
+    "file": "lib/ng-moment/zh-cn.js",
+    "hash": "9bcdee01cab05ac230540fe6afecf685"
+  },
+  {
+    "file": "lib/ngCordova/.bower.json",
+    "hash": "1e05ae338f0039064ec47910080fb4f3"
+  },
+  {
+    "file": "lib/ngCordova/bower.json",
+    "hash": "cc32572d0b43b2b477c20f062625eabb"
+  },
+  {
+    "file": "lib/ngCordova/CHANGELOG.md",
+    "hash": "319d415151c9ffaa470f0a2d11150949"
+  },
+  {
+    "file": "lib/ngCordova/dist/ng-cordova-mocks.min.js",
+    "hash": "a58ec142076fec7665f85beb4a447d6a"
+  },
+  {
+    "file": "lib/ngCordova/dist/ng-cordova.min.js",
+    "hash": "9dc74ba14b6c4d8bb10150c2f9b8208e"
+  },
+  {
+    "file": "lib/ngCordova/LICENSE",
+    "hash": "ab7dad271bdb3c7354537ee825775294"
+  },
+  {
+    "file": "lib/ngCordova/README.md",
+    "hash": "38bcf699c7f8f7eb1c0a86429f8573d0"
+  },
+  {
+    "file": "templates/404.html",
+    "hash": "01158fea1dad8732e3e65a6147a14222"
+  },
+  {
+    "file": "templates/account/account_forgetPassword.html",
+    "hash": "16443782e170faa511770832f51444e1"
+  },
+  {
+    "file": "templates/account/account_forgetPasswordNoMobile.html",
+    "hash": "7fb833e34d8c8a1dff743b4eee10cc8c"
+  },
+  {
+    "file": "templates/account/account_password.html",
+    "hash": "9f567442851e31e38e068d3ea5b1e45a"
+  },
+  {
+    "file": "templates/account/account_register.html",
+    "hash": "3dfb9be7c6120cc387021c34dd7638ee"
+  },
+  {
+    "file": "templates/account/myAccountMoney.html",
+    "hash": "a3a7fd5511ab6c7cac30e2830ec06649"
+  },
+  {
+    "file": "templates/activity/activity-list.html",
+    "hash": "37cfefc49e0f0e2c76ceae315899db48"
+  },
+  {
+    "file": "templates/activity/activityHtml.html",
+    "hash": "b4b9a3bdcc613107e45fe2a2165ae0bc"
+  },
+  {
+    "file": "templates/applySubmit/apply-Html.html",
+    "hash": "c0daa93b9113da2ce2591c7aac5515ac"
+  },
+  {
+    "file": "templates/applySubmit/apply-list.html",
+    "hash": "0af3b44f8500b1b39c9bd644715ac956"
+  },
+  {
+    "file": "templates/askAndAnswer/tab-askAndAnswer.html",
+    "hash": "8751126237248bbc4f0b69d674be0e99"
+  },
+  {
+    "file": "templates/askForHelp/tab-askForHelp.html",
+    "hash": "78c5a8a252f8b881f012b0eeef05962c"
+  },
+  {
+    "file": "templates/askForHelp/tab-myHelp.html",
+    "hash": "83d21263868f7be6469c7914d85f04b1"
+  },
+  {
+    "file": "templates/askForHelp/tabAskForHelp.html",
+    "hash": "c34ec1566397bd05abb5ad34b79340ca"
+  },
+  {
+    "file": "templates/b11Workshop/agenda.html",
+    "hash": "e7811064b4997e82c3e03da4d52866f1"
+  },
+  {
+    "file": "templates/b11Workshop/contact.html",
+    "hash": "53bf41a01894985f0649b53bcdcc123b"
+  },
+  {
+    "file": "templates/b11Workshop/HomePage.html",
+    "hash": "32d9cf7296d996a20745ca848d44ff08"
+  },
+  {
+    "file": "templates/b11Workshop/hotel.html",
+    "hash": "f0d5f1a707194cc3333f3b14af300563"
+  },
+  {
+    "file": "templates/b11Workshop/transport.html",
+    "hash": "bce0a9e3c72ae744754c29a305365fc5"
+  },
+  {
+    "file": "templates/b11Workshop/volunteer.html",
+    "hash": "fcae1bb47308c08019cafa65829fe977"
+  },
+  {
+    "file": "templates/baiduMap/gps.html",
+    "hash": "f9df44d4361b9b3d0e7de99b886dfea1"
+  },
+  {
+    "file": "templates/carPicture.html",
+    "hash": "feb680f3347f3bfbb2d35eaa9c133c4e"
+  },
+  {
+    "file": "templates/chartRoom/tab-chartRoom.html",
+    "hash": "ee9041f8d19e2d226b7edfa9d1301535"
+  },
+  {
+    "file": "templates/choujiang/tab-choujiang.html",
+    "hash": "77de6bd8eaf5f12d2c75656c9c9fe770"
+  },
+  {
+    "file": "templates/cust/tab-cust.html",
+    "hash": "a9534747c289a49ce18eaa98e233493d"
+  },
+  {
+    "file": "templates/goldIdea/tab-goldIdea.html",
+    "hash": "5c90c435238288ffd11783627c0d0688"
+  },
+  {
+    "file": "templates/goldIdea/tab-goldIdeaShow.html",
+    "hash": "5fd832d15c550de13dd343357f446bcf"
+  },
+  {
+    "file": "templates/goldIdea/tab-myGoldIdea.html",
+    "hash": "e08a2befaa8f1b5da9a1c3fcace67802"
+  },
+  {
+    "file": "templates/goldIdea/tabGoldIdea.html",
+    "hash": "22f67e78cc5c462fdb785fd5eba4535d"
+  },
+  {
+    "file": "templates/handBook/handbook_lg.html",
+    "hash": "e21fd99e36e96f079a951c2b8f22c093"
+  },
+  {
+    "file": "templates/handBook/handbookitemFour.html",
+    "hash": "0928a5c36057bf8a7174ae0fd666bb1b"
+  },
+  {
+    "file": "templates/handBook/handbookItemOne.html",
+    "hash": "f5791b801044f308deb294a3afe095e6"
+  },
+  {
+    "file": "templates/handBook/handbookitemThree.html",
+    "hash": "129ee3f05b3f3de9b3e7de4e4491ef96"
+  },
+  {
+    "file": "templates/handBook/handbookitemTwo.html",
+    "hash": "5f3a784cd99f08b3b2442e825a1b66ac"
+  },
+  {
+    "file": "templates/HomeNotice.html",
+    "hash": "fe1e68db6910dc118d8c92d5a2f588fe"
+  },
+  {
+    "file": "templates/hotPhone/hotPhoneDetails.html",
+    "hash": "f478b6453bd75535686538f3de285f25"
+  },
+  {
+    "file": "templates/hotPhone/tab-B15hotPhone.html",
+    "hash": "d23ffd7958dc3cce7b2debcd5db0c096"
+  },
+  {
+    "file": "templates/hotPhone/tab-hotPhone.html",
+    "hash": "1e851aa7a1db735adc870839660321e4"
+  },
+  {
+    "file": "templates/lightPower.html",
+    "hash": "9e8296c2321ea8849a08adfa9aa1c4bf"
+  },
+  {
+    "file": "templates/mealOrder/mealProtocolHtml.html",
+    "hash": "2d43fe7805011aa444099264c05b8050"
+  },
+  {
+    "file": "templates/mealOrder/tab-mealLinkMan.html",
+    "hash": "8b5de137b0d0d2f3b9bddacf559c865d"
+  },
+  {
+    "file": "templates/mealOrder/tab-mealList.html",
+    "hash": "2489dbf481d78c1d5a5085c4111d8262"
+  },
+  {
+    "file": "templates/mealOrder/tab-myOrder.html",
+    "hash": "d175604af7682fe43cd224b7210db0c2"
+  },
+  {
+    "file": "templates/mealOrder/tabMealOrder.html",
+    "hash": "7e672ede732715baf3a049657fd1b485"
+  },
+  {
+    "file": "templates/menu.html",
+    "hash": "b745c4d83858fed13017a97b1a780b7f"
+  },
+  {
+    "file": "templates/myMsg/myMsgDetail.html",
+    "hash": "f175ce2ea31c4c98b173ba3864719af6"
+  },
+  {
+    "file": "templates/myMsg/tab-myMsg.html",
+    "hash": "481c5555b9b1085bf8bd37d06140e85f"
+  },
+  {
+    "file": "templates/notice/notice-list.html",
+    "hash": "2025769702567133b9b905fb13bc2d92"
+  },
+  {
+    "file": "templates/notice/noticeHtml.html",
+    "hash": "2fc1dcc2f0f14f2788ca5f0c5b10379b"
+  },
+  {
+    "file": "templates/Photo.html",
+    "hash": "55f9f603eeca47c9da14151a63f5dcfd"
+  },
+  {
+    "file": "templates/points/tab-account.html",
+    "hash": "cb3f28ded7ec777a6fe2ed626c5a1fce"
+  },
+  {
+    "file": "templates/points/tab-points.html",
+    "hash": "ab2bac78b1487f22984b9688f74c5f64"
+  },
+  {
+    "file": "templates/points/tab-ranking.html",
+    "hash": "f0c078f3342564e7911505ce670ac1d5"
+  },
+  {
+    "file": "templates/points/tab-rules.html",
+    "hash": "3cc22637edd618e3df4082a994921229"
+  },
+  {
+    "file": "templates/points/tabPoints.html",
+    "hash": "6061cd5078d41d587583b70bb6baa131"
+  },
+  {
+    "file": "templates/research/research-list.html",
+    "hash": "2f989fca3cd6b2cd22d3e6eca5d1117e"
+  },
+  {
+    "file": "templates/research/researchHtml.html",
+    "hash": "b3c96529e045dc205552c82c00afa86c"
+  },
+  {
+    "file": "templates/shareCar/protocolHtml.html",
+    "hash": "021cc6a60cc252a8c3ec3742978bfc7a"
+  },
+  {
+    "file": "templates/shareCar/shareCarDetail.html",
+    "hash": "44b052e802ec29bc5e736ad472dfafd4"
+  },
+  {
+    "file": "templates/shareCar/tab_ShareCar.html",
+    "hash": "eb106e34803fc8c2dc259104656387b6"
+  },
+  {
+    "file": "templates/shareCar/tab-myOrder.html",
+    "hash": "bc7f8fcd237574b52339c07510093195"
+  },
+  {
+    "file": "templates/shareCar/tab-shareCarList.html",
+    "hash": "dcdf3fe255852a60382c9120bc970efd"
+  },
+  {
+    "file": "templates/tab-account.html",
+    "hash": "34ab31246213bd93bdcfcd9bdb326345"
+  },
+  {
+    "file": "templates/tab-goodJob.html",
+    "hash": "76cb219e6741c6d0c163040994aebfb4"
+  },
+  {
+    "file": "templates/tab-home.html",
+    "hash": "6ac1aa3e04beaaca2c67013d842909e7"
+  },
+  {
+    "file": "templates/tab-homecopy.html",
+    "hash": "880e3d34a6bcd6fe2f455762a20cc45d"
+  },
+  {
+    "file": "templates/tab-kqjl.html",
+    "hash": "3a084b02ff488ef3ef2609e4f2e3bc84"
+  },
+  {
+    "file": "templates/tab-login.html",
+    "hash": "0a43df92665e0c68bf73af90e4ac5f76"
+  },
+  {
+    "file": "templates/tab-signin - Copy.html",
+    "hash": "8dbbc81c431e7b955c7559b2e3b7374e"
+  },
+  {
+    "file": "templates/tab-signin.html",
+    "hash": "aef18cd56066220f58958d13e1719a88"
+  },
+  {
+    "file": "templates/tabs.html",
+    "hash": "d4c5dc62c78453ebb1c00e1eaecbb424"
+  },
+  {
+    "file": "www.sln",
+    "hash": "5cb2be1004b4f31b158123bfcb755353"
+  }
+]

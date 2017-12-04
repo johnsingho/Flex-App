@@ -1,0 +1,56 @@
+<ion-view view-title="调查"  cache-view="false" >
+    <!--<ion-nav-buttons side="left">-->
+        <!--<button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">返回</button>-->
+    <!--</ion-nav-buttons>-->
+ <ion-content  scroll="true"  lazy-scroll >
+
+    <!--<div style="text-align: center;font-size: 20px">{{ResearchName}}</div>-->
+
+     <div id="html"></div>
+
+     <div ng-repeat="detail in researchDetailList" >
+         <fieldset>
+             <h4>{{detail.sort}}.{{detail.Content}}</h4>
+             <div ng-repeat="checkItem in detail.listItem">
+                 <h4><label><input id="{{detail.sort}}{{checkItem.SelItem}}"  type="radio"  name="{{detail.sort}}" value="{{checkItem.SelItem}}^{{checkItem.Items}}^{{checkItem.ItemScore}}" /> {{checkItem.Items}}</label></h4>
+                 <div ng-if="checkItem.Type=='radio'">
+
+                  </div>
+
+                 <div ng-if="checkItem.Type=='text'">
+
+                     <!--<h4 ><label>{{checkItem.Items}}</label></h4>-->
+                     <label class="item item-input" >
+                         <textarea rows="2" name="{{detail.sort}}" style="font-size:80%" placeholder=""  ng-model="detail.OtherText"></textarea>
+                     </label>
+                 </div>
+
+
+             </div>
+         </fieldset>
+      </div>
+
+     <!--<div class="list card">-->
+         <!--<ion-list>-->
+             <!--<ion-item ng-repeat="detail in researchDetailList"  >-->
+                 <!--<div class="item">-->
+                     <!--<h2>{{detail.sort}}.{{detail.Content}}</h2>-->
+                 <!--</div>-->
+                <!--<fieldset>-->
+                 <!--<div class="item item-body">-->
+
+                     <!--<div ng-repeat="checkItem in detail.listItem">-->
+                          <!--<h4><input   type="radio"  name="{{detail.Content}}" value="{{checkItem.SelItem}} {{checkItem.Items}}" /> {{checkItem.Items}}</h4>-->
+                     <!--</div>-->
+                 <!--</div>-->
+                <!--</fieldset>-->
+             <!--</ion-item>-->
+         <!--</ion-list>-->
+     <!--</div>-->
+     <br>
+     <div style="text-align: center"><button ng-if="isActivate==1" class="button  button-positive" ng-click="Submit()">提 交</button></div>
+
+
+
+    </ion-content>
+</ion-view>

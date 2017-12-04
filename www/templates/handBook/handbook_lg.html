@@ -1,0 +1,22 @@
+<ion-view view-title="语言" cache-view="false" >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <ion-content scroll="true" overflow-scroll="true" >
+
+        <!--<div class="list list-inset">-->
+
+            <!--<div class="item" ng-repeat="item in handBookList" ng-click="open(item)">-->
+                <!--{{item.Language}}-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+        <ion-list>
+            <ion-item  class="item" ng-repeat="info in handBookList"  ng-click="open(info)">
+                {{info.Language}}
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

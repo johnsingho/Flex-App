@@ -1,0 +1,86 @@
+<ion-view view-title="为TA点赞" cache-view="false"  hide-tabs >
+    <ion-content style="background-color:lavender">
+
+        <ion-slide-box   does-continue="true" auto-play="false"  show-pager="false" >
+
+            <img  ng-src="{{imgUrl}}" >
+            <!--<img src="img/goodJob.png">-->
+        </ion-slide-box>
+
+        <div class="list card">
+            <ion-list>
+                <ion-item ng-repeat="employee in GoodEmployee"  >
+
+                    <!--<div class="item item-avatar">-->
+                        <!--<img src="img/user.jpg">-->
+                        <!--<div class="col"> <p style="font-size:12px;">姓名：{{employee.Chinese_Name}}</p></div>-->
+                    <!--</div>-->
+
+                    <!--<div class="item item-body" style="background-color:#CCFFCC">-->
+                        <!--<p style="font-size:12px;">事迹：{{employee.Describe}}</p>-->
+                    <!--</div>-->
+
+                    <div class="item item-avatar">
+                        <img src="img/user.jpg">
+                        <h2>姓名：{{employee.Chinese_Name}}</h2>
+                    </div>
+
+                    <div class="item item-body">
+                        <img class="full-image" src="{{employee.ImgPath}}">
+                        <p>
+                            {{employee.Describe}}
+                        </p>
+                        <p>
+                            <!--<button  class="subdued" ng-click="like()">{{employee.Like}} 赞</button>-->
+                            <a href="#" class="subdued" ng-click="like()">{{employee.Like}} 赞</a>
+                        </p>
+                    </div>
+
+                    <div class="item tabs tabs-secondary tabs-icon-right">
+                        <a class="tab-item"   ng-click="like(employee)">
+                            <i class="icon ion-thumbsup"></i>
+                            赞
+                        </a>
+                    </div>
+
+                </ion-item>
+            </ion-list>
+        </div>
+
+
+        <!--<h6 >专栏简介</h6>-->
+        <!--<div class="list card">-->
+            <!--<div class="item item-body">-->
+                <!--<p style="font-size:80%">你身边还有哪些人值得你点“赞”？请描述赞“点”： </p>-->
+            <!--</div>-->
+        <!--</div>-->
+        <h6>你身边还有哪些人值得你点“赞”？请描述赞“点”：</h6>
+        <div class="list card" >
+            <div class="item item-input">
+                <span class="input-label" style="width: 10px;font-size:80%" >姓名</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" placeholder="被推荐人中英文名" ng-model="goodJob.name"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 10px;font-size:80%">工号</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" placeholder="被推荐人工号" ng-model="goodJob.toWorkdayNo"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 10px;font-size:80%">部门</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" placeholder="被推荐人部门" ng-model="goodJob.department"/>
+            </div>
+        </div>
+
+
+        <div class="list card">
+            <label class="item item-input" >
+                <textarea rows="5" style="font-size:80%" placeholder="请详细填写主要事迹（不少于50字符）"  ng-model="goodJob.text"></textarea>
+            </label>
+        </div>
+        <p style="font-size:10px;">注：入选者将获得丰厚奖金，相应推荐人将获得精美礼品一份</p>
+
+
+        <div style="text-align: center"><button  class="button  button-positive" ng-click="Submit(goodJob)">提 交</button></div>
+        <br/>
+    </ion-content>
+
+</ion-view>

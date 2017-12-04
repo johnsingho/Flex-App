@@ -1,0 +1,48 @@
+<ion-view view-title="热线电话" cache-view="false" class="animated fadeIn contact">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <ion-content style="background-color:lightcyan" >
+        <!--<ion-slide-box   does-continue="true" auto-play="false" slide-interval="5000" show-pager="false" >-->
+            <!--<img style="height: 190px;width: 100%" src="img/rexian.jpg">-->
+        <!--</ion-slide-box>-->
+
+
+        <div  ng-if="accessEmployee.Organization!='PCBA-B13'">
+            <div class="list card">
+                <div class="item item-body">
+                    <p style="font-size:80%;">亲爱的同事，您好！欢迎使用伟创力热线电话：<span style="font-weight:bold">40010-99899</span></p>
+                    <p style="font-size:80%;">使用指南：</p>
+                    <p style="font-size:80%;">1.招聘 ：入职培训、内部推荐及其他招聘相关咨询→<span style="font-weight:bold;">请按1</span></p>
+                    <p style="font-size:80%;">2.人力资源：考勤薪资、新员工服务、社保工伤、等人力资源相关问题咨询→<span style="font-weight:bold;">请按2</span></p>
+                    <p style="font-size:80%;">3.宿舍服务：宿舍入住、住房补贴等→<span style="font-weight:bold;">请按3</span></p>
+                    <p style="font-size:80%;">4.安全问题：财产被盗、安全协助、监督投诉等→<span style="font-weight:bold;">请按4</span></p>
+                    <p style="font-size:80%;">5.工会求助：随时倾听您的诉求，维护您的合法权益→<span style="font-weight:bold;">请按5</span></p>
+                    <p style="font-size:80%;">6.心灵热线：专业的心理辅导，让您释放压力，拥有阳光健康心态→<span style="font-weight:bold;">请按6</span></p>
+                </div>
+            </div>
+            <div style="text-align: center"><button  class="button  button-positive icon ion-ios-telephone" ng-click="callPhone();">拨打热线</button></div>
+
+        </div>
+
+
+
+        <ion-list ng-if="accessEmployee.Segment_ID=='PCBA-B13'">
+
+            <ion-item  class="item  item-icon-right"  ng-click="open(1)">
+                <h2>园区热线电话</h2>
+                <i class="icon ion-ios-arrow-forward"></i>
+            </ion-item>
+            <ion-item class="item  item-icon-right"  ng-click="open(2)">
+                <h2>B13 热线电话</h2>
+                <i class="icon ion-ios-arrow-forward"></i>
+            </ion-item>
+            <ion-item  class="item  item-icon-right"  ng-click="open(3)">
+                <h2>生产运营电话</h2>
+                <i class="icon ion-ios-arrow-forward"></i>
+            </ion-item>
+        </ion-list>
+
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,17 @@
+<ion-view view-title="" cache-view="false" >
+
+    <ion-content >
+        <ion-list ng-if="accessEmployee.Segment_ID=='PCBA-B13'">
+            <ion-item class="item item-button-right" ng-repeat="item in items">
+                <h2>{{item.description}}</h2>
+                <h2>服务热线：{{item.phone}}</h2>
+                <h2>{{item.bz}}</h2>
+                <button class="button button-positive"  ng-click="callB13Phone(item);">
+                    <i class="icon ion-ios-telephone"></i>
+                </button>
+            </ion-item>
+        </ion-list>
+
+
+    </ion-content>
+</ion-view>

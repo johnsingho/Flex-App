@@ -1,0 +1,55 @@
+<ion-view view-title="员工金点子" cache-view="false"  >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <ion-content  style="background-color:skyblue">
+        <ion-slide-box   does-continue="true" auto-play="false" show-pager="false" >
+            <img src="img/goldIdear.png">
+        </ion-slide-box>
+
+        <h6 >金光闪闪</h6>
+        <div class="list card">
+            <ion-list>
+                <ion-item   >
+                    <p >（优秀金点子选登和介绍近期金点子状况）</p>
+                    <!--<div class="item item-avatar">-->
+                    <!--<img src="img/user.jpg">-->
+                    <!--<div class="col"> <p style="font-size:12px;">姓名：{{employee.Chinese_Name}}</p></div>-->
+                    <!--</div>-->
+
+                    <!--<div class="item item-body" style="background-color:#CCFFCC">-->
+                    <!--<p style="font-size:12px;">事迹：{{employee.Describe}}</p>-->
+                    <!--</div>-->
+
+                </ion-item>
+            </ion-list>
+         </div>
+
+        <h6 >你想对他建议</h6>
+        <div class="list card" >
+            <ion-list   ng-repeat=" t in goldIdeaType">
+                <ion-radio   name="1"  ng-click="CheckChang(t)"><p>{{t.ideaType}}</p></ion-radio>
+            </ion-list>
+        </div>
+        <h6 >你的金点子</h6>
+        <div class="list card">
+            <label class="item item-input" >
+                <textarea rows="5" style="font-size:80%" placeholder="包含目前现状/存在问题点,通过什么方法/途径改进/提升等"  ng-model="goldInputIdea.text"></textarea>
+            </label>
+        </div>
+
+        <div style="text-align: center"><button  class="button  button-positive" ng-click="Submit()">提 交</button></div>
+
+        <!--<h6 style="font-weight:bold">你想对他建议:</h6>-->
+        <!--<ion-list   ng-repeat=" t in goldIdeaType">-->
+            <!--<ion-radio   name="1"  ng-click="CheckChang(t)"><p>{{t.ideaType}}</p></ion-radio>-->
+        <!--</ion-list>-->
+        <!--<h6 style="font-weight:bold">填写你的金点子:</h6>-->
+        <!--<label class="item item-input" >-->
+        <!--<textarea rows="8" placeholder="{{Language.points.reasonGlodIdea}}..."  ng-model="goldInputIdea.text"></textarea>-->
+        <!--</label>-->
+
+        <!--<button  class="button button-block button-positive" ng-click="Submit()">提 交</button>-->
+    </ion-content>
+
+</ion-view>
