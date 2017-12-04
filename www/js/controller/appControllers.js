@@ -6,7 +6,7 @@ angular.module('evaluationApp.appControllers', [])
         $scope.ver=CacheFactory.get('version');
         $scope.user = JSON.parse(CacheFactory.get('accessUser'));
 
-        console.log($scope.user);
+
         $scope.login = function (user) {
 
             if (typeof (user) == 'undefined') {
@@ -40,7 +40,7 @@ angular.module('evaluationApp.appControllers', [])
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         $scope.checkWorkday='45617446284458895346835046239423328424562588036439086348619594622105851805669585877102405743';
 
-
+        console.log($rootScope.accessEmployee);
         if ($rootScope.accessEmployee) {
 
 //            var arrayObj = new Array($rootScope.accessEmployee.Organization.replace(/\s+/g, ""));
@@ -56,7 +56,7 @@ angular.module('evaluationApp.appControllers', [])
                     alertService.showAlert("登录失效，请重新登录");
                     $state.transitionTo('signin');
                 }
-                $scope.homeSlideImg = data
+                $scope.homeSlideImg = data;
 
 
                 $ionicSlideBoxDelegate.$getByHandle("homeSlide").update();
