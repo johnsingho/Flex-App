@@ -14,7 +14,7 @@ angular.module('evaluationApp.pointsControllers', [])
         $scope.showFirst=true;
 
         $scope.Start=function(){
-            console.log("start");
+
             $scope.showFirst=false;
             $scope.showSlide=true;
             $scope.BgCSS="";
@@ -58,11 +58,11 @@ angular.module('evaluationApp.pointsControllers', [])
             if(rule.Sort<$scope.rules.length){
                 $ionicSlideBoxDelegate.next();
             }
-            if(rule.Sort==$scope.rules.length&&$scope.accessEmployee.Organization=='PCBA-B13')  $scope.isShowSubmit=true;
-            else if(rule.Sort==$scope.rules.length&&$scope.accessEmployee.Organization!='PCBA-B13'&&$scope.accessEmployee.WorkdayNO=='2332842')  $scope.isShowSubmit=true;
-            else if(rule.Sort==$scope.rules.length&&$scope.accessEmployee.Organization!='PCBA-B13'&&$scope.accessEmployee.WorkdayNO=='456258')  $scope.isShowSubmit=true;
-            else if(rule.Sort==$scope.rules.length&&$scope.accessEmployee.Organization!='PCBA-B13'&&$scope.accessEmployee.WorkdayNO=='887760')  $scope.isShowSubmit=true;
-            else if(rule.Sort==$scope.rules.length&&$scope.accessEmployee.Organization!='PCBA-B13'){ $scope.showdescription=true;}
+//            PCBA B13
+            if(rule.Sort==$scope.rules.length&&$scope.accessEmployee.Segment_ID=='EF922594-5FB1-409E-A3D8-F7BC940AACD9')  $scope.isShowSubmit=true;
+            else if(rule.Sort==$scope.rules.length&&$scope.accessEmployee.Segment_ID!='EF922594-5FB1-409E-A3D8-F7BC940AACD9'&&$scope.accessEmployee.WorkdayNO=='2332842')  $scope.isShowSubmit=true;
+
+            else if(rule.Sort==$scope.rules.length&&$scope.accessEmployee.Segment_ID!='EF922594-5FB1-409E-A3D8-F7BC940AACD9'){ $scope.showdescription=true;}
         };
 
         $scope.Submit=function(){
