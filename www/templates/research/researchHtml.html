@@ -8,23 +8,32 @@
 
      <div id="html"></div>
 
-     <div ng-repeat="detail in researchDetailList" >
+     <div  ng-repeat="detail in researchDetailList" >
          <fieldset>
-             <h4>{{detail.sort}}.{{detail.Content}}</h4>
+             <h4 style="color: royalblue">{{detail.sort}}.{{detail.Content}}</h4>
              <div ng-repeat="checkItem in detail.listItem">
-                 <h4><label><input id="{{detail.sort}}{{checkItem.SelItem}}"  type="radio"  name="{{detail.sort}}" value="{{checkItem.SelItem}}^{{checkItem.Items}}^{{checkItem.ItemScore}}" /> {{checkItem.Items}}</label></h4>
-                 <div ng-if="checkItem.Type=='radio'">
+                 <div ng-if="checkItem.Type!='Comments'">
+                     <h4><label><input id="{{detail.sort}}{{checkItem.SelItem}}"  type="radio"  name="{{detail.sort}}" value="{{checkItem.SelItem}}^{{checkItem.Items}}^{{checkItem.ItemScore}}" /> {{checkItem.Items}}</label></h4>
+                     <div ng-if="checkItem.Type=='text'">
+                         <!--<h4 ><label>{{checkItem.Items}}</label></h4>-->
+                         <label class="item item-input" >
+                             <textarea rows="2" name="{{detail.sort}}" style="font-size:80%" placeholder=""  ng-model="detail.OtherText"></textarea>
+                         </label>
+                     </div>
 
-                  </div>
-
-                 <div ng-if="checkItem.Type=='text'">
-
-                     <!--<h4 ><label>{{checkItem.Items}}</label></h4>-->
-                     <label class="item item-input" >
-                         <textarea rows="2" name="{{detail.sort}}" style="font-size:80%" placeholder=""  ng-model="detail.OtherText"></textarea>
-                     </label>
                  </div>
 
+                 <div ng-if="checkItem.Type=='Comments'">
+                     <h4 ><label>{{checkItem.Items}}</label></h4>
+                     <label class="item item-input" >
+                        <div ng-if="checkItem.Items==''">
+                            <input type="text" name="{{detail.sort}}" style="font-size:80%;width: 350px"  ng-model="detail.Comments"/>
+                       </div>
+                         <div ng-if="checkItem.Items!=''">
+                             <textarea rows="2" name="{{detail.sort}}" style="width: 350px"  placeholder=""  ng-model="detail.Comments"></textarea>
+                         </div>
+                     </label>
+                 </div>
 
              </div>
          </fieldset>

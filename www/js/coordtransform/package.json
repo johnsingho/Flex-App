@@ -1,0 +1,54 @@
+{
+  "name": "coordtransform",
+  "version": "2.1.2",
+  "description": "A common coordinate systems conversion module!",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://wandergis@github.com/wandergis/coordtransform.git"
+  },
+  "keywords": [
+    "coordinate",
+    "wgs84",
+    "bd09",
+    "gcj02",
+    "transform"
+  ],
+  "author": {
+    "name": "wandergis"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wandergis/coordtransform/issues"
+  },
+  "homepage": "http://wandergis.github.io/coordtransform",
+  "gitHead": "e8c3a082a76ac12de84ded80859b9dfce665ce9e",
+  "_id": "coordtransform@2.1.2",
+  "_shasum": "090349cd62b1dc05fae47b291bf9f0b7ce827f66",
+  "_from": "coordtransform@latest",
+  "_npmVersion": "2.15.1",
+  "_nodeVersion": "4.4.4",
+  "_npmUser": {
+    "name": "wandergis",
+    "email": "763393390@qq.com"
+  },
+  "dist": {
+    "shasum": "090349cd62b1dc05fae47b291bf9f0b7ce827f66",
+    "tarball": "https://registry.npmjs.org/coordtransform/-/coordtransform-2.1.2.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "wandergis",
+      "email": "763393390@qq.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/coordtransform-2.1.2.tgz_1486989187113_0.9175028689205647"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/coordtransform/-/coordtransform-2.1.2.tgz"
+}

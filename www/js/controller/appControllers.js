@@ -210,7 +210,8 @@ angular.module('evaluationApp.appControllers', [])
 
             }
             else if(action=="班车信息"){
-                $location.path("carPicture");
+//                $location.path("carPicture");
+                $state.go("tabCar.carlist");
             }
             else if(action=="活动"){
                 $location.path("activityList");

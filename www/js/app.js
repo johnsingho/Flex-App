@@ -84,7 +84,7 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.
               //如果本地与服务端的APP版本不符合
               if (version != serverAppVersion) {
 
-                  if ($rootScope.platform == 'ios') {
+                  if ($rootScope.isIOS) {
                       console.log('访问appstore进行更新');
 
                       $window.open("https://zhmobile.flextronics.com/EvaluationApp/download/download.html");//跳转到APP商店这样即可
@@ -103,28 +103,28 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.
 
 
         // 检查更新
-        function checkUpdate() {
-
-            //获取版本
-            var serverAppVersion = "0.0.2";
-
-            $http.get(API.Version).success(function (largeLoad) {
-
-                //获取版本
-                if(largeLoad=='undefined') return;
-                serverAppVersion = largeLoad.sVersion;
-                cordova.getAppVersion.getVersionNumber().then(function(version){
-                    //如果本地与服务端的APP版本不符合
-                    if (version != serverAppVersion) {
-                        showUpdateConfirm(largeLoad);
-                    }
-                });
-
-            })
-                .error(function (data, status, headers, config) {
-                    $ionicLoading.show({ template: '读取版本信息失败！', noBackdrop: true, duration: 2000 });
-                });
-        };
+//        function checkUpdate() {
+//
+//            //获取版本
+//            var serverAppVersion = "0.0.2";
+//
+//            $http.get(API.Version).success(function (largeLoad) {
+//
+//                //获取版本
+//                if(largeLoad=='undefined') return;
+//                serverAppVersion = largeLoad.sVersion;
+//                cordova.getAppVersion.getVersionNumber().then(function(version){
+//                    //如果本地与服务端的APP版本不符合
+//                    if (version != serverAppVersion) {
+//                        showUpdateConfirm(largeLoad);
+//                    }
+//                });
+//
+//            })
+//                .error(function (data, status, headers, config) {
+//                    $ionicLoading.show({ template: '读取版本信息失败！', noBackdrop: true, duration: 2000 });
+//                });
+//        };
 
         // 显示是否更新对话框
         function showUpdateConfirm(version) {

@@ -35,7 +35,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
         var params=commonServices.getBaseParas();
         params.researchID=researchID;
         var url=commonServices.getUrl("ResearchService.ashx","GetResearchHTML");
-        console.log(url);
+
         var strHtml='';
         commonServices.getData(params,url).then(function(data){
 
@@ -54,6 +54,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
                 $state.transitionTo('signin');
             }
             $scope.researchDetailList=data;
+            console.log($scope.researchDetailList);
             //是否激活启动
             $scope.isActivate=data[0].IsActivate;
             //启动日期
@@ -69,13 +70,10 @@ angular.module('evaluationApp.businiess2Controllers', [])
             $scope.SubmitList=[];
             $scope.sumScore=0;
             for (var i = 0; i < $scope.researchDetailList.length; i++) {
-               // var radioGroup = document.getElementsByName($scope.researchDetailList[i].Content);
                 var rname=$scope.researchDetailList[i].sort;
 
                 var selVaule= $("input[name='"+rname+"'"+"]:checked").val();
-
-
-
+                console.log(i+":"+selVaule);
                 if(typeof (selVaule)!='undefined'){
                     var sScore=selVaule.split("^")[2];
                     $scope.sumScore=$scope.sumScore+parseInt(sScore);
@@ -83,7 +81,6 @@ angular.module('evaluationApp.businiess2Controllers', [])
                     {
                         selVaule='OtherItem'+'^'+$scope.researchDetailList[i].OtherText+'^'+sScore;
 
-                        console.log($scope.researchDetailList[i].OtherText);
                         if($scope.researchDetailList[i].OtherText==null)
                         {
                             alertService.showAlert("请填写你的意见后再提交");
@@ -91,13 +88,20 @@ angular.module('evaluationApp.businiess2Controllers', [])
                             return;
                         }
                     }
+                    $scope.SubmitList.push({ResearchID:researchID,ResearchDetailsID:$scope.researchDetailList[i].DetailsID,SelItem:selVaule,Comments:$scope.researchDetailList[i].Comments});
+                }
+                else
+                {
+                    if( $scope.researchDetailList[i].listItem.length==1&&$scope.researchDetailList[i].listItem[0].Type=='Comments'){
+                        var Comments= $("input[name='"+rname+"'"+"]").val();
+                        $scope.SubmitList.push({ResearchID:researchID,ResearchDetailsID:$scope.researchDetailList[i].DetailsID,Comments:Comments});
+                    }
 
-
-                    $scope.SubmitList.push({ResearchID:researchID,ResearchDetailsID:$scope.researchDetailList[i].DetailsID,SelItem:selVaule});
                 }
 
             }
 
+            console.log($scope.SubmitList);
 
 
             if($scope.SubmitList.length!=$scope.researchDetailList.length){
@@ -556,29 +560,105 @@ angular.module('evaluationApp.businiess2Controllers', [])
         });
 
     })
-    .controller('BaiduMapCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) {
+    .controller('CarListCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService){
+        var params=commonServices.getBaseParas();
+        var url=commonServices.getUrl("MapService.ashx","GetCarList");
+        //获取一般活动列表
+        commonServices.getDataList(params,url).then(function(data){
+
+            if(data=="Token is TimeOut"){
+                alertService.showAlert("登录失效，请重新登录");
+                $state.transitionTo('signin');
+            }
+            $scope.carList=data;
+            console.log($scope.carList)
+        });
+        $scope.open=function(car){
+            CacheFactory.remove('car');
+            CacheFactory.save('car',car);
+            $state.go("tabCar.map");
+        };
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
+    })
+    .controller('BaiduMapCtrl', function($scope,$interval,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) {
 
         $scope.map;
+
         setTimeout(function () {
             // 百度地图API功能
             $scope.map = new BMap.Map("allmap");
-            $scope.map.centerAndZoom(new BMap.Point(116.331398,39.897445),11);
+            $scope.map.centerAndZoom(new BMap.Point(113.273383,22.170500),18);
             $scope.map.enableScrollWheelZoom(true);
+            $scope.theLocation();
         }, 300)
 
+        var timer1= $interval(function(){
+            $scope.theLocation();
+
+        },5000);   //间隔5秒定时执行
+
+        $scope.$on(
+            "$destroy",
+            function( event ) {
+                $interval.cancel(timer1);
+            }
+        );
 
         // 用经纬度设置地图中心点
         $scope.theLocation=function (){
-            console.log("BaiduMapCtrl1");
+            $scope.getGPS();
             $scope.map.clearOverlays();
+            var icon = new BMap.Icon('./img/car.png', new BMap.Size(25, 25), {      //20，30是图片大小
+                anchor: new BMap.Size(12, 30)
+            });
+            var new_point = new BMap.Point($scope.bgGPS[0],$scope.bgGPS[1]);
 
-            var new_point = new BMap.Point('116','37');
+            var marker = new BMap.Marker(new_point,{
+                icon: icon
+            });  // 创建标注
 
-            var marker = new BMap.Marker(new_point);  // 创建标注
+            var marker1 = new BMap.Marker(new_point);  // 创建标注
 
             $scope.map.addOverlay(marker);              // 将标注添加到地图中
+//            $scope.map.addOverlay(marker1);
             $scope.map.panTo(new_point);
 
+        }
+
+        var paras= commonServices.getBaseParas();
+        var car=JSON.parse(CacheFactory.get('car'));
+
+        paras.plate=car.plate;
+        $scope.carName=car.Name;
+
+        var url=commonServices.getUrl("MapService.ashx","GetGPS");
+
+        $scope.getGPS=function(){
+            commonServices.getDataListNoMask(paras,url).then(function(data){
+
+                if(data=="Token is TimeOut"){
+                    alertService.showAlert("登录失效，请重新登录");
+                    $state.transitionTo('signin');
+                }
+                $scope.GPS=data;
+                $scope.changWGS84ToBg($scope.GPS);
+            });
+        }
+
+        $scope.changWGS84ToBg=function(gps){
+
+            //wgs84转国测局坐标
+            var wgs84togcj02 = coordtransform.wgs84togcj02(gps[0].lng, gps[0].lat);
+
+            //国测局坐标转百度经纬度坐标
+            var gcj02tobd09 = coordtransform.gcj02tobd09(wgs84togcj02[0], wgs84togcj02[1]);
+            $scope.bgGPS=gcj02tobd09;
         }
 
         $scope.closePass=function(){
@@ -586,7 +666,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
                 disableAnimate: true,
                 disableBack: true
             });
-            $state.go('tab.home');
+            $state.go('tabCar.carlist');
         }
     })
 

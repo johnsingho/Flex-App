@@ -19,7 +19,7 @@
             <ion-slide>
                 <div class="row" style="height:110px;text-align: center">
                     <div id="yjzp" class="col col-25  positive-bg light " style=";Margin:1px" ng-click="open('自评');">
-                        <div ng-if="accessEmployee.Organization=='PCBA-B13'">
+                        <div ng-if="accessEmployee.Segment_ID=='EF922594-5FB1-409E-A3D8-F7BC940AACD9'">
 
                             <ion-slide-box  delegate-handle="slideImg"  does-continue="true" auto-play="true" slide-interval="3500" show-pager="false" >
                                 <ion-slide>
@@ -31,7 +31,7 @@
                             </ion-slide-box>
                             <div >有奖自评</div>
                         </div>
-                        <div ng-if="accessEmployee.Organization!='PCBA-B13'">
+                        <div ng-if="accessEmployee.Segment_ID!='EF922594-5FB1-409E-A3D8-F7BC940AACD9'">
                             <i style="font-size:50px;" class="ion-document-text"></i>
                             <div>自 评</div>
                         </div>
@@ -64,6 +64,7 @@
                     <div id="bcxx" class="col-25  custom-og light" style="Margin-left:2px;" ng-click="open('班车信息');">
 
                         <i style="font-size:50px;" class="icon ion-android-bus"></i>
+                        <p class="badge badge-assertive"> <i style="font-size:15px;" class="ion-ios-location"></i></p>
                         <div >班车信息</div>
                     </div>
                     <div id="rxdh" class="col royal-bg light" style=";Margin:1px" ng-click="open('热线电话');">
@@ -152,10 +153,10 @@
                         <div >报 名</div>
                     </div>
 
-                    <div  class="col col-25 custom-bule1 light"  style=";Margin:1px" ng-click="open('保险');">
+                    <div  class="col col-25 balanced-bg light"  style=";Margin:1px" ng-click="open('保险');">
 
-                        <i style="font-size:50px;" class="ion-person-add"></i>
-                        <div >保险知识</div>
+                        <i style="font-size:50px;" class="ion-ios-paper"></i>
+                        <div >商业保险</div>
                     </div>
 
                     <!--<div  class="col col custom-bule1 light"  style=";Margin:1px" ng-click="open('map');">-->

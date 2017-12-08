@@ -1,0 +1,24 @@
+<ion-view view-title="Map" cache-view="false" >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+
+    <ion-content scroll="true"  overflow-scroll="true" >
+
+        <div class="list list-inset">
+
+            <div class="item" ng-repeat="car in carList" ng-click="open(car)">
+                {{car.Name}}
+            </div>
+
+        </div>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        其他车辆会在后续增加定位功能
+
+    </ion-content>
+</ion-view>

@@ -172,6 +172,10 @@
     "hash": "2f97c7e0e09f309697cf17e802f5100f"
   },
   {
+    "file": "img/car.png",
+    "hash": "106ed35264a7ce1da14bba64663404b3"
+  },
+  {
     "file": "img/CarImg/Slide1.JPG",
     "hash": "2e110423af63c9475c6b17c04068b522"
   },
@@ -337,7 +341,7 @@
   },
   {
     "file": "index.html",
-    "hash": "af6ae548eb961c0048103cd4a3ff3606"
+    "hash": "e807fd72c86fb832131a788c34c3f5b1"
   },
   {
     "file": "js/app-conf.js",
@@ -349,7 +353,7 @@
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "f34beefa2e131427b7bbaf46d9dccbbf"
+    "hash": "b645068c1c5edf567ecba2669ee91431"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -357,19 +361,47 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "2b0eb10f57c322dfa5387b0eb78d742d"
+    "hash": "37d5bcee81a5c782015c81c7d8ab21a9"
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "08a9ef1c560fe61137dd3baa28fe5255"
+    "hash": "ac8827fd0d6530473f6f358d23240e8e"
   },
   {
     "file": "js/controller/pointsControllers.js",
-    "hash": "3f74613e8e5b91e8f3324812d3b5ba1e"
+    "hash": "cb6895d8d9f35d6beb51a9380f9838ca"
   },
   {
     "file": "js/controller/sharCarController.js",
     "hash": "3adaaa769bb509deb6f16d995d71aefd"
+  },
+  {
+    "file": "js/coordtransform/.gitattributes",
+    "hash": "01c2ba45b8ce4cb9d870b39204aae551"
+  },
+  {
+    "file": "js/coordtransform/.npmignore",
+    "hash": "532e318c7ebc07460826f2e391288ef8"
+  },
+  {
+    "file": "js/coordtransform/coordtransform.js",
+    "hash": "6c6e3e47808816ce43ed8e8d97a07a5f"
+  },
+  {
+    "file": "js/coordtransform/LICENSE",
+    "hash": "2e2354f53803c86cf63d0fd260013737"
+  },
+  {
+    "file": "js/coordtransform/README.md",
+    "hash": "28214792c24cc47f6cb165ac0a158931"
+  },
+  {
+    "file": "js/coordtransform/test/app.js",
+    "hash": "79364968e2561760c55c7e7ebbf9ac5a"
+  },
+  {
+    "file": "js/coordtransform/test/index.html",
+    "hash": "b2a73e3b76e7602a1872bf480e0b0b41"
   },
   {
     "file": "js/directive.js",
@@ -461,11 +493,11 @@
   },
   {
     "file": "js/router.js",
-    "hash": "a0124a86161db128d07295bc712533db"
+    "hash": "603926015271cebc2b411090c0914882"
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "79eeb3149799d504d3b559861976fb6c"
+    "hash": "5cb1d6ffdcbd53881121bbdbdb500a62"
   },
   {
     "file": "js/service/businessServices.js",
@@ -1040,6 +1072,22 @@
     "hash": "f9df44d4361b9b3d0e7de99b886dfea1"
   },
   {
+    "file": "templates/carGps/tab-carList.html",
+    "hash": "f25b7b19ad40a3ee4cd9c068c6d6b2e6"
+  },
+  {
+    "file": "templates/carGps/tab-carPicture.html",
+    "hash": "feb680f3347f3bfbb2d35eaa9c133c4e"
+  },
+  {
+    "file": "templates/carGps/tab-map.html",
+    "hash": "d36f3a0afa42c4127a2afa4d4f322a74"
+  },
+  {
+    "file": "templates/carGps/tabCar.html",
+    "hash": "db00ec49fa26f773faae7335930170af"
+  },
+  {
     "file": "templates/carPicture.html",
     "hash": "feb680f3347f3bfbb2d35eaa9c133c4e"
   },
@@ -1097,7 +1145,7 @@
   },
   {
     "file": "templates/hotPhone/hotPhoneDetails.html",
-    "hash": "f478b6453bd75535686538f3de285f25"
+    "hash": "1e3b3ec67a9c12efe9a2f814c8d2d004"
   },
   {
     "file": "templates/hotPhone/tab-B15hotPhone.html",
@@ -1106,6 +1154,14 @@
   {
     "file": "templates/hotPhone/tab-hotPhone.html",
     "hash": "1e851aa7a1db735adc870839660321e4"
+  },
+  {
+    "file": "templates/insurance/insurance-Html.html",
+    "hash": "2826342765a7a7e0dd0e714cbb4f34a4"
+  },
+  {
+    "file": "templates/insurance/insurance-list.html",
+    "hash": "366e88f0451e3753f30740b75e7f6e12"
   },
   {
     "file": "templates/lightPower.html",
@@ -1181,7 +1237,7 @@
   },
   {
     "file": "templates/research/researchHtml.html",
-    "hash": "b3c96529e045dc205552c82c00afa86c"
+    "hash": "92e088c247292819f7faa6ff42e92a91"
   },
   {
     "file": "templates/shareCar/protocolHtml.html",
@@ -1213,7 +1269,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "6ac1aa3e04beaaca2c67013d842909e7"
+    "hash": "b05073a1a57aad5fb7aad73d7c539614"
   },
   {
     "file": "templates/tab-homecopy.html",
