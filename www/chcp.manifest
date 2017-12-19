@@ -349,7 +349,7 @@
   },
   {
     "file": "js/app.js",
-    "hash": "fb623f81531d43f4aab8d036dfd4a8dd"
+    "hash": "60e2251c68d13acf189cc7b2efa8d595"
   },
   {
     "file": "js/controller/appControllers.js",
@@ -361,7 +361,7 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "37d5bcee81a5c782015c81c7d8ab21a9"
+    "hash": "5baabbb6933b93570cb1228c2da8bd0b"
   },
   {
     "file": "js/controller/businiessControllers.js",
@@ -1269,7 +1269,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "b05073a1a57aad5fb7aad73d7c539614"
+    "hash": "95b9089b8f91cfdf94db1b86d597481d"
   },
   {
     "file": "templates/tab-homecopy.html",

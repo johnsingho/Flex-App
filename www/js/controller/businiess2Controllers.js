@@ -54,7 +54,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
                 $state.transitionTo('signin');
             }
             $scope.researchDetailList=data;
-            console.log($scope.researchDetailList);
+
             //是否激活启动
             $scope.isActivate=data[0].IsActivate;
             //启动日期

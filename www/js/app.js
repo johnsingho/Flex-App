@@ -84,12 +84,7 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.
               //如果本地与服务端的APP版本不符合
               if (version != serverAppVersion) {
 
-                  if ($rootScope.isIOS) {
-                      console.log('访问appstore进行更新');
 
-                      $window.open("https://zhmobile.flextronics.com/EvaluationApp/download/download.html");//跳转到APP商店这样即可
-                      return
-                  }
                   showUpdateConfirm(largeLoad);
               }
           });
@@ -137,12 +132,19 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.
             confirmPopup.then(function (res) {
                 if (res) {
 
+                    if ($rootScope.isIOS) {
+                        console.log('访问appstore进行更新');
+
+                        $window.open("https://zhmobile.flextronics.com/EvaluationApp/download/download.html");//跳转到APP商店这样即可
+                        return
+                    }
+
                     $ionicLoading.show({
                         template: "已经下载：0%"
                     });
 
                     var url = "https://zhmobile.flextronics.com/apps/android/Flex.apk";
-                    var targetPath = "/mnt/sdcard/EvaluationApp.apk";
+                    var targetPath = "/mnt/sdcard/Flex.apk";
                     var trustHosts = true
                     var options = {};
                     $cordovaFileTransfer.download(url, targetPath, options, trustHosts).then(function (result) {
