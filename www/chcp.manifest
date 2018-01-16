@@ -45,7 +45,7 @@
   },
   {
     "file": "css/style.css",
-    "hash": "31c4456d146485aeea9f68e8849d6de5"
+    "hash": "2b7a360d1b5c97b45aa7f58859404325"
   },
   {
     "file": "fonts/Slide-icons.dev.svg",
@@ -300,6 +300,58 @@
     "hash": "6aee7332ac108ed3d91a07c9fab36c27"
   },
   {
+    "file": "img/luckyGame/bg2.jpg",
+    "hash": "9ef7c6bfc85479438e9269d5f61eba39"
+  },
+  {
+    "file": "img/luckyGame/btn/btncaiwang.jpg",
+    "hash": "7368b4612a65062d35c962e866366389"
+  },
+  {
+    "file": "img/luckyGame/btn/btnfuwang.jpg",
+    "hash": "01bcf89ec14f0fe4044c82bb8900d762"
+  },
+  {
+    "file": "img/luckyGame/btn/btnguowang.jpg",
+    "hash": "8cae9f2babb8efc1ee538ebf8e6bf7f6"
+  },
+  {
+    "file": "img/luckyGame/btn/btnjiawang.jpg",
+    "hash": "7813e07b3635412595b45315eb98bb3c"
+  },
+  {
+    "file": "img/luckyGame/btn/btnwangwang.jpg",
+    "hash": "74e27cdc0f9a7dbc21221dfc4fb7e2a4"
+  },
+  {
+    "file": "img/luckyGame/caiwangfu.png",
+    "hash": "d0fa4e00bcd4acbbedc209680d23fa26"
+  },
+  {
+    "file": "img/luckyGame/chai.png",
+    "hash": "6a80c46bf58b08f202bbdf383c0f5f06"
+  },
+  {
+    "file": "img/luckyGame/congratulate.png",
+    "hash": "d38f8fe01e4af6e4126ddd4db59c2347"
+  },
+  {
+    "file": "img/luckyGame/fuwangfu.png",
+    "hash": "3ffb8d0e4a2d154580130d65bf128e9e"
+  },
+  {
+    "file": "img/luckyGame/guowangfu.png",
+    "hash": "368088b249baea84f115fbd0c094cd16"
+  },
+  {
+    "file": "img/luckyGame/jiawangfu.png",
+    "hash": "c82f30f12041ca186a715a8003203bee"
+  },
+  {
+    "file": "img/luckyGame/wangwangfu.png",
+    "hash": "e717552c873fe0fe3490e858f2888c97"
+  },
+  {
     "file": "img/msg.jpg",
     "hash": "f05ba55b7a75853b162d1df4b826e9fa"
   },
@@ -349,11 +401,11 @@
   },
   {
     "file": "js/app.js",
-    "hash": "60e2251c68d13acf189cc7b2efa8d595"
+    "hash": "d73d42aaf13f8d10858ce9e86fced8b8"
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "b645068c1c5edf567ecba2669ee91431"
+    "hash": "bc4b90536949aee0a8ec0f23453101d0"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -361,11 +413,11 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "5baabbb6933b93570cb1228c2da8bd0b"
+    "hash": "4d762c83765f1917e5522ccdefcadb5c"
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "ac8827fd0d6530473f6f358d23240e8e"
+    "hash": "2d56f21e679ea0b79aa99055dca9e699"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -493,7 +545,7 @@
   },
   {
     "file": "js/router.js",
-    "hash": "603926015271cebc2b411090c0914882"
+    "hash": "4b90db0babd58322ff4772ce52e5d35d"
   },
   {
     "file": "js/service/appServices.js",
@@ -1013,7 +1065,7 @@
   },
   {
     "file": "templates/activity/activity-list.html",
-    "hash": "37cfefc49e0f0e2c76ceae315899db48"
+    "hash": "7b150f34cfbad47804f4d74baae9caa6"
   },
   {
     "file": "templates/activity/activityHtml.html",
@@ -1025,7 +1077,11 @@
   },
   {
     "file": "templates/applySubmit/apply-list.html",
-    "hash": "0af3b44f8500b1b39c9bd644715ac956"
+    "hash": "e67ea441bbab2596be9a1a3d0e9cf6d2"
+  },
+  {
+    "file": "templates/applySubmit/applyTicket.html",
+    "hash": "0882660dc634284a1bd7ccd2e0998ef9"
   },
   {
     "file": "templates/askAndAnswer/tab-askAndAnswer.html",
@@ -1073,7 +1129,7 @@
   },
   {
     "file": "templates/carGps/tab-carList.html",
-    "hash": "f25b7b19ad40a3ee4cd9c068c6d6b2e6"
+    "hash": "c16522095bdb04822b4403b898b36689"
   },
   {
     "file": "templates/carGps/tab-carPicture.html",
@@ -1085,7 +1141,7 @@
   },
   {
     "file": "templates/carGps/tabCar.html",
-    "hash": "db00ec49fa26f773faae7335930170af"
+    "hash": "f3f604c5b1a11caf29ca08328af980ad"
   },
   {
     "file": "templates/carPicture.html",
@@ -1168,6 +1224,14 @@
     "hash": "9e8296c2321ea8849a08adfa9aa1c4bf"
   },
   {
+    "file": "templates/luckyDrawGame/luckydog.html",
+    "hash": "b7d07f5dc4c082321d8a20a01a25f953"
+  },
+  {
+    "file": "templates/luckyDrawGame/lucyGame.html",
+    "hash": "9f05b9bc5e18c590ded2fe0198175398"
+  },
+  {
     "file": "templates/mealOrder/mealProtocolHtml.html",
     "hash": "2d43fe7805011aa444099264c05b8050"
   },
@@ -1177,7 +1241,7 @@
   },
   {
     "file": "templates/mealOrder/tab-mealList.html",
-    "hash": "2489dbf481d78c1d5a5085c4111d8262"
+    "hash": "c73a8fba5af1a28f09b40729c84f89a4"
   },
   {
     "file": "templates/mealOrder/tab-myOrder.html",
@@ -1205,7 +1269,7 @@
   },
   {
     "file": "templates/notice/noticeHtml.html",
-    "hash": "2fc1dcc2f0f14f2788ca5f0c5b10379b"
+    "hash": "5e71f73feab645c74d0eb5d7542dfeab"
   },
   {
     "file": "templates/Photo.html",
@@ -1269,7 +1333,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "95b9089b8f91cfdf94db1b86d597481d"
+    "hash": "70f6a7020482b93b6c4da6850307e5c5"
   },
   {
     "file": "templates/tab-homecopy.html",

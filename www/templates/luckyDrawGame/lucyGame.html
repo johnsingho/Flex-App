@@ -1,0 +1,45 @@
+<ion-view view-title="旺旺大派送" cache-view="false" >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <ion-content scroll="false"  style="background:url(img/luckyGame/bg2.jpg);background-repeat:round;background-size:cover" usemap="#Map">
+
+
+
+        <div id="btnChai" class="row " style="position: absolute;left:35%;top:40%;height:100px;width:100px;text-align: center" >
+            <div  class="col col-100" ng-click="openDog()"  style="width:100px;Margin:1px;background:url(img/luckyGame/chai.png);background-repeat:round;background-size:cover" >
+            </div>
+        </div>
+
+
+
+        <div  class="row" style="position:fixed; bottom:105px;height:85px;text-align: center">
+            <!--<div  class="col"  style="Margin:2px;" >-->
+
+            <!--</div>-->
+            <div  class="col"  style="text-align: right;width:100px;Margin:2px;background:url(img/luckyGame/btn/btnguowang.jpg);background-repeat:round;background-size:cover" >
+                <span  class="badge badge-assertive" >{{dog1}}</span>
+            </div>
+
+            <div  class="col"  style="text-align: right;Margin:2px;background:url(img/luckyGame/btn/btnjiawang.jpg);background-repeat:round;background-size:cover" >
+                <span   class="badge badge-assertive">{{dog2}}</span>
+            </div>
+
+            <div  class="col"  style="text-align: right;Margin:2px;background:url(img/luckyGame/btn/btnfuwang.jpg);background-repeat:round;background-size:cover" >
+                <span  class="badge badge-assertive">{{dog3}}</span>
+            </div>
+            <div  class="col"  style="text-align: right;Margin:2px;background:url(img/luckyGame/btn/btncaiwang.jpg);background-repeat:round;background-size:cover" >
+                <span  class="badge badge-assertive">{{dog4}}</span>
+            </div>
+
+            <div  class="col"  style="text-align: right;Margin:2px;background:url(img/luckyGame/btn/btnwangwang.jpg);background-repeat:round;background-size:cover" >
+                <span  class="badge badge-assertive">{{dog5}}</span>
+            </div>
+            <!--<div  class="col"  style="Margin:2px;" >-->
+
+            <!--</div>-->
+
+        </div>
+
+    </ion-content>
+</ion-view>

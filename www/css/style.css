@@ -125,7 +125,7 @@ ul{
 /*弹窗的自定义样式*/
 .my-custom-popup
 .popup{
- width: 350px;
+ width: 1px;
 }
 .popup-title{
     font-weight:bold; line-height:150%;
@@ -137,3 +137,16 @@ ul{
 
  }
 
+.my-custom-popup-Alter
+.popup{
+    width: 350px;
+}
+.popup-title{
+    font-weight:bold; line-height:150%;
+}.popup-head{}
+.popup-sub-title{}
+.popup-body{}
+.popup-buttons.row{}
+.popup-buttons .button{
+
+}

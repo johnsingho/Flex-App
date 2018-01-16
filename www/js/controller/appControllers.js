@@ -38,15 +38,38 @@ angular.module('evaluationApp.appControllers', [])
     })
     .controller('HomeCtrl', function($scope,$rootScope,$ionicSlideBoxDelegate ,$timeout,$state,$ionicPopup,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        $scope.checkWorkday='45617446284458895346835046239423328424562588036439086348619594622105851805669585877102405743';
+        $scope.checkWorkday='232707845873223005905605982100086249612323328422405743456258';
 
-        console.log($rootScope.accessEmployee);
+
         if ($rootScope.accessEmployee) {
 
-//            var arrayObj = new Array($rootScope.accessEmployee.Organization.replace(/\s+/g, ""));
-//            window.plugins.jPushPlugin.setTags(arrayObj);
+            $scope.Scan=function(){
+                cordova.plugins.barcodeScanner.scan(
+                    function (result) {
+                        if (result.wasCancelled) {
+                            popup.loadMsg("返回按钮回到这个页面");
+                        }
+                        if(result.text.indexOf('http')>=0){
+                            externalLinksService.openUr(result.text);
+                        }
+                    },
+                    function (error) {
+                        alert("Scanning failed: " + error);
+                    },
+                    {
+                        preferFrontCamera: false, // iOS and Android
+                        showFlipCameraButton: true, // iOS and Android
+                        showTorchButton: true, // iOS and Android 显示开起手电筒的按钮
+                        torchOn: false, // Android, launch with the torch switched on (if available)  默认开启手电筒
+                        prompt: "请将二维码放在扫描框中", // Android 提示信息
+                        resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500 多久开始识别
+                        formats: "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+                        orientation: "portrait"// Android only (portrait|landscape), default unset so it rotates with the device 垂直还是水平
+                        // disableAnimations : true // iOS
+                    }
+                );
+            };
 
-//           var parameter={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token };
             var parameter= commonServices.getBaseParas();
 
 
@@ -92,8 +115,13 @@ angular.module('evaluationApp.appControllers', [])
         $scope.openNotice=function(homeImg){
            if(homeImg.NoticeID.length>0) {
 
-               CacheFactory.save('HomeNoticeID',homeImg.NoticeID);
-               $location.path('HomeNotice');
+//               CacheFactory.save('HomeNoticeID',homeImg.NoticeID);
+//               $location.path('HomeNotice');
+               $rootScope.fromHome='home';
+                console.log(homeImg.NoticeID);
+              // CacheFactory.remove('noticeID');
+               CacheFactory.save('noticeID',homeImg.NoticeID);
+               $location.path('noticeHtml');
            }
 
         };
@@ -143,6 +171,10 @@ angular.module('evaluationApp.appControllers', [])
                 case "保险":
 
                     $state.go("insurance");
+                    break;
+                case "choujiang":
+
+                    $state.go("luckyGame");
                     break;
             }
 
@@ -214,7 +246,17 @@ angular.module('evaluationApp.appControllers', [])
                 $state.go("tabCar.carlist");
             }
             else if(action=="活动"){
-                $location.path("activityList");
+
+                console.log($scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO));
+                if($scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1)
+                {
+                    $state.go("luckyGame");
+                }
+                else
+                {
+                    $location.path("activityList");
+                }
+
 
             }
             else if(action=="聊天室"){
@@ -247,7 +289,7 @@ angular.module('evaluationApp.appControllers', [])
                 //$state.go("tab.404");
                 var myPopup = $ionicPopup.show({
                     templateUrl: 'templates/mealOrder/mealProtocolHtml.html',
-                    cssClass:'my-custom-popup',
+                    cssClass:'my-custom-popup-Alter',
                     title: '订餐须知',
                     subTitle: '',
                     scope: $scope,
@@ -271,7 +313,7 @@ angular.module('evaluationApp.appControllers', [])
                 $state.go("tab_ShareCar.List");
                 $ionicPopup.show({
                     title: 'Flex汽车共享信息服务协议',
-                    cssClass:'my-custom-popup',
+                    cssClass:'my-custom-popup-Alter',
                     templateUrl: 'templates/shareCar/protocolHtml.html',
                     scope: $scope,
                     buttons: [

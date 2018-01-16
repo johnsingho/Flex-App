@@ -4,28 +4,29 @@
     </ion-nav-buttons>
     <ion-content scroll="true" overflow-scroll="true" >
 
-        <ion-list ng-if="shouCj">
-            <ion-item  class="item item-thumbnail-left"  ng-click="openCJ()">
-                <img src="img/choujiang.jpg">
-                <h1>抽奖</h1>
-                <br>
-                <p></p>
-            </ion-item>
-        </ion-list>
-        <!--<ion-list>-->
-            <!--<ion-item ng-repeat="activity in activityList" class="item item-thumbnail-left"  ng-click="open(activity)">-->
-                <!--<img src="{{activity.ImgPath}}">-->
-                <!--<h3>{{activity.ActivityTitle}}</h3>-->
+        <!--<ion-list ng-if="shouCj">-->
+            <!--<ion-item  class="item item-thumbnail-left"  ng-click="openCJ()">-->
+                <!--<img src="img/choujiang.jpg">-->
+                <!--<h1>抽奖</h1>-->
                 <!--<br>-->
-                <!--<p>{{activity.CreateDate| date:"yyyy-MM-dd"}}</p>-->
-
-
-                <!--&lt;!&ndash;<i class="icon ion-ios-list-outline"></i>&ndash;&gt;-->
-                 <!--&lt;!&ndash;<h2>{{notice.NoticeTitle}}</h2>&ndash;&gt;-->
-                 <!--&lt;!&ndash;<p>{{notice.NoticeTypeName}}</p>&ndash;&gt;-->
-                <!--&lt;!&ndash;<i class="icon ion-ios-arrow-forward"></i>&ndash;&gt;-->
+                <!--<p></p>-->
             <!--</ion-item>-->
         <!--</ion-list>-->
+
+        <ion-list>
+            <ion-item ng-repeat="activity in activityList" class="item item-thumbnail-left"  ng-click="open(activity)">
+                <img src="{{activity.ImgPath}}">
+                <h3>{{activity.ActivityTitle}}</h3>
+                <br>
+                <p>{{activity.CreateDate| date:"yyyy-MM-dd"}}</p>
+
+
+                <!--<i class="icon ion-ios-list-outline"></i>-->
+                 <!--<h2>{{notice.NoticeTitle}}</h2>-->
+                 <!--<p>{{notice.NoticeTypeName}}</p>-->
+                <!--<i class="icon ion-ios-arrow-forward"></i>-->
+            </ion-item>
+        </ion-list>
 
 
 
@@ -59,13 +60,13 @@
 
 
         <!--有奖活动-->
-        <div class="list list-inset">
+        <!--<div class="list list-inset">-->
 
-            <div class="item" ng-repeat="resear in researchList" ng-click="openDC(resear)">
-                {{resear.ResearchName}} ({{resear.ActivateDate}}开始)
-            </div>
+            <!--<div class="item" ng-repeat="resear in researchList" ng-click="openDC(resear)">-->
+                <!--{{resear.ResearchName}} ({{resear.ActivateDate}}开始)-->
+            <!--</div>-->
 
-        </div>
+        <!--</div>-->
 
     </ion-content>
 </ion-view>

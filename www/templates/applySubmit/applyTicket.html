@@ -1,0 +1,70 @@
+<ion-view view-title="预订票" cache-view="true" >
+    <!--<ion-nav-buttons side="left">-->
+        <!--<button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">返回</button>-->
+    <!--</ion-nav-buttons>-->
+ <ion-content  scroll="true"  lazy-scroll >
+
+     <p>
+         <span style="color: rgb(227, 108, 9);">预购票须知：</span>
+     </p>
+     <p class="MsoListParagraph" style=";margin-bottom: 0in;margin-left:.25in;margin-bottom:0;text-align:justify;text-justify: inter-ideograph">
+         <span style="color: rgb(227, 108, 9);">1.<span style="color: rgb(227, 108, 9); font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 9px; line-height: normal; font-family: &quot;Times New Roman&quot;;">&nbsp; </span>各团购线路采取预报名方式，每条线路达到40人以上成团，享受团购价格,同时安排车辆直接进入厂区发车；</span>
+     </p>
+     <p class="MsoListParagraph" style=";margin-bottom: 0in;margin-left:.25in;margin-bottom:0;text-align:justify;text-justify: inter-ideograph">
+         <span style="color: rgb(227, 108, 9);">2.<span style="color: rgb(227, 108, 9); font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: 9px; line-height: normal; font-family: &quot;Times New Roman&quot;;">&nbsp; </span>未成团的由信禾公司联系各员工确认购买散票并负责送票入厂区，享9折优惠，员工自行前往指定汽车站乘坐；</span>
+     </p>
+     <p class="MsoListParagraph" style=";margin-bottom: 0in;margin-left:.25in;margin-bottom:0;text-align:justify;text-justify: inter-ideograph">
+         <span style="color: rgb(227, 108, 9);">3.&nbsp; 预购票时间：2018年1月16日, 15:00 ~ 1月22日, 9:00</span>
+     </p>
+     <p>
+         <br/>
+     </p>
+
+     <div class="list">
+
+         <label class="item item-input item-select">
+             <div class="input-label">
+                 出发日期：
+             </div>
+             <select ng-model="Submitdata.selectedDate" ng-change="selDate(Submitdata.selectedDate)">
+                 <option ng-repeat="seldata in selDateList">{{seldata.date}}</option>
+             </select>
+         </label>
+         <label class="item item-input item-select">
+             <div class="input-label">
+                 线路：
+             </div>
+             <select ng-model="Submitdata.selectedLine" ng-change="selLine(Submitdata.selectedLine)"   >
+                 <option ng-repeat="line in Linelist">{{line.Line}}</option>
+             </select>
+         </label>
+         <label class="item item-input item-select" ng-if="other=='false'">
+             <div class="input-label">
+                 站点：
+             </div>
+           <select ng-model="Submitdata.selectedStation" ng-change="selStation(Submitdata.selectedStation)"   >
+            <option ng-repeat="station in Stationlist">{{station.Time}} {{station.Station}}</option>
+          </select>
+
+         </label>
+
+         <label class="item item-input" ng-if="other=='true'">
+            <div class="input-label">
+                 站点(请填写线路+站点)：
+             </div>
+             <input type="text"   ng-model="Submitdata.selectedStation"/>
+         </label>
+
+         <label class="item item-input">
+             <div class="input-label">
+                 联系方式(重要请确认)：
+             </div>
+             <input type="text"  ng-model="Submitdata.MobileNoByUser"/>
+         </label>
+
+
+     </div>
+     <div style="text-align: center"><button   class="button  button-positive" ng-click="Submit()">报 名</button></div>
+
+    </ion-content>
+</ion-view>

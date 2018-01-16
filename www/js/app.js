@@ -135,7 +135,7 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.
                     if ($rootScope.isIOS) {
                         console.log('访问appstore进行更新');
 
-                        $window.open("https://zhmobile.flextronics.com/EvaluationApp/download/download.html");//跳转到APP商店这样即可
+                        $window.open("itms-services://?action=download-manifest&amp;url=https://zhmobile.flextronics.com/apps/ios/FlexPlus.plist");
                         return
                     }
 

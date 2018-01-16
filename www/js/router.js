@@ -472,6 +472,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/applySubmit/apply-Html.html',
                 controller: 'ApplyHtmlCtrl'
             })
+            .state('applyTicket', {
+                url: '/applyTicket',
+                templateUrl: 'templates/applySubmit/applyTicket.html',
+                controller: 'ApplyTicketCtrl'
+            })
             .state('baiduMap', {
                 url: '/baiduMap',
                 templateUrl: 'templates/baiduMap/gps.html',
@@ -486,6 +491,12 @@ angular.module('evaluationApp.router', [])
                 url: '/insuranceHtml',
                 templateUrl: 'templates/insurance/insurance-Html.html',
                 controller: 'InsuranceHtmlCtrl'
+            })
+
+            .state('luckyGame', {
+                url: '/luckyGame',
+                templateUrl: 'templates/luckyDrawGame/lucyGame.html',
+                controller: 'LuckyGameCtrl'
             })
 
         $urlRouterProvider.otherwise('signin');

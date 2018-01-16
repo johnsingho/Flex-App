@@ -11,14 +11,19 @@
                 <img src="{{meal.ImgPath}}">
                 <h2>{{meal.foodName}}</h2>
                 <div class="row" style="width: 100px;float: right">
+
                     <div class="col col-30"> <button  class="button button-small  button-assertive" ng-click="cutDown(meal)">-</button></div>
                     <div class="col col-20"><label style="width: 20px;" ng-model="meal.Count" >{{meal.Count}}</label></div>
                     <div class="col "> <button  class="button button-small  button-assertive" ng-click="add(meal)">+</button></div>
                 </div>
-                <br>
-                <br>
-                 <p style="font-size: 13px;color: orangered">¥{{meal.Price}}元/份</p>
+                <div class="col col-30"> <p style="font-size: 13px;color: orangered">¥{{meal.Price}}元/份</p></div>
+                <div class="row" style="width: 100px;float: left">
+                    <div class="col col-30"> <button  class="button button-small  button-light  icon ion-thumbsup" ng-click="like(meal)"> {{meal.LikeQty}}人觉得很赞</button></div>
+                    <div class="col col-30"> <button  class="button button-small  button-light icon ion-thumbsdown" ng-click="unLike(meal)"> {{meal.UnLikeQty}}人觉得还要改进</button></div>
+                </div>
             </a>
+
+
         </div>
 
         <!--<div class="list">-->

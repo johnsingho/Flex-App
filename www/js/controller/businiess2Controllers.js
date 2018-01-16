@@ -223,6 +223,54 @@ angular.module('evaluationApp.businiess2Controllers', [])
             $state.go('tab.home');
         };
 
+        $scope.like=function(meal){
+
+            params.foodName=meal.foodName;
+            params.isLike='1';
+            var url=commonServices.getUrl("MealOrder.ashx","AddLike");
+            commonServices.submit(params,url).then(function(data){
+                if(data.success){
+//                    commonServices.getDataListNoMask(params,API.GetMealList).then(function(data){
+//
+//                        if(data=="Token is TimeOut"){
+//                            alertService.showAlert("登录失效，请重新登录");
+//                            $state.transitionTo('signin');
+//                        }
+//                        $scope.mealList=data;
+//                        console.log( $scope.mealList);
+
+//                    });
+                meal.LikeQty=meal.LikeQty+1;
+                }
+                else{
+                    alertService.showLoading(data.message);
+                }
+            });
+        };
+
+        $scope.unLike=function(meal){
+
+            params.foodName=meal.foodName;
+            params.isLike='0';
+            var url=commonServices.getUrl("MealOrder.ashx","AddLike");
+            commonServices.submit(params,url).then(function(data){
+                if(data.success){
+//                    commonServices.getDataListNoMask(params,API.GetMealList).then(function(data){
+//
+//                        if(data=="Token is TimeOut"){
+//                            alertService.showAlert("登录失效，请重新登录");
+//                            $state.transitionTo('signin');
+//                        }
+//                        $scope.mealList=data;
+//                        console.log( $scope.mealList);
+//                    });
+                    meal.UnLikeQty=meal.UnLikeQty+1;
+                }else
+                {
+                    alertService.showLoading(data.message);
+                }
+            });
+        };
 
         $ionicModal.fromTemplateUrl('templates/modal.html', {
             scope: $scope,
@@ -235,8 +283,6 @@ angular.module('evaluationApp.businiess2Controllers', [])
                 alertService.showAlert("请选择后再下单");
                 return;
             }
-
-
             $scope.modal.show();
             var now = new Date();
             var str = now.getFullYear() + "-" + fix((now.getMonth() + 1),2) + "-" + fix(now.getDate(),2) + "T" + fix(now.getHours(),2) + ":" + fix(now.getMinutes(),2)+ ":" + fix(now.getSeconds(),2);
@@ -668,6 +714,101 @@ angular.module('evaluationApp.businiess2Controllers', [])
             });
             $state.go('tabCar.carlist');
         }
+
+
+    })
+
+    .controller('LuckyGameCtrl', function($scope,$rootScope,$ionicPopup,$interval,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
+
+
+        $scope.openDog=function(){
+
+            $('#btnChai').addClass('animated shake');
+
+            var params=commonServices.getBaseParas();
+            var url=commonServices.getUrl("LuckyGameService.ashx","GetLuckyGame");
+            //获取一般活动列表
+            commonServices.getData(params,url).then(function(data){
+                if(data=="Token is TimeOut"){
+                    alertService.showAlert("登录失效，请重新登录");
+                    $state.transitionTo('signin');
+                }
+                var dogNo=data.split(',')[0];
+                var haveFive=data.split(',')[1];
+                switch(dogNo)
+                {
+                    case "1":$rootScope.dog='guowangfu.png'; break;
+                    case "2":$rootScope.dog='jiawangfu.png'; break;
+                    case "3":$rootScope.dog='fuwangfu.png'; break;
+                    case "4":$rootScope.dog='caiwangfu.png'; break;
+                    case "5":$rootScope.dog='wangwangfu.png'; break;
+                }
+
+                console.log($rootScope.dog);
+
+                $rootScope.rebagPopup=$ionicPopup.show({
+                    cssClass:'my-custom-popup',
+                    templateUrl: 'templates/luckyDrawGame/luckydog.html',
+                    scope: $rootScope
+                });
+                $rootScope.rebagPopup.then(function(res) {
+                    $('#btnChai').removeClass('animated shake');
+                    $scope.getDogCount();
+                    if(haveFive=='true'){
+                        $rootScope.dog='congratulate.png';
+                        $rootScope.rebagPopup=$ionicPopup.show({
+                            cssClass:'my-custom-popup',
+                            templateUrl: 'templates/luckyDrawGame/luckydog.html',
+                            scope: $rootScope
+                        });
+                        $rootScope.rebagPopup.then(function(res) {
+                            $('#btnChai').removeClass('animated shake');
+                            $scope.getDogCount();
+                            if(haveFive=='true'){
+
+                            }
+                        });
+                    }
+                });
+
+            });
+
+
+        }
+
+        $scope.getDogCount=function(){
+            var params=commonServices.getBaseParas();
+            var url=commonServices.getUrl("LuckyGameService.ashx","GetLuckyDogCount");
+            commonServices.getDataListNoMask(params,url).then(function(data){
+
+                if(data=="Token is TimeOut"){
+                    alertService.showAlert("登录失效，请重新登录");
+                    $state.transitionTo('signin');
+                }
+                console.log(data);
+                $scope.dogList=data;
+                if($scope.dogList.length>0){
+                    for(var i=0;i<$scope.dogList.length;i++){
+                        if($scope.dogList[i].dog==1)  $scope.dog1=$scope.dogList[i].dogCount;
+                        if($scope.dogList[i].dog==2)  $scope.dog2=$scope.dogList[i].dogCount;
+                        if($scope.dogList[i].dog==3)  $scope.dog3=$scope.dogList[i].dogCount;
+                        if($scope.dogList[i].dog==4)  $scope.dog4=$scope.dogList[i].dogCount;
+                        if($scope.dogList[i].dog==5)  $scope.dog5=$scope.dogList[i].dogCount;
+                    }
+                }
+            });
+        }
+
+        $scope.getDogCount();
+
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
+
     })
 
 

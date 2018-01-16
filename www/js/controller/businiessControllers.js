@@ -361,37 +361,127 @@ angular.module('evaluationApp.businiessControllers', [])
             $state.go('tab.home');
         }
     })
-    .controller('NoticeHtmlCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,$location) {
+    .controller('NoticeHtmlCtrl', function($scope,$rootScope,commonServices,$ionicModal,CacheFactory,noticeService,alertService,$state,$ionicHistory,$location) {
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         var noticeID=CacheFactory.get('noticeID');
 
         var strHtml='';
-
+        $scope.ReadCount=0;
+        $scope.LikeCount=0;
         var params={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token,NoticeID:noticeID};
-        noticeService.getNoticeHTML(params).then(function(data){
+
+        commonServices.getDataList(params,API.GetNoticeHTML).then(function(data){
 
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
                 $state.transitionTo('signin');
             }
-            strHtml=data;
-
+            strHtml=data[0].NoticeHtml;
             $('#div_html').html(strHtml);
             CacheFactory.remove('noticeID');
+            $scope.ReadCount=data[0].ReadCount;
+            $scope.LikeCount=data[0].LikeCount;
+            $scope.getComments();
+
+        });
+
+        $scope.like=function(){
+
+            var url=commonServices.getUrl("MsgService.ashx","AddLike");
+            commonServices.submit(params,url).then(function(data){
+                if(data.success){
+                    $scope.LikeCount=  $scope.LikeCount+1;
+                }
+
+            });
+        };
+
+
+
+        $ionicModal.fromTemplateUrl('templates/modalWriteMsg.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal
+        })
+        $scope.writeMsg = function() {
+
+            $scope.modal.show();
+
+        };
+
+        $scope.closeModal = function() {
+            $scope.modal.hide();
+        };
+        $scope.$on('$destroy', function() {
+            $scope.modal.remove();
         });
 
 
-//        $scope.closePass=function(){
+        $scope.submit=function(){
+
+            var Comments = $("#Comments").val(); //获取
+            if(Comments.length==0)
+            {
+                console.log(Comments);
+                return;
+            }
+
+
+            params.SID=noticeID;
+            params.Model='Notice';
+            params.Comments=Comments;
+
+            var url=commonServices.getUrl("MsgService.ashx","AddComments");
+            commonServices.submit(params,url).then(function(data){
+                if(data.success){
+                    $scope.modal.hide();
+                    $scope.getComments();
+                }
+                else{
+                    alertService.showAlert(data.message);
+                }
+            });
+
+        }
+
+        $scope.getComments=function(){
+            var url=commonServices.getUrl("MsgService.ashx","GetReplyComments");
+            commonServices.getDataList(params,url).then(function(data){
+                 $scope.replyList=data;
+
+            });
+        }
+
+        $scope.closePass=function(){
+            $rootScope.fromHome='';
+            //CacheFactory.remove('noticeID');
 //            $ionicHistory.nextViewOptions({
 //                disableAnimate: true,
 //                disableBack: true
 //            });
-////            $location.path("tab/noticeList");
-//            $ionicHistory.goBack();
-//        };
+            $state.go('tab.home');
+        }
+
+//        noticeService.getNoticeHTML(params).then(function(data){
+//
+//            if(data=="Token is TimeOut"){
+//                alertService.showAlert("登录失效，请重新登录");
+//                $state.transitionTo('signin');
+//            }
+//            strHtml=data;
+//
+//
+//            $('#div_html').html(strHtml);
+//            CacheFactory.remove('noticeID');
+//        });
+
+
+
     })
-    .controller('ApplyCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
+    .controller('ApplyCtrl', function($scope,$rootScope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
+
 
         var paras= commonServices.getBaseParas();
         var url=commonServices.getUrl("ApplySubmitService.ashx","GetApplyList");
@@ -403,6 +493,7 @@ angular.module('evaluationApp.businiessControllers', [])
             }
             $scope.applyList=data;
 
+
         });
 
         $scope.open=function(apply){
@@ -410,6 +501,11 @@ angular.module('evaluationApp.businiessControllers', [])
             CacheFactory.save('applyID',apply.NoticeID);
 
             $state.go('applyHtml');
+        };
+
+        $scope.openTicket=function(apply){
+
+            $state.go('applyTicket');
         };
 
         $scope.closePass=function(){
@@ -468,6 +564,122 @@ angular.module('evaluationApp.businiessControllers', [])
 
 
             }
+
+
+
+    })
+    .controller('ApplyTicketCtrl', function($scope,$rootScope,CacheFactory,noticeService,alertService,$state,$ionicPopup,$ionicHistory,$location,commonServices) {
+
+        var strHtml='';
+        var paras= commonServices.getBaseParas();
+
+
+        $scope.selDateList=[{date:'请选择'},{date:'2018-02-05'},{date:'2018-02-06'},{date:'2018-02-07'},{date:'2018-02-08'},{date:'2018-02-09'},{date:'2018-02-10'}
+            ,{date:'2018-02-11'},{date:'2018-02-12'},{date:'2018-02-13'},{date:'2018-02-14'}];
+
+        var  url=commonServices.getUrl("ApplySubmitService.ashx","GetApplyTickeLine");
+        commonServices.getDataList(paras,url).then(function(data){
+
+            if(data=="Token is TimeOut"){
+                alertService.showAlert("登录失效，请重新登录");
+                $state.transitionTo('signin');
+            }
+            $scope.Linelist=data;
+        });
+
+        $scope.Submitdata ={
+            selectedDate:"请选择",
+            selectedLine : "",
+            selectedStation: "",
+            MobileNoByUser: $rootScope.accessEmployee.MobileNo
+        }
+
+        $scope.selDate=function(selectedDate){
+
+            $scope.Submitdata.selectedDate=selectedDate;
+
+        }
+
+        $scope.other='false';
+
+        $scope.selLine=function(selectedLine){
+            $scope.Submitdata.selectedLine=selectedLine;
+
+            if(selectedLine=='其他线路'){
+                $scope.other='true';
+            }else{
+                $scope.other='false';
+                paras.selline=selectedLine;
+                var  url=commonServices.getUrl("ApplySubmitService.ashx","GetApplyTickeStation");
+                commonServices.getDataList(paras,url).then(function(data){
+
+                    if(data=="Token is TimeOut"){
+                        alertService.showAlert("登录失效，请重新登录");
+                        $state.transitionTo('signin');
+                    }
+                    $scope.Stationlist=data;
+                });
+            }
+
+        }
+
+
+        $scope.selStation=function(selectedStation){
+             $scope.Submitdata.selectedStation=selectedStation;
+
+        }
+
+
+
+
+        $scope.Submit=function() {
+            if($scope.selectedDate=="请选择"){
+                alertService.showAlert('请选择一个日期');
+                return;
+            }
+            console.log($scope.MobileNoByUser);
+            if($scope.selectedLine==""){
+                alertService.showAlert('请选择一个线路');
+                return;
+            }
+            if($scope.selectedStation==""){
+                alertService.showAlert('请选择或者填写一个站点');
+                return;
+            }
+
+
+            $ionicPopup.confirm({
+                title: '提示',
+                template: '确定报名吗？',
+                okText:"OK"
+            }) .then(function(res) {
+                if(res) {
+                    paras.submitDate=$scope.Submitdata.selectedDate;
+                    paras.submitLine=$scope.Submitdata.selectedLine;
+                    paras.submitStation=$scope.Submitdata.selectedStation;
+                    paras.submitMobileNo=$scope.Submitdata.MobileNoByUser;
+
+
+                    console.log( paras);
+
+                    var url=commonServices.getUrl("ApplySubmitService.ashx","SubmitApplyTicke");
+                    commonServices.submit(paras, url).then(function (data) {
+                        if (data.success) {
+                            alertService.showAlert('提交成功,后续会有工作人员联系购票事宜');
+
+                            $ionicHistory.goBack();
+
+                        }
+                        else {
+                            alertService.showAlert(data.message);
+                        }
+                    });
+                }
+            });
+
+
+
+        }
 
 
 
@@ -612,32 +824,32 @@ angular.module('evaluationApp.businiessControllers', [])
         });
         $scope.shouCj=false;
         //获取是否有抽奖活动列表权限
-        noticeService.getChoujiangList(params).then(function(data){
-
-
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-           if(data.success){
-               $scope.shouCj=true;
-               console.log($scope.shouCj);
-           }
-        });
+//        noticeService.getChoujiangList(params).then(function(data){
+//
+//
+//            if(data=="Token is TimeOut"){
+//                alertService.showAlert("登录失效，请重新登录");
+//                $state.transitionTo('signin');
+//            }
+//           if(data.success){
+//               $scope.shouCj=true;
+//               console.log($scope.shouCj);
+//           }
+//        });
 
         $scope.openCJ=function(){
             $location.path("choujiang");
         }
 
 //        获取有奖调查列表
-        commonServices.getDataList(params,API.GetResearchList).then(function(data){
-
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            $scope.researchList=data;
-        });
+//        commonServices.getDataList(params,API.GetResearchList).then(function(data){
+//
+//            if(data=="Token is TimeOut"){
+//                alertService.showAlert("登录失效，请重新登录");
+//                $state.transitionTo('signin');
+//            }
+//            $scope.researchList=data;
+//        });
         $scope.openDC=function(research){
             CacheFactory.remove('researchID');
             CacheFactory.remove('ResearchName');
