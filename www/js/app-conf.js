@@ -3,10 +3,10 @@
  */
 
 //本机开发
-//var API_HOST = 'http://localhost:64511';
+var API_HOST = 'http://localhost:64511';
 
 //正式环境
-var API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
+//var API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
 
 var API = {
 

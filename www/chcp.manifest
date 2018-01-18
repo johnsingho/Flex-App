@@ -417,7 +417,7 @@
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "2d56f21e679ea0b79aa99055dca9e699"
+    "hash": "b62a77003b2d6be3498c1937b593cd74"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -1077,11 +1077,11 @@
   },
   {
     "file": "templates/applySubmit/apply-list.html",
-    "hash": "e67ea441bbab2596be9a1a3d0e9cf6d2"
+    "hash": "02410cbd658242ce47c4787b2890050e"
   },
   {
     "file": "templates/applySubmit/applyTicket.html",
-    "hash": "0882660dc634284a1bd7ccd2e0998ef9"
+    "hash": "353c9b3a028b071b47c28c6d278a148f"
   },
   {
     "file": "templates/askAndAnswer/tab-askAndAnswer.html",

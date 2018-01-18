@@ -6,7 +6,6 @@ angular.module('evaluationApp.appControllers', [])
         $scope.ver=CacheFactory.get('version');
         $scope.user = JSON.parse(CacheFactory.get('accessUser'));
 
-
         $scope.login = function (user) {
 
             if (typeof (user) == 'undefined') {
@@ -17,7 +16,7 @@ angular.module('evaluationApp.appControllers', [])
                 var result = data;
                 if(result.success){
                     CacheFactory.save('accessUser', user);
-                   $state.go('tab.home');
+                    $state.go('tab.home');
                    // $location.path("tab/home");
                 }else{
                    alertService.showAlert(result.msg);
@@ -33,15 +32,71 @@ angular.module('evaluationApp.appControllers', [])
             $state.go('forgetPsw');
         }
 
-
-
     })
     .controller('HomeCtrl', function($scope,$rootScope,$ionicSlideBoxDelegate ,$timeout,$state,$ionicPopup,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         $scope.checkWorkday='232707845873223005905605982100086249612323328422405743456258';
+        $scope.checkIDNO='23328424582344576622405743456258';
 
+
+        var parameter= commonServices.getBaseParas();
 
         if ($rootScope.accessEmployee) {
+
+            $scope.showPopup = function () {
+                $scope.data = {}
+
+                var myPopup = $ionicPopup.show({
+                    templateUrl: 'templates/realNameRegistration/IDNOFilling.html',
+                    title: '请进行实名制认证',
+                    subTitle: '以免无法使用新功能',
+                    scope: $scope,
+                    buttons: [
+                        { text: 'Cancel' },
+                        {
+                            text: '<b>Save</b>',
+                            type: 'button-positive',
+                            onTap: function (e) {
+                                if (!$scope.data.IDNO) {
+                                    //不允许用户关闭，除非他键入wifi密码
+                                    e.preventDefault();
+                                }
+                                else if($scope.data.IDNO.length!=18) {
+                                    alertService.showAlert("身份证信息必须是18位");
+                                    e.preventDefault();
+                                }else {
+                                    $scope.submitIDNO($scope.data.IDNO);
+                                    return ;
+                                }
+                            }
+                        }
+                    ]
+                });
+            }
+
+            $scope.submitIDNO=function(IDNO){
+                parameter.IDNO=IDNO;
+                var url=commonServices.getUrl("EvaluationAppService.ashx","RealNameRegistration");
+                commonServices.submit(parameter,url).then(function(data){
+                    if(data.success){
+                        alertService.showAlert('谢谢你的提交，身份证信息需要等待HR确认后，Flex+账户才正式生效');
+
+                    }
+
+                });
+            }
+
+            if($scope.checkIDNO.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1)
+            {
+                if($rootScope.accessEmployee.strIsHRConfirm=='UnRegistration'||$rootScope.accessEmployee.strIsHRConfirm=='FailedRegistration') {
+                    $scope.showPopup();
+
+                }
+            }
+
+
+
+
 
             $scope.Scan=function(){
                 cordova.plugins.barcodeScanner.scan(
@@ -70,7 +125,7 @@ angular.module('evaluationApp.appControllers', [])
                 );
             };
 
-            var parameter= commonServices.getBaseParas();
+
 
 
             commonServices.getHomeSlideImg(parameter).then(function(data) {
@@ -247,7 +302,7 @@ angular.module('evaluationApp.appControllers', [])
             }
             else if(action=="活动"){
 
-                console.log($scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO));
+
                 if($scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1)
                 {
                     $state.go("luckyGame");
@@ -340,6 +395,7 @@ angular.module('evaluationApp.appControllers', [])
     .controller('RegCtrl', function($scope,$location,$ionicLoading,commonServices,alertService) {
         $scope.passmodels = {
             workdayNo:null,
+            IDNO:null,
             mobile: null,
             securityCode: null,
             newPassword: null,
@@ -386,6 +442,12 @@ angular.module('evaluationApp.appControllers', [])
         };
 
         $scope.checkSecurityCode=function(passmodels){
+
+            if($scope.passmodels.IDNO.length!=18){
+                alertService.showAlert("身份证号码必须是18位")
+                return;;
+            }
+
             commonServices.checkSecurityCode({WorkdayNo:passmodels.workdayNo,Mobile:passmodels.mobile,SecurityCode:passmodels.securityCode}).then(function (response) {
                 if (response.success) {
                     document.getElementById("message").style.display="none";//显示
@@ -415,7 +477,7 @@ angular.module('evaluationApp.appControllers', [])
                 return;
             }
 
-            commonServices.register({WorkdayNo:passmodels.workdayNo,Password:passmodels.newPassword}).then(function (response) {
+            commonServices.register({WorkdayNo:passmodels.workdayNo,IDNO:passmodels.IDNO,Password:passmodels.newPassword}).then(function (response) {
                 if (response.success) {
                     alertService.showAlert( '注册成功，请重新登录！');
 
@@ -556,11 +618,26 @@ angular.module('evaluationApp.appControllers', [])
         };
 
     })
-    .controller('AccountCtrl', function($scope,$location,$state,$cordovaAppVersion,$ionicHistory,CacheFactory) {
-        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
+    .controller('AccountCtrl', function($scope,$rootScope,$location,$state,$cordovaAppVersion,$ionicHistory,CacheFactory) {
+
         $cordovaAppVersion.getVersionNumber().then(function (version) {
             $scope.version= version;
         });
+        $scope.realName="";
+        switch ($rootScope.accessEmployee.strIsHRConfirm){
+            case 'UnRegistration':
+                $scope.realName='未认证';
+                break;
+            case 'WaitRegistration':
+                $scope.realName='等待HR认证';
+                break;
+            case 'Registration':
+                $scope.realName='已认证';
+                break;
+            case 'FailedRegistration':
+                $scope.realName='认证不通过';
+                break;
+        }
         // 退出
         $scope.signOut = function () {
 //            CacheFactory.remove('accessToken');

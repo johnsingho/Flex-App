@@ -482,7 +482,18 @@ angular.module('evaluationApp.businiessControllers', [])
     })
     .controller('ApplyCtrl', function($scope,$rootScope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
 
+        $scope.test='456258240574323328422300662458234';
 
+        if($scope.test.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1)
+        {
+            $scope.testSee=true;
+        }
+        else
+        {
+            $scope.testSee=false;
+        }
+
+        console.log($scope.testSee);
         var paras= commonServices.getBaseParas();
         var url=commonServices.getUrl("ApplySubmitService.ashx","GetApplyList");
         commonServices.getDataList(paras,url).then(function(data){
@@ -574,18 +585,12 @@ angular.module('evaluationApp.businiessControllers', [])
         var paras= commonServices.getBaseParas();
 
 
-        $scope.selDateList=[{date:'请选择'},{date:'2018-02-05'},{date:'2018-02-06'},{date:'2018-02-07'},{date:'2018-02-08'},{date:'2018-02-09'},{date:'2018-02-10'}
-            ,{date:'2018-02-11'},{date:'2018-02-12'},{date:'2018-02-13'},{date:'2018-02-14'}];
 
-        var  url=commonServices.getUrl("ApplySubmitService.ashx","GetApplyTickeLine");
-        commonServices.getDataList(paras,url).then(function(data){
 
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            $scope.Linelist=data;
-        });
+
+        $scope.selDateList=[{date:'请选择'},{date:'2018-02-10'},{date:'2018-02-11'},{date:'2018-02-12'},{date:'2018-02-13'},{date:'2018-02-14'},{date:'2018-02-15'}];
+
+
 
         $scope.Submitdata ={
             selectedDate:"请选择",
@@ -595,8 +600,21 @@ angular.module('evaluationApp.businiessControllers', [])
         }
 
         $scope.selDate=function(selectedDate){
-
+            $scope.Linelist='';
+            $scope.Stationlist='';
+            $scope.Submitdata.selectedLine='';
+            $scope.Submitdata.selectedStation='';
             $scope.Submitdata.selectedDate=selectedDate;
+            paras.selDate=selectedDate;
+            var  url=commonServices.getUrl("ApplySubmitService.ashx","GetApplyTickeLine");
+            commonServices.getDataList(paras,url).then(function(data){
+
+                if(data=="Token is TimeOut"){
+                    alertService.showAlert("登录失效，请重新登录");
+                    $state.transitionTo('signin');
+                }
+                $scope.Linelist=data;
+            });
 
         }
 
@@ -605,11 +623,14 @@ angular.module('evaluationApp.businiessControllers', [])
         $scope.selLine=function(selectedLine){
             $scope.Submitdata.selectedLine=selectedLine;
 
+
+
             if(selectedLine=='其他线路'){
                 $scope.other='true';
             }else{
                 $scope.other='false';
                 paras.selline=selectedLine;
+                paras.selDate=$scope.Submitdata.selectedDate;
                 var  url=commonServices.getUrl("ApplySubmitService.ashx","GetApplyTickeStation");
                 commonServices.getDataList(paras,url).then(function(data){
 
