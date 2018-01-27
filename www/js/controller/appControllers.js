@@ -35,8 +35,8 @@ angular.module('evaluationApp.appControllers', [])
     })
     .controller('HomeCtrl', function($scope,$rootScope,$ionicSlideBoxDelegate ,$timeout,$state,$ionicPopup,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        $scope.checkWorkday='232707845873223005905605982100086249612323328422405743456258';
-        $scope.checkIDNO='23328424582344576622405743456258';
+        $scope.checkWorkday='2332842';
+        $scope.checkIDNO='23328424582344576622405743456258588953';
 
 
         var parameter= commonServices.getBaseParas();
@@ -79,6 +79,9 @@ angular.module('evaluationApp.appControllers', [])
                 var url=commonServices.getUrl("EvaluationAppService.ashx","RealNameRegistration");
                 commonServices.submit(parameter,url).then(function(data){
                     if(data.success){
+                        $rootScope.accessEmployee.strIsHRConfirm='WaitRegistration';
+                        CacheFactory.save('accessEmployee', $rootScope.accessEmployee);
+
                         alertService.showAlert('谢谢你的提交，身份证信息需要等待HR确认后，Flex+账户才正式生效');
 
                     }
@@ -86,13 +89,15 @@ angular.module('evaluationApp.appControllers', [])
                 });
             }
 
-            if($scope.checkIDNO.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1)
-            {
-                if($rootScope.accessEmployee.strIsHRConfirm=='UnRegistration'||$rootScope.accessEmployee.strIsHRConfirm=='FailedRegistration') {
-                    $scope.showPopup();
+            if($rootScope.accessEmployee.strIsHRConfirm=='UnRegistration'||$rootScope.accessEmployee.strIsHRConfirm=='FailedRegistration') {
+                $scope.showPopup();
 
-                }
             }
+
+//            if($scope.checkIDNO.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1)
+//            {
+//
+//            }
 
 
 
@@ -231,6 +236,10 @@ angular.module('evaluationApp.appControllers', [])
 
                     $state.go("luckyGame");
                     break;
+                case "chunwan":
+
+                    $state.go("chunwan");
+                    break;
             }
 
 
@@ -302,11 +311,14 @@ angular.module('evaluationApp.appControllers', [])
             }
             else if(action=="活动"){
 
-
-                if($scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1)
-                {
+                if($rootScope.accessEmployee.Segment_ID=='EF922594-5FB1-409E-A3D8-F7BC940AACD9'){
                     $state.go("luckyGame");
                 }
+
+//                else if($scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1)
+//                {
+//                    $state.go("luckyGame");
+//                }
                 else
                 {
                     $location.path("activityList");
@@ -395,6 +407,7 @@ angular.module('evaluationApp.appControllers', [])
     .controller('RegCtrl', function($scope,$location,$ionicLoading,commonServices,alertService) {
         $scope.passmodels = {
             workdayNo:null,
+            CName:null,
             IDNO:null,
             mobile: null,
             securityCode: null,
@@ -412,8 +425,17 @@ angular.module('evaluationApp.appControllers', [])
                 alertService.showAlert('请输入正确的手机号');
                 return false;
             };
+            if(passmodels.workdayNo.length==0) {
+                alertService.showAlert('请输入工号');
+                return false;
+            };
+            if(passmodels.CName.length==0) {
+                alertService.showAlert('请输入姓名');
+                return false;
+            };
 
-            commonServices.getSecurityCode({WorkdayNo:passmodels.workdayNo,Mobile:passmodels.mobile}).then(function (response) {
+
+            commonServices.getSecurityCode({WorkdayNo:passmodels.workdayNo,CName:passmodels.CName,Mobile:passmodels.mobile}).then(function (response) {
 
                 if (response.success) {
                     var oBtn = document.getElementById('btnSecurity');
@@ -442,6 +464,15 @@ angular.module('evaluationApp.appControllers', [])
         };
 
         $scope.checkSecurityCode=function(passmodels){
+
+            if($scope.passmodels.IDNO ==null){
+                alertService.showAlert("身份证号码必须是18位")
+                return;
+            }
+            if(typeof ($scope.passmodels.IDNO) == 'undefined'){
+                alertService.showAlert("身份证号码必须是18位")
+                return;
+            }
 
             if($scope.passmodels.IDNO.length!=18){
                 alertService.showAlert("身份证号码必须是18位")

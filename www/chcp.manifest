@@ -249,7 +249,7 @@
   },
   {
     "file": "img/CJBJ.jpg",
-    "hash": "d98faddb3289f37f103f5ada2a9eee1b"
+    "hash": "6bc913f8b67142e0e482792dea2ae314"
   },
   {
     "file": "img/close_1.png",
@@ -401,11 +401,11 @@
   },
   {
     "file": "js/app.js",
-    "hash": "d73d42aaf13f8d10858ce9e86fced8b8"
+    "hash": "4b4d20e37a6f24dc44fd1736de725134"
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "bc4b90536949aee0a8ec0f23453101d0"
+    "hash": "19349010476d3c899e69d2e0ca87bf5a"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -413,11 +413,11 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "4d762c83765f1917e5522ccdefcadb5c"
+    "hash": "e9c27a097d013fdfb5a4eec7564a9211"
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "b62a77003b2d6be3498c1937b593cd74"
+    "hash": "37b0e09a10b201f10d9bfe8eeeed81f1"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -545,7 +545,7 @@
   },
   {
     "file": "js/router.js",
-    "hash": "4b90db0babd58322ff4772ce52e5d35d"
+    "hash": "835802d1d5c3dc9b20dca21c66c7a4f1"
   },
   {
     "file": "js/service/appServices.js",
@@ -1057,7 +1057,7 @@
   },
   {
     "file": "templates/account/account_register.html",
-    "hash": "3dfb9be7c6120cc387021c34dd7638ee"
+    "hash": "9a62227b6084c80230b3a1f61d92d50c"
   },
   {
     "file": "templates/account/myAccountMoney.html",
@@ -1065,7 +1065,7 @@
   },
   {
     "file": "templates/activity/activity-list.html",
-    "hash": "7b150f34cfbad47804f4d74baae9caa6"
+    "hash": "d20d19896a8dd8ee8b609bea6e4abc43"
   },
   {
     "file": "templates/activity/activityHtml.html",
@@ -1073,15 +1073,19 @@
   },
   {
     "file": "templates/applySubmit/apply-Html.html",
-    "hash": "c0daa93b9113da2ce2591c7aac5515ac"
+    "hash": "8a1dd0c9ba0644093136ee7f99d978f8"
   },
   {
     "file": "templates/applySubmit/apply-list.html",
-    "hash": "02410cbd658242ce47c4787b2890050e"
+    "hash": "97bf2f366242a6bcd28251b1adf45abe"
   },
   {
     "file": "templates/applySubmit/applyTicket.html",
-    "hash": "353c9b3a028b071b47c28c6d278a148f"
+    "hash": "2bed19ca44bde86700d699fcf0aaf982"
+  },
+  {
+    "file": "templates/applySubmit/ticketProtocolHtml.html",
+    "hash": "cc9fe338bc5c8562b810687f8a918e99"
   },
   {
     "file": "templates/askAndAnswer/tab-askAndAnswer.html",
@@ -1153,7 +1157,23 @@
   },
   {
     "file": "templates/choujiang/tab-choujiang.html",
-    "hash": "77de6bd8eaf5f12d2c75656c9c9fe770"
+    "hash": "e386080a45331a23cd51a76702c8f64f"
+  },
+  {
+    "file": "templates/chunwan/chunwan-list.html",
+    "hash": "6f555b862d6c0bc67d2009672900a3b2"
+  },
+  {
+    "file": "templates/chunwan/chunwanjiangpinHtml.html",
+    "hash": "d5ebe5115b4120c7235f3282f2f3adb3"
+  },
+  {
+    "file": "templates/chunwan/chunwanjiemuHtml.html",
+    "hash": "ad3af07b9028d50f6c95664ad62cbc6b"
+  },
+  {
+    "file": "templates/chunwan/chunwanNameListHtml.html",
+    "hash": "6260accbdd611a537064c87b90e38c8c"
   },
   {
     "file": "templates/cust/tab-cust.html",
@@ -1296,6 +1316,10 @@
     "hash": "6061cd5078d41d587583b70bb6baa131"
   },
   {
+    "file": "templates/realNameRegistration/IDNOFilling.html",
+    "hash": "0eff3fe746030b3c864144f7cebb60b7"
+  },
+  {
     "file": "templates/research/research-list.html",
     "hash": "2f989fca3cd6b2cd22d3e6eca5d1117e"
   },
@@ -1325,7 +1349,7 @@
   },
   {
     "file": "templates/tab-account.html",
-    "hash": "34ab31246213bd93bdcfcd9bdb326345"
+    "hash": "e417eadfea5801df8c53dbb82b7fa942"
   },
   {
     "file": "templates/tab-goodJob.html",
@@ -1333,7 +1357,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "70f6a7020482b93b6c4da6850307e5c5"
+    "hash": "1f84a5618f60d3c031465ca608f9262b"
   },
   {
     "file": "templates/tab-homecopy.html",

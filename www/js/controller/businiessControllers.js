@@ -482,18 +482,18 @@ angular.module('evaluationApp.businiessControllers', [])
     })
     .controller('ApplyCtrl', function($scope,$rootScope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
 
-        $scope.test='456258240574323328422300662458234';
-
-        if($scope.test.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1)
-        {
-            $scope.testSee=true;
-        }
-        else
-        {
-            $scope.testSee=false;
-        }
-
-        console.log($scope.testSee);
+//        $scope.test='45625824057432332842230066245823423270784587322300590560598210008624961232332842240574345625823328424582344576622405743456258588953';
+//
+//        if($scope.test.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1)
+//        {
+//            $scope.testSee=true;
+//        }
+//        else
+//        {
+//            $scope.testSee=false;
+//        }
+//
+//        console.log($scope.testSee);
         var paras= commonServices.getBaseParas();
         var url=commonServices.getUrl("ApplySubmitService.ashx","GetApplyList");
         commonServices.getDataList(paras,url).then(function(data){
@@ -530,7 +530,9 @@ angular.module('evaluationApp.businiessControllers', [])
     .controller('ApplyHtmlCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicPopup,$ionicHistory,$location,commonServices) {
 
 
-        var applyID=CacheFactory.get('applyID');
+        $scope.applyItem=JSON.parse(CacheFactory.get('applyID'));
+        var applyID=$scope.applyItem.NoticeID;
+
 
         var strHtml='';
         var paras= commonServices.getBaseParas();
@@ -581,6 +583,22 @@ angular.module('evaluationApp.businiessControllers', [])
     })
     .controller('ApplyTicketCtrl', function($scope,$rootScope,CacheFactory,noticeService,alertService,$state,$ionicPopup,$ionicHistory,$location,commonServices) {
 
+        var myPopup = $ionicPopup.show({
+            templateUrl: 'templates/applySubmit/ticketProtocolHtml.html',
+            cssClass:'my-custom-popup-Alter',
+            title: '免责声明',
+            subTitle: '',
+            scope: $scope,
+            buttons: [
+                {
+                    text: '<b>确定</b>',
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        return ;
+                    }
+                }
+            ]
+        });
         var strHtml='';
         var paras= commonServices.getBaseParas();
 
@@ -654,16 +672,16 @@ angular.module('evaluationApp.businiessControllers', [])
 
 
         $scope.Submit=function() {
-            if($scope.selectedDate=="请选择"){
+            if($scope.Submitdata.selectedDate=="请选择"){
                 alertService.showAlert('请选择一个日期');
                 return;
             }
-            console.log($scope.MobileNoByUser);
-            if($scope.selectedLine==""){
+
+            if($scope.Submitdata.selectedLine==""){
                 alertService.showAlert('请选择一个线路');
                 return;
             }
-            if($scope.selectedStation==""){
+            if($scope.Submitdata.selectedStation==""){
                 alertService.showAlert('请选择或者填写一个站点');
                 return;
             }
@@ -824,6 +842,7 @@ angular.module('evaluationApp.businiessControllers', [])
     .controller('ActivityListCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) {
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
+
         var params=commonServices.getBaseParas();
         //获取一般活动列表
         noticeService.getActivityList(params).then(function(data){
@@ -843,7 +862,8 @@ angular.module('evaluationApp.businiessControllers', [])
                 }
             }
         });
-        $scope.shouCj=false;
+        $scope.ChoujiangWorkday='4582342332842';
+        $scope.shouCj=$scope.ChoujiangWorkday.indexOf( $scope.accessEmployee.WorkdayNO)!=-1;
         //获取是否有抽奖活动列表权限
 //        noticeService.getChoujiangList(params).then(function(data){
 //
@@ -1389,7 +1409,7 @@ angular.module('evaluationApp.businiessControllers', [])
                     $scope.isSumbiting=false;
                     $rootScope.money=''+response.data;
                     $rootScope.rebagPopup=$ionicPopup.show({
-                        cssClass:'er-popup',
+                        cssClass:'my-custom-popup',
                         templateUrl: 'hongbaoChoujiang.html',
                         scope: $rootScope
                     });

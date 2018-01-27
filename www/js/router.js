@@ -498,7 +498,23 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/luckyDrawGame/lucyGame.html',
                 controller: 'LuckyGameCtrl'
             })
-
+            .state('chunwan', {
+                url: '/chunwan',
+                templateUrl: 'templates/chunwan/chunwan-list.html',
+                controller: 'ChunwanCtrl'
+            })
+            .state('chunwanjiangpin', {
+                url: '/chunwanjiangpin',
+                templateUrl: 'templates/chunwan/chunwanjiangpinHtml.html',
+            })
+            .state('chunwanjiemu', {
+                url: '/chunwanjiemu',
+                templateUrl: 'templates/chunwan/chunwanjiemuHtml.html',
+            })
+            .state('chunwanNameListHtml', {
+                url: '/chunwanNameListHtml',
+                templateUrl: 'templates/chunwan/chunwanNameListHtml.html',
+            })
         $urlRouterProvider.otherwise('signin');
 
     }])

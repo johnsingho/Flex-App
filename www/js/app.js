@@ -81,9 +81,15 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.
           if(largeLoad=='undefined') return;
           serverAppVersion = largeLoad.sVersion;
           cordova.getAppVersion.getVersionNumber().then(function(version){
+
               //如果本地与服务端的APP版本不符合
               if (version != serverAppVersion) {
-
+                  if ($rootScope.isIOS){
+                      if(serverAppVersion=='1.2.1')
+                      {
+                          return;
+                      }
+                  }
 
                   showUpdateConfirm(largeLoad);
               }

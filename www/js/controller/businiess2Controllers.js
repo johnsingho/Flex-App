@@ -733,6 +733,10 @@ angular.module('evaluationApp.businiess2Controllers', [])
                     alertService.showAlert("登录失效，请重新登录");
                     $state.transitionTo('signin');
                 }
+                if(data.indexOf('^')!=-1){
+                    alertService.showLoading(data.split('^')[1])
+                    return;
+                }
                 var dogNo=data.split(',')[0];
                 var haveFive=data.split(',')[1];
                 switch(dogNo)
@@ -811,6 +815,78 @@ angular.module('evaluationApp.businiess2Controllers', [])
 
     })
 
+    .controller('ChunwanCtrl', function($scope,$rootScope,externalLinksService,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
+        $scope.checkIDNO='23328424582344576622405743456258588953';
 
+//        var paras= commonServices.getBaseParas();
+//        var url=commonServices.getUrl("ApplySubmitService.ashx","GetChunwanApplyList");
+//        commonServices.getDataList(paras,url).then(function(data){
+//
+//            if(data=="Token is TimeOut"){
+//                alertService.showAlert("登录失效，请重新登录");
+//                $state.transitionTo('signin');
+//            }
+//            $scope.applyList=data;
+//
+//
+//        });
+
+        $scope.open=function(apply){
+            CacheFactory.remove('applyID');
+            CacheFactory.save('applyID',apply);
+
+            console.log(apply);
+            $state.go('applyHtml');
+        };
+
+        $scope.openZhibo=function(){
+
+            if($scope.checkIDNO.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1){
+                try {
+                    externalLinksService.openUr('http://m.yizhibo.com/l/DOrSlwii4-ZbpwpK.html?memberid=VQ0hxuKdx89hO56V-sRauQ..&from=message');
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+              }
+        };
+
+        $scope.openHudong=function(){
+
+            if($scope.checkIDNO.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1){
+                try {
+                    externalLinksService.openUr('https://yun.aiyaopai.com/live/20180130wcl?from=singlemessage&isappinstalled=0');
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+            }
+        };
+
+        $scope.openNamelist=function(){
+
+            $state.go('chunwanNameListHtml');
+        };
+
+
+        $scope.openjiangpin=function(){
+
+            $state.go('chunwanjiangpin');
+        };
+        $scope.openjiemu=function(){
+
+            $state.go('chunwanjiemu');
+        };
+
+
+
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
+    })
 
 ;
