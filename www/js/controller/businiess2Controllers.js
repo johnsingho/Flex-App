@@ -815,6 +815,41 @@ angular.module('evaluationApp.businiess2Controllers', [])
 
     })
 
+    .controller('ChunwanZJCtrl', function($scope,$rootScope,externalLinksService,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
+        $scope.checkIDNO='23328424582344576622405743456258588953';
+
+        var paras= commonServices.getBaseParas();
+        var url=commonServices.getUrl("ResearchService.ashx","GetChunwanZJListByWorkdayNo");
+        $scope.Msg='';
+        commonServices.getDataList(paras,url).then(function(data){
+
+            if(data=="Token is TimeOut"){
+                alertService.showAlert("登录失效，请重新登录");
+                $state.transitionTo('signin');
+            }
+
+            $scope.zjList=data;
+
+            if($scope.zjList.length==0)
+            {
+                $scope.Msg='您没有中奖';
+            }
+
+
+        });
+
+
+
+
+
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
+    })
     .controller('ChunwanCtrl', function($scope,$rootScope,externalLinksService,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
         $scope.checkIDNO='23328424582344576622405743456258588953';
 
@@ -841,25 +876,21 @@ angular.module('evaluationApp.businiess2Controllers', [])
 
         $scope.openZhibo=function(){
 
-            if($scope.checkIDNO.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1){
-                try {
-                    externalLinksService.openUr('http://m.yizhibo.com/l/DOrSlwii4-ZbpwpK.html?memberid=VQ0hxuKdx89hO56V-sRauQ..&from=message');
-                }
-                catch (ex) {
-                    alertService.showAlert(ex.message);
-                }
-              }
+            try {
+                externalLinksService.openUr('http://zklive-aliyun.myzaker.com/xlive/al151658441329265809c05_sd.m3u8');
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
+            }
         };
 
         $scope.openHudong=function(){
 
-            if($scope.checkIDNO.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1){
-                try {
-                    externalLinksService.openUr('https://yun.aiyaopai.com/live/20180130wcl?from=singlemessage&isappinstalled=0');
-                }
-                catch (ex) {
-                    alertService.showAlert(ex.message);
-                }
+            try {
+                externalLinksService.openUr('https://yun.aiyaopai.com/live/20180130wcl?from=singlemessage&isappinstalled=0');
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
             }
         };
 
@@ -877,6 +908,40 @@ angular.module('evaluationApp.businiess2Controllers', [])
 
             $state.go('chunwanjiemu');
         };
+        $scope.openZJ=function(){
+            $state.go('chunwanZJ');
+        }
+
+        $scope.chunwanZJName=function(){
+            $state.go('chunwanZJName');
+        }
+
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
+    })
+    .controller('ChunwanZJNameCtrl', function($scope,$rootScope,externalLinksService,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
+
+        var paras= commonServices.getBaseParas();
+        var url=commonServices.getUrl("ResearchService.ashx","GetChunwanZJList");
+
+        commonServices.getDataList(paras,url).then(function(data){
+
+            if(data=="Token is TimeOut"){
+                alertService.showAlert("登录失效，请重新登录");
+                $state.transitionTo('signin');
+            }
+
+            $scope.zjList=data;
+
+
+        });
+
+
 
 
 
@@ -888,5 +953,4 @@ angular.module('evaluationApp.businiess2Controllers', [])
             $state.go('tab.home');
         }
     })
-
 ;

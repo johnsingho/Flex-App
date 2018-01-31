@@ -862,7 +862,7 @@ angular.module('evaluationApp.businiessControllers', [])
                 }
             }
         });
-        $scope.ChoujiangWorkday='4582342332842';
+        $scope.ChoujiangWorkday='4582342332842470745';
         $scope.shouCj=$scope.ChoujiangWorkday.indexOf( $scope.accessEmployee.WorkdayNO)!=-1;
         //获取是否有抽奖活动列表权限
 //        noticeService.getChoujiangList(params).then(function(data){

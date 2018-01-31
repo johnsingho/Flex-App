@@ -405,7 +405,7 @@
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "19349010476d3c899e69d2e0ca87bf5a"
+    "hash": "c9ad0cf091a26a6ddd14787404e6c18f"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -413,11 +413,11 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "e9c27a097d013fdfb5a4eec7564a9211"
+    "hash": "2637aea218c1e8a38ff00398435f235f"
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "37b0e09a10b201f10d9bfe8eeeed81f1"
+    "hash": "88da4a332a6d07b80c75aa6e1e1d9bdb"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -545,7 +545,7 @@
   },
   {
     "file": "js/router.js",
-    "hash": "835802d1d5c3dc9b20dca21c66c7a4f1"
+    "hash": "c9404d29cdbb6efab647f80b52d24602"
   },
   {
     "file": "js/service/appServices.js",
@@ -1049,7 +1049,7 @@
   },
   {
     "file": "templates/account/account_forgetPasswordNoMobile.html",
-    "hash": "7fb833e34d8c8a1dff743b4eee10cc8c"
+    "hash": "8a127deab8cc9eb0621512720e4546e5"
   },
   {
     "file": "templates/account/account_password.html",
@@ -1157,11 +1157,11 @@
   },
   {
     "file": "templates/choujiang/tab-choujiang.html",
-    "hash": "e386080a45331a23cd51a76702c8f64f"
+    "hash": "0f8c16a38a9b41c68c58cedab61dc4d3"
   },
   {
     "file": "templates/chunwan/chunwan-list.html",
-    "hash": "6f555b862d6c0bc67d2009672900a3b2"
+    "hash": "46fcdc17f0c584d7f33d192d5ef2a2dc"
   },
   {
     "file": "templates/chunwan/chunwanjiangpinHtml.html",
@@ -1174,6 +1174,14 @@
   {
     "file": "templates/chunwan/chunwanNameListHtml.html",
     "hash": "6260accbdd611a537064c87b90e38c8c"
+  },
+  {
+    "file": "templates/chunwan/chunwanZJ.html",
+    "hash": "b55ed62a48a3724741c306007efa83e0"
+  },
+  {
+    "file": "templates/chunwan/chunwanZJName.html",
+    "hash": "1a606e7017d5f34423a9fc2369242ea3"
   },
   {
     "file": "templates/cust/tab-cust.html",
@@ -1289,7 +1297,7 @@
   },
   {
     "file": "templates/notice/noticeHtml.html",
-    "hash": "5e71f73feab645c74d0eb5d7542dfeab"
+    "hash": "c23eedf0162d6d6aaee6c5c7196a9cd4"
   },
   {
     "file": "templates/Photo.html",
@@ -1357,7 +1365,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "1f84a5618f60d3c031465ca608f9262b"
+    "hash": "95692349c98fab2614095384992920ff"
   },
   {
     "file": "templates/tab-homecopy.html",

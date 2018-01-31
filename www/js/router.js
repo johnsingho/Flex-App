@@ -513,7 +513,17 @@ angular.module('evaluationApp.router', [])
             })
             .state('chunwanNameListHtml', {
                 url: '/chunwanNameListHtml',
-                templateUrl: 'templates/chunwan/chunwanNameListHtml.html',
+                templateUrl: 'templates/chunwan/chunwanNameListHtml.html'
+            })
+            .state('chunwanZJ', {
+                url: '/chunwanZJ',
+                templateUrl: 'templates/chunwan/chunwanZJ.html',
+                controller: 'ChunwanZJCtrl'
+            })
+            .state('chunwanZJName', {
+                url: '/chunwanZJName',
+                templateUrl: 'templates/chunwan/chunwanZJName.html',
+                controller: 'ChunwanZJNameCtrl'
             })
         $urlRouterProvider.otherwise('signin');
 
