@@ -19,6 +19,16 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/tab-signin.html',
                 controller: 'AppCtrl'
             })
+//            .state('signin', {
+//                url: '/signin',
+//                templateUrl: 'templates/choujiang/choujiangInPutName.html',
+//                controller: 'ChoujiangNameCtrl'
+//            })
+//            .state('signin', {
+//                url: '/signin',
+//                templateUrl: 'templates/choujiangForGame/choujiangGame.html',
+//                controller: 'ChoujiangGameCtrl'
+//            })
             .state('tab', {
                 url: "/tab",
                 abstract: true,
@@ -298,6 +308,11 @@ angular.module('evaluationApp.router', [])
                 url: '/choujiang',
                 templateUrl: 'templates/choujiang/tab-choujiang.html',
                 controller: 'ChoujiangCtrl'
+            })
+            .state('choujiangName', {
+                url: '/choujiangName',
+                templateUrl: 'templates/choujiang/choujiangInPutName.html',
+                controller: 'ChoujiangNameCtrl'
             })
 
             .state('researchList', {

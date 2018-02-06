@@ -1387,6 +1387,43 @@ angular.module('evaluationApp.businiessControllers', [])
         }
         $scope.InitSelect();
 
+        $scope.showGuest=function(){
+
+            var html1='';
+            for(var i=0;i<$scope.listGuest.length;i++){
+                html1=html1+ $scope.listGuest[i].WorkdayNo+" "+$scope.listGuest[i].CName+'<br/>';
+                if(i==2) break;
+            }
+
+            var html2='<section class="editor selected">'+
+                ' <section style="border: 0px none;">'+
+//                '<section style="padding: 10px">'+
+                '<section>'+
+                '<section style="width: 330px;height: 330px;margin:0 auto; border-radius:50%;background-image: url(http://newcdn.96weixin.com/c/mmbiz.qlogo.cn/mmbiz_png/uN1LIav7oJicb1xwsm8bcFPB7HFvv8Ze5y1lJWBfYPnoEfQaqIiaywMib0EK46dmD2LX9ibeoibvhXBMfRspFgjMwwQ/0?wx_fmt=png);background-size: 100% auto;background-repeat: no-repeat;background-position: center; overflow: hidden;color: #db214c;text-align: center;display: flex;display: -webkit-flex;justify-content: center;-webkit-justify-content: center;align-items: center;-webkit-align-items:  center;">'+
+                '<section><p style="margin: 0;font-size: 20px;letter-spacing: 3px;line-height: 30px">'+
+                '<strong>'+html1+'</strong></p><br/>'+
+                '<p style="margin: 0;border: 1px solid #db214c;font-size: 14px;padding: 0 10px"> <strong>吉 祥 如 意</strong></p> </section> </section> </section> </section> </section>';
+
+
+
+            $ionicPopup.show({
+                template:html2,
+                cssClass:'my-custom-popup-Alter',
+                title: '抽奖人员',
+                subTitle: '',
+                scope: $scope,
+                buttons: [
+                    {
+                        text: '<b>确定</b>',
+                        type: 'button-positive',
+                        onTap: function(e) {
+                            return ;
+                        }
+                    }
+                ]
+            });
+        }
+
 
         $scope.selGuest=function(guest){
 
@@ -1443,6 +1480,82 @@ angular.module('evaluationApp.businiessControllers', [])
         }
 
     })
+    .controller('ChoujiangNameCtrl', function($scope,$rootScope,CacheFactory,commonServices,$state,$ionicHistory,$interval,$ionicPopup,alertService,noticeService) {
+
+        $scope.userInput = {
+            Employee_ID:'',
+            CName:''
+        };
+
+
+
+        $scope.isSumbiting=false;
+
+        $scope.Submit=function() {
+
+            if($scope.userInput.Employee_ID.length==0) return;
+            if($scope.userInput.CName.length==0) return;
+            $scope.isSumbiting=true;
+
+            var url=commonServices.getUrl("ChoujiangService.ashx","SubmitName");
+
+            commonServices.submit($scope.userInput,url).then(function(data){
+                alertService.showAlert(data.message);
+
+            });
+        }
+
+
+
+    })
+    .controller('ChoujiangGameCtrl', function($scope,$rootScope,CacheFactory,commonServices,$state,$ionicHistory,$interval,$ionicPopup,alertService,noticeService) {
+
+        $scope.userInput = {
+            Employee_ID:''
+
+        };
+
+
+
+        $scope.isSumbiting=false;
+
+        $scope.Submit=function() {
+
+            if($scope.userInput.Employee_ID.length==0) return;
+
+            $scope.isSumbiting=true;
+
+            var url=commonServices.getUrl("ChoujiangService.ashx","Choujiang_Game");
+
+            commonServices.submit($scope.userInput,url).then(function(data){
+                if (data.success) {
+                    $scope.isSumbiting=false;
+                    $rootScope.money=''+data.data;
+                    $rootScope.rebagPopup=$ionicPopup.show({
+                        cssClass:'my-custom-popup',
+                        templateUrl: 'hongbaoChoujiang.html',
+                        scope: $rootScope
+                    });
+                    $rootScope.rebagPopup.then(function(res) {
+
+//                    $state.go('tabPoints.points');
+                    });
+
+                }
+                else {
+                    $scope.isSumbiting=false;
+                    alertService.showAlert('提示',data.message);
+                }
+
+                $scope.userInput.Employee_ID="";
+
+            });
+        }
+
+
+
+    })
+
     .controller('PhotoCtrl', function($scope,$rootScope,$ionicSlideBoxDelegate ,$timeout,$state,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         if ($rootScope.accessEmployee) {

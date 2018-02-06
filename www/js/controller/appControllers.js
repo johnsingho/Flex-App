@@ -35,8 +35,10 @@ angular.module('evaluationApp.appControllers', [])
     })
     .controller('HomeCtrl', function($scope,$rootScope,$ionicSlideBoxDelegate ,$timeout,$state,$ionicPopup,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        $scope.checkWorkday='2332842605208458234';
-        $scope.checkIDNO='23328424582344576622405743456258588953605208458234';
+        $scope.checkWorkday='2332842605208458234470745';
+
+
+        $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
 
 
         var parameter= commonServices.getBaseParas();
@@ -94,10 +96,6 @@ angular.module('evaluationApp.appControllers', [])
 
             }
 
-//            if($scope.checkIDNO.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1)
-//            {
-//
-//            }
 
 
 
@@ -234,7 +232,8 @@ angular.module('evaluationApp.appControllers', [])
                     break;
                 case "choujiang":
 
-                    $state.go("luckyGame");
+                   $state.go("choujiang");
+                  //  $state.go("choujiangName");
                     break;
                 case "chunwan":
 
@@ -311,12 +310,12 @@ angular.module('evaluationApp.appControllers', [])
             }
             else if(action=="活动"){
 
-                console.log($scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO));
+
                 if($rootScope.accessEmployee.Segment_ID=='EF922594-5FB1-409E-A3D8-F7BC940AACD9'){
                     $state.go("luckyGame");
                 }
 
-                else if($scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1)
+                else if($rootScope.Power)
                 {
                     $state.go("luckyGame");
                 }

@@ -1,17 +1,10 @@
-<ion-view view-title="" >
-    <ion-nav-buttons side="left">
-        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">返回</button>
-    </ion-nav-buttons>
+<ion-view view-title="">
+
  <ion-content  style="background:url(img/CJBJ.jpg);background-repeat:round;background-size:cover" >
 
-     <div  style=" margin-top:180px;">
+     <div  style=" margin-top:90px;">
          <section class="kz-editor" data-id="2019">
-
              <span class="js-kz-style-background-color" style=" box-sizing:border-box; display:block; padding:0.8em 0.5em; text-align:center"><img src="img/2018.png" style="text-align: center"/></span>
-             <!--<div  class="row "  style="text-align: center">-->
-                <!---->
-                 <!--<img src="img/2018.png" style="text-align: center"/>-->
-             <!--</div>-->
              <section style="border: 0px rgb(127, 157, 185); margin: 5px auto; padding: 0px; box-sizing: border-box; text-align: center;color: rgb(255,255,254);">
                  <section style="width: 100%; border: none; margin-top: 50px; padding: 0px; display: inline-block;">
                      <section style="box-sizing: border-box; color: inherit; border-color: rgb(127, 157, 185); box-shadow: rgb(150, 150, 150) 0px 0px 8px; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-box-shadow: rgb(150, 150, 150) 0px 0px 8px;">
@@ -29,23 +22,22 @@
                                  <span style="font-size: 20px;color:red">辞旧迎新，欢度佳节，新春快乐</span>
                              </p>
                              <p>
-                                 <span style="font-size: 20px;color:red">抽奖人员：</span>
+                                 <span style="font-size: 20px;color:red">请填写参加抽奖</span>
                              </p>
                              <p>
-                                 <select style="font-size: 35px"  ng-model="guest"  ng-change="selGuest(guest)">
-                                     <option style="font-size: 35px" ng-repeat="guest in listGuest">{{guest.WorkdayNo}},{{guest.CName}}</option>
-                                 </select>
+                             <div class="list list-inset removePM">
+                                 <label class="item item-input"><input type="text" ng-model="userInput.Employee_ID" placeholder="工号" > </label>
+                                 <label class="item item-input"><input type="text" ng-model="userInput.CName" placeholder="姓名" ></label>
+                             </div>
                              </p>
                              <p><br></p>
-                             <div style="text-align: center"><button  class="button button-block custom-zise" ng-click="Submit()"><span style="color: #ffffff">抽 奖<span></button></div>
+                             <div style="text-align: center"><button  class="button button-block custom-zise" ng-click="Submit()"><span style="color: #ffffff">提 交</span></button></div>
 
                          </section>
                      </section>
                  </section>
              </section>
-             <div style="float:left;">
-                 <a style="text-decoration:underline" ng-click="showGuest();">抽奖人员</a>
-             </div >
+
          </section>
 
      </div>
