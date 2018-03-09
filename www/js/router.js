@@ -94,6 +94,12 @@ angular.module('evaluationApp.router', [])
                 controller: 'HotPhoneCtrl'
             })
 
+            .state('38Activity', {
+                url: '/38activity',
+                templateUrl: 'templates/38/38activity.html',
+                controller: '38ActivityCtrl'
+            })
+
             .state('tabPoints', {
                 url: "/tabPoints",
                 abstract: true,
@@ -306,8 +312,8 @@ angular.module('evaluationApp.router', [])
             })
             .state('choujiang', {
                 url: '/choujiang',
-                templateUrl: 'templates/choujiang/tab-choujiang.html',
-                controller: 'ChoujiangCtrl'
+                templateUrl: 'templates/choujiang/choujiangNew.html',
+                controller: 'CJCtrl'
             })
             .state('choujiangName', {
                 url: '/choujiangName',

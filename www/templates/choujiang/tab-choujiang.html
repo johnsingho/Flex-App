@@ -33,8 +33,10 @@
                              </p>
                              <p>
                                  <select style="font-size: 35px"  ng-model="guest"  ng-change="selGuest(guest)">
-                                     <option style="font-size: 35px" ng-repeat="guest in listGuest">{{guest.WorkdayNo}},{{guest.CName}}</option>
+                                     <option style="font-size: 35px" ng-repeat="guest in listGuest track by guest.ID">{{guest.WorkdayNo}},{{guest.CName}}</option>
                                  </select>
+
+
                              </p>
                              <p><br></p>
                              <div style="text-align: center"><button  class="button button-block custom-zise" ng-click="Submit()"><span style="color: #ffffff">抽 奖<span></button></div>

@@ -84,80 +84,16 @@
     "hash": "9d1e299ae25d33051fad7ca8f0b375cc"
   },
   {
-    "file": "img/B11WorkShop/1carWechat.jpg",
-    "hash": "9f726d63710f2bdd8ff04906513d5fdb"
-  },
-  {
-    "file": "img/B11WorkShop/2CarWechat.jpg",
-    "hash": "82427115552d7343a72ea55162a92f00"
-  },
-  {
-    "file": "img/B11WorkShop/3CarWechat.jpg",
-    "hash": "1a8a0680b31c147fe7f2bbda14393fb8"
-  },
-  {
-    "file": "img/B11WorkShop/Agenda2.jpg",
-    "hash": "0d5668d5fe72e320bf25bd9598233077"
-  },
-  {
-    "file": "img/B11WorkShop/Ariel Chen.jpg",
-    "hash": "f31876423f306a7e1d271d073218b1f8"
-  },
-  {
-    "file": "img/B11WorkShop/Contacts.jpg",
-    "hash": "480207779cf385578ce67a44ca875659"
-  },
-  {
-    "file": "img/B11WorkShop/Hotel.jpg",
-    "hash": "8b4e6b161489d87db646735572cbdf5e"
-  },
-  {
-    "file": "img/B11WorkShop/picHotel.jpg",
-    "hash": "0402c6a6954559da9819d7ceae43ed50"
-  },
-  {
-    "file": "img/B11WorkShop/Transport.jpg",
-    "hash": "7d74ef051606105c9f88e2c145400570"
-  },
-  {
-    "file": "img/B11WorkShop/Volunteer.jpg",
-    "hash": "fc4ea8366f20f123d346b6a3b60280a6"
-  },
-  {
-    "file": "img/B11WorkShop/Wendy Xie.jpg",
-    "hash": "f84fc8175a74a361d3354e07918c2dfe"
-  },
-  {
-    "file": "img/B11WorkShop/workGroup/workGroup1.JPG",
-    "hash": "72702dc15839e7ee96678dda64d91943"
-  },
-  {
-    "file": "img/B11WorkShop/workGroup/workGroup2.JPG",
-    "hash": "3923a9866f422e8b53345fbfddce507a"
-  },
-  {
-    "file": "img/B11WorkShop/workGroup/workGroup3.JPG",
-    "hash": "3874b4db5714ebd5369116a3a5959b1b"
-  },
-  {
-    "file": "img/B11WorkShop/workGroup/workGroup4.JPG",
-    "hash": "593b1538bbedfe828e6643b5044f0bd4"
-  },
-  {
-    "file": "img/B11WorkShop/workGroup/workGroup5.JPG",
-    "hash": "db29d5925410ec4238cae99095d6b3e7"
-  },
-  {
-    "file": "img/B11WorkShop/workshop3.jpg",
-    "hash": "c5979eb4302503390988b0025ded065f"
-  },
-  {
     "file": "img/B15Like.jpg",
     "hash": "79302aa076ca0b7038ca71fd1d5c2a46"
   },
   {
     "file": "img/B15Phone.jpg",
     "hash": "32fd61e08126e22cf1a807e07272901b"
+  },
+  {
+    "file": "img/B15Phone2.jpg",
+    "hash": "32eb82bc4a93e0f8305207a0cee172d8"
   },
   {
     "file": "img/back_pressed.png",
@@ -249,7 +185,7 @@
   },
   {
     "file": "img/choujiang.jpg",
-    "hash": "62cc596d4d749dc5458402c61f12dda8"
+    "hash": "79a3268bfc86d76573576340df240918"
   },
   {
     "file": "img/CJBJ.jpg",
@@ -308,60 +244,12 @@
     "hash": "6aee7332ac108ed3d91a07c9fab36c27"
   },
   {
-    "file": "img/luckyGame/bg2.jpg",
-    "hash": "9ef7c6bfc85479438e9269d5f61eba39"
-  },
-  {
-    "file": "img/luckyGame/btn/btncaiwang.jpg",
-    "hash": "7368b4612a65062d35c962e866366389"
-  },
-  {
-    "file": "img/luckyGame/btn/btnfuwang.jpg",
-    "hash": "01bcf89ec14f0fe4044c82bb8900d762"
-  },
-  {
-    "file": "img/luckyGame/btn/btnguowang.jpg",
-    "hash": "8cae9f2babb8efc1ee538ebf8e6bf7f6"
-  },
-  {
-    "file": "img/luckyGame/btn/btnjiawang.jpg",
-    "hash": "7813e07b3635412595b45315eb98bb3c"
-  },
-  {
-    "file": "img/luckyGame/btn/btnwangwang.jpg",
-    "hash": "74e27cdc0f9a7dbc21221dfc4fb7e2a4"
-  },
-  {
-    "file": "img/luckyGame/caiwangfu.png",
-    "hash": "d0fa4e00bcd4acbbedc209680d23fa26"
-  },
-  {
-    "file": "img/luckyGame/chai.png",
-    "hash": "6a80c46bf58b08f202bbdf383c0f5f06"
-  },
-  {
-    "file": "img/luckyGame/congratulate.png",
-    "hash": "d38f8fe01e4af6e4126ddd4db59c2347"
-  },
-  {
-    "file": "img/luckyGame/fuwangfu.png",
-    "hash": "3ffb8d0e4a2d154580130d65bf128e9e"
-  },
-  {
-    "file": "img/luckyGame/guowangfu.png",
-    "hash": "368088b249baea84f115fbd0c094cd16"
-  },
-  {
-    "file": "img/luckyGame/jiawangfu.png",
-    "hash": "c82f30f12041ca186a715a8003203bee"
-  },
-  {
-    "file": "img/luckyGame/wangwangfu.png",
-    "hash": "e717552c873fe0fe3490e858f2888c97"
-  },
-  {
     "file": "img/msg.jpg",
     "hash": "f05ba55b7a75853b162d1df4b826e9fa"
+  },
+  {
+    "file": "img/nvshenjie.jpg",
+    "hash": "d314867a24fac067e5d6486cd7dbf5af"
   },
   {
     "file": "img/point1.jpg",
@@ -405,7 +293,7 @@
   },
   {
     "file": "js/app-conf.js",
-    "hash": "db7afedc736cc02355b29a6e522c2b85"
+    "hash": "d3bc33da95aa512771d75eff684aa2d8"
   },
   {
     "file": "js/app.js",
@@ -413,7 +301,7 @@
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "e6f4223c992a146d78a568868673970b"
+    "hash": "4ebb39f45f5a3c315e9fb2a4e8b965e4"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -425,11 +313,11 @@
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "02e41da9e082e1adfe8117151078ba49"
+    "hash": "5a0aa637f70a97dcfb97706aac2f2d25"
   },
   {
     "file": "js/controller/pointsControllers.js",
-    "hash": "cb6895d8d9f35d6beb51a9380f9838ca"
+    "hash": "bb4f56e40428f688399932894658610b"
   },
   {
     "file": "js/controller/sharCarController.js",
@@ -553,11 +441,11 @@
   },
   {
     "file": "js/router.js",
-    "hash": "e6da017abc1401a2dbe8da84c71108a6"
+    "hash": "ce2e66138d9359f690ab5edef105850e"
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "5cb1d6ffdcbd53881121bbdbdb500a62"
+    "hash": "8857885c9bd4f2f4ea2b06b0b8ecee2b"
   },
   {
     "file": "js/service/businessServices.js",
@@ -1048,6 +936,10 @@
     "hash": "38bcf699c7f8f7eb1c0a86429f8573d0"
   },
   {
+    "file": "templates/38/38activity.html",
+    "hash": "7840047260b1b217cba8a389392e2291"
+  },
+  {
     "file": "templates/404.html",
     "hash": "01158fea1dad8732e3e65a6147a14222"
   },
@@ -1073,7 +965,7 @@
   },
   {
     "file": "templates/activity/activity-list.html",
-    "hash": "d20d19896a8dd8ee8b609bea6e4abc43"
+    "hash": "7b150f34cfbad47804f4d74baae9caa6"
   },
   {
     "file": "templates/activity/activityHtml.html",
@@ -1165,15 +1057,19 @@
   },
   {
     "file": "templates/choujiang/choujiangInPutName.html",
-    "hash": "c68bb142a8178f1f07b8932d0d2c66aa"
+    "hash": "d263eda86c1d4daab01c200edf042381"
+  },
+  {
+    "file": "templates/choujiang/choujiangNew.html",
+    "hash": "1eb00ff0829d65933d57ab8693e9b02c"
   },
   {
     "file": "templates/choujiang/tab-choujiang.html",
-    "hash": "3247fa7f76f182cba233e39319a7e46d"
+    "hash": "3859c38bac47cec83c853d6424a4da50"
   },
   {
     "file": "templates/choujiangForGame/choujiangGame.html",
-    "hash": "b1803e77725ad8afe3276a1ba3af2ec3"
+    "hash": "f646b26ad436df0e5e3265c897502a73"
   },
   {
     "file": "templates/chunwan/chunwan-list.html",
@@ -1249,11 +1145,11 @@
   },
   {
     "file": "templates/hotPhone/tab-B15hotPhone.html",
-    "hash": "d23ffd7958dc3cce7b2debcd5db0c096"
+    "hash": "d3453cb232426cfd893e1e6f4953070c"
   },
   {
     "file": "templates/hotPhone/tab-hotPhone.html",
-    "hash": "81e46c14afdd5039ff98908d31d73331"
+    "hash": "cf2f1db4826a9fef63c1d2fbc9244ab6"
   },
   {
     "file": "templates/insurance/insurance-Html.html",
@@ -1341,7 +1237,7 @@
   },
   {
     "file": "templates/realNameRegistration/IDNOFilling.html",
-    "hash": "0eff3fe746030b3c864144f7cebb60b7"
+    "hash": "4a3b634af79699101bfc2cd8544acefa"
   },
   {
     "file": "templates/research/research-list.html",
@@ -1381,7 +1277,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "844a15fc79174b26c06a6ea381bb4b84"
+    "hash": "1beadff4ca0e1652d564bc7117c6758c"
   },
   {
     "file": "templates/tab-homecopy.html",
@@ -1401,7 +1297,7 @@
   },
   {
     "file": "templates/tab-signin.html",
-    "hash": "aef18cd56066220f58958d13e1719a88"
+    "hash": "7425c15f7f7fe60262f05b238016f194"
   },
   {
     "file": "templates/tabs.html",

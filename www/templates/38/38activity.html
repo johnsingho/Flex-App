@@ -1,0 +1,34 @@
+<ion-view cache-view="false" view-title="三八妇女节有奖知识问答"  class="animated flip">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+    </ion-nav-buttons>
+    <!--<ion-nav-buttons side="right">-->
+        <!--<button class="button button-icon button-clear" ng-click="Submit()" >提交</button>-->
+    <!--</ion-nav-buttons>-->
+
+    <ion-content scroll="true" style="{{BgCSS}}">
+        <div ng-if="showFirst" style=" text-align:center; margin-top:480px;">
+            <!--<p ng-if="showFirst" style="font-size:13px; text-align:center; margin-top:90px;"><span style="color:#ffffff;font-weight:bold;">(这个系统正在开发调试中，在系统正式上线前，钱包数值无效)</span></p>-->
+            <button ng-if="showFirst"   class="button  button-positive" ng-click="Start()">点我开始</button>
+
+        </div>
+
+        <ion-slide-box ng-if="showSlide"  class="slideRule animated bounceIn"  ng-if="rules" delegate-handle="slideImg"  does-continue="true" auto-play="false" slide-interval="3000" show-pager="false" >
+
+
+            <ion-slide  ng-repeat="rule in rules track by $index">
+                <h3 style="font-size:20px; text-align:left;font-weight:bold">{{ rule.Sort }}.{{ rule.CHNContent }}</h3>
+
+                <br />
+                <p style="text-align:left">请选择：</p>
+                <ion-list   ng-repeat="sorce in rule.RulesSorce track by $index" >
+                    <ion-radio  name=" {{rule.Sort}}"  ng-click="CheckChang(rule,sorce)"> <h4>{{sorce.Item}}</h4> </ion-radio>
+                </ion-list>
+                <button ng-if="isShowSubmit" class="button button-block button-positive  animated zoomInUp" ng-click="Submit()">提 交</button>
+                <a href="#" ng-if="showdescription">此项功能暂时未对你所在的事业部开放，敬请期待</a>
+            </ion-slide>
+        </ion-slide-box>
+
+
+    </ion-content>
+</ion-view>

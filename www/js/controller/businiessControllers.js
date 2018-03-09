@@ -1037,6 +1037,12 @@ angular.module('evaluationApp.businiessControllers', [])
             $scope.sucess=data;
         });
 
+        $scope.Hotline='4001099899';
+        $scope.callPhone=function(){
+            $window.location.href="tel:"+$scope.Hotline+"";
+
+        }
+
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
                 disableAnimate: true,
@@ -1372,14 +1378,15 @@ angular.module('evaluationApp.businiessControllers', [])
         }
 
     })
-    .controller('ChoujiangCtrl', function($scope,$rootScope,CacheFactory,commonServices,$state,$ionicHistory,$interval,$ionicPopup,alertService,noticeService) {
+    .controller('CJCtrl', function($scope,$rootScope,CacheFactory,commonServices,$state,$ionicHistory,$interval,$ionicPopup,alertService,noticeService) {
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-
+     console.log("cj");
         var params= commonServices.getBaseParas();
         var submitParams= params;
         $scope.InitSelect=function(){
             noticeService.getChoujiangGuestList(params).then(function(data){
                 if(data.success){
+                    console.log("choujiang");
                     $scope.listGuest=data.list;
 
                 }
@@ -1441,28 +1448,35 @@ angular.module('evaluationApp.businiessControllers', [])
             if($scope.listGuest.length==0) return;
             if($scope.isSumbiting==true) return;
             $scope.isSumbiting=true;
-            commonServices.submit(submitParams, API.Choujiang).then(function (response) {
-                if (response.success) {
-                    $scope.isSumbiting=false;
-                    $rootScope.money=''+response.data;
-                    $rootScope.rebagPopup=$ionicPopup.show({
-                        cssClass:'my-custom-popup',
-                        templateUrl: 'hongbaoChoujiang.html',
-                        scope: $rootScope
-                    });
-                    $rootScope.rebagPopup.then(function(res) {
+            try{
+                commonServices.submit(submitParams, API.Choujiang).then(function (response) {
+                    if (response.success) {
+                        $scope.isSumbiting=false;
+                        $rootScope.money=''+response.data;
+                        $rootScope.rebagPopup=$ionicPopup.show({
+                            cssClass:'my-custom-popup',
+                            templateUrl: 'hongbaoChoujiang.html',
+                            scope: $rootScope
+                        });
+                        $rootScope.rebagPopup.then(function(res) {
 
 //                    $state.go('tabPoints.points');
-                    });
+                        });
 
-                }
-                else {
-                    $scope.isSumbiting=false;
-                    alertService.showAlert('提示',response.message);
-                }
-                submitParams.sumbmitWorkdayNo='';
-                $scope.InitSelect();
-            });
+                    }
+                    else {
+                        $scope.isSumbiting=false;
+                        alertService.showAlert('提示',response.message);
+                    }
+                    // submitParams.sumbmitWorkdayNo='';
+
+                    $scope.InitSelect();
+                });
+            }
+            catch (ex){
+
+            }
+
         }
 
 
@@ -1525,33 +1539,116 @@ angular.module('evaluationApp.businiessControllers', [])
 
             $scope.isSumbiting=true;
 
+
+
             var url=commonServices.getUrl("ChoujiangService.ashx","Choujiang_Game");
 
-            commonServices.submit($scope.userInput,url).then(function(data){
-                if (data.success) {
-                    $scope.isSumbiting=false;
-                    $rootScope.money=''+data.data;
-                    $rootScope.rebagPopup=$ionicPopup.show({
-                        cssClass:'my-custom-popup',
-                        templateUrl: 'hongbaoChoujiang.html',
-                        scope: $rootScope
-                    });
-                    $rootScope.rebagPopup.then(function(res) {
+            try{
+                commonServices.submit($scope.userInput,url).then(function(data){
+                    if (data.success) {
+                        $scope.isSumbiting=false;
+                        $rootScope.money=''+data.data;
+                        $rootScope.rebagPopup=$ionicPopup.show({
+                            cssClass:'my-custom-popup',
+                            templateUrl: 'hongbaoChoujiang.html',
+                            scope: $rootScope
+                        });
+                        $rootScope.rebagPopup.then(function(res) {
 
 //                    $state.go('tabPoints.points');
+                        });
+
+                    }
+                    else {
+                        $scope.isSumbiting=false;
+                        alertService.showAlert('提示',data.message);
+                    }
+
+                    $scope.userInput.Employee_ID="";
+
+                });
+            }
+            catch(ex){
+
+            }
+
+
+        }
+
+
+        $scope.showGuest=function(){
+            if($scope.userInput.Employee_ID.length==0) return;
+            var html1='';
+
+            var url=commonServices.getUrl("ChoujiangService.ashx","Choujiang_GameResult");
+            commonServices.submit($scope.userInput,url).then(function(data){
+                if (data.success) {
+
+                    var html2='<section class="editor selected">'+
+                        ' <section style="border: 0px none;">'+
+                        '<section>'+
+                        '<section style="width: 330px;height: 330px;margin:0 auto; border-radius:50%;background-image: url(http://newcdn.96weixin.com/c/mmbiz.qlogo.cn/mmbiz_png/uN1LIav7oJicb1xwsm8bcFPB7HFvv8Ze5y1lJWBfYPnoEfQaqIiaywMib0EK46dmD2LX9ibeoibvhXBMfRspFgjMwwQ/0?wx_fmt=png);background-size: 100% auto;background-repeat: no-repeat;background-position: center; overflow: hidden;color: #db214c;text-align: center;display: flex;display: -webkit-flex;justify-content: center;-webkit-justify-content: center;align-items: center;-webkit-align-items:  center;">'+
+                        '<section><p style="margin: 0;font-size: 20px;letter-spacing: 3px;line-height: 30px">'+
+                        '<strong>'+data.message+'</strong></p><br/>'+
+                        '<p style="margin: 0;border: 1px solid #db214c;font-size: 14px;padding: 0 10px"> <strong>吉 祥 如 意</strong></p> </section> </section> </section> </section> </section>';
+
+                    $ionicPopup.show({
+                        template:html2,
+                        cssClass:'my-custom-popup-Alter',
+                        title: '中奖查询',
+                        subTitle: '',
+                        scope: $scope,
+                        buttons: [
+                            {
+                                text: '<b>确定</b>',
+                                type: 'button-positive',
+                                onTap: function(e) {
+                                    return ;
+                                }
+                            }
+                        ]
                     });
+
+
 
                 }
                 else {
-                    $scope.isSumbiting=false;
+
                     alertService.showAlert('提示',data.message);
                 }
 
                 $scope.userInput.Employee_ID="";
 
             });
+
+
         }
 
+        $scope.txtChange=function(){
+            console.log('11');
+            if($scope.userInput.Employee_ID.length==0) return;
+            if($scope.userInput.Employee_ID.length>=10){
+                console.log('aa');
+                var url=commonServices.getUrl("AccountService.ashx","GetOneCartID");
+
+                try{
+                    commonServices.getData($scope.userInput,url).then(function(data){
+                        if(data=='读取不到工号数据'){
+                            alertService.showAlert(data);
+                        }
+                        else{
+                            $scope.userInput.Employee_ID=data;
+                        }
+                    });
+                }
+                catch(ex){
+
+                }
+
+
+
+            }
+        }
 
 
     })

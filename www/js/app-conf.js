@@ -3,10 +3,10 @@
  */
 
 //本机开发
-//var API_HOST = 'http://localhost:64511';
+var API_HOST = 'http://localhost:64511';
 
 //正式环境
-var API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
+//var API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
 
 var API = {
 
@@ -120,31 +120,31 @@ var SETTING = {
 
 //语言
 var ZH_CN = {
-    menu: {
-        menu: "菜单",
-        home: "首页",
-        about: "积分宗旨",
-        changepassword: "修改密码",
-        signout: "注销",
-        signin: "注销",
-        quit: "退出"
+    signin: {
+        username: "工号",
+        password: "密码",
+        register : "注册",
+        forgetPassword: "修改密码"
     },
     tab:{
         home:"首页",
-        rules:"评分细则",
-        points:"评分信息",
-        ranking:"积分排名",
-        user:"用户中心"
+        myMsg:"我的消息",
+        myFlex:"我的Flex+"
     },
     home: {
-        pointsinfo: " 您好！欢迎使用本调查系统",
-        describe: "感谢使用员工评分调查系统，员工对评分项目进行打分或选择，系统定期评分并奖励，敬请关注！",
-        thisTime: "本次评分",
-        last: "上次评分",
-        monthlyTimes: "月评次数",
-        monthlySum: "月总积分",
-        yearTimes: "年评次数",
-        yearSum: "年总积分"
+        home:"首页",
+        evaluation:"自 评",
+        goldenidea:"金点子",
+        like:"为TA点赞",
+        help:"我要求助",
+        kqcx:"考勤查询",
+        xfcx:"消费查询",
+        banchexx:"班车信息",
+        rexian:"热线电话",
+        zhaoping:"内部招聘",
+        gonggao:"通知公告",
+        activity:"活 动",
+        meal:"订 餐"
     },
     points:{
         title: "评分记录",
@@ -178,12 +178,8 @@ var ZH_CN = {
         monthly: "月排名",
         quarterly: "季排名",
         yearly: "总排名"
-    },
-    signin: {
-        username: "工号WorkdayId",
-        password: "密码",
-        title : "珠海园区员工自评系统"
     }
+
 };
 
 var ZH_US = {
@@ -243,9 +239,10 @@ var ZH_US = {
         yearly: "Yearly"
     },
     signin: {
-        username: "工号Workday Id",
-        password: "身份证后四位",
-        title: "员工评分系统"
+        username: "WorkdayId",
+        password: "password",
+        register : "Register",
+        forgetPassword: "ForgetPassword"
     }
 };
 

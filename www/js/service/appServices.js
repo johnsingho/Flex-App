@@ -217,6 +217,25 @@ angular.module('evaluationApp.appServices', [])
                 });
                 return deferred.promise;
             },
+            getDataNoMask:function(paras,url){
+                var deferred = $q.defer();
+                HttpFactory.send({
+                    url:url,
+                    params: paras,
+                    method: 'post',
+                    mask: false
+                }).success(function (response) {
+                    if(response.success){
+                        deferred.resolve(response.data);
+                    } else{
+                        deferred.resolve(response.message);
+                    }
+
+                }) .error(function(response) {
+                    deferred.reject(response);   // 声明执行失败，即服务器返回错误
+                });
+                return deferred.promise;
+            },
             getDataList:function(paras,url){
                 var deferred = $q.defer();
                 HttpFactory.send({

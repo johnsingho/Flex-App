@@ -1,4 +1,21 @@
 <div class="row">
+
+
+    <div  class="col col-25">
+        <div >类型</div>
+    </div>
+
+    <div  class="col">
+        <!--<select class="button " style="margin-top:5px;" ng-options='t.name for t in PersonType'-->
+                <!--ng-model="selPersonType.item" ng-change="PersonTypeUpdate(selPersonType.item)"></select>-->
+
+        <select  ng-model="selPersonType"  ng-change="PersonTypeUpdate(selPersonType)">
+            <option selected="">中国</option>
+            <option >外国</option>
+        </select>
+    </div>
+</div>
+<div class="row">
     <div  class="col col-25">
         <div >身份证</div>
     </div>

@@ -6,6 +6,29 @@ angular.module('evaluationApp.appControllers', [])
         $scope.ver=CacheFactory.get('version');
         $scope.user = JSON.parse(CacheFactory.get('accessUser'));
 
+        $scope.LanguageItems = [
+            { name: "中文", value: "CN" },
+            { name: "English", value: "US" }
+        ];
+        var v = $scope.LanguageItems[0];
+        var languageitem = JSON.parse(CacheFactory.get('LanguageItem'));
+        if (languageitem == null) {
+            $scope.LanguageItem = { item: $scope.LanguageItems[0] }
+            $scope.Language = ZH_CN;
+        } else {
+            if (languageitem.value == 'CN') {
+                $scope.LanguageItem = { item: $scope.LanguageItems[0] }
+                $scope.Language = ZH_CN;
+            } else {
+                $scope.LanguageItem = { item: $scope.LanguageItems[1] }
+                $scope.Language = ZH_US;
+            }
+        }
+
+        $scope.languageUpdate = function () {
+            CacheFactory.save('LanguageItem', $scope.LanguageItem.item);
+        }
+
         $scope.login = function (user) {
 
             if (typeof (user) == 'undefined') {
@@ -35,18 +58,34 @@ angular.module('evaluationApp.appControllers', [])
     })
     .controller('HomeCtrl', function($scope,$rootScope,$ionicSlideBoxDelegate ,$timeout,$state,$ionicPopup,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        $scope.checkWorkday='2332842605208458234470745';
-
-
-        $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
-
-
         var parameter= commonServices.getBaseParas();
+//        $scope.checkWorkday='2332842605208458234470745';
+//
+//
+//        $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
+
+//        var url=commonServices.getUrl("MsgService.ashx","GetIsIn38ActivityName");
+//        commonServices.getDataNoMask(parameter,url).then(function(data){
+//
+//            $rootScope.Power=data=='Y'?true:false;
+//        });
+
+
 
         if ($rootScope.accessEmployee) {
 
             $scope.showPopup = function () {
+
+                $scope.selPersonType ='中国';
+
                 $scope.data = {}
+                $scope.data.PersonType=$scope.selPersonType;
+                $scope.PersonTypeUpdate = function (selPersonType) {
+                    $scope.data.PersonType=selPersonType;
+
+                }
+
+
 
                 var myPopup = $ionicPopup.show({
                     templateUrl: 'templates/realNameRegistration/IDNOFilling.html',
@@ -63,7 +102,7 @@ angular.module('evaluationApp.appControllers', [])
                                     //不允许用户关闭，除非他键入wifi密码
                                     e.preventDefault();
                                 }
-                                else if($scope.data.IDNO.length!=18) {
+                                else if($scope.data.PersonType=='中国'&&$scope.data.IDNO.length!=18) {
                                     alertService.showAlert("身份证信息必须是18位");
                                     e.preventDefault();
                                 }else {
@@ -91,14 +130,12 @@ angular.module('evaluationApp.appControllers', [])
                 });
             }
 
+
+
             if($rootScope.accessEmployee.strIsHRConfirm=='UnRegistration'||$rootScope.accessEmployee.strIsHRConfirm=='FailedRegistration') {
                 $scope.showPopup();
 
             }
-
-
-
-
 
 
             $scope.Scan=function(){
@@ -127,9 +164,6 @@ angular.module('evaluationApp.appControllers', [])
                     }
                 );
             };
-
-
-
 
             commonServices.getHomeSlideImg(parameter).then(function(data) {
                 if(data=="Token is TimeOut")
@@ -183,8 +217,6 @@ angular.module('evaluationApp.appControllers', [])
            }
 
         };
-
-
 
         $scope.open=function(action){
 
@@ -289,12 +321,15 @@ angular.module('evaluationApp.appControllers', [])
 
             }
             else if(action=="热线电话"){
-                if($rootScope.accessEmployee.Organization=='Campus Resource B15'){
+                if($rootScope.accessEmployee.Segment_ID!='EF922594-5FB1-409E-A3D8-F7BC940AACD9'){
                     $location.path("b15hotPhone");
                 }
-                else if($rootScope.accessEmployee.Organization=='Regional Resource B15'){
-                    $location.path("b15hotPhone");
-                }
+//                if($rootScope.accessEmployee.Organization=='Campus Resource B15'){
+//                    $location.path("b15hotPhone");
+//                }
+//                else if($rootScope.accessEmployee.Organization=='Regional Resource B15'){
+//                    $location.path("b15hotPhone");
+//                }
 //                else if($rootScope.accessEmployee.Organization=='PCBA 57'){
 //                    $location.path("b15hotPhone");
 //                }
@@ -311,19 +346,29 @@ angular.module('evaluationApp.appControllers', [])
             else if(action=="活动"){
 
 
-                if($rootScope.accessEmployee.Segment_ID=='EF922594-5FB1-409E-A3D8-F7BC940AACD9'){
-                    $state.go("luckyGame");
-                }
+//                if($rootScope.accessEmployee.Segment_ID=='EF922594-5FB1-409E-A3D8-F7BC940AACD9'){
+//                    $state.go("luckyGame");
+//                }
+//
+//                else if($rootScope.Power)
+//                {
+//                    $state.go("luckyGame");
+//                }
+//                else
+//                {
+//                    $location.path("activityList");
+//                }
 
-                else if($rootScope.Power)
-                {
-                    $state.go("luckyGame");
-                }
-                else
-                {
-                    $location.path("activityList");
-                }
+//                if($rootScope.Power)
+//                {
+//                    $state.go("38Activity");
+//                }
+//                else
+//                {
+//                    $location.path("activityList");
+//                }
 
+               // $location.path("activityList");
 
             }
             else if(action=="聊天室"){
