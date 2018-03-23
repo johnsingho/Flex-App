@@ -1,0 +1,23 @@
+<ion-view view-title="{{Language.kqcx.title}}" cache-view="false"  hide-tabs>
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
+    </ion-nav-buttons>
+    <ion-content class="padding" style="border:1px;">
+        <label class="item item-input item-select">
+            <div class="input-label">
+             <h3 style="font-size:18px; text-align:left;font-weight:bold">{{Language.kqcx.selDay}}</h3>
+            </div>
+        <select  ng-model="day"  ng-change="selday(day)">
+            <option selected="">{{Language.kqcx.threeDay}}</option>
+            <option >{{Language.kqcx.sevenDay}}</option>
+            <option>{{Language.kqcx.oneMonth}}</option>
+            <option>{{Language.kqcx.twoMonth}}</option>
+        </select>
+        </label>
+    <p style="font-size: 13px;color: red">{{Language.kqcx.content}}</p>
+        <ion-list>
+            <ion-item class="item item-divider">{{Language.kqcx.title2}}{{kqcount}}{{Language.kqcx.title3}}</ion-item>
+            <ion-item class="item" ng-repeat="kq in kqjl track by $index"><p>{{kq.OpDT  | date:"yyyy-MM-dd HH:mm:ss"}}</p></ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

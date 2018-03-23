@@ -1,10 +1,10 @@
-<ion-view view-title="拼车" cache-view="false">
+<ion-view view-title="{{Language.shareCar.tabCar}}" cache-view="false">
     <ion-nav-buttons side="left">
-        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
 
     <ion-nav-buttons side="right">
-        <button class="button button-clear " ng-click="openModal()">发 布</button>
+        <button class="button button-clear " ng-click="openModal()">{{Language.shareCar.button}}</button>
     </ion-nav-buttons>
 
 
@@ -27,30 +27,30 @@
             <div class="item item-avatar">
                 <img ng-if="carInfo.IsHaveCar==1"  src="img/ShareCar/chezhu.png">
                 <img  ng-if="carInfo.IsHaveCar==0"  src="img/ShareCar/chengke.jpg">
-                <h2 ng-if="carInfo.IsHaveCar==1" style="Margin:1px">车主发布</h2>
-                <h2 ng-if="carInfo.IsHaveCar==0" style="Margin:1px">乘客发布</h2>
+                <h2 ng-if="carInfo.IsHaveCar==1" style="Margin:1px">{{Language.shareCar.carer}}</h2>
+                <h2 ng-if="carInfo.IsHaveCar==0" style="Margin:1px">{{Language.shareCar.passenger}}</h2>
                 <p style="font-size: 12px ;Margin:1px"><em class="agotime" am-time-ago="carInfo.CreateDate"></em></p>
             </div>
 
             <div class="item item-body">
 
                 <p style="Margin:1px">
-                    时间：{{carInfo.TimeStart | date:"MM月dd日 HH:mm"}}~{{carInfo.EndTime | date:"MM月dd日 HH:mm"}}
+                    {{carInfo.TimeStart | date:"MM月dd日 HH:mm"}}~{{carInfo.EndTime | date:"MM月dd日 HH:mm"}}
                 </p>
                 <p style="Margin:1px">
-                    起点：{{carInfo.StartingPoint}}
+                    {{Language.shareCar.startPoint}}:{{carInfo.StartingPoint}}
                 </p>
                 <p style="Margin:1px">
-                    终点：{{carInfo.EndPoint}}
+                    {{Language.shareCar.EndPoint}}:{{carInfo.EndPoint}}
                 </p>
                 <p ng-if="carInfo.IsHaveCar==1" style="Margin:1px">
-                    途径点：{{carInfo.MidPoint}}
+                    {{Language.shareCar.midPoint}}:{{carInfo.MidPoint}}
                 </p>
                 <p style="Margin:1px">
-                    座位数：{{carInfo.SeatNumber}}
+                    {{Language.shareCar.seatCoun}}:{{carInfo.SeatNumber}}
                 </p>
                 <p style="Margin:1px">
-                    详细：{{carInfo.Description}}
+                    {{Language.shareCar.Remarks}}:{{carInfo.Description}}
                 </p>
 
 
@@ -74,7 +74,7 @@
     <script id="templates/modalCar.html" type="text/ng-template">
         <ion-modal-view>
             <ion-header-bar class="bar bar-header bar-positive">
-                <h1 class="title">发布</h1>
+                <h1 class="title">{{Language.shareCar.button}}</h1>
                 <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
             </ion-header-bar>
             <ion-content class="padding">
@@ -88,42 +88,42 @@
 
                 <div class="list card" ng-if="isHaveCar==1">
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">姓名</span><span class="input-label" style="width: 5px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.like.name}}</span><span class="input-label" style="width: 5px;color: red">*</span>
                         <div style="width: 130px;" > <input type="text" style="font-size:80%" readonly="readonly"  ng-model="accessEmployee.CName"/></div>
-                        <span class="input-label" style="width: 10px;font-size:80%">工号</span><span class="input-label" style="width: 5px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.like.employee_ID}}</span><span class="input-label" style="width: 5px;color: red">*</span>
                         <input type="text" style="width: 10px;font-size:80%"  readonly="readonly" ng-model="accessEmployee.WorkdayNO"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">联系电话</span><span class="input-label" style="width: 5px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.mobile}}</span><span class="input-label" style="width: 5px;color: red">*</span>
                         <div style="width: 130px;" ><input type="text" style="font-size:80%"  ng-model="Submitdata.MobileNo"/></div>
-                        <span class="input-label" style="width: 10px;font-size:80%">车牌号</span><span class="input-label" style="width: 5px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.carNo}}</span><span class="input-label" style="width: 5px;color: red">*</span>
                         <input type="text" style="width: 10px;font-size:80%;"  readonly="readonly" ng-model="Submitdata.CarNo"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">起点</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.startPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="text" style="font-size:80%"  ng-model="Submitdata.StartPoint"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">终点</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.EndPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="text" style="font-size:80%"  ng-model="Submitdata.EndPoint"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">途经点</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.midPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="text" style="font-size:80%"  ng-model="Submitdata.MidPoint"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">开始时间</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.startTime}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="datetime-local" id="stTime" value="2015-09-24T13:59:59"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">结束时间</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.endTime}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="datetime-local" id="eTime" value="2015-09-24T13:59:59"/>
                     </div>
 
                     <div class="item item-input item-select">
-                        <span class="input-label" style="width: 10px;font-size:80%">座位数</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.seatCoun}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <select  ng-model="seatNumber"  ng-change="selSeatNumber(seatNumber)">
-                            <option selected="">请选择</option>
+                            <option selected="">{{Language.shareCar.select}}</option>
                             <option >1</option>
                             <option>2</option>
                             <option>3</option>
@@ -133,43 +133,43 @@
                         </select>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">详细描述：</span><span class="input-label" style="width: 10px;color: red">*</span>
-                        <textarea rows="3" id="bz" style="font-size:80%;width: 500px" placeholder="备注"  ng-model="Submitdata.Description"></textarea>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.Remarks}}：</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <textarea rows="3" id="bz" style="font-size:80%;width: 500px" placeholder="{{Language.shareCar.RemarksContent}}："  ng-model="Submitdata.Description"></textarea>
                     </div>
                 </div>
 
 
                 <div class="list card" ng-if="isHaveCar==0">
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">姓名</span><span class="input-label" style="width: 5px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.like.name}}</span><span class="input-label" style="width: 5px;color: red">*</span>
                         <input type="text" style="width: 10px;font-size:80%" readonly="readonly"  ng-model="accessEmployee.CName"/>
-                        <span class="input-label" style="width: 10px;font-size:80%">工号</span><span class="input-label" style="width: 5px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.like.employee_ID}}</span><span class="input-label" style="width: 5px;color: red">*</span>
                         <input type="text" style="width: 10px;font-size:80%"  readonly="readonly" ng-model="accessEmployee.WorkdayNO"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">联系电话</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.mobile}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="text" style="font-size:80%"  ng-model="Submitdata.MobileNo"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">起点</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.startPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="text" style="font-size:80%"  ng-model="Submitdata.StartPoint"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">终点</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.EndPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="text" style="font-size:80%"  ng-model="Submitdata.EndPoint"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">开始时间</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.startTime}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="datetime-local" id="startTime2" value="2015-09-24T13:59:59"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">结束时间</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.endTime}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="datetime-local" id="endTime2" value="2015-09-24T13:59:59"/>
                     </div>
                     <div class="item item-input item-select">
-                        <span class="input-label" style="width: 10px;font-size:80%">座位数</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.seatCoun}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <select  ng-model="seatNumber"  ng-change="selSeatNumber(seatNumber)">
-                            <option selected="">请选择</option>
+                            <option selected="">{{Language.shareCar.select}}</option>
                             <option >1</option>
                             <option>2</option>
                             <option>3</option>
@@ -179,13 +179,13 @@
                         </select>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">详细描述：</span><span class="input-label" style="width: 10px;color: red">*</span>
-                        <textarea rows="3" id="bz" style="font-size:80%;width: 500px" placeholder="备注"  ng-model="Submitdata.Description"></textarea>
+                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.Remarks}}：</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <textarea rows="3" id="bz" style="font-size:80%;width: 500px" placeholder="{{Language.shareCar.RemarksContent}}"  ng-model="Submitdata.Description"></textarea>
                     </div>
                 </div>
 
                 <br>
-                <div style="text-align: center" ng-if="isHaveCar!=-1"><button  class="button button-block  button-positive" ng-click="submit()">提 交</button></div>
+                <div style="text-align: center" ng-if="isHaveCar!=-1"><button  class="button button-block  button-positive" ng-click="submit()">{{Language.menu.submit}}</button></div>
             </ion-content>
         </ion-modal-view>
     </script>

@@ -1,25 +1,25 @@
-<ion-view view-title="我的评分" cache-view="false">
+<ion-view view-title="{{Language.evaluation.myPiont}}" cache-view="false">
     <ion-nav-buttons side="left">
-        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
     <ion-content style="background: #f4f4f4">
         <div class="list" style="border:1px solid #dcd4d4;">
             <div class="box">
-                <h4 style="margin-left:3px;">积分详情</h4>
+                <h4 style="margin-left:3px;">{{Language.evaluation.sortInfo}}</h4>
                 <div class="row">
-                    <div class="col">今日积分：{{pointInfo.DailyPoints}}</div>
-                    <div class="col">本周积分：{{pointInfo.WeeklyPoints}}</div>
+                    <div class="col">{{Language.evaluation.sortByToday}} {{pointInfo.DailyPoints}}</div>
+                    <div class="col">{{Language.evaluation.sortByWeek}} {{pointInfo.WeeklyPoints}}</div>
                 </div>
                 <div class="row">
-                    <div class="col">月度积分：{{pointInfo.MonthlyPoints}}</div>
-                    <div class="col">年度积分：{{pointInfo.Points}}</div>
+                    <div class="col">{{Language.evaluation.sortByMonth}} {{pointInfo.MonthlyPoints}}</div>
+                    <div class="col">{{Language.evaluation.sortByYear}} {{pointInfo.Points}}</div>
                 </div>
             </div>
         </div>
 
         <ion-list>
-            <ion-item class="item-divider item-gap">钱包余额：{{RedEnvelopSum}}元</ion-item>
-            <ion-item class="item-divider item-gap">明细记录：</ion-item>
+            <ion-item class="item-divider item-gap">{{Language.evaluation.moneyAccount}} {{RedEnvelopSum}}元</ion-item>
+            <ion-item class="item-divider item-gap">{{Language.evaluation.detail}}</ion-item>
 
             <ion-item  ng-repeat="loginfo in RedEnvelopLog track by $index">
                 <div class="row">

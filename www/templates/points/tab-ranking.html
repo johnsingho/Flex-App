@@ -1,15 +1,15 @@
-<ion-view title="排行榜">
+<ion-view title="{{Language.evaluation.tabSort}}">
     <ion-nav-buttons side="left">
-        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
     <ion-content scroll="true" lazy-scroll>
         <!--<ion-refresher on-refresh="doRefresh()"></ion-refresher>-->
-        <h3>月度积分排行</h3>
+        <h3>{{Language.evaluation.sortMonth}}</h3>
         <canvas ng-if="Rank" id="line" class="chart chart-line" chart-data="monthData"
                 chart-labels="labels" chart-legend="true" chart-series="series"
                 chart-click="onClick" >
         </canvas>
-        <h3>年度积分排行</h3>
+        <h3>{{Language.evaluation.sortYear}}</h3>
         <canvas  ng-if="Rank" id="line2" class="chart chart-line" chart-data="yearData"
                 chart-labels="labels" chart-legend="true" chart-series="series"
                 chart-click="onClick" >

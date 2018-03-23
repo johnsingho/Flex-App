@@ -1,6 +1,6 @@
-<ion-view view-title="中央餐厅 点餐" cache-view="false">
+<ion-view view-title="{{Language.meal.title}}" cache-view="false">
     <ion-nav-buttons side="left">
-        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
 
     <ion-content scroll="true" overflow-scroll="true">
@@ -87,7 +87,6 @@
                             <option>8</option>
                             <option>9</option>
                             <option>10</option>
-                            <option>多于10人</option>
                         </select>
                     </div>
                     <div class="item item-input">
@@ -101,7 +100,7 @@
                 </ion-list>
 
                 <br>
-                <div style="text-align: center"><button  class="button button-block  button-positive" ng-click="submit()">提 交</button></div>
+                <div style="text-align: center"><button  class="button button-block  button-positive" ng-click="submit()">{{Language.menu.submit}}</button></div>
             </ion-content>
         </ion-modal-view>
     </script>

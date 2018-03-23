@@ -1,6 +1,6 @@
 <ion-view view-title="" cache-view="false" >
     <ion-nav-buttons side="left" >
-        <button ng-if="fromHome=='home'" class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">返回</button>
+        <button ng-if="fromHome=='home'" class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.back}}</button>
     </ion-nav-buttons>
  <ion-content  class="padding" scroll="true" overflow-scroll="true" >
 
@@ -36,7 +36,7 @@
                 </div>
 
                 <br>
-                <div style="text-align: center"><button  class="button button-block  button-positive" ng-click="submit()">提 交</button></div>
+                <div style="text-align: center"><button  class="button button-block  button-positive" ng-click="submit()">{{Language.menu.submit}}</button></div>
             </ion-content>
         </ion-modal-view>
     </script>

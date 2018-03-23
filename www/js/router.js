@@ -61,6 +61,46 @@ angular.module('evaluationApp.router', [])
                     }
                 }
             })
+
+            .state('tabKQCX', {
+                url: "/tabKQCX",
+                abstract: true,
+                templateUrl: "templates/kqcx/tabkqcx.html"
+            })
+            .state('tabKQCX.kqjl', {
+                url: '/kqjl',
+                views: {
+                    'kqjl': {
+                        templateUrl: 'templates/kqcx/kqjl.html',
+                        controller: 'KqjlCtrl'
+                    }
+                }
+            })
+            .state('tabKQCX.kqyc', {
+                url: '/kqyc',
+                views: {
+                    'kqyc': {
+                        templateUrl: 'templates/kqcx/kqyc.html',
+                        controller: 'KqAbnormalCtrl'
+                    }
+                }
+            })
+            .state('kqyc', {
+                url: '/kqyc',
+                templateUrl: 'templates/kqcx/kqyc.html',
+                controller: 'KqAbnormalCtrl'
+            })
+//            .state('tabAskForHelp.myHelp', {
+//                url: '/myHelp',
+//                views: {
+//                    'myHelp': {
+//                        templateUrl: 'templates/askForHelp/tab-myHelp.html',
+//                        controller: 'MyHelpCtrl'
+//                    }
+//                }
+//            })
+
+
             .state('tab.cust', {
                 url: '/cust',
                 views: {
@@ -546,6 +586,19 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/chunwan/chunwanZJName.html',
                 controller: 'ChunwanZJNameCtrl'
             })
+//            .state('GBS', {
+//                url: '/GBS',
+//                templateUrl: 'templates/GBS/gbs-list.html'
+//
+//            })
+
+            .state('GBS', {
+                url: '/GBS',
+                templateUrl: 'templates/GBS/gbs-list.html',
+                controller: 'GBSListCtrl'
+            })
+
+
         $urlRouterProvider.otherwise('signin');
 
     }])

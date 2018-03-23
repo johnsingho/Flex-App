@@ -1,4 +1,4 @@
-<ion-view view-title="为TA点赞" cache-view="false"  hide-tabs >
+<ion-view view-title="{{Language.like.title}}" cache-view="false"  hide-tabs >
     <ion-content style="background-color:lavender">
 
         <ion-slide-box   does-continue="true" auto-play="false"  show-pager="false" >
@@ -22,7 +22,7 @@
 
                     <div class="item item-avatar">
                         <img src="img/user.jpg">
-                        <h2>姓名：{{employee.Chinese_Name}}</h2>
+                        <h2>{{Language.like.name}}：{{employee.Chinese_Name}}</h2>
                     </div>
 
                     <div class="item item-body">
@@ -54,32 +54,32 @@
                 <!--<p style="font-size:80%">你身边还有哪些人值得你点“赞”？请描述赞“点”： </p>-->
             <!--</div>-->
         <!--</div>-->
-        <h6>你身边还有哪些人值得你点“赞”？请描述赞“点”：</h6>
+        <h6>{{Language.like.content}}：</h6>
         <div class="list card" >
             <div class="item item-input">
-                <span class="input-label" style="width: 10px;font-size:80%" >姓名</span><span class="input-label" style="width: 10px;color: red">*</span>
-                <input type="text" style="font-size:80%" placeholder="被推荐人中英文名" ng-model="goodJob.name"/>
+                <span class="input-label" style="width: 10px;font-size:80%" >{{Language.like.name}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" placeholder="{{Language.like.nameContent}}" ng-model="goodJob.name"/>
             </div>
             <div class="item item-input">
-                <span class="input-label" style="width: 10px;font-size:80%">工号</span><span class="input-label" style="width: 10px;color: red">*</span>
-                <input type="text" style="font-size:80%" placeholder="被推荐人工号" ng-model="goodJob.toWorkdayNo"/>
+                <span class="input-label" style="width: 10px;font-size:80%">{{Language.like.employee_ID}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" placeholder="{{Language.like.employee_IDContent}}" ng-model="goodJob.toWorkdayNo"/>
             </div>
             <div class="item item-input">
-                <span class="input-label" style="width: 10px;font-size:80%">部门</span><span class="input-label" style="width: 10px;color: red">*</span>
-                <input type="text" style="font-size:80%" placeholder="被推荐人部门" ng-model="goodJob.department"/>
+                <span class="input-label" style="width: 10px;font-size:80%">{{Language.like.department}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" placeholder="{{Language.like.departmentContent}}" ng-model="goodJob.department"/>
             </div>
         </div>
 
 
         <div class="list card">
             <label class="item item-input" >
-                <textarea rows="5" style="font-size:80%" placeholder="请详细填写主要事迹（不少于50字符）"  ng-model="goodJob.text"></textarea>
+                <textarea rows="5" style="font-size:80%" placeholder="{{Language.like.content}}"  ng-model="goodJob.text"></textarea>
             </label>
         </div>
-        <p style="font-size:10px;">注：入选者将获得丰厚奖金，相应推荐人将获得精美礼品一份</p>
+        <p style="font-size:10px;">{{Language.like.ps}}</p>
 
 
-        <div style="text-align: center"><button  class="button  button-positive" ng-click="Submit(goodJob)">提 交</button></div>
+        <div style="text-align: center"><button  class="button  button-positive" ng-click="Submit(goodJob)">{{Language.menu.submit}}</button></div>
         <br/>
     </ion-content>
 

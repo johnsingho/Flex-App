@@ -1,4 +1,4 @@
-<ion-view view-title="首页" cache-view="false" >
+<ion-view view-title="{{Language.home.home}}" cache-view="false" >
     <!--<ion-nav-buttons side="right">-->
         <!--<button class="button button-clear button-icon ion-qr-scanner" ng-click="Scan()">扫一扫</button>-->
     <!--</ion-nav-buttons>-->
@@ -29,11 +29,11 @@
                             <i style="font-size:50px;" class="icon ion-thumbsup"></i>
                         </ion-slide>
                     </ion-slide-box>
-                    <div >有奖自评</div>
+                    <div >{{Language.home.evaluation1}}</div>
                 </div>
                 <div ng-if="accessEmployee.Segment_ID!='EF922594-5FB1-409E-A3D8-F7BC940AACD9'">
                     <i style="font-size:50px;" class="ion-document-text"></i>
-                    <div>自 评</div>
+                    <div>{{Language.home.evaluation}}</div>
                 </div>
             </div>
 
@@ -44,59 +44,59 @@
 
             <div id="jdj" class="col col-25  balanced-bg light" style="Margin:1px" ng-click="open('金点子');">
                 <i style="font-size:50px;" class="ion-android-bulb"></i>
-                <div>金点子</div>
+                <div>{{Language.home.goldenidea}}</div>
             </div>
             <div id="wtdz" class="col-25 calm-bg light " style=";Margin:1px" ng-click="open('为TA点赞');">
 
                 <i style="font-size:50px;" class="icon ion-thumbsup"></i>
-                <div>为TA点赞</div>
+                <div>{{Language.home.like}}</div>
             </div>
             <div id="wyqz" class="col col calm-bg light" style="Margin:1px;" ng-click="open('我要求助');">
 
                 <i style="font-size:50px;" class="ion-alert-circled"></i>
-                <div>我要求助 </div>
+                <div>{{Language.home.help}} </div>
             </div>
         </div>
         <div class="row" style="height:100px;text-align: center">
             <div id="kqcx" class="col col-25 calm-bg light"  style=";Margin-left:1px" ng-click="open('考勤查询');">
 
                 <i style="font-size:50px;" class="icon ion-ios-time"></i>
-                <div>考勤查询</div>
+                <div>{{Language.home.kqcx}}</div>
             </div>
             <div id="xfcx" class="col col-25 positive-bg light" style=";Margin-left:2px" ng-click="open('消费查询');">
                 <i style="font-size:50px;" class="icon ion-card" ></i>
-                <div >消费查询</div>
+                <div >{{Language.home.xfcx}} </div>
             </div>
             <div id="bcxx" class="col-25  custom-og light" style="Margin-left:2px;" ng-click="open('班车信息');">
 
                 <i style="font-size:50px;" class="icon ion-android-bus"></i>
-                <p class="badge badge-assertive"> <i style="font-size:12px;" class="ion-ios-location"></i></p>
-                <div >班车信息</div>
+
+                <div >{{Language.home.bus}}</div>
             </div>
             <div id="rxdh" class="col royal-bg light" style=";Margin:1px" ng-click="open('热线电话');">
 
                 <i class="icon ion-ios-telephone" style="font-size:50px;"></i>
-                <div>热线电话</div>
+                <div>{{Language.home.rexian}}</div>
             </div>
         </div>
         <div class="row" style="height:100px;text-align: center">
             <div id="nbzp" class="col col-25 balanced-bg light" style=";Margin:1px;" ng-click="open('内部招聘');">
 
                 <i style="font-size:50px;" class="icon ion-ios-paper"></i>
-                <div>内部招聘</div>
+                <div>{{Language.home.zhaoping}}</div>
                 <!--<div><img ng-src="img/nbzp.jpg" style="position:absolute;left:0px;top:0px;width:100%;height:100%; "></div>-->
                 <!--<img ng-src="img/nbzp.jpg" class="Size" >-->
             </div>
             <div id="tzgg" class="col col-25 energized-bg light" style=";Margin:1px" ng-click="open('园区公告');">
 
                 <i style="font-size:50px;" class="icon ion-calendar"></i>
-                <div>通知公告<span class="badge badge-assertive">{{NoticeCount}}</span></div>
+                <div><p style="font-size:13px;">{{Language.home.gonggao}}</p><span class="badge badge-assertive">{{NoticeCount}}</span></div>
             </div>
 
             <div  class="col col-25 custom-bule1 light" style="Margin:1px;" ng-click="open('活动');">
 
                 <i style="font-size:50px;" class="icon ion-ios-people"></i>
-                <div>活 动</div>
+                <div>{{Language.home.activity}}</div>
 
             </div>
 
@@ -104,7 +104,7 @@
             <div class="col  positive-bg light"  style=";Margin:1px" ng-click="open('点餐');">
 
                 <i style="font-size:50px;" class="ion-android-restaurant"></i>
-                <div>订 餐</div>
+                <div>{{Language.home.meal}}</div>
             </div>
             <!--<div id="B11Workshop"  class="col  positive-bg light"  style=";Margin-left:1px" ng-click="open('B11Workshop');">-->
 
@@ -116,23 +116,23 @@
             <div   class="col-25  calm-bg light"  style="Margin:1px" ng-click="open('shareCar');">
 
                 <i style="font-size:50px;" class="ion-model-s"></i>
-                <div>拼 车</div>
+                <div>{{Language.home.shareCar}}</div>
             </div>
 
             <div  class="col col-25 royal-bg light"  style=";Margin:1px" ng-click="open('问卷调查');">
 
                 <i style="font-size:50px;" class="ion-clipboard"></i>
-                <div >问卷调查</div>
+                <div >{{Language.home.survey}}</div>
             </div>
 
             <div   class="col-25  energized-bg light"  style="Margin:1px" ng-click="open('train');">
                 <i style="font-size:50px;" class="ion-ios-body"></i>
-                <div>Train</div>
+                <div>{{Language.home.train}}</div>
             </div>
 
             <div   class="col custom-og light"  style="Margin:1px" ng-click="open('E-gate');">
                 <i style="font-size:50px;" class="ion-filing"></i>
-                <div>E-gate</div>
+                <div>{{Language.home.egate}}</div>
             </div>
             <!--<div  class="col-33  positive-bg light"  style=";Margin:1px" ng-click="open('B11Workshop');">-->
 
@@ -151,22 +151,25 @@
             <div  class="col col-25 positive-bg light"  style=";Margin:1px" ng-click="open('员工手册');">
 
                 <i style="font-size:50px;" class="ion-ios-bookmarks"></i>
-                <div >员工手册</div>
+                <div >{{Language.home.handbook}}</div>
             </div>
 
             <div  class="col col-25 custom-bule1 light"  style=";Margin:1px" ng-click="open('报名');">
 
                 <i style="font-size:50px;" class="ion-person-add"></i>
-                <div >报 名</div>
+                <div >{{Language.home.apply}}</div>
             </div>
 
             <div  class="col col-25 balanced-bg light"  style=";Margin:1px" ng-click="open('保险');">
 
                 <i style="font-size:50px;" class="ion-ios-paper"></i>
-                <div >商业保险</div>
+                <div >{{Language.home.insurance}}</div>
             </div>
 
-
+            <div   class="col positive-bg light"  style="Margin:1px" ng-click="open('GBS');">
+                <i style="font-size:50px;" class="ion-android-list"></i>
+                <div>{{Language.home.GBS}}</div>
+            </div>
 
             <!--<div  class="col col custom-bule1 light"  style=";Margin:1px" ng-click="open('choujiang');">-->
 

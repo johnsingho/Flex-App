@@ -36,7 +36,11 @@ angular.module('evaluationApp.appServices', [])
                         result.msg='登录成功';
                     } else {
                         result.success=false;
-                        result.msg='用户名或密码错误,未注册请先注册';
+                        if($rootScope.Language==ZH_CN)
+                            result.msg='用户名或密码错误,未注册请先注册';
+                        else
+
+                        result.msg='Incorrect username or password. Please register first without registration';
                     }
                     deferred.resolve(result);
                 }) .error(function(response) {
@@ -364,7 +368,7 @@ angular.module('evaluationApp.appServices', [])
             remove: remove
         };
     })
-    .service('HttpFactory', function ($http, $ionicPopup, $ionicLoading, CacheFactory) {
+    .service('HttpFactory', function ($http, $ionicPopup, $ionicLoading, CacheFactory,$rootScope) {
 
         /**
          * method – {string} – HTTP method (e.g. 'GET', 'POST', etc)
@@ -386,7 +390,7 @@ angular.module('evaluationApp.appServices', [])
             !!config.scope && (config.scope.loading = true);
 
             !!config.mask && $ionicLoading.show({
-                template: typeof config.mask == "boolean" ? '请稍等...' : config.mask
+                template: typeof config.mask == "boolean" ?$rootScope.Language.menu.wait: config.mask
             });
 
             config.method == 'post' && (config.data = config.data || {}) && ionic.extend(config.data, {

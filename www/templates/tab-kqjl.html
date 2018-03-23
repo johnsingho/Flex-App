@@ -1,19 +1,19 @@
-<ion-view view-title="考勤查询" cache-view="false"  hide-tabs>
+<ion-view view-title="{{Language.kqcx.title}}" cache-view="false"  hide-tabs>
     <ion-content class="padding" style="border:1px;">
         <label class="item item-input item-select">
             <div class="input-label">
-             <h3 style="font-size:18px; text-align:left;font-weight:bold">选择时长</h3>
+             <h3 style="font-size:18px; text-align:left;font-weight:bold">{{Language.kqcx.selDay}}</h3>
             </div>
         <select  ng-model="day"  ng-change="selday(day)">
-            <option selected="">三天</option>
-            <option >七天</option>
-            <option>一个月</option>
-            <option>两个月</option>
+            <option selected="">{{Language.kqcx.threeDay}}</option>
+            <option >{{Language.kqcx.sevenDay}}</option>
+            <option>{{Language.kqcx.oneMonth}}</option>
+            <option>{{Language.kqcx.twoMonth}}</option>
         </select>
         </label>
-    <p style="font-size: 13px;color: red">请遵守公司信息保密政策，未经授权严禁转载分享</p>
+    <p style="font-size: 13px;color: red">{{Language.kqcx.content}}</p>
         <ion-list>
-            <ion-item class="item item-divider">考勤记录，共{{kqcount}}条</ion-item>
+            <ion-item class="item item-divider">{{Language.kqcx.title2}}{{kqcount}}{{Language.kqcx.title3}}</ion-item>
             <ion-item class="item" ng-repeat="kq in kqjl track by $index"><p>{{kq.OpDT  | date:"yyyy-MM-dd HH:mm:ss"}}</p></ion-item>
         </ion-list>
     </ion-content>

@@ -1,0 +1,53 @@
+<ion-view view-title="{{Language.kqcx.tabAbnormal}}" cache-view="false"  hide-tabs>
+    <!--<ion-nav-buttons side="left">-->
+        <!--<button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>-->
+    <!--</ion-nav-buttons>-->
+    <ion-content class="padding" style="border:1px;">
+
+        <ion-list>
+
+            <ion-item  ng-repeat="kqyc in KqAbnormalList" class="item">
+                <div class="row">
+                    <div class="col"><p>{{Language.kqcx.abnormalType}}: {{kqyc.yclx}}</p></div>
+                    <div class="col"> <p>{{Language.kqcx.date}}: {{kqyc.rq| date:"yyyy-MM-dd"}}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col"> <p>{{Language.kqcx.int}}1: {{kqyc.jin1}}</p></div>
+                    <div class="col"> <p>{{Language.kqcx.out}}1: {{kqyc.chu1}}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col"> <p>{{Language.kqcx.int}}2: {{kqyc.jin2}}</p></div>
+                    <div class="col"> <p>{{Language.kqcx.out}}2: {{kqyc.chu2}}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col"> <p>{{Language.kqcx.int}}3: {{kqyc.jin3}}</p></div>
+                    <div class="col"> <p>{{Language.kqcx.out}}3: {{kqyc.chu3}}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col"> <p>{{Language.kqcx.int}}4: {{kqyc.jin4}}</p></div>
+                    <div class="col"> <p>{{Language.kqcx.out}}4: {{kqyc.chu4}}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col"> <p>{{Language.kqcx.late}}: {{kqyc.cdcs}}</p></div>
+                    <div class="col"> <p>{{Language.kqcx.lateTime}}: {{kqyc.cdfz}}</p></div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col"> <p>{{Language.kqcx.leaveearly}}: {{kqyc.ztcs}}</p></div>
+                    <div class="col"> <p>{{Language.kqcx.leaveearlyTime}}: {{kqyc.ztfz}}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col"> <p>{{Language.kqcx.absenteeism}}: {{kqyc.kgcs}}</p></div>
+                    <div class="col"> <p>{{Language.kqcx.absenteeismTime}}: {{kqyc.kgxs}}</p></div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col"> <p>{{Language.kqcx.workingHours}}: {{kqyc.sjgsxs}}</p></div>
+                    <div class="col"> <p>{{Language.kqcx.attendanceTime}}: {{kqyc.skcqxs}}</p></div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

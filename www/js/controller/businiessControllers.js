@@ -244,7 +244,7 @@ angular.module('evaluationApp.businiessControllers', [])
         }
 
     })
-    .controller('KqjlCtrl', function($scope,$location,$ionicLoading,kqService,alertService,CacheFactory) {
+    .controller('KqjlCtrl', function($scope,$ionicHistory,$state,$ionicLoading,kqService,alertService,CacheFactory) {
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
 //        $scope.days = [{day:'三天'},{day:'五天'},{day:'七天'},{day:'一个月'},{day:'两个月'}];
 
@@ -271,6 +271,36 @@ angular.module('evaluationApp.businiessControllers', [])
             $scope.getKQ(params);
         };
 
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
+    })
+    .controller('KqAbnormalCtrl', function($scope,$ionicHistory,alertService,commonServices,$state) {
+
+        var params=commonServices.getBaseParas();
+        var url=commonServices.getUrl("KqcxService.ashx","GetKQ_Attendance_Abnormal");
+        console.log(params);
+
+        commonServices.getDataList(params,url).then(function(data){
+
+            if(data=="Token is TimeOut"){
+                alertService.showAlert("登录失效，请重新登录");
+                $state.transitionTo('signin');
+            }
+            console.log(data);
+            $scope.KqAbnormalList=data;
+        });
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
 
     })
     .controller('CustCtrl', function($scope,$location,$ionicLoading,custService,alertService,CacheFactory) {

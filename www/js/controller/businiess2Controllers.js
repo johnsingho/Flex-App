@@ -953,4 +953,22 @@ angular.module('evaluationApp.businiess2Controllers', [])
             $state.go('tab.home');
         }
     })
+    .controller('GBSListCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService){
+
+        $scope.open=function(action){
+            switch (action)
+            {
+                case "KQAbnormal":
+                    $state.go('kqyc');
+                    break;
+            }
+        }
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
+    })
 ;

@@ -1,6 +1,6 @@
-<ion-view title="金点子精选" cache-view="false" >
+<ion-view title="{{Language.goldenIdea.tabSelIdea}}" cache-view="false" >
     <ion-nav-buttons side="left">
-        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
     <ion-content class="padding" style="background-color:lavender" >
 
@@ -10,8 +10,8 @@
 
             <div class="item item-avatar">
                 <img src="img/jiangzhang.png">
-                <h2>工号：{{goldIdea.WorkdayNo}}</h2>
-                <h2>姓名：{{goldIdea.CName}}</h2>
+                <h2>{{Language.like.employee_ID}}：{{goldIdea.WorkdayNo}}</h2>
+                <h2>{{Language.realName.name}}：{{goldIdea.CName}}</h2>
             </div>
 
             <div class="item item-body">

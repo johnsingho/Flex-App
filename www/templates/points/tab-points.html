@@ -1,6 +1,6 @@
-<ion-view title="评分记录" cache-view="false">
+<ion-view title="{{Language.evaluation.scoringRecord}}" cache-view="false">
     <ion-nav-buttons side="left">
-        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
     <ion-content scroll="true" lazy-scroll>
         <!--<ion-refresher on-refresh="doRefresh()"></ion-refresher>-->
@@ -8,14 +8,14 @@
 
         <div class="list">
             <div class="row" style="cursor:pointer;">
-                <div class="col col-33">获得积分</div>
-                <div class="col col-33">获得红包</div>
-                <div class="col">时间</div>
+                <div class="col col-33">{{Language.evaluation.integral}}</div>
+                <div class="col col-33">{{Language.evaluation.redbag}}</div>
+                <div class="col">{{Language.evaluation.time}}</div>
             </div>
             <div class="item item-accordion"  bindonce ng-repeat="point in pointsHistory track by $index" >
                 <div class="row" style="cursor:pointer;" >
-                    <div class="col col-33"> {{point.Score}} 分</div>
-                    <div class="col col-33">{{point.Redbag}} 元</div>
+                    <div class="col col-33"> {{point.Score}} {{Language.evaluation.scor}}</div>
+                    <div class="col col-33">{{point.Redbag}} {{Language.evaluation.money}}</div>
                     <div class="col"><em class="agotime" am-time-ago="point.CreateDate"></em></div>
                 </div>
             </div>

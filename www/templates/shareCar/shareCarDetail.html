@@ -11,39 +11,39 @@
                 <div class="item item-avatar">
                     <img ng-if="carInfo.IsHaveCar==1"  src="img/ShareCar/chezhu.png">
                     <img  ng-if="carInfo.IsHaveCar==0"  src="img/ShareCar/chengke.jpg">
-                    <h2 ng-if="carInfo.IsHaveCar==1">车主发布</h2>
-                    <h2 ng-if="carInfo.IsHaveCar==0">乘客发布</h2>
+                    <h2 ng-if="carInfo.IsHaveCar==1">{{Language.shareCar.carer}}</h2>
+                    <h2 ng-if="carInfo.IsHaveCar==0">{{Language.shareCar.passenger}}</h2>
                 </div>
                 <div class="item item-body">
                     <p style="Margin:1px">
-                        姓名：{{carInfo.Chinese_Name}}
+                        {{Language.like.name}}：{{carInfo.Chinese_Name}}
                     </p>
                     <p style="Margin:1px">
-                        联系电话：{{carInfo.MobileNo}}
+                        {{Language.shareCar.mobile}}：{{carInfo.MobileNo}}
                     </p>
                     <p style="Margin:1px" ng-if="carInfo.IsHaveCar==1">
-                        车牌：{{carInfo.CarNo}}
+                        {{Language.shareCar.carNo}}：{{carInfo.CarNo}}
                     </p>
                 </div>
 
                 <div class="item item-body">
                     <p style="Margin:1px">
-                        时间：{{carInfo.TimeStart | date:"yy-MM-dd HH:mm"}}~{{carInfo.EndTime | date:"yy-MM-dd HH:mm"}}
+                        {{carInfo.TimeStart | date:"yy-MM-dd HH:mm"}}~{{carInfo.EndTime | date:"yy-MM-dd HH:mm"}}
                     </p>
                     <p style="Margin:1px">
-                        起点：{{carInfo.StartingPoint}}
+                        {{Language.shareCar.startPoint}}：{{carInfo.StartingPoint}}
                     </p>
                     <p style="Margin:1px">
-                        终点：{{carInfo.EndPoint}}
+                        {{Language.shareCar.endPoint}}：{{carInfo.EndPoint}}
                     </p>
                     <p  style="Margin:1px" ng-if="carInfo.IsHaveCar==1">
-                        途径点：{{carInfo.MidPoint}}
+                        {{Language.shareCar.midPoint}}：{{carInfo.MidPoint}}
                     </p>
                     <p style="Margin:1px">
-                        座位数：{{carInfo.SeatNumber}}
+                        {{Language.shareCar.seatCoun}}：{{carInfo.SeatNumber}}
                     </p>
                     <p style="Margin:1px">
-                        详细：{{carInfo.Description}}
+                        {{Language.shareCar.Remarks}}：{{carInfo.Description}}
                     </p>
                 </div>
 
@@ -83,7 +83,7 @@
         </label>
         </h2>
 
-        <button  class="button button-balanced pull-right" ng-click="submitReply()">回复</button>
+        <button  class="button button-balanced pull-right" ng-click="submitReply()">{{Language.menu.submit}}</button>
     </div>
 
 </ion-view>

@@ -93,7 +93,7 @@
   },
   {
     "file": "img/B15Phone2.jpg",
-    "hash": "32eb82bc4a93e0f8305207a0cee172d8"
+    "hash": "2e8a9138b2bdb631d5d8f014a619bd2c"
   },
   {
     "file": "img/back_pressed.png",
@@ -293,7 +293,7 @@
   },
   {
     "file": "js/app-conf.js",
-    "hash": "d3bc33da95aa512771d75eff684aa2d8"
+    "hash": "0a20856df64b3523c343784fd440c3b2"
   },
   {
     "file": "js/app.js",
@@ -301,7 +301,7 @@
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "4ebb39f45f5a3c315e9fb2a4e8b965e4"
+    "hash": "26afa4d83fa2bf73bc79741d840404b7"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -445,7 +445,7 @@
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "8857885c9bd4f2f4ea2b06b0b8ecee2b"
+    "hash": "efa57b5c9ad728f27e09d27857594924"
   },
   {
     "file": "js/service/businessServices.js",
@@ -945,19 +945,19 @@
   },
   {
     "file": "templates/account/account_forgetPassword.html",
-    "hash": "16443782e170faa511770832f51444e1"
+    "hash": "ad12f52786ec17611de87564badb8871"
   },
   {
     "file": "templates/account/account_forgetPasswordNoMobile.html",
-    "hash": "8a127deab8cc9eb0621512720e4546e5"
+    "hash": "571b93fa1c70624082e4022abed67c83"
   },
   {
     "file": "templates/account/account_password.html",
-    "hash": "9f567442851e31e38e068d3ea5b1e45a"
+    "hash": "e38a4fbc040d57d4ab7df74085ebc395"
   },
   {
     "file": "templates/account/account_register.html",
-    "hash": "9a62227b6084c80230b3a1f61d92d50c"
+    "hash": "38b3bd720803f6c3f6999a84af4a267e"
   },
   {
     "file": "templates/account/myAccountMoney.html",
@@ -965,11 +965,11 @@
   },
   {
     "file": "templates/activity/activity-list.html",
-    "hash": "7b150f34cfbad47804f4d74baae9caa6"
+    "hash": "aac03cf7b932e523c6a459d5e99cddcc"
   },
   {
     "file": "templates/activity/activityHtml.html",
-    "hash": "b4b9a3bdcc613107e45fe2a2165ae0bc"
+    "hash": "e5426da845a09f90d49d8686d35e7739"
   },
   {
     "file": "templates/applySubmit/apply-Html.html",
@@ -977,7 +977,7 @@
   },
   {
     "file": "templates/applySubmit/apply-list.html",
-    "hash": "97bf2f366242a6bcd28251b1adf45abe"
+    "hash": "03ab91d645e87d52a877b772fe389773"
   },
   {
     "file": "templates/applySubmit/applyTicket.html",
@@ -993,15 +993,15 @@
   },
   {
     "file": "templates/askForHelp/tab-askForHelp.html",
-    "hash": "78c5a8a252f8b881f012b0eeef05962c"
+    "hash": "5cec2434519fbf634e63d0ba4d1ec762"
   },
   {
     "file": "templates/askForHelp/tab-myHelp.html",
-    "hash": "83d21263868f7be6469c7914d85f04b1"
+    "hash": "6f3c34f2157a8bb6380c4bfeaf139791"
   },
   {
     "file": "templates/askForHelp/tabAskForHelp.html",
-    "hash": "c34ec1566397bd05abb5ad34b79340ca"
+    "hash": "3ec5123dc25ed7777f9f9f698186acfc"
   },
   {
     "file": "templates/b11Workshop/agenda.html",
@@ -1033,19 +1033,19 @@
   },
   {
     "file": "templates/carGps/tab-carList.html",
-    "hash": "c16522095bdb04822b4403b898b36689"
+    "hash": "b35082694f1c5eef0ac200e525c758d3"
   },
   {
     "file": "templates/carGps/tab-carPicture.html",
-    "hash": "feb680f3347f3bfbb2d35eaa9c133c4e"
+    "hash": "b39411175a641edc4d471a5fb888724f"
   },
   {
     "file": "templates/carGps/tab-map.html",
-    "hash": "d36f3a0afa42c4127a2afa4d4f322a74"
+    "hash": "356dc232eb41fe96137662104881c8ba"
   },
   {
     "file": "templates/carGps/tabCar.html",
-    "hash": "f3f604c5b1a11caf29ca08328af980ad"
+    "hash": "645673f495a9b878f43e7f93b79334da"
   },
   {
     "file": "templates/carPicture.html",
@@ -1097,43 +1097,43 @@
   },
   {
     "file": "templates/cust/tab-cust.html",
-    "hash": "a9534747c289a49ce18eaa98e233493d"
+    "hash": "47321b1ccca197146118adbff113e268"
   },
   {
     "file": "templates/goldIdea/tab-goldIdea.html",
-    "hash": "5c90c435238288ffd11783627c0d0688"
+    "hash": "837855c602408e7c3b6408ee8a0e3468"
   },
   {
     "file": "templates/goldIdea/tab-goldIdeaShow.html",
-    "hash": "5fd832d15c550de13dd343357f446bcf"
+    "hash": "79538e13cfc68793f15fe8e34d4c4e54"
   },
   {
     "file": "templates/goldIdea/tab-myGoldIdea.html",
-    "hash": "e08a2befaa8f1b5da9a1c3fcace67802"
+    "hash": "0c8ea7f073a8d9bebd715ac92e88b611"
   },
   {
     "file": "templates/goldIdea/tabGoldIdea.html",
-    "hash": "22f67e78cc5c462fdb785fd5eba4535d"
+    "hash": "b5abc8dd4023bc2e17091a20f3f599e9"
   },
   {
     "file": "templates/handBook/handbook_lg.html",
-    "hash": "e21fd99e36e96f079a951c2b8f22c093"
+    "hash": "845ec551eb53a4ed577ffc3489122003"
   },
   {
     "file": "templates/handBook/handbookitemFour.html",
-    "hash": "0928a5c36057bf8a7174ae0fd666bb1b"
+    "hash": "d86f61584df0d47e7c091b5d75cfffd2"
   },
   {
     "file": "templates/handBook/handbookItemOne.html",
-    "hash": "f5791b801044f308deb294a3afe095e6"
+    "hash": "fd672120b3f225b72d5223a5dc045bd1"
   },
   {
     "file": "templates/handBook/handbookitemThree.html",
-    "hash": "129ee3f05b3f3de9b3e7de4e4491ef96"
+    "hash": "925ae9426e02d30f622bb39f61e41f94"
   },
   {
     "file": "templates/handBook/handbookitemTwo.html",
-    "hash": "5f3a784cd99f08b3b2442e825a1b66ac"
+    "hash": "79fc70bfce0d57a3509d926225a3e5b2"
   },
   {
     "file": "templates/HomeNotice.html",
@@ -1145,19 +1145,19 @@
   },
   {
     "file": "templates/hotPhone/tab-B15hotPhone.html",
-    "hash": "d3453cb232426cfd893e1e6f4953070c"
+    "hash": "3f60750062beecf495beea094c20062e"
   },
   {
     "file": "templates/hotPhone/tab-hotPhone.html",
-    "hash": "cf2f1db4826a9fef63c1d2fbc9244ab6"
+    "hash": "b203196b45552a85e6426551dab20b8a"
   },
   {
     "file": "templates/insurance/insurance-Html.html",
-    "hash": "2826342765a7a7e0dd0e714cbb4f34a4"
+    "hash": "9165f799093ea5c4426bbb0c317b1db5"
   },
   {
     "file": "templates/insurance/insurance-list.html",
-    "hash": "366e88f0451e3753f30740b75e7f6e12"
+    "hash": "3c82127a1caa50f33639e1e6b0e2e3b0"
   },
   {
     "file": "templates/lightPower.html",
@@ -1177,19 +1177,19 @@
   },
   {
     "file": "templates/mealOrder/tab-mealLinkMan.html",
-    "hash": "8b5de137b0d0d2f3b9bddacf559c865d"
+    "hash": "b24b4316511e9e26733156a011f5eb97"
   },
   {
     "file": "templates/mealOrder/tab-mealList.html",
-    "hash": "c73a8fba5af1a28f09b40729c84f89a4"
+    "hash": "2a86c03dd9f7f12db92a39777ac2abb2"
   },
   {
     "file": "templates/mealOrder/tab-myOrder.html",
-    "hash": "d175604af7682fe43cd224b7210db0c2"
+    "hash": "20153fa495cdda8a336d60b535df16a3"
   },
   {
     "file": "templates/mealOrder/tabMealOrder.html",
-    "hash": "7e672ede732715baf3a049657fd1b485"
+    "hash": "98f6b7ba6c5455ce2ef26333c664357b"
   },
   {
     "file": "templates/menu.html",
@@ -1197,19 +1197,19 @@
   },
   {
     "file": "templates/myMsg/myMsgDetail.html",
-    "hash": "f175ce2ea31c4c98b173ba3864719af6"
+    "hash": "48c1c372212c2f4780e7deffbb724a1f"
   },
   {
     "file": "templates/myMsg/tab-myMsg.html",
-    "hash": "481c5555b9b1085bf8bd37d06140e85f"
+    "hash": "661fcfe2d5d99a60729cfefbc3fbd51e"
   },
   {
     "file": "templates/notice/notice-list.html",
-    "hash": "2025769702567133b9b905fb13bc2d92"
+    "hash": "e5ae10657d06a716105caa8adb51bad9"
   },
   {
     "file": "templates/notice/noticeHtml.html",
-    "hash": "c23eedf0162d6d6aaee6c5c7196a9cd4"
+    "hash": "c243ad0a8251a8ea574bdac3b94672a8"
   },
   {
     "file": "templates/Photo.html",
@@ -1217,35 +1217,35 @@
   },
   {
     "file": "templates/points/tab-account.html",
-    "hash": "cb3f28ded7ec777a6fe2ed626c5a1fce"
+    "hash": "6a6b1f4e1a5a4385d98215cc6d05774d"
   },
   {
     "file": "templates/points/tab-points.html",
-    "hash": "ab2bac78b1487f22984b9688f74c5f64"
+    "hash": "256680ee2413573ccf7ca8d069dd461d"
   },
   {
     "file": "templates/points/tab-ranking.html",
-    "hash": "f0c078f3342564e7911505ce670ac1d5"
+    "hash": "85a999f12e2a43332534dc77a3488489"
   },
   {
     "file": "templates/points/tab-rules.html",
-    "hash": "3cc22637edd618e3df4082a994921229"
+    "hash": "5091025e77fedba1d3e008f03d91bd09"
   },
   {
     "file": "templates/points/tabPoints.html",
-    "hash": "6061cd5078d41d587583b70bb6baa131"
+    "hash": "1def74018a0a2d720cf4412aeb9bfc6a"
   },
   {
     "file": "templates/realNameRegistration/IDNOFilling.html",
-    "hash": "4a3b634af79699101bfc2cd8544acefa"
+    "hash": "5444321e9e5d6c7323e5690ac952ab63"
   },
   {
     "file": "templates/research/research-list.html",
-    "hash": "2f989fca3cd6b2cd22d3e6eca5d1117e"
+    "hash": "3b25682fa60e26014730463f55cbb6b3"
   },
   {
     "file": "templates/research/researchHtml.html",
-    "hash": "92e088c247292819f7faa6ff42e92a91"
+    "hash": "91e16685a0127e73f0e1ed1b5e71a068"
   },
   {
     "file": "templates/shareCar/protocolHtml.html",
@@ -1253,31 +1253,31 @@
   },
   {
     "file": "templates/shareCar/shareCarDetail.html",
-    "hash": "44b052e802ec29bc5e736ad472dfafd4"
+    "hash": "0dcdb4b060994e6b9a46c50050289960"
   },
   {
     "file": "templates/shareCar/tab_ShareCar.html",
-    "hash": "eb106e34803fc8c2dc259104656387b6"
+    "hash": "976f3e0ddc0e680f1dbfcd275cf9a72e"
   },
   {
     "file": "templates/shareCar/tab-myOrder.html",
-    "hash": "bc7f8fcd237574b52339c07510093195"
+    "hash": "3c5c5cd5477157c23e3de702a2a86a94"
   },
   {
     "file": "templates/shareCar/tab-shareCarList.html",
-    "hash": "dcdf3fe255852a60382c9120bc970efd"
+    "hash": "c05358cf573d725502308a8e155a7a0b"
   },
   {
     "file": "templates/tab-account.html",
-    "hash": "e417eadfea5801df8c53dbb82b7fa942"
+    "hash": "5f7e006d9bbd7170fc65797fd3fead63"
   },
   {
     "file": "templates/tab-goodJob.html",
-    "hash": "76cb219e6741c6d0c163040994aebfb4"
+    "hash": "126123271ae6f1a0c7f70d7f1fbba251"
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "1beadff4ca0e1652d564bc7117c6758c"
+    "hash": "66ea6b41ea7ecf20149a286af12ef6b7"
   },
   {
     "file": "templates/tab-homecopy.html",
@@ -1285,7 +1285,7 @@
   },
   {
     "file": "templates/tab-kqjl.html",
-    "hash": "3a084b02ff488ef3ef2609e4f2e3bc84"
+    "hash": "73dd23ed175848ae665601b12563abfe"
   },
   {
     "file": "templates/tab-login.html",
@@ -1297,11 +1297,11 @@
   },
   {
     "file": "templates/tab-signin.html",
-    "hash": "7425c15f7f7fe60262f05b238016f194"
+    "hash": "55be1fa55bd41d616f0f298a64c9303b"
   },
   {
     "file": "templates/tabs.html",
-    "hash": "d4c5dc62c78453ebb1c00e1eaecbb424"
+    "hash": "998c4d59fe604bfae557d90dbb25a2a7"
   },
   {
     "file": "www.sln",

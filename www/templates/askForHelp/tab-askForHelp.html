@@ -1,6 +1,6 @@
-<ion-view view-title="我要求助" cache-view="false"  >
+<ion-view view-title="{{Language.help.title}}" cache-view="false"  >
     <ion-nav-buttons side="left">
-        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
     <ion-content  style="background-color:skyblue">
         <ion-slide-box show-pager="false">
@@ -9,25 +9,25 @@
 
         <div class="list card" >
             <div class="item item-input">
-                <span class="input-label" style="width: 10px;font-size:80%" >姓名</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <span class="input-label" style="width: 10px;font-size:80%" >{{Language.like.name}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                 <input type="text" style="font-size:80%" readonly="readonly"  ng-model="accessEmployee.CName"/>
             </div>
             <div class="item item-input">
-                <span class="input-label" style="width: 10px;font-size:80%">工号</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <span class="input-label" style="width: 10px;font-size:80%">{{Language.like.employee_ID}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                 <input type="text" style="font-size:80%;"  readonly="readonly" ng-model="accessEmployee.WorkdayNO"/>
             </div>
             <div class="item item-input">
-                <span class="input-label" style="width: 10px;font-size:80%">联系电话</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <span class="input-label" style="width: 10px;font-size:80%">{{Language.help.mobile}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                 <input type="text" style="font-size:80%"  ng-model="MobileNo"/>
             </div>
         </div>
         <div class="list card">
             <label class="item item-input" >
-                <textarea rows="7" style="font-size:80%" placeholder="具体描述遇到困难或问题"  ng-model="helpContent"></textarea>
+                <textarea rows="7" style="font-size:80%" placeholder="{{Language.help.content}}"  ng-model="helpContent"></textarea>
             </label>
         </div>
 
-        <div style="text-align: center"><button  class="button  button-positive" ng-click="Submit(helpContent)">提 交</button></div>
+        <div style="text-align: center"><button  class="button  button-positive" ng-click="Submit(helpContent)">{{Language.menu.submit}}</button></div>
         <br/>
     </ion-content>
 

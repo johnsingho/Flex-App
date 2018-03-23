@@ -1,6 +1,6 @@
 <ion-view cache-view="false" view-title="{{evaluate_name}}"  class="animated flip">
     <ion-nav-buttons side="left">
-        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">首页</button>
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
     <!--<ion-nav-buttons side="right">-->
         <!--<button class="button button-icon button-clear" ng-click="Submit()" >提交</button>-->
@@ -9,19 +9,12 @@
     <ion-content scroll="true" style="{{BgCSS}}">
         <div ng-if="showFirst" style=" text-align:center; margin-top:400px;">
             <!--<p ng-if="showFirst" style="font-size:13px; text-align:center; margin-top:90px;"><span style="color:#ffffff;font-weight:bold;">(这个系统正在开发调试中，在系统正式上线前，钱包数值无效)</span></p>-->
-            <button ng-if="showFirst"   class="button  button-positive" ng-click="Start()">点我开始</button>
+            <button ng-if="showFirst"   class="button  button-positive" ng-click="Start()">{{Language.evaluation.startButton}}</button>
 
         </div>
 
         <ion-slide-box ng-if="showSlide"  class="slideRule animated bounceIn"  ng-if="rules" delegate-handle="slideImg"  does-continue="true" auto-play="false" slide-interval="3000" show-pager="false" >
-            <!--<ion-slide ng-if="showFirst" style="height: 400px; margin-top:90px;">-->
-                <!--<h3 style="font-size:30px; text-align:center;font-weight:bold">欢迎参加有奖自评</h3>-->
-                <!--<p style="font-size:20px; text-align:center;">每天都是新的自己</p>-->
-                <!--<p style="font-size:20px; text-align:center;">每天都有惊喜</p>-->
-                <!--<button  class="button  button-positive" ng-click="Start()">点我开始</button>-->
-                <!--<br>-->
-                <!--<p style="font-size:13px; text-align:center; margin-top:90px;"><span style="color: red">(这个系统正在开发调试中，在系统正式上线前，钱包数值无效)</span></p>-->
-            <!--</ion-slide>-->
+
 
             <ion-slide  ng-repeat="rule in rules track by $index">
                 <h3 style="font-size:20px; text-align:left;font-weight:bold">{{ rule.Sort }}.{{ rule.CHNContent }}</h3>
@@ -29,12 +22,12 @@
                 <img style="height: 180px" ng-src="{{ rule.Img }}">
                 <!--Points ({{rule.Points}})-->
                 <br />
-                <p style="text-align:left">请选择：</p>
+                <p style="text-align:left">{{Language.evaluation.sel}}</p>
                 <ion-list   ng-repeat="sorce in rule.RulesSorce track by $index" >
                     <ion-radio  name=" {{rule.Sort}}"  ng-click="CheckChang(rule,sorce)"> <h4>{{sorce.Item}}</h4> </ion-radio>
                 </ion-list>
-                <button ng-if="isShowSubmit" class="button button-block button-positive  animated zoomInUp" ng-click="Submit()">提 交</button>
-                <a href="#" ng-if="showdescription">此项功能暂时未对你所在的事业部开放，敬请期待</a>
+                <button ng-if="isShowSubmit" class="button button-block button-positive  animated zoomInUp" ng-click="Submit()">{{Language.menu.submit}}</button>
+                <a href="#" ng-if="showdescription">{{Language.evaluation.ps}}</a>
             </ion-slide>
         </ion-slide-box>
 

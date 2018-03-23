@@ -2,7 +2,7 @@
 
 
     <div  class="col col-25">
-        <div >类型</div>
+        <div >{{Language.realName.type}}</div>
     </div>
 
     <div  class="col">
@@ -10,14 +10,15 @@
                 <!--ng-model="selPersonType.item" ng-change="PersonTypeUpdate(selPersonType.item)"></select>-->
 
         <select  ng-model="selPersonType"  ng-change="PersonTypeUpdate(selPersonType)">
-            <option selected="">中国</option>
-            <option >外国</option>
+            <option selected="">{{Language.realName.chinese}}</option>
+            <option >{{Language.realName.foreigner}}</option>
+
         </select>
     </div>
 </div>
 <div class="row">
     <div  class="col col-25">
-        <div >身份证</div>
+        <div >{{Language.realName.idNO}}</div>
     </div>
 
     <div  class="col">
@@ -26,7 +27,7 @@
 </div>
 <div class="row">
     <div  class="col col-25">
-      <div >工号</div>
+      <div >{{Language.like.employee_ID}}</div>
     </div>
 
     <div  class="col">
@@ -35,7 +36,7 @@
 </div>
 <div class="row">
     <div  class="col col-25">
-        <div >姓名</div>
+        <div >{{Language.realName.name}}</div>
     </div>
 
     <div  class="col">
