@@ -355,27 +355,43 @@ angular.module('evaluationApp.businiessControllers', [])
 
 
     })
-    .controller('NoticeListCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
+    .controller('NoticeListCtrl', function($scope,$ionicScrollDelegate,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        var params= commonServices.getBaseParas();
-        noticeService.getNoticeList(params).then(function(data){
 
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            $scope.noticeList=data;
+        $scope.$on("$ionicView.beforeEnter", function() {
+            var clearHistoryForIndexPage = function() {
+                var history = $ionicHistory.forwardView();
+                if (!history) {
+                    var params= commonServices.getBaseParas();
+                    $scope.GetDateList();
 
-
-            for(var i=0;i<$scope.noticeList.length;i++){
-                console.log($scope.noticeList[i].ImgPath);
-                if($scope.noticeList[i].ImgPath==null||$scope.noticeList[i].ImgPath== "undefined"){
-                    $scope.noticeList[i].ImgPath='img/user-100.png'
+                    $ionicScrollDelegate.scrollTop();
                 }
-            }
-            console.log($scope.noticeList);
+            };
+            clearHistoryForIndexPage();
         });
+
+        $scope.GetDateList=function(){
+            var params= commonServices.getBaseParas();
+            var url=commonServices.getUrl("MsgService.ashx","GetNoticeList");
+            commonServices.getDataList(params,url).then(function(data){
+                if(data=="Token is TimeOut"){
+                    alertService.showAlert("登录失效，请重新登录");
+                    $state.transitionTo('signin');
+                }
+                $scope.noticeList=data;
+
+
+                for(var i=0;i<$scope.noticeList.length;i++){
+
+                    if($scope.noticeList[i].ImgPath==null||$scope.noticeList[i].ImgPath== "undefined"){
+                        $scope.noticeList[i].ImgPath='img/user-100.png'
+                    }
+                }
+
+            });
+        };
 
         $scope.open=function(notice){
             CacheFactory.remove('noticeID');
@@ -509,6 +525,58 @@ angular.module('evaluationApp.businiessControllers', [])
 
 
 
+    })
+    .controller('EarthdayNoticeListCtrl', function($scope,$ionicScrollDelegate,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
+
+        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
+
+        $scope.$on("$ionicView.beforeEnter", function() {
+            var clearHistoryForIndexPage = function() {
+                var history = $ionicHistory.forwardView();
+                if (!history) {
+                    var params= commonServices.getBaseParas();
+                    $scope.GetDateList();
+
+                    $ionicScrollDelegate.scrollTop();
+                }
+            };
+            clearHistoryForIndexPage();
+        });
+
+        $scope.GetDateList=function(){
+            var params= commonServices.getBaseParas();
+            var url=commonServices.getUrl("MsgService.ashx","GetEarthWeekNoticeList");
+            commonServices.getDataList(params,url).then(function(data){
+                if(data=="Token is TimeOut"){
+                    alertService.showAlert("登录失效，请重新登录");
+                    $state.transitionTo('signin');
+                }
+                $scope.noticeList=data;
+
+
+                for(var i=0;i<$scope.noticeList.length;i++){
+
+                    if($scope.noticeList[i].ImgPath==null||$scope.noticeList[i].ImgPath== "undefined"){
+                        $scope.noticeList[i].ImgPath='img/user-100.png'
+                    }
+                }
+
+            });
+        };
+
+        $scope.open=function(notice){
+            CacheFactory.remove('noticeID');
+            CacheFactory.save('noticeID',notice.NoticeID);
+            $state.go('noticeHtml');
+        };
+
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
     })
     .controller('ApplyCtrl', function($scope,$rootScope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
 
@@ -745,8 +813,6 @@ angular.module('evaluationApp.businiessControllers', [])
                     });
                 }
             });
-
-
 
         }
 

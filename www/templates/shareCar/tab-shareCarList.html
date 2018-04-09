@@ -1,4 +1,4 @@
-<ion-view view-title="{{Language.shareCar.tabCar}}" cache-view="false">
+<ion-view view-title="{{Language.shareCar.tabCar}}" cache-view="true">
     <ion-nav-buttons side="left">
         <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
@@ -88,40 +88,40 @@
 
                 <div class="list card" ng-if="isHaveCar==1">
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.like.name}}</span><span class="input-label" style="width: 5px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span><span class="input-label" style="width: 5px;color: red">*</span>
                         <div style="width: 130px;" > <input type="text" style="font-size:80%" readonly="readonly"  ng-model="accessEmployee.CName"/></div>
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.like.employee_ID}}</span><span class="input-label" style="width: 5px;color: red">*</span>
-                        <input type="text" style="width: 10px;font-size:80%"  readonly="readonly" ng-model="accessEmployee.WorkdayNO"/>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.employee_ID}}</span><span class="input-label" style="width: 5px;color: red">*</span>
+                        <input type="text" style="width: 30px;font-size:80%"  readonly="readonly" ng-model="accessEmployee.WorkdayNO"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.mobile}}</span><span class="input-label" style="width: 5px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.mobile}}</span><span class="input-label" style="width: 5px;color: red">*</span>
                         <div style="width: 130px;" ><input type="text" style="font-size:80%"  ng-model="Submitdata.MobileNo"/></div>
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.carNo}}</span><span class="input-label" style="width: 5px;color: red">*</span>
-                        <input type="text" style="width: 10px;font-size:80%;"  readonly="readonly" ng-model="Submitdata.CarNo"/>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.carNo}}</span><span class="input-label" style="width: 5px;color: red">*</span>
+                        <input type="text" style="width: 30px;font-size:80%;"  readonly="readonly" ng-model="Submitdata.CarNo"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.startPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.startPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="text" style="font-size:80%"  ng-model="Submitdata.StartPoint"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.EndPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.EndPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="text" style="font-size:80%"  ng-model="Submitdata.EndPoint"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.midPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.midPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="text" style="font-size:80%"  ng-model="Submitdata.MidPoint"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.startTime}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.startTime}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="datetime-local" id="stTime" value="2015-09-24T13:59:59"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.endTime}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.endTime}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="datetime-local" id="eTime" value="2015-09-24T13:59:59"/>
                     </div>
 
                     <div class="item item-input item-select">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.seatCoun}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.seatCoun}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <select  ng-model="seatNumber"  ng-change="selSeatNumber(seatNumber)">
                             <option selected="">{{Language.shareCar.select}}</option>
                             <option >1</option>
@@ -133,7 +133,7 @@
                         </select>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.Remarks}}：</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.Remarks}}：</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <textarea rows="3" id="bz" style="font-size:80%;width: 500px" placeholder="{{Language.shareCar.RemarksContent}}："  ng-model="Submitdata.Description"></textarea>
                     </div>
                 </div>
@@ -141,33 +141,33 @@
 
                 <div class="list card" ng-if="isHaveCar==0">
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.like.name}}</span><span class="input-label" style="width: 5px;color: red">*</span>
-                        <input type="text" style="width: 10px;font-size:80%" readonly="readonly"  ng-model="accessEmployee.CName"/>
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.like.employee_ID}}</span><span class="input-label" style="width: 5px;color: red">*</span>
-                        <input type="text" style="width: 10px;font-size:80%"  readonly="readonly" ng-model="accessEmployee.WorkdayNO"/>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span><span class="input-label" style="width: 5px;color: red">*</span>
+                        <input type="text" style="width: 30px;font-size:80%" readonly="readonly"  ng-model="accessEmployee.CName"/>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.employee_ID}}</span><span class="input-label" style="width: 5px;color: red">*</span>
+                        <input type="text" style="width: 30px;font-size:80%"  readonly="readonly" ng-model="accessEmployee.WorkdayNO"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.mobile}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.mobile}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="text" style="font-size:80%"  ng-model="Submitdata.MobileNo"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.startPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.startPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="text" style="font-size:80%"  ng-model="Submitdata.StartPoint"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.EndPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.EndPoint}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="text" style="font-size:80%"  ng-model="Submitdata.EndPoint"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.startTime}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.startTime}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="datetime-local" id="startTime2" value="2015-09-24T13:59:59"/>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.endTime}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.endTime}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <input type="datetime-local" id="endTime2" value="2015-09-24T13:59:59"/>
                     </div>
                     <div class="item item-input item-select">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.seatCoun}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.seatCoun}}</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <select  ng-model="seatNumber"  ng-change="selSeatNumber(seatNumber)">
                             <option selected="">{{Language.shareCar.select}}</option>
                             <option >1</option>
@@ -179,7 +179,7 @@
                         </select>
                     </div>
                     <div class="item item-input">
-                        <span class="input-label" style="width: 10px;font-size:80%">{{Language.shareCar.Remarks}}：</span><span class="input-label" style="width: 10px;color: red">*</span>
+                        <span class="input-label" style="width: 30px;font-size:80%">{{Language.shareCar.Remarks}}：</span><span class="input-label" style="width: 10px;color: red">*</span>
                         <textarea rows="3" id="bz" style="font-size:80%;width: 500px" placeholder="{{Language.shareCar.RemarksContent}}"  ng-model="Submitdata.Description"></textarea>
                     </div>
                 </div>

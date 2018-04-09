@@ -498,6 +498,7 @@ angular.module('evaluationApp.router', [])
                     }
                 }
             })
+
             .state('handbook_lg', {
                 url: '/handbook_lg',
                 templateUrl: 'templates/handBook/handbook_lg.html',
@@ -596,6 +597,28 @@ angular.module('evaluationApp.router', [])
                 url: '/GBS',
                 templateUrl: 'templates/GBS/gbs-list.html',
                 controller: 'GBSListCtrl'
+            })
+            .state('certificate', {
+                url: '/certificate',
+                templateUrl: 'templates/GBS/certificate/certificate-list.html',
+                controller: 'CertificateCtrl'
+            })
+            .state('certificateSubmit', {
+                url: '/certificateSubmit',
+                templateUrl: 'templates/GBS/certificate/certificate-submit.html',
+                controller: 'CertificateSubmit'
+            })
+            .state('visaApply', {
+                url: '/visaApply',
+                templateUrl: 'templates/GBS/certificate/visaApply.html',
+                controller: 'VisaApplyCtrl'
+
+            })
+
+            .state('earthWeekNoticeList', {
+                url: '/earthWeekNoticeList',
+                templateUrl: 'templates/earthWeek/notice-list.html',
+                controller: 'EarthdayNoticeListCtrl'
             })
 
 

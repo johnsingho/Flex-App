@@ -45,7 +45,7 @@
   },
   {
     "file": "css/style.css",
-    "hash": "2b7a360d1b5c97b45aa7f58859404325"
+    "hash": "f7c8ce502a23fabdb66642ec2f01af79"
   },
   {
     "file": "fonts/Slide-icons.dev.svg",
@@ -289,11 +289,11 @@
   },
   {
     "file": "index.html",
-    "hash": "5afb1ab22061e94e9644143f64fcf591"
+    "hash": "320df2db0b405207a6725e0c8d5e764e"
   },
   {
     "file": "js/app-conf.js",
-    "hash": "0a20856df64b3523c343784fd440c3b2"
+    "hash": "43d047a990df627a0b81a6ce3f33c5d0"
   },
   {
     "file": "js/app.js",
@@ -301,7 +301,7 @@
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "26afa4d83fa2bf73bc79741d840404b7"
+    "hash": "46410615dbbe0236103a811a5f774aaf"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -309,11 +309,11 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "2637aea218c1e8a38ff00398435f235f"
+    "hash": "7b2a373cdd1c63ac7b6a8d0a1a75de98"
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "5a0aa637f70a97dcfb97706aac2f2d25"
+    "hash": "500e420431fc70568362cda65cf7006e"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -321,7 +321,7 @@
   },
   {
     "file": "js/controller/sharCarController.js",
-    "hash": "3adaaa769bb509deb6f16d995d71aefd"
+    "hash": "38e9fc8e49c572c87c91c55b28431f84"
   },
   {
     "file": "js/coordtransform/.gitattributes",
@@ -441,7 +441,7 @@
   },
   {
     "file": "js/router.js",
-    "hash": "ce2e66138d9359f690ab5edef105850e"
+    "hash": "b880e4232125c571887974dc0b4a8f21"
   },
   {
     "file": "js/service/appServices.js",
@@ -1100,6 +1100,30 @@
     "hash": "47321b1ccca197146118adbff113e268"
   },
   {
+    "file": "templates/earthWeek/notice-list.html",
+    "hash": "a3390c80877bd94a982942d3be02f6db"
+  },
+  {
+    "file": "templates/earthWeek/noticeHtml.html",
+    "hash": "c243ad0a8251a8ea574bdac3b94672a8"
+  },
+  {
+    "file": "templates/GBS/certificate/certificate-list.html",
+    "hash": "6551461617e520b3768832ee0dfc5f45"
+  },
+  {
+    "file": "templates/GBS/certificate/certificate-submit.html",
+    "hash": "5600c3cdb82e2125e33e8408397561e1"
+  },
+  {
+    "file": "templates/GBS/certificate/visaApply.html",
+    "hash": "128acae00d472f4c157bdb22f68c9921"
+  },
+  {
+    "file": "templates/GBS/gbs-list.html",
+    "hash": "62bad92286b326b7ccdd339f0e26e9a4"
+  },
+  {
     "file": "templates/goldIdea/tab-goldIdea.html",
     "hash": "837855c602408e7c3b6408ee8a0e3468"
   },
@@ -1117,7 +1141,7 @@
   },
   {
     "file": "templates/handBook/handbook_lg.html",
-    "hash": "845ec551eb53a4ed577ffc3489122003"
+    "hash": "722f082406b4bd01fbef245361679339"
   },
   {
     "file": "templates/handBook/handbookitemFour.html",
@@ -1158,6 +1182,18 @@
   {
     "file": "templates/insurance/insurance-list.html",
     "hash": "3c82127a1caa50f33639e1e6b0e2e3b0"
+  },
+  {
+    "file": "templates/kqcx/kqjl.html",
+    "hash": "9f4f3f5a5a7356f6317480a5ebad9b03"
+  },
+  {
+    "file": "templates/kqcx/kqyc.html",
+    "hash": "e49bf140358e06e79ae7f52bee6afc92"
+  },
+  {
+    "file": "templates/kqcx/tabKqcx.html",
+    "hash": "331bf18a1df98e406e44ea6c68dbb53c"
   },
   {
     "file": "templates/lightPower.html",
@@ -1205,7 +1241,7 @@
   },
   {
     "file": "templates/notice/notice-list.html",
-    "hash": "e5ae10657d06a716105caa8adb51bad9"
+    "hash": "8f2244455e198df735bd7601ecf7dddf"
   },
   {
     "file": "templates/notice/noticeHtml.html",
@@ -1265,7 +1301,7 @@
   },
   {
     "file": "templates/shareCar/tab-shareCarList.html",
-    "hash": "c05358cf573d725502308a8e155a7a0b"
+    "hash": "e0548899a83d10eb100ebefddeeec6f7"
   },
   {
     "file": "templates/tab-account.html",
@@ -1277,7 +1313,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "66ea6b41ea7ecf20149a286af12ef6b7"
+    "hash": "aa51725944f38c70db3b70433090cf09"
   },
   {
     "file": "templates/tab-homecopy.html",

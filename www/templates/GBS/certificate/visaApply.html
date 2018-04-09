@@ -1,0 +1,117 @@
+<ion-view view-title="Visa Apply" cache-view="false"  >
+
+    <ion-content  style="background-color:skyblue">
+
+       <div class="list card" >
+           <div class="item item-input">
+               <span class="input-label" style="width: 30px;font-size:80%" >{{Language.like.name}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+               <input type="text" style="font-size:80%"  readonly="readonly"  ng-model="visa.CName"/>
+           </div>
+
+           <div class="item item-input">
+               <span class="input-label" style="width:30px;font-size:80%">{{Language.like.employee_ID}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+               <input type="text" style="font-size:80%"  readonly="readonly" ng-model="visa.WorkdayNO"/>
+           </div>
+           <div class="item item-input">
+               <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.department}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+               <input type="text" style="font-size:80%"  readonly="readonly" ng-model="visa.Organization"/>
+           </div>
+           <div class="item item-input">
+               <span class="input-label" style="width: 50px;font-size:80%">{{Language.shareCar.mobile}}</span><span class="input-label" style="width: 10px;color: red">*</span>
+               <input type="text" style="font-size:80%" placeholder="{{Language.shareCar.mobile}}" ng-model="visa.MobileNo"/>
+           </div>
+           <div class="item item-input">
+               <span class="input-label" style="width: 60px;font-size:80%">Issued date:</span><span class="input-label" style="width: 10px;color: red">*</span>
+               <!--<input type="text" style="font-size:80%"  ng-model="visa.DepartureDateFromChina"/>-->
+               <input type="date" id="IssuedDate"/>
+           </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Full name in passport of applicant:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" placeholder="ZHANG SAN" style="font-size:80%"  ng-model="visa.FullNameInPassport"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Passport No of applicant:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text"  placeholder="Gxxxxxx" style="font-size:80%"  ng-model="visa.PassportNo"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Date of Issue of applicant passport:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <!--<input type="text"  placeholder="2018-01-01" style="font-size:80%"  ng-model="visa.PassportDateIssue"/>-->
+                <input type="date" id="PassportDateIssue"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Date of Expiry of applicant passport:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <!--<input type="text" style="font-size:80%"  ng-model="visa.PassportDateExpiry"/>-->
+                <input type="date" id="PassportDateExpiry"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Date of Birth of applicant:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <!--<input type="text" style="font-size:80%"  ng-model="visa.BirthDate"/>-->
+                <input type="date" id="BirthDate"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Nationality of applicant:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text"  placeholder="CHINA" style="font-size:80%"  ng-model="visa.Nationality"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Gender of applicant:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <select class="button " style="font-size:80%"  ng-options='t.name for t in Gender'
+                        ng-model="visa.Gender" ></select>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Job Title of applicant:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text"  placeholder="HR ASSOCIATE" style="font-size:80%"  ng-model="visa.JobTitle"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Company name of applicant:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" placeholder="Flextronics Manufacturing" style="font-size:80%"  ng-model="visa.CompanyName"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Purpose of Visit:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" placeholder="have business meeting" style="font-size:80%"  ng-model="visa.PurposeOfVisit"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Date of Arrival to China:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <!--<input type="text"  style="font-size:80%"  ng-model="visa.ChinaArrivalDate"/>-->
+                <input type="date" id="ChinaArrivalDate"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Date of Departure from China:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <!--<input type="text" style="font-size:80%"  ng-model="visa.DepartureDateFromChina"/>-->
+                <input type="date" id="DepartureDateFromChina"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Visa type:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <select class="button " style="font-size:80%"  ng-options='t.name for t in listVisaType'
+                        ng-model="visa.VisaType" ></select>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Name of Contact person:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text"  placeholder="Echo XXX" style="font-size:80%"  ng-model="visa.ContactpersonName"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Job title of Contact person:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" placeholder="associate"  style="font-size:80%"  ng-model="visa.ContactPersonJobtitle"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Contact Telephone of Contact person:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text"  placeholder="(00)8618926985898"  style="font-size:80%"  ng-model="visa.ContactPersonTelephone"/>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 60px;font-size:80%">Contact Email of contact person:</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" placeholder="Echo.XXX@flex.com" style="font-size:80%"  ng-model="visa.ContactPersonEmail"/>
+            </div>
+            <div class="item item-body">
+                <span style="font-size:80%">Who afford the expense:<span style="width: 10px;color: red">*</span></span>
+                <p  style="font-size:80%;color: red">(must fill exactly: applicant themselves, applicant compay or Flex)</p>
+            </div>
+            <div class="item item-input">
+                <input type="text" placeholder="Flextronics Manufacturing (Zhuhai) Co., Ltd" style="font-size:80%"  ng-model="visa.ExpenseAfford"/>
+            </div>
+        </div>
+
+        <div style="text-align: center"><button  class="button  button-positive" ng-click="Submit()">Submit</button></div>
+
+
+    </ion-content>
+
+</ion-view>

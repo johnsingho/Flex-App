@@ -3,10 +3,10 @@
  */
 
 //本机开发
-var API_HOST = 'http://localhost:64511';
+//var API_HOST = 'http://localhost:64511';
 
 //正式环境
-//var API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
+var API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
 
 var API = {
 
@@ -161,7 +161,8 @@ var ZH_CN = {
         handbook:"员工手册",
         apply:"报 名",
         insurance:"商业保险",
-        GBS:'GBS HR'
+        GBS:'GBS HR',
+        earthday:"地球周"
     },
     myFlex:{
         employee_ID: "工号",
@@ -257,6 +258,11 @@ var ZH_CN = {
         absenteeismTime: "旷工小时",
         workingHours:"实际工时",
         attendanceTime:"出勤时间",
+        compassionateleave:"事假（小时）",
+        sickLeave:"病假（小时）",
+        injuryLeave:"工伤假（小时）",
+        fullpay:"全薪假（小时）",
+        OT:"加班",
         date:"日期",
         title:"考勤查询",
         selDay:'选择时长',
@@ -267,6 +273,14 @@ var ZH_CN = {
         title2:'考勤记录，共',
         title3:'条',
         content:"请遵循公司信息保密政策，未经授权严禁转载分享"
+    },
+    certificate:{
+        title:'自助证明',
+        incomeCertificate:'收入证明',
+        certificateOfEmployment:'在职证明',
+        certificateOfTakingLeave:'休假证明（仅供商业保险使用）',
+        Use:"用途",
+        UseContent:"购房/购车/信用卡申请/资格考试/居住证/商业保险申报"
     },
     xfcx:{
         title:"消费查询",
@@ -401,7 +415,8 @@ var ZH_US = {
         handbook: "Employee Handbook",
         apply: "Sign Up",
         insurance: "Commercial Insurance",
-        GBS:'GBS HR'
+        GBS:'GBS HR',
+        earthday:"Earth Week"
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -497,6 +512,11 @@ var ZH_US = {
         absenteeismTime: "Absent time (hour)",
         workingHours:"Actual hours",
         attendanceTime:"Participation time(hour)",
+        compassionateleave:"Compassionate Leave",
+        sickLeave:"Sick Leave",
+        injuryLeave:"Injury Leave",
+        fullpay:"Full Pay",
+        OT:"OT",
         date:"Date",
         title:" Attendance Inquiry ",
         selDay:'Period',
@@ -507,6 +527,14 @@ var ZH_US = {
         title2:'Attendance record, total ',
         title3:'items',
         content:" Please follow the policy of information secrecy, do not share this information to anyone."
+    },
+    certificate:{
+        title:'Self-help proof',
+        incomeCertificate:'Certificate of income',
+        certificateOfEmployment:'On-the-job certificate',
+        certificateOfTakingLeave:'Certification of Leave',
+        Use:"purpose",
+        UseContent:"购房/购车/信用卡申请/资格考试/居住证/商业保险申报"
     },
     xfcx:{
         title:" Consume Inquiry ",

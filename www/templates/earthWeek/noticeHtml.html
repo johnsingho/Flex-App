@@ -1,0 +1,44 @@
+<ion-view view-title="" cache-view="false" >
+    <ion-nav-buttons side="left" >
+        <button ng-if="fromHome=='home'" class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.back}}</button>
+    </ion-nav-buttons>
+ <ion-content  class="padding" scroll="true" overflow-scroll="true" >
+
+     <div id="div_html"></div>
+     <br>
+     <div class="row">
+         <div class="col col-25">  <div style="float:left;"><span style="color: #808080;font-size: 15px" >阅读 {{ReadCount}}</span></div></div>
+         <div class="col col-20"><button style="font-size: 15px;margin-top:-5px" class="button button-small  button-light  icon ion-thumbsup"  ng-click="like()"> {{LikeCount}}</button></div>
+         <div class="col col">     <div style="float:right;"><a style="text-decoration:underline;" ng-click="writeMsg()">写留言<i style="font-size:12px;" class="icon ion-edit"></i></a></div></div>
+      </div>
+     <br>
+     <div class="item item-avatar item-text-wrap" ng-repeat="reply in replyList" >
+         <img  src="img/user.jpg">
+         <h2>{{reply.Chinese_Name}}</h2>
+         <h5>{{reply.CreateDate| date:"yyyy-MM-dd HH:mm"}}</h5>
+         <p> {{reply.Reply_Content}}</p>
+     </div>
+
+ </ion-content>
+
+    <script id="templates/modalWriteMsg.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar class="bar bar-header bar-positive">
+                <h1 class="title">写留言</h1>
+                <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+            </ion-header-bar>
+            <ion-content class="padding">
+
+                <div class="list card">
+                    <label class="item item-input" >
+                        <textarea rows="5" id="Comments" style="font-size:80%" placeholder="留言将会筛选后展示" ></textarea>
+                    </label>
+                </div>
+
+                <br>
+                <div style="text-align: center"><button  class="button button-block  button-positive" ng-click="submit()">{{Language.menu.submit}}</button></div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+
+</ion-view>

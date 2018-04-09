@@ -68,14 +68,14 @@ angular.module('evaluationApp.appControllers', [])
         }
 
     })
-    .controller('HomeCtrl', function($scope,$rootScope,$ionicSlideBoxDelegate ,$timeout,$state,$ionicPopup,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
+    .controller('HomeCtrl', function($scope,$rootScope,$ionicHistory,$ionicSlideBoxDelegate ,$timeout,$state,$ionicPopup,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-
+        $ionicHistory.clearHistory()
         var parameter= commonServices.getBaseParas();
-//        $scope.checkWorkday='2332842605208458234470745';
+       $scope.checkWorkday='2332842495039458184468324468237479940';
 //
 //
-//        $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
+      $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
 
 //        var url=commonServices.getUrl("MsgService.ashx","GetIsIn38ActivityName");
 //        commonServices.getDataNoMask(parameter,url).then(function(data){
@@ -289,12 +289,13 @@ angular.module('evaluationApp.appControllers', [])
                   //  $state.go("choujiangName");
                     break;
                 case "chunwan":
-
                     $state.go("chunwan");
                     break;
                 case "GBS":
-
                     $state.go("GBS");
+                    break;
+                case "earthday":
+                    $state.go("earthWeekNoticeList");
                     break;
             }
 
@@ -494,7 +495,7 @@ angular.module('evaluationApp.appControllers', [])
         else
             $scope.btnText='Get the verifying code';
 
-        $scope.myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+        $scope.myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(16[0-9]{1}))+\d{8})$/;
         $scope.getSecurityCode=function(passmodels){
 
             if(! $scope.myreg.test(passmodels.mobile)) {

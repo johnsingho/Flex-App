@@ -6,6 +6,16 @@ angular.module('evaluationApp.sharCarController', [])
         var params=commonServices.getBaseParas();
         //$scope.MobileNo=$rootScope.accessEmployee.MobileNo;
 
+        $scope.$on("$ionicView.beforeEnter", function() {
+            var clearHistoryForIndexPage = function() {
+                var history = $ionicHistory.forwardView();
+                if (!history) {
+                    $scope.GetDateList();
+                }
+            };
+            clearHistoryForIndexPage();
+        });
+
 
         $scope.GetDateList=function(){
             var url=commonServices.getUrl("ShareCarService.ashx","GetCarOrderList");
@@ -19,7 +29,7 @@ angular.module('evaluationApp.sharCarController', [])
 
             });
         };
-        $scope.GetDateList();
+
         $scope.flexCarAuthentication;
         $scope.GetCarAuthentication=function(){
             var url=commonServices.getUrl("ShareCarService.ashx","GetFlexCarInfo");
