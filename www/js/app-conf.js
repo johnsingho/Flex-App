@@ -3,10 +3,10 @@
  */
 
 //本机开发
-//var API_HOST = 'http://localhost:64511';
+var API_HOST = 'http://localhost:64511';
 
 //正式环境
-var API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
+//var API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
 
 var API = {
 
@@ -282,6 +282,9 @@ var ZH_CN = {
         Use:"用途",
         UseContent:"购房/购车/信用卡申请/资格考试/居住证/商业保险申报"
     },
+    GBSHR:{
+        LTP:'LTP密码重置'
+    },
     xfcx:{
         title:"消费查询",
         selDay:'选择时长',
@@ -369,6 +372,11 @@ var ZH_CN = {
         newPassword:"新密码",
         duplicatePassword:"重复密码"
 
+    },
+    CSER:{
+        title:"CSER日历",
+        title2:"可点击相关主题进行报名",
+        DateEnd:"结束日期"
     }
 
 };
@@ -529,12 +537,15 @@ var ZH_US = {
         content:" Please follow the policy of information secrecy, do not share this information to anyone."
     },
     certificate:{
-        title:'Self-help proof',
+        title:'Self-help Certificate',
         incomeCertificate:'Certificate of income',
         certificateOfEmployment:'On-the-job certificate',
         certificateOfTakingLeave:'Certification of Leave',
         Use:"purpose",
-        UseContent:"购房/购车/信用卡申请/资格考试/居住证/商业保险申报"
+        UseContent:"Purchase/purchase of car/credit card application/qualification examination/residence permit/business insurance declaration,etc."
+    },
+    GBSHR:{
+        LTP:'LTP Password Reset'
     },
     xfcx:{
         title:" Consume Inquiry ",
@@ -620,6 +631,11 @@ var ZH_US = {
         currentPassword:"Current password",
         newPassword:"New password",
         duplicatePassword:"Double confirm your password"
+    },
+    CSER:{
+        title:"CSER Calendar",
+        title2:"You can click on related topics to sign up",
+        DateEnd:"End date"
     }
 
 };

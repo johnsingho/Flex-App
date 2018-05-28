@@ -72,10 +72,10 @@ angular.module('evaluationApp.appControllers', [])
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         $ionicHistory.clearHistory()
         var parameter= commonServices.getBaseParas();
-       $scope.checkWorkday='2332842495039458184468324468237479940';
+       $scope.checkWorkday='23328424950394581844683244682374799408062184805234661904617134582342587921803643';
 //
 //
-      $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
+       $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
 
 //        var url=commonServices.getUrl("MsgService.ashx","GetIsIn38ActivityName");
 //        commonServices.getDataNoMask(parameter,url).then(function(data){
@@ -143,8 +143,6 @@ angular.module('evaluationApp.appControllers', [])
                             alertService.showAlert('谢谢你的提交，身份证信息需要等待HR确认后，Flex+账户才正式生效');
                         else
                             alertService.showAlert('Thank you for your submission. The ID card information needs to wait for HR confirmation, and the Flex+ account will take effect.');
-
-
 
                     }
 
@@ -274,6 +272,10 @@ angular.module('evaluationApp.appControllers', [])
                 case "报名":
 
                     $state.go("apply");
+                    break;
+                case "CSERCal":
+
+                    $state.go("cserDate");
                     break;
                 case "map":
 

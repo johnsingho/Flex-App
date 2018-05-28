@@ -620,7 +620,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/earthWeek/notice-list.html',
                 controller: 'EarthdayNoticeListCtrl'
             })
-
+            .state('cserDate', {
+                url: '/cserDate',
+                templateUrl: 'templates/cser/cser-Date.html',
+                controller: 'CserDateCtrl'
+            })
 
         $urlRouterProvider.otherwise('signin');
 

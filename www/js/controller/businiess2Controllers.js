@@ -950,7 +950,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
             $state.go('tab.home');
         }
     })
-    .controller('GBSListCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService){
+    .controller('GBSListCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService,externalLinksService){
 
         $scope.open=function(action){
             switch (action)
@@ -964,7 +964,14 @@ angular.module('evaluationApp.businiess2Controllers', [])
                 case "员工手册":
                     $state.go("handbook_lg");
                     break;
-
+                case "LTP":
+                    try {
+                        externalLinksService.openUr('https://appcenter.flextronics.com/GMIS/Template/LTPPasswordReset_Mobile.html');
+                    }
+                    catch (ex) {
+                        alertService.showAlert(ex.message);
+                    }
+                    break;
             }
         }
         $scope.closePass=function(){
@@ -999,7 +1006,10 @@ angular.module('evaluationApp.businiess2Controllers', [])
             $scope.listUse = [
                 { name: "购房", value: "购房" },
                 { name: "购车", value: "购车" },
-                { name: "信用卡申请", value: "信用卡申请" }
+                { name: "贷款装修", value: "贷款装修" },
+                { name: "保险理赔", value: "保险理赔" },
+                { name: "申请补助", value: "申请补助" },
+                { name: "司法诉讼", value: "司法诉讼" }
             ];
         }
         if(action=='ZZ'){
@@ -1007,7 +1017,8 @@ angular.module('evaluationApp.businiess2Controllers', [])
             $scope.listUse = [
                 { name: "Visa申请", value: "Visa申请" },
                 { name: "资格考试", value: "资格考试" },
-                { name: "居住证", value: "居住证" }
+                { name: "居住证", value: "居住证" },
+                { name: "子女入学", value: "子女入学" }
             ];
         }
         if(action=='XJ'){
@@ -1189,4 +1200,41 @@ angular.module('evaluationApp.businiess2Controllers', [])
 
 
     })
+    .controller('CserDateCtrl',function($scope,$rootScope,$state,$ionicHistory,commonServices,CacheFactory,alertService,externalLinksService){
+        var paras= commonServices.getBaseParas();
+        var url=commonServices.getUrl("CSERSevice.ashx","GetCSERDate");
+
+        commonServices.getDataList(paras,url).then(function(data){
+
+            if(data=="Token is TimeOut"){
+                alertService.showAlert("Token is TimeOut");
+                $state.transitionTo('signin');
+            }
+
+            $scope.CserDateList=data;
+
+
+        });
+
+        $scope.open=function(cserDate){
+            try {
+
+                externalLinksService.openUr(cserDate.URL);
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
+            }
+        };
+
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
+
+    })
+
+
 ;
