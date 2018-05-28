@@ -1,0 +1,45 @@
+<!--活动点赞 2018-05-23-->
+<ion-view view-title="{{Language.activityGood.title}}" cache-view="false"  hide-tabs >
+    <ion-content style="background-color:lavender">
+
+        <ion-slide-box   does-continue="true" auto-play="false"  show-pager="false" >
+            <img  ng-src="{{imgUrl}}" >
+        </ion-slide-box>
+
+        <div class="list card">
+            <ion-list>
+                <ion-item ng-repeat="act in Activities"  >
+
+                    <div class="item item-avatar">
+                        <img src="img/user.jpg">
+                        <h2>{{Language.activityGood.name}}：{{act.Name}}</h2>
+                        <h3>{{Language.activityGood.designer}}：{{act.Designer}}</h3>
+                    </div>
+
+                    <div class="item item-body">
+                        <img class="full-image" ng-src="{{act.ImgPath}}">
+                        <p class="text-left small">{{Language.activityGood.designConcept}}：</p>
+                        <p>
+                            {{act.Describe}}
+                        </p>
+                        <p ng-if="act.Like>0">
+                            <a href="#" class="subdued">{{act.Like}} 赞</a>
+                        </p>
+                    </div>
+
+                    <div class="item tabs tabs-secondary tabs-icon-right">
+                        <a class="tab-item"   ng-click="like(act)">
+                            <i class="icon ion-thumbsup"></i>
+                            赞
+                        </a>
+                    </div>
+
+                </ion-item>
+
+            </ion-list>
+        </div>
+
+
+    </ion-content>
+
+</ion-view>

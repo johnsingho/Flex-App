@@ -293,7 +293,7 @@
   },
   {
     "file": "js/app-conf.js",
-    "hash": "43d047a990df627a0b81a6ce3f33c5d0"
+    "hash": "8f5909ad6fcd028afdf58f4ca4d0ab80"
   },
   {
     "file": "js/app.js",
@@ -301,7 +301,7 @@
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "46410615dbbe0236103a811a5f774aaf"
+    "hash": "69d9ff23ec5407d9aa872b96ac89a439"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -309,7 +309,7 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "7b2a373cdd1c63ac7b6a8d0a1a75de98"
+    "hash": "ed8f5d0394f7ae7880086634a8121880"
   },
   {
     "file": "js/controller/businiessControllers.js",
@@ -441,7 +441,7 @@
   },
   {
     "file": "js/router.js",
-    "hash": "b880e4232125c571887974dc0b4a8f21"
+    "hash": "2328c4ca62b28972440cbf31c9fad534"
   },
   {
     "file": "js/service/appServices.js",
@@ -1096,6 +1096,10 @@
     "hash": "1a606e7017d5f34423a9fc2369242ea3"
   },
   {
+    "file": "templates/cser/cser-Date.html",
+    "hash": "9926aa2396d65ca867104e1fc2fdeb5c"
+  },
+  {
     "file": "templates/cust/tab-cust.html",
     "hash": "47321b1ccca197146118adbff113e268"
   },
@@ -1109,7 +1113,7 @@
   },
   {
     "file": "templates/GBS/certificate/certificate-list.html",
-    "hash": "6551461617e520b3768832ee0dfc5f45"
+    "hash": "b15b4b76458b881be696092b8bb4b233"
   },
   {
     "file": "templates/GBS/certificate/certificate-submit.html",
@@ -1121,7 +1125,7 @@
   },
   {
     "file": "templates/GBS/gbs-list.html",
-    "hash": "62bad92286b326b7ccdd339f0e26e9a4"
+    "hash": "7b81e8036c99f6a5d0fb7457f8723122"
   },
   {
     "file": "templates/goldIdea/tab-goldIdea.html",
@@ -1217,7 +1221,7 @@
   },
   {
     "file": "templates/mealOrder/tab-mealList.html",
-    "hash": "2a86c03dd9f7f12db92a39777ac2abb2"
+    "hash": "326f8f2cdc8a6a77e1bb5d6c78d3b2d2"
   },
   {
     "file": "templates/mealOrder/tab-myOrder.html",
@@ -1313,7 +1317,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "aa51725944f38c70db3b70433090cf09"
+    "hash": "1f27ec91ede4bbb107cbb460cba2ddc0"
   },
   {
     "file": "templates/tab-homecopy.html",

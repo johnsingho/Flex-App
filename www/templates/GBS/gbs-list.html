@@ -3,18 +3,22 @@
         <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
     <ion-content scroll="true" overflow-scroll="true" >
-        <div class="row" style="height:100px;text-align: center">
+        <div class="row" style="height:110px;text-align: center">
             <div  class="col col-25 positive-bg light"  style=";Margin:1px" ng-click="open('员工手册');">
                 <i style="font-size:50px;" class="ion-ios-bookmarks"></i>
                 <div >{{Language.home.handbook}}</div>
             </div>
-            <div   class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('KQAbnormal');">
-                <i style="font-size:50px;" class="ion-alert-circled"></i>
-                <div>{{Language.kqcx.tabAbnormal}}</div>
-            </div>
-            <div ng-if="Power"  class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('Certificate');">
+            <!--<div   class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('KQAbnormal');">-->
+                <!--<i style="font-size:50px;" class="ion-alert-circled"></i>-->
+                <!--<div>{{Language.kqcx.tabAbnormal}}</div>-->
+            <!--</div>-->
+            <div  class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('Certificate');">
                 <i style="font-size:50px;" class="ion-android-document"></i>
                 <div>{{Language.certificate.title}}</div>
+            </div>
+            <div  class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('LTP');">
+                <i style="font-size:50px;" class="ion-unlocked"></i>
+                <div>{{Language.GBSHR.LTP}}</div>
             </div>
          </div>
 
