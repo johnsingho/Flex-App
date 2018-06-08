@@ -983,8 +983,11 @@ angular.module('evaluationApp.businiess2Controllers', [])
         }
     })
     .controller('CertificateCtrl',function($scope,$rootScope,$state,CacheFactory){
-        var accessEmployee = $rootScope.accessEmployee;        
-        $scope.canShow = IsTestAccount(accessEmployee.WorkdayNO);
+        var accessEmployee = $rootScope.accessEmployee;
+        var bTestAccount = IsTestAccount(accessEmployee.WorkdayNO);
+        //屏蔽multek
+        //var bIsNotMultek = accessEmployee.Organization.toLowerCase().indexOf("multek")<0;
+        $scope.canShow = bTestAccount;
 
         $scope.open=function(action){
             switch (action)
