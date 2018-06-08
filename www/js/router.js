@@ -280,7 +280,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/activity/activityHtml.html',
                 controller: 'ActivityHtmlCtrl'
             })
-
+            .state('activityGood',{
+                url: '/activityGood',
+                templateUrl: 'templates/activity/activityGood.html',
+                controller: 'ActivityGoodCtrl'
+            })
             .state('register', {
                 url: '/register',
                 templateUrl: 'templates/account/account_register.html',

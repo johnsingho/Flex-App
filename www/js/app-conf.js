@@ -3,10 +3,10 @@
  */
 
 //本机开发
-var API_HOST = 'http://localhost:64511';
+//var API_HOST = 'http://localhost:64511';
 
 //正式环境
-//var API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
+var API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
 
 var API = {
 
@@ -68,6 +68,9 @@ var API = {
 
     addGoodEmployeeLike:API_HOST + '/EvaluationAppService.ashx?action=AddGoodEmployeeLike',
 
+    getActivityGoods: API_HOST + '/EvaluationAppService.ashx?action=getActivityGoods',
+    addActivityGoods: API_HOST + '/EvaluationAppService.ashx?action=addActivityGoods',
+
     Submit: API_HOST + '/EvaluationAppService.ashx?action=Submit',
 
     SubmitGoldIdea: API_HOST + '/EvaluationAppService.ashx?action=SubmitGoldIdea',
@@ -99,6 +102,7 @@ var API = {
     GetForgetPswSecurityCode: API_HOST + '/AccountService.ashx?action=GetForgetPswSecurityCode',
 
     RestPassword: API_HOST + '/AccountService.ashx?action=RestPassword'
+
 
 
 
@@ -377,8 +381,15 @@ var ZH_CN = {
         title:"CSER日历",
         title2:"可点击相关主题进行报名",
         DateEnd:"结束日期"
+    },
+    activityGood:{
+        title:"手语海报设计大赛",
+        name:"作品名",
+        employee_ID:"工号",
+        department:"部门",
+        designer:"设计者",
+        designConcept: "设计理念"
     }
-
 };
 
 var ZH_US = {
@@ -636,6 +647,14 @@ var ZH_US = {
         title:"CSER Calendar",
         title2:"You can click on related topics to sign up",
         DateEnd:"End date"
+    },
+    activityGood:{
+        title:" Sign Language Culture Poster Design Competition",
+        name: "Title",
+        employee_ID: "Employee ID",
+        department: "Department",
+        designer:"Designer",
+        designConcept: "Design Concept"
     }
 
 };

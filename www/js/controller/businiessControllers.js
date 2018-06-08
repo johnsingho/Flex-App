@@ -1009,6 +1009,86 @@ angular.module('evaluationApp.businiessControllers', [])
             });
             $state.go('tab.home');
         }
+
+        //2018-05-23 活动点赞
+        $scope.activityGoodName="手语海报设计大赛";
+        $scope.activityGoodImg="img/other/handSign.png";
+        $scope.useActivityGood=true;
+        $scope.openActivityGood = function(){
+            $state.go('activityGood');
+        }
+    })
+    .controller('ActivityGoodCtrl',function($scope,CacheFactory,activityGoodService,alertService,$state,$ionicHistory,commonServices,$location) {
+        //2018-05-23 活动点赞
+        $scope.imgUrl='img/other/diversity.jpg';
+
+        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
+        var loginInfo=commonServices.getBaseParas();
+        loginInfo.opType='活动点赞';
+        loginInfo.opContent='点击进入';
+        commonServices.operationLog(loginInfo).then(function(data){
+            $scope.sucess==data;
+        });
+
+        var MAX_CLICK = 3;
+        var KEY_ACT_GOOD='ActivityGood';
+        var TActivityGoodEntry = function(itemID, WorkDayNo){
+            var self=this;
+            self.RefActivityGoodID=0;
+            self.WorkdayNo=0;
+        }
+
+        //重新加载刷新
+        function RefreshActivityGoodList(){
+            var loginInfo= commonServices.getBaseParas();
+            activityGoodService.getActivityGoods(loginInfo).then(function(resp){
+                $scope.Activities=resp.list;
+                var arr = JSON.parse(resp.data);
+                CacheFactory.save(KEY_ACT_GOOD, arr);
+            });
+        }
+        function GetActivityGoodCache(){
+            return JSON.parse(CacheFactory.get(KEY_ACT_GOOD)) || []; //数组
+        }
+
+        RefreshActivityGoodList();
+
+        $scope.like = function(item){
+            var likeInfo = GetActivityGoodCache();
+            var nClick = likeInfo.length;
+            if(nClick >= MAX_CLICK){
+                alertService.showAlert("最多只能点赞"+MAX_CLICK+"次");
+                return;
+            }
+            var hasClicked=false;
+            for(var i=0; i<likeInfo.length; i++){
+                var entry = likeInfo[i];
+                if(item.ID==entry.RefActivityGoodID
+                    && entry.WorkdayNo==$scope.accessEmployee.WorkdayNO
+                   ){
+                    alertService.showAlert("你已经点过赞了");
+                    hasClicked=true;
+                    break;
+                }
+            }
+            if(!hasClicked){
+                var para={
+                    WorkdayNO: $scope.accessEmployee.WorkdayNO,
+                    CName: $scope.accessEmployee.CName,
+                    Token:$scope.accessEmployee.Token,
+                    ItemID:item.ID
+                };
+                commonServices.submit(para, API.addActivityGoods).then(function(data){
+                    if(data.success){
+                        var likeInfo = GetActivityGoodCache();
+                        likeInfo.push(new TActivityGoodEntry(item.ID, $scope.accessEmployee.WorkdayNO));
+                        CacheFactory.save(KEY_ACT_GOOD, likeInfo);
+                        //刷新
+                        RefreshActivityGoodList();
+                    }
+                })
+            }
+        };
     })
     .controller('ActivityHtmlCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,$location,commonServices) {
 

@@ -72,7 +72,7 @@ angular.module('evaluationApp.appControllers', [])
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         $ionicHistory.clearHistory()
         var parameter= commonServices.getBaseParas();
-       $scope.checkWorkday='233284249503945818446832446823747994080621848052346619046171345823425879218036431';
+       $scope.checkWorkday='23328422566117454254908634803643588953456258';
 //
 //
        $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
