@@ -404,7 +404,10 @@ angular.module('evaluationApp.appServices', [])
             var http = $http(config);
 
             http.catch(function (error) {
-                API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
+                
+                if(false==IsDebugMode){
+                    API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
+                }                
                 if (error.status == 0) {
                     error.data = {
                         template: !navigator.onLine || error.data == '' ?

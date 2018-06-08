@@ -982,13 +982,18 @@ angular.module('evaluationApp.businiess2Controllers', [])
             $state.go('tab.home');
         }
     })
-    .controller('CertificateCtrl',function($scope,$state,CacheFactory){
+    .controller('CertificateCtrl',function($scope,$rootScope,$state,CacheFactory){
+        var accessEmployee = $rootScope.accessEmployee;        
+        $scope.canShow = IsTestAccount(accessEmployee.WorkdayNO);
 
         $scope.open=function(action){
             switch (action)
             {
                 case "visaApply":
                     $state.go('visaApply');
+                    break;
+                case "CP": /*厂牌补办*/
+                    $state.go('reissueWorkingCard');
                     break;
                 default :
                     CacheFactory.save('action', action);
@@ -1029,9 +1034,6 @@ angular.module('evaluationApp.businiess2Controllers', [])
             ];
         }
 
-
-
-
         var paras= commonServices.getBaseParas();
 
         $scope.apply= {
@@ -1053,8 +1055,6 @@ angular.module('evaluationApp.businiess2Controllers', [])
                 return;
             }
 
-
-
             $ionicPopup.confirm({
                 title: '提示',
                 template: '确定提交办证申请吗？',
@@ -1068,9 +1068,8 @@ angular.module('evaluationApp.businiess2Controllers', [])
                     var url=commonServices.getUrl("GBSHRService.ashx","SubmitCertificateApply");
                     commonServices.submit(paras, url).then(function (data) {
                         if (data.success) {
-                            alertService.showAlert('您的申请已提交，请注意在”我的信息“查收最新进度通知，谢谢！');
+                            alertService.showAlert('您的申请已提交，请注意在“我的信息”查收最新进度通知，谢谢！');
                             $ionicHistory.goBack();
-
                         }
                         else {
                             alertService.showAlert(data.message);
@@ -1089,7 +1088,68 @@ angular.module('evaluationApp.businiess2Controllers', [])
             $state.go('tab.home');
         }
     })
+    .controller('reissueWorkingCard',function($scope,$rootScope,$state,$ionicHistory,commonServices,CacheFactory,alertService,$ionicPopup){
+        //厂牌补办
+        $scope.title=$rootScope.Language.certificate.reissueWorkingCard;
+        $scope.listReason = [
+            { name: "厂牌丢失（扣款10元/次）", value: "厂牌丢失" },
+            { name: "自然损坏", value: "自然损坏" }
+        ];
 
+        var action = "CP";
+        var paras = commonServices.getBaseParas();
+
+        $scope.apply= {
+            WorkdayNO:paras.WorkdayNO,
+            CName:paras.CName,
+            MobileNo: paras.MobileNo,
+            Organization:paras.Organization,
+            Use:null
+        };
+
+        $scope.Submit=function() {
+            if( !$scope.apply.Use || $scope.apply.Use==""){
+                alertService.showAlert('请填写原因');
+                return;
+            }
+
+            if(""==$.trim($scope.apply.MobileNo)){
+                alertService.showAlert('请填写联系电话');
+                return;
+            }
+
+            $ionicPopup.confirm({
+                title: '提示',
+                template: '确定提交办证申请吗？',
+                okText:"OK"
+            }) .then(function(res) {
+                if(res) {
+                    paras.MobileNo = $.trim($scope.apply.MobileNo);
+                    paras.Use=$scope.apply.Use.name;
+                    paras.ApplyType=action;
+
+                    var url=commonServices.getUrl("GBSHRService.ashx","SubmitCertificateApply");
+                    commonServices.submit(paras, url).then(function (data) {
+                        if (data.success) {
+                            alertService.showAlert('您的申请已提交，请注意在“我的信息”查收最新进度通知，谢谢！');
+                            $ionicHistory.goBack();
+                        }
+                        else {
+                            alertService.showAlert(data.message);
+                        }
+                    });
+                }
+            });
+        }
+
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
+    })
     .controller('VisaApplyCtrl',function($scope,$rootScope,$state,$ionicHistory,commonServices,CacheFactory,alertService,$ionicPopup){
         $scope.listVisaType = [
             { name: "1 Year Multiple Entries", value: "1 Year Multiple Entries" },

@@ -2,11 +2,42 @@
  * 默认程序设置 会被写如localStorage
  */
 
-//本机开发
-var API_HOST = 'http://localhost:64511';
+ //开关
+ //是否本地开发调试
+ var IsDebugMode = true; //false;
 
-//正式环境
-//var API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
+ //给特定用户测试
+ /* sample:
+    var accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
+    $scope.canShow = IsTestAccount(accessEmployee.WorkdayNO);
+*/
+function IsTestAccount(curWorkNo)
+{
+    var workNos = [
+        2566117,/*johnsing*/
+        2332842,/*kris*/
+        461713,/*Winnie Huang*/
+        466190,/*Austin xie*/
+        480523,/*Lily Li */
+        806218,/*Bily Chow */
+    ];
+    for(var i=0; i<workNos.length; i++){
+        if(curWorkNo == workNos[i]){
+            return true;
+        }
+    }
+    return false;
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
+if (IsDebugMode) {
+    //本机开发
+    var API_HOST = 'http://localhost:64511';
+} else {
+    //正式环境
+    var API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
+}
 
 var API = {
 
@@ -279,11 +310,14 @@ var ZH_CN = {
         content:"请遵循公司信息保密政策，未经授权严禁转载分享"
     },
     certificate:{
-        title:'自助证明',
+        title:'自助办证',
         incomeCertificate:'收入证明',
         certificateOfEmployment:'在职证明',
         certificateOfTakingLeave:'休假证明（仅供商业保险使用）',
+        reissueWorkingCard:'厂牌补办',
         Use:"用途",
+        Reason:'原因',
+        Explain:'说明',
         UseContent:"购房/购车/信用卡申请/资格考试/居住证/商业保险申报"
     },
     GBSHR:{
@@ -552,7 +586,10 @@ var ZH_US = {
         incomeCertificate:'Certificate of income',
         certificateOfEmployment:'On-the-job certificate',
         certificateOfTakingLeave:'Certification of Leave',
+        reissueWorkingCard:'Reissue Working card',
+        Reason:'Reason',
         Use:"purpose",
+        Explain:'Explain',
         UseContent:"Purchase/purchase of car/credit card application/qualification examination/residence permit/business insurance declaration,etc."
     },
     GBSHR:{

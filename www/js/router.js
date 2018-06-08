@@ -612,6 +612,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/GBS/certificate/certificate-submit.html',
                 controller: 'CertificateSubmit'
             })
+            .state('reissueWorkingCard', {
+                url: '/reissueWorkingCard',
+                templateUrl: 'templates/GBS/certificate/reissueWorkingCard.html',
+                controller: 'reissueWorkingCard'
+            })
             .state('visaApply', {
                 url: '/visaApply',
                 templateUrl: 'templates/GBS/certificate/visaApply.html',

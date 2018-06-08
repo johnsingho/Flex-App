@@ -5,127 +5,127 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.appControllers','evaluationApp.pointsControllers','evaluationApp.businiessControllers',
-    'evaluationApp.appServices','evaluationApp.directives','evaluationApp.pointsService','evaluationApp.businessServices','evaluationApp.businiess2Controllers','evaluationApp.B11WorkShopController',
-     'ngCordova','angularMoment','chart.js','evaluationApp.sharCarController'])
-//angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.controllers', 'evaluationApp.services'])
+angular.module('evaluationApp', ['ionic', 'evaluationApp.router', 'evaluationApp.appControllers', 'evaluationApp.pointsControllers', 'evaluationApp.businiessControllers',
+    'evaluationApp.appServices', 'evaluationApp.directives', 'evaluationApp.pointsService', 'evaluationApp.businessServices', 'evaluationApp.businiess2Controllers', 'evaluationApp.B11WorkShopController',
+    'ngCordova', 'angularMoment', 'chart.js', 'evaluationApp.sharCarController'])
+    //angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.controllers', 'evaluationApp.services'])
 
-.run(function($ionicPlatform, SettingFactory, $http, $rootScope, $state, $location, $timeout, $ionicHistory,CacheFactory,commonServices,$window,
-              $cordovaAppVersion, $ionicPopup, $ionicLoading,$cordovaToast, $cordovaKeyboard, $cordovaFileTransfer, $cordovaFile,$ionicActionSheet, $cordovaFileOpener2, $cordovaProgress, amMoment) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
+    .run(function ($ionicPlatform, SettingFactory, $http, $rootScope, $state, $location, $timeout, $ionicHistory, CacheFactory, commonServices, $window,
+        $cordovaAppVersion, $ionicPopup, $ionicLoading, $cordovaToast, $cordovaKeyboard, $cordovaFileTransfer, $cordovaFile, $ionicActionSheet, $cordovaFileOpener2, $cordovaProgress, amMoment) {
+        $ionicPlatform.ready(function () {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
 
-      $rootScope.isIOS = ionic.Platform.isIOS();
-      $rootScope.isAndroid = ionic.Platform.isAndroid();
-
-
-
-
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-
-      //启动极光推送服务
-      window.plugins.jPushPlugin.init();
-      //调试模式，这样报错会在应用中弹出一个遮罩层显示错误信息
-      window.plugins.jPushPlugin.setDebugMode(false);
-
-      var onGetRegistradionID = function(data) {
-          try{
-              //保存极光推送ID
-              CacheFactory.remove('registrationID');
-              CacheFactory.save('registrationID',data);
-
-          }catch(exception){
-              model.console.push(exception);
-          }
-      };
-      window.plugins.jPushPlugin.getRegistrationID(onGetRegistradionID);
+            $rootScope.isIOS = ionic.Platform.isIOS();
+            $rootScope.isAndroid = ionic.Platform.isAndroid();
 
 
 
-      plugins.jPushPlugin.openNotificationInAndroidCallback=function(data){
-          try{
-              var extras  = data.extras;
-              var action=extras['cn.jpush.android.EXTRA']["key"];
 
-              switch(action){
-                  case "redbag":
-                      $state.go('tabPoints.account');
-                      break;
-                  case "msg":
-                      $state.go('tab.myMsg');
-                      break;
-                  case "notice":
-                      $state.go('noticeList');
-                      break;
-                  default :
-                      $state.go('tab.home');
-                      break;
-              }
-          }catch(e){
-              alert(e.message);
-          }
-      };
+            if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+                cordova.plugins.Keyboard.disableScroll(true);
+            }
+            if (window.StatusBar) {
+                // org.apache.cordova.statusbar required
+                StatusBar.styleDefault();
+            }
 
-      //检测更新
-      var serverAppVersion = "0.0.2";
-      commonServices.getVer().then(function(data){
-          var largeLoad=data;
-          if(largeLoad=='undefined') return;
-          serverAppVersion = largeLoad.sVersion;
-          cordova.getAppVersion.getVersionNumber().then(function(version){
+            try {
+                //启动极光推送服务
+                window.plugins.jPushPlugin.init();
+                //调试模式，这样报错会在应用中弹出一个遮罩层显示错误信息
+                window.plugins.jPushPlugin.setDebugMode(false);
 
-              //如果本地与服务端的APP版本不符合
-              if (version != serverAppVersion) {
-                  if ($rootScope.isIOS){
-                      if(serverAppVersion=='1.2.1')
-                      {
-                          return;
-                      }
-                  }
+                var onGetRegistradionID = function (data) {
+                    try {
+                        //保存极光推送ID
+                        CacheFactory.remove('registrationID');
+                        CacheFactory.save('registrationID', data);
 
-                  showUpdateConfirm(largeLoad);
-              }
-          });
-      });
+                    } catch (exception) {
+                        model.console.push(exception);
+                    }
+                };
+                window.plugins.jPushPlugin.getRegistrationID(onGetRegistradionID);
 
+                plugins.jPushPlugin.openNotificationInAndroidCallback = function (data) {
+                    try {
+                        var extras = data.extras;
+                        var action = extras['cn.jpush.android.EXTRA']["key"];
 
-//      checkUpdate();
+                        switch (action) {
+                            case "redbag":
+                                $state.go('tabPoints.account');
+                                break;
+                            case "msg":
+                                $state.go('tab.myMsg');
+                                break;
+                            case "notice":
+                                $state.go('noticeList');
+                                break;
+                            default:
+                                $state.go('tab.home');
+                                break;
+                        }
+                    } catch (e) {
+                        alert(e.message);
+                    }
+                };
 
-      document.addEventListener("menubutton", onHardwareMenuKeyDown, false);
-  });
+                //检测更新
+                var serverAppVersion = "0.0.2";
+                commonServices.getVer().then(function (data) {
+                    var largeLoad = data;
+                    if (largeLoad == 'undefined') return;
+                    serverAppVersion = largeLoad.sVersion;
+                    cordova.getAppVersion.getVersionNumber().then(function (version) {
+
+                        //如果本地与服务端的APP版本不符合
+                        if (version != serverAppVersion) {
+                            if ($rootScope.isIOS) {
+                                if (serverAppVersion == '1.2.1') {
+                                    return;
+                                }
+                            }
+
+                            showUpdateConfirm(largeLoad);
+                        }
+                    });
+                });
+
+                document.addEventListener("menubutton", onHardwareMenuKeyDown, false);
+            } catch (ex2) {
+                //浏览器调试时报异常
+            }
+            //      checkUpdate();
+            
+        });
 
 
         // 检查更新
-//        function checkUpdate() {
-//
-//            //获取版本
-//            var serverAppVersion = "0.0.2";
-//
-//            $http.get(API.Version).success(function (largeLoad) {
-//
-//                //获取版本
-//                if(largeLoad=='undefined') return;
-//                serverAppVersion = largeLoad.sVersion;
-//                cordova.getAppVersion.getVersionNumber().then(function(version){
-//                    //如果本地与服务端的APP版本不符合
-//                    if (version != serverAppVersion) {
-//                        showUpdateConfirm(largeLoad);
-//                    }
-//                });
-//
-//            })
-//                .error(function (data, status, headers, config) {
-//                    $ionicLoading.show({ template: '读取版本信息失败！', noBackdrop: true, duration: 2000 });
-//                });
-//        };
+        //        function checkUpdate() {
+        //
+        //            //获取版本
+        //            var serverAppVersion = "0.0.2";
+        //
+        //            $http.get(API.Version).success(function (largeLoad) {
+        //
+        //                //获取版本
+        //                if(largeLoad=='undefined') return;
+        //                serverAppVersion = largeLoad.sVersion;
+        //                cordova.getAppVersion.getVersionNumber().then(function(version){
+        //                    //如果本地与服务端的APP版本不符合
+        //                    if (version != serverAppVersion) {
+        //                        showUpdateConfirm(largeLoad);
+        //                    }
+        //                });
+        //
+        //            })
+        //                .error(function (data, status, headers, config) {
+        //                    $ionicLoading.show({ template: '读取版本信息失败！', noBackdrop: true, duration: 2000 });
+        //                });
+        //        };
 
         // 显示是否更新对话框
         function showUpdateConfirm(version) {
@@ -157,24 +157,24 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.
                         // 打开下载下来的APP
                         $cordovaFileOpener2.open(targetPath, 'application/vnd.android.package-archive'
                         ).then(function () {
-                                //$ionicLoading.hide();
-                                // 成功
-                               
-                            }, function (err) {
-                                $ionicPopup.confirm({
-                                    title: '安装失败',
-                                    template: "安装失败，是否通过外部链接安装！", //从服务端获取更新的内容
-                                    cancelText: '取消',
-                                    okText: '确定'
-                                }).then(function (res) {
-                                    if (res) {
-                                        window.cordova.InAppBrowser.open(url, '_system', 'location=yes');
-                                        $ionicLoading.hide();
-                                    } else {
-                                        $ionicLoading.hide();
-                                    }
-                                });
+                            //$ionicLoading.hide();
+                            // 成功
+
+                        }, function (err) {
+                            $ionicPopup.confirm({
+                                title: '安装失败',
+                                template: "安装失败，是否通过外部链接安装！", //从服务端获取更新的内容
+                                cancelText: '取消',
+                                okText: '确定'
+                            }).then(function (res) {
+                                if (res) {
+                                    window.cordova.InAppBrowser.open(url, '_system', 'location=yes');
+                                    $ionicLoading.hide();
+                                } else {
+                                    $ionicLoading.hide();
+                                }
                             });
+                        });
                     }, function (err) {
                         alert("下载失败:将通过外部链接下载安装，请在弹出的窗口中选择浏览器打开。 ");
                         window.cordova.InAppBrowser.open(url, '_system', 'location=yes');
@@ -214,8 +214,8 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.
             }
             //判断处于哪个页面时双击退出
             if ($location.path() == '/tabPoints/points' || $location.path() == '/tab/home' ||
-                $location.path().indexOf('/tabPoints/rules')!=-1 || $location.path() == '/tab/account' || $location.path() == '/signin'
-                ||$location.path() =='/tabPoints/PointsAccount') {
+                $location.path().indexOf('/tabPoints/rules') != -1 || $location.path() == '/tab/account' || $location.path() == '/signin'
+                || $location.path() == '/tabPoints/PointsAccount') {
                 showConfirm();
             } else if ($ionicHistory.backView()) {
                 if ($cordovaKeyboard.isVisible()) {
@@ -230,8 +230,8 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.
             e.preventDefault();
             return false;
         }, 101);
-})
-    .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+    })
+    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
         $ionicConfigProvider.platform.ios.tabs.style('standard');
         $ionicConfigProvider.platform.ios.tabs.position('bottom');
