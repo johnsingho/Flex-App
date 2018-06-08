@@ -252,6 +252,14 @@
     "hash": "d314867a24fac067e5d6486cd7dbf5af"
   },
   {
+    "file": "img/other/diversity.jpg",
+    "hash": "d4dd9a2c99423f7e7f7edb7c03e7d14a"
+  },
+  {
+    "file": "img/other/handSign.png",
+    "hash": "be638136907cfa58820f7f1e4a5f6b81"
+  },
+  {
     "file": "img/point1.jpg",
     "hash": "5f947c23caeb06d80d7751ec1bc95296"
   },
@@ -270,6 +278,10 @@
   {
     "file": "img/ShareCar/chezhu.png",
     "hash": "73d94d3a881e4593748b6052d82e151f"
+  },
+  {
+    "file": "img/shouyu.png",
+    "hash": "f61d2a0c22ca84f339065563230d5e58"
   },
   {
     "file": "img/siginbg1.jpg",
@@ -293,7 +305,7 @@
   },
   {
     "file": "js/app-conf.js",
-    "hash": "8f5909ad6fcd028afdf58f4ca4d0ab80"
+    "hash": "4aeca1081fc966be8cfe5a7ca4eadbbe"
   },
   {
     "file": "js/app.js",
@@ -301,7 +313,7 @@
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "69d9ff23ec5407d9aa872b96ac89a439"
+    "hash": "69418a49d59701863c5467448fa3d238"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -313,7 +325,7 @@
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "500e420431fc70568362cda65cf7006e"
+    "hash": "899809b52b1db7d6cde00c17896f476a"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -441,7 +453,7 @@
   },
   {
     "file": "js/router.js",
-    "hash": "2328c4ca62b28972440cbf31c9fad534"
+    "hash": "702a42652acaba34ca721810791778ff"
   },
   {
     "file": "js/service/appServices.js",
@@ -449,7 +461,7 @@
   },
   {
     "file": "js/service/businessServices.js",
-    "hash": "a5ba1f05305502775de384e5c698f89e"
+    "hash": "dfae93a8dd7948caeb9e13d3f9224b6d"
   },
   {
     "file": "js/service/pointsServices.js",
@@ -965,7 +977,11 @@
   },
   {
     "file": "templates/activity/activity-list.html",
-    "hash": "aac03cf7b932e523c6a459d5e99cddcc"
+    "hash": "a8ec65d1191d1acc63186569cbdb2fcb"
+  },
+  {
+    "file": "templates/activity/activityGood.html",
+    "hash": "af6f095bf3abae1d0cbf9f9c11cd95c4"
   },
   {
     "file": "templates/activity/activityHtml.html",
@@ -1317,7 +1333,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "1f27ec91ede4bbb107cbb460cba2ddc0"
+    "hash": "4b7780d708afbd50f5231577112da1dc"
   },
   {
     "file": "templates/tab-homecopy.html",
@@ -1337,7 +1353,7 @@
   },
   {
     "file": "templates/tab-signin.html",
-    "hash": "55be1fa55bd41d616f0f298a64c9303b"
+    "hash": "4003514fc6580550c9385d1c0def7f36"
   },
   {
     "file": "templates/tabs.html",
