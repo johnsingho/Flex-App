@@ -2,7 +2,7 @@
  * Created by dmneeoll on 2017-03-03.
  */
 angular.module('evaluationApp.businiess2Controllers', [])
-    .controller('ResearchCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService){
+    .controller('ResearchCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService,externalLinksService){
         var params=commonServices.getBaseParas();
         var url=commonServices.getUrl("ResearchService.ashx","GetResearchList");
         //获取一般活动列表
@@ -20,6 +20,14 @@ angular.module('evaluationApp.businiess2Controllers', [])
             CacheFactory.save('researchID',research.ID);
             CacheFactory.save('ResearchName',research.ResearchName);
           $state.go('researchHtml');
+        };
+        $scope.openMyd=function(){
+            try {
+                externalLinksService.openUr('https://appcenter.flextronics.com/GMIS/Handler/CB_001_MedicalCheckSurvey.ashx?sid=3&rq=B9D3F80DB77B483093251FA9E1AE4346&site=珠海');
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
+            }
         };
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
@@ -52,6 +60,10 @@ angular.module('evaluationApp.businiess2Controllers', [])
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
                 $state.transitionTo('signin');
+            }
+            if(data=="抱歉！本次调查的对象是2018-6-14前入职的住宿员工，谢谢你的关注！"){
+                alertService.showAlert("抱歉！本次调查的对象是2018-6-14前入职的住宿员工，谢谢你的关注！");
+                return;
             }
             $scope.researchDetailList=data;
 

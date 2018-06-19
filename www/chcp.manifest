@@ -305,15 +305,15 @@
   },
   {
     "file": "js/app-conf.js",
-    "hash": "4aeca1081fc966be8cfe5a7ca4eadbbe"
+    "hash": "b58fea435130e3aa9ae5e17af03a7b19"
   },
   {
     "file": "js/app.js",
-    "hash": "4b4d20e37a6f24dc44fd1736de725134"
+    "hash": "e62562ef3383e84e4a42c256c714a15e"
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "69418a49d59701863c5467448fa3d238"
+    "hash": "ca369bb36e19b6230c0005ce981f8453"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -321,7 +321,7 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "ed8f5d0394f7ae7880086634a8121880"
+    "hash": "818b274edac58a9a77d72aad256b9219"
   },
   {
     "file": "js/controller/businiessControllers.js",
@@ -453,11 +453,11 @@
   },
   {
     "file": "js/router.js",
-    "hash": "702a42652acaba34ca721810791778ff"
+    "hash": "a8444d5f47e25f3485539bb936f05331"
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "efa57b5c9ad728f27e09d27857594924"
+    "hash": "afc5324467e2d162d97a913277b135f3"
   },
   {
     "file": "js/service/businessServices.js",
@@ -977,7 +977,7 @@
   },
   {
     "file": "templates/activity/activity-list.html",
-    "hash": "a8ec65d1191d1acc63186569cbdb2fcb"
+    "hash": "1ee5186da415d7f6d656a09a03e3be1c"
   },
   {
     "file": "templates/activity/activityGood.html",
@@ -1129,11 +1129,15 @@
   },
   {
     "file": "templates/GBS/certificate/certificate-list.html",
-    "hash": "b15b4b76458b881be696092b8bb4b233"
+    "hash": "c951b4da3484ba5c58baca5b6cd9d7ff"
   },
   {
     "file": "templates/GBS/certificate/certificate-submit.html",
     "hash": "5600c3cdb82e2125e33e8408397561e1"
+  },
+  {
+    "file": "templates/GBS/certificate/reissueWorkingCard.html",
+    "hash": "2c4854a677ad779fca708b187afac61e"
   },
   {
     "file": "templates/GBS/certificate/visaApply.html",
@@ -1141,7 +1145,7 @@
   },
   {
     "file": "templates/GBS/gbs-list.html",
-    "hash": "7b81e8036c99f6a5d0fb7457f8723122"
+    "hash": "736d45ba8d85b32df857c43303755c14"
   },
   {
     "file": "templates/goldIdea/tab-goldIdea.html",
@@ -1297,7 +1301,7 @@
   },
   {
     "file": "templates/research/research-list.html",
-    "hash": "3b25682fa60e26014730463f55cbb6b3"
+    "hash": "d86be8e29b48f189467e267f98ae8154"
   },
   {
     "file": "templates/research/researchHtml.html",
@@ -1333,7 +1337,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "4b7780d708afbd50f5231577112da1dc"
+    "hash": "f61412856ee300deecc390baa9b17cbf"
   },
   {
     "file": "templates/tab-homecopy.html",
