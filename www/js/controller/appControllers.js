@@ -66,7 +66,9 @@ angular.module('evaluationApp.appControllers', [])
         $scope.forgetPsw=function(){
             $state.go('forgetPsw');
         }
-
+        $scope.rebindPhone=function(){
+            $state.go('rebindPhone');
+        }
     })
     .controller('HomeCtrl', function($scope,$rootScope,$ionicHistory,$ionicSlideBoxDelegate ,$timeout,$state,$ionicPopup,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
@@ -703,7 +705,6 @@ angular.module('evaluationApp.appControllers', [])
             try{
                 if(passmodels.newPassword==null){
                     alertService.showAlert( '密码不能为空！');
-
                     return;
                 }
                 if(passmodels.newPassword.replace(""," ").length==0){
@@ -712,7 +713,6 @@ angular.module('evaluationApp.appControllers', [])
                 }
                 if(passmodels.newPassword!=passmodels.newPasswordAgain){
                     alertService.showAlert('两次密码不一致！');
-
                     return;
                 }
 
@@ -732,6 +732,99 @@ angular.module('evaluationApp.appControllers', [])
 
 
 
+        };
+    })
+    .controller('RebindPhoneCtrl',  function($scope,$rootScope,$location,$ionicLoading,alertService,commonServices) {
+        // 修改绑定手机号
+        $scope.btnText = '获取验证码';
+
+        $scope.rebindModels = {
+            workdayNo: null,
+            IDNO:null,
+            mobile: null,
+            securityCode: null
+        };
+        
+        $scope.closePage = function () {
+            $location.path('signin');
+        };
+
+        $scope.getSecurityCode = function() {
+            var workdayNo = $.trim($scope.rebindModels.workdayNo);
+            var mobile = $.trim($scope.rebindModels.mobile)
+            $scope.rebindModels.workdayNo = workdayNo;
+            $scope.rebindModels.mobile = mobile;
+
+            commonServices.getPhoneSecurityCode({WorkdayNo:workdayNo, Mobile:mobile}).then(function (response) {
+                if (response.success) {
+                    var oBtn = document.getElementById('btnSecurity');
+                    oBtn.disabled = true;
+                    var i = 60;
+                    $ionicLoading.show({ template: '已发送验证码到指定的手机号码上！', noBackdrop: true, duration: 2000 });
+                    var id = setInterval(function () {
+                        i = i - 1;
+                        $scope.$apply(function () {
+                            $scope.btnText = i + '秒后重新获取';
+                        });
+
+                        if (i == 0) {
+                            $scope.$apply(function () {
+                                $scope.btnText = '获取验证码';
+                            });
+                            oBtn.disabled = false;
+                            clearInterval(id);
+                        };
+                    }, 1000);//1000为1秒钟
+                }
+                else {
+                    alertService.showAlert(response.message);
+                }
+            });
+        };
+
+        $scope.doSubmit = function(model){
+            var workdayNo = $.trim($scope.rebindModels.workdayNo);
+            var mobile = $.trim($scope.rebindModels.mobile);
+            var idno = $.trim($scope.rebindModels.IDNO);
+            if(0==workdayNo.length)
+            {
+                alertService.showAlert($rootScope.Language.rebindPhone.errWorkdayNo);
+                return;
+            }
+            if(0==idno.length)
+            {
+                alertService.showAlert($rootScope.Language.rebindPhone.errIdno);
+                return;
+            }
+            if(0==mobile.length || mobile.length<11)
+            {
+                alertService.showAlert($rootScope.Language.rebindPhone.errMobile);
+                return;
+            }
+
+            commonServices.checkSecurityCode({WorkdayNo:model.workdayNo, Mobile:model.mobile, SecurityCode:model.securityCode}).then(function (response) {
+                if (response.success) {
+                    //有效验证码
+                    var url = commonServices.getUrl("AccountService.ashx", "RebindPhone");
+                    var paras = {
+                        WorkdayNo: model.workdayNo,
+                        Mobile: model.mobile,
+                        IDNO: model.IDNO
+                    };
+                    commonServices.submit(paras, url).then(function (data) {
+                        if (data.success) {
+                            alertService.showAlert('修改绑定手机号成功!');
+                            $location.path('signin');
+                        }
+                        else {
+                            alertService.showAlert(data.message);
+                        }
+                    });
+                }
+                else  {
+                    alertService.showAlert(response.message);
+                }
+            });   
         };
     })
     .controller('PassCtrl', function($scope,$state,$location,$ionicPopup,IonicService,CacheFactory) {
@@ -824,5 +917,11 @@ angular.module('evaluationApp.appControllers', [])
             $state.go('myAccountMoney');
         }
 
+        var accessEmployee = $rootScope.accessEmployee;
+        $scope.canShow = IsTestAccount(accessEmployee.WorkdayNO); //!for test
+        $scope.rebindPhone=function(){
+            $state.go('rebindPhone');
+        }
+        
     })
 ;

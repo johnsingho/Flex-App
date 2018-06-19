@@ -131,6 +131,7 @@ var API = {
     Register: API_HOST + '/AccountService.ashx?action=Register',
 
     GetForgetPswSecurityCode: API_HOST + '/AccountService.ashx?action=GetForgetPswSecurityCode',
+    GetPhoneSecurityCode: API_HOST + '/AccountService.ashx?action=GetPhoneSecurityCode',
 
     RestPassword: API_HOST + '/AccountService.ashx?action=RestPassword'
 
@@ -159,7 +160,8 @@ var ZH_CN = {
         username: "工号",
         password: "密码",
         register : "注册",
-        forgetPassword: "修改密码"
+        forgetPassword: "修改密码",
+        rebindPhone: "更改手机号"
     },
     menu:{
         homePage:"首页",
@@ -409,7 +411,13 @@ var ZH_CN = {
         currentPassword:"当前密码",
         newPassword:"新密码",
         duplicatePassword:"重复密码"
-
+    },
+    rebindPhone:{
+        title:"修改绑定手机号",
+        errWorkdayNo:"工号必须要填上",
+        errMobile:"手机号有问题",
+        errIdno:"身份证号必须要填上",
+        ExplainTxt:"适用于更换手机号码的用户"
     },
     CSER:{
         title:"CSER日历",
@@ -431,7 +439,8 @@ var ZH_US = {
         username: "Employee ID",
         password: "Password",
         register : "Register",
-        forgetPassword: "Change Password"
+        forgetPassword: "Change Password",
+        rebindPhone: "Change Binding Mobile"
     },
     menu:{
         homePage:"Home Page",
@@ -680,6 +689,13 @@ var ZH_US = {
         newPassword:"New password",
         duplicatePassword:"Double confirm your password"
     },
+    rebindPhone:{
+        title:"Change Binding Mobile",
+        errWorkdayNo:"WorkNo is required",
+        errMobile:"Mobile is incorrect",
+        errIdno:"IDNo is required",
+        ExplainTxt:"For users who changed the mobile number"
+    },
     CSER:{
         title:"CSER Calendar",
         title2:"You can click on related topics to sign up",
@@ -710,3 +726,4 @@ String.prototype.formatParam = function(){
     }
     return string;
 };
+

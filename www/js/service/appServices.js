@@ -171,6 +171,21 @@ angular.module('evaluationApp.appServices', [])
                 return deferred.promise;
             },
 
+            getPhoneSecurityCode:function(paras){
+                var deferred = $q.defer();
+                HttpFactory.send({
+                    url:API.GetPhoneSecurityCode,
+                    params: paras,
+                    method: 'post',
+                    mask: false
+                }).success(function (response) {
+                    deferred.resolve(response);
+                }) .error(function(response) {
+                    deferred.reject(response.template);   // 声明执行失败，即服务器返回错误
+                });
+                return deferred.promise;
+            },
+
             operationLog:function(paras){
                 var deferred = $q.defer();
                 HttpFactory.send({

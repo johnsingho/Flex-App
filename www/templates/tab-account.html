@@ -31,6 +31,10 @@
                 {{Language.myFlex.changePassword}}
                 <i class="icon ion-ios-arrow-forward"></i>
             </a>
+            <a class="item  item-icon-right" ng-if="canShow"  ng-click="rebindPhone()">
+                {{Language.signin.rebindPhone}}
+                <i class="icon ion-ios-arrow-forward"></i>
+            </a>
             <a class="item  item-icon-right"  ng-click="signOut()">
                 {{Language.myFlex.cancellation}}
                 <i class="icon ion-ios-arrow-forward"></i>

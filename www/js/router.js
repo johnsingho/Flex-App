@@ -295,6 +295,12 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/account/account_forgetPasswordNoMobile.html',
                 controller: 'ForgetPswCtrl'
             })
+            .state('rebindPhone', {
+                url: '/rebindPhone',
+                templateUrl: 'templates/account/account_rebindPhone.html',
+                controller: 'RebindPhoneCtrl'
+            })
+            
 
             .state('tabCar', {
                 url: "/tabCar",

@@ -150,3 +150,29 @@ ul{
 .popup-buttons .button{
 
 }
+
+
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.nav>li {
+    float: left;
+    position: relative;
+    display: block;
+}
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 0px 18px;
+}
+
+.lightRedBack{
+    background-color: #f2dede;
+}
+.divOff{
+    padding: 6px 10px 6px 16px;
+}
+
+
