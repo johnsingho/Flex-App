@@ -918,7 +918,7 @@ angular.module('evaluationApp.appControllers', [])
         }
 
         var accessEmployee = $rootScope.accessEmployee;
-        $scope.canShow = IsTestAccount(accessEmployee.WorkdayNO); //!for test
+        //$scope.canShow = IsTestAccount(accessEmployee.WorkdayNO); //!for test
         $scope.rebindPhone=function(){
             $state.go('rebindPhone');
         }
