@@ -4,7 +4,7 @@
 
  //开关
  //是否本地开发调试
- var IsDebugMode = false; //false;
+ var IsDebugMode = true; //false;
 
  //给特定用户测试
  /* sample:
@@ -28,6 +28,11 @@ function IsTestAccount(curWorkNo)
     }
     return false;
 }
+
+function isSouthCamp(org){
+    return /b13|b6|b16/i.test(org);
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -133,9 +138,10 @@ var API = {
     GetForgetPswSecurityCode: API_HOST + '/AccountService.ashx?action=GetForgetPswSecurityCode',
     GetPhoneSecurityCode: API_HOST + '/AccountService.ashx?action=GetPhoneSecurityCode',
 
-    RestPassword: API_HOST + '/AccountService.ashx?action=RestPassword'
+    RestPassword: API_HOST + '/AccountService.ashx?action=RestPassword',
 
-
+    //EHS activity
+    GetEHSActList: API_HOST + '/EHSActService.ashx?action=GetEHSActList'
 
 
 };
@@ -414,10 +420,11 @@ var ZH_CN = {
     },
     rebindPhone:{
         title:"修改绑定手机号",
+        newPhone:"新手机号码",
         errWorkdayNo:"工号必须要填上",
         errMobile:"手机号有问题",
         errIdno:"身份证号必须要填上",
-        ExplainTxt:"适用于更换手机号码的用户"
+        ExplainTxt:"适用于已实名制的用户更换手机号码"
     },
     CSER:{
         title:"CSER日历",
@@ -431,6 +438,9 @@ var ZH_CN = {
         department:"部门",
         designer:"设计者",
         designConcept: "设计理念"
+    },
+    ehsAct:{
+        title:"EHS有奖答题"
     }
 };
 
@@ -691,10 +701,11 @@ var ZH_US = {
     },
     rebindPhone:{
         title:"Change Binding Mobile",
+        newPhone:"new mobile number",
         errWorkdayNo:"WorkNo is required",
         errMobile:"Mobile is incorrect",
         errIdno:"IDNo is required",
-        ExplainTxt:"For users who changed the mobile number"
+        ExplainTxt:"For confirmed users who changed the mobile number"
     },
     CSER:{
         title:"CSER Calendar",
