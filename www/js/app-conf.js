@@ -4,7 +4,7 @@
 
  //开关
  //是否本地开发调试
- var IsDebugMode = false; //false;
+ var IsDebugMode = true; //false;
 
  //给特定用户测试
  /* sample:
