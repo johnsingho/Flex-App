@@ -1,10 +1,11 @@
 angular.module('evaluationApp.appControllers', [])
 
-    .controller('AppCtrl', function($scope,$rootScope,$ionicSideMenuDelegate, $state,$location, CacheFactory,$ionicHistory, SettingFactory, alertService, commonServices) {
-
-
+    .controller('AppCtrl', function($scope,$rootScope,$ionicSideMenuDelegate, $state,$location, 
+        CacheFactory,$ionicHistory, SettingFactory, alertService, commonServices,actionVisitFactory) 
+    {
         $scope.ver=CacheFactory.get('version');
         $scope.user = JSON.parse(CacheFactory.get('accessUser'));
+        actionVisitFactory.loadServerUpdate();
 
         $scope.LanguageItems = [
             { name: "中文", value: "CN" },
@@ -73,8 +74,9 @@ angular.module('evaluationApp.appControllers', [])
     .controller('HomeCtrl', function($scope,$rootScope,$ionicHistory,$ionicSlideBoxDelegate ,$timeout,$state,$ionicPopup,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         $ionicHistory.clearHistory()
-        var parameter= commonServices.getBaseParas();
-       $scope.checkWorkday='23328424565765889534562582566117';
+        var parameter = commonServices.getBaseParas();
+        $scope.checkWorkday = '23328424565765889534562582566117';
+        $scope.isSouthCamp = isSouthCamp($rootScope.accessEmployee.Organization);
 //
 //
        $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
@@ -238,6 +240,12 @@ angular.module('evaluationApp.appControllers', [])
            }
 
         };
+
+        $scope.checkActionUpdate=function(action){
+            return actionVisitFactory.checkActionUpdate(action);
+        }        
+        $scope.activityUpdateCount = 0;
+        actionVisitFactory.getActivityUpdateCount($scope);
 
         $scope.open=function(action){
 

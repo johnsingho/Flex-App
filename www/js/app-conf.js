@@ -719,8 +719,10 @@ var ZH_US = {
         department: "Department",
         designer:"Designer",
         designConcept: "Design Concept"
+    },
+    ehsAct:{
+        title:"EHS online Activity"
     }
-
 };
 
 var ERROR = {
