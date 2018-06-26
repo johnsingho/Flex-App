@@ -29,6 +29,15 @@ angular.module('evaluationApp.businiess2Controllers', [])
                 alertService.showAlert(ex.message);
             }
         };
+
+        $scope.openGH=function(){
+            try {
+                externalLinksService.openUr('http://cn.mikecrm.com/pSIKpIJ');
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
+            }
+        };
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
                 disableAnimate: true,
