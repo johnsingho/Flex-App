@@ -1150,6 +1150,16 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             }
             $scope.researchDetailList = data;
         });
+        function CalcFullScore(items){
+            var fullScore=0;
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                for(var j=0; j<item.Items.length; j++){
+                    fullScore += item.Items[j].ItemScore;
+                }
+            }
+            return fullScore;
+        }
 
         $scope.isSumbiting = false;
         $scope.Submit = function () {
@@ -1159,6 +1169,8 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             var SubmitList = [];
             var sumScore = 0;
             var nDoItem = 0;
+            var fullScore = CalcFullScore($scope.researchDetailList);
+
             for (var i = 0; i < $scope.researchDetailList.length; i++) {
                 var item = $scope.researchDetailList[i];
                 var qChecks = $("input[name='Item" + item.Sort + "'" + "]:checked");
@@ -1174,6 +1186,12 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                     sumScore += parseInt(sScore);
                     SubmitList.push({ Item: item.Sort, ItemResult: selVaule });
                 }
+            }
+
+            if(fullScore>0 && (sumScore/fullScore < 0.60)){
+                alertService.showAlert("分数尚未及格，仍需继续努力!");
+                $scope.isSumbiting = false;
+                return;
             }
 
             if (nDoItem != $scope.researchDetailList.length) {
