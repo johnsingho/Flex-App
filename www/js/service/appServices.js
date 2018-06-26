@@ -615,13 +615,25 @@ angular.module('evaluationApp.appServices', [])
                 }
             });
         };
+        var getOutDateActivity = function(oScope){
+            //for activity-list.html
+            var url = commonServices.getUrl("ActionVisitService.ashx", "GetOutDateActivity"); //[ActID,]
+            var params={};
+            commonServices.submit(params, url).then(function (resp) {
+                if (resp.success) {
+                    var actLst = resp.list || [];
+                    oScope.outDateActivities = actLst;
+                }
+            });
+        };
 
         return {
             checkUpdate: checkUpdate,
             checkUnVisit: checkUnVisit,
             visit: visit,
             loadServerUpdate: loadServerUpdate,
-            getActivityUpdateCount: getActivityUpdateCount
+            getActivityUpdateCount: getActivityUpdateCount,
+            getOutDateActivity: getOutDateActivity
         };
     })
 ;
