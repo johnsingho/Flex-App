@@ -524,16 +524,27 @@ angular.module('evaluationApp.appServices', [])
             }
         }
     })
-    .service('actionVisitFactory', function (commonServices,CacheFactory) {
+    .service('actionVisitServices', function (commonServices,CacheFactory) {
         //action访问时间列表
-        var actionVisit = JSON.parse(CacheFactory.get('actionVisit')) || []; //ActName,LastVisitTime
+        var actionVisit = loadCacheVisit();
         var serverUpdate = [];//ActName,UpdateTime
+        var DEF_UPDATE_VAL = new Date('2018-06-01');
 
         var loadServerUpdate = function(){
             var url = commonServices.getUrl("ActionVisitService.ashx", "LoadServerUpdate");
+            var params={};
             commonServices.submit(params, url).then(function (resp) {
                 if (resp.success) {
-                    serverUpdate = JSON.parse(resp.data) || [];
+                    serverUpdate = resp.list || [];
+                    //use Date
+                    for(var i=0; i<serverUpdate.length; i++){
+                        var dt = DEF_UPDATE_VAL;
+                        try {
+                            dt = new Date(serverUpdate[i].UpdateTime);
+                        } catch (error) {                            
+                        }
+                        serverUpdate[i].UpdateTime=dt;
+                    }
                 }
             });
         };
@@ -545,9 +556,22 @@ angular.module('evaluationApp.appServices', [])
                 }
             }
         }
+        function loadCacheVisit() {
+            var actV = JSON.parse(CacheFactory.get('actionVisit')) || []; //ActName,LastVisitTime
+            //use Date
+            for (var i = 0; i < actV.length; i++) {
+                var dt = DEF_UPDATE_VAL;
+                try {
+                    dt = new Date(actV[i].LastVisitTime);
+                } catch (error) {
+                }
+                actV[i].LastVisitTime = dt;
+            }
+            return actV;
+        }
         var checkUpdate = function (actName) {
             var actVis = FindByActName(actionVisit, actName);
-            var lastVistTime = actVis ? actVis.LastVisitTime : new Date('2018-06-01');
+            var lastVistTime = actVis ? actVis.LastVisitTime : DEF_UPDATE_VAL;
             var serUpdate = FindByActName(serverUpdate, actName);
             var serUpdateTime = serUpdate ? serUpdate.UpdateTime : null;
             if(serUpdateTime && serUpdateTime>lastVistTime){
@@ -568,16 +592,21 @@ angular.module('evaluationApp.appServices', [])
         };
         var checkUnVisit = function(actName){
             var actVis = FindByActName(actionVisit, actName);
-            return !actVis || !actVis.lastVistTime;
+            return !actVis || !actVis.LastVisitTime;
         };
-        var getActivityUpdateCount = function(oScope){
+        var getActivityUpdateCount = function(oScope, bMultek){
             //for tab-home.html
             var url = commonServices.getUrl("ActionVisitService.ashx", "GetActivityList"); //[ActID]
+            var params={};
             commonServices.submit(params, url).then(function (resp) {
                 if (resp.success) {
-                    var actLst = JSON.parse(resp.data) || [];
+                    var actLst = resp.list || [];
                     var nNew=0;
                     for(var i=0; i<actLst.length; i++){
+                        if( !actLst[i].CanMultek && bMultek)
+                        {
+                            continue;
+                        }
                         if(checkUnVisit(actLst[i].ActID)){
                             nNew++;
                         }

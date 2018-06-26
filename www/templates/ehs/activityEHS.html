@@ -13,10 +13,22 @@
             <fieldset>
                 <h4 style="color: royalblue">{{$index+1}}. {{detail.SubjectText}}</h4>
                 <div ng-repeat="checkItem in detail.Items">
+                    <!-- 单选 -->
                     <div ng-if="checkItem.Type=='radio'">
                         <h4>
                             <label>
                                 <input id="Item{{detail.Sort}}_{{$index}}" type="radio"
+                                    name="Item{{detail.Sort}}"
+                                    value="Item{{detail.Sort}}_{{$index}}^{{checkItem.ItemScore}}"/> 
+                                    {{checkItem.ItemText}}
+                            </label>
+                        </h4>
+                    </div>
+                    <!-- 多选 -->
+                    <div ng-if="checkItem.Type=='checkbox'">
+                        <h4>
+                            <label>
+                                <input id="Item{{detail.Sort}}_{{$index}}" type="checkbox"
                                     name="Item{{detail.Sort}}"
                                     value="Item{{detail.Sort}}_{{$index}}^{{checkItem.ItemScore}}"/> 
                                     {{checkItem.ItemText}}

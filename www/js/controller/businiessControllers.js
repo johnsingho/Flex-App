@@ -936,8 +936,8 @@ angular.module('evaluationApp.businiessControllers', [])
 //        };
     })
     .controller('ActivityListCtrl', function($scope,CacheFactory,noticeService,alertService,eHSActService,
-        $state,$ionicHistory,commonServices,$location) 
-        {
+        $state,$ionicHistory,commonServices,$location,actionVisitServices) 
+    {
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
 
@@ -1000,6 +1000,7 @@ angular.module('evaluationApp.businiessControllers', [])
         $scope.open=function(activity){
             CacheFactory.remove('activityID');
             CacheFactory.save('activityID',activity.ActivityID);
+            actionVisitServices.visit(activity.ActivityID); //save state
             console.log(activity.ActivityID);
             $state.go('activityHtml');
         };
@@ -1021,7 +1022,7 @@ angular.module('evaluationApp.businiessControllers', [])
         }
         
         //2018-06-20 EHS有奖答题活动
-        $scope.canShow = !/multek/i.test($scope.accessEmployee.Organization) && IsTestAccount($scope.accessEmployee.WorkdayNO);
+        $scope.canShow = !isMultek($scope.accessEmployee.Organization) && IsTestAccount($scope.accessEmployee.WorkdayNO);
         eHSActService.getEHSActList(params).then(function(data){
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
@@ -1039,7 +1040,8 @@ angular.module('evaluationApp.businiessControllers', [])
         });
         $scope.openEHS=function(activity){
             CacheFactory.remove('ehsAct');
-            CacheFactory.save('ehsAct', activity);
+            CacheFactory.save('ehsAct', activity);            
+            actionVisitServices.visit(activity.ActID); //save state
             $state.go('activityEHS');
         }
     })
@@ -1184,13 +1186,13 @@ angular.module('evaluationApp.businiessControllers', [])
                                 });
                                 $rootScope.rebagPopup.then(function (res) {
                                     $scope.isSumbiting = false;
-                                    $state.go('activityList');
-                                    //$state.go('myAccountMoney');
+                                    //$state.go('activityList');
+                                    $state.go('myAccountMoney');
                                 });
                             }
                             else {
                                 $scope.isSumbiting = false;
-                                alertService.showAlert('问卷调查提交成功，谢谢你的参与');
+                                alertService.showAlert('谢谢你的参与!');
                                 $ionicHistory.goBack();
                                 $rootScope.updateSlideBox();
                             }

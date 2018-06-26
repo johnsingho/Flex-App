@@ -1,11 +1,11 @@
 angular.module('evaluationApp.appControllers', [])
 
     .controller('AppCtrl', function($scope,$rootScope,$ionicSideMenuDelegate, $state,$location, 
-        CacheFactory,$ionicHistory, SettingFactory, alertService, commonServices,actionVisitFactory) 
+        CacheFactory,$ionicHistory, SettingFactory, alertService, commonServices,actionVisitServices) 
     {
         $scope.ver=CacheFactory.get('version');
         $scope.user = JSON.parse(CacheFactory.get('accessUser'));
-        actionVisitFactory.loadServerUpdate();
+        actionVisitServices.loadServerUpdate();
 
         $scope.LanguageItems = [
             { name: "中文", value: "CN" },
@@ -71,7 +71,10 @@ angular.module('evaluationApp.appControllers', [])
             $state.go('rebindPhone');
         }
     })
-    .controller('HomeCtrl', function($scope,$rootScope,$ionicHistory,$ionicSlideBoxDelegate ,$timeout,$state,$ionicPopup,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
+    .controller('HomeCtrl', function($scope,$rootScope,$ionicHistory,$ionicSlideBoxDelegate,
+                $timeout,$state,$ionicPopup,$location,alertService, CacheFactory,
+                commonServices,externalLinksService,actionVisitServices) 
+    {
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         $ionicHistory.clearHistory()
         var parameter = commonServices.getBaseParas();
@@ -242,12 +245,13 @@ angular.module('evaluationApp.appControllers', [])
         };
 
         $scope.checkActionUpdate=function(action){
-            return actionVisitFactory.checkActionUpdate(action);
+            return actionVisitServices.checkUpdate(action);
         }        
         $scope.activityUpdateCount = 0;
-        actionVisitFactory.getActivityUpdateCount($scope);
+        actionVisitServices.getActivityUpdateCount($scope, isMultek($rootScope.accessEmployee.Organization));
 
         $scope.open=function(action){
+            actionVisitServices.visit(action); //save state
 
             switch (action)
             {
@@ -310,8 +314,7 @@ angular.module('evaluationApp.appControllers', [])
                     $state.go("earthWeekNoticeList");
                     break;
             }
-
-
+            
             if(action=='自评'){
                 $state.go('tabPoints.rules');
             }else if(action=='金点子'){
