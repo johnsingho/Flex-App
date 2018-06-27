@@ -1026,7 +1026,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         };
         
         //2018-06-20 EHS有奖答题活动
-        $scope.canShow = !isMultek($scope.accessEmployee.Organization) && IsTestAccount($scope.accessEmployee.WorkdayNO);
+        $scope.canShow = !isMultek($scope.accessEmployee.Organization); /*&& IsTestAccount($scope.accessEmployee.WorkdayNO);*/
         eHSActService.getEHSActList(params).then(function(data){
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
