@@ -1,7 +1,7 @@
 /**
  * Created by dmneeoll on 2016-06-23.
  */
-angular.module('evaluationApp.businiessControllers', [])
+angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
     .controller('GoldidealistCtrl',function($scope,$rootScope,$ionicHistory,CacheFactory,$state,goldIdeaService,commonServices,alertService){
         $scope.goldIdeaList = [];
         var paras= commonServices.getBaseParas();
@@ -1013,16 +1013,20 @@ angular.module('evaluationApp.businiessControllers', [])
             $state.go('tab.home');
         }
 
+        //下线的活动
+        $scope.openOfflineAct = function(){
+            alertService.showAlert('该活动已下线，欢迎下次参与!');
+        };
+
         //2018-05-23 活动点赞
         $scope.activityGoodName="手语海报设计大赛";
         $scope.activityGoodImg="img/other/handSign.png";
-        $scope.useActivityGood=true;
         $scope.openActivityGood = function(){
             $state.go('activityGood');
-        }
+        };
         
         //2018-06-20 EHS有奖答题活动
-        $scope.canShow = !isMultek($scope.accessEmployee.Organization) && IsTestAccount($scope.accessEmployee.WorkdayNO);
+        $scope.canShow = !isMultek($scope.accessEmployee.Organization); /*&& IsTestAccount($scope.accessEmployee.WorkdayNO);*/
         eHSActService.getEHSActList(params).then(function(data){
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
@@ -1043,7 +1047,11 @@ angular.module('evaluationApp.businiessControllers', [])
             CacheFactory.save('ehsAct', activity);            
             actionVisitServices.visit(activity.ActID); //save state
             $state.go('activityEHS');
-        }
+        };
+
+        //历史活动列表
+        $scope.outDateActivities=[];
+        actionVisitServices.getOutDateActivity($scope);        
     })
     .controller('ActivityGoodCtrl',function($scope,CacheFactory,activityGoodService,alertService,$state,$ionicHistory,commonServices,$location) {
         //2018-05-23 活动点赞
@@ -1118,7 +1126,7 @@ angular.module('evaluationApp.businiessControllers', [])
         };
     })
     .controller('ActivityEHSCtrl',function($scope,$rootScope,$ionicPopup,
-                CacheFactory,activityGoodService,alertService,$state,$ionicHistory,commonServices,$location) 
+                CacheFactory,alertService,$state,$ionicHistory,commonServices,$location) 
     {
         //2018-06-20 EHS有奖答题活动
         var ehsAct = JSON.parse(CacheFactory.get('ehsAct'));
@@ -1142,6 +1150,16 @@ angular.module('evaluationApp.businiessControllers', [])
             }
             $scope.researchDetailList = data;
         });
+        function CalcFullScore(items){
+            var fullScore=0;
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                for(var j=0; j<item.Items.length; j++){
+                    fullScore += item.Items[j].ItemScore;
+                }
+            }
+            return fullScore;
+        }
 
         $scope.isSumbiting = false;
         $scope.Submit = function () {
@@ -1150,19 +1168,33 @@ angular.module('evaluationApp.businiessControllers', [])
 
             var SubmitList = [];
             var sumScore = 0;
+            var nDoItem = 0;
+            var fullScore = CalcFullScore($scope.researchDetailList);
+
             for (var i = 0; i < $scope.researchDetailList.length; i++) {
                 var item = $scope.researchDetailList[i];
-
-                var selVaule = $("input[name='Item" + item.Sort + "'" + "]:checked").val();
-                if (typeof (selVaule) == 'undefined') {
-                    continue;
+                var qChecks = $("input[name='Item" + item.Sort + "'" + "]:checked");
+                if (qChecks.length > 0) {
+                    nDoItem++;
                 }
-                var sScore = selVaule.split("^")[1];
-                sumScore += parseInt(sScore);
-                SubmitList.push({ Item: item.Sort, ItemResult: selVaule });
+                for (var j = 0; j < qChecks.length; j++) {
+                    var selVaule = $(qChecks[j]).val();
+                    if (typeof (selVaule) == 'undefined') {
+                        continue;
+                    }
+                    var sScore = selVaule.split("^")[1];
+                    sumScore += parseInt(sScore);
+                    SubmitList.push({ Item: item.Sort, ItemResult: selVaule });
+                }
             }
 
-            if (SubmitList.length != $scope.researchDetailList.length) {
+            if(fullScore>0 && (sumScore/fullScore < 0.60)){
+                alertService.showAlert("分数尚未及格，仍需继续努力!");
+                $scope.isSumbiting = false;
+                return;
+            }
+
+            if (nDoItem != $scope.researchDetailList.length) {
                 alertService.showAlert("还有未选择的项目，请选择完成后再提交");
                 $scope.isSumbiting = false;
                 return;

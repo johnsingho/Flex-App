@@ -1,3 +1,11 @@
+<!-- 活动列表 -->
+<style>
+    .OutDate{
+        color: #000 !important;
+        background-color: gainsboro !important;
+    }
+</style>
+
 <ion-view view-title="{{Language.activity.title}}" cache-view="false" >
     <ion-nav-buttons side="left">
         <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
@@ -19,7 +27,6 @@
                 <h3>{{activity.ActivityTitle}}</h3>
                 <br>
                 <p>{{activity.CreateDate| date:"yyyy-MM-dd"}}</p>
-
 
                 <!--<i class="icon ion-ios-list-outline"></i>-->
                  <!--<h2>{{notice.NoticeTitle}}</h2>-->
@@ -68,31 +75,44 @@
 
         <!--</div>-->
 
-        <!-- johnsing 2018-06-20 下线 -->
-        <!--活动点赞-->
-        <!-- <ion-list ng-if="useActivityGood">
-            <ion-item class="item item-thumbnail-left" ng-click="openActivityGood()">
-                <img src="{{activityGoodImg}}">
-                <br>
-                <h2>{{activityGoodName}}</h2>
-            </ion-item>
-        </ion-list> -->
-
         <!-- johnsing 2018-06-20 -->
-        <!--EHS有效答题-->
+        <!--EHS有奖答题-->
         <ion-list ng-if="canShow">
             <ion-item ng-repeat="activity in ehsActList" class="item item-thumbnail-left"  ng-click="openEHS(activity)">                
                 <img src="{{activity.ImageUrl}}" ng-if="activity.ImageUrl!=null">
                 <img src="img/user-100.png" ng-if="activity.ImageUrl==null">
 
-                <h3>{{activity.ActName}}</h3>
+                <h3>EHS有奖答题 | {{activity.ActName}}</h3>
                 <br>
-                <p>{{activity.StartDate| date:"yyyy-MM-dd"}} ~ {{activity.EndDate| date:"yyyy-MM-dd"}}</p>
+                <p>{{activity.StartDate| date:"yyyy-MM-dd"}}</p>
 
                 <!--<i class="icon ion-ios-list-outline"></i>-->
                  <!--<h2>{{notice.NoticeTitle}}</h2>-->
                  <!--<p>{{notice.NoticeTypeName}}</p>-->
                 <!--<i class="icon ion-ios-arrow-forward"></i>-->
+            </ion-item>
+        </ion-list>
+
+        <!-- 放置已下线活动 -->
+        <!--活动点赞-->
+        <ion-list>
+                <ion-item class="item item-thumbnail-left OutDate" 
+                    ng-click="openOfflineAct()">
+                    <img src="{{activityGoodImg}}">
+                    <br>
+                    <h2>{{activityGoodName}}</h2>
+                    <br>
+                    <p>2018-05-28</p>
+                </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item ng-repeat="activity in outDateActivities" class="item item-thumbnail-left OutDate" 
+                ng-click="openOfflineAct()">
+                <img src="{{activity.ImgPath}}" ng-if="activity.ImgPath!=null">
+                <img src="img/user-100.png" ng-if="activity.ImgPath==null">
+                <h3>{{activity.ActivityName}}</h3>
+                <br>
+                <p>{{activity.CreateDate| date:"yyyy-MM-dd"}}</p>
             </ion-item>
         </ion-list>
 
