@@ -45,7 +45,7 @@
   },
   {
     "file": "css/style.css",
-    "hash": "b869b8b3fd397ccc251f5b63f7388d01"
+    "hash": "ed5cb547b0720d9067f5e1e15a8b198e"
   },
   {
     "file": "fonts/Slide-icons.dev.svg",
@@ -305,7 +305,7 @@
   },
   {
     "file": "js/app-conf.js",
-    "hash": "586517d088684e5669c88f5a4a5f0b46"
+    "hash": "32c5d4a75babd3319960f47d19623e56"
   },
   {
     "file": "js/app.js",
@@ -313,7 +313,7 @@
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "03adf35520c09470eb60132597513525"
+    "hash": "a0da13e3565eac65367e50c40c838789"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -325,7 +325,7 @@
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "899809b52b1db7d6cde00c17896f476a"
+    "hash": "85b706772f8f0ed9f3770474cb81eef6"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -453,15 +453,15 @@
   },
   {
     "file": "js/router.js",
-    "hash": "143267190865a91aae3b61288e5eb9a7"
+    "hash": "dae40a54d526f913276a990dc11c7f71"
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "7485e79db7f43add30b489a63312f09f"
+    "hash": "5b1381966b05b1cd693fb98e9ed84850"
   },
   {
     "file": "js/service/businessServices.js",
-    "hash": "dfae93a8dd7948caeb9e13d3f9224b6d"
+    "hash": "00b6d307af5b527cd5b26636f9ac84ab"
   },
   {
     "file": "js/service/pointsServices.js",
@@ -981,11 +981,11 @@
   },
   {
     "file": "templates/activity/activity-list.html",
-    "hash": "096beece8a513d8d34faf0571f92db21"
+    "hash": "841fd0abfa89b7957f894cb9960ef90c"
   },
   {
     "file": "templates/activity/activityGood.html",
-    "hash": "af6f095bf3abae1d0cbf9f9c11cd95c4"
+    "hash": "cac14ce7e715da58ceebde7d25d3953b"
   },
   {
     "file": "templates/activity/activityHtml.html",
@@ -1130,6 +1130,10 @@
   {
     "file": "templates/earthWeek/noticeHtml.html",
     "hash": "c243ad0a8251a8ea574bdac3b94672a8"
+  },
+  {
+    "file": "templates/ehs/activityEHS.html",
+    "hash": "364cd0f874d7b0417abced5d9734de0a"
   },
   {
     "file": "templates/GBS/certificate/certificate-list.html",
@@ -1341,7 +1345,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "13a7d675fb370a755cbe671be7d116f5"
+    "hash": "5c2ba87acbc370296e4f14720554bca0"
   },
   {
     "file": "templates/tab-homecopy.html",

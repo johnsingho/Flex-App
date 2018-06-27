@@ -4,7 +4,7 @@
 
  //开关
  //是否本地开发调试
- var IsDebugMode = false;//false
+ var IsDebugMode = false; //false;
 
  //给特定用户测试
  /* sample:
@@ -20,6 +20,8 @@ function IsTestAccount(curWorkNo)
         466190,/*Austin xie*/
         480523,/*Lily Li */
         806218,/*Bily Chow */
+        2327051,/*cathy zh*/
+        458037, /*Micky Zhao*/
     ];
     for(var i=0; i<workNos.length; i++){
         if(curWorkNo == workNos[i]){
@@ -32,7 +34,9 @@ function IsTestAccount(curWorkNo)
 function isSouthCamp(org){
     return /b13|b6|b16/i.test(org);
 }
-
+function isMultek(org){
+    return /multek/i.test(org);
+}
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -719,8 +723,10 @@ var ZH_US = {
         department: "Department",
         designer:"Designer",
         designConcept: "Design Concept"
+    },
+    ehsAct:{
+        title:"EHS online Activity"
     }
-
 };
 
 var ERROR = {

@@ -175,4 +175,14 @@ ul{
     padding: 6px 10px 6px 16px;
 }
 
+.lightGrayBack{
+    background-color:rgb(238, 239, 241);
+    color: rgb(63, 62, 63);
+}
+.bluebox {
+    background: none repeat scroll 0 0 #5ab5de;
+    box-shadow: 0 5px 0 #51a3c7;
+    color: #fff;
+}
+
 

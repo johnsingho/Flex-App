@@ -640,6 +640,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/cser/cser-Date.html',
                 controller: 'CserDateCtrl'
             })
+            .state('activityEHS',{
+                url: '/activityEHS',
+                templateUrl: 'templates/ehs/activityEHS.html',
+                controller: 'ActivityEHSCtrl'
+            })
 
         $urlRouterProvider.otherwise('signin');
 

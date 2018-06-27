@@ -524,5 +524,105 @@ angular.module('evaluationApp.appServices', [])
             }
         }
     })
+    .service('actionVisitServices', function (commonServices,CacheFactory) {
+        //action访问时间列表
+        var actionVisit = loadCacheVisit();
+        var serverUpdate = [];//ActName,UpdateTime
+        var DEF_UPDATE_VAL = new Date('2018-06-01');
+
+        var loadServerUpdate = function(){
+            var url = commonServices.getUrl("ActionVisitService.ashx", "LoadServerUpdate");
+            var params={};
+            commonServices.submit(params, url).then(function (resp) {
+                if (resp.success) {
+                    serverUpdate = resp.list || [];
+                    //use Date
+                    for(var i=0; i<serverUpdate.length; i++){
+                        var dt = DEF_UPDATE_VAL;
+                        try {
+                            dt = new Date(serverUpdate[i].UpdateTime);
+                        } catch (error) {                            
+                        }
+                        serverUpdate[i].UpdateTime=dt;
+                    }
+                }
+            });
+        };
+        function FindByActName(arr, actName){
+            for(var i=0; i<arr.length; i++){
+                var it = arr[i];
+                if(it.ActName == actName){
+                    return it;
+                }
+            }
+        }
+        function loadCacheVisit() {
+            var actV = JSON.parse(CacheFactory.get('actionVisit')) || []; //ActName,LastVisitTime
+            //use Date
+            for (var i = 0; i < actV.length; i++) {
+                var dt = DEF_UPDATE_VAL;
+                try {
+                    dt = new Date(actV[i].LastVisitTime);
+                } catch (error) {
+                }
+                actV[i].LastVisitTime = dt;
+            }
+            return actV;
+        }
+        var checkUpdate = function (actName) {
+            var actVis = FindByActName(actionVisit, actName);
+            var lastVistTime = actVis ? actVis.LastVisitTime : DEF_UPDATE_VAL;
+            var serUpdate = FindByActName(serverUpdate, actName);
+            var serUpdateTime = serUpdate ? serUpdate.UpdateTime : null;
+            if(serUpdateTime && serUpdateTime>lastVistTime){
+                return true;
+            }
+            return false;
+        };
+        var visit = function (actName) {
+            var actVis = FindByActName(actionVisit, actName);
+            if(!actVis)
+            {
+                actVis = {ActName:actName,LastVisitTime:new Date()};
+                actionVisit.push(actVis);                
+            }else{
+                actVis.LastVisitTime = new Date();
+            }
+            CacheFactory.save('actionVisit', actionVisit);
+        };
+        var checkUnVisit = function(actName){
+            var actVis = FindByActName(actionVisit, actName);
+            return !actVis || !actVis.LastVisitTime;
+        };
+        var getActivityUpdateCount = function(oScope, bMultek){
+            //for tab-home.html
+            var url = commonServices.getUrl("ActionVisitService.ashx", "GetActivityList"); //[ActID]
+            var params={};
+            commonServices.submit(params, url).then(function (resp) {
+                if (resp.success) {
+                    var actLst = resp.list || [];
+                    var nNew=0;
+                    for(var i=0; i<actLst.length; i++){
+                        if( !actLst[i].CanMultek && bMultek)
+                        {
+                            continue;
+                        }
+                        if(checkUnVisit(actLst[i].ActID)){
+                            nNew++;
+                        }
+                    }
+                    oScope.activityUpdateCount = nNew;
+                }
+            });
+        };
+
+        return {
+            checkUpdate: checkUpdate,
+            checkUnVisit: checkUnVisit,
+            visit: visit,
+            loadServerUpdate: loadServerUpdate,
+            getActivityUpdateCount: getActivityUpdateCount
+        };
+    })
 ;
 

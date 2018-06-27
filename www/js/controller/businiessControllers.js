@@ -935,7 +935,9 @@ angular.module('evaluationApp.businiessControllers', [])
 //            $ionicHistory.goBack();
 //        };
     })
-    .controller('ActivityListCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) {
+    .controller('ActivityListCtrl', function($scope,CacheFactory,noticeService,alertService,eHSActService,
+        $state,$ionicHistory,commonServices,$location,actionVisitServices) 
+    {
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
 
@@ -998,6 +1000,7 @@ angular.module('evaluationApp.businiessControllers', [])
         $scope.open=function(activity){
             CacheFactory.remove('activityID');
             CacheFactory.save('activityID',activity.ActivityID);
+            actionVisitServices.visit(activity.ActivityID); //save state
             console.log(activity.ActivityID);
             $state.go('activityHtml');
         };
@@ -1016,6 +1019,30 @@ angular.module('evaluationApp.businiessControllers', [])
         $scope.useActivityGood=true;
         $scope.openActivityGood = function(){
             $state.go('activityGood');
+        }
+        
+        //2018-06-20 EHS有奖答题活动
+        $scope.canShow = !isMultek($scope.accessEmployee.Organization) && IsTestAccount($scope.accessEmployee.WorkdayNO);
+        eHSActService.getEHSActList(params).then(function(data){
+            if(data=="Token is TimeOut"){
+                alertService.showAlert("登录失效，请重新登录");
+                $state.transitionTo('signin');
+            }
+
+            $scope.ehsActList=data;
+            // if(typeof ($scope.ehsActList) == 'undefined'||$scope.ehsActList!=null){
+            //     for(var i=0;i<$scope.ehsActList.length;i++){
+            //         if($scope.ehsActList[i].ImageUrl==null||$scope.ehsActList[i].ImageUrl== "undefined"){
+            //             $scope.ehsActList[i].ImageUrl='img/user-100.png'
+            //         }
+            //     }
+            // }
+        });
+        $scope.openEHS=function(activity){
+            CacheFactory.remove('ehsAct');
+            CacheFactory.save('ehsAct', activity);            
+            actionVisitServices.visit(activity.ActID); //save state
+            $state.go('activityEHS');
         }
     })
     .controller('ActivityGoodCtrl',function($scope,CacheFactory,activityGoodService,alertService,$state,$ionicHistory,commonServices,$location) {
@@ -1090,6 +1117,98 @@ angular.module('evaluationApp.businiessControllers', [])
             }
         };
     })
+    .controller('ActivityEHSCtrl',function($scope,$rootScope,$ionicPopup,
+                CacheFactory,activityGoodService,alertService,$state,$ionicHistory,commonServices,$location) 
+    {
+        //2018-06-20 EHS有奖答题活动
+        var ehsAct = JSON.parse(CacheFactory.get('ehsAct'));
+        $scope.imgUrl = ehsAct.ImageUrl;
+        $scope.htmlConent = ehsAct.HtmlConent;
+
+        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
+
+        var url = commonServices.getUrl("EHSActService.ashx", "GetEHSActDetails");
+        var params = { ActID: ehsAct.ActID };
+        commonServices.getDataList(params, url).then(function (data) {
+            if (data == "Token is TimeOut") {
+                alertService.showAlert("登录失效，请重新登录");
+                $state.transitionTo('signin');
+            }
+
+            if (!data) {
+                alertService.showAlert("该活动还没有题目");
+                $state.transitionTo('activityList');
+                return;
+            }
+            $scope.researchDetailList = data;
+        });
+
+        $scope.isSumbiting = false;
+        $scope.Submit = function () {
+            if ($scope.isSumbiting) { return; }
+            $scope.isSumbiting = true;
+
+            var SubmitList = [];
+            var sumScore = 0;
+            for (var i = 0; i < $scope.researchDetailList.length; i++) {
+                var item = $scope.researchDetailList[i];
+
+                var selVaule = $("input[name='Item" + item.Sort + "'" + "]:checked").val();
+                if (typeof (selVaule) == 'undefined') {
+                    continue;
+                }
+                var sScore = selVaule.split("^")[1];
+                sumScore += parseInt(sScore);
+                SubmitList.push({ Item: item.Sort, ItemResult: selVaule });
+            }
+
+            if (SubmitList.length != $scope.researchDetailList.length) {
+                alertService.showAlert("还有未选择的项目，请选择完成后再提交");
+                $scope.isSumbiting = false;
+                return;
+            }
+            else {
+                params.WorkdayNo = $scope.accessEmployee.WorkdayNO;
+                params.ActID = ehsAct.ActID;
+                params.SumScore = sumScore;
+                params.SubmitResult = angular.toJson(SubmitList);
+                var url = commonServices.getUrl("EHSActService.ashx", "SubmitActResult");
+                try {
+                    commonServices.submit(params, url).then(function (data) {
+                        if (data.success) {
+                            var x = parseFloat(data.data)
+                            if (x > 0) {
+                                $rootScope.money = '红包金额:' + data.data + '元';
+                                $rootScope.rebagPopup = $ionicPopup.show({
+                                    cssClass: 'er-popup',
+                                    templateUrl: 'hongbao.html',
+                                    scope: $rootScope
+                                });
+                                $rootScope.rebagPopup.then(function (res) {
+                                    $scope.isSumbiting = false;
+                                    //$state.go('activityList');
+                                    $state.go('myAccountMoney');
+                                });
+                            }
+                            else {
+                                $scope.isSumbiting = false;
+                                alertService.showAlert('谢谢你的参与!');
+                                $ionicHistory.goBack();
+                                $rootScope.updateSlideBox();
+                            }
+                        }
+                        else {
+                            $scope.isSumbiting = false;
+                            alertService.showAlert(data.message);
+                        }
+                    }
+                    );
+                } finally {
+                    $scope.isSumbiting = false;
+                }
+            };
+        }
+    })    
     .controller('ActivityHtmlCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,$location,commonServices) {
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
