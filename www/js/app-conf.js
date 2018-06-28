@@ -22,6 +22,9 @@ function IsTestAccount(curWorkNo)
         806218,/*Bily Chow */
         2327051,/*cathy zh*/
         458037, /*Micky Zhao*/
+        458184, /*jinxiu chen*/
+        /*temp for test*/
+        2600355,466664,446627,456034,682138,
     ];
     for(var i=0; i<workNos.length; i++){
         if(curWorkNo == workNos[i]){
@@ -208,6 +211,7 @@ var ZH_CN = {
         handbook:"员工手册",
         apply:"报 名",
         insurance:"商业保险",
+        admin:"Admin",
         GBS:'GBS HR',
         earthday:"地球周"
     },
@@ -445,6 +449,15 @@ var ZH_CN = {
     },
     ehsAct:{
         title:"EHS有奖答题"
+    },
+    admin:{
+        icCardLost:"挂失IC卡",
+        promptTitle:"提示",
+        promptOK:"确定",
+        promptCancel:"取消",
+        promptReportLost:"确定要挂失你的IC卡？",
+        lastRequest:"最近一次申请",
+        submitSucc:'您的挂失申请已提交，正在等待一卡通后台处理，谢谢！'
     }
 };
 
@@ -491,6 +504,7 @@ var ZH_US = {
         handbook: "Employee Handbook",
         apply: "Sign Up",
         insurance: "Commercial Insurance",
+        admin:"Admin",
         GBS:'GBS HR',
         earthday:"Earth Week"
     },
@@ -726,6 +740,15 @@ var ZH_US = {
     },
     ehsAct:{
         title:"EHS online Activity"
+    },
+    admin:{
+        icCardLost:"Report loss of IC card",
+        promptTitle:"Prompt",
+        promptOK:"OK",
+        promptCancel:"Cancel",
+        promptReportLost:"Are you sure to report you IC card lost?",
+        lastRequest:"Last Request",
+        submitSucc:'Your report loss was commited, thank you!'
     }
 };
 
