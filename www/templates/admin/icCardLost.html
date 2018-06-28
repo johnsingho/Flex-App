@@ -8,7 +8,7 @@
                         适用于已经<b>实名认证</b>的Flex+用户，在线挂失IC卡;
                     </li>
                     <li>
-                        解除挂失需要本人去IC卡中心办理，不支持在线办理。
+                        解除挂失需要本人去IC卡服务中心办理，不支持在线办理。
                     </li>
                 </ol>
             </div>
@@ -37,13 +37,13 @@
         <br/>
         <ion-list ng-if="HasLastState()">
             <ion-item class="item item-divider">{{Language.admin.lastRequest}}</ion-item>
-            <ion-item ng-if="custList" class="item">
+            <ion-item class="item">
                 <div class="row">
                     <div class="col">
                         <h3 style="color: #990000" class="ng-binding">{{LastState.State}}</h3>
                     </div>
                     <div class="col">
-                        <h3 class="ng-binding">{{LastState.upDATEdt}}</h3>
+                        <h3 class="ng-binding">{{LastState.upDATEdt|date:"yyyy-MM-dd HH:mm:ss"}}</h3>
                     </div>
                 </div>
             </ion-item>
