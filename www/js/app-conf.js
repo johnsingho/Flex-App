@@ -208,7 +208,7 @@ var ZH_CN = {
         handbook:"员工手册",
         apply:"报 名",
         insurance:"商业保险",
-        GBS:'GBS HR',
+        GBS:'人事综合',
         earthday:"地球周"
     },
     myFlex:{
