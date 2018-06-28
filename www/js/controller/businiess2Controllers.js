@@ -38,6 +38,29 @@ angular.module('evaluationApp.businiess2Controllers', [])
                 alertService.showAlert(ex.message);
             }
         };
+        $scope.openMECH=function(){
+
+            $scope.isNotMECH=$scope.accessEmployee.Organization.toUpperCase().indexOf('MECH')==-1;
+
+            if($scope.isNotMECH)
+            {
+                alertService.showAlert("本项调查只开放给Mech员工");
+                return;
+            }
+
+            if($scope.accessEmployee.Organization.toUpperCase()=='MECH-PCBA')
+            {
+                alertService.showAlert("本项调查只开放给Mech（非PCBA）员工");
+                return;
+            }
+
+            try {
+                externalLinksService.openUr('https://www.wjx.top/jq/25582325.aspx');
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
+            }
+        };
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
                 disableAnimate: true,

@@ -321,11 +321,11 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "57a9a34648aa2bffd08bff480328d803"
+    "hash": "364c0d793b72522f55658a4dffaee7d5"
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "85b706772f8f0ed9f3770474cb81eef6"
+    "hash": "56da90153870f48feaffe49e4ea974ac"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -457,7 +457,7 @@
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "5b1381966b05b1cd693fb98e9ed84850"
+    "hash": "775c56a19d28de5c7c8cc03adce664aa"
   },
   {
     "file": "js/service/businessServices.js",
@@ -981,7 +981,7 @@
   },
   {
     "file": "templates/activity/activity-list.html",
-    "hash": "841fd0abfa89b7957f894cb9960ef90c"
+    "hash": "a26a7569d7083a9da1d5b260d4202fd6"
   },
   {
     "file": "templates/activity/activityGood.html",
@@ -1133,11 +1133,11 @@
   },
   {
     "file": "templates/ehs/activityEHS.html",
-    "hash": "364cd0f874d7b0417abced5d9734de0a"
+    "hash": "091287c5289045b92cca4605a42cd9d4"
   },
   {
     "file": "templates/GBS/certificate/certificate-list.html",
-    "hash": "57f1fc2567b29c638bbb60ca04625453"
+    "hash": "a9973df87262e54e6c19437c0c19ad85"
   },
   {
     "file": "templates/GBS/certificate/certificate-submit.html",
@@ -1309,7 +1309,7 @@
   },
   {
     "file": "templates/research/research-list.html",
-    "hash": "fd634052b2f9f7f09d6e98a6a3949750"
+    "hash": "344bf0c7c13ca84be01d4c6544475b00"
   },
   {
     "file": "templates/research/researchHtml.html",
@@ -1345,7 +1345,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "5c2ba87acbc370296e4f14720554bca0"
+    "hash": "3faf32b331891a0cf9d3fec54ce11e82"
   },
   {
     "file": "templates/tab-homecopy.html",
