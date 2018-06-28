@@ -645,6 +645,17 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/ehs/activityEHS.html',
                 controller: 'ActivityEHSCtrl'
             })
+            .state('admin',{
+                url: '/admin',
+                templateUrl: 'templates/admin/admin-list.html',
+                controller: 'AdminCtrl'
+            })
+            /*sub of admin*/
+            .state('icCardLost',{
+                url: '/icCardLost',
+                templateUrl: 'templates/admin/icCardLost.html',
+                controller: 'ICCardLostCtrl'
+            })
 
         $urlRouterProvider.otherwise('signin');
 

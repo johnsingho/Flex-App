@@ -185,4 +185,12 @@ ul{
     color: #fff;
 }
 
+/* 数字列表 */
+.numOl{
+    list-style-type: decimal;
+}
+.numOl li{
+    margin-top: 3px;
+    white-space: normal;
+}   
 

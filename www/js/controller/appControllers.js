@@ -249,6 +249,7 @@ angular.module('evaluationApp.appControllers', [])
         }        
         $scope.activityUpdateCount = 0;
         actionVisitServices.getActivityUpdateCount($scope, isMultek($rootScope.accessEmployee.Organization));
+        $scope.canShow = IsTestAccount($rootScope.accessEmployee.WorkdayNO); //!for test
 
         $scope.open=function(action){
             actionVisitServices.visit(action); //save state
@@ -312,6 +313,9 @@ angular.module('evaluationApp.appControllers', [])
                     break;
                 case "earthday":
                     $state.go("earthWeekNoticeList");
+                    break;
+                case "admin":
+                    $state.go("admin");
                     break;
             }
             
