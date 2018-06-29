@@ -1,33 +1,38 @@
 <!-- 挂失IC卡 -->
+<style>
+    .font90{
+        font-size: 90%;
+    }
+</style>
 <ion-view view-title="{{Language.admin.icCardLost}}" cache-view="false"  hide-tabs >
     <ion-content style="background-color:lavender">
         <div class="divOff lightRedBack">
-            <div class="divOff">
+            <div class="divOff" style="font-size:14px;">
                 <ol class="numOl">
                     <li>
                         适用于已经<b>实名认证</b>的Flex+用户，在线挂失IC卡;
                     </li>
                     <li>
-                        解除挂失需要本人去IC卡中心办理，不支持在线办理。
+                        解除挂失需要本人去IC卡服务中心办理，不支持在线办理。
                     </li>
                 </ol>
             </div>
         </div>
-        <div class="list card" >
+        <div class="list card font90" >
             <div class="item item-input">
-                <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span>
+                <span class="input-label" style="width: 30px;">{{Language.like.name}}</span>
                 <span class="input-label" style="width: 10px;color: red">*</span>
-                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.CName" />
+                <input type="text" readonly="readonly" ng-model="model.CName" />
             </div>            
             <div class="item item-input">
-                <span class="input-label" style="width:30px;font-size:80%">{{Language.like.employee_ID}}</span>
+                <span class="input-label" style="width:30px;">{{Language.like.employee_ID}}</span>
                 <span class="input-label" style="width: 10px;color: red">*</span>
-                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.WorkdayNO" />
+                <input type="text" readonly="readonly" ng-model="model.WorkdayNO" />
             </div>
             <div class="item item-input">
-                <span class="input-label" style="width:30px;font-size:80%">{{Language.realName.idNO}}</span>
+                <span class="input-label" style="width:30px;">{{Language.realName.idNO}}</span>
                 <span class="input-label" style="width: 10px;color: red">*</span>
-                <input type="text" placeholder="{{Language.realName.idNO}}" ng-model="model.IDNO"/>
+                <input type="text" maxlength="18" placeholder="{{Language.realName.idNO}}" ng-model="model.IDNO"/>
             </div>
         </div>
 
@@ -37,13 +42,13 @@
         <br/>
         <ion-list ng-if="HasLastState()">
             <ion-item class="item item-divider">{{Language.admin.lastRequest}}</ion-item>
-            <ion-item ng-if="custList" class="item">
+            <ion-item class="item">
                 <div class="row">
                     <div class="col">
                         <h3 style="color: #990000" class="ng-binding">{{LastState.State}}</h3>
                     </div>
                     <div class="col">
-                        <h3 class="ng-binding">{{LastState.upDATEdt}}</h3>
+                        <h3 class="ng-binding">{{LastState.upDATEdt|date:"yyyy-MM-dd HH:mm:ss"}}</h3>
                     </div>
                 </div>
             </ion-item>
