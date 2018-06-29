@@ -213,7 +213,8 @@ var ZH_CN = {
         insurance:"商业保险",
         GBS:'人事综合',
         admin:"Admin",
-        earthday:"地球周"
+        earthday:"地球周",
+        dormMng:"宿舍管理"
     },
     myFlex:{
         employee_ID: "工号",
@@ -458,6 +459,9 @@ var ZH_CN = {
         promptReportLost:"确定要挂失你的IC卡？",
         lastRequest:"最近一次申请",
         submitSucc:'您的挂失申请已提交，正在等待一卡通后台处理，谢谢！'
+    },
+    dormMng:{
+
     }
 };
 
@@ -504,9 +508,10 @@ var ZH_US = {
         handbook: "Employee Handbook",
         apply: "Sign Up",
         insurance: "Commercial Insurance",
-        admin:"Admin",
         GBS:'GBS HR',
-        earthday:"Earth Week"
+        admin:"Admin",
+        earthday:"Earth Week",
+        dormMng:"Dormitory Management"
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -749,6 +754,9 @@ var ZH_US = {
         promptReportLost:"Are you sure to report you IC card lost?",
         lastRequest:"Last Request",
         submitSucc:'Your report loss was commited, thank you!'
+    },
+    dormMng:{
+
     }
 };
 
