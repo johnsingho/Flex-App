@@ -5,7 +5,6 @@ angular.module('evaluationApp.appControllers', [])
     {
         $scope.ver=CacheFactory.get('version');
         $scope.user = JSON.parse(CacheFactory.get('accessUser'));
-        actionVisitServices.loadServerUpdate();
 
         $scope.LanguageItems = [
             { name: "中文", value: "CN" },
@@ -249,7 +248,10 @@ angular.module('evaluationApp.appControllers', [])
         }        
         $scope.activityUpdateCount = 0;
         actionVisitServices.getActivityUpdateCount($scope, isMultek($rootScope.accessEmployee.Organization));
-        $scope.canShow = IsTestAccount($rootScope.accessEmployee.WorkdayNO); //!for test
+        //控制是否显示项，在 ESE_ACTION_UPDATE 表设置
+        $scope.canUseAction = function(action){
+            return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+        };
 
         $scope.open=function(action){
             actionVisitServices.visit(action); //save state
