@@ -6,7 +6,7 @@ angular.module('evaluationApp.appControllers', [])
         $scope.ver=CacheFactory.get('version');
         $scope.user = JSON.parse(CacheFactory.get('accessUser'));
         actionVisitServices.loadServerUpdate();
-
+                
         $scope.LanguageItems = [
             { name: "中文", value: "CN" },
             { name: "English", value: "US" }
@@ -30,6 +30,7 @@ angular.module('evaluationApp.appControllers', [])
         $scope.languageUpdate = function () {
             CacheFactory.save('LanguageItem', $scope.LanguageItem.item);
             languageitem = JSON.parse(CacheFactory.get('LanguageItem'));
+            
             if (languageitem.value == 'CN') {
 
                 $rootScope.Language = ZH_CN;

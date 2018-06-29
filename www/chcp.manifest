@@ -45,7 +45,7 @@
   },
   {
     "file": "css/style.css",
-    "hash": "273b8b168cdb0d3dbc26a248ef42a960"
+    "hash": "519ec33ae7793af10d495ae7f7ac28dc"
   },
   {
     "file": "fonts/Slide-icons.dev.svg",
@@ -301,7 +301,7 @@
   },
   {
     "file": "index.html",
-    "hash": "9fc586dac084754ee9fdb72a62effeff"
+    "hash": "6b22875d02aff0dc58c613e2dfc07c17"
   },
   {
     "file": "js/app-conf.js",
@@ -309,11 +309,11 @@
   },
   {
     "file": "js/app.js",
-    "hash": "4883e9a09cca1032a0e70f173ad288be"
+    "hash": "e62562ef3383e84e4a42c256c714a15e"
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "93bf1b5730a9618dc5d8d7ec306c2450"
+    "hash": "1ceea0300b2c0635c161a5a45778cb4e"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -457,7 +457,7 @@
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "f1f5eb4222ad562b7cec18aa6258df08"
+    "hash": "775c56a19d28de5c7c8cc03adce664aa"
   },
   {
     "file": "js/service/businessServices.js",
@@ -1349,7 +1349,7 @@
   },
   {
     "file": "templates/tab-account.html",
-    "hash": "f5386444b87b952379c90ca9605356cf"
+    "hash": "85aa162a0b7373fe5dc2654c923763b0"
   },
   {
     "file": "templates/tab-goodJob.html",
@@ -1377,7 +1377,7 @@
   },
   {
     "file": "templates/tab-signin.html",
-    "hash": "f95f295d3b21abd346206c98dddc3ca6"
+    "hash": "53b59ef18d4cb14a50e98410f05834ac"
   },
   {
     "file": "templates/tabs.html",
