@@ -1,8 +1,8 @@
 angular.module('evaluationApp.appControllers', [])
 
-    .controller('AppCtrl', function($scope,$rootScope,$ionicSideMenuDelegate, $state,$location, CacheFactory,$ionicHistory, SettingFactory, alertService, commonServices) {
-
-
+    .controller('AppCtrl', function($scope,$rootScope,$ionicSideMenuDelegate, $state,$location, 
+        CacheFactory,$ionicHistory, SettingFactory, alertService, commonServices,actionVisitServices) 
+    {
         $scope.ver=CacheFactory.get('version');
         $scope.user = JSON.parse(CacheFactory.get('accessUser'));
 
@@ -70,11 +70,15 @@ angular.module('evaluationApp.appControllers', [])
             $state.go('rebindPhone');
         }
     })
-    .controller('HomeCtrl', function($scope,$rootScope,$ionicHistory,$ionicSlideBoxDelegate ,$timeout,$state,$ionicPopup,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
+    .controller('HomeCtrl', function($scope,$rootScope,$ionicHistory,$ionicSlideBoxDelegate,
+                $timeout,$state,$ionicPopup,$location,alertService, CacheFactory,
+                commonServices,externalLinksService,actionVisitServices) 
+    {
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         $ionicHistory.clearHistory()
-        var parameter= commonServices.getBaseParas();
-       $scope.checkWorkday='23328424565765889534562582566117';
+        var parameter = commonServices.getBaseParas();
+        $scope.checkWorkday = '23328424565765889534562582566117';
+        $scope.isSouthCamp = isSouthCamp($rootScope.accessEmployee.Organization);
 //
 //
        $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
@@ -239,7 +243,18 @@ angular.module('evaluationApp.appControllers', [])
 
         };
 
+        $scope.checkActionUpdate=function(action){
+            return actionVisitServices.checkUpdate(action);
+        }        
+        $scope.activityUpdateCount = 0;
+        actionVisitServices.getActivityUpdateCount($scope, isMultek($rootScope.accessEmployee.Organization));
+        //控制是否显示项，在 ESE_ACTION_UPDATE 表设置
+        $scope.canUseAction = function(action){
+            return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+        };
+
         $scope.open=function(action){
+            actionVisitServices.visit(action); //save state
 
             switch (action)
             {
@@ -301,9 +316,11 @@ angular.module('evaluationApp.appControllers', [])
                 case "earthday":
                     $state.go("earthWeekNoticeList");
                     break;
+                case "admin":
+                    $state.go("admin");
+                    break;
             }
-
-
+            
             if(action=='自评'){
                 $state.go('tabPoints.rules');
             }else if(action=='金点子'){

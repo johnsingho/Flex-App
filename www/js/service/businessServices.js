@@ -462,5 +462,28 @@ angular.module('evaluationApp.businessServices', [])
 
         }
     })
+    .service("eHSActService",function($http, $q, HttpFactory){
+        //对应于 EHS有奖答题
+        return {
+            getEHSActList:function(paras){
+                var deferred = $q.defer();
+                HttpFactory.send({
+                    url:API.GetEHSActList,
+                    params: paras,
+                    method: 'post',
+                    mask: true
+                }).success(function (response) {
+                    if(response.success){
+                        deferred.resolve(response.list);
+                    } else{
+                        deferred.resolve(response.message);
+                    }
 
+                }) .error(function(response) {
+                    deferred.reject(response);   // 声明执行失败，即服务器返回错误
+                });
+                return deferred.promise;
+            }
+        }
+    })
 ;

@@ -4,7 +4,7 @@
 
  //开关
  //是否本地开发调试
- var IsDebugMode = true; //false;
+ var IsDebugMode = false; //false;
 
  //给特定用户测试
  /* sample:
@@ -20,6 +20,11 @@ function IsTestAccount(curWorkNo)
         466190,/*Austin xie*/
         480523,/*Lily Li */
         806218,/*Bily Chow */
+        2327051,/*cathy zh*/
+        458037, /*Micky Zhao*/
+        458184, /*jinxiu chen*/
+        /*temp for test*/
+        2600355,466664,446627,456034,682138,
     ];
     for(var i=0; i<workNos.length; i++){
         if(curWorkNo == workNos[i]){
@@ -32,7 +37,9 @@ function IsTestAccount(curWorkNo)
 function isSouthCamp(org){
     return /b13|b6|b16/i.test(org);
 }
-
+function isMultek(org){
+    return /multek/i.test(org);
+}
 
 ///////////////////////////////////////////////////////////////////////////////////
 
@@ -204,8 +211,10 @@ var ZH_CN = {
         handbook:"员工手册",
         apply:"报 名",
         insurance:"商业保险",
-        GBS:'GBS HR',
-        earthday:"地球周"
+        GBS:'人事综合',
+        admin:"Admin",
+        earthday:"地球周",
+        dormMng:"宿舍管理"
     },
     myFlex:{
         employee_ID: "工号",
@@ -441,6 +450,18 @@ var ZH_CN = {
     },
     ehsAct:{
         title:"EHS有奖答题"
+    },
+    admin:{
+        icCardLost:"挂失IC卡",
+        promptTitle:"提示",
+        promptOK:"确定",
+        promptCancel:"取消",
+        promptReportLost:"确定要挂失你的IC卡？",
+        lastRequest:"最近一次申请",
+        submitSucc:'您的挂失申请已提交，正在等待一卡通后台处理，谢谢！'
+    },
+    dormMng:{
+
     }
 };
 
@@ -488,7 +509,9 @@ var ZH_US = {
         apply: "Sign Up",
         insurance: "Commercial Insurance",
         GBS:'GBS HR',
-        earthday:"Earth Week"
+        admin:"Admin",
+        earthday:"Earth Week",
+        dormMng:"Dormitory Management"
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -719,8 +742,22 @@ var ZH_US = {
         department: "Department",
         designer:"Designer",
         designConcept: "Design Concept"
-    }
+    },
+    ehsAct:{
+        title:"EHS online Activity"
+    },
+    admin:{
+        icCardLost:"Report loss of IC card",
+        promptTitle:"Prompt",
+        promptOK:"OK",
+        promptCancel:"Cancel",
+        promptReportLost:"Are you sure to report you IC card lost?",
+        lastRequest:"Last Request",
+        submitSucc:'Your report loss was commited, thank you!'
+    },
+    dormMng:{
 
+    }
 };
 
 var ERROR = {

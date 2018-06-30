@@ -14,7 +14,7 @@
             <div class="item"  ng-click="open('XJ')">
                 {{Language.certificate.certificateOfTakingLeave}}
             </div>
-            <div class="item" ng-click="open('CP')">
+            <div class="item" ng-click="open('CP')" ng-if="canShow">
                 {{Language.certificate.reissueWorkingCard}}
             </div>
             <!--<div class="item"  ng-click="open('visaApply')">-->

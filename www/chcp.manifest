@@ -45,7 +45,7 @@
   },
   {
     "file": "css/style.css",
-    "hash": "f7c8ce502a23fabdb66642ec2f01af79"
+    "hash": "273b8b168cdb0d3dbc26a248ef42a960"
   },
   {
     "file": "fonts/Slide-icons.dev.svg",
@@ -301,19 +301,19 @@
   },
   {
     "file": "index.html",
-    "hash": "320df2db0b405207a6725e0c8d5e764e"
+    "hash": "9fc586dac084754ee9fdb72a62effeff"
   },
   {
     "file": "js/app-conf.js",
-    "hash": "b58fea435130e3aa9ae5e17af03a7b19"
+    "hash": "415372f9ebc16288b6466a480c9b1b25"
   },
   {
     "file": "js/app.js",
-    "hash": "e62562ef3383e84e4a42c256c714a15e"
+    "hash": "4883e9a09cca1032a0e70f173ad288be"
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "ca369bb36e19b6230c0005ce981f8453"
+    "hash": "93bf1b5730a9618dc5d8d7ec306c2450"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -321,11 +321,11 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "818b274edac58a9a77d72aad256b9219"
+    "hash": "ebea73960c4c862afe6a5a50accc8133"
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "899809b52b1db7d6cde00c17896f476a"
+    "hash": "56da90153870f48feaffe49e4ea974ac"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -453,15 +453,15 @@
   },
   {
     "file": "js/router.js",
-    "hash": "a8444d5f47e25f3485539bb936f05331"
+    "hash": "c68d43f021d7b0a0569bb6a367fc6b4e"
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "afc5324467e2d162d97a913277b135f3"
+    "hash": "f1f5eb4222ad562b7cec18aa6258df08"
   },
   {
     "file": "js/service/businessServices.js",
-    "hash": "dfae93a8dd7948caeb9e13d3f9224b6d"
+    "hash": "00b6d307af5b527cd5b26636f9ac84ab"
   },
   {
     "file": "js/service/pointsServices.js",
@@ -482,6 +482,10 @@
   {
     "file": "js/timeLine/images/line4.png",
     "hash": "47dc0372d7c8537fe838531c14710be4"
+  },
+  {
+    "file": "js/util.js",
+    "hash": "1580149403933c02532c59cd1bcc0190"
   },
   {
     "file": "lib/angular-animate/.bower.json",
@@ -968,6 +972,10 @@
     "hash": "e38a4fbc040d57d4ab7df74085ebc395"
   },
   {
+    "file": "templates/account/account_rebindPhone.html",
+    "hash": "e02ebfe9176d36fd20e2979c4088a82f"
+  },
+  {
     "file": "templates/account/account_register.html",
     "hash": "38b3bd720803f6c3f6999a84af4a267e"
   },
@@ -977,15 +985,23 @@
   },
   {
     "file": "templates/activity/activity-list.html",
-    "hash": "1ee5186da415d7f6d656a09a03e3be1c"
+    "hash": "a26a7569d7083a9da1d5b260d4202fd6"
   },
   {
     "file": "templates/activity/activityGood.html",
-    "hash": "af6f095bf3abae1d0cbf9f9c11cd95c4"
+    "hash": "cac14ce7e715da58ceebde7d25d3953b"
   },
   {
     "file": "templates/activity/activityHtml.html",
     "hash": "e5426da845a09f90d49d8686d35e7739"
+  },
+  {
+    "file": "templates/admin/admin-list.html",
+    "hash": "07ccf806b6f8a97bbefaed837a3c6cd7"
+  },
+  {
+    "file": "templates/admin/icCardLost.html",
+    "hash": "68ca9a0d0d2501c7f1d1ec7534353ac7"
   },
   {
     "file": "templates/applySubmit/apply-Html.html",
@@ -1128,8 +1144,12 @@
     "hash": "c243ad0a8251a8ea574bdac3b94672a8"
   },
   {
+    "file": "templates/ehs/activityEHS.html",
+    "hash": "091287c5289045b92cca4605a42cd9d4"
+  },
+  {
     "file": "templates/GBS/certificate/certificate-list.html",
-    "hash": "c951b4da3484ba5c58baca5b6cd9d7ff"
+    "hash": "a9973df87262e54e6c19437c0c19ad85"
   },
   {
     "file": "templates/GBS/certificate/certificate-submit.html",
@@ -1137,7 +1157,7 @@
   },
   {
     "file": "templates/GBS/certificate/reissueWorkingCard.html",
-    "hash": "2c4854a677ad779fca708b187afac61e"
+    "hash": "720a553edb52f812f6119178f42015b6"
   },
   {
     "file": "templates/GBS/certificate/visaApply.html",
@@ -1301,7 +1321,7 @@
   },
   {
     "file": "templates/research/research-list.html",
-    "hash": "d86be8e29b48f189467e267f98ae8154"
+    "hash": "344bf0c7c13ca84be01d4c6544475b00"
   },
   {
     "file": "templates/research/researchHtml.html",
@@ -1329,7 +1349,7 @@
   },
   {
     "file": "templates/tab-account.html",
-    "hash": "5f7e006d9bbd7170fc65797fd3fead63"
+    "hash": "f5386444b87b952379c90ca9605356cf"
   },
   {
     "file": "templates/tab-goodJob.html",
@@ -1337,7 +1357,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "f61412856ee300deecc390baa9b17cbf"
+    "hash": "4190f20280b03db596830946b2716f71"
   },
   {
     "file": "templates/tab-homecopy.html",
@@ -1357,7 +1377,7 @@
   },
   {
     "file": "templates/tab-signin.html",
-    "hash": "4003514fc6580550c9385d1c0def7f36"
+    "hash": "f95f295d3b21abd346206c98dddc3ca6"
   },
   {
     "file": "templates/tabs.html",

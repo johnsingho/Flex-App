@@ -29,6 +29,38 @@ angular.module('evaluationApp.businiess2Controllers', [])
                 alertService.showAlert(ex.message);
             }
         };
+
+        $scope.openGH=function(){
+            try {
+                externalLinksService.openUr('http://cn.mikecrm.com/pSIKpIJ');
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
+            }
+        };
+        $scope.openMECH=function(){
+
+            $scope.isNotMECH=$scope.accessEmployee.Organization.toUpperCase().indexOf('MECH')==-1;
+
+            if($scope.isNotMECH)
+            {
+                alertService.showAlert("本项调查只开放给Mech员工");
+                return;
+            }
+
+            if($scope.accessEmployee.Organization.toUpperCase()=='MECH-PCBA')
+            {
+                alertService.showAlert("本项调查只开放给Mech（非PCBA）员工");
+                return;
+            }
+
+            try {
+                externalLinksService.openUr('https://www.wjx.top/jq/25582325.aspx');
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
+            }
+        };
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
                 disableAnimate: true,
@@ -996,10 +1028,10 @@ angular.module('evaluationApp.businiess2Controllers', [])
     })
     .controller('CertificateCtrl',function($scope,$rootScope,$state,CacheFactory){
         var accessEmployee = $rootScope.accessEmployee;
-        //var bTestAccount = IsTestAccount(accessEmployee.WorkdayNO);
+        var bTestAccount = IsTestAccount(accessEmployee.WorkdayNO);
         //屏蔽multek
         //var bIsNotMultek = accessEmployee.Organization.toLowerCase().indexOf("multek")<0;
-        //$scope.canShow = bTestAccount;
+        $scope.canShow = !isMultek(accessEmployee.Organization) && bTestAccount;
 
         $scope.open=function(action){
             switch (action)
@@ -1309,6 +1341,113 @@ angular.module('evaluationApp.businiess2Controllers', [])
             $state.go('tab.home');
         }
 
+    })
+    .controller('AdminCtrl',function($scope,$rootScope,$state,$ionicHistory,
+                            commonServices,CacheFactory,alertService)
+    {        
+        $scope.open=function(action){
+            switch (action)
+            {
+                case "icCardLost":
+                    $state.go('icCardLost');
+                    break;
+                default:break;
+            }
+        }
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        }
+    })
+    /*sub of AdminCtrl*/
+    .controller('ICCardLostCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                commonServices, CacheFactory, alertService) 
+    {
+        var paras= commonServices.getBaseParas();       
+        $scope.model = {
+            CName: paras.CName,
+            WorkdayNO: paras.WorkdayNO,
+            MobileNo: paras.MobileNo,
+            IDNO: null
+        };
+
+        function GetLastLostICCardState(){
+            var paras = $scope.model;
+            var url=commonServices.getUrl("AdminService.ashx","GetLastLostICCardState");
+            commonServices.submit(paras,url).then(function(resp){
+                if(resp){
+                    $scope.LastState=resp.obj; //{upDATEdt, upDATEflag}
+                    switch (resp.obj.upDATEflag) {
+                        case 1:
+                            $scope.LastState.State = '正在执行中';
+                            $scope.canSubmit=false;
+                            break;
+                        case 99:
+                            $scope.LastState.State = '已完成';
+                            $scope.canSubmit=true;
+                            break;
+                        default:
+                            $scope.LastState.State = null;
+                            $scope.canSubmit=true;
+                            break;
+                    }
+                }            
+            });
+        }
+
+        GetLastLostICCardState();
+        $scope.HasLastState = function(){
+            return $scope.LastState && $scope.LastState.State;
+        }
+
+        $scope.isSumbiting=false;
+        $scope.Submit = function() {
+            $scope.isSumbiting=true;
+
+            var idno = $.trim($scope.model.IDNO);            
+            if(idno.length == 18){
+                if(!CheckIdCard(idno)){
+                    alertService.showAlert("身份证号码有误，请更正!");
+                    return;
+                }
+            }
+
+            $scope.model.IDNO = idno;
+            var confirmPopup = $ionicPopup.confirm({
+                title: $rootScope.Language.admin.promptTitle,
+                template: $rootScope.Language.admin.promptReportLost,
+                okText: $rootScope.Language.admin.promptOK,
+                cancelText: $rootScope.Language.admin.promptCancel
+             });
+
+             confirmPopup.then(function(res) {
+                if(res) {
+                    var paras = $scope.model;
+                    var url=commonServices.getUrl("AdminService.ashx","SubmitLostICCard");
+                    commonServices.submit(paras, url).then(function (data) {
+                        if (data.success) {
+                            alertService.showAlert($rootScope.Language.admin.submitSucc);
+                            $ionicHistory.goBack();
+                        }
+                        else {
+                            alertService.showAlert(data.message);
+                        }
+                    });
+                }
+                $scope.isSumbiting=false;
+            });
+        };
+
+        $scope.closePass = function () {
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        };
     })
 
 

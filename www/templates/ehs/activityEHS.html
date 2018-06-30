@@ -1,0 +1,52 @@
+<!-- EHS有奖答题 -->
+<ion-view view-title="{{Language.ehsAct.title}}" cache-view="false">
+    <ion-content scroll="true" lazy-scroll>
+        <!--<div style="text-align: center;font-size: 20px">{{ResearchName}}</div>-->
+        <ion-slide-box does-continue="true" auto-play="false"  show-pager="false" ng-if="imgUrl!=null">
+            <img  ng-src="{{imgUrl}}" >
+        </ion-slide-box>
+        <div class="divOff lightGrayBack" ng-bind-html="htmlConent">
+        </div>
+
+        <div ng-repeat="detail in researchDetailList">
+            <fieldset>
+                <div style="color: royalblue" >
+                    {{$index+1}}. <span ng-bind-html="detail.SubjectText"></span>
+                </div>
+                <div ng-repeat="checkItem in detail.Items">
+                    <!-- 单选 -->
+                    <div ng-if="checkItem.Type=='radio'">
+                        <h4>
+                            <label>
+                                <input id="Item{{detail.Sort}}_{{$index}}" type="radio"
+                                    name="Item{{detail.Sort}}"
+                                    value="Item{{detail.Sort}}_{{$index}}^{{checkItem.ItemScore}}"/> 
+                                    {{checkItem.ItemText}}
+                            </label>
+                        </h4>
+                    </div>
+                    <!-- 多选 -->
+                    <div ng-if="checkItem.Type=='checkbox'">
+                        <h4>
+                            <label>
+                                <input id="Item{{detail.Sort}}_{{$index}}" type="checkbox"
+                                    name="Item{{detail.Sort}}"
+                                    value="Item{{detail.Sort}}_{{$index}}^{{checkItem.ItemScore}}"/> 
+                                    {{checkItem.ItemText}}
+                            </label>
+                        </h4>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <br>
+        <div style="text-align: center">
+            <button class="button  button-positive" ng-click="Submit()">{{Language.menu.submit}}</button>
+        </div>
+
+    </ion-content>
+</ion-view>
+
+
+
