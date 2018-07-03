@@ -1505,14 +1505,21 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 //            $scope.sucess=data;
 //        });
 
+        $scope.selKeyword=null;
+        function GetList(paras){
+            AskAndAnswerService.getAskAndAnswer(paras).then(function(resp){
+                $scope.listAskAndAnswer = resp.list;
+                $scope.keywords = JSON.parse(resp.data);
+            });
+        }
         var paras= commonServices.getBaseParas();
-        AskAndAnswerService.getAskAndAnswer(paras).then(function(data){
-            $scope.listAskAndAnswer=data;
+        GetList(paras);
 
-        });
-
-
-
+        $scope.filterKeyword = function(selKeyword){
+            console.log("*** filterKeyword: "+ selKeyword);
+            paras.keyword = selKeyword;
+            GetList(paras);
+        };
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
                 disableAnimate: true,

@@ -7,7 +7,9 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('evaluationApp', ['ionic', 'evaluationApp.router', 'evaluationApp.appControllers', 'evaluationApp.pointsControllers', 'evaluationApp.businiessControllers',
     'evaluationApp.appServices', 'evaluationApp.directives', 'evaluationApp.pointsService', 'evaluationApp.businessServices', 'evaluationApp.businiess2Controllers', 'evaluationApp.B11WorkShopController',
-    'ngCordova', 'angularMoment', 'chart.js', 'evaluationApp.sharCarController'])
+    'ngCordova', 'angularMoment', 'chart.js', 'evaluationApp.sharCarController', 
+    'ion-datetime-picker', 'evaluationApp.adminControllers'
+    ])
     //angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.controllers', 'evaluationApp.services'])
 
     .run(function ($ionicPlatform, SettingFactory, $http, $rootScope, $state, $location, $timeout, $ionicHistory, CacheFactory, commonServices, $window,

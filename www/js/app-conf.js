@@ -4,7 +4,7 @@
 
  //开关
  //是否本地开发调试
- var IsDebugMode = false; //false;
+ var IsDebugMode = true; //false;
 
  //给特定用户测试
  /* sample:
@@ -169,6 +169,10 @@ var SETTING = {
 
 //语言
 var ZH_CN = {
+    common:{
+        memo:"备注",
+        Explain:"说明",
+    },
     signin: {
         username: "工号",
         password: "密码",
@@ -214,7 +218,7 @@ var ZH_CN = {
         GBS:'人事综合',
         admin:"Admin",
         earthday:"地球周",
-        dormMng:"宿舍管理"
+        dormManage:"宿舍管理"
     },
     myFlex:{
         employee_ID: "工号",
@@ -460,12 +464,21 @@ var ZH_CN = {
         lastRequest:"最近一次申请",
         submitSucc:'您的挂失申请已提交，正在等待一卡通后台处理，谢谢！'
     },
-    dormMng:{
-
+    dormManage:{
+        dorm:"宿舍",
+        housingAllowance:"住房津贴",
+        checkInState:"是否住宿",
+        checkOutDate:"退房日期",
+        hiredDate:"入职日期",
+        submitSucc:"住房津贴申请成功, 生效日期:"
     }
 };
 
 var ZH_US = {
+    common:{
+        memo:"备注",
+        Explain:"说明",
+    },
     signin: {
         username: "Employee ID",
         password: "Password",
@@ -511,7 +524,7 @@ var ZH_US = {
         GBS:'GBS HR',
         admin:"Admin",
         earthday:"Earth Week",
-        dormMng:"Dormitory Management"
+        dormManage:"Dormitory Management"
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -755,8 +768,9 @@ var ZH_US = {
         lastRequest:"Last Request",
         submitSucc:'Your report loss was commited, thank you!'
     },
-    dormMng:{
-
+    dormManage:{
+        dorm:"Dormitory",
+        housingAllowance:"Housing Allowance",
     }
 };
 
