@@ -34,6 +34,10 @@ angular.module('evaluationApp.adminControllers', [])
     .controller('ICCardLostCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
         commonServices, CacheFactory, alertService) {
         //挂失IC卡
+        $scope.canUseAction = function (action) {
+            return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+        };
+
         var paras = commonServices.getBaseParas();
         $scope.model = {
             CName: paras.CName,
@@ -131,7 +135,24 @@ angular.module('evaluationApp.adminControllers', [])
                     $state.go('housingAllowance');
                     break;
                 case "宿舍申请":
-                    $state.go('housingAllowance');
+                    {
+                        $state.go('applyDorm');
+                        $ionicPopup.show({
+                            title: 'Flex入住宿舍承诺书',
+                            cssClass: 'my-custom-popup-Alter',
+                            templateUrl: 'templates/admin/dorm/protocolDorm.html',
+                            scope: $scope,
+                            buttons: [
+                                {
+                                    text: '<b>确定</b>',
+                                    type: 'button-positive',
+                                    onTap: function (e) {
+                                        return;
+                                    }
+                                }
+                            ]
+                        });
+                    }
                     break;
                 case "费用查询":
                     $state.go('housingAllowance');
@@ -247,6 +268,82 @@ angular.module('evaluationApp.adminControllers', [])
             }
         };
     })
-    
+    .controller('ApplyDormCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+        commonServices, CacheFactory, alertService) 
+    {
+        //宿舍申请
+        var paras= commonServices.getBaseParas();
+        $scope.canSubmit=false;
+        $scope.model = {
+            CName: paras.CName,
+            WorkdayNO: paras.WorkdayNO,
+            Organization: paras.Organization,
+            HiredDate: null,
+            EmployeeType: null,
+            Grade: 1,
+            DormArea: "",
+            RequireType:"",
+            RequireReason:"",
+            HasHousingAllowance:false,
+            memo: ""
+        };
+
+        function GetEmpInfo() {
+            var url = commonServices.getUrl("DormManageService.ashx", "GetEmpInfo");
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if(!resp.success){
+                        alertService.showAlert(resp.message);
+                        $ionicHistory.goBack();
+                    }else{                        
+                        $scope.model.hiredDate = resp.obj.HireDate;
+                        $scope.model.EmployeeType = resp.obj.EmployeeType;
+                        var checkInState = resp.obj.CheckInState
+                        if(checkInState<0){
+                            $scope.model.checkOutDate = resp.obj.CheckOutDate;
+                        }
+                        $scope.model.checkInState = checkInState;
+
+                        $scope.canSubmit=true;
+                    }
+                }
+            });
+        }
+        GetEmpInfo();
+
+        $scope.isSumbiting = false;
+        $scope.Submit = function () {
+            $scope.isSumbiting = true;
+
+            if (1 == $scope.model.checkInState) {
+                alertService.showAlert("已住宿员工不能申请住房津贴!");
+                $scope.isSumbiting = false;
+                return;
+            }
+            else if (-1 == $scope.model.checkInState
+                    && 0 == $scope.model.checkOutDate.length) {
+                alertService.showAlert("请填写退宿日期!");
+                $scope.isSumbiting = false;
+                return;     
+            }
+
+            var paras = $scope.model;
+            var url = commonServices.getUrl("DormManageService.ashx", "SubmitHousingAllowance");
+            try {
+                commonServices.submit(paras, url).then(function (resp) {
+                    if (resp.success) {
+                        var msg = $rootScope.Language.dormManage.submitSucc + resp.message;
+                        alertService.showAlert(msg);
+                        $ionicHistory.goBack();
+                    }
+                    else {
+                        alertService.showAlert(resp.message);
+                    }
+                });
+            } finally {
+                $scope.isSumbiting = false;
+            }
+        };
+    })
 
     ;
