@@ -1,0 +1,70 @@
+<!-- 住房津贴 -->
+<ion-view view-title="{{Language.dormManage.housingAllowance}}" cache-view="false"  hide-tabs >
+    <ion-content style="background-color:lavender">
+
+        <div class="list card" >
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.CName" />
+            </div>
+            
+            <div class="item item-input">
+                <span class="input-label" style="width:30px;font-size:80%">{{Language.like.employee_ID}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.WorkdayNO" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.department}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.Organization" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.dormManage.hiredDate}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.hiredDate" />
+            </div>
+
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.dormManage.checkInState}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <select class="button" ng-options='t.value as t.name for t in dormStates' ng-model="model.checkInState"></select>
+            </div>
+            <div class="item item-input" ng-if="model.checkInState<0">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.dormManage.checkOutDate}}</span>
+                <div ion-datetime-picker date ng-model="model.checkOutDate" only-valid="{'before':'today', 'inclusive':true}">
+                    <i class="icon ion-ios-calendar positive"></i>
+                    <strong>{{model.checkOutDate| date: "yyyy-MM-dd"}}</strong>
+                </div>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.common.memo}}</span>
+                <textarea rows="3" name="dormMemo" style="font-size:90%" placeholder="" ng-model="model.memo" 
+                class="ng-pristine ng-valid ng-touched"></textarea>
+            </div>
+
+            <div class="divOff lightRedBack">
+                <span class="text-left">{{Language.common.Explain}}：</span>
+                <div class="divOff">
+                    <ol class="numOl">
+                        <li>
+                            只有不住宿舍的合同工、派遣工才享有住房津贴；
+                        </li>
+                        <li>
+                            当月申请<b>下月1日</b>生效；
+                        </li>
+                        <li>
+                            但入职日期与申请日期都为当月1日，则生效日期为当月1日，不用等到下月1日。
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center" ng-if="canSubmit">
+            <button class="button  button-positive" ng-click="Submit()">{{Language.menu.submit}}</button>
+        </div>
+        <br/>
+    </ion-content>
+
+</ion-view>

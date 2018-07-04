@@ -656,6 +656,17 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/admin/icCardLost.html',
                 controller: 'ICCardLostCtrl'
             })
+            .state('dormManage',{
+                url: '/dormManage',
+                templateUrl: 'templates/admin/dormManage-list.html',
+                controller: 'DormManageCtrl'
+            })
+            /*sub of dormManage*/
+            .state('housingAllowance',{
+                url: '/housingAllowance',
+                templateUrl: 'templates/admin/dorm/housingAllowance.html',
+                controller: 'HousingAllowanceCtrl'
+            })
 
         $urlRouterProvider.otherwise('signin');
 
