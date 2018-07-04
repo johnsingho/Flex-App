@@ -526,8 +526,11 @@ angular.module('evaluationApp.appServices', [])
     })
     .service('actionVisitServices', function (commonServices,CacheFactory) {
         //action访问时间列表
-        var actionVisit = loadCacheVisit();
-        var serverUpdate = [];//ActName,UpdateTime
+        //调试的时候，如果跨域报错的话，要再刷新一下来运行，以保证初始化正常
+        //
+        var self=this;
+        self.actionVisit = loadCacheVisit();
+        self.serverUpdate = [];//ActName,UpdateTime,IsTesting,TestingAccount
         var DEF_UPDATE_VAL = new Date('2018-06-01');
 
         var loadServerUpdate = function(){
@@ -535,19 +538,28 @@ angular.module('evaluationApp.appServices', [])
             var params={};
             commonServices.submit(params, url).then(function (resp) {
                 if (resp.success) {
-                    serverUpdate = resp.list || [];
+                    var srvUpdate = resp.list || [];
                     //use Date
-                    for(var i=0; i<serverUpdate.length; i++){
+                    for(var i=0; i<srvUpdate.length; i++){
                         var dt = DEF_UPDATE_VAL;
                         try {
-                            dt = new Date(serverUpdate[i].UpdateTime);
+                            dt = new Date(srvUpdate[i].UpdateTime);
                         } catch (error) {                            
                         }
-                        serverUpdate[i].UpdateTime=dt;
+                        srvUpdate[i].UpdateTime=dt;
+                        var sWorknos = srvUpdate[i].TestingAccount;
+                        if(sWorknos){
+                            var worknos = sWorknos.split(',');
+                            srvUpdate[i].TestingAccount = worknos;
+                        }
                     }
+                    self.serverUpdate = srvUpdate;
+                    console.log("***loadServerUpdate");
                 }
             });
         };
+        loadServerUpdate();
+        
         function FindByActName(arr, actName){
             for(var i=0; i<arr.length; i++){
                 var it = arr[i];
@@ -570,9 +582,9 @@ angular.module('evaluationApp.appServices', [])
             return actV;
         }
         var checkUpdate = function (actName) {
-            var actVis = FindByActName(actionVisit, actName);
+            var actVis = FindByActName(self.actionVisit, actName);
             var lastVistTime = actVis ? actVis.LastVisitTime : DEF_UPDATE_VAL;
-            var serUpdate = FindByActName(serverUpdate, actName);
+            var serUpdate = FindByActName(self.serverUpdate, actName);
             var serUpdateTime = serUpdate ? serUpdate.UpdateTime : null;
             if(serUpdateTime && serUpdateTime>lastVistTime){
                 return true;
@@ -580,18 +592,18 @@ angular.module('evaluationApp.appServices', [])
             return false;
         };
         var visit = function (actName) {
-            var actVis = FindByActName(actionVisit, actName);
+            var actVis = FindByActName(self.actionVisit, actName);
             if(!actVis)
             {
                 actVis = {ActName:actName,LastVisitTime:new Date()};
-                actionVisit.push(actVis);                
+                self.actionVisit.push(actVis);                
             }else{
                 actVis.LastVisitTime = new Date();
             }
-            CacheFactory.save('actionVisit', actionVisit);
+            CacheFactory.save('actionVisit', self.actionVisit);
         };
         var checkUnVisit = function(actName){
-            var actVis = FindByActName(actionVisit, actName);
+            var actVis = FindByActName(self.actionVisit, actName);
             return !actVis || !actVis.LastVisitTime;
         };
         var getActivityUpdateCount = function(oScope, bMultek){
@@ -626,6 +638,20 @@ angular.module('evaluationApp.appServices', [])
                 }
             });
         };
+        var canUseAction = function(actName, workNo) {
+            var serUpdate = FindByActName(self.serverUpdate, actName);
+            if (!serUpdate || !workNo) {
+                return false;
+            } else if (serUpdate.IsTesting) {
+                for(var i=0; i<serUpdate.TestingAccount.length; i++){
+                    if (workNo == serUpdate.TestingAccount[i]) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            return true;
+        };
 
         return {
             checkUpdate: checkUpdate,
@@ -633,7 +659,8 @@ angular.module('evaluationApp.appServices', [])
             visit: visit,
             loadServerUpdate: loadServerUpdate,
             getActivityUpdateCount: getActivityUpdateCount,
-            getOutDateActivity: getOutDateActivity
+            getOutDateActivity: getOutDateActivity,
+            canUseAction: canUseAction
         };
     })
 ;

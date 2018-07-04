@@ -21,14 +21,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
             CacheFactory.save('ResearchName',research.ResearchName);
           $state.go('researchHtml');
         };
-        $scope.openMyd=function(){
-            try {
-                externalLinksService.openUr('https://appcenter.flextronics.com/GMIS/Handler/CB_001_MedicalCheckSurvey.ashx?sid=3&rq=B9D3F80DB77B483093251FA9E1AE4346&site=珠海');
-            }
-            catch (ex) {
-                alertService.showAlert(ex.message);
-            }
-        };
+    
 
         $scope.openGH=function(){
             try {

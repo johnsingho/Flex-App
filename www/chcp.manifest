@@ -313,7 +313,7 @@
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "1ceea0300b2c0635c161a5a45778cb4e"
+    "hash": "56c9c8370109dedcf427c38dee32d446"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -321,7 +321,7 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "ebea73960c4c862afe6a5a50accc8133"
+    "hash": "44f38a834652fccc2f1eea78d706d9eb"
   },
   {
     "file": "js/controller/businiessControllers.js",
@@ -457,7 +457,7 @@
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "775c56a19d28de5c7c8cc03adce664aa"
+    "hash": "9c6705cef78c5dbb6ebf7d71099e89a4"
   },
   {
     "file": "js/service/businessServices.js",
@@ -1321,7 +1321,7 @@
   },
   {
     "file": "templates/research/research-list.html",
-    "hash": "344bf0c7c13ca84be01d4c6544475b00"
+    "hash": "2d9c4cab30d75b0ec84bd2170896e10c"
   },
   {
     "file": "templates/research/researchHtml.html",
@@ -1357,7 +1357,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "4190f20280b03db596830946b2716f71"
+    "hash": "bcd07636e083d46e1cd97b9a2cb5a4ac"
   },
   {
     "file": "templates/tab-homecopy.html",
