@@ -172,6 +172,7 @@ var ZH_CN = {
     common:{
         memo:"备注",
         Explain:"说明",
+        grade:"薪资级别",
     },
     signin: {
         username: "工号",
@@ -470,14 +471,24 @@ var ZH_CN = {
         checkInState:"是否住宿",
         checkOutDate:"退房日期",
         hiredDate:"入职日期",
-        submitSucc:"住房津贴申请成功, 生效日期:"
+        allowanceSucc:"住房津贴申请成功, 生效日期:",
+        applyDorm:"宿舍申请",
+        hasHousingAllowance:"正在享有住房补贴",
+        requireType:"入住类型",
+        requireReason:"入住理由",
+        chargingDefine:"费用查询",
+        dormArea:"宿舍区",
+        applyDormSucc:"您的住宿申请已经提交到宿舍管理组，后续请留意“我的信息”，查收最新进度通知",
+                
+
     }
 };
 
 var ZH_US = {
     common:{
-        memo:"备注",
-        Explain:"说明",
+        memo:"memo",
+        Explain:"explain",
+        grade:"grade",
     },
     signin: {
         username: "Employee ID",
