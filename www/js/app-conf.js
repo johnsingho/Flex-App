@@ -204,12 +204,10 @@ var ZH_CN = {
         help:"我要求助",
         kqcx:"考勤查询",
         xfcx:"消费查询",
-        bus:"班车信息",
         rexian:"热线电话",
         zhaoping:"内部招聘",
         gonggao:"通知公告",
         activity:"活 动",
-        meal:"订 餐",
         shareCar:"拼 车",
         survey:"问卷调查",
         train:"培 训",
@@ -458,7 +456,10 @@ var ZH_CN = {
         title:"EHS有奖答题"
     },
     admin:{
+        bus:"班车信息",
+        meal:"订 餐",
         icCardLost:"挂失IC卡",
+        dorm:"宿 舍",
         promptTitle:"提示",
         promptOK:"确定",
         promptCancel:"取消",
@@ -467,7 +468,6 @@ var ZH_CN = {
         submitSucc:'您的挂失申请已提交，正在等待一卡通后台处理，谢谢！'
     },
     dormManage:{
-        dorm:"宿舍",
         housingAllowance:"住房津贴",
         checkInState:"是否住宿",
         checkOutDate:"退房日期",
@@ -481,7 +481,8 @@ var ZH_CN = {
         dormArea:"宿舍区",
         applyDormSucc:"您的住宿申请已经提交到宿舍管理组，后续请留意“我的信息”，查收最新进度通知",
         rcenetMonth:"最近一个月",
-        noFeeRecord:"没有扣费记录"
+        noFeeRecord:"没有扣费记录",
+        dormMap:"宿舍地图",
 
     }
 };
@@ -522,12 +523,10 @@ var ZH_US = {
         help:"Ask for Help",
         kqcx:"Attendance Inquiry",
         xfcx:"Consumption Inquiry",
-        bus:" Shuttle Bus Inquiry ",
         rexian:" Hotline Query",
         zhaoping:"Internal Hiring",
         gonggao:"Announcement",
         activity : "Activities",
-        meal: "Meal Order",
         shareCar:"Car Sharing",
         survey: "Survey",
         train: "Training",
@@ -774,7 +773,10 @@ var ZH_US = {
         title:"EHS online Activity"
     },
     admin:{
+        bus:" Shuttle Bus Inquiry ",
+        meal: "Meal Order",
         icCardLost:"Report loss of IC card",
+        dorm:"Dormitory",
         promptTitle:"Prompt",
         promptOK:"OK",
         promptCancel:"Cancel",
@@ -783,7 +785,6 @@ var ZH_US = {
         submitSucc:'Your report loss was commited, thank you!'
     },
     dormManage:{
-        dorm:"Dormitory",
         housingAllowance:"Housing Allowance",
     }
 };
