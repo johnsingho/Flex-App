@@ -383,10 +383,34 @@ angular.module('evaluationApp.adminControllers', [])
     {
         //费用查询
         var paras= commonServices.getBaseParas();
-        $scope.canSubmit=false;
         
+        $scope.selday = function(day){
+            //TODO
+        };
 
+        $scope.totFee={
+            sum:0
+        };
+        $scope.hasFee = function(){
+            return $scope.totFee.sum>0.0;
+        }
 
+        function InitInfo() {            
+            var url = commonServices.getUrl("DormManageService.ashx", "GetCharging");
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if(!resp.success){
+                        alertService.showAlert("查询费用失败，请稍候再试!<br>"+resp.message);
+                        $ionicHistory.goBack();
+                    }else{                        
+                        $scope.totFee = resp.obj;
+                    }
+                }
+            });
+        }
+        InitInfo();
+
+        
     })
 
 ;
