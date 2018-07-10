@@ -685,8 +685,14 @@ angular.module('evaluationApp.router', [])
             .state('dormMap', {
                 url: '/dormMap',
                 templateUrl: 'templates/admin/dorm/dormMap.html',
-                controller: 'ApplyDormCtrl'
+                controller: 'DormMapCtrl'
             })
+            .state('dormNotice', {
+                url: '/dormNotice',
+                templateUrl: 'templates/admin/dorm/dormNotice.html',
+                controller: 'DormNoticeCtrl'
+            })
+            
             
 
         $urlRouterProvider.otherwise('signin');

@@ -5,7 +5,13 @@
     </ion-nav-buttons> -->
 
     <ion-content scroll="true" overflow-scroll="true" >
-        <div class="list list-inset">
+        <div class="list list-inset">            
+            <div class="item" ng-click="open('宿舍地图');">
+                {{Language.dormManage.dormMap}}
+            </div>
+            <div class="item" ng-click="open('宿舍公告');">
+                {{Language.dormManage.dormNotice}}
+            </div>
             <div class="item"  ng-click="open('住房津贴');" ng-if="canUseAction('住房津贴');">
                 {{Language.dormManage.housingAllowance}}
             </div>
@@ -15,9 +21,8 @@
             <div class="item" ng-click="open('费用查询');">
                 {{Language.dormManage.chargingDefine}}
             </div>
-            <div class="item" ng-click="open('宿舍地图');">
-                {{Language.dormManage.dormMap}}
-            </div>
+            
+
         </div>
     </ion-content>
 </ion-view>

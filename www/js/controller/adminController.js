@@ -456,7 +456,7 @@ angular.module('evaluationApp.adminControllers', [])
                     $state.go('chargingDefine');
                     break;
                 case "宿舍公告":
-                    $state.go('housingAllowance');
+                    $state.go('dormNotice');
                     break;
                 case "宿舍地图":
                     $state.go('dormMap');
@@ -704,7 +704,9 @@ angular.module('evaluationApp.adminControllers', [])
         }
         InitInfo();
     })
-    .controller('ApplyDormCtrl', function ($scope, $rootScope, $state, $ionicHistory) {
+    .controller('DormMapCtrl', function ($scope, $rootScope, $state, $ionicHistory) 
+    {
+        //宿舍地图
         $("#auto-loop").lightGallery({
             mobileSrc         : false, // If "data-responsive-src" attr. should be used for mobiles.
             mobileSrcMaxWidth : 640,   // Max screen resolution for alternative images to be loaded for.
@@ -713,4 +715,10 @@ angular.module('evaluationApp.adminControllers', [])
             closable:false
         });
     })
+    .controller('DormNoticeCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                            commonServices, CacheFactory, alertService) 
+    {
+        //宿舍公告
+    })
+    
 ;

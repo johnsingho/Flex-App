@@ -483,6 +483,7 @@ var ZH_CN = {
         rcenetMonth:"最近一个月",
         noFeeRecord:"没有扣费记录",
         dormMap:"宿舍地图",
+        dormNotice:"宿舍公告",
 
     }
 };
