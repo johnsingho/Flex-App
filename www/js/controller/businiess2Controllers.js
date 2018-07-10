@@ -1335,5 +1335,18 @@ angular.module('evaluationApp.businiess2Controllers', [])
         }
 
     })
+    .controller('BasicGuideCtrl',function($scope,$rootScope,$state,$ionicHistory,commonServices,CacheFactory,alertService,$ionicPopup)
+    {
+        //菜鸟手册
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('tab.home');
+        };
+
+    })
+
     
 ;

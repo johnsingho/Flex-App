@@ -32,9 +32,11 @@
             </div>
             <div class="item item-input" ng-if="model.checkInState<0">
                 <span class="input-label" style="width: 30px;font-size:80%">{{Language.dormManage.checkOutDate}}</span>
-                <div ion-datetime-picker date ng-model="model.checkOutDate" only-valid="{'before':'today', 'inclusive':true}">
-                    <i class="icon ion-ios-calendar positive"></i>
+                <div ion-datetime-picker date ng-model="model.checkOutDate" 
+                    only-valid="{'before':'today', 'inclusive':true}" style="width:280px;">
+                    <i class="icon ion-ios-calendar positive" style="font-size:28px;"></i>
                     <strong>{{model.checkOutDate| date: "yyyy-MM-dd"}}</strong>
+                    &nbsp;&nbsp;
                 </div>
             </div>
             <div class="item item-input">

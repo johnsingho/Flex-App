@@ -137,25 +137,29 @@ angular.module('evaluationApp.adminControllers', [])
                 case "宿舍申请":
                     {
                         $state.go('applyDorm');
-                        $ionicPopup.show({
-                            title: 'Flex入住宿舍承诺书',
-                            cssClass: 'my-custom-popup-Alter',
-                            templateUrl: 'templates/admin/dorm/protocolDorm.html',
-                            scope: $scope,
-                            buttons: [
-                                {
-                                    text: '<b>确定</b>',
-                                    type: 'button-positive',
-                                    onTap: function (e) {
-                                        return;
-                                    }
-                                }
-                            ]
-                        });
+                        //!test
+                        // var myPopup = $ionicPopup.show({
+                        //     title: 'Flex入住宿舍承诺书',
+                        //     cssClass: 'my-custom-popup-Alter',
+                        //     templateUrl: 'templates/admin/dorm/protocolDorm.html',
+                        //     scope: $scope,
+                        //     buttons: [
+                        //         {
+                        //             text: '<b>我愿意遵守</b>',
+                        //             type: 'button-positive',
+                        //             onTap: function (e) {
+                        //                 $state.go('applyDorm');
+                        //                 return;
+                        //             }
+                        //         }
+                        //     ]
+                        // });
                     }
                     break;
                 case "费用查询":
-                    $state.go('housingAllowance');
+                    {
+                        $state.go('chargingDefine');
+                    }
                     break;
                 case "宿舍公告":
                     $state.go('housingAllowance');
@@ -255,7 +259,7 @@ angular.module('evaluationApp.adminControllers', [])
             try {
                 commonServices.submit(paras, url).then(function (resp) {
                     if (resp.success) {
-                        var msg = $rootScope.Language.dormManage.submitSucc + resp.message;
+                        var msg = $rootScope.Language.dormManage.allowanceSucc + resp.message;
                         alertService.showAlert(msg);
                         $ionicHistory.goBack();
                     }
@@ -268,76 +272,105 @@ angular.module('evaluationApp.adminControllers', [])
             }
         };
     })
-    .controller('ApplyDormCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-        commonServices, CacheFactory, alertService) 
+    .controller('ApplyDormCtrl', function ($scope, $rootScope, $state, $ionicHistory, 
+                                            commonServices, CacheFactory, alertService) 
     {
         //宿舍申请
-        var paras= commonServices.getBaseParas();
-        $scope.canSubmit=false;
+        var paras = commonServices.getBaseParas();
+        $scope.canSubmit = false;
         $scope.model = {
             CName: paras.CName,
             WorkdayNO: paras.WorkdayNO,
+            MobileNo: paras.MobileNo,
             Organization: paras.Organization,
-            HiredDate: null,
-            EmployeeType: null,
-            Grade: 1,
-            DormArea: "",
-            RequireType:"",
-            RequireReason:"",
-            HasHousingAllowance:false,
+            Grade: null,
+            DormArea: null,
+            RequireType:null,
+            RequireReason:"就近工作需要",
+            HasHousingAllowance:null,
             memo: ""
         };
 
-        function GetEmpInfo() {
-            var url = commonServices.getUrl("DormManageService.ashx", "GetEmpInfo");
+        function InitInfo() {
+            var grades=[];
+            for(var i=0;i<25;i++){
+                grades.push(i+1);
+            }
+            $scope.grades=grades;
+            $scope.requireTypes=[];
+            $scope.requireTypes.push({name:"新入住",value:1});
+            $scope.requireTypes.push({name:"复入住",value:2});
+            $scope.requireTypes.push({name:"调房",value:3});
+
+            var yesNo=[];
+            yesNo.push({name:"是",value:true});
+            yesNo.push({name:"否",value:false});
+            $scope.yesNo=yesNo;
+
+            var url = commonServices.getUrl("DormManageService.ashx", "GetDormArea");
             commonServices.submit(paras, url).then(function (resp) {
                 if (resp) {
                     if(!resp.success){
-                        alertService.showAlert(resp.message);
+                        alertService.showAlert("获取宿舍区失败，无法申请");
                         $ionicHistory.goBack();
                     }else{                        
-                        $scope.model.hiredDate = resp.obj.HireDate;
-                        $scope.model.EmployeeType = resp.obj.EmployeeType;
-                        var checkInState = resp.obj.CheckInState
-                        if(checkInState<0){
-                            $scope.model.checkOutDate = resp.obj.CheckOutDate;
-                        }
-                        $scope.model.checkInState = checkInState;
-
+                        $scope.dormAreas = resp.list; //ID,SiteID,Name
                         $scope.canSubmit=true;
                     }
                 }
             });
         }
-        GetEmpInfo();
+        InitInfo();
 
         $scope.isSumbiting = false;
         $scope.Submit = function () {
             $scope.isSumbiting = true;
 
-            if (1 == $scope.model.checkInState) {
-                alertService.showAlert("已住宿员工不能申请住房津贴!");
+            var sMobile = $.trim($scope.model.MobileNo);
+            $scope.model.MobileNo=sMobile;
+            if (!sMobile || sMobile.length<5) {
+                alertService.showAlert("请提供联系电话!");
                 $scope.isSumbiting = false;
                 return;
-            }
-            else if (-1 == $scope.model.checkInState
-                    && 0 == $scope.model.checkOutDate.length) {
-                alertService.showAlert("请填写退宿日期!");
+            }            
+            if (!$scope.model.Grade) {
+                alertService.showAlert("请提供你的薪资级别!");
                 $scope.isSumbiting = false;
                 return;     
             }
+            if (!$scope.model.DormArea) {
+                alertService.showAlert("请选择拟入住的宿舍区!");
+                $scope.isSumbiting = false;
+                return;     
+            }
+            if (!$scope.model.RequireType) {
+                alertService.showAlert("请选择入住类型!");
+                $scope.isSumbiting = false;
+                return;     
+            }
+            if (null===$scope.model.HasHousingAllowance) {
+                alertService.showAlert("是否正在享有住房补贴?");
+                $scope.isSumbiting = false;
+                return;     
+            }
+            if(!$scope.model.RequireReason || $scope.model.RequireReason.length<0){
+                alertService.showAlert("请填写入住理由!");
+                $scope.isSumbiting = false;
+                return; 
+            }
 
             var paras = $scope.model;
-            var url = commonServices.getUrl("DormManageService.ashx", "SubmitHousingAllowance");
+            var url = commonServices.getUrl("DormManageService.ashx", "SubmitApplyDorm");
             try {
                 commonServices.submit(paras, url).then(function (resp) {
                     if (resp.success) {
-                        var msg = $rootScope.Language.dormManage.submitSucc + resp.message;
+                        var msg = $rootScope.Language.dormManage.applyDormSucc;
                         alertService.showAlert(msg);
                         $ionicHistory.goBack();
                     }
                     else {
                         alertService.showAlert(resp.message);
+                        $ionicHistory.goBack();
                     }
                 });
             } finally {
@@ -345,5 +378,39 @@ angular.module('evaluationApp.adminControllers', [])
             }
         };
     })
+    .controller('ChargingDefineCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                                commonServices, CacheFactory, alertService) 
+    {
+        //费用查询
+        var paras= commonServices.getBaseParas();
+        
+        $scope.selday = function(day){
+            //TODO
+        };
 
-    ;
+        $scope.totFee={
+            sum:0
+        };
+        $scope.hasFee = function(){
+            return $scope.totFee.sum>0.0;
+        }
+
+        function InitInfo() {            
+            var url = commonServices.getUrl("DormManageService.ashx", "GetCharging");
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if(!resp.success){
+                        alertService.showAlert("查询费用失败，请稍候再试!<br>"+resp.message);
+                        $ionicHistory.goBack();
+                    }else{                        
+                        $scope.totFee = resp.obj;
+                    }
+                }
+            });
+        }
+        InitInfo();
+
+        
+    })
+
+;

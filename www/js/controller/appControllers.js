@@ -321,6 +321,9 @@ angular.module('evaluationApp.appControllers', [])
                 case "admin":
                     $state.go("admin");
                     break;
+                case "菜鸟手册":
+                    $state.go("basicGuide");
+                    break;
             }
             
             if(action=='自评'){

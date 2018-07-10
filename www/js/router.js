@@ -645,6 +645,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/ehs/activityEHS.html',
                 controller: 'ActivityEHSCtrl'
             })
+            .state('basicGuide',{
+                url: '/basicGuide',
+                templateUrl: 'templates/basicGuide.html',
+                controller: 'BasicGuideCtrl'
+            })            
             .state('admin',{
                 url: '/admin',
                 templateUrl: 'templates/admin/admin-list.html',
@@ -667,6 +672,17 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/admin/dorm/housingAllowance.html',
                 controller: 'HousingAllowanceCtrl'
             })
+            .state('applyDorm',{
+                url: '/applyDorm',
+                templateUrl: 'templates/admin/dorm/applyDorm.html',
+                controller: 'ApplyDormCtrl'
+            })
+            .state('chargingDefine',{
+                url: '/chargingDefine',
+                templateUrl: 'templates/admin/dorm/chargingDefine.html',
+                controller: 'ChargingDefineCtrl'
+            })
+            
 
         $urlRouterProvider.otherwise('signin');
 
