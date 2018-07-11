@@ -2,7 +2,6 @@
  * 用于Admin及相关子菜单
  * johnsing he 2018-06-29
  */
-
 angular.module('evaluationApp.adminControllers', [])
     .controller('AdminCtrl', function ($scope, $rootScope, $state, $ionicHistory,$ionicPopup,
         commonServices, CacheFactory, alertService, actionVisitServices) {
@@ -22,7 +21,7 @@ angular.module('evaluationApp.adminControllers', [])
                         //$state.go("tab.404");
                     }
                     break;
-                case "icCardLost":
+                case "挂失IC卡":
                     $state.go('icCardLost');
                     break;
                 case "dormManage":
@@ -723,6 +722,56 @@ angular.module('evaluationApp.adminControllers', [])
                                             commonServices, CacheFactory, alertService) 
     {
         //宿舍公告
+
+        function InitInfo() {            
+            var url = commonServices.getUrl("DormManageService.ashx", "GetDormNoticeList");
+            var paras = {};
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if(!resp.success){
+                        alertService.showAlert("获取宿舍公告失败!");
+                        $ionicHistory.goBack();
+                    }else{                        
+                        $scope.noticeList = resp.list;
+                    }
+                }
+            });
+        }
+        InitInfo();
+
+        $scope.open = function(notice){
+            CacheFactory.save(GLOBAL_INFO.KEY_DORM_NOTICE_ID, notice.ID);
+            $state.go('dormNoticeDetail');
+        }
     })
-    
+    .controller('DormNoticeDetailCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                                  commonServices, CacheFactory, alertService) 
+    {
+        //宿舍公告 详细
+        var noticeID = CacheFactory.get(GLOBAL_INFO.KEY_DORM_NOTICE_ID);
+
+        function InitInfo() {
+            var url = commonServices.getUrl("DormManageService.ashx", "GetDormNoticeDetail");
+            var baseInfo = commonServices.getBaseParas();
+            var paras = {
+                "WorkdayNo": baseInfo.WorkdayNO,
+                "NoticeID": noticeID
+            };
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if (!resp.success) {
+                        alertService.showAlert("获取宿舍公告详细失败!");
+                        $ionicHistory.goBack();
+                    } else {
+                        $scope.curNotice = resp.obj;
+                        var strHtml = resp.obj.NoticeHtml;
+                        $('#div_html').html(strHtml);
+                    }
+                }
+            });
+        }        
+        InitInfo();
+    })
+
+
 ;

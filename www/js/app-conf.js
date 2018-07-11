@@ -812,3 +812,8 @@ String.prototype.formatParam = function(){
     return string;
 };
 
+var GLOBAL_INFO = {
+    //keys
+    KEY_DORM_NOTICE_ID: "KEY_DORM_NOTICE_ID",
+};
+

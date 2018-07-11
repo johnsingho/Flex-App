@@ -692,6 +692,12 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/admin/dorm/dormNotice-list.html',
                 controller: 'DormNoticeCtrl'
             })
+            .state('dormNoticeDetail', {
+                url: '/dormNoticeDetail',
+                templateUrl: 'templates/admin/dorm/dormNotice-detail.html',
+                controller: 'DormNoticeDetailCtrl'
+            })
+            
             
             
 
