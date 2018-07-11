@@ -13,7 +13,8 @@
 
         <ion-list ng-if="hasFee()">
             <ion-item class="item item-divider">
-                {{totFee.mon}}总费用：{{totFee.sum}} {{Language.common.yuan}}
+                {{totFee.mon}} 总费用：<span style="color: red">{{totFee.sum}}</span>
+                {{Language.common.yuan}}
             </ion-item>
             <ion-item class="item">
                 <div class="row" ng-repeat="fee in totFee.ArrFees">

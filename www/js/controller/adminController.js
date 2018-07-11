@@ -4,7 +4,7 @@
  */
 
 angular.module('evaluationApp.adminControllers', [])
-    .controller('AdminCtrl', function ($scope, $rootScope, $state, $ionicHistory,
+    .controller('AdminCtrl', function ($scope, $rootScope, $state, $ionicHistory,$ionicPopup,
         commonServices, CacheFactory, alertService, actionVisitServices) {
         //! temp for test
         $scope.canUseAction = function (action) {
@@ -13,6 +13,15 @@ angular.module('evaluationApp.adminControllers', [])
 
         $scope.open = function (action) {
             switch (action) {
+                case "班车信息":
+                    $state.go("tabCar.carlist");
+                    break;
+                case "点餐":
+                    {
+                        $state.go("tabMealOrder.mealList");
+                        //$state.go("tab.404");
+                    }
+                    break;
                 case "icCardLost":
                     $state.go('icCardLost');
                     break;
@@ -31,8 +40,314 @@ angular.module('evaluationApp.adminControllers', [])
         }
     })
     /*sub of AdminCtrl*/
+    .controller('CarListCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService)
+    {
+        //班车信息
+        var params=commonServices.getBaseParas();
+        var url=commonServices.getUrl("MapService.ashx","GetCarList");
+        //获取car列表
+        commonServices.getDataList(params,url).then(function(data){
+            if(data=="Token is TimeOut"){
+                alertService.showAlert("登录失效，请重新登录");
+                $state.transitionTo('signin');
+            }
+            $scope.carList=data;
+            console.log($scope.carList)
+        });
+        $scope.open=function(car){
+            CacheFactory.remove('car');
+            CacheFactory.save('car',car);
+            $state.go("tabCar.map");
+        };
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('admin');
+        }
+    })
+    .controller('CarPictureCtrl', function($scope,CacheFactory,commonServices,$state,$ionicHistory) {
+        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
+        //记录点击
+        var paras1={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token,opType:'班车查询',opContent:'点击进入'};
+        commonServices.operationLog(paras1).then(function(data){
+            $scope.sucess=data;
+        });
+
+        $("#auto-loop").lightGallery({
+            mobileSrc         : false, // If "data-responsive-src" attr. should be used for mobiles.
+            mobileSrcMaxWidth : 640,   // Max screen resolution for alternative images to be loaded for.
+            swipeThreshold    : 50,    // How far user must swipe for the next/prev image (in px).
+            hideControlOnEnd : false,
+            closable:false
+        });
+
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('admin');
+        }
+    })
+    .controller('MealListCtrl',function($scope,$rootScope,$state,$ionicModal,$ionicHistory,commonServices,CacheFactory,alertService,$ionicPopup)
+    {
+        //点餐
+        var myPopup = $ionicPopup.show({
+            templateUrl: 'templates/mealOrder/mealProtocolHtml.html',
+            cssClass: 'my-custom-popup-Alter',
+            title: '订餐须知',
+            subTitle: '',
+            scope: $scope,
+            buttons: [
+                {
+                    text: '<b>确定</b>',
+                    type: 'button-positive',
+                    onTap: function (e) {
+                        return;
+                    }
+                }
+            ]
+        });
+
+        var params=commonServices.getBaseParas();
+        $scope.MobileNo=$rootScope.accessEmployee.MobileNo;
+
+        commonServices.getDataList(params,API.GetMealList).then(function(data){
+
+            if(data=="Token is TimeOut"){
+                alertService.showAlert("登录失效，请重新登录");
+                $state.transitionTo('signin');
+            }
+            $scope.mealList=data;
+            console.log( $scope.mealList);
+        });
+
+        $scope.SubmitList=[];
+        $scope.MealCount=0;
+        $scope.MealPay=0;
+
+        $scope.cutDown=function(meal){
+            if(meal.Count>0){
+                meal.Count=meal.Count-1
+                $scope.MealCount=$scope.MealCount-1;
+                $scope.MealPay=$scope.MealPay-meal.Price;
+
+                console.log(meal);
+                console.log($scope.SubmitList);
+
+                for(var i=0;i<$scope.SubmitList.length;i++){
+                    if($scope.SubmitList[i].id==meal.id){
+                        $scope.SubmitList[i].Count=$scope.SubmitList[i].Count-1;
+                        if( $scope.SubmitList[i].Count==0){
+                            $scope.SubmitList.splice(i,1);
+                        }
+                        break;
+                    }
+                    console.log($scope.SubmitList);
+                }
+            }
+        };
+
+        $scope.add=function(meal){
+            meal.Count=meal.Count+1;
+            $scope.MealCount=$scope.MealCount+1;
+            $scope.MealPay=$scope.MealPay+meal.Price;
+            var isOK=false;
+            for(var i=0;i<$scope.SubmitList.length;i++){
+                if($scope.SubmitList[i].id==meal.id){
+                    $scope.SubmitList[i].Count=$scope.SubmitList[i].Count+1;
+                    isOK=true;
+                    break;
+                }
+            }
+
+            if(isOK==false){
+                $scope.SubmitList.push({id:meal.id,foodName:meal.foodName,Count:meal.Count,Price:meal.Price});
+            }
+            console.log($scope.SubmitList);
+        };
+
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('admin');
+        };
+
+        $scope.like=function(meal){
+
+            params.foodName=meal.foodName;
+            params.isLike='1';
+            var url=commonServices.getUrl("MealOrder.ashx","AddLike");
+            commonServices.submit(params,url).then(function(data){
+                if(data.success){
+//                    commonServices.getDataListNoMask(params,API.GetMealList).then(function(data){
+//
+//                        if(data=="Token is TimeOut"){
+//                            alertService.showAlert("登录失效，请重新登录");
+//                            $state.transitionTo('signin');
+//                        }
+//                        $scope.mealList=data;
+//                        console.log( $scope.mealList);
+
+//                    });
+                meal.LikeQty=meal.LikeQty+1;
+                }
+                else{
+                    alertService.showLoading(data.message);
+                }
+            });
+        };
+
+        $scope.unLike=function(meal){
+
+            params.foodName=meal.foodName;
+            params.isLike='0';
+            var url=commonServices.getUrl("MealOrder.ashx","AddLike");
+            commonServices.submit(params,url).then(function(data){
+                if(data.success){
+//                    commonServices.getDataListNoMask(params,API.GetMealList).then(function(data){
+//
+//                        if(data=="Token is TimeOut"){
+//                            alertService.showAlert("登录失效，请重新登录");
+//                            $state.transitionTo('signin');
+//                        }
+//                        $scope.mealList=data;
+//                        console.log( $scope.mealList);
+//                    });
+                    meal.UnLikeQty=meal.UnLikeQty+1;
+                }else
+                {
+                    alertService.showLoading(data.message);
+                }
+            });
+        };
+
+        $ionicModal.fromTemplateUrl('templates/modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal
+        })
+        $scope.openModal = function() {
+            if($scope.MealCount==0){
+                alertService.showAlert("请选择后再下单");
+                return;
+            }
+            $scope.modal.show();
+            var now = new Date();
+            var str = now.getFullYear() + "-" + fix((now.getMonth() + 1),2) + "-" + fix(now.getDate(),2) + "T" + fix(now.getHours(),2) + ":" + fix(now.getMinutes(),2)+ ":" + fix(now.getSeconds(),2);
+
+            $("#lcTime").val(str);
+        };
+        function fix(num, length) {
+            return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
+        }
+        $scope.closeModal = function() {
+            $scope.modal.hide();
+        };
+        $scope.$on('$destroy', function() {
+            $scope.modal.remove();
+        });
+        $scope.mealPerson="请选择";
+        $scope.selMealPerson=function(mealPerson){
+
+            $scope.mealPerson=mealPerson;
+        };
+
+        $scope.submit=function(){
+
+            var selTime = $("#lcTime").val(); //获取
+            if(selTime.length==0)
+            {
+                alertService.showAlert("请选择就餐时间");
+                return;
+            }
+            if($scope.mealPerson=="请选择"){
+                alertService.showLoading("请选择就餐人数");
+                return;
+            }
+
+            params.SubmitList=$scope.SubmitList;
+            params.sMobile=$scope.MobileNo;
+            params.MealCount=$scope.MealCount;
+            params.MealPay=$scope.MealPay;
+            params.MealTime=selTime;
+            params.bz=$("#bz").val();
+            params.mealPerson=$scope.mealPerson;
+            console.log(params);
+            var url=commonServices.getUrl("MealOrder.ashx","SubmitOder");
+            commonServices.submit(params,url).then(function(data){
+                if(data.success){
+                    $scope.modal.hide();
+                    $state.go("tabMealOrder.myOrder");
+                }
+                else{
+                    alertService.showAlert(data.message);
+                }
+            });
+
+        }
+
+    })
+    .controller('MealLinkManCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService){
+        var params=commonServices.getBaseParas();
+
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('admin');
+        }
+    })
+    .controller('MyOrderCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService){
+        var params=commonServices.getBaseParas();
+
+        $scope.load=function(){
+            var url=commonServices.getUrl("MealOrder.ashx","GetMyOrderList");
+            commonServices.getDataList(params,url).then(function(data){
+                if(data=="Token is TimeOut"){
+                    alertService.showAlert("登录失效，请重新登录");
+                    $state.transitionTo('signin');
+                }
+                $scope.myOrderList=data;
+
+            });
+        }
+
+        $scope.load();
+
+        $scope.cancelOrder=function(number,mealTime){
+            var url=commonServices.getUrl("MealOrder.ashx","CancelOrder");
+            params.number=number;
+            params.mealTime=mealTime;
+            commonServices.submit(params,url).then(function(data){
+                if(data.success){
+                    alertService.showAlert("取消成功");
+                }
+                else{
+                    alertService.showAlert(data.message);
+                }
+
+                $scope.load();
+            });
+        };
+
+        $scope.closePass=function(){
+            $ionicHistory.nextViewOptions({
+                disableAnimate: true,
+                disableBack: true
+            });
+            $state.go('admin');
+        }
+    })
     .controller('ICCardLostCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-        commonServices, CacheFactory, alertService) {
+        commonServices, CacheFactory, alertService) 
+    {
         //挂失IC卡
         $scope.canUseAction = function (action) {
             return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
@@ -69,8 +384,8 @@ angular.module('evaluationApp.adminControllers', [])
                 }
             });
         }
-
         GetLastLostICCardState();
+
         $scope.HasLastState = function () {
             return $scope.LastState && $scope.LastState.State;
         }
@@ -113,13 +428,13 @@ angular.module('evaluationApp.adminControllers', [])
             });
         };
 
-        $scope.closePass = function () {
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        };
+        // $scope.closePass = function () {
+        //     $ionicHistory.nextViewOptions({
+        //         disableAnimate: true,
+        //         disableBack: true
+        //     });
+        //     $state.go('tab.home');
+        // };
     })
     .controller('DormManageCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
                 commonServices, CacheFactory, alertService, actionVisitServices) 
@@ -135,37 +450,16 @@ angular.module('evaluationApp.adminControllers', [])
                     $state.go('housingAllowance');
                     break;
                 case "宿舍申请":
-                    {
-                        $state.go('applyDorm');
-                        //!test
-                        // var myPopup = $ionicPopup.show({
-                        //     title: 'Flex入住宿舍承诺书',
-                        //     cssClass: 'my-custom-popup-Alter',
-                        //     templateUrl: 'templates/admin/dorm/protocolDorm.html',
-                        //     scope: $scope,
-                        //     buttons: [
-                        //         {
-                        //             text: '<b>我愿意遵守</b>',
-                        //             type: 'button-positive',
-                        //             onTap: function (e) {
-                        //                 $state.go('applyDorm');
-                        //                 return;
-                        //             }
-                        //         }
-                        //     ]
-                        // });
-                    }
+                    $state.go('applyDorm');
                     break;
                 case "费用查询":
-                    {
-                        $state.go('chargingDefine');
-                    }
+                    $state.go('chargingDefine');
                     break;
                 case "宿舍公告":
-                    $state.go('housingAllowance');
+                    $state.go('dormNotice');
                     break;
                 case "宿舍地图":
-                    $state.go('housingAllowance');
+                    $state.go('dormMap');
                     break;
                 case "宿舍报修":
                     $state.go('housingAllowance');
@@ -185,13 +479,13 @@ angular.module('evaluationApp.adminControllers', [])
                 default: break;
             }
         }
-        $scope.closePass = function () {
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        };
+        // $scope.closePass = function () {
+        //     $ionicHistory.nextViewOptions({
+        //         disableAnimate: true,
+        //         disableBack: true
+        //     });
+        //     $state.go('tab.home');
+        // };
     })
     .controller('HousingAllowanceCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
         commonServices, CacheFactory, alertService) 
@@ -409,8 +703,22 @@ angular.module('evaluationApp.adminControllers', [])
             });
         }
         InitInfo();
-
-        
     })
-
+    .controller('DormMapCtrl', function ($scope, $rootScope, $state, $ionicHistory) 
+    {
+        //宿舍地图
+        $("#auto-loop").lightGallery({
+            mobileSrc         : false, // If "data-responsive-src" attr. should be used for mobiles.
+            mobileSrcMaxWidth : 640,   // Max screen resolution for alternative images to be loaded for.
+            swipeThreshold    : 50,    // How far user must swipe for the next/prev image (in px).
+            hideControlOnEnd : false,
+            closable:false
+        });
+    })
+    .controller('DormNoticeCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                            commonServices, CacheFactory, alertService) 
+    {
+        //宿舍公告
+    })
+    
 ;

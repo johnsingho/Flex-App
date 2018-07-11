@@ -820,7 +820,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 
     })
     .controller('InsuranceCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
-
+        //商业保险
         var paras= commonServices.getBaseParas();
         var url=commonServices.getUrl("InsuranceService.ashx","GetInsuranceList");
         commonServices.getDataList(paras,url).then(function(data){
@@ -832,20 +832,11 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         });
 
         $scope.open=function(insurance){
-
             CacheFactory.remove('Insurance_ID');
             CacheFactory.save('Insurance_ID',insurance.Insurance_ID);
-
             $state.go('insuranceHtml');
         };
 
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
     })
     .controller('InsuranceHtmlCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicPopup,$ionicHistory,$location,commonServices) {
 
@@ -1471,32 +1462,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             }
         });
 
-    })
-    .controller('CarPictureCtrl', function($scope,CacheFactory,commonServices,$state,$ionicHistory) {
-        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        //记录点击
-        var paras1={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token,opType:'班车查询',opContent:'点击进入'};
-        commonServices.operationLog(paras1).then(function(data){
-            $scope.sucess=data;
-        });
-
-        $("#auto-loop").lightGallery({
-            mobileSrc         : false, // If "data-responsive-src" attr. should be used for mobiles.
-            mobileSrcMaxWidth : 640,   // Max screen resolution for alternative images to be loaded for.
-            swipeThreshold    : 50,    // How far user must swipe for the next/prev image (in px).
-            hideControlOnEnd : false,
-            closable:false
-        });
-
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-
-    })
+    })    
     .controller('AskAndAnswerCtrl', function($scope,CacheFactory,commonServices,AskAndAnswerService,$state,$ionicHistory) {
 //        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
 //        //记录点击
