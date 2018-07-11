@@ -79,6 +79,7 @@ angular.module('evaluationApp.appControllers', [])
         var parameter = commonServices.getBaseParas();
         $scope.checkWorkday = '23328424565765889534562582566117';
         $scope.isSouthCamp = isSouthCamp($rootScope.accessEmployee.Organization);
+        $scope.isChineseLang = isChineseLang($rootScope);
 //
 //
        $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
@@ -309,9 +310,6 @@ angular.module('evaluationApp.appControllers', [])
                     break;
                 case "admin":
                     $state.go("admin");
-                    break;
-                case "菜鸟手册":
-                    $state.go("basicGuide");
                     break;
             }
             

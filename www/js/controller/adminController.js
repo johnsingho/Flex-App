@@ -401,6 +401,10 @@ angular.module('evaluationApp.adminControllers', [])
                     return;
                 }
             }
+            else if (!idno || !idno.length) {
+                alertService.showAlert( $rootScope.Language.common.InfoProvideIDNO);
+                return;
+            }
 
             $scope.model.IDNO = idno;
             var confirmPopup = $ionicPopup.confirm({

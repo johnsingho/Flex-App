@@ -647,7 +647,7 @@ angular.module('evaluationApp.router', [])
             })
             .state('basicGuide',{
                 url: '/basicGuide',
-                templateUrl: 'templates/basicGuide.html',
+                templateUrl: 'templates/GBS/basicGuide.html',
                 controller: 'BasicGuideCtrl'
             })            
             .state('admin',{
@@ -689,7 +689,7 @@ angular.module('evaluationApp.router', [])
             })
             .state('dormNotice', {
                 url: '/dormNotice',
-                templateUrl: 'templates/admin/dorm/dormNotice.html',
+                templateUrl: 'templates/admin/dorm/dormNotice-list.html',
                 controller: 'DormNoticeCtrl'
             })
             

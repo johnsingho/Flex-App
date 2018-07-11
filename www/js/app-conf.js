@@ -41,6 +41,9 @@ function isMultek(org){
     return /multek/i.test(org);
 }
 
+function isChineseLang(vRootScope){
+    return vRootScope.Language==ZH_CN;
+}
 ///////////////////////////////////////////////////////////////////////////////////
 
 if (IsDebugMode) {
@@ -174,6 +177,7 @@ var ZH_CN = {
         Explain:"说明",
         grade:"薪资级别",
         yuan:"元",
+        InfoProvideIDNO:"请提供身份证号码!",
     },
     signin: {
         username: "工号",
@@ -342,7 +346,8 @@ var ZH_CN = {
         UseContent:"购房/购车/信用卡申请/资格考试/居住证/商业保险申报"
     },
     GBSHR:{
-        LTP:'LTP密码重置'
+        LTP:'LTP密码重置',
+        basicGuide:'菜鸟手册',
     },
     xfcx:{
         title:"消费查询",
@@ -494,6 +499,7 @@ var ZH_US = {
         Explain:"explain",
         grade:"grade",
         yuan:"RMB",
+        InfoProvideIDNO:"The IDNO is required!",
     },
     signin: {
         username: "Employee ID",
@@ -662,7 +668,8 @@ var ZH_US = {
         UseContent:"Purchase/purchase of car/credit card application/qualification examination/residence permit/business insurance declaration,etc."
     },
     GBSHR:{
-        LTP:'LTP Password Reset'
+        LTP:'LTP Password Reset',
+        basicGuide:'Basic Guide',
     },
     xfcx:{
         title:" Consume Inquiry ",
