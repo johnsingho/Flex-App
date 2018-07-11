@@ -278,31 +278,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             });
             $state.go('tab.home');
         }
-    })
-    .controller('KqAbnormalCtrl', function($scope,$ionicHistory,alertService,commonServices,$state) {
-
-        var params=commonServices.getBaseParas();
-        var url=commonServices.getUrl("KqcxService.ashx","GetKQ_Attendance_Abnormal");
-        console.log(params);
-
-        commonServices.getDataList(params,url).then(function(data){
-
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            console.log(data);
-            $scope.KqAbnormalList=data;
-        });
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-
-    })
+    })    
     .controller('CustCtrl', function($scope,$location,$ionicLoading,custService,alertService,CacheFactory) {
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         var params1={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token};
