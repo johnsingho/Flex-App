@@ -301,19 +301,23 @@
   },
   {
     "file": "index.html",
-    "hash": "6b22875d02aff0dc58c613e2dfc07c17"
+    "hash": "450b6dd81d1af1a00489635a2b1edaa9"
   },
   {
     "file": "js/app-conf.js",
-    "hash": "415372f9ebc16288b6466a480c9b1b25"
+    "hash": "1c1909490aa7e2d6b800b179889da1cd"
   },
   {
     "file": "js/app.js",
-    "hash": "e62562ef3383e84e4a42c256c714a15e"
+    "hash": "b43ebdfd09f53f0639cd4b8b75a416c1"
+  },
+  {
+    "file": "js/controller/adminController.js",
+    "hash": "30e9293f7459db8df390cff4f24d0746"
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "56c9c8370109dedcf427c38dee32d446"
+    "hash": "d1816722aee0dcbb77f95812c15f03da"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -321,11 +325,11 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "44f38a834652fccc2f1eea78d706d9eb"
+    "hash": "6b161360db6969bfd5987aeaa1cf1763"
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "56da90153870f48feaffe49e4ea974ac"
+    "hash": "a232b6639d8a0e2d0e1c63f193c4db3b"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -453,7 +457,7 @@
   },
   {
     "file": "js/router.js",
-    "hash": "c68d43f021d7b0a0569bb6a367fc6b4e"
+    "hash": "fb9ea8b8950337db4a9d2e9dc42c84d6"
   },
   {
     "file": "js/service/appServices.js",
@@ -461,7 +465,7 @@
   },
   {
     "file": "js/service/businessServices.js",
-    "hash": "00b6d307af5b527cd5b26636f9ac84ab"
+    "hash": "b8125e61ec1510aaf2356600d9012c67"
   },
   {
     "file": "js/service/pointsServices.js",
@@ -678,6 +682,14 @@
   {
     "file": "lib/Chart/Chart.js",
     "hash": "5efc2341472b1693f580c512b46dfbef"
+  },
+  {
+    "file": "lib/ion-datetime-picker/ion-datetime-picker.min.css",
+    "hash": "4ea89a33255a5c7a6d1abb60ed55cfce"
+  },
+  {
+    "file": "lib/ion-datetime-picker/ion-datetime-picker.min.js",
+    "hash": "51f6fc2dfda898036aac8a976e15ef60"
   },
   {
     "file": "lib/ionic/css/ionic.css",
@@ -997,11 +1009,31 @@
   },
   {
     "file": "templates/admin/admin-list.html",
-    "hash": "07ccf806b6f8a97bbefaed837a3c6cd7"
+    "hash": "80533e52a33e82981a08641eea62d2db"
+  },
+  {
+    "file": "templates/admin/dorm/applyDorm.html",
+    "hash": "6dd68693692b23611c5fb23982ad4c2e"
+  },
+  {
+    "file": "templates/admin/dorm/chargingDefine.html",
+    "hash": "735fe58f60ad4a308567ce8608f1ac95"
+  },
+  {
+    "file": "templates/admin/dorm/housingAllowance.html",
+    "hash": "28f92cd92dfe8c72120c2aaa29d90935"
+  },
+  {
+    "file": "templates/admin/dorm/protocolDorm.html",
+    "hash": "642a37c1b12f8fbbe43f5f3717929ec5"
+  },
+  {
+    "file": "templates/admin/dormManage-list.html",
+    "hash": "fa4bebd2e3d3656ecf2dbfbf786689d0"
   },
   {
     "file": "templates/admin/icCardLost.html",
-    "hash": "68ca9a0d0d2501c7f1d1ec7534353ac7"
+    "hash": "a0797ff8e63d4b19cdc47be04ff4344e"
   },
   {
     "file": "templates/applySubmit/apply-Html.html",
@@ -1021,7 +1053,7 @@
   },
   {
     "file": "templates/askAndAnswer/tab-askAndAnswer.html",
-    "hash": "8751126237248bbc4f0b69d674be0e99"
+    "hash": "881126158db47e30cf3dc0019189c0c3"
   },
   {
     "file": "templates/askForHelp/tab-askForHelp.html",
@@ -1062,6 +1094,10 @@
   {
     "file": "templates/baiduMap/gps.html",
     "hash": "f9df44d4361b9b3d0e7de99b886dfea1"
+  },
+  {
+    "file": "templates/basicGuide.html",
+    "hash": "91f0f6f3573aec7fd478ae74882a1971"
   },
   {
     "file": "templates/carGps/tab-carList.html",
@@ -1357,7 +1393,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "bcd07636e083d46e1cd97b9a2cb5a4ac"
+    "hash": "8f7a9e484fc7fd3411c50ff1f84f2046"
   },
   {
     "file": "templates/tab-homecopy.html",
