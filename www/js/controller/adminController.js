@@ -465,10 +465,10 @@ angular.module('evaluationApp.adminControllers', [])
                     $state.go('dormMap');
                     break;
                 case "宿舍报修":
-                    $state.go('housingAllowance');
+                    $state.go('repairDorm');
                     break;
                 case "补办钥匙":
-                    $state.go('housingAllowance');
+                    $state.go('reissueKey');
                     break;
                 case "免费WIFI申请":
                     $state.go('housingAllowance');
@@ -650,7 +650,7 @@ angular.module('evaluationApp.adminControllers', [])
                 $scope.isSumbiting = false;
                 return;     
             }
-            if(!$scope.model.RequireReason || $scope.model.RequireReason.length<0){
+            if(!$scope.model.RequireReason || !$scope.model.RequireReason.length){
                 alertService.showAlert("请填写入住理由!");
                 $scope.isSumbiting = false;
                 return; 
@@ -772,6 +772,213 @@ angular.module('evaluationApp.adminControllers', [])
         }        
         InitInfo();
     })
+    .controller('RepairDormCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                            commonServices, CacheFactory, alertService) 
+    {            
+        //宿舍报修
+        var baseInfo = commonServices.getBaseParas();
+        $scope.canSubmit=false;
+        $scope.model={
+            CName: baseInfo.CName,
+            WorkdayNO: baseInfo.WorkdayNO,
+            MobileNo: baseInfo.MobileNo,
+            DormAddress: null,
+            RepairTime: moment().add(1,'h').minute(0).toDate(),
+            DeviceType: null,
+            RepairDesc: null
+        };
 
+        function InitInfo() {
+            var url = commonServices.getUrl("DormManageService.ashx", "GetDormCheckInInfo");            
+            var paras = {
+                WorkdayNO: baseInfo.WorkdayNO,
+                Extra: "GetRepairType"
+            };
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if (!resp.success) {
+                        alertService.showAlert("报修失败："+resp.message);
+                        $ionicHistory.goBack();
+                    } else {
+                        var checkInInfo = resp.obj;
+                        $scope.model.DormAddress = checkInInfo.DormAddress;
+                        var arr = JSON.parse(resp.data);
+                        $scope.deviceTypes = arr;
+                        $scope.canSubmit=true;
+                    }
+                }
+            });
+        }
+        InitInfo();
+
+        $scope.isSumbiting = false;
+        $scope.Submit = function () {
+            $scope.isSumbiting = true;
+
+            var sTemp = $.trim($scope.model.MobileNo);
+            $scope.model.MobileNo=sTemp;
+            if (!sTemp || sTemp.length<5) {
+                alertService.showAlert("请提供联系电话!");
+                $scope.isSumbiting = false;
+                return;
+            }
+            sTemp = $.trim($scope.model.DormAddress);
+            $scope.model.DormAddress=sTemp;
+            if(isEmptyString(sTemp)){
+                alertService.showAlert("请提供你的宿舍地址!");
+                $scope.isSumbiting = false;
+                return;     
+            }
+            sTemp = $.trim($scope.model.RepairTime);
+            if (isEmptyString(sTemp)) {
+                alertService.showAlert("请填写维修时间!");
+                $scope.isSumbiting = false;
+                return;
+            }
+            sTemp = $.trim($scope.model.DeviceType);
+            if (isEmptyString(sTemp)) {
+                alertService.showAlert("请要维修的设备类型!");
+                $scope.isSumbiting = false;
+                return;
+            }           
+            sTemp = $.trim($scope.model.RepairDesc);
+            $scope.model.RepairDesc = sTemp;
+            if (isEmptyString(sTemp)) {
+                alertService.showAlert("请填写报修内容!");
+                $scope.isSumbiting = false;
+                return;     
+            }
+
+            var paras = $scope.model;
+            var url = commonServices.getUrl("DormManageService.ashx", "SubmitRepairDorm");
+            try {
+                commonServices.submit(paras, url).then(function (resp) {
+                    if (resp.success) {
+                        var msg = $rootScope.Language.dormManage.repairDormSucc;
+                        alertService.showAlert(msg);
+                        $ionicHistory.goBack();
+                    }
+                    else {
+                        alertService.showAlert(resp.message);
+                        $ionicHistory.goBack();
+                    }
+                });
+            } finally {
+                $scope.isSumbiting = false;
+            }
+        };
+    })
+    .controller('ReissueKeyCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                            commonServices, CacheFactory, alertService) 
+    {
+        //补办钥匙
+        var baseInfo = commonServices.getBaseParas();
+        $scope.canSubmit=false;
+        $scope.model={
+            CName: baseInfo.CName,
+            WorkdayNO: baseInfo.WorkdayNO,
+            MobileNo: baseInfo.MobileNo,
+            DormAddress: null,
+            KeyTypes: null,
+            Reason: null,
+            memo: null,
+        };
+        $scope.KeyTypes = [
+            {name:"大门钥匙", check:false},
+            {name:"衣柜外门", check:false},
+            {name:"衣柜抽屉", check:false}
+        ];
+        $scope.totalMoney=0;
+        $scope.OnChangeKeyType = function(item){
+            $scope.totalMoney=0;
+            for(var i=0; i<$scope.KeyTypes.length; i++){
+                if($scope.KeyTypes[i].check){
+                    $scope.totalMoney += 10;
+                }
+            }
+        };
+        $scope.GetSelKeys = function(){
+            var keys=[];
+            for(var i=0; i<$scope.KeyTypes.length; i++){
+                if($scope.KeyTypes[i].check){
+                    keys.push($scope.KeyTypes[i].name);
+                }
+            }
+            return keys;
+        };
+
+        function InitInfo() {
+            var url = commonServices.getUrl("DormManageService.ashx", "GetDormCheckInInfo");            
+            var paras = {
+                WorkdayNO: baseInfo.WorkdayNO,
+                Extra: ""
+            };
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if (!resp.success) {
+                        alertService.showAlert("补办钥匙失败："+resp.message);
+                        $ionicHistory.goBack();
+                    } else {
+                        var checkInInfo = resp.obj;
+                        $scope.model.DormAddress = checkInInfo.DormAddress;
+                        var arr = JSON.parse(resp.data);                        
+                        $scope.canSubmit=true;
+                    }
+                }
+            });
+        }
+        InitInfo();
+
+        $scope.isSumbiting = false;
+        $scope.Submit = function () {
+            $scope.isSumbiting = true;
+
+            var sTemp = $.trim($scope.model.MobileNo);
+            $scope.model.MobileNo=sTemp;
+            if (!sTemp || sTemp.length<5) {
+                alertService.showAlert("请提供联系电话!");
+                $scope.isSumbiting = false;
+                return;
+            }
+            sTemp = $.trim($scope.model.DormAddress);
+            $scope.model.DormAddress=sTemp;
+            if(isEmptyString(sTemp)){
+                alertService.showAlert("请提供你的宿舍地址!");
+                $scope.isSumbiting = false;
+                return;     
+            }
+            if (0==$scope.GetSelKeys().length) {
+                alertService.showAlert("请选择要补办的钥匙类型!");
+                $scope.isSumbiting = false;
+                return;
+            }           
+            sTemp = $.trim($scope.model.Reason);
+            $scope.model.Reason = sTemp;
+            if (isEmptyString(sTemp)) {
+                alertService.showAlert("请填写原因!");
+                $scope.isSumbiting = false;
+                return;     
+            }
+            
+            $scope.model.KeyTypes=$scope.GetSelKeys().join(";");
+            var paras = $scope.model;
+            var url = commonServices.getUrl("DormManageService.ashx", "SubmitReissueKey");
+            try {
+                commonServices.submit(paras, url).then(function (resp) {
+                    if (resp.success) {
+                        var msg = $rootScope.Language.dormManage.reissueKeySucc;
+                        alertService.showAlert(msg);
+                        $ionicHistory.goBack();
+                    }
+                    else {
+                        alertService.showAlert(resp.message);
+                        $ionicHistory.goBack();
+                    }
+                });
+            } finally {
+                $scope.isSumbiting = false;
+            }
+        };
+    })
 
 ;

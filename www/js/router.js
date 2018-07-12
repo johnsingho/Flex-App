@@ -697,6 +697,16 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/admin/dorm/dormNotice-detail.html',
                 controller: 'DormNoticeDetailCtrl'
             })
+            .state('repairDorm', {
+                url: '/repairDorm',
+                templateUrl: 'templates/admin/dorm/repairDorm.html',
+                controller: 'RepairDormCtrl'
+            })
+            .state('reissueKey', {
+                url: '/reissueKey',
+                templateUrl: 'templates/admin/dorm/reissueKey.html',
+                controller: 'ReissueKeyCtrl'
+            })
             
             
             

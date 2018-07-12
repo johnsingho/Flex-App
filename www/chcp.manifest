@@ -1,40 +1,4 @@
-[
-  {
-    "file": ".idea/.name",
-    "hash": "4eae35f1b35977a00ebd8086c259d4c9"
-  },
-  {
-    "file": ".idea/encodings.xml",
-    "hash": "bbfed8a9adc106b97e3149400e5f242b"
-  },
-  {
-    "file": ".idea/misc.xml",
-    "hash": "00f0e40c7e1a56b3157e780023236ed0"
-  },
-  {
-    "file": ".idea/modules.xml",
-    "hash": "73cedbb5b0f5638d0f51d3862c697989"
-  },
-  {
-    "file": ".idea/scopes/scope_settings.xml",
-    "hash": "95f1e22026cc07a685a2932349ceb6ca"
-  },
-  {
-    "file": ".idea/vcs.xml",
-    "hash": "1d4d6f24f3ff67f10d99846d61c76662"
-  },
-  {
-    "file": ".idea/workspace.xml",
-    "hash": "09c9c4d8bd39b0ba78ba666aa7790137"
-  },
-  {
-    "file": ".idea/www.iml",
-    "hash": "07b1dcc90395701344d49084b5166275"
-  },
-  {
-    "file": ".vs/config/applicationhost.config",
-    "hash": "1fdf87bc9a963b5fdae7f2c2a149eb55"
-  },
+[  
   {
     "file": "css/animate.min.css",
     "hash": "8f639b916ea1d3736d948ba423ef8ea6"
@@ -45,7 +9,7 @@
   },
   {
     "file": "css/style.css",
-    "hash": "273b8b168cdb0d3dbc26a248ef42a960"
+    "hash": "74adb5c3290acb9caf2c9c81e2f15f2e"
   },
   {
     "file": "fonts/Slide-icons.dev.svg",
@@ -313,19 +277,19 @@
   },
   {
     "file": "index.html",
-    "hash": "7ab95c17d69bc0b4f9f2677842fd9ae9"
+    "hash": "54b4980d91540f04bf66583e43b5684f"
   },
   {
     "file": "js/app-conf.js",
-    "hash": "c14a19e8bb35b3560aa062f3b62c4bc4"
+    "hash": "3f577c12bd4d3f0028935825de6e519f"
   },
   {
     "file": "js/app.js",
-    "hash": "36043fcb95c2a158dc6c8132666c6a36"
+    "hash": "2cf08ca20df9d1a07f46b4eac47c284d"
   },
   {
     "file": "js/controller/adminController.js",
-    "hash": "6168537ec4bd14a98654c03340ddc971"
+    "hash": "18cd6280d3d12e15427a97eff4d30751"
   },
   {
     "file": "js/controller/appControllers.js",
@@ -341,7 +305,11 @@
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "56ef672397c698b58fbf3544461d06b9"
+    "hash": "4cb6795708e4aa5c75dae4084649e609"
+  },
+  {
+    "file": "js/controller/gbshrController.js",
+    "hash": "0b1d159d76c21c2d2d96704c6656269d"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -469,7 +437,7 @@
   },
   {
     "file": "js/router.js",
-    "hash": "98985d7338a9b06872f3f0e1d1ca1feb"
+    "hash": "0854c7e3ad2fe770ee068bf6f375d7ad"
   },
   {
     "file": "js/service/appServices.js",
@@ -1021,7 +989,7 @@
   },
   {
     "file": "templates/admin/admin-list.html",
-    "hash": "13a6ea61aee0d1f32685c33825d27232"
+    "hash": "361829cf90325283f503314e1ddda85c"
   },
   {
     "file": "templates/admin/dorm/applyDorm.html",
@@ -1052,12 +1020,20 @@
     "hash": "642a37c1b12f8fbbe43f5f3717929ec5"
   },
   {
+    "file": "templates/admin/dorm/reissueKey.html",
+    "hash": "0946a8a5ebbbcef215a04cb40ed19595"
+  },
+  {
+    "file": "templates/admin/dorm/repairDorm.html",
+    "hash": "48f3d36cffa862f2c25f9dfbf855018e"
+  },
+  {
     "file": "templates/admin/dormManage-list.html",
-    "hash": "1d331a8c6257b1d3d85c207829b7f78e"
+    "hash": "18c61e253a12ca6d595ab897b1078c0d"
   },
   {
     "file": "templates/admin/icCardLost.html",
-    "hash": "38c1efce47b3a8e3b500dc0cd49c6130"
+    "hash": "2c7d6dc17aa1c1251b470105816fda81"
   },
   {
     "file": "templates/applySubmit/apply-Html.html",

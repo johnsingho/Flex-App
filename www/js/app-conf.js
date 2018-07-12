@@ -44,6 +44,10 @@ function isMultek(org){
 function isChineseLang(vRootScope){
     return vRootScope.Language==ZH_CN;
 }
+function isEmptyString(str){
+    return !str || 0==str.length;
+}
+
 ///////////////////////////////////////////////////////////////////////////////////
 
 if (IsDebugMode) {
@@ -175,6 +179,7 @@ var ZH_CN = {
     common:{
         memo:"备注",
         Explain:"说明",
+        reason:"原因",
         grade:"薪资级别",
         yuan:"元",
         InfoProvideIDNO:"请提供身份证号码!",
@@ -489,7 +494,16 @@ var ZH_CN = {
         noFeeRecord:"没有扣费记录",
         dormMap:"宿舍地图",
         dormNotice:"宿舍公告",
-
+        repairDorm:"宿舍报修",
+        reissueKey:"补办钥匙",
+        dormAddress:"宿舍地址",
+        repairTime:"预约时间",
+        deviceType:"待维修设备",
+        repairDesc:"报修内容",
+        keyType:"钥匙类型",
+        repairDormSucc:"您的报修申请成功！<br>请保持手机通讯畅通，以便联系",
+        reissueKeySucc:"您的补办钥匙申请已经提交到宿舍管理组，后续请留意“我的信息”，查收最新进度通知",
+        totalMoney:"总金额",
     }
 };
 

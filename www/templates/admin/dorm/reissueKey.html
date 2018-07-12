@@ -1,0 +1,78 @@
+<!-- 补办钥匙 -->
+<style>
+    .list ion-item {
+        padding:1px
+    }
+</style>
+<ion-view view-title="{{Language.dormManage.reissueKey}}" cache-view="false" hide-tabs>
+    <ion-content style="background-color:lavender">
+        <div class="divOff lightRedBack">
+            <span class="text-left">{{Language.common.Explain}}：</span>
+            <div class="divOff" style="font-size:14px;">
+                <ul>
+                    <li>
+                        补办钥匙费用<b>10元/条</b>，将于下月工资中扣除
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="list card">
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" class="font90" readonly="readonly" ng-model="model.CName" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width:30px;font-size:80%">{{Language.like.employee_ID}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" class="font90" readonly="readonly" ng-model="model.WorkdayNO" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 50px;font-size:80%">{{Language.shareCar.mobile}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" class="font90" placeholder="{{Language.shareCar.mobile}}" ng-model="model.MobileNo" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 50px;font-size:80%">{{Language.dormManage.dormAddress}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" class="font90" ng-model="model.DormAddress" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 50px;font-size:80%">{{Language.dormManage.keyType}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <ion-list>
+                    <ion-item ng-repeat="item in KeyTypes">
+                        <ion-checkbox name="chkKeyType" color="dark" class="font90" checked="true" 
+                            ng-model="item.check" ng-checked="item.check" ng-change="OnChangeKeyType(item)"
+                            >{{item.name}}</ion-checkbox>
+                    </ion-item>
+                    <ion-item class="input-label font90" style="padding-top: 10px;">
+                        {{Language.dormManage.totalMoney}}：
+                        <span style="color:red">{{totalMoney}}</span>{{Language.common.yuan}}
+                    </ion-item>
+                </ion-list>                
+            </div>
+            <!-- <div class="item item-input">
+                <span class="input-label" style="width: 50px;font-size:80%">{{Language.dormManage.keyType}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>                
+                <select class="button" ng-options='t.name as t.name for t in KeyTypes' 
+                    ng-model="model.KeyType" multiple></select>                    
+            </div> -->
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.common.reason}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <textarea rows="2" class="ng-pristine ng-valid ng-touched font90" 
+                    ng-model="model.Reason"></textarea>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.common.memo}}</span>
+                <textarea rows="3" class="ng-pristine ng-valid ng-touched font90"
+                    ng-model="model.memo" ></textarea>
+            </div>
+        </div>
+
+        <div style="text-align: center" ng-if="canSubmit">
+            <button class="button button-positive" ng-click="Submit()">{{Language.menu.submit}}</button>
+        </div>
+    </ion-content>
+</ion-view>
