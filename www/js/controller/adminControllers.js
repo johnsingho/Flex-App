@@ -880,6 +880,7 @@ angular.module('evaluationApp.adminControllers', [])
             MobileNo: baseInfo.MobileNo,
             DormAddress: null,
             KeyTypes: null,
+            Money: 0.0,
             Reason: null,
             memo: null,
         };
@@ -961,6 +962,7 @@ angular.module('evaluationApp.adminControllers', [])
             }
             
             $scope.model.KeyTypes=$scope.GetSelKeys().join(";");
+            $scope.model.Money = $scope.totalMoney;
             var paras = $scope.model;
             var url = commonServices.getUrl("DormManageService.ashx", "SubmitReissueKey");
             try {
