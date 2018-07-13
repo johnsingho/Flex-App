@@ -957,7 +957,7 @@ angular.module('evaluationApp.adminControllers', [])
             if (isEmptyString(sTemp)) {
                 alertService.showAlert("请填写原因!");
                 $scope.isSumbiting = false;
-                return;     
+                return;
             }
             
             $scope.model.KeyTypes=$scope.GetSelKeys().join(";");
