@@ -722,6 +722,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/admin/dorm/freeDormWifi_android.html',
                 controller: null
             })
+            .state('dormAskAndAns', {
+                url: '/dormAskAndAns',
+                templateUrl: 'templates/admin/dorm/dormAskAndAns.html',
+                controller: 'DormAskAndAnsCtrl'
+            })
             
 
         $urlRouterProvider.otherwise('signin');

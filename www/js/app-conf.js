@@ -505,6 +505,7 @@ var ZH_CN = {
         reissueKeySucc:"您的补办钥匙申请已经提交到宿舍管理组，后续请留意“我的信息”，查收最新进度通知",
         totalMoney:"总金额",
         freeDormWifi:"免费WIFI申请",
+        dormAskAndAns:"宿舍常见问题",
     }
 };
 

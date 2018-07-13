@@ -474,7 +474,7 @@ angular.module('evaluationApp.adminControllers', [])
                     $state.go('freeDormWifi');
                     break;
                 case "宿舍常见问题":
-                    $state.go('housingAllowance');
+                    $state.go('dormAskAndAns');
                     break;
                 case "建议箱":
                     $state.go('housingAllowance');
@@ -996,6 +996,21 @@ angular.module('evaluationApp.adminControllers', [])
                     break;
             }
         };
+    })
+    .controller('DormAskAndAnsCtrl', function ($scope, $rootScope, $state, $ionicHistory, 
+                                               commonServices, AskAndAnswerService) 
+    {
+        //宿舍问答，使用 AskAndAnswerCtrl
+        function GetList(paras){
+            AskAndAnswerService.getAskAndAnswer(paras).then(function(resp){
+                if(resp.success){
+                    $scope.listAskAndAnswer = resp.list;
+                }                
+            });
+        }
+        var paras = commonServices.getBaseParas();
+        paras.keyword = "宿舍";
+        GetList(paras);
     })
     
 
