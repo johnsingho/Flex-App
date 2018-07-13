@@ -471,7 +471,7 @@ angular.module('evaluationApp.adminControllers', [])
                     $state.go('reissueKey');
                     break;
                 case "免费WIFI申请":
-                    $state.go('housingAllowance');
+                    $state.go('freeDormWifi');
                     break;
                 case "宿舍常见问题":
                     $state.go('housingAllowance');
@@ -982,5 +982,21 @@ angular.module('evaluationApp.adminControllers', [])
             }
         };
     })
+    .controller('FreeDormWifiCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+        commonServices, CacheFactory, alertService) 
+    {
+        //免费Wifi
+        $scope.open = function (action) {
+            switch (action) {
+                case "wifi_ios":
+                    $state.go("freeDormWifi_ios");
+                    break;
+                case "wifi_android":
+                    $state.go("freeDormWifi_android");
+                    break;
+            }
+        };
+    })
+    
 
 ;

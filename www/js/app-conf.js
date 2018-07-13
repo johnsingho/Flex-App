@@ -504,6 +504,7 @@ var ZH_CN = {
         repairDormSucc:"您的报修申请成功！<br>请保持手机通讯畅通，以便联系",
         reissueKeySucc:"您的补办钥匙申请已经提交到宿舍管理组，后续请留意“我的信息”，查收最新进度通知",
         totalMoney:"总金额",
+        freeDormWifi:"免费WIFI申请",
     }
 };
 

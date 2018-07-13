@@ -707,8 +707,21 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/admin/dorm/reissueKey.html',
                 controller: 'ReissueKeyCtrl'
             })
-            
-            
+            .state('freeDormWifi', {
+                url: '/freeDormWifi',
+                templateUrl: 'templates/admin/dorm/freeDormWifi.html',
+                controller: 'FreeDormWifiCtrl'
+            })
+            .state('freeDormWifi_ios', {
+                url: '/freeDormWifi_ios',
+                templateUrl: 'templates/admin/dorm/freeDormWifi_ios.html',
+                controller: null
+            })
+            .state('freeDormWifi_android', {
+                url: '/freeDormWifi_android',
+                templateUrl: 'templates/admin/dorm/freeDormWifi_android.html',
+                controller: null
+            })
             
 
         $urlRouterProvider.otherwise('signin');
