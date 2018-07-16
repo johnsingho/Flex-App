@@ -477,7 +477,7 @@ angular.module('evaluationApp.adminControllers', [])
                     $state.go('dormAskAndAns');
                     break;
                 case "建议箱":
-                    $state.go('housingAllowance');
+                    $state.go('dormSuggest');
                     break;
                 default: break;
             }
@@ -1012,6 +1012,69 @@ angular.module('evaluationApp.adminControllers', [])
         paras.keyword = "宿舍";
         GetList(paras);
     })
-    
+    .controller('DormSuggestCtrl', function($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                            commonServices, CacheFactory, alertService) 
+    {
+        //建议箱
+        var baseInfo = commonServices.getBaseParas();
+        $scope.hisSuggest=[];
+        function InitInfo() {
+            var url = commonServices.getUrl("DormManageService.ashx", "GetDormSuggest");            
+            var paras = {
+                WorkdayNO: baseInfo.WorkdayNO
+            };
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if (resp.success) {
+                        $scope.hisSuggest = resp.list;
+                    }
+                }
+            });
+        }
+        InitInfo();
+
+        $scope.model = {
+            CName: baseInfo.CName,
+            WorkdayNO: baseInfo.WorkdayNO,
+            MobileNo: baseInfo.MobileNo,
+            Suggest: ""
+        };
+        $scope.GetSuggest = function(){
+            var txt = $.trim($scope.model.Suggest);
+            return txt;
+        };
+
+        $scope.isSumbiting = false;
+        $scope.Submit = function () {
+            $scope.isSumbiting = true;
+            var sugg = $scope.GetSuggest();
+            if (sugg.length<3) {
+                alertService.showAlert("请填写你的建议!");
+                $scope.isSumbiting = false;
+                return;
+            }
+
+            $scope.model.Suggest = sugg;
+            var paras = $scope.model;
+            var url = commonServices.getUrl("DormManageService.ashx", "SubmitDormSuggest");
+            try {
+                commonServices.submit(paras, url).then(function (resp) {
+                    if (resp.success) {
+                        var msg = $rootScope.Language.dormManage.suggestSucc;
+                        alertService.showAlert(msg);
+                        $ionicHistory.goBack();
+                    }
+                    else {
+                        alertService.showAlert(resp.message);
+                        $ionicHistory.goBack();
+                    }
+                });
+            } finally {
+                $scope.isSumbiting = false;
+            }
+        };
+
+    })
+
 
 ;

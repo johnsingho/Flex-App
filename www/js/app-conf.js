@@ -506,6 +506,11 @@ var ZH_CN = {
         totalMoney:"总金额",
         freeDormWifi:"免费WIFI申请",
         dormAskAndAns:"宿舍常见问题",
+        dormSuggest:"建议箱",
+        yourSuggest:"您的建议",
+        hisSuggest:"以前的建议",
+        suggestSucc:"感谢您的建议!",
+        respSuggest:"回复",
     }
 };
 

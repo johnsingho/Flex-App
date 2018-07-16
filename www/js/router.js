@@ -727,6 +727,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/admin/dorm/dormAskAndAns.html',
                 controller: 'DormAskAndAnsCtrl'
             })
+            .state('dormSuggest', {
+                url: '/dormSuggest',
+                templateUrl: 'templates/admin/dorm/dormSuggest.html',
+                controller: 'DormSuggestCtrl'
+            })
             
 
         $urlRouterProvider.otherwise('signin');
