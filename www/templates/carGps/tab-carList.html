@@ -1,13 +1,20 @@
 <!-- 班车信息 -->
 <ion-view view-title=" {{Language.bus.title}}" cache-view="false" >
-    <ion-nav-buttons side="left">
+    <!-- <ion-nav-buttons side="left">
         <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.home.admin}}</button>
-    </ion-nav-buttons>
+    </ion-nav-buttons> -->
 
     <ion-content scroll="true"  overflow-scroll="true" >
 
         <div class="list list-inset">
-            {{Language.bus.content}}
+            <div class="item" ng-click="openBusTime(car)">
+                {{Language.bus.tabBusTime}}
+            </div>
+        </div>
+
+        <div class="list list-inset">
+            <!-- {{Language.bus.content}} -->
+            {{Language.bus.tabGps}}
             <div class="item" ng-repeat="car in carList" ng-click="open(car)">
                 {{car.Name}}
             </div>

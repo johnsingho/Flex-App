@@ -13,7 +13,7 @@ angular.module('evaluationApp.adminControllers', [])
         $scope.open = function (action) {
             switch (action) {
                 case "班车信息":
-                    $state.go("tabCar.carlist");
+                    $state.go("Carlist");
                     break;
                 case "点餐":
                     {
@@ -53,10 +53,13 @@ angular.module('evaluationApp.adminControllers', [])
             $scope.carList=data;
             console.log($scope.carList)
         });
-        $scope.open=function(car){
+        $scope.open=function(car){            
             CacheFactory.remove('car');
             CacheFactory.save('car',car);
-            $state.go("tabCar.map");
+            $state.go("CarMap");
+        };
+        $scope.openBusTime=function(){
+            $state.go("carBusTime");
         };
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
@@ -583,7 +586,7 @@ angular.module('evaluationApp.adminControllers', [])
             Grade: null,
             DormArea: null,
             RequireType:null,
-            RequireReason:"就近工作需要",
+            RequireReason:null,
             HasHousingAllowance:null,
             memo: ""
         };
@@ -983,7 +986,7 @@ angular.module('evaluationApp.adminControllers', [])
         };
     })
     .controller('FreeDormWifiCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-        commonServices, CacheFactory, alertService) 
+        commonServices, CacheFactory, alertService,externalLinksService) 
     {
         //免费Wifi
         $scope.open = function (action) {
@@ -996,6 +999,16 @@ angular.module('evaluationApp.adminControllers', [])
                     break;
             }
         };
+        
+        $scope.openApplyUrl = function(){
+            try {
+                var url = "http://www.189eshop.cn/catentry/catentryDetail.action?recCode=12345678&recStaff=2044029868&catentryId=1196525&storeId=13759&systemId=MINI_WAP";
+                externalLinksService.openUr(url);
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
+            }
+        }
     })
     .controller('DormAskAndAnsCtrl', function ($scope, $rootScope, $state, $ionicHistory, 
                                                commonServices, AskAndAnswerService) 

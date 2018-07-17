@@ -19,17 +19,17 @@
         <fieldset>
             <h4 style="color: royalblue">{{Language.dormManage.hisSuggest}}</h4>
             <div ng-repeat="sugg in hisSuggest">
-                <div>
-                    <p class="item item-input">
-                            <span>{{sugg.CreateDate| date: "yyyy-MM-dd HH:mm"}}&nbsp;</span>
-                            <span ng-bind-html="sugg.Suggest"></span>
-                    </p>                    
-                    <p class="item item-input" ng-if="sugg.Response && sugg.Response.length>0">
-                        <span>{{Language.dormManage.respSuggest}}:&nbsp;</span>
-                        <span style="color: teal" ng-bind-html="sugg.Response"></span>
-                    </p>
+                <div class="item item-input">
+                    <span>{{sugg.CreateDate| date: "yyyy-MM-dd HH:mm"}}&nbsp;</span>
                     <br>
+                    <span style="white-space:normal;" ng-bind-html="sugg.Suggest"></span>
                 </div>
+                <div class="item item-input" ng-if="sugg.Response && sugg.Response.length>0">
+                    <span>{{Language.dormManage.respSuggest}}:&nbsp;</span>
+                    <br>
+                    <span style="color:teal;white-space:normal;" ng-bind-html="sugg.Response"></span>
+                </div>
+                <br>
             </div>
         </fieldset>
     </div>

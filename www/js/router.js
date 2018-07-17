@@ -302,37 +302,53 @@ angular.module('evaluationApp.router', [])
             })
             
 
-            .state('tabCar', {
-                url: "/tabCar",
-                abstract: true,
-                templateUrl: "templates/carGps/tabCar.html"
+            //移除tab
+            // .state('tabCar', {
+            //     url: "/tabCar",
+            //     abstract: true,
+            //     templateUrl: "templates/carGps/tabCar.html"
+            // })
+            // .state('tabCar.carlist', {
+            //     url: '/carlist',
+            //     views: {
+            //         'carlist': {
+            //             templateUrl: 'templates/carGps/tab-carList.html',
+            //             controller: 'CarListCtrl'
+            //         }
+            //     }
+            // })
+            // .state('tabCar.map', {
+            //     url: '/map',
+            //     views: {
+            //         'map': {
+            //             templateUrl: 'templates/carGps/tab-map.html',
+            //             controller: 'BaiduMapCtrl'
+            //         }
+            //     }
+            // })
+            // .state('tabCar.carPicture', {
+            //     url: '/carPicture',
+            //     views: {
+            //         'carPicture': {
+            //             templateUrl: 'templates/carGps/tab-carPicture.html',
+            //             controller: 'CarPictureCtrl'
+            //         }
+            //     }
+            // })
+            .state('Carlist', {
+                url: '/carList',
+                templateUrl: 'templates/carGps/tab-carList.html',
+                controller: 'CarListCtrl'
             })
-            .state('tabCar.carlist', {
-                url: '/carlist',
-                views: {
-                    'carlist': {
-                        templateUrl: 'templates/carGps/tab-carList.html',
-                        controller: 'CarListCtrl'
-                    }
-                }
+            .state('CarMap', {
+                url: '/carMap',
+                templateUrl: 'templates/carGps/tab-map.html',
+                controller: 'BaiduMapCtrl'
             })
-            .state('tabCar.map', {
-                url: '/map',
-                views: {
-                    'map': {
-                        templateUrl: 'templates/carGps/tab-map.html',
-                        controller: 'BaiduMapCtrl'
-                    }
-                }
-            })
-            .state('tabCar.carPicture', {
-                url: '/carPicture',
-                views: {
-                    'carPicture': {
-                        templateUrl: 'templates/carGps/tab-carPicture.html',
-                        controller: 'CarPictureCtrl'
-                    }
-                }
+            .state('carBusTime', {
+                url: '/carBusTime',
+                templateUrl: 'templates/carGps/tab-carBusTime.html',
+                controller: 'CarPictureCtrl'
             })
 
             .state('carPicture', {
