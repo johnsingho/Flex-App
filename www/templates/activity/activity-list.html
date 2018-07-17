@@ -82,7 +82,7 @@
                 <img src="{{activity.ImageUrl}}" ng-if="activity.ImageUrl!=null">
                 <img src="img/user-100.png" ng-if="activity.ImageUrl==null">
 
-                <h3>EHS有奖答题 | {{activity.ActName}}</h3>
+                <h3>{{activity.ActName}}</h3>
                 <br>
                 <p>{{activity.StartDate| date:"yyyy-MM-dd"}}</p>
 
@@ -90,6 +90,14 @@
                  <!--<h2>{{notice.NoticeTitle}}</h2>-->
                  <!--<p>{{notice.NoticeTypeName}}</p>-->
                 <!--<i class="icon ion-ios-arrow-forward"></i>-->
+            </ion-item>
+
+            <ion-item class="item item-thumbnail-left"
+                      ng-click="openHandelAddAct()">
+                <img src="img/gh.JPG">
+                <br>
+                <h2>异地务工人员暑期亲子团聚关爱金</h2>
+                <br>
             </ion-item>
         </ion-list>
 

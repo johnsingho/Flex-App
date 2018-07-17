@@ -946,6 +946,15 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         $scope.openCJ=function(){
             $location.path("choujiang");
         }
+        $scope.openHandelAddAct = function () {
+            try {
+               // externalLinksService.openUr('http://cn.mikecrm.com/TcqdeQz');
+                window.cordova.InAppBrowser.open('http://cn.mikecrm.com/TcqdeQz', '_system', 'location=yes');
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
+            }
+        };
 
 //        获取有奖调查列表
 //        commonServices.getDataList(params,API.GetResearchList).then(function(data){
@@ -965,11 +974,22 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         };
 
         $scope.open=function(activity){
-            CacheFactory.remove('activityID');
-            CacheFactory.save('activityID',activity.ActivityID);
-            actionVisitServices.visit(activity.ActivityID); //save state
-            console.log(activity.ActivityID);
-            $state.go('activityHtml');
+            if(activity.IsOutLink){
+                //打开外链
+                try {
+                    var url = $.trim(activity.ActivityHtml);
+                    window.cordova.InAppBrowser.open(url, '_system', 'location=yes');
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+            }else{
+                CacheFactory.remove('activityID');
+                CacheFactory.save('activityID',activity.ActivityID);
+                actionVisitServices.visit(activity.ActivityID); //save state
+                console.log(activity.ActivityID);
+                $state.go('activityHtml');
+            }
         };
 
         $scope.closePass=function(){
