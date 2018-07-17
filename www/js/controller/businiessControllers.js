@@ -1459,7 +1459,9 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         });
 
     })    
-    .controller('AskAndAnswerCtrl', function($scope,CacheFactory,commonServices,AskAndAnswerService,$state,$ionicHistory) {
+    .controller('AskAndAnswerCtrl', 
+        function($scope,CacheFactory,commonServices,AskAndAnswerService,$state,$ionicHistory) 
+    {
 //        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
 //        //记录点击
 //        var paras1={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token,opType:'问与答',opContent:'点击进入'};
@@ -1467,20 +1469,20 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 //            $scope.sucess=data;
 //        });
 
-        $scope.selKeyword=null;
-        function GetList(paras){
-            AskAndAnswerService.getAskAndAnswer(paras).then(function(resp){
-                $scope.listAskAndAnswer = resp.list;
-                $scope.keywords = JSON.parse(resp.data);
-            });
-        }
-        var paras= commonServices.getBaseParas();
-        GetList(paras);
-
-        $scope.filterKeyword = function(selKeyword){
-            console.log("*** filterKeyword: "+ selKeyword);
-            paras.keyword = selKeyword;
-            GetList(paras);
+        $scope.catList = [            
+            {name:"人力资源类", value:"人力资源类"},
+            {name:"行政类", value:"行政类"},
+            {name:"福利类", value:"福利类"},
+            {name:"安全类", value:"安全类"},
+            {name:"沟通类", value:"沟通类"},
+            {name:"活动类", value:"活动类"},
+            {name:"困难求助", value:"困难求助"},
+            {name:"所有", value:"all"},
+        ];  
+        
+        $scope.open = function(keyw){
+            CacheFactory.save(GLOBAL_INFO.KEY_ASK_AND_ANS_ID, keyw);
+            $state.go('askAndAnswerDetail');
         };
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
@@ -1488,8 +1490,23 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 disableBack: true
             });
             $state.go('tab.home');
-        }
+        };
 
+    })
+    .controller('AskAndAnswerDetailCtrl', 
+                function($scope,CacheFactory,commonServices,AskAndAnswerService,$state,$ionicHistory) 
+    {
+        var paras= commonServices.getBaseParas();
+        paras.keyword =  CacheFactory.get(GLOBAL_INFO.KEY_ASK_AND_ANS_ID) || 'all';
+        $scope.title = paras.keyword;
+
+        function GetList(paras){
+            AskAndAnswerService.getAskAndAnswer(paras).then(function(resp){
+                $scope.listAskAndAnswer = resp.list;
+                //$scope.keywords = JSON.parse(resp.data);
+            });
+        }
+        GetList(paras);
     })
     .controller('ChartRoomCtrl', function($scope,CacheFactory,commonServices,$state,$ionicHistory,$interval) {
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));

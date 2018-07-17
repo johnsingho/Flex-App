@@ -363,8 +363,13 @@ angular.module('evaluationApp.router', [])
             })
             .state('askAndAnswer', {
                 url: '/askAndAnswer',
-                templateUrl: 'templates/askAndAnswer/tab-askAndAnswer.html',
+                templateUrl: 'templates/askAndAnswer/askAndAnswerList.html',
                 controller: 'AskAndAnswerCtrl'
+            })
+            .state('askAndAnswerDetail', {
+                url: '/askAndAnswerDetail',
+                templateUrl: 'templates/askAndAnswer/askAndAnswerDetail.html',
+                controller: 'AskAndAnswerDetailCtrl'
             })
             .state('lightPower', {
                 url: '/lightPower',

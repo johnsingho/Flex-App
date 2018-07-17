@@ -836,5 +836,6 @@ String.prototype.formatParam = function(){
 var GLOBAL_INFO = {
     //keys
     KEY_DORM_NOTICE_ID: "KEY_DORM_NOTICE_ID",
+    KEY_ASK_AND_ANS_ID: "KEY_ASK_AND_ANS_ID",
 };
 
