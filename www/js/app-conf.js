@@ -6,8 +6,10 @@
  //是否本地开发调试
  var IsDebugMode = false; //false;
 
-
- 
+//新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
+//  $scope.canUseAction = function (action) {
+//     return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+// };
  ///////////////////////////////////////////////////////////////////////////////////
 function isSouthCamp(org){
     return /b13|b6|b16/i.test(org);
