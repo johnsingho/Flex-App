@@ -6,34 +6,9 @@
  //是否本地开发调试
  var IsDebugMode = false; //false;
 
- //给特定用户测试
- /* sample:
-    var accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-    $scope.canShow = IsTestAccount(accessEmployee.WorkdayNO);
-*/
-function IsTestAccount(curWorkNo)
-{
-    var workNos = [
-        2566117,/*johnsing*/
-        2332842,/*kris*/
-        461713,/*Winnie Huang*/
-        466190,/*Austin xie*/
-        480523,/*Lily Li */
-        806218,/*Bily Chow */
-        2327051,/*cathy zh*/
-        458037, /*Micky Zhao*/
-        458184, /*jinxiu chen*/
-        /*temp for test*/
-        2600355,466664,446627,456034,682138,
-    ];
-    for(var i=0; i<workNos.length; i++){
-        if(curWorkNo == workNos[i]){
-            return true;
-        }
-    }
-    return false;
-}
 
+ 
+ ///////////////////////////////////////////////////////////////////////////////////
 function isSouthCamp(org){
     return /b13|b6|b16/i.test(org);
 }
