@@ -42,10 +42,10 @@ angular.module('evaluationApp.gbshrControllers', [])
     })
     .controller('CertificateCtrl', function ($scope, $rootScope, $state, CacheFactory) {
         var accessEmployee = $rootScope.accessEmployee;
-        var bTestAccount = IsTestAccount(accessEmployee.WorkdayNO);
+        //var bTestAccount = IsTestAccount(accessEmployee.WorkdayNO);
         //屏蔽multek
         //var bIsNotMultek = accessEmployee.Organization.toLowerCase().indexOf("multek")<0;
-        $scope.canShow = !isMultek(accessEmployee.Organization) && bTestAccount;
+        $scope.canShow = !isMultek(accessEmployee.Organization);
 
         $scope.open = function (action) {
             switch (action) {
