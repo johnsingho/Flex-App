@@ -1225,7 +1225,14 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 } finally {
                     $scope.isSumbiting = false;
                 }
-            };
+            }
+        };
+
+        $scope.SkipToNotice = function(noticeID){
+            if(!noticeID){return;}
+            CacheFactory.remove('noticeID');
+            CacheFactory.save('noticeID', noticeID);
+            $state.go('noticeHtml');
         }
     })    
     .controller('ActivityHtmlCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,$location,commonServices) {
