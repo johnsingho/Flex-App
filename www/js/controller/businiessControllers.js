@@ -1460,7 +1460,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 
     })    
     .controller('AskAndAnswerCtrl', 
-        function($scope,CacheFactory,commonServices,AskAndAnswerService,$state,$ionicHistory) 
+        function($scope,CacheFactory,commonServices,AskAndAnswerService,$state,$ionicHistory,alertService) 
     {
 //        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
 //        //记录点击
@@ -1469,16 +1469,22 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 //            $scope.sucess=data;
 //        });
 
-        $scope.catList = [            
-            {name:"人力资源类", value:"人力资源类"},
-            {name:"行政类", value:"行政类"},
-            {name:"福利类", value:"福利类"},
-            {name:"安全类", value:"安全类"},
-            {name:"沟通类", value:"沟通类"},
-            {name:"活动类", value:"活动类"},
-            {name:"困难求助", value:"困难求助"},
-            {name:"所有", value:"all"},
-        ];  
+        function GetCatList() {
+          var url = commonServices.getUrl("EvaluationAppService.ashx", "AskAndAnswerCate");
+          var paras = commonServices.getBaseParas();
+          commonServices.submit(paras, url).then(function (resp) {
+            if (resp) {
+              if (!resp.success) {
+                alertService.showAlert(resp.message);
+                $ionicHistory.goBack();
+              } else {
+                $scope.catList = resp.list;
+              }
+            }
+          });
+        }
+        $scope.catList = [];
+        GetCatList();
         
         $scope.open = function(keyw){
             CacheFactory.save(GLOBAL_INFO.KEY_ASK_AND_ANS_ID, keyw);
