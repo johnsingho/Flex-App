@@ -494,12 +494,13 @@ angular.module('evaluationApp.adminControllers', [])
         // };
     })
     .controller('HousingAllowanceCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-        commonServices, CacheFactory, alertService) 
+        commonServices, CacheFactory, alertService, duplicateSubmitServices) 
     {
         //住房津贴
         var paras= commonServices.getBaseParas();
         $scope.canSubmit=false;
         $scope.model = {
+            SubmitGuid: duplicateSubmitServices.genGUID(),
             CName: paras.CName,
             WorkdayNO: paras.WorkdayNO,
             Organization: paras.Organization,
@@ -573,12 +574,13 @@ angular.module('evaluationApp.adminControllers', [])
         };
     })
     .controller('ApplyDormCtrl', function ($scope, $rootScope, $state, $ionicHistory, 
-                                            commonServices, CacheFactory, alertService) 
+                                            commonServices, CacheFactory, alertService, duplicateSubmitServices) 
     {
         //宿舍申请
         var paras = commonServices.getBaseParas();
         $scope.canSubmit = false;
         $scope.model = {
+            SubmitGuid: duplicateSubmitServices.genGUID(),
             CName: paras.CName,
             WorkdayNO: paras.WorkdayNO,
             MobileNo: paras.MobileNo,
@@ -590,10 +592,13 @@ angular.module('evaluationApp.adminControllers', [])
             HasHousingAllowance:null,
             memo: ""
         };
-
+       
         function InitInfo() {
             var grades=[];
-            for(var i=0;i<25;i++){
+            for(var i=0;i<7;i++){
+                grades.push(i+1);
+            }
+            for(var i=20;i<25;i++){
                 grades.push(i+1);
             }
             $scope.grades=grades;
@@ -725,7 +730,6 @@ angular.module('evaluationApp.adminControllers', [])
                                             commonServices, CacheFactory, alertService) 
     {
         //宿舍公告
-
         function InitInfo() {            
             var url = commonServices.getUrl("DormManageService.ashx", "GetDormNoticeList");
             var paras = {};
@@ -776,12 +780,13 @@ angular.module('evaluationApp.adminControllers', [])
         InitInfo();
     })
     .controller('RepairDormCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-                                            commonServices, CacheFactory, alertService) 
+                                            commonServices, CacheFactory, alertService, duplicateSubmitServices) 
     {            
         //宿舍报修
         var baseInfo = commonServices.getBaseParas();
         $scope.canSubmit=false;
         $scope.model={
+            SubmitGuid: duplicateSubmitServices.genGUID(),
             CName: baseInfo.CName,
             WorkdayNO: baseInfo.WorkdayNO,
             MobileNo: baseInfo.MobileNo,
@@ -872,12 +877,13 @@ angular.module('evaluationApp.adminControllers', [])
         };
     })
     .controller('ReissueKeyCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-                                            commonServices, CacheFactory, alertService) 
+                                            commonServices, CacheFactory, alertService, duplicateSubmitServices) 
     {
         //补办钥匙
         var baseInfo = commonServices.getBaseParas();
         $scope.canSubmit=false;
         $scope.model={
+            SubmitGuid: duplicateSubmitServices.genGUID(),
             CName: baseInfo.CName,
             WorkdayNO: baseInfo.WorkdayNO,
             MobileNo: baseInfo.MobileNo,
@@ -1026,7 +1032,7 @@ angular.module('evaluationApp.adminControllers', [])
         GetList(paras);
     })
     .controller('DormSuggestCtrl', function($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-                                            commonServices, CacheFactory, alertService) 
+                                            commonServices, CacheFactory, alertService, duplicateSubmitServices) 
     {
         //建议箱
         var baseInfo = commonServices.getBaseParas();
@@ -1047,6 +1053,7 @@ angular.module('evaluationApp.adminControllers', [])
         InitInfo();
 
         $scope.model = {
+            SubmitGuid: duplicateSubmitServices.genGUID(),
             CName: baseInfo.CName,
             WorkdayNO: baseInfo.WorkdayNO,
             MobileNo: baseInfo.MobileNo,
