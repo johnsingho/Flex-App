@@ -22,15 +22,23 @@ angular.module('evaluationApp.businiess2Controllers', [])
           $state.go('researchHtml');
         };
     
-
-        $scope.openGH=function(){
+        $scope.openHuKou=function(){
             try {
-                externalLinksService.openUr('http://cn.mikecrm.com/pSIKpIJ');
+                externalLinksService.openUr('http://cn.mikecrm.com/L6shCzq');
             }
             catch (ex) {
                 alertService.showAlert(ex.message);
             }
         };
+
+        // $scope.openGH=function(){
+        //     try {
+        //         externalLinksService.openUr('http://cn.mikecrm.com/pSIKpIJ');
+        //     }
+        //     catch (ex) {
+        //         alertService.showAlert(ex.message);
+        //     }
+        // };
         $scope.openMECH=function(){
 
             $scope.isNotMECH=$scope.accessEmployee.Organization.toUpperCase().indexOf('MECH')==-1;
