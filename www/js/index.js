@@ -30,8 +30,9 @@ var app = {
 //            alert(error.description);
         } else {
 //            alert('Update is loaded');
+            chcp.installUpdate(this.installationCallback);
         }
-        chcp.installUpdate(this.installationCallback);
+        
     },
 
     onUpdateReady: function(eventData) {
