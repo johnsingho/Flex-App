@@ -675,4 +675,3 @@ angular.module('evaluationApp.appServices', [])
         };
     })
 ;
-
