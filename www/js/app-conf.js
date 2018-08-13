@@ -330,6 +330,8 @@ var ZH_CN = {
     GBSHR:{
         LTP:'LTP密码重置',
         basicGuide:'菜鸟手册',
+        SocialInsurance:'社保信息',
+        HousingFund:'住房公积金信息',
     },
     xfcx:{
         title:"消费查询",
@@ -668,6 +670,8 @@ var ZH_US = {
     GBSHR:{
         LTP:'LTP Password Reset',
         basicGuide:'Basic Guide',
+        SocialInsurance:'Social Insurance',
+        HousingFund:'Housing Fund',
     },
     xfcx:{
         title:" Consume Inquiry ",

@@ -753,8 +753,18 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/admin/dorm/dormSuggest.html',
                 controller: 'DormSuggestCtrl'
             })
+            /*sub of GBSHR*/
+            .state('generalNotice', {
+                url: '/generalNotice',
+                templateUrl: 'templates/generalNotice/generalNoticeList.html',
+                controller: 'GeneralNoticeCtrl'
+            })
+            .state('generalNoticeDetial', {
+                url: '/generalNoticeDetial',
+                templateUrl: 'templates/generalNotice/generalNoticeDetial.html',
+                controller: 'GeneralNoticeDetialCtrl'
+            })
             
-
         $urlRouterProvider.otherwise('signin');
 
     }])

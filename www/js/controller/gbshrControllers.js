@@ -3,8 +3,13 @@
  * 2018-07-11 johnsing he 整理
  */
 angular.module('evaluationApp.gbshrControllers', [])
-    .controller('GBSListCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory, alertService, externalLinksService) 
+    .controller('GBSListCtrl', function ($scope, $rootScope, $state, $ionicHistory, 
+                                        commonServices, CacheFactory, alertService, externalLinksService,actionVisitServices) 
     {
+        $scope.canUseAction = function (action) {
+            return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+        };
+
         $scope.open = function (action) {
             switch (action) {
                 case "KQAbnormal":
@@ -30,6 +35,12 @@ angular.module('evaluationApp.gbshrControllers', [])
                 case "菜鸟手册":
                     $state.go("basicGuide");
                     break;
+                case "社保信息":
+                case "公积金信息":
+                  CacheFactory.remove('gnAction');
+                  CacheFactory.save('gnAction', action);
+                  $state.go("generalNotice");
+                  break;
             }
         }
         $scope.closePass = function () {
@@ -478,5 +489,83 @@ angular.module('evaluationApp.gbshrControllers', [])
         };
 
     })
+    .controller('GeneralNoticeCtrl',function($scope,$rootScope,$state,$ionicHistory,
+                commonServices,CacheFactory,alertService,$ionicPopup, 
+                externalLinksService)
+    {
+        //GeneralNotice
+        //var baseInfo = commonServices.getBaseParas();
+        var gnAction=CacheFactory.get('gnAction');
+        $scope.gnTitle = gnAction;
+        function InitInfo() {
+            var url = commonServices.getUrl("GeneralNoticeService.ashx", "GetList");            
+            var paras = {
+                actName: gnAction,
+                Extra: ""
+            };
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if (!resp.success) {
+                        alertService.showAlert("获取信息失败，请稍后再试。"+resp.message);
+                        $ionicHistory.goBack();
+                    } else {
+                        var lst = resp.list;
+                        if(!lst || 0==lst.length){
+                            alertService.showAlert("没有相关数据");
+                            $ionicHistory.goBack();
+                        }
+                        $scope.list = lst;
+                    }
+                }
+            });
+        }
+        InitInfo();
 
+        $scope.open = function(isUrlHtml, id, html){
+            if(isUrlHtml){
+                //打开外链
+                try {
+                    externalLinksService.openUr(html);
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+            }else{
+                CacheFactory.remove('gnID');
+                CacheFactory.save('gnID', id);
+                $state.go("generalNoticeDetial");
+            }
+        };
+
+    })
+    .controller('GeneralNoticeDetialCtrl',function($scope,$rootScope,$state,$ionicHistory,
+                                                   commonServices,CacheFactory,alertService,$ionicPopup)
+    {
+    //GeneralNotice 详细
+    //var baseInfo = commonServices.getBaseParas();
+    var gnID=CacheFactory.get('gnID');
+    function InitInfo() {
+        var url = commonServices.getUrl("GeneralNoticeService.ashx", "GetDetail");            
+        var paras = {
+            id: gnID,
+            Extra: ""
+        };
+        commonServices.submit(paras, url).then(function (resp) {
+            if (resp) {
+                if (!resp.success) {
+                    alertService.showAlert("获取信息失败，请稍后再试。"+resp.message);
+                    $ionicHistory.goBack();
+                } else {
+                    var obj = resp.obj;
+                    $scope.gnTitle = obj.title;
+                    $scope.html = obj.html;
+                }
+            }
+        });
+    }
+    InitInfo();
+
+
+    })
+    
 ;        

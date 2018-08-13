@@ -20,16 +20,24 @@
             <div  class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('LTP');">
                 <i style="font-size:50px;" class="ion-unlocked"></i>
                 <div>{{Language.GBSHR.LTP}}</div>
+            </div>
+            <div class="col custom-og light" style="Margin:1px" ng-click="open('菜鸟手册');">
+                <i style="font-size:50px;" class="ion-ios-calendar"></i>
+                <div>{{Language.GBSHR.basicGuide}}</div>
             </div>            
-            <div class="col balanced-bg light" style="Margin:1px" ng-click="open('保险');">
+        </div>
+        <div class="row" style="height:110px;text-align: center">
+            <div class="col col-25 balanced-bg light" style="Margin:1px" ng-click="open('保险');">
                 <i style="font-size:50px;" class="ion-ios-paper"></i>
                 <div>{{Language.home.insurance}}</div>
             </div>
-        </div>
-        <div class="row" style="height:110px;text-align: center">
-            <div class="col col-25 custom-og light" style="Margin:1px" ng-click="open('菜鸟手册');">
-                <i style="font-size:50px;" class="ion-ios-calendar"></i>
-                <div>{{Language.GBSHR.basicGuide}}</div>
+            <div class="col col-25 royal-bg light" style="Margin:1px" ng-click="open('社保信息');" ng-if="canUseAction('社保信息');">
+                <i style="font-size:50px;" class="ion-ios-heart"></i>
+                <div>{{Language.GBSHR.SocialInsurance}}</div>
+            </div>
+            <div class="col col-25 calm-bg light" style="Margin:1px" ng-click="open('公积金信息');" ng-if="canUseAction('公积金信息');">
+                <i style="font-size:50px;" class="ion-ios-home"></i>
+                <div>{{Language.GBSHR.HousingFund}}</div>
             </div>
         </div>
 
