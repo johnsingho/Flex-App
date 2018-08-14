@@ -497,6 +497,8 @@ angular.module('evaluationApp.gbshrControllers', [])
         //var baseInfo = commonServices.getBaseParas();
         var gnAction=CacheFactory.get('gnAction');
         $scope.gnTitle = gnAction;
+        $scope.gnHasImg = true; //使用图标
+
         function InitInfo() {
             var url = commonServices.getUrl("GeneralNoticeService.ashx", "GetList");            
             var paras = {
@@ -521,7 +523,7 @@ angular.module('evaluationApp.gbshrControllers', [])
         }
         InitInfo();
 
-        $scope.open = function(isUrlHtml, id, html){
+        $scope.openGeneralNotice = function(isUrlHtml, id, html){
             if(isUrlHtml){
                 //打开外链
                 try {
@@ -542,12 +544,14 @@ angular.module('evaluationApp.gbshrControllers', [])
                                                    commonServices,CacheFactory,alertService,$ionicPopup)
     {
     //GeneralNotice 详细
-    //var baseInfo = commonServices.getBaseParas();
+    var baseInfo = commonServices.getBaseParas();
     var gnID=CacheFactory.get('gnID');
+
     function InitInfo() {
         var url = commonServices.getUrl("GeneralNoticeService.ashx", "GetDetail");            
         var paras = {
             id: gnID,
+            WorkdayNO: baseInfo.WorkdayNO,
             Extra: ""
         };
         commonServices.submit(paras, url).then(function (resp) {

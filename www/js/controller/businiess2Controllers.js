@@ -4,16 +4,21 @@
 angular.module('evaluationApp.businiess2Controllers', [])
     .controller('ResearchCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService,externalLinksService){
         var params=commonServices.getBaseParas();
-        var url=commonServices.getUrl("ResearchService.ashx","GetResearchList");
-        //获取一般活动列表
-        commonServices.getDataList(params,url).then(function(data){
 
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            $scope.researchList=data;
-        });
+        function InitInfo(){
+            var url=commonServices.getUrl("ResearchService.ashx","GetResearchList");
+            //获取一般活动列表，GeneralNotice列表
+            commonServices.submit(params, url).then(function (resp) {
+                if (resp) {
+                    if (resp.success) {
+                        $scope.researchList=resp.list;
+                        $scope.gnList=JSON.parse(resp.data);
+                    }
+                }
+            });
+        }
+        InitInfo();
+        
         $scope.open=function(research){
             CacheFactory.remove('researchID');
             CacheFactory.remove('ResearchName');
@@ -28,6 +33,22 @@ angular.module('evaluationApp.businiess2Controllers', [])
             }
             catch (ex) {
                 alertService.showAlert(ex.message);
+            }
+        };
+
+        $scope.openGeneralNotice = function(isUrlHtml, id, html){
+            if(isUrlHtml){
+                //打开外链
+                try {
+                    externalLinksService.openUr(html);
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+            }else{
+                CacheFactory.remove('gnID');
+                CacheFactory.save('gnID', id);
+                $state.go("generalNoticeDetial");
             }
         };
 

@@ -43,6 +43,10 @@
             <div class="item" ng-repeat="resear in researchList" ng-click="open(resear)">
                 {{resear.ResearchName}}
             </div>
+            <!-- 可以通过写ESE_General_Notice表来动态加调查项 -->
+            <div class="item" ng-repeat="item in gnList" ng-click="openGeneralNotice(item.IsUrlHtml, item.id, item.html);">
+                {{item.title}}
+            </div>
             <div class="item"  ng-click="openHuKou()">
                 关于伟创力员工把户口迁入珠海的调查问卷
             </div>

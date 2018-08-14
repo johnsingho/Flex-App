@@ -3,17 +3,29 @@
     <!-- <ion-nav-buttons side="left">
         <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons> -->
-    <ion-content scroll="true" overflow-scroll="true" >
-        <ion-list class="disable-user-behavior">
-        <div class="list">
-            <ion-item ng-repeat="item in list" class="item item-thumbnail-left" ng-click="open(item.IsUrlHtml, item.id, item.html);">
-            <img ng-src="item.ImgPath" ng-if="item.ImgPath!=null">
-            <br>
+    <ion-content scroll="true" overflow-scroll="true">
+
+    <!-- 用于包含图标、日期的列表 -->
+    <ion-list ng-if="gnHasImg">
+    <ion-item ng-repeat="item in list" class="item item-thumbnail-left" 
+            ng-click="openGeneralNotice(item.IsUrlHtml, item.id, item.html);">
+        <img ng-src="item.ImgPath" ng-if="item.ImgPath!=null">
+        <img ng-src="img/user-100.png" ng-if="item.ImgPath==null">
+        <br>
+        <h3 class="ng-binding">{{item.title}}</h3>
+        <p class="ng-binding">{{item.CreateDate| date:"yyyy-MM-dd"}}</p>
+    </ion-item>
+    </ion-list>
+
+    <!-- 用于纯文字列表 -->
+    <ion-list class="disable-user-behavior" ng-if="!gnHasImg">
+    <div class="list list-inset">
+        <ion-item class="item" ng-repeat="item in list">
+        <div ng-click="openGeneralNotice(item.IsUrlHtml, item.id, item.html);">
             <h3 class="ng-binding">{{item.title}}</h3>
-            <p class="ng-binding">{{item.CreateDate| date:"yyyy-MM-dd"}}</p>
-            </ion-item>
         </div>
-        </ion-list>
+        </ion-item>
+    </ion-list>
     </ion-content>
 
 </ion-view>
