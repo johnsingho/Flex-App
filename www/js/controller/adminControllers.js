@@ -4,7 +4,7 @@
  */
 angular.module('evaluationApp.adminControllers', [])
     .controller('AdminCtrl', function ($scope, $rootScope, $state, $ionicHistory,$ionicPopup,
-        commonServices, CacheFactory, alertService, actionVisitServices) {
+        commonServices, CacheFactory, alertService, actionVisitServices, externalLinksService) {
         //! temp for test
         $scope.canUseAction = function (action) {
             return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
@@ -37,6 +37,22 @@ angular.module('evaluationApp.adminControllers', [])
             });
             $state.go('tab.home');
         }
+
+        $scope.openGeneralNotice = function(isUrlHtml, id, html){
+            if(isUrlHtml){
+                //打开外链
+                try {
+                    externalLinksService.openUr(html);
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+            }else{
+                CacheFactory.remove('gnID');
+                CacheFactory.save('gnID', id);
+                $state.go("generalNoticeDetial");
+            }
+        };
     })
     /*sub of AdminCtrl*/
     .controller('CarListCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService)
