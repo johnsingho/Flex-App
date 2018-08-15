@@ -9,7 +9,7 @@
     <ion-list ng-if="gnHasImg">
     <ion-item ng-repeat="item in list" class="item item-thumbnail-left" 
             ng-click="openGeneralNotice(item.IsUrlHtml, item.id, item.html);">
-        <img ng-src="item.ImgPath" ng-if="item.ImgPath!=null">
+        <img ng-src="{{item.ImgPath}}" ng-if="item.ImgPath!=null">
         <img ng-src="img/user-100.png" ng-if="item.ImgPath==null">
         <br>
         <h3 class="ng-binding">{{item.title}}</h3>
