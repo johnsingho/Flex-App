@@ -330,7 +330,7 @@ var ZH_CN = {
     GBSHR:{
         LTP:'LTP密码重置',
         basicGuide:'菜鸟手册',
-        SocialInsurance:'社保信息',
+        SocialInsurance:'社会保险',
         HousingFund:'住房公积金信息',
     },
     xfcx:{

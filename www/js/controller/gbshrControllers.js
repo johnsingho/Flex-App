@@ -35,7 +35,7 @@ angular.module('evaluationApp.gbshrControllers', [])
                 case "菜鸟手册":
                     $state.go("basicGuide");
                     break;
-                case "社保信息":
+                case "社会保险":
                 case "公积金信息":
                   CacheFactory.remove('gnAction');
                   CacheFactory.save('gnAction', action);
