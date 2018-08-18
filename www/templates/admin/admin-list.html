@@ -4,14 +4,37 @@
     </ion-nav-buttons>
     <ion-content scroll="true" overflow-scroll="true" >
         <div class="row" style="height:110px;text-align: center">
-            <div  class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('icCardLost');">
-                <i style="font-size:50px;" class="ion-ios-bookmarks"></i>
-                <div >{{Language.admin.icCardLost}}</div>
-            </div>
+                <div class="col col-25  custom-og light" style="Margin:1px;" ng-click="open('班车信息');">
+                    <i style="font-size:50px;" class="icon ion-android-bus"></i>
+                    <div>{{Language.admin.bus}}</div>
+                </div>                
+                <div class="col col-25 calm-bg light" style="Margin:1px" ng-click="open('点餐');">                
+                    <i style="font-size:50px;" class="ion-android-restaurant"></i>
+                    <div>{{Language.admin.meal}}</div>
+                </div>
+                
+                <div class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('挂失IC卡');">
+                    <i style="font-size:50px;" class="ion-card"></i>
+                    <div>{{Language.admin.icCardLost}}</div>
+                </div>
+                <div class="col royal-bg light" style="Margin:1px" ng-click="open('dormManage');">
+                    <i style="font-size:50px;" class="ion-ios-home"></i>
+                    <div>{{Language.admin.dorm}}</div>
+                </div>
+
             <!--<div   class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('KQAbnormal');">-->
-                <!--<i style="font-size:50px;" class="ion-alert-circled"></i>-->
-                <!--<div>{{Language.kqcx.tabAbnormal}}</div>-->
+            <!--<i style="font-size:50px;" class="ion-alert-circled"></i>-->
+            <!--<div>{{Language.kqcx.tabAbnormal}}</div>-->
             <!--</div>-->
+         </div>
+
+         <div class="row" style="height:110px;text-align: center">
+            <!-- 2018-08-15临时添加 -->
+            <div class="col col-25 positive-bg light" style="Margin:1px;" 
+                ng-click="openGeneralNotice(0, '7FC14D15-5666-48EA-A18A-81D211748E64');">
+                <i style="font-size:50px;" class="icon ion-android-restaurant"></i>
+                <div>南厂餐厅菜单</div>
+            </div>  
          </div>
     </ion-content>
 </ion-view>

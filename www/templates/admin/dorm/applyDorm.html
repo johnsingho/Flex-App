@@ -1,0 +1,60 @@
+<!-- 宿舍申请 -->
+<ion-view view-title="{{Language.dormManage.applyDorm}}" cache-view="false" hide-tabs>
+    <ion-content style="background-color:lavender">
+        <div class="list card">
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.CName" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width:30px;font-size:80%">{{Language.like.employee_ID}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.WorkdayNO" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.department}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.Organization" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 50px;font-size:80%">{{Language.shareCar.mobile}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" placeholder="{{Language.shareCar.mobile}}" ng-model="model.MobileNo" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 50px;font-size:80%">{{Language.common.grade}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <select class="button" ng-options='t for t in grades' ng-model="model.Grade"></select>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 50px;font-size:80%">{{Language.dormManage.dormArea}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <select class="button" ng-options='t.ID as t.Name for t in dormAreas' ng-model="model.DormArea"></select>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 50px;font-size:80%">{{Language.dormManage.requireType}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <select class="button" ng-options='t.value as t.name for t in requireTypes' ng-model="model.RequireType"></select>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.dormManage.hasHousingAllowance}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <select class="button" ng-options='t.value as t.name for t in yesNo' ng-model="model.HasHousingAllowance"></select>
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.dormManage.requireReason}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" ng-model="model.RequireReason" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.common.memo}}</span>
+                <textarea rows="3" name="dormMemo" style="font-size:90%" placeholder="" ng-model="model.memo" class="ng-pristine ng-valid ng-touched"></textarea>
+            </div>
+        </div>
+
+        <div style="text-align: center" ng-if="canSubmit">
+            <button class="button  button-positive" ng-click="Submit()">{{Language.menu.submit}}</button>
+        </div>
+    </ion-content>
+</ion-view>

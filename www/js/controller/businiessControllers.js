@@ -278,31 +278,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             });
             $state.go('tab.home');
         }
-    })
-    .controller('KqAbnormalCtrl', function($scope,$ionicHistory,alertService,commonServices,$state) {
-
-        var params=commonServices.getBaseParas();
-        var url=commonServices.getUrl("KqcxService.ashx","GetKQ_Attendance_Abnormal");
-        console.log(params);
-
-        commonServices.getDataList(params,url).then(function(data){
-
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            console.log(data);
-            $scope.KqAbnormalList=data;
-        });
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-
-    })
+    })    
     .controller('CustCtrl', function($scope,$location,$ionicLoading,custService,alertService,CacheFactory) {
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         var params1={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token};
@@ -820,7 +796,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 
     })
     .controller('InsuranceCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
-
+        //商业保险
         var paras= commonServices.getBaseParas();
         var url=commonServices.getUrl("InsuranceService.ashx","GetInsuranceList");
         commonServices.getDataList(paras,url).then(function(data){
@@ -832,20 +808,11 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         });
 
         $scope.open=function(insurance){
-
             CacheFactory.remove('Insurance_ID');
             CacheFactory.save('Insurance_ID',insurance.Insurance_ID);
-
             $state.go('insuranceHtml');
         };
 
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
     })
     .controller('InsuranceHtmlCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicPopup,$ionicHistory,$location,commonServices) {
 
@@ -979,6 +946,15 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         $scope.openCJ=function(){
             $location.path("choujiang");
         }
+        $scope.openHandelAddAct = function () {
+            try {
+               // externalLinksService.openUr('http://cn.mikecrm.com/TcqdeQz');
+                window.cordova.InAppBrowser.open('http://cn.mikecrm.com/TcqdeQz', '_system', 'location=yes');
+            }
+            catch (ex) {
+                alertService.showAlert(ex.message);
+            }
+        };
 
 //        获取有奖调查列表
 //        commonServices.getDataList(params,API.GetResearchList).then(function(data){
@@ -998,11 +974,22 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         };
 
         $scope.open=function(activity){
-            CacheFactory.remove('activityID');
-            CacheFactory.save('activityID',activity.ActivityID);
-            actionVisitServices.visit(activity.ActivityID); //save state
-            console.log(activity.ActivityID);
-            $state.go('activityHtml');
+            if(activity.IsOutLink){
+                //打开外链
+                try {
+                    var url = $.trim(activity.ActivityHtml);
+                    window.cordova.InAppBrowser.open(url, '_system', 'location=yes');
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+            }else{
+                CacheFactory.remove('activityID');
+                CacheFactory.save('activityID',activity.ActivityID);
+                actionVisitServices.visit(activity.ActivityID); //save state
+                console.log(activity.ActivityID);
+                $state.go('activityHtml');
+            }
         };
 
         $scope.closePass=function(){
@@ -1026,7 +1013,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         };
         
         //2018-06-20 EHS有奖答题活动
-        $scope.canShow = !isMultek($scope.accessEmployee.Organization); /*&& IsTestAccount($scope.accessEmployee.WorkdayNO);*/
+        $scope.canShow = !isMultek($scope.accessEmployee.Organization);
         eHSActService.getEHSActList(params).then(function(data){
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
@@ -1238,7 +1225,14 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 } finally {
                     $scope.isSumbiting = false;
                 }
-            };
+            }
+        };
+
+        $scope.SkipToNotice = function(noticeID){
+            if(!noticeID){return;}
+            CacheFactory.remove('noticeID');
+            CacheFactory.save('noticeID', noticeID);
+            $state.go('noticeHtml');
         }
     })    
     .controller('ActivityHtmlCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,$location,commonServices) {
@@ -1471,33 +1465,10 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             }
         });
 
-    })
-    .controller('CarPictureCtrl', function($scope,CacheFactory,commonServices,$state,$ionicHistory) {
-        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        //记录点击
-        var paras1={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token,opType:'班车查询',opContent:'点击进入'};
-        commonServices.operationLog(paras1).then(function(data){
-            $scope.sucess=data;
-        });
-
-        $("#auto-loop").lightGallery({
-            mobileSrc         : false, // If "data-responsive-src" attr. should be used for mobiles.
-            mobileSrcMaxWidth : 640,   // Max screen resolution for alternative images to be loaded for.
-            swipeThreshold    : 50,    // How far user must swipe for the next/prev image (in px).
-            hideControlOnEnd : false,
-            closable:false
-        });
-
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-
-    })
-    .controller('AskAndAnswerCtrl', function($scope,CacheFactory,commonServices,AskAndAnswerService,$state,$ionicHistory) {
+    })    
+    .controller('AskAndAnswerCtrl', 
+        function($scope,CacheFactory,commonServices,AskAndAnswerService,$state,$ionicHistory,alertService) 
+    {
 //        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
 //        //记录点击
 //        var paras1={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token,opType:'问与答',opContent:'点击进入'};
@@ -1505,22 +1476,50 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 //            $scope.sucess=data;
 //        });
 
-        var paras= commonServices.getBaseParas();
-        AskAndAnswerService.getAskAndAnswer(paras).then(function(data){
-            $scope.listAskAndAnswer=data;
-
-        });
-
-
-
+        function GetCatList() {
+          var url = commonServices.getUrl("EvaluationAppService.ashx", "AskAndAnswerCate");
+          var paras = commonServices.getBaseParas();
+          commonServices.submit(paras, url).then(function (resp) {
+            if (resp) {
+              if (!resp.success) {
+                alertService.showAlert(resp.message);
+                $ionicHistory.goBack();
+              } else {
+                $scope.catList = resp.list;
+              }
+            }
+          });
+        }
+        $scope.catList = [];
+        GetCatList();
+        
+        $scope.open = function(keyw){
+            CacheFactory.save(GLOBAL_INFO.KEY_ASK_AND_ANS_ID, keyw);
+            $state.go('askAndAnswerDetail');
+        };
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
                 disableAnimate: true,
                 disableBack: true
             });
             $state.go('tab.home');
-        }
+        };
 
+    })
+    .controller('AskAndAnswerDetailCtrl', 
+                function($scope,CacheFactory,commonServices,AskAndAnswerService,$state,$ionicHistory) 
+    {
+        var paras= commonServices.getBaseParas();
+        paras.keyword =  CacheFactory.get(GLOBAL_INFO.KEY_ASK_AND_ANS_ID) || 'all';
+        $scope.title = paras.keyword;
+
+        function GetList(paras){
+            AskAndAnswerService.getAskAndAnswer(paras).then(function(resp){
+                $scope.listAskAndAnswer = resp.list;
+                //$scope.keywords = JSON.parse(resp.data);
+            });
+        }
+        GetList(paras);
     })
     .controller('ChartRoomCtrl', function($scope,CacheFactory,commonServices,$state,$ionicHistory,$interval) {
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));

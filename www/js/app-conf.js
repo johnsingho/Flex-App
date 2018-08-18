@@ -6,39 +6,23 @@
  //是否本地开发调试
  var IsDebugMode = false; //false;
 
- //给特定用户测试
- /* sample:
-    var accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-    $scope.canShow = IsTestAccount(accessEmployee.WorkdayNO);
-*/
-function IsTestAccount(curWorkNo)
-{
-    var workNos = [
-        2566117,/*johnsing*/
-        2332842,/*kris*/
-        461713,/*Winnie Huang*/
-        466190,/*Austin xie*/
-        480523,/*Lily Li */
-        806218,/*Bily Chow */
-        2327051,/*cathy zh*/
-        458037, /*Micky Zhao*/
-        458184, /*jinxiu chen*/
-        /*temp for test*/
-        2600355,466664,446627,456034,682138,
-    ];
-    for(var i=0; i<workNos.length; i++){
-        if(curWorkNo == workNos[i]){
-            return true;
-        }
-    }
-    return false;
-}
-
+//新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
+//  $scope.canUseAction = function (action) {
+//     return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+// };
+ ///////////////////////////////////////////////////////////////////////////////////
 function isSouthCamp(org){
     return /b13|b6|b16/i.test(org);
 }
 function isMultek(org){
     return /multek/i.test(org);
+}
+
+function isChineseLang(vRootScope){
+    return vRootScope.Language==ZH_CN;
+}
+function isEmptyString(str){
+    return !str || 0==str.length;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
@@ -169,6 +153,14 @@ var SETTING = {
 
 //语言
 var ZH_CN = {
+    common:{
+        memo:"备注",
+        Explain:"说明",
+        reason:"原因",
+        grade:"薪资级别",
+        yuan:"元",
+        InfoProvideIDNO:"请提供身份证号码!",
+    },
     signin: {
         username: "工号",
         password: "密码",
@@ -198,12 +190,10 @@ var ZH_CN = {
         help:"我要求助",
         kqcx:"考勤查询",
         xfcx:"消费查询",
-        bus:"班车信息",
         rexian:"热线电话",
         zhaoping:"内部招聘",
         gonggao:"通知公告",
         activity:"活 动",
-        meal:"订 餐",
         shareCar:"拼 车",
         survey:"问卷调查",
         train:"培 训",
@@ -212,9 +202,9 @@ var ZH_CN = {
         apply:"报 名",
         insurance:"商业保险",
         GBS:'人事综合',
-        admin:"Admin",
+        admin:"行政",
         earthday:"地球周",
-        dormMng:"宿舍管理"
+        dormManage:"宿舍管理"
     },
     myFlex:{
         employee_ID: "工号",
@@ -338,7 +328,10 @@ var ZH_CN = {
         UseContent:"购房/购车/信用卡申请/资格考试/居住证/商业保险申报"
     },
     GBSHR:{
-        LTP:'LTP密码重置'
+        LTP:'LTP密码重置',
+        basicGuide:'菜鸟手册',
+        SocialInsurance:'社会保险',
+        HousingFund:'住房公积金信息',
     },
     xfcx:{
         title:"消费查询",
@@ -452,7 +445,10 @@ var ZH_CN = {
         title:"EHS有奖答题"
     },
     admin:{
+        bus:"班车信息",
+        meal:"订 餐",
         icCardLost:"挂失IC卡",
+        dorm:"宿 舍",
         promptTitle:"提示",
         promptOK:"确定",
         promptCancel:"取消",
@@ -460,12 +456,51 @@ var ZH_CN = {
         lastRequest:"最近一次申请",
         submitSucc:'您的挂失申请已提交，正在等待一卡通后台处理，谢谢！'
     },
-    dormMng:{
-
+    dormManage:{
+        housingAllowance:"住房津贴",
+        checkInState:"是否住宿",
+        checkOutDate:"退房日期",
+        hiredDate:"入职日期",
+        allowanceSucc:"住房津贴申请成功, 生效日期:",
+        applyDorm:"宿舍申请",
+        hasHousingAllowance:"正在享有住房补贴",
+        requireType:"入住类型",
+        requireReason:"入住理由",
+        chargingDefine:"费用查询",
+        dormArea:"宿舍区",
+        applyDormSucc:"您的住宿申请已经提交到宿舍管理组，后续请留意“我的信息”，查收最新进度通知",
+        rcenetMonth:"最近一个月",
+        noFeeRecord:"没有扣费记录",
+        dormMap:"宿舍地图",
+        dormNotice:"宿舍公告",
+        repairDorm:"宿舍报修",
+        reissueKey:"补办钥匙",
+        dormAddress:"宿舍地址",
+        repairTime:"预约时间",
+        deviceType:"待维修设备",
+        repairDesc:"报修内容",
+        keyType:"钥匙类型",
+        repairDormSucc:"您的报修申请成功！<br>请保持手机通讯畅通，以便联系",
+        reissueKeySucc:"您的补办钥匙申请已经提交到宿舍管理组，后续请留意“我的信息”，查收最新进度通知",
+        totalMoney:"总金额",
+        freeDormWifi:"免费WIFI申请",
+        dormAskAndAns:"宿舍常见问题",
+        dormSuggest:"建议箱",
+        yourSuggest:"您的建议",
+        hisSuggest:"以前的建议",
+        suggestSucc:"感谢您的建议!",
+        respSuggest:"回复",
     }
 };
 
 var ZH_US = {
+    common:{
+        memo:"memo",
+        Explain:"explain",
+        grade:"grade",
+        yuan:"RMB",
+        InfoProvideIDNO:"The IDNO is required!",
+    },
     signin: {
         username: "Employee ID",
         password: "Password",
@@ -495,12 +530,10 @@ var ZH_US = {
         help:"Ask for Help",
         kqcx:"Attendance Inquiry",
         xfcx:"Consumption Inquiry",
-        bus:" Shuttle Bus Inquiry ",
         rexian:" Hotline Query",
         zhaoping:"Internal Hiring",
         gonggao:"Announcement",
         activity : "Activities",
-        meal: "Meal Order",
         shareCar:"Car Sharing",
         survey: "Survey",
         train: "Training",
@@ -511,7 +544,7 @@ var ZH_US = {
         GBS:'GBS HR',
         admin:"Admin",
         earthday:"Earth Week",
-        dormMng:"Dormitory Management"
+        dormManage:"Dormitory Management"
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -635,7 +668,10 @@ var ZH_US = {
         UseContent:"Purchase/purchase of car/credit card application/qualification examination/residence permit/business insurance declaration,etc."
     },
     GBSHR:{
-        LTP:'LTP Password Reset'
+        LTP:'LTP Password Reset',
+        basicGuide:'Basic Guide',
+        SocialInsurance:'Social Insurance',
+        HousingFund:'Housing Fund',
     },
     xfcx:{
         title:" Consume Inquiry ",
@@ -747,7 +783,10 @@ var ZH_US = {
         title:"EHS online Activity"
     },
     admin:{
+        bus:" Shuttle Bus Inquiry ",
+        meal: "Meal Order",
         icCardLost:"Report loss of IC card",
+        dorm:"Dormitory",
         promptTitle:"Prompt",
         promptOK:"OK",
         promptCancel:"Cancel",
@@ -755,8 +794,8 @@ var ZH_US = {
         lastRequest:"Last Request",
         submitSucc:'Your report loss was commited, thank you!'
     },
-    dormMng:{
-
+    dormManage:{
+        housingAllowance:"Housing Allowance",
     }
 };
 
@@ -775,3 +814,9 @@ String.prototype.formatParam = function(){
     return string;
 };
 
+var GLOBAL_INFO = {
+    LAST_PUBLISH_DATE: "2018-08-01",
+    //keys
+    KEY_DORM_NOTICE_ID: "KEY_DORM_NOTICE_ID",
+    KEY_ASK_AND_ANS_ID: "KEY_ASK_AND_ANS_ID",
+};

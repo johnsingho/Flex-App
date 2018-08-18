@@ -5,6 +5,7 @@ angular.module('evaluationApp.appControllers', [])
     {
         $scope.ver=CacheFactory.get('version');
         $scope.user = JSON.parse(CacheFactory.get('accessUser'));
+        actionVisitServices.loadServerUpdate();
 
         $scope.LanguageItems = [
             { name: "中文", value: "CN" },
@@ -29,6 +30,7 @@ angular.module('evaluationApp.appControllers', [])
         $scope.languageUpdate = function () {
             CacheFactory.save('LanguageItem', $scope.LanguageItem.item);
             languageitem = JSON.parse(CacheFactory.get('LanguageItem'));
+            
             if (languageitem.value == 'CN') {
 
                 $rootScope.Language = ZH_CN;
@@ -79,6 +81,7 @@ angular.module('evaluationApp.appControllers', [])
         var parameter = commonServices.getBaseParas();
         $scope.checkWorkday = '23328424565765889534562582566117';
         $scope.isSouthCamp = isSouthCamp($rootScope.accessEmployee.Organization);
+        $scope.isChineseLang = isChineseLang($rootScope);
 //
 //
        $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;
@@ -283,34 +286,25 @@ angular.module('evaluationApp.appControllers', [])
                 }
                 break;
                 case "员工手册":
-
                     $state.go("handbook_lg");
                     break;
                 case "报名":
-
                     $state.go("apply");
                     break;
                 case "CSERCal":
-
                     $state.go("cserDate");
                     break;
                 case "map":
-
                     $state.go("baiduMap");
                     break;
-                case "保险":
-
-                    $state.go("insurance");
-                    break;
                 case "choujiang":
-
                    $state.go("choujiang");
                   //  $state.go("choujiangName");
                     break;
                 case "chunwan":
                     $state.go("chunwan");
                     break;
-                case "GBS":
+                case "GBS":/*人事综合*/
                     $state.go("GBS");
                     break;
                 case "earthday":
@@ -387,10 +381,6 @@ angular.module('evaluationApp.appControllers', [])
                 }
 
             }
-            else if(action=="班车信息"){
-//                $location.path("carPicture");
-                $state.go("tabCar.carlist");
-            }
             else if(action=="活动"){
 
 
@@ -442,27 +432,6 @@ angular.module('evaluationApp.appControllers', [])
             else if(action=="问卷调查"){
                $location.path("researchList");
                 //$state.go("tab.404");
-
-            }
-            else if(action=="点餐"){
-               $state.go("tabMealOrder.mealList");
-                //$state.go("tab.404");
-                var myPopup = $ionicPopup.show({
-                    templateUrl: 'templates/mealOrder/mealProtocolHtml.html',
-                    cssClass:'my-custom-popup-Alter',
-                    title: '订餐须知',
-                    subTitle: '',
-                    scope: $scope,
-                    buttons: [
-                        {
-                            text: '<b>确定</b>',
-                            type: 'button-positive',
-                            onTap: function(e) {
-                                return ;
-                            }
-                        }
-                    ]
-                });
 
             }
             else if(action=="我要求助"){

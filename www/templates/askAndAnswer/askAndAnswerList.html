@@ -1,0 +1,15 @@
+<!-- 问与答列表 -->
+<ion-view title="问与答" cache-view="true">
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
+    </ion-nav-buttons>
+    <ion-content scroll="true" overflow-scroll="true" >
+        <div class="list list-inset">            
+            <div class="item" ng-repeat="item in catList" ng-click="open('{{item.value}}');">
+                {{item.name}}
+            </div>       
+        </div>
+    </ion-content>
+</ion-view>
+
+

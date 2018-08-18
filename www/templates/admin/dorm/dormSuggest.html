@@ -1,0 +1,38 @@
+<!-- 建议箱 -->
+<ion-view view-title="{{Language.dormManage.dormSuggest}}"  cache-view="false" >
+<ion-content class="padding" scroll="true" lazy-scroll>
+    <div>
+        <h4>
+            <label class="ng-binding">{{Language.dormManage.yourSuggest}}：</label>
+        </h4>
+        <label class="item item-input">
+            <textarea rows="6" ng-model="model.Suggest" class="ng-pristine ng-valid ng-touched"></textarea>
+        </label>
+    </div>
+
+    <div style="text-align:center;margin:10px;">
+            <button class="button button-positive" ng-disabled="0==GetSuggest().length"
+                ng-click="Submit()">{{Language.menu.submit}}</button>
+    </div>
+
+    <div ng-if="hisSuggest.length>0">
+        <fieldset>
+            <h4 style="color: royalblue">{{Language.dormManage.hisSuggest}}</h4>
+            <div ng-repeat="sugg in hisSuggest">
+                <div class="item item-input">
+                    <span>{{sugg.CreateDate| date: "yyyy-MM-dd HH:mm"}}&nbsp;</span>
+                    <br>
+                    <span style="white-space:normal;" ng-bind-html="sugg.Suggest"></span>
+                </div>
+                <div class="item item-input" ng-if="sugg.Response && sugg.Response.length>0">
+                    <span>{{Language.dormManage.respSuggest}}:&nbsp;</span>
+                    <br>
+                    <span style="color:teal;white-space:normal;" ng-bind-html="sugg.Response"></span>
+                </div>
+                <br>
+            </div>
+        </fieldset>
+    </div>
+
+</ion-content>
+</ion-view>

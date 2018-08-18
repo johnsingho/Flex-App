@@ -5,7 +5,9 @@
         <ion-slide-box does-continue="true" auto-play="false"  show-pager="false" ng-if="imgUrl!=null">
             <img  ng-src="{{imgUrl}}" >
         </ion-slide-box>
-        <div class="divOff lightGrayBack" ng-bind-html="htmlConent">
+        <!-- <div class="divOff lightGrayBack" ng-bind-html="htmlConent">
+        </div> -->
+        <div class="divOff lightGrayBack" compile="htmlConent">
         </div>
 
         <div ng-repeat="detail in researchDetailList">

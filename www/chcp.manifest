@@ -1,41 +1,5 @@
 [
   {
-    "file": ".idea/.name",
-    "hash": "4eae35f1b35977a00ebd8086c259d4c9"
-  },
-  {
-    "file": ".idea/encodings.xml",
-    "hash": "bbfed8a9adc106b97e3149400e5f242b"
-  },
-  {
-    "file": ".idea/misc.xml",
-    "hash": "00f0e40c7e1a56b3157e780023236ed0"
-  },
-  {
-    "file": ".idea/modules.xml",
-    "hash": "73cedbb5b0f5638d0f51d3862c697989"
-  },
-  {
-    "file": ".idea/scopes/scope_settings.xml",
-    "hash": "95f1e22026cc07a685a2932349ceb6ca"
-  },
-  {
-    "file": ".idea/vcs.xml",
-    "hash": "1d4d6f24f3ff67f10d99846d61c76662"
-  },
-  {
-    "file": ".idea/workspace.xml",
-    "hash": "09c9c4d8bd39b0ba78ba666aa7790137"
-  },
-  {
-    "file": ".idea/www.iml",
-    "hash": "07b1dcc90395701344d49084b5166275"
-  },
-  {
-    "file": ".vs/config/applicationhost.config",
-    "hash": "2c14de4e38beaa371804b3734af1436a"
-  },
-  {
     "file": "css/animate.min.css",
     "hash": "8f639b916ea1d3736d948ba423ef8ea6"
   },
@@ -45,7 +9,7 @@
   },
   {
     "file": "css/style.css",
-    "hash": "273b8b168cdb0d3dbc26a248ef42a960"
+    "hash": "74adb5c3290acb9caf2c9c81e2f15f2e"
   },
   {
     "file": "fonts/Slide-icons.dev.svg",
@@ -116,72 +80,80 @@
     "hash": "106ed35264a7ce1da14bba64663404b3"
   },
   {
+    "file": "img/CarImg/Slide1_1.JPG",
+    "hash": "0a36ec3f82eb9924bdb9c435f8952fba"
+  },
+  {
     "file": "img/CarImg/Slide1.JPG",
-    "hash": "2e110423af63c9475c6b17c04068b522"
+    "hash": "031f834d8b4180d3c2d0207530e25ed0"
   },
   {
     "file": "img/CarImg/Slide10.JPG",
-    "hash": "7a4006244e71b1f2ca067b9dc5d2c775"
+    "hash": "ceef48414a19dd0a311847f159456301"
   },
   {
     "file": "img/CarImg/Slide11.JPG",
-    "hash": "a0e2963485fbfee91f402fc309fe92ca"
+    "hash": "7f30244b60fa29b8f1edc41df99180fd"
   },
   {
     "file": "img/CarImg/Slide12.JPG",
-    "hash": "b37e8a048c9e73a0d8c551b0ebee8b4d"
+    "hash": "e9fb990693683acf3d48343805498c76"
   },
   {
     "file": "img/CarImg/Slide13.JPG",
-    "hash": "47f07ea244c4a36846bf2edcfe033a0f"
+    "hash": "57ec56a2d25deba8658298c136ed43b5"
   },
   {
     "file": "img/CarImg/Slide14.JPG",
-    "hash": "2dca81bf7de0c7c9f7c592492a0373bc"
+    "hash": "448224519276dc251263d86760b62e21"
   },
   {
     "file": "img/CarImg/Slide15.JPG",
-    "hash": "f29eb8fb0627802522c056ac791300d9"
+    "hash": "0feebe85614de0d1090499e189a3fe43"
   },
   {
     "file": "img/CarImg/Slide16.JPG",
-    "hash": "aff6af1e5bf47080178e99b64ff46add"
+    "hash": "ad313d2f0e457dd6e0e8e2c84b041e8a"
   },
   {
     "file": "img/CarImg/Slide17.JPG",
-    "hash": "7d40063ab847780e1ef0127649695367"
+    "hash": "9856d0b63ab5b8145c60d318b34eb906"
+  },
+  {
+    "file": "img/CarImg/Slide18.JPG",
+    "hash": "b11f4bf8fc138ed5c791134663435426"
   },
   {
     "file": "img/CarImg/Slide2.JPG",
-    "hash": "8ad7a9599775a3ef531a28eed4cb8c45"
+    "hash": "2cb36272fd213cfc005da8594861b5ce"
   },
   {
     "file": "img/CarImg/Slide3.JPG",
-    "hash": "a331c27b276ab74c485e48623a7135f4"
+    "hash": "ba07babbab69f4ab72037c2f77c07001"
   },
   {
     "file": "img/CarImg/Slide4.JPG",
-    "hash": "87523f168726255facce60f0845141b3"
+    "hash": "b73271b1c16ebc1d1fec09c660af1fde"
   },
   {
     "file": "img/CarImg/Slide5.JPG",
-    "hash": "82e83549242f9014173d825e233df59d"
+    "hash": "35e99cd6f4f0bc7c72e5c35c966fbf48"
   },
   {
     "file": "img/CarImg/Slide6.JPG",
-    "hash": "e8e5e50fa52a248c3896bebfc5a0df2f"
+    "hash": "85c96d78beaf2ae52e9d2ed801a3cfa0"
   },
   {
     "file": "img/CarImg/Slide7.JPG",
-    "hash": "8bcb056731dcd841d49028997a1b9ce6"
+    "hash": "4078075815117e3955e02bce2a02aae3"
   },
   {
     "file": "img/CarImg/Slide8.JPG",
-    "hash": "efa48cbf5d3486950f21740a32ffd9b9"
+    "hash": "16f74611fb3c75f986e324b71c20b38a"
   },
   {
     "file": "img/CarImg/Slide9.JPG",
-    "hash": "23c991b07836b810235f7e6507e3f738"
+    "hash": "265b73381ab0a948a829e701b7bd8190"
   },
   {
     "file": "img/choujiang.jpg",
@@ -218,6 +190,10 @@
   {
     "file": "img/close1@2x.png",
     "hash": "461b2c4b7ea04109f261e99c55b9e676"
+  },
+  {
+    "file": "img/gh.JPG",
+    "hash": "f45e46b1e36bd3594f47258c326cc66f"
   },
   {
     "file": "img/goldIdear.png",
@@ -301,19 +277,23 @@
   },
   {
     "file": "index.html",
-    "hash": "9fc586dac084754ee9fdb72a62effeff"
+    "hash": "71374fa6797560f7462fe526b3aaf126"
   },
   {
     "file": "js/app-conf.js",
-    "hash": "415372f9ebc16288b6466a480c9b1b25"
+    "hash": "910101f339f320fcf89dba8e965b902a"
   },
   {
     "file": "js/app.js",
-    "hash": "4883e9a09cca1032a0e70f173ad288be"
+    "hash": "2cf08ca20df9d1a07f46b4eac47c284d"
+  },
+  {
+    "file": "js/controller/adminControllers.js",
+    "hash": "c486d52da4d452210899a5f692708997"
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "93bf1b5730a9618dc5d8d7ec306c2450"
+    "hash": "f1bc2a26c55578a4d199e4ec92a13119"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -321,11 +301,15 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "ebea73960c4c862afe6a5a50accc8133"
+    "hash": "6a73ad3c3e38f1a81800e78c35b91b81"
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "56da90153870f48feaffe49e4ea974ac"
+    "hash": "55c33d87b66398858609d40b92facd4d"
+  },
+  {
+    "file": "js/controller/gbshrControllers.js",
+    "hash": "069ce4db149d32ee45aaec0c3bc2cead"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -365,7 +349,7 @@
   },
   {
     "file": "js/directive.js",
-    "hash": "a64d7288abab04aee6b07c6782b00bb1"
+    "hash": "136ca924c9bbae41613256f92224e313"
   },
   {
     "file": "js/index.js",
@@ -453,15 +437,15 @@
   },
   {
     "file": "js/router.js",
-    "hash": "c68d43f021d7b0a0569bb6a367fc6b4e"
+    "hash": "975eca0e953ea09375b0ca92c0de44e8"
   },
   {
     "file": "js/service/appServices.js",
-    "hash": "f1f5eb4222ad562b7cec18aa6258df08"
+    "hash": "f94d5350dc03aa84829f4fdf79e41dfa"
   },
   {
     "file": "js/service/businessServices.js",
-    "hash": "00b6d307af5b527cd5b26636f9ac84ab"
+    "hash": "b8125e61ec1510aaf2356600d9012c67"
   },
   {
     "file": "js/service/pointsServices.js",
@@ -678,6 +662,14 @@
   {
     "file": "lib/Chart/Chart.js",
     "hash": "5efc2341472b1693f580c512b46dfbef"
+  },
+  {
+    "file": "lib/ion-datetime-picker/ion-datetime-picker.min.css",
+    "hash": "e43a78d7ee14465267bb9670e011ec8f"
+  },
+  {
+    "file": "lib/ion-datetime-picker/ion-datetime-picker.min.js",
+    "hash": "51f6fc2dfda898036aac8a976e15ef60"
   },
   {
     "file": "lib/ionic/css/ionic.css",
@@ -985,7 +977,7 @@
   },
   {
     "file": "templates/activity/activity-list.html",
-    "hash": "a26a7569d7083a9da1d5b260d4202fd6"
+    "hash": "c476407152221582e45024c16375b019"
   },
   {
     "file": "templates/activity/activityGood.html",
@@ -997,11 +989,71 @@
   },
   {
     "file": "templates/admin/admin-list.html",
-    "hash": "07ccf806b6f8a97bbefaed837a3c6cd7"
+    "hash": "cba078dfe9cf16e490ca101e55cec4bc"
+  },
+  {
+    "file": "templates/admin/dorm/applyDorm.html",
+    "hash": "6dd68693692b23611c5fb23982ad4c2e"
+  },
+  {
+    "file": "templates/admin/dorm/chargingDefine.html",
+    "hash": "73f5cad9a2b6b292d2c2dc52bed6177a"
+  },
+  {
+    "file": "templates/admin/dorm/dormAskAndAns.html",
+    "hash": "471d331da81cb88f30422e0b8596159a"
+  },
+  {
+    "file": "templates/admin/dorm/dormMap.html",
+    "hash": "117158a392572e49870f188d68efc6ff"
+  },
+  {
+    "file": "templates/admin/dorm/dormNotice-detail.html",
+    "hash": "d4c20bb35bd799e10f811e0653af72a1"
+  },
+  {
+    "file": "templates/admin/dorm/dormNotice-list.html",
+    "hash": "82581f43aacf4786620c90908e4455ad"
+  },
+  {
+    "file": "templates/admin/dorm/dormSuggest.html",
+    "hash": "998d8c3e3c4d24d873ec3e3f91c1d1df"
+  },
+  {
+    "file": "templates/admin/dorm/freeDormWifi_android.html",
+    "hash": "11293821ba2cd64eee605a681c883539"
+  },
+  {
+    "file": "templates/admin/dorm/freeDormWifi_ios.html",
+    "hash": "398d45b28d1149eebaace8654c1bfeff"
+  },
+  {
+    "file": "templates/admin/dorm/freeDormWifi.html",
+    "hash": "516a852a6ba835cdfe1a5d388d9c82c3"
+  },
+  {
+    "file": "templates/admin/dorm/housingAllowance.html",
+    "hash": "28f92cd92dfe8c72120c2aaa29d90935"
+  },
+  {
+    "file": "templates/admin/dorm/protocolDorm.html",
+    "hash": "642a37c1b12f8fbbe43f5f3717929ec5"
+  },
+  {
+    "file": "templates/admin/dorm/reissueKey.html",
+    "hash": "0946a8a5ebbbcef215a04cb40ed19595"
+  },
+  {
+    "file": "templates/admin/dorm/repairDorm.html",
+    "hash": "48f3d36cffa862f2c25f9dfbf855018e"
+  },
+  {
+    "file": "templates/admin/dormManage-list.html",
+    "hash": "a56c85a302d82395e1f52a4928a9e615"
   },
   {
     "file": "templates/admin/icCardLost.html",
-    "hash": "68ca9a0d0d2501c7f1d1ec7534353ac7"
+    "hash": "2c7d6dc17aa1c1251b470105816fda81"
   },
   {
     "file": "templates/applySubmit/apply-Html.html",
@@ -1020,8 +1072,16 @@
     "hash": "cc9fe338bc5c8562b810687f8a918e99"
   },
   {
+    "file": "templates/askAndAnswer/askAndAnswerDetail.html",
+    "hash": "f3269cb85a1450bb5c62626dfe7c649e"
+  },
+  {
+    "file": "templates/askAndAnswer/askAndAnswerList.html",
+    "hash": "4577239236e5e0994aaee4b04493decb"
+  },
+  {
     "file": "templates/askAndAnswer/tab-askAndAnswer.html",
-    "hash": "8751126237248bbc4f0b69d674be0e99"
+    "hash": "881126158db47e30cf3dc0019189c0c3"
   },
   {
     "file": "templates/askForHelp/tab-askForHelp.html",
@@ -1064,20 +1124,20 @@
     "hash": "f9df44d4361b9b3d0e7de99b886dfea1"
   },
   {
-    "file": "templates/carGps/tab-carList.html",
-    "hash": "b35082694f1c5eef0ac200e525c758d3"
+    "file": "templates/carGps/tab-carBusTime.html",
+    "hash": "865f919b62fe76819b644322c184d7c4"
   },
   {
-    "file": "templates/carGps/tab-carPicture.html",
-    "hash": "b39411175a641edc4d471a5fb888724f"
+    "file": "templates/carGps/tab-carList.html",
+    "hash": "804cb112c7dfbc79808bc49a84ebbaeb"
   },
   {
     "file": "templates/carGps/tab-map.html",
-    "hash": "356dc232eb41fe96137662104881c8ba"
+    "hash": "9ccd55cd80b4b9fd65c177fad94f96b1"
   },
   {
     "file": "templates/carGps/tabCar.html",
-    "hash": "645673f495a9b878f43e7f93b79334da"
+    "hash": "a86d5144980723aafad648ee557eac1c"
   },
   {
     "file": "templates/carPicture.html",
@@ -1145,7 +1205,11 @@
   },
   {
     "file": "templates/ehs/activityEHS.html",
-    "hash": "091287c5289045b92cca4605a42cd9d4"
+    "hash": "fa6d8c310579d3d6da3c3e4ae65007b8"
+  },
+  {
+    "file": "templates/GBS/basicGuide.html",
+    "hash": "a1cdf43aa70a0b7097a4016bb760b8af"
   },
   {
     "file": "templates/GBS/certificate/certificate-list.html",
@@ -1165,7 +1229,15 @@
   },
   {
     "file": "templates/GBS/gbs-list.html",
-    "hash": "736d45ba8d85b32df857c43303755c14"
+    "hash": "bc6843a97390a6e6dc4ec9d4dde4aba9"
+  },
+  {
+    "file": "templates/generalNotice/generalNoticeDetial.html",
+    "hash": "58bea516829d915c16b652e21e22473e"
+  },
+  {
+    "file": "templates/generalNotice/generalNoticeList.html",
+    "hash": "02de722362fc721f2989d99a5ddfa033"
   },
   {
     "file": "templates/goldIdea/tab-goldIdea.html",
@@ -1225,7 +1297,7 @@
   },
   {
     "file": "templates/insurance/insurance-list.html",
-    "hash": "3c82127a1caa50f33639e1e6b0e2e3b0"
+    "hash": "5b397054fd580099a62aa950605cf5f7"
   },
   {
     "file": "templates/kqcx/kqjl.html",
@@ -1257,15 +1329,15 @@
   },
   {
     "file": "templates/mealOrder/tab-mealLinkMan.html",
-    "hash": "b24b4316511e9e26733156a011f5eb97"
+    "hash": "0b8ce68e629cd852d3964548924061c9"
   },
   {
     "file": "templates/mealOrder/tab-mealList.html",
-    "hash": "326f8f2cdc8a6a77e1bb5d6c78d3b2d2"
+    "hash": "915f11444a2cc89d783a355963960ce2"
   },
   {
     "file": "templates/mealOrder/tab-myOrder.html",
-    "hash": "20153fa495cdda8a336d60b535df16a3"
+    "hash": "3eb570a84de2b09e04a90a7cb972aa53"
   },
   {
     "file": "templates/mealOrder/tabMealOrder.html",
@@ -1321,7 +1393,7 @@
   },
   {
     "file": "templates/research/research-list.html",
-    "hash": "344bf0c7c13ca84be01d4c6544475b00"
+    "hash": "d15eac30214ca9b3bc5055594f2b1668"
   },
   {
     "file": "templates/research/researchHtml.html",
@@ -1349,7 +1421,7 @@
   },
   {
     "file": "templates/tab-account.html",
-    "hash": "f5386444b87b952379c90ca9605356cf"
+    "hash": "00c1dd37ebf0dba0d4b256b339935162"
   },
   {
     "file": "templates/tab-goodJob.html",
@@ -1357,7 +1429,7 @@
   },
   {
     "file": "templates/tab-home.html",
-    "hash": "4190f20280b03db596830946b2716f71"
+    "hash": "52a8b5c99edd0542a471563d1b5a8c2f"
   },
   {
     "file": "templates/tab-homecopy.html",
@@ -1382,9 +1454,5 @@
   {
     "file": "templates/tabs.html",
     "hash": "998c4d59fe604bfae557d90dbb25a2a7"
-  },
-  {
-    "file": "www.sln",
-    "hash": "5cb2be1004b4f31b158123bfcb755353"
   }
 ]

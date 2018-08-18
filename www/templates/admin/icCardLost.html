@@ -1,19 +1,19 @@
 <!-- 挂失IC卡 -->
-<style>
-    .font90{
-        font-size: 90%;
-    }
-</style>
 <ion-view view-title="{{Language.admin.icCardLost}}" cache-view="false"  hide-tabs >
+    <!-- <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.home.admin}}</button>
+    </ion-nav-buttons> -->
+
     <ion-content style="background-color:lavender">
         <div class="divOff lightRedBack">
+            <span class="text-left">{{Language.common.Explain}}：</span>
             <div class="divOff" style="font-size:14px;">
                 <ol class="numOl">
                     <li>
                         适用于已经<b>实名认证</b>的Flex+用户，在线挂失IC卡;
                     </li>
                     <li>
-                        解除挂失需要本人去IC卡服务中心办理，不支持在线办理。
+                        解除挂失需要本人到IC卡服务中心办理，不支持在线办理。
                     </li>
                 </ol>
             </div>

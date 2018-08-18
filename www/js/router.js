@@ -302,37 +302,53 @@ angular.module('evaluationApp.router', [])
             })
             
 
-            .state('tabCar', {
-                url: "/tabCar",
-                abstract: true,
-                templateUrl: "templates/carGps/tabCar.html"
+            //移除tab
+            // .state('tabCar', {
+            //     url: "/tabCar",
+            //     abstract: true,
+            //     templateUrl: "templates/carGps/tabCar.html"
+            // })
+            // .state('tabCar.carlist', {
+            //     url: '/carlist',
+            //     views: {
+            //         'carlist': {
+            //             templateUrl: 'templates/carGps/tab-carList.html',
+            //             controller: 'CarListCtrl'
+            //         }
+            //     }
+            // })
+            // .state('tabCar.map', {
+            //     url: '/map',
+            //     views: {
+            //         'map': {
+            //             templateUrl: 'templates/carGps/tab-map.html',
+            //             controller: 'BaiduMapCtrl'
+            //         }
+            //     }
+            // })
+            // .state('tabCar.carPicture', {
+            //     url: '/carPicture',
+            //     views: {
+            //         'carPicture': {
+            //             templateUrl: 'templates/carGps/tab-carPicture.html',
+            //             controller: 'CarPictureCtrl'
+            //         }
+            //     }
+            // })
+            .state('Carlist', {
+                url: '/carList',
+                templateUrl: 'templates/carGps/tab-carList.html',
+                controller: 'CarListCtrl'
             })
-            .state('tabCar.carlist', {
-                url: '/carlist',
-                views: {
-                    'carlist': {
-                        templateUrl: 'templates/carGps/tab-carList.html',
-                        controller: 'CarListCtrl'
-                    }
-                }
+            .state('CarMap', {
+                url: '/carMap',
+                templateUrl: 'templates/carGps/tab-map.html',
+                controller: 'BaiduMapCtrl'
             })
-            .state('tabCar.map', {
-                url: '/map',
-                views: {
-                    'map': {
-                        templateUrl: 'templates/carGps/tab-map.html',
-                        controller: 'BaiduMapCtrl'
-                    }
-                }
-            })
-            .state('tabCar.carPicture', {
-                url: '/carPicture',
-                views: {
-                    'carPicture': {
-                        templateUrl: 'templates/carGps/tab-carPicture.html',
-                        controller: 'CarPictureCtrl'
-                    }
-                }
+            .state('carBusTime', {
+                url: '/carBusTime',
+                templateUrl: 'templates/carGps/tab-carBusTime.html',
+                controller: 'CarPictureCtrl'
             })
 
             .state('carPicture', {
@@ -347,8 +363,13 @@ angular.module('evaluationApp.router', [])
             })
             .state('askAndAnswer', {
                 url: '/askAndAnswer',
-                templateUrl: 'templates/askAndAnswer/tab-askAndAnswer.html',
+                templateUrl: 'templates/askAndAnswer/askAndAnswerList.html',
                 controller: 'AskAndAnswerCtrl'
+            })
+            .state('askAndAnswerDetail', {
+                url: '/askAndAnswerDetail',
+                templateUrl: 'templates/askAndAnswer/askAndAnswerDetail.html',
+                controller: 'AskAndAnswerDetailCtrl'
             })
             .state('lightPower', {
                 url: '/lightPower',
@@ -645,6 +666,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/ehs/activityEHS.html',
                 controller: 'ActivityEHSCtrl'
             })
+            .state('basicGuide',{
+                url: '/basicGuide',
+                templateUrl: 'templates/GBS/basicGuide.html',
+                controller: 'BasicGuideCtrl'
+            })            
             .state('admin',{
                 url: '/admin',
                 templateUrl: 'templates/admin/admin-list.html',
@@ -656,7 +682,89 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/admin/icCardLost.html',
                 controller: 'ICCardLostCtrl'
             })
-
+            .state('dormManage',{
+                url: '/dormManage',
+                templateUrl: 'templates/admin/dormManage-list.html',
+                controller: 'DormManageCtrl'
+            })
+            /*sub of dormManage*/
+            .state('housingAllowance',{
+                url: '/housingAllowance',
+                templateUrl: 'templates/admin/dorm/housingAllowance.html',
+                controller: 'HousingAllowanceCtrl'
+            })
+            .state('applyDorm',{
+                url: '/applyDorm',
+                templateUrl: 'templates/admin/dorm/applyDorm.html',
+                controller: 'ApplyDormCtrl'
+            })
+            .state('chargingDefine',{
+                url: '/chargingDefine',
+                templateUrl: 'templates/admin/dorm/chargingDefine.html',
+                controller: 'ChargingDefineCtrl'
+            })
+            .state('dormMap', {
+                url: '/dormMap',
+                templateUrl: 'templates/admin/dorm/dormMap.html',
+                controller: 'DormMapCtrl'
+            })
+            .state('dormNotice', {
+                url: '/dormNotice',
+                templateUrl: 'templates/admin/dorm/dormNotice-list.html',
+                controller: 'DormNoticeCtrl'
+            })
+            .state('dormNoticeDetail', {
+                url: '/dormNoticeDetail',
+                templateUrl: 'templates/admin/dorm/dormNotice-detail.html',
+                controller: 'DormNoticeDetailCtrl'
+            })
+            .state('repairDorm', {
+                url: '/repairDorm',
+                templateUrl: 'templates/admin/dorm/repairDorm.html',
+                controller: 'RepairDormCtrl'
+            })
+            .state('reissueKey', {
+                url: '/reissueKey',
+                templateUrl: 'templates/admin/dorm/reissueKey.html',
+                controller: 'ReissueKeyCtrl'
+            })
+            .state('freeDormWifi', {
+                url: '/freeDormWifi',
+                templateUrl: 'templates/admin/dorm/freeDormWifi.html',
+                controller: 'FreeDormWifiCtrl'
+            })
+            .state('freeDormWifi_ios', {
+                url: '/freeDormWifi_ios',
+                templateUrl: 'templates/admin/dorm/freeDormWifi_ios.html',
+                controller: null
+            })
+            .state('freeDormWifi_android', {
+                url: '/freeDormWifi_android',
+                templateUrl: 'templates/admin/dorm/freeDormWifi_android.html',
+                controller: null
+            })
+            .state('dormAskAndAns', {
+                url: '/dormAskAndAns',
+                templateUrl: 'templates/admin/dorm/dormAskAndAns.html',
+                controller: 'DormAskAndAnsCtrl'
+            })
+            .state('dormSuggest', {
+                url: '/dormSuggest',
+                templateUrl: 'templates/admin/dorm/dormSuggest.html',
+                controller: 'DormSuggestCtrl'
+            })
+            /*sub of GBSHR*/
+            .state('generalNotice', {
+                url: '/generalNotice',
+                templateUrl: 'templates/generalNotice/generalNoticeList.html',
+                controller: 'GeneralNoticeCtrl'
+            })
+            .state('generalNoticeDetial', {
+                url: '/generalNoticeDetial',
+                templateUrl: 'templates/generalNotice/generalNoticeDetial.html',
+                controller: 'GeneralNoticeDetialCtrl'
+            })
+            
         $urlRouterProvider.otherwise('signin');
 
     }])

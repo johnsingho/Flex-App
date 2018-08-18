@@ -4,16 +4,21 @@
 angular.module('evaluationApp.businiess2Controllers', [])
     .controller('ResearchCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService,externalLinksService){
         var params=commonServices.getBaseParas();
-        var url=commonServices.getUrl("ResearchService.ashx","GetResearchList");
-        //获取一般活动列表
-        commonServices.getDataList(params,url).then(function(data){
 
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            $scope.researchList=data;
-        });
+        function InitInfo(){
+            var url=commonServices.getUrl("ResearchService.ashx","GetResearchList");
+            //获取一般活动列表，GeneralNotice列表
+            commonServices.submit(params, url).then(function (resp) {
+                if (resp) {
+                    if (resp.success) {
+                        $scope.researchList=resp.list;
+                        $scope.gnList=JSON.parse(resp.data);
+                    }
+                }
+            });
+        }
+        InitInfo();
+        
         $scope.open=function(research){
             CacheFactory.remove('researchID');
             CacheFactory.remove('ResearchName');
@@ -21,23 +26,40 @@ angular.module('evaluationApp.businiess2Controllers', [])
             CacheFactory.save('ResearchName',research.ResearchName);
           $state.go('researchHtml');
         };
-        $scope.openMyd=function(){
+    
+        $scope.openHuKou=function(){
             try {
-                externalLinksService.openUr('https://appcenter.flextronics.com/GMIS/Handler/CB_001_MedicalCheckSurvey.ashx?sid=3&rq=B9D3F80DB77B483093251FA9E1AE4346&site=珠海');
+                externalLinksService.openUr('http://cn.mikecrm.com/L6shCzq');
             }
             catch (ex) {
                 alertService.showAlert(ex.message);
             }
         };
 
-        $scope.openGH=function(){
-            try {
-                externalLinksService.openUr('http://cn.mikecrm.com/pSIKpIJ');
-            }
-            catch (ex) {
-                alertService.showAlert(ex.message);
+        $scope.openGeneralNotice = function(isUrlHtml, id, html){
+            if(isUrlHtml){
+                //打开外链
+                try {
+                    externalLinksService.openUr(html);
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+            }else{
+                CacheFactory.remove('gnID');
+                CacheFactory.save('gnID', id);
+                $state.go("generalNoticeDetial");
             }
         };
+
+        // $scope.openGH=function(){
+        //     try {
+        //         externalLinksService.openUr('http://cn.mikecrm.com/pSIKpIJ');
+        //     }
+        //     catch (ex) {
+        //         alertService.showAlert(ex.message);
+        //     }
+        // };
         $scope.openMECH=function(){
 
             $scope.isNotMECH=$scope.accessEmployee.Organization.toUpperCase().indexOf('MECH')==-1;
@@ -198,244 +220,6 @@ angular.module('evaluationApp.businiess2Controllers', [])
             }
         }
     })
-    .controller('MealListCtrl',function($scope,$rootScope,$state,$ionicModal,$ionicHistory,commonServices,CacheFactory,alertService,$ionicPopup){
-        var params=commonServices.getBaseParas();
-        $scope.MobileNo=$rootScope.accessEmployee.MobileNo;
-
-
-        commonServices.getDataList(params,API.GetMealList).then(function(data){
-
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            $scope.mealList=data;
-            console.log( $scope.mealList);
-        });
-
-        $scope.SubmitList=[];
-        $scope.MealCount=0;
-        $scope.MealPay=0;
-
-        $scope.cutDown=function(meal){
-            if(meal.Count>0){
-                meal.Count=meal.Count-1
-                $scope.MealCount=$scope.MealCount-1;
-                $scope.MealPay=$scope.MealPay-meal.Price;
-
-                console.log(meal);
-                console.log($scope.SubmitList);
-
-                for(var i=0;i<$scope.SubmitList.length;i++){
-                    if($scope.SubmitList[i].id==meal.id){
-                        $scope.SubmitList[i].Count=$scope.SubmitList[i].Count-1;
-                        if( $scope.SubmitList[i].Count==0){
-                            $scope.SubmitList.splice(i,1);
-                        }
-                        break;
-                    }
-                    console.log($scope.SubmitList);
-                }
-            }
-        };
-
-        $scope.add=function(meal){
-            meal.Count=meal.Count+1;
-            $scope.MealCount=$scope.MealCount+1;
-            $scope.MealPay=$scope.MealPay+meal.Price;
-            var isOK=false;
-            for(var i=0;i<$scope.SubmitList.length;i++){
-                if($scope.SubmitList[i].id==meal.id){
-                    $scope.SubmitList[i].Count=$scope.SubmitList[i].Count+1;
-                    isOK=true;
-                    break;
-                }
-            }
-
-            if(isOK==false){
-                $scope.SubmitList.push({id:meal.id,foodName:meal.foodName,Count:meal.Count,Price:meal.Price});
-            }
-            console.log($scope.SubmitList);
-
-        };
-
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        };
-
-        $scope.like=function(meal){
-
-            params.foodName=meal.foodName;
-            params.isLike='1';
-            var url=commonServices.getUrl("MealOrder.ashx","AddLike");
-            commonServices.submit(params,url).then(function(data){
-                if(data.success){
-//                    commonServices.getDataListNoMask(params,API.GetMealList).then(function(data){
-//
-//                        if(data=="Token is TimeOut"){
-//                            alertService.showAlert("登录失效，请重新登录");
-//                            $state.transitionTo('signin');
-//                        }
-//                        $scope.mealList=data;
-//                        console.log( $scope.mealList);
-
-//                    });
-                meal.LikeQty=meal.LikeQty+1;
-                }
-                else{
-                    alertService.showLoading(data.message);
-                }
-            });
-        };
-
-        $scope.unLike=function(meal){
-
-            params.foodName=meal.foodName;
-            params.isLike='0';
-            var url=commonServices.getUrl("MealOrder.ashx","AddLike");
-            commonServices.submit(params,url).then(function(data){
-                if(data.success){
-//                    commonServices.getDataListNoMask(params,API.GetMealList).then(function(data){
-//
-//                        if(data=="Token is TimeOut"){
-//                            alertService.showAlert("登录失效，请重新登录");
-//                            $state.transitionTo('signin');
-//                        }
-//                        $scope.mealList=data;
-//                        console.log( $scope.mealList);
-//                    });
-                    meal.UnLikeQty=meal.UnLikeQty+1;
-                }else
-                {
-                    alertService.showLoading(data.message);
-                }
-            });
-        };
-
-        $ionicModal.fromTemplateUrl('templates/modal.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.modal = modal
-        })
-        $scope.openModal = function() {
-            if($scope.MealCount==0){
-                alertService.showAlert("请选择后再下单");
-                return;
-            }
-            $scope.modal.show();
-            var now = new Date();
-            var str = now.getFullYear() + "-" + fix((now.getMonth() + 1),2) + "-" + fix(now.getDate(),2) + "T" + fix(now.getHours(),2) + ":" + fix(now.getMinutes(),2)+ ":" + fix(now.getSeconds(),2);
-
-            $("#lcTime").val(str);
-        };
-        function fix(num, length) {
-            return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
-        }
-        $scope.closeModal = function() {
-            $scope.modal.hide();
-        };
-        $scope.$on('$destroy', function() {
-            $scope.modal.remove();
-        });
-        $scope.mealPerson="请选择";
-        $scope.selMealPerson=function(mealPerson){
-
-            $scope.mealPerson=mealPerson;
-        };
-
-        $scope.submit=function(){
-
-            var selTime = $("#lcTime").val(); //获取
-            if(selTime.length==0)
-            {
-                alertService.showAlert("请选择就餐时间");
-                return;
-            }
-            if($scope.mealPerson=="请选择"){
-                alertService.showLoading("请选择就餐人数");
-                return;
-            }
-
-            params.SubmitList=$scope.SubmitList;
-            params.sMobile=$scope.MobileNo;
-            params.MealCount=$scope.MealCount;
-            params.MealPay=$scope.MealPay;
-            params.MealTime=selTime;
-            params.bz=$("#bz").val();
-            params.mealPerson=$scope.mealPerson;
-            console.log(params);
-            var url=commonServices.getUrl("MealOrder.ashx","SubmitOder");
-            commonServices.submit(params,url).then(function(data){
-                if(data.success){
-                    $scope.modal.hide();
-                    $state.go("tabMealOrder.myOrder");
-                }
-                else{
-                    alertService.showAlert(data.message);
-                }
-            });
-
-        }
-
-    })
-    .controller('MealLinkManCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService){
-        var params=commonServices.getBaseParas();
-
-
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-    })
-    .controller('MyOrderCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService){
-        var params=commonServices.getBaseParas();
-
-        $scope.load=function(){
-            var url=commonServices.getUrl("MealOrder.ashx","GetMyOrderList");
-            commonServices.getDataList(params,url).then(function(data){
-                if(data=="Token is TimeOut"){
-                    alertService.showAlert("登录失效，请重新登录");
-                    $state.transitionTo('signin');
-                }
-                $scope.myOrderList=data;
-
-            });
-        }
-
-        $scope.load();
-
-        $scope.cancelOrder=function(number,mealTime){
-            var url=commonServices.getUrl("MealOrder.ashx","CancelOrder");
-            params.number=number;
-            params.mealTime=mealTime;
-            commonServices.submit(params,url).then(function(data){
-                if(data.success){
-                    alertService.showAlert("取消成功");
-                }
-                else{
-                    alertService.showAlert(data.message);
-                }
-
-                $scope.load();
-            });
-        };
-
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-    })
     .controller('MyAccountMoneyCtrl', function($scope,pointsService,commonServices,$ionicHistory,$state, CacheFactory,alertService) {
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
 
@@ -521,161 +305,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
         commonServices.getDataList(paras,url).then(function(data){
            $scope.myHelp=data;
         });
-    })
-
-    .controller('Handbook_lgCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
-
-        var paras= commonServices.getBaseParas();
-        var url=commonServices.getUrl("HandBookService.ashx","GetLgList");
-        commonServices.getDataList(paras,url).then(function(data){
-
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            $scope.handBookList=data;
-        });
-
-
-        $scope.open=function(info){
-            CacheFactory.remove('ItemLanguage');
-            CacheFactory.save('ItemLanguage',info.Language);
-
-            $state.go('HandbookItemOne');
-        };
-
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-    })
-    .controller('HandbookItemOneCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
-
-        $scope.ItemLanguage=CacheFactory.get('ItemLanguage');
-        var paras= commonServices.getBaseParas();
-        paras.where=" and Language=N'"+$scope.ItemLanguage+"'";
-        paras.item="Item1";
-
-        var url=commonServices.getUrl("HandBookService.ashx","GetItemList");
-        commonServices.getDataList(paras,url).then(function(data){
-
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-
-            $scope.handBookItem1List=data;
-        });
-
-
-        $scope.open=function(info){
-            CacheFactory.remove('Item1');
-            CacheFactory.save('Item1',info.Item1);
-
-            $state.go('handbookitemTwo');
-        };
-
-    })
-    .controller('HandbookItemTwoCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) {
-        var Item1=CacheFactory.get('Item1');
-        var paras= commonServices.getBaseParas();
-        paras.where=" and Item1=N'"+Item1+"'";
-        paras.item="Item2";
-        var url=commonServices.getUrl("HandBookService.ashx","GetItemList");
-        commonServices.getDataList(paras,url).then(function(data){
-
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            $scope.handBookItem2List=data;
-        });
-
-
-        $scope.open=function(activity){
-            CacheFactory.remove('Item2');
-            CacheFactory.save('Item2',activity.Item2);
-
-            $state.go('handbookitemThree');
-        };
-
-    })
-    .controller('HandbookItemThreeCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) {
-        var Item2=CacheFactory.get('Item2');
-        var paras= commonServices.getBaseParas();
-        paras.where=" and Item2=N'"+Item2+"'";
-        paras.item="Item3";
-        var url=commonServices.getUrl("HandBookService.ashx","GetItemList");
-        commonServices.getDataList(paras,url).then(function(data){
-
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            $scope.DataList=data;
-           $scope.handBookItem3List=$scope.DataList;
-//            if($scope.DataList.length==1)  $('#Item_html').html($scope.DataList[0].Item3);
-//            if($scope.DataList.length>1) $scope.handBookItem3List=$scope.DataList;
-        });
-
-
-        $scope.open=function(activity){
-            CacheFactory.remove('Item3');
-            CacheFactory.save('Item3',activity.Item3);
-
-            $state.go('handbookitemFour');
-        };
-
-    })
-    .controller('HandbookItemFourCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) {
-        var Item3=CacheFactory.get('Item3');
-        var paras= commonServices.getBaseParas();
-        paras.where=" and Item3=N'"+Item3+"'";
-        paras.item="Item4";
-        var url=commonServices.getUrl("HandBookService.ashx","GetItemList");
-        commonServices.getDataList(paras,url).then(function(data){
-
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            $scope.DataList=data;
-
-            $('#Item4_html').html($scope.DataList[0].Item4);
-
-            console.log($scope.DataList[0].Item4);
-        });
-
-    })
-    .controller('CarListCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService){
-        var params=commonServices.getBaseParas();
-        var url=commonServices.getUrl("MapService.ashx","GetCarList");
-        //获取一般活动列表
-        commonServices.getDataList(params,url).then(function(data){
-
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            $scope.carList=data;
-            console.log($scope.carList)
-        });
-        $scope.open=function(car){
-            CacheFactory.remove('car');
-            CacheFactory.save('car',car);
-            $state.go("tabCar.map");
-        };
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-    })
+    })  
     .controller('BaiduMapCtrl', function($scope,$interval,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices,$location) {
 
         $scope.map;
@@ -756,7 +386,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
                 disableAnimate: true,
                 disableBack: true
             });
-            $state.go('tabCar.carlist');
+            $state.go('Carlist');
         }
 
 
@@ -993,320 +623,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
             });
             $state.go('tab.home');
         }
-    })
-    .controller('GBSListCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService,externalLinksService){
-
-        $scope.open=function(action){
-            switch (action)
-            {
-                case "KQAbnormal":
-                    $state.go('kqyc');
-                    break;
-                case "Certificate":
-                    $state.go('certificate');
-                    break;
-                case "员工手册":
-                    $state.go("handbook_lg");
-                    break;
-                case "LTP":
-                    try {
-                        externalLinksService.openUr('https://appcenter.flextronics.com/GMIS/Template/LTPPasswordReset_Mobile.html');
-                    }
-                    catch (ex) {
-                        alertService.showAlert(ex.message);
-                    }
-                    break;
-            }
-        }
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-    })
-    .controller('CertificateCtrl',function($scope,$rootScope,$state,CacheFactory){
-        var accessEmployee = $rootScope.accessEmployee;
-        var bTestAccount = IsTestAccount(accessEmployee.WorkdayNO);
-        //屏蔽multek
-        //var bIsNotMultek = accessEmployee.Organization.toLowerCase().indexOf("multek")<0;
-        $scope.canShow = !isMultek(accessEmployee.Organization) && bTestAccount;
-
-        $scope.open=function(action){
-            switch (action)
-            {
-                case "visaApply":
-                    $state.go('visaApply');
-                    break;
-                case "CP": /*厂牌补办*/
-                    $state.go('reissueWorkingCard');
-                    break;
-                default :
-                    CacheFactory.save('action', action);
-                    $state.go('certificateSubmit');
-
-            }
-
-        }
-
-    })
-    .controller('CertificateSubmit',function($scope,$rootScope,$state,$ionicHistory,commonServices,CacheFactory,alertService,$ionicPopup){
-        var action= CacheFactory.get('action');
-        if(action=='SR'){
-            $scope.title=$rootScope.Language.certificate.incomeCertificate;
-            $scope.listUse = [
-                { name: "购房", value: "购房" },
-                { name: "购车", value: "购车" },
-                { name: "贷款装修", value: "贷款装修" },
-                { name: "保险理赔", value: "保险理赔" },
-                { name: "申请补助", value: "申请补助" },
-                { name: "司法诉讼", value: "司法诉讼" }
-            ];
-        }
-        if(action=='ZZ'){
-            $scope.title=$rootScope.Language.certificate.certificateOfEmployment;
-            $scope.listUse = [
-                { name: "Visa申请", value: "Visa申请" },
-                { name: "资格考试", value: "资格考试" },
-                { name: "居住证", value: "居住证" },
-                { name: "子女入学", value: "子女入学" }
-            ];
-        }
-        if(action=='XJ'){
-            $scope.title=$rootScope.Language.certificate.certificateOfTakingLeave;
-            $scope.listUse = [
-                { name: "商业保险申报", value: "商业保险申报" }
-
-            ];
-        }
-
-        var paras= commonServices.getBaseParas();
-
-        $scope.apply= {
-            WorkdayNO:paras.WorkdayNO,
-            CName:paras.CName,
-            MobileNo: paras.MobileNo,
-            Organization:paras.Organization,
-            Use:null
-        };
-
-        $scope.Submit=function() {
-            if($scope.apply.Use==null){
-                alertService.showAlert('请填写用途');
-                return;
-            }
-
-            if($scope.apply.Use==""){
-                alertService.showAlert('请填写用途');
-                return;
-            }
-
-            $ionicPopup.confirm({
-                title: '提示',
-                template: '确定提交办证申请吗？',
-                okText:"OK"
-            }) .then(function(res) {
-                if(res) {
-                    paras.MobileNo=$scope.apply.MobileNo;
-                    paras.Use=$scope.apply.Use.name;
-                    paras.ApplyType=action;
-
-                    var url=commonServices.getUrl("GBSHRService.ashx","SubmitCertificateApply");
-                    commonServices.submit(paras, url).then(function (data) {
-                        if (data.success) {
-                            alertService.showAlert('您的申请已提交，请注意在“我的信息”查收最新进度通知，谢谢！');
-                            $ionicHistory.goBack();
-                        }
-                        else {
-                            alertService.showAlert(data.message);
-                        }
-                    });
-                }
-            });
-
-        }
-
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-    })
-    .controller('reissueWorkingCard',function($scope,$rootScope,$state,$ionicHistory,commonServices,CacheFactory,alertService,$ionicPopup){
-        //厂牌补办
-        $scope.title=$rootScope.Language.certificate.reissueWorkingCard;
-        $scope.listReason = [
-            { name: "厂牌丢失（扣款10元/次）", value: "厂牌丢失" },
-            { name: "自然损坏", value: "自然损坏" }
-        ];
-
-        var action = "CP";
-        var paras = commonServices.getBaseParas();
-
-        $scope.apply= {
-            WorkdayNO:paras.WorkdayNO,
-            CName:paras.CName,
-            MobileNo: paras.MobileNo,
-            Organization:paras.Organization,
-            Use:null
-        };
-
-        $scope.Submit=function() {
-            if( !$scope.apply.Use || $scope.apply.Use==""){
-                alertService.showAlert('请填写原因');
-                return;
-            }
-
-            if(""==$.trim($scope.apply.MobileNo)){
-                alertService.showAlert('请填写联系电话');
-                return;
-            }
-
-            $ionicPopup.confirm({
-                title: '提示',
-                template: '确定提交办证申请吗？',
-                okText:"OK"
-            }) .then(function(res) {
-                if(res) {
-                    paras.MobileNo = $.trim($scope.apply.MobileNo);
-                    paras.Use=$scope.apply.Use.name;
-                    paras.ApplyType=action;
-
-                    var url=commonServices.getUrl("GBSHRService.ashx","SubmitCertificateApply");
-                    commonServices.submit(paras, url).then(function (data) {
-                        if (data.success) {
-                            alertService.showAlert('您的申请已提交，请注意在“我的信息”查收最新进度通知，谢谢！');
-                            $ionicHistory.goBack();
-                        }
-                        else {
-                            alertService.showAlert(data.message);
-                        }
-                    });
-                }
-            });
-        }
-
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-    })
-    .controller('VisaApplyCtrl',function($scope,$rootScope,$state,$ionicHistory,commonServices,CacheFactory,alertService,$ionicPopup){
-        $scope.listVisaType = [
-            { name: "1 Year Multiple Entries", value: "1 Year Multiple Entries" },
-            { name: "6 Months Double Entries", value: "6 Months Double Entries" },
-            { name: "3 Months Single Entry", value: "3 Months Single Entry" },
-            { name: "10 Years Multiple Entries", value: "10 Years Multiple Entries" }
-        ];
-        $scope.Gender = [
-            { name: "Male", value: "Male" },
-            { name: "Female", value: "Female" }
-        ];
-
-        setTimeout( function (){
-            var now = new Date();
-            var nowAddHour = new Date();
-            nowAddHour.setHours(nowAddHour.getHours()+3);
-            var str = now.getFullYear() + "-" + fix((now.getMonth() + 1),2) + "-" + fix(now.getDate(),2) ;
-            $("#IssuedDate").val(str);
-            $("#PassportDateIssue").val(str);
-            $("#PassportDateExpiry").val(str);
-            $("#BirthDate").val(str);
-            $("#ChinaArrivalDate").val(str);
-            $("#DepartureDateFromChina").val(str);
-
-
-
-        },500);
-        function fix(num, length) {
-            return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
-        }
-
-
-        var paras= commonServices.getBaseParas();
-
-        $scope.visa= {
-            CName:paras.CName,
-            WorkdayNO:paras.WorkdayNO,
-            Organization:paras.Organization,
-            MobileNo:paras.MobileNo,
-            IssuedDate:null,
-            FullNameInPassport:null,
-            PassportNo:null,
-            PassportDateIssue:null,
-            PassportDateExpiry:null,
-            BirthDate:null,
-            Nationality:null,
-            Gender:null,
-            JobTitle:null,
-            CompanyName:null,
-            PurposeOfVisit:null,
-            ChinaArrivalDate:null,
-            DepartureDateFromChina:null,
-            VisaType:null,
-            ContactpersonName:null,
-            ContactPersonJobtitle:null,
-            ContactPersonTelephone:null,
-            ContactPersonEmail:null,
-            ExpenseAfford:null
-        };
-
-        $scope.Submit=function() {
-
-            $scope.visa.IssuedDate=$("#IssuedDate").val();
-            $scope.visa.PassportDateIssue=$("#PassportDateIssue").val();
-            $scope.visa.PassportDateExpiry=$("#PassportDateExpiry").val();
-            $scope.visa.BirthDate=$("#BirthDate").val();
-            $scope.visa.ChinaArrivalDate=$("#ChinaArrivalDate").val();
-            $scope.visa.DepartureDateFromChina=$("#DepartureDateFromChina").val();
-
-            $scope.visa.Gender=$scope.visa.Gender.name;
-            $scope.visa.VisaType=$scope.visa.VisaType.name;
-
-            console.log($scope.visa);
-            var check=true;
-            angular.forEach($scope.visa, function(value, key){
-
-                if(check){
-                    if(value==null||value==''){
-                        alertService.showAlert('Some information is not filled, please check');
-                        check=false;
-                    }
-                }
-            });
-
-           if(!check) return;
-
-            $ionicPopup.confirm({
-                title: 'Prompt',
-                template: 'Do you decide to apply for the application？',
-                okText:"OK"
-            }) .then(function(res) {
-                if(res) {
-                    paras.visaDetail=$scope.visa;
-                    var url=commonServices.getUrl("GBSHRService.ashx","SubmitVisa");
-                    commonServices.submit(paras, url).then(function (data) {
-                        if (data.success) {
-                            alertService.showAlert('Your application has been submitted, please pay attention to "my information", check the latest progress notice, thank you.');
-                            $ionicHistory.goBack();
-                        }
-                        else {
-                            alertService.showAlert(data.message);
-                        }
-                    });
-                }
-            });
-
-        }
-
-
-    })
+    })    
     .controller('CserDateCtrl',function($scope,$rootScope,$state,$ionicHistory,commonServices,CacheFactory,alertService,externalLinksService){
         var paras= commonServices.getBaseParas();
         var url=commonServices.getUrl("CSERSevice.ashx","GetCSERDate");
@@ -1342,113 +659,6 @@ angular.module('evaluationApp.businiess2Controllers', [])
         }
 
     })
-    .controller('AdminCtrl',function($scope,$rootScope,$state,$ionicHistory,
-                            commonServices,CacheFactory,alertService)
-    {        
-        $scope.open=function(action){
-            switch (action)
-            {
-                case "icCardLost":
-                    $state.go('icCardLost');
-                    break;
-                default:break;
-            }
-        }
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-    })
-    /*sub of AdminCtrl*/
-    .controller('ICCardLostCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-                commonServices, CacheFactory, alertService) 
-    {
-        var paras= commonServices.getBaseParas();       
-        $scope.model = {
-            CName: paras.CName,
-            WorkdayNO: paras.WorkdayNO,
-            MobileNo: paras.MobileNo,
-            IDNO: null
-        };
 
-        function GetLastLostICCardState(){
-            var paras = $scope.model;
-            var url=commonServices.getUrl("AdminService.ashx","GetLastLostICCardState");
-            commonServices.submit(paras,url).then(function(resp){
-                if(resp){
-                    $scope.LastState=resp.obj; //{upDATEdt, upDATEflag}
-                    switch (resp.obj.upDATEflag) {
-                        case 1:
-                            $scope.LastState.State = '正在执行中';
-                            $scope.canSubmit=false;
-                            break;
-                        case 99:
-                            $scope.LastState.State = '已完成';
-                            $scope.canSubmit=true;
-                            break;
-                        default:
-                            $scope.LastState.State = null;
-                            $scope.canSubmit=true;
-                            break;
-                    }
-                }            
-            });
-        }
-
-        GetLastLostICCardState();
-        $scope.HasLastState = function(){
-            return $scope.LastState && $scope.LastState.State;
-        }
-
-        $scope.isSumbiting=false;
-        $scope.Submit = function() {
-            $scope.isSumbiting=true;
-
-            var idno = $.trim($scope.model.IDNO);            
-            if(idno.length == 18){
-                if(!CheckIdCard(idno)){
-                    alertService.showAlert("身份证号码有误，请更正!");
-                    return;
-                }
-            }
-
-            $scope.model.IDNO = idno;
-            var confirmPopup = $ionicPopup.confirm({
-                title: $rootScope.Language.admin.promptTitle,
-                template: $rootScope.Language.admin.promptReportLost,
-                okText: $rootScope.Language.admin.promptOK,
-                cancelText: $rootScope.Language.admin.promptCancel
-             });
-
-             confirmPopup.then(function(res) {
-                if(res) {
-                    var paras = $scope.model;
-                    var url=commonServices.getUrl("AdminService.ashx","SubmitLostICCard");
-                    commonServices.submit(paras, url).then(function (data) {
-                        if (data.success) {
-                            alertService.showAlert($rootScope.Language.admin.submitSucc);
-                            $ionicHistory.goBack();
-                        }
-                        else {
-                            alertService.showAlert(data.message);
-                        }
-                    });
-                }
-                $scope.isSumbiting=false;
-            });
-        };
-
-        $scope.closePass = function () {
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        };
-    })
-
-
+    
 ;

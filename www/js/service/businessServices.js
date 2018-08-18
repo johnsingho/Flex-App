@@ -425,7 +425,7 @@ angular.module('evaluationApp.businessServices', [])
                     mask: false
                 }).success(function (response) {
                     if (response.success) {
-                        deferred.resolve(response.list);
+                        deferred.resolve(response);
                     }
                     else{
                         deferred.resolve(response.message);

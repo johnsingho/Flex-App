@@ -1,0 +1,40 @@
+<!-- 费用查询 -->
+<ion-view view-title="{{Language.dormManage.chargingDefine}}" cache-view="false" hide-tabs>
+    <ion-content class="padding" style="border:1px;">
+        <label class="item item-input item-select">
+            <div class="input-label">
+             <h4 style="text-align:left;font-weight:bold">{{Language.xfcx.selDay}}</h4>
+            </div>
+        <select  ng-model="day"  ng-change="selday(day)">
+            <option selected="">{{Language.dormManage.rcenetMonth}}</option>
+            <!-- <option >{{Language.xfcx.sevenDay}}</option> -->
+        </select>
+        </label>
+
+        <ion-list ng-if="hasFee()">
+            <ion-item class="item item-divider">
+                {{totFee.mon}} 总费用：<span style="color: red">{{totFee.sum}}</span>
+                {{Language.common.yuan}}
+            </ion-item>
+            <ion-item class="item">
+                <div class="row" ng-repeat="fee in totFee.ArrFees">
+                <div class="col col-80">
+                    <h3>{{fee.name}}：{{fee.value}} {{Language.common.yuan}}</h3>
+                </div>
+                </div>
+
+                <!-- <div class="row">
+                    <div class="col col-50"> <h3>{{Language.xfcx.piont}}{{cust.TERMNAME}}</h3></div>
+                </div> -->
+            </ion-item>
+        </ion-list>
+        <ion-list ng-if="!hasFee()">
+            <div class="row">
+                <div class="col col-50">
+                    <h3 style="color: red"> {{Language.dormManage.noFeeRecord}}</h3>
+                </div>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>
+
