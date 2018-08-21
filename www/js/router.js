@@ -764,7 +764,17 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/generalNotice/generalNoticeDetial.html',
                 controller: 'GeneralNoticeDetialCtrl'
             })
-            
+            .state('employeeDismiss', {
+                url: '/employeeDismiss',
+                templateUrl: 'templates/GBS/employeeDismiss/dismiss-list.html',
+                controller: 'EmployeeDismissCtrl'
+            })
+            .state('dismissStatus', {
+                url: '/dismissStatus',
+                templateUrl: 'templates/GBS/employeeDismiss/dismissStatus.html',
+                controller: 'DismissStatusCtrl'
+            })
+
         $urlRouterProvider.otherwise('signin');
 
     }])

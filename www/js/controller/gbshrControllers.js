@@ -37,9 +37,13 @@ angular.module('evaluationApp.gbshrControllers', [])
                     break;
                 case "社会保险":
                 case "公积金信息":
-                  CacheFactory.remove('gnAction');
-                  CacheFactory.save('gnAction', action);
-                  $state.go("generalNotice");
+                    CacheFactory.remove('gnAction');
+                    CacheFactory.save('gnAction', action);
+                    $state.go("generalNotice");
+                    break;
+                case "离职手续":
+                    $state.go("employeeDismiss");
+                    break;
                   break;
             }
         }
@@ -568,6 +572,48 @@ angular.module('evaluationApp.gbshrControllers', [])
         });
     }
     InitInfo();
+
+    })
+    .controller('EmployeeDismissCtrl', function ($scope, $rootScope, $state, $ionicHistory,$ionicPopup,
+                                                 commonServices, CacheFactory, alertService, actionVisitServices)
+    {
+        //离职手续
+        $scope.canUseAction = function (action) {
+            return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+        };
+
+        $scope.open = function (action) {
+            switch (action) {
+                case "离职流程":
+                    $scope.openGeneralNotice(0, '07FEA336-C85E-4B45-BB3F-F5587D3B6A02');
+                    break;
+                case "离职手续状态":
+                    $state.go('dismissStatus');
+                    break;
+                default: break;
+            }
+        };
+        $scope.openGeneralNotice = function (isUrlHtml, id, html) {
+            if (isUrlHtml) {
+                //打开外链
+                try {
+                    externalLinksService.openUr(html);
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+            } else {
+                CacheFactory.remove('gnID');
+                CacheFactory.save('gnID', id);
+                $state.go("generalNoticeDetial");
+            }
+        };
+
+    })
+    .controller('DismissStatusCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                               commonServices, CacheFactory, alertService)
+    {
+        //离职手续状态
 
 
     })

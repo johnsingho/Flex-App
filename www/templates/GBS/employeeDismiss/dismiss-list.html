@@ -1,0 +1,19 @@
+﻿<!--离职手续-->
+<ion-view view-title="{{Language.GBSHR.EmployeeDismiss}}" cache-view="false">
+    <!-- <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.home.admin}}</button>
+    </ion-nav-buttons> -->
+
+    <ion-content scroll="true" overflow-scroll="true">
+        <div class="list list-inset">
+            <div class="item" ng-click="open('离职流程');">
+                {{Language.GBSHR.DismissStep}}
+            </div>
+            <div class="item" ng-click="open('离职手续状态');" ng-if="canUseAction('离职手续状态');">
+                {{Language.GBSHR.DismissStatus}}
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
+

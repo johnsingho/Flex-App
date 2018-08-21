@@ -281,7 +281,7 @@
   },
   {
     "file": "js/app-conf.js",
-    "hash": "910101f339f320fcf89dba8e965b902a"
+    "hash": "9abb388d86106bed2abe15d6abecb94f"
   },
   {
     "file": "js/app.js",
@@ -309,7 +309,7 @@
   },
   {
     "file": "js/controller/gbshrControllers.js",
-    "hash": "069ce4db149d32ee45aaec0c3bc2cead"
+    "hash": "59733ea5d8c5c811df7db44ab834229c"
   },
   {
     "file": "js/controller/pointsControllers.js",
@@ -437,7 +437,7 @@
   },
   {
     "file": "js/router.js",
-    "hash": "975eca0e953ea09375b0ca92c0de44e8"
+    "hash": "ac9483341f95bcf3ea947040365b83f2"
   },
   {
     "file": "js/service/appServices.js",
@@ -1228,8 +1228,16 @@
     "hash": "128acae00d472f4c157bdb22f68c9921"
   },
   {
+    "file": "templates/GBS/employeeDismiss/dismiss-list.html",
+    "hash": "76ccfdc077130b2b2cc10a6abc87e1fd"
+  },
+  {
+    "file": "templates/GBS/employeeDismiss/dismissStatus.html",
+    "hash": "44aef38cbf12121c67d4fa413289d257"
+  },
+  {
     "file": "templates/GBS/gbs-list.html",
-    "hash": "bc6843a97390a6e6dc4ec9d4dde4aba9"
+    "hash": "6f70ca997c1ec84eb3d38e5cb9db4f7b"
   },
   {
     "file": "templates/generalNotice/generalNoticeDetial.html",
@@ -1237,7 +1245,7 @@
   },
   {
     "file": "templates/generalNotice/generalNoticeList.html",
-    "hash": "02de722362fc721f2989d99a5ddfa033"
+    "hash": "0b9fc70ed84d0ce235e29caadb93597c"
   },
   {
     "file": "templates/goldIdea/tab-goldIdea.html",

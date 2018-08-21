@@ -331,7 +331,10 @@ var ZH_CN = {
         LTP:'LTP密码重置',
         basicGuide:'菜鸟手册',
         SocialInsurance:'社会保险',
-        HousingFund:'住房公积金信息',
+        HousingFund: '住房公积金信息',
+        EmployeeDismiss: '离职手续',
+        DismissStep: '离职流程',
+        DismissStatus: '离职手续状态',
     },
     xfcx:{
         title:"消费查询",
@@ -671,7 +674,10 @@ var ZH_US = {
         LTP:'LTP Password Reset',
         basicGuide:'Basic Guide',
         SocialInsurance:'Social Insurance',
-        HousingFund:'Housing Fund',
+        HousingFund: 'Housing Fund',
+        EmployeeDismiss: 'Employee Dismission',
+        DismissStep: 'Dismission Step',
+        DismissStatus: 'Dismission Status',
     },
     xfcx:{
         title:" Consume Inquiry ",
