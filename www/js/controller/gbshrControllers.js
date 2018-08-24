@@ -41,7 +41,7 @@ angular.module('evaluationApp.gbshrControllers', [])
                     CacheFactory.save('gnAction', action);
                     $state.go("generalNotice");
                     break;
-                case "离职手续":
+                case "离职须知":
                     $state.go("employeeDismiss");
                     break;
                   break;
@@ -577,18 +577,36 @@ angular.module('evaluationApp.gbshrControllers', [])
     .controller('EmployeeDismissCtrl', function ($scope, $rootScope, $state, $ionicHistory,$ionicPopup,
                                                  commonServices, CacheFactory, alertService, actionVisitServices)
     {
-        //离职手续
+        //离职须知
         $scope.canUseAction = function (action) {
             return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
         };
 
         $scope.open = function (action) {
             switch (action) {
-                case "离职流程":
+                case "离职手续简介":
+                    $state.go('dismissIntro');
+                    break;
+                case "离职手续状态查询":
+                    $state.go('dismissStatus');
+                    break;
+                default: break;
+            }
+        };
+    })
+    .controller('DismissIntroCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                                 commonServices, CacheFactory, alertService, actionVisitServices) {
+        //离职手续简介
+        $scope.open = function (action) {
+            switch (action) {
+                case "南厂":
                     $scope.openGeneralNotice(0, '07FEA336-C85E-4B45-BB3F-F5587D3B6A02');
                     break;
-                case "离职手续状态":
-                    $state.go('dismissStatus');
+                case "北厂":
+                    $scope.openGeneralNotice(0, '165B122C-108F-475E-9B3B-DDB5C4247D93');
+                    break;
+                case "外籍":
+                    $scope.openGeneralNotice(0, '8DF15700-B6BF-4BEB-9796-7D6D0EFA213E');
                     break;
                 default: break;
             }
@@ -613,8 +631,28 @@ angular.module('evaluationApp.gbshrControllers', [])
     .controller('DismissStatusCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
                                                commonServices, CacheFactory, alertService)
     {
-        //离职手续状态
-
+        //离职手续状态        
+        function InitInfo() {
+            var url = commonServices.getUrl("EmployeeDismissService.ashx", "GetStatus");
+            var paras = commonServices.getBaseParas();
+            $scope.model = paras;
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if (!resp.success) {
+                        alertService.showAlert("获取信息失败，请稍后再试。" + resp.message);
+                        $ionicHistory.goBack();
+                    } else {
+                        var lst = resp.list;
+                        if (!lst || !lst.length) {
+                            alertService.showAlert("没有相关数据");
+                            $ionicHistory.goBack();
+                        }
+                        $scope.list = lst;
+                    }
+                }
+            });
+        }
+        InitInfo();
 
     })
     

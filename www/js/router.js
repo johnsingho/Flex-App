@@ -769,6 +769,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/GBS/employeeDismiss/dismiss-list.html',
                 controller: 'EmployeeDismissCtrl'
             })
+            .state('dismissIntro', {
+                url: '/dismissIntro',
+                templateUrl: 'templates/GBS/employeeDismiss/dismissIntro-list.html',
+                controller: 'DismissIntroCtrl'
+            })        
             .state('dismissStatus', {
                 url: '/dismissStatus',
                 templateUrl: 'templates/GBS/employeeDismiss/dismissStatus.html',

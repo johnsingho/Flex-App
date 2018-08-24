@@ -1,1 +1,36 @@
 ﻿<!--离职手续状态-->
+<ion-view view-title="{{Language.GBSHR.DismissStatus}}" cache-view="false" hide-tabs>
+    <ion-content style="background-color:lavender">
+
+        <div class="list card">
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.CName" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width:30px;font-size:80%">{{Language.like.employee_ID}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.WorkdayNO" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.department}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="model.Organization" />
+            </div>
+            <!--=========================-->
+            <div class="divOff">
+                <span class="text-left">{{Language.GBSHR.DismissStep}}：</span>
+                <div class="divOff">
+                    <ol class="numOl">
+                        <li>
+                            事项一
+                        </li>
+                        <li ng-repeat="item in list">{{ item }}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
