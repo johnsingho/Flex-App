@@ -631,7 +631,7 @@ angular.module('evaluationApp.gbshrControllers', [])
     .controller('DismissStatusCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
                                                commonServices, CacheFactory, alertService)
     {
-        //离职手续状态        
+        //离职手续状态
         function InitInfo() {
             var url = commonServices.getUrl("EmployeeDismissService.ashx", "GetStatus");
             var paras = commonServices.getBaseParas();
@@ -642,17 +642,28 @@ angular.module('evaluationApp.gbshrControllers', [])
                         alertService.showAlert("获取信息失败，请稍后再试。" + resp.message);
                         $ionicHistory.goBack();
                     } else {
-                        var lst = resp.list;
-                        if (!lst || !lst.length) {
-                            alertService.showAlert("没有相关数据");
-                            $ionicHistory.goBack();
+                        var dismiss = resp.obj;
+                        if (!dismiss) {
+                            return;
                         }
-                        $scope.list = lst;
+                        $scope.list = dismiss.dismissSteps;
+                        var dismissTim = dismiss.dismissTime;
+                        if (dismissTim) {
+                            $scope.lastWorkingDay = dismissTim.lastWorkingDay || '';
+                            $scope.dismissBeginDay = dismissTim.dismissBeginDay || '';
+                        }                        
                     }
                 }
             });
         }
         InitInfo();
+
+        $scope.HasStatus = function () {
+            return $scope.list && $scope.list.length > 0;
+        }
+        $scope.GetStatusText = function (st) {
+            return st ? $rootScope.Language.GBSHR.Done : $rootScope.Language.GBSHR.Required;
+        }
 
     })
     

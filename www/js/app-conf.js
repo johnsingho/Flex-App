@@ -4,7 +4,7 @@
 
  //开关
  //是否本地开发调试
- var IsDebugMode = false; //false;
+ var IsDebugMode = true; //false;
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -338,7 +338,12 @@ var ZH_CN = {
         DismissIntro_SOUTH: '南厂',
         DismissIntro_NORTH: '北厂',
         DismissIntro_FOREIGN: '外籍',
-        DismissStep: '待办事项',
+        DismissLastDay: '最后工作日',
+        DismissBeginDay: '启动办理日期',
+        Status: '状态',
+        NoStatus: '只有正在办理离职的员工才有这些状态!',
+        Done: '办结',
+        Required: '待办',
     },
     xfcx:{
         title:"消费查询",
@@ -685,6 +690,12 @@ var ZH_US = {
         DismissIntro_SOUTH: 'South Campus',
         DismissIntro_NORTH: 'North Campus',
         DismissIntro_FOREIGN: 'Foreigner',
+        DismissLastDay: 'Last working day',
+        DismissBeginDay: 'Dismiss begin day',
+        Status: 'Status',
+        NoStatus: 'Only dismissing employee has this status',
+        Done: 'Done',
+        Required: 'Required',
     },
     xfcx:{
         title:" Consume Inquiry ",
