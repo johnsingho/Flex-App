@@ -32,24 +32,16 @@
     "hash": "ff60229f915eaa59a03ff99f4c02e139"
   },
   {
-    "file": "hongbao.html",
-    "hash": "207a82ffd888b3ee9373f41aa80a2712"
-  },
-  {
-    "file": "hongbaoChoujiang.html",
-    "hash": "38aaa27f3e5344b94939aca92abc27c7"
-  },
-  {
     "file": "img/2018.png",
     "hash": "0ccfa0e0195d233af24591c25f2227fd"
   },
   {
     "file": "img/asd23.png",
-    "hash": "9d1e299ae25d33051fad7ca8f0b375cc"
+    "hash": "ead7ac4a4170d9e2ca64b68a2fa7b80a"
   },
   {
     "file": "img/B15Like.jpg",
-    "hash": "79302aa076ca0b7038ca71fd1d5c2a46"
+    "hash": "c1fc6be67aa9589f66f618cdaf23564c"
   },
   {
     "file": "img/B15Phone.jpg",
@@ -57,7 +49,7 @@
   },
   {
     "file": "img/B15Phone2.jpg",
-    "hash": "2e8a9138b2bdb631d5d8f014a619bd2c"
+    "hash": "48c73dc51fc1824e482f51005ce26610"
   },
   {
     "file": "img/back_pressed.png",
@@ -161,7 +153,7 @@
   },
   {
     "file": "img/CJBJ.jpg",
-    "hash": "9cab88b3ea5f55138edea7d54bc2dc98"
+    "hash": "0993d0c5dd1f11e50f23a6e67cc51108"
   },
   {
     "file": "img/close_1.png",
@@ -197,15 +189,15 @@
   },
   {
     "file": "img/goldIdear.png",
-    "hash": "8015cb0e8565002f391f8d2d70ab746b"
+    "hash": "af81d010daddb3324c4319f1190f4edb"
   },
   {
     "file": "img/goodJob.png",
-    "hash": "f52caaf2cbac5752fd47510ce6e5e794"
+    "hash": "61b8542ef7e4115538da75f752916348"
   },
   {
     "file": "img/gounian3.jpg",
-    "hash": "1f564d28c5263fb6a83f5a838f663303"
+    "hash": "1e34dcdabd63c86d905673324fbe65cb"
   },
   {
     "file": "img/help.jpg",
@@ -213,7 +205,7 @@
   },
   {
     "file": "img/inbuding.jpg",
-    "hash": "a252596121072ed9a19e7046fda1e2e6"
+    "hash": "8e6f38c0bce7ea438def7f904831652c"
   },
   {
     "file": "img/jiangzhang.png",
@@ -224,8 +216,8 @@
     "hash": "f05ba55b7a75853b162d1df4b826e9fa"
   },
   {
-    "file": "img/nvshenjie.jpg",
-    "hash": "d314867a24fac067e5d6486cd7dbf5af"
+    "file": "img/mygood.png",
+    "hash": "1134590754850e7b5e310e5cd699500c"
   },
   {
     "file": "img/other/diversity.jpg",
@@ -241,11 +233,11 @@
   },
   {
     "file": "img/redbeg.png",
-    "hash": "9d1e299ae25d33051fad7ca8f0b375cc"
+    "hash": "ead7ac4a4170d9e2ca64b68a2fa7b80a"
   },
   {
     "file": "img/rexian.jpg",
-    "hash": "e8cfbf1883762eaa3565bbcaf5799bff"
+    "hash": "b91e3c2b5178f8d0099bd758312307c3"
   },
   {
     "file": "img/ShareCar/chengke.jpg",
@@ -257,11 +249,11 @@
   },
   {
     "file": "img/shouyu.png",
-    "hash": "f61d2a0c22ca84f339065563230d5e58"
+    "hash": "28183f39bb936c19eed6b05143755232"
   },
   {
     "file": "img/siginbg1.jpg",
-    "hash": "dadebb8e6001a1a8ec32b15569dee6b4"
+    "hash": "a194348456c28b23cb5290f32f89127f"
   },
   {
     "file": "img/sms.jpg",
@@ -281,7 +273,7 @@
   },
   {
     "file": "js/app-conf.js",
-    "hash": "9abb388d86106bed2abe15d6abecb94f"
+    "hash": "61dc170a95fc8bb0d2ebf2a63ce58214"
   },
   {
     "file": "js/app.js",
@@ -301,19 +293,19 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "6a73ad3c3e38f1a81800e78c35b91b81"
+    "hash": "a618c84410481b8eb32f76ccdea1904f"
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "55c33d87b66398858609d40b92facd4d"
+    "hash": "c90c7986259d4e27e38fc353354cc4e1"
   },
   {
     "file": "js/controller/gbshrControllers.js",
-    "hash": "59733ea5d8c5c811df7db44ab834229c"
+    "hash": "83d34e9c0ac1ed2cf6be8421b9ecd572"
   },
   {
     "file": "js/controller/pointsControllers.js",
-    "hash": "bb4f56e40428f688399932894658610b"
+    "hash": "39999c4961a01a201b227b97e1e468eb"
   },
   {
     "file": "js/controller/sharCarController.js",
@@ -437,7 +429,7 @@
   },
   {
     "file": "js/router.js",
-    "hash": "ac9483341f95bcf3ea947040365b83f2"
+    "hash": "ea8dc48a2f078f0201b6a7502164dbc2"
   },
   {
     "file": "js/service/appServices.js",
@@ -469,7 +461,7 @@
   },
   {
     "file": "js/util.js",
-    "hash": "1580149403933c02532c59cd1bcc0190"
+    "hash": "9afb2a4ed74cc6c330c58c91b685cbc6"
   },
   {
     "file": "lib/angular-animate/.bower.json",
@@ -1005,7 +997,7 @@
   },
   {
     "file": "templates/admin/dorm/dormMap.html",
-    "hash": "117158a392572e49870f188d68efc6ff"
+    "hash": "937f8b4fff440c54e623ea4c6a4c6a13"
   },
   {
     "file": "templates/admin/dorm/dormNotice-detail.html",
@@ -1073,7 +1065,7 @@
   },
   {
     "file": "templates/askAndAnswer/askAndAnswerDetail.html",
-    "hash": "f3269cb85a1450bb5c62626dfe7c649e"
+    "hash": "8caa46ebe493188c2c1a2049b722f038"
   },
   {
     "file": "templates/askAndAnswer/askAndAnswerList.html",
@@ -1125,11 +1117,11 @@
   },
   {
     "file": "templates/carGps/tab-carBusTime.html",
-    "hash": "865f919b62fe76819b644322c184d7c4"
+    "hash": "40d92d7cc4fe2850f861d8e47e86491e"
   },
   {
     "file": "templates/carGps/tab-carList.html",
-    "hash": "804cb112c7dfbc79808bc49a84ebbaeb"
+    "hash": "729c24f8e036830f6b485eba0f8b4472"
   },
   {
     "file": "templates/carGps/tab-map.html",
@@ -1188,6 +1180,18 @@
     "hash": "1a606e7017d5f34423a9fc2369242ea3"
   },
   {
+    "file": "templates/comm/hongbao.html",
+    "hash": "cef98144a8a59e2ce5548e2dfcbd093e"
+  },
+  {
+    "file": "templates/comm/hongbaoChoujiang.html",
+    "hash": "48bd30d127d25cafbf3871b741ef0361"
+  },
+  {
+    "file": "templates/comm/msg_dlg.html",
+    "hash": "2da5ef9ef34a3e175c11f578f310d0b1"
+  },
+  {
     "file": "templates/cser/cser-Date.html",
     "hash": "9926aa2396d65ca867104e1fc2fdeb5c"
   },
@@ -1205,11 +1209,11 @@
   },
   {
     "file": "templates/ehs/activityEHS.html",
-    "hash": "fa6d8c310579d3d6da3c3e4ae65007b8"
+    "hash": "58b82d586501b32d11323d28854b3d91"
   },
   {
     "file": "templates/GBS/basicGuide.html",
-    "hash": "a1cdf43aa70a0b7097a4016bb760b8af"
+    "hash": "d654da2c9f9c09fa9f66012e0ecdd925"
   },
   {
     "file": "templates/GBS/certificate/certificate-list.html",
@@ -1217,11 +1221,11 @@
   },
   {
     "file": "templates/GBS/certificate/certificate-submit.html",
-    "hash": "5600c3cdb82e2125e33e8408397561e1"
+    "hash": "a4395c3d6bc9a71d8807f944f6c79169"
   },
   {
     "file": "templates/GBS/certificate/reissueWorkingCard.html",
-    "hash": "720a553edb52f812f6119178f42015b6"
+    "hash": "8a009ae62c8d62a398a92f99c7174f95"
   },
   {
     "file": "templates/GBS/certificate/visaApply.html",
@@ -1229,23 +1233,27 @@
   },
   {
     "file": "templates/GBS/employeeDismiss/dismiss-list.html",
-    "hash": "76ccfdc077130b2b2cc10a6abc87e1fd"
+    "hash": "c7038352785bda8b74d9fb65b245aab9"
+  },
+  {
+    "file": "templates/GBS/employeeDismiss/dismissIntro-list.html",
+    "hash": "37df8d5b46b5affccd3561205b67aad7"
   },
   {
     "file": "templates/GBS/employeeDismiss/dismissStatus.html",
-    "hash": "44aef38cbf12121c67d4fa413289d257"
+    "hash": "4d9edb4cb1e00ad796a4e84d5fdf836e"
   },
   {
     "file": "templates/GBS/gbs-list.html",
-    "hash": "6f70ca997c1ec84eb3d38e5cb9db4f7b"
+    "hash": "8ee4c4980ba84d1898be4aa08cfdf4ad"
   },
   {
     "file": "templates/generalNotice/generalNoticeDetial.html",
-    "hash": "58bea516829d915c16b652e21e22473e"
+    "hash": "ca854030cba1beb765735dcaa2e174d1"
   },
   {
     "file": "templates/generalNotice/generalNoticeList.html",
-    "hash": "0b9fc70ed84d0ce235e29caadb93597c"
+    "hash": "cc467f02f8f2f0e5c78aa67e76da22e1"
   },
   {
     "file": "templates/goldIdea/tab-goldIdea.html",
@@ -1289,7 +1297,7 @@
   },
   {
     "file": "templates/hotPhone/hotPhoneDetails.html",
-    "hash": "1e3b3ec67a9c12efe9a2f814c8d2d004"
+    "hash": "de7bc3d1916696ce656b23e85fa8da27"
   },
   {
     "file": "templates/hotPhone/tab-B15hotPhone.html",
@@ -1333,7 +1341,7 @@
   },
   {
     "file": "templates/mealOrder/mealProtocolHtml.html",
-    "hash": "2d43fe7805011aa444099264c05b8050"
+    "hash": "d5ceeb43c83db43c9c6e5becb0e3b088"
   },
   {
     "file": "templates/mealOrder/tab-mealLinkMan.html",
@@ -1401,15 +1409,19 @@
   },
   {
     "file": "templates/research/research-list.html",
-    "hash": "d15eac30214ca9b3bc5055594f2b1668"
+    "hash": "bc144ec17dcbcf642193ee240f4e4276"
   },
   {
     "file": "templates/research/researchHtml.html",
     "hash": "91e16685a0127e73f0e1ed1b5e71a068"
   },
   {
+    "file": "templates/research/researchTrainer.html",
+    "hash": "6bcb71c16a877c1d55a25fad8ce4c78e"
+  },
+  {
     "file": "templates/shareCar/protocolHtml.html",
-    "hash": "021cc6a60cc252a8c3ec3742978bfc7a"
+    "hash": "bfb45187a868a157dc1d7fddccff4fb6"
   },
   {
     "file": "templates/shareCar/shareCarDetail.html",
@@ -1440,20 +1452,12 @@
     "hash": "52a8b5c99edd0542a471563d1b5a8c2f"
   },
   {
-    "file": "templates/tab-homecopy.html",
-    "hash": "880e3d34a6bcd6fe2f455762a20cc45d"
-  },
-  {
     "file": "templates/tab-kqjl.html",
     "hash": "73dd23ed175848ae665601b12563abfe"
   },
   {
     "file": "templates/tab-login.html",
     "hash": "0a43df92665e0c68bf73af90e4ac5f76"
-  },
-  {
-    "file": "templates/tab-signin - Copy.html",
-    "hash": "8dbbc81c431e7b955c7559b2e3b7374e"
   },
   {
     "file": "templates/tab-signin.html",

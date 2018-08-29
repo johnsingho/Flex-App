@@ -46,7 +46,7 @@
             font-size: 20px;
             font-family: "微软雅黑";            
         }
-        .text {
+        .textContext {
             text-align: center;
             font-size: 16px;
             font-family: "微软雅黑";
@@ -99,7 +99,6 @@
     <script src="../../js/jquery-2.2.2.min.js"></script>
     <script>
     $(document).ready(function(){
-
 	    $(".red").click(function(){
 	        CloseThis()
 	    });
@@ -125,7 +124,7 @@
     </div>
     <div class="windows">
         <div class="textTitle"><span style="font-weight: 600;color: hotpink;">{{msgPopupPara.msgTitle}}</span></div>
-        <div class="text">{{msgPopupPara.msgContext}}</div>
+        <div class="textContext">{{msgPopupPara.msgContext}}</div>
         <div class="close"><img src="../../img/close.png"/></div>
     </div>
 </body>

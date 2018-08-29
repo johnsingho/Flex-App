@@ -4,7 +4,7 @@
 
  //开关
  //是否本地开发调试
- var IsDebugMode = true; //false;
+ var IsDebugMode = false; //false;
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -839,7 +839,7 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2018-08-01",
+    LAST_PUBLISH_DATE: "2018-08-29",
     //keys
     KEY_DORM_NOTICE_ID: "KEY_DORM_NOTICE_ID",
     KEY_ASK_AND_ANS_ID: "KEY_ASK_AND_ANS_ID",
