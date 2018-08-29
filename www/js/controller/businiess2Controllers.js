@@ -2,8 +2,14 @@
  * Created by dmneeoll on 2017-03-03.
  */
 angular.module('evaluationApp.businiess2Controllers', [])
-    .controller('ResearchCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService,externalLinksService){
+    .controller('ResearchCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices,
+                                        CacheFactory, alertService,
+                                        externalLinksService, actionVisitServices)
+    {
         var params=commonServices.getBaseParas();
+        $scope.canUseAction = function (action) {
+            return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+        };
 
         function InitInfo(){
             var url=commonServices.getUrl("ResearchService.ashx","GetResearchList");
@@ -83,6 +89,16 @@ angular.module('evaluationApp.businiess2Controllers', [])
                 alertService.showAlert(ex.message);
             }
         };
+
+        $scope.openSpecial = function (action) {
+            switch (action) {
+                case '内训师2018':
+                    $state.go('researchTrainer');
+                    break;
+                default: break;
+            }
+        };
+
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
                 disableAnimate: true,
@@ -191,7 +207,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
                             $rootScope.money='红包金额:'+data.data+'元';
                             $rootScope.rebagPopup=$ionicPopup.show({
                                 cssClass:'er-popup',
-                                templateUrl: 'hongbao.html',
+                                templateUrl: '../../templates/comm/hongbao.html',
                                 scope: $rootScope
                             });
                             $rootScope.rebagPopup.then(function(res) {

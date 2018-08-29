@@ -1200,7 +1200,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                                 $rootScope.money = '红包金额:' + data.data + '元';
                                 $rootScope.rebagPopup = $ionicPopup.show({
                                     cssClass: 'er-popup',
-                                    templateUrl: 'hongbao.html',
+                                    templateUrl: '../../templates/comm/hongbao.html',
                                     scope: $rootScope
                                 });
                                 $rootScope.rebagPopup.then(function (res) {
@@ -1234,7 +1234,135 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             CacheFactory.save('noticeID', noticeID);
             $state.go('noticeHtml');
         }
-    })    
+    })
+    .controller('ResearchTrainerCtrl', function ($scope, $rootScope, $ionicPopup,
+                    CacheFactory, alertService, $state, $ionicHistory, commonServices, $location,
+                    duplicateSubmitServices)
+    {
+        //2018-08-27 内训师临时项目
+
+        var url = commonServices.getUrl("EHSActService.ashx", "GetSingleActWithDetail");
+        var actID = 'bffc3900-413d-44af-95ab-cf05b8d1c9d0';
+        var params = {
+            ActID: actID,
+            SubmitGuid: duplicateSubmitServices.genGUID()
+        };
+        commonServices.submit(params, url).then(function (resp) {
+            if (!resp) {
+                alertService.showAlert("该活动还没有题目");
+                $state.transitionTo('researchList');
+                return;
+            }
+            var obj = resp.obj;
+            $scope.researchDetailList = obj.details;
+            $scope.researchTitle = obj.act.ActName;
+            $scope.imgUrl = obj.act.ImageUrl;
+            $scope.htmlConent = obj.act.HtmlConent;
+        });
+        function CalcFullScore(items) {
+            var fullScore = 0;
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                for (var j = 0; j < item.Items.length; j++) {
+                    fullScore += item.Items[j].ItemScore;
+                }
+            }
+            return fullScore;
+        }
+
+        $scope.isSumbiting = false;
+        $scope.Submit = function () {
+            if ($scope.isSumbiting) { return; }
+            $scope.isSumbiting = true;
+
+            var SubmitList = [];
+            var sumScore = 0;
+            var nDoItem = 0;
+            var fullScore = CalcFullScore($scope.researchDetailList);
+
+            for (var i = 0; i < $scope.researchDetailList.length; i++) {
+                var item = $scope.researchDetailList[i];
+                var qChecks = $("input[name='Item" + item.Sort + "'" + "]:checked");
+                if (qChecks.length > 0) {
+                    nDoItem++;
+                }
+                for (var j = 0; j < qChecks.length; j++) {
+                    var selVaule = $(qChecks[j]).val();
+                    if (typeof (selVaule) == 'undefined') {
+                        continue;
+                    }
+                    var sScore = selVaule.split("^")[1];
+                    sumScore += parseInt(sScore);
+                    SubmitList.push({ Item: item.Sort, ItemResult: selVaule });
+                }
+            }
+                        
+            if (nDoItem != $scope.researchDetailList.length) {
+                alertService.showAlert("还有未选择的项目，请选择完成后再提交");
+                $scope.isSumbiting = false;
+                return;
+            }
+            else {
+                var scoreRate = fullScore > 0 ? (sumScore / fullScore) : 0;
+                if (scoreRate >= 0.83) {
+                    /*10/12*/
+                    sTitle = '大神级';
+                    sContext = '恭喜你，作为培训师的绝对潜力股，你有希望成为学员崇拜的大神级老师，还犹豫什么，赶快报名成为一名兼职内训师吧，否则抱憾终生啊！';
+                } else if (scoreRate >= 0.5) {
+                    /*6/12*/
+                    sTitle = '黑马级';
+                    sContext = '恭喜你，作为培训界的扛把子，你的潜力爆表，明明可以靠颜吃饭，却偏偏靠实力吸粉，说的就是你，还犹豫什么，赶快参加TTT培训，成为一名真正的内训师吧！';
+                } else {
+                    sTitle = '宝马级';
+                    sContext = '目前的你如果成为培训师也许还需要一点点努力，可别小看了自己哦，抓住机会，努力学习，一步一步成为最好的自己！';
+                }
+
+                $rootScope.msgPopupPara = {
+                    msgTitle: sTitle,
+                    msgContext: sContext,
+                    msgPic: '../../img/mygood.png',
+                };
+                $rootScope.msgPopup = $ionicPopup.show({
+                    cssClass: 'er-popup',
+                    templateUrl: '../../templates/comm/msg_dlg.html',
+                    scope: $rootScope
+                });
+                $rootScope.msgPopup.then(function (res) {
+                    params.WorkdayNo = $rootScope.accessEmployee.WorkdayNO;
+                    params.ActID = actID;
+                    params.SumScore = sumScore;
+                    //params.SubmitResult = angular.toJson(SubmitList);
+                    DoChouJian();
+                });
+            }
+        };
+
+        function DoChouJian() {
+            var url = commonServices.getUrl("ChoujiangServiceNew.ashx", "Choujiang_Game");            
+            try {
+                commonServices.submit(params, url).then(function (data) {
+                    if (data.success) {
+                        $rootScope.money = '' + data.data;
+                        $rootScope.rebagPopup = $ionicPopup.show({
+                            cssClass: 'my-custom-popup',
+                            templateUrl: '../../templates/comm/hongbaoChoujiang.html',
+                            scope: $rootScope
+                        });
+                        $rootScope.rebagPopup.then(function (res) {
+                        });
+                    }
+                    else {
+                        alertService.showAlert('提示', data.message);
+                    }
+                });
+            }
+            catch (ex) {
+            }
+            finally {
+                $scope.isSumbiting = false;
+            }
+        }
+    })
     .controller('ActivityHtmlCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,$location,commonServices) {
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
@@ -1781,7 +1909,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                         $rootScope.money=''+response.data;
                         $rootScope.rebagPopup=$ionicPopup.show({
                             cssClass:'my-custom-popup',
-                            templateUrl: 'hongbaoChoujiang.html',
+                            templateUrl: '../../templates/comm/hongbaoChoujiang.html',
                             scope: $rootScope
                         });
                         $rootScope.rebagPopup.then(function(res) {
@@ -1826,36 +1954,27 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             Employee_ID:'',
             CName:''
         };
-
-
-
-        $scope.isSumbiting=false;
+        
+        $scope.isSumbiting = false;
 
         $scope.Submit=function() {
-
             if($scope.userInput.Employee_ID.length==0) return;
             if($scope.userInput.CName.length==0) return;
             $scope.isSumbiting=true;
 
             var url=commonServices.getUrl("ChoujiangService.ashx","SubmitName");
-
             commonServices.submit($scope.userInput,url).then(function(data){
                 alertService.showAlert(data.message);
 
             });
         }
 
-
-
     })
-    .controller('ChoujiangGameCtrl', function($scope,$rootScope,CacheFactory,commonServices,$state,$ionicHistory,$interval,$ionicPopup,alertService,noticeService) {
-
+    .controller('ChoujiangGameCtrl', function ($scope, $rootScope, CacheFactory, commonServices, $state, $ionicHistory, $interval, $ionicPopup, alertService, noticeService)
+    {
         $scope.userInput = {
             Employee_ID:''
-
         };
-
-
 
         $scope.isSumbiting=false;
 
@@ -1865,10 +1984,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 
             $scope.isSumbiting=true;
 
-
-
             var url=commonServices.getUrl("ChoujiangService.ashx","Choujiang_Game");
-
             try{
                 commonServices.submit($scope.userInput,url).then(function(data){
                     if (data.success) {
@@ -1876,7 +1992,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                         $rootScope.money=''+data.data;
                         $rootScope.rebagPopup=$ionicPopup.show({
                             cssClass:'my-custom-popup',
-                            templateUrl: 'hongbaoChoujiang.html',
+                            templateUrl: '../../templates/comm/hongbaoChoujiang.html',
                             scope: $rootScope
                         });
                         $rootScope.rebagPopup.then(function(res) {
@@ -1897,10 +2013,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             catch(ex){
 
             }
-
-
         }
-
 
         $scope.showGuest=function(){
             if($scope.userInput.Employee_ID.length==0) return;
@@ -1933,10 +2046,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                                 }
                             }
                         ]
-                    });
-
-
-
+                    });                    
                 }
                 else {
 
@@ -1946,8 +2056,6 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 $scope.userInput.Employee_ID="";
 
             });
-
-
         }
 
         $scope.txtChange=function(){
@@ -1968,15 +2076,10 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                     });
                 }
                 catch(ex){
-
                 }
-
-
 
             }
         }
-
-
     })
 
     .controller('PhotoCtrl', function($scope,$rootScope,$ionicSlideBoxDelegate ,$timeout,$state,$location,alertService, CacheFactory ,commonServices,externalLinksService) {

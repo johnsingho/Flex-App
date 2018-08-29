@@ -779,6 +779,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/GBS/employeeDismiss/dismissStatus.html',
                 controller: 'DismissStatusCtrl'
             })
+            .state('researchTrainer', {
+                url: '/researchTrainer',
+                templateUrl: 'templates/research/researchTrainer.html',
+                controller: 'ResearchTrainerCtrl'
+            })
 
         $urlRouterProvider.otherwise('signin');
 

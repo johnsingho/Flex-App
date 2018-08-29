@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="utf-8">
@@ -94,12 +94,21 @@
             display: none;
             z-index: 11;
         }
-        .text{
+        .textTitle{
             text-align: center;
-            font-size: 18px;
-            font-family: "微软雅黑";
             vertical-align:middle;
-            padding-top:60px;
+            font-size: 25px;
+            text-align: center;
+            font-family: "微软雅黑";
+            color:#FFCC00;
+            padding-top:35px;
+        }
+       .textContext{
+            text-align: center;
+            font-size: 22px;
+            font-family: "微软雅黑";
+            padding-top:25px;
+            color:#ffffff;
         }
         .close{
             width: 30px;
@@ -143,7 +152,7 @@
             display: none;
         }
     </style>
-<script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
+    <script src="../../js/jquery-2.2.2.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -175,11 +184,11 @@ $(document).ready(function(){
 <body>
 <div class="opacity"></div>
 <div class="red">
-    <img src="img/redbeg.png">
+    <img src="../../img/redbeg.png">
 </div>
 <div class="windows" style="font-size: 30px">
-    <div class="text" style="font-size: 25px;text-align: center;color:#FFCC00">恭喜中奖</div>
-    <div class="text" style="font-size: 30px;text-align: center;color:#ffffff">{{money}}</div>
+    <div class="textTitle" >恭喜中奖</div>
+    <div class="textContext" >{{money}}</div>
 	<div class="close"><img src="img/close.png"/></div>
 </div>
 
