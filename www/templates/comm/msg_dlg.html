@@ -4,6 +4,7 @@
     <title></title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <meta http-equiv="Cache-control" content="public">
     <style>
         * {
             margin: 0;
@@ -96,7 +97,7 @@
             display: none;
         }
     </style>
-    <script src="../../js/jquery-2.2.2.min.js"></script>
+    <!--<script src="js/jquery-2.2.2.min.js"></script>-->
     <script>
     $(document).ready(function(){
 	    $(".red").click(function(){
@@ -119,13 +120,12 @@
 <body>
     <div class="opacity"></div>
     <div class="red">
-        <!--<img src="../../img/mygood.png">-->
         <img ng-src="{{msgPopupPara.msgPic}}" alt="mygood.png">
     </div>
     <div class="windows">
-        <div class="textTitle"><span style="font-weight: 600;color: hotpink;">{{msgPopupPara.msgTitle}}</span></div>
+        <div class="textTitle"><span style="font-weight:800;color: hotpink;">{{msgPopupPara.msgTitle}}</span></div>
         <div class="textContext">{{msgPopupPara.msgContext}}</div>
-        <div class="close"><img src="../../img/close.png"/></div>
+        <div class="close"><img src="img/close.png"/></div>
     </div>
 </body>
 </html>

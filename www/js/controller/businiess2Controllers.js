@@ -207,7 +207,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
                             $rootScope.money='红包金额:'+data.data+'元';
                             $rootScope.rebagPopup=$ionicPopup.show({
                                 cssClass:'er-popup',
-                                templateUrl: '../../templates/comm/hongbao.html',
+                                templateUrl: 'templates/comm/hongbao.html',
                                 scope: $rootScope
                             });
                             $rootScope.rebagPopup.then(function(res) {

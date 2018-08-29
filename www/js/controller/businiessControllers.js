@@ -1200,7 +1200,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                                 $rootScope.money = '红包金额:' + data.data + '元';
                                 $rootScope.rebagPopup = $ionicPopup.show({
                                     cssClass: 'er-popup',
-                                    templateUrl: '../../templates/comm/hongbao.html',
+                                    templateUrl: 'templates/comm/hongbao.html',
                                     scope: $rootScope
                                 });
                                 $rootScope.rebagPopup.then(function (res) {
@@ -1320,11 +1320,11 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 $rootScope.msgPopupPara = {
                     msgTitle: sTitle,
                     msgContext: sContext,
-                    msgPic: '../../img/mygood.png',
+                    msgPic: 'img/mygood.png',
                 };
                 $rootScope.msgPopup = $ionicPopup.show({
                     cssClass: 'er-popup',
-                    templateUrl: '../../templates/comm/msg_dlg.html',
+                    templateUrl: 'templates/comm/msg_dlg.html',
                     scope: $rootScope
                 });
                 $rootScope.msgPopup.then(function (res) {
@@ -1345,7 +1345,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                         $rootScope.money = '' + data.data;
                         $rootScope.rebagPopup = $ionicPopup.show({
                             cssClass: 'my-custom-popup',
-                            templateUrl: '../../templates/comm/hongbaoChoujiang.html',
+                            templateUrl: 'templates/comm/hongbaoChoujiang.html',
                             scope: $rootScope
                         });
                         $rootScope.rebagPopup.then(function (res) {
@@ -1357,6 +1357,8 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 });
             }
             catch (ex) {
+                var msg = '通讯异常，请稍候再试<br>' + ex.message;
+                alertService.showAlert('提示', msg);
             }
             finally {
                 $scope.isSumbiting = false;
@@ -1909,7 +1911,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                         $rootScope.money=''+response.data;
                         $rootScope.rebagPopup=$ionicPopup.show({
                             cssClass:'my-custom-popup',
-                            templateUrl: '../../templates/comm/hongbaoChoujiang.html',
+                            templateUrl: 'templates/comm/hongbaoChoujiang.html',
                             scope: $rootScope
                         });
                         $rootScope.rebagPopup.then(function(res) {
@@ -1992,7 +1994,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                         $rootScope.money=''+data.data;
                         $rootScope.rebagPopup=$ionicPopup.show({
                             cssClass:'my-custom-popup',
-                            templateUrl: '../../templates/comm/hongbaoChoujiang.html',
+                            templateUrl: 'templates/comm/hongbaoChoujiang.html',
                             scope: $rootScope
                         });
                         $rootScope.rebagPopup.then(function(res) {

@@ -122,7 +122,7 @@ angular.module('evaluationApp.pointsControllers', [])
                         $rootScope.money='红包金额:'+response.data+'元';
                         $rootScope.rebagPopup=$ionicPopup.show({
                             cssClass:'er-popup',
-                            templateUrl: '../../templates/comm/hongbao.html',
+                            templateUrl: 'templates/comm/hongbao.html',
                             scope: $rootScope
                         });
                         $rootScope.rebagPopup.then(function(res) {
@@ -228,7 +228,7 @@ angular.module('evaluationApp.pointsControllers', [])
 //                        $rootScope.money=''+data.data;
 //                        $rootScope.rebagPopup=$ionicPopup.show({
 //                            cssClass:'my-custom-popup',
-//                            templateUrl: '../../templates/comm/hongbaoChoujiang.html',
+//                            templateUrl: 'templates/comm/hongbaoChoujiang.html',
 //                            scope: $rootScope
 //                        });
 //                        $rootScope.rebagPopup.then(function(res) {
