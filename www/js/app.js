@@ -76,25 +76,25 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router', 'evaluationApp
                 };
 
                 //检测更新
-                var serverAppVersion = "0.0.2";
-                commonServices.getVer().then(function (data) {
-                    var largeLoad = data;
-                    if (largeLoad == 'undefined') return;
-                    serverAppVersion = largeLoad.sVersion;
-                    cordova.getAppVersion.getVersionNumber().then(function (version) {
+                // var serverAppVersion = "0.0.2";
+                // commonServices.getVer().then(function (data) {
+                    // var largeLoad = data;
+                    // if (largeLoad == 'undefined') return;
+                    // serverAppVersion = largeLoad.sVersion;
+                    // cordova.getAppVersion.getVersionNumber().then(function (version) {
 
-                        //如果本地与服务端的APP版本不符合
-                        if (version != serverAppVersion) {
-                            if ($rootScope.isIOS) {
-                                if (serverAppVersion == '1.2.1') {
-                                    return;
-                                }
-                            }
+                        // //如果本地与服务端的APP版本不符合
+                        // if (version != serverAppVersion) {
+                            // if ($rootScope.isIOS) {
+                                // if (serverAppVersion == '1.2.1') {
+                                    // return;
+                                // }
+                            // }
 
-                            showUpdateConfirm(largeLoad);
-                        }
-                    });
-                });
+                            // showUpdateConfirm(largeLoad);
+                        // }
+                    // });
+                // });
 
                 document.addEventListener("menubutton", onHardwareMenuKeyDown, false);
             } catch (ex2) {
