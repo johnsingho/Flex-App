@@ -20,10 +20,10 @@
                     <div ng-if="checkItem.Type=='radio'">
                         <h4>
                             <label>
-                                <input id="Item{{detail.Sort}}_{{$index}}" type="radio"
+                                <input id="Item{{detail.Sort}}_{{$index}}" type="radio" class="option-input radio"
                                        name="Item{{detail.Sort}}"
                                        value="Item{{detail.Sort}}_{{$index}}^{{checkItem.ItemScore}}" />
-                                {{checkItem.ItemText}}
+                                <span>{{checkItem.ItemText}}&nbsp;&nbsp;&nbsp;&nbsp;</span>
                             </label>
                         </h4>
                     </div>
