@@ -33,15 +33,6 @@ angular.module('evaluationApp.businiess2Controllers', [])
           $state.go('researchHtml');
         };
     
-        $scope.openHuKou=function(){
-            try {
-                externalLinksService.openUr('http://cn.mikecrm.com/L6shCzq');
-            }
-            catch (ex) {
-                alertService.showAlert(ex.message);
-            }
-        };
-
         $scope.openGeneralNotice = function(isUrlHtml, id, html){
             if(isUrlHtml){
                 //打开外链
@@ -66,29 +57,26 @@ angular.module('evaluationApp.businiess2Controllers', [])
         //         alertService.showAlert(ex.message);
         //     }
         // };
-        $scope.openMECH=function(){
+        //$scope.openMECH=function(){
+        //    $scope.isNotMECH=$scope.accessEmployee.Organization.toUpperCase().indexOf('MECH')==-1;
 
-            $scope.isNotMECH=$scope.accessEmployee.Organization.toUpperCase().indexOf('MECH')==-1;
-
-            if($scope.isNotMECH)
-            {
-                alertService.showAlert("本项调查只开放给Mech员工");
-                return;
-            }
-
-            if($scope.accessEmployee.Organization.toUpperCase()=='MECH-PCBA')
-            {
-                alertService.showAlert("本项调查只开放给Mech（非PCBA）员工");
-                return;
-            }
-
-            try {
-                externalLinksService.openUr('https://www.wjx.top/jq/25582325.aspx');
-            }
-            catch (ex) {
-                alertService.showAlert(ex.message);
-            }
-        };
+        //    if($scope.isNotMECH)
+        //    {
+        //        alertService.showAlert("本项调查只开放给Mech员工");
+        //        return;
+        //    }
+        //    if($scope.accessEmployee.Organization.toUpperCase()=='MECH-PCBA')
+        //    {
+        //        alertService.showAlert("本项调查只开放给Mech（非PCBA）员工");
+        //        return;
+        //    }
+        //    try {
+        //        externalLinksService.openUr('https://www.wjx.top/jq/25582325.aspx');
+        //    }
+        //    catch (ex) {
+        //        alertService.showAlert(ex.message);
+        //    }
+        //};
 
         $scope.openSpecial = function (action) {
             switch (action) {
