@@ -45,7 +45,7 @@ var app = {
                         return;//返回
                     }
                     //有更新，立即更新，此处容易出错
-                    chcp.installUpdate(app.installationCallback);
+                    //chcp.installUpdate(app.installationCallback);
                 });
                 return;
             }
