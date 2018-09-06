@@ -2,9 +2,15 @@
  * 默认程序设置 会被写如localStorage
  */
 
- //开关
- //是否本地开发调试
- var IsDebugMode = false; //false;
+//开关
+//是否本地开发调试
+var IsDebugMode = false; //false;
+
+//是否显示详细升级信息
+var IsShowUpdateDetial = true; //false;
+
+//是否显示升级安装失败信息
+var IsShowUpdateInstalledErr = true;
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
