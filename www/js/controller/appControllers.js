@@ -166,31 +166,32 @@ angular.module('evaluationApp.appControllers', [])
             }
 
 
-            $scope.Scan=function(){
-                cordova.plugins.barcodeScanner.scan(
-                    function (result) {
-                        if (result.wasCancelled) {
-                            popup.loadMsg("返回按钮回到这个页面");
-                        }
-                        if(result.text.indexOf('http')>=0){
-                            externalLinksService.openUr(result.text);
-                        }
-                    },
-                    function (error) {
-                        alert("Scanning failed: " + error);
-                    },
-                    {
-                        preferFrontCamera: false, // iOS and Android
-                        showFlipCameraButton: true, // iOS and Android
-                        showTorchButton: true, // iOS and Android 显示开起手电筒的按钮
-                        torchOn: false, // Android, launch with the torch switched on (if available)  默认开启手电筒
-                        prompt: "请将二维码放在扫描框中", // Android 提示信息
-                        resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500 多久开始识别
-                        formats: "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-                        orientation: "portrait"// Android only (portrait|landscape), default unset so it rotates with the device 垂直还是水平
-                        // disableAnimations : true // iOS
-                    }
-                );
+            $scope.Scan = function () {
+                //johnsing 2018-09-07
+                //cordova.plugins.barcodeScanner.scan(
+                //    function (result) {
+                //        if (result.wasCancelled) {
+                //            popup.loadMsg("返回按钮回到这个页面");
+                //        }
+                //        if(result.text.indexOf('http')>=0){
+                //            externalLinksService.openUr(result.text);
+                //        }
+                //    },
+                //    function (error) {
+                //        alert("Scanning failed: " + error);
+                //    },
+                //    {
+                //        preferFrontCamera: false, // iOS and Android
+                //        showFlipCameraButton: true, // iOS and Android
+                //        showTorchButton: true, // iOS and Android 显示开起手电筒的按钮
+                //        torchOn: false, // Android, launch with the torch switched on (if available)  默认开启手电筒
+                //        prompt: "请将二维码放在扫描框中", // Android 提示信息
+                //        resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500 多久开始识别
+                //        formats: "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+                //        orientation: "portrait"// Android only (portrait|landscape), default unset so it rotates with the device 垂直还是水平
+                //        // disableAnimations : true // iOS
+                //    }
+                //);
             };
 
             commonServices.getHomeSlideImg(parameter).then(function(data) {
