@@ -134,11 +134,11 @@ angular.module('evaluationApp.router', [])
                 controller: 'HotPhoneCtrl'
             })
 
-            .state('38Activity', {
-                url: '/38activity',
-                templateUrl: 'templates/38/38activity.html',
-                controller: '38ActivityCtrl'
-            })
+            //.state('38Activity', {
+            //    url: '/38activity',
+            //    templateUrl: 'templates/38/38activity.html',
+            //    controller: '38ActivityCtrl'
+            //})
 
             .state('tabPoints', {
                 url: "/tabPoints",

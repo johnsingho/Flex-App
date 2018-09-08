@@ -45,7 +45,7 @@ var app = {
                         return;//返回
                     }
                     //有更新，立即更新，此处容易出错
-                    //chcp.installUpdate(app.installationCallback);
+                    chcp.installUpdate(app.installationCallback);
                 });
                 return;
             }
@@ -57,16 +57,15 @@ var app = {
         });
     },
     onUpdateInstalled:function(){
-        console.log('**UpdateInstalled ok!');
+        console.log('**Update Installed ok!');
         if (IsShowUpdateDetial) {
-            alert('**UpdateInstalled ok!');
+            alert('**Update Installed ok!');
         }
     },
     onUpdateFailed: function (eventData) {
         //更新失败
-        var error = eventData.details.error;
-        if (error) {
-            app.showError(error);
+        if (eventData.details && eventData.details.error) {
+            app.showError(eventData.details.error);
         }
     },
     installationCallback: function(error) {
