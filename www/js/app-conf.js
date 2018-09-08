@@ -7,7 +7,7 @@
 var IsDebugMode = false; //false;
 
 //是否显示详细升级信息
-var IsShowUpdateDetial = true; //false;
+var IsShowUpdateDetial = false; //false;
 
 //是否显示升级安装失败信息
 var IsShowUpdateInstalledErr = true;
