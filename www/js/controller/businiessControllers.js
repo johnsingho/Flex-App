@@ -303,10 +303,11 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             custService.getCust(params).then(function(data){
                 if(data.success)
                 {
-
                     $scope.custList=data.list;
-                    $scope.custCount=$scope.custList.length;
-                    $scope.oddfare=data[0].Oddfare;
+                    $scope.custCount = $scope.custList.length;
+                    if (data && data.length) {
+                        $scope.oddfare = data[0].Oddfare;
+                    }                    
                 }
                 else
                 {
