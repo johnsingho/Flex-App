@@ -9,7 +9,7 @@
   },
   {
     "file": "css/style.css",
-    "hash": "74adb5c3290acb9caf2c9c81e2f15f2e"
+    "hash": "047b8d3508be39d1b282b9a3968964e6"
   },
   {
     "file": "fonts/Slide-icons.dev.svg",
@@ -42,10 +42,6 @@
   {
     "file": "img/B15Like.jpg",
     "hash": "c1fc6be67aa9589f66f618cdaf23564c"
-  },
-  {
-    "file": "img/B15Phone.jpg",
-    "hash": "32fd61e08126e22cf1a807e07272901b"
   },
   {
     "file": "img/B15Phone2.jpg",
@@ -152,10 +148,6 @@
     "hash": "79a3268bfc86d76573576340df240918"
   },
   {
-    "file": "img/CJBJ.jpg",
-    "hash": "0993d0c5dd1f11e50f23a6e67cc51108"
-  },
-  {
     "file": "img/close_1.png",
     "hash": "461b2c4b7ea04109f261e99c55b9e676"
   },
@@ -194,10 +186,6 @@
   {
     "file": "img/goodJob.png",
     "hash": "61b8542ef7e4115538da75f752916348"
-  },
-  {
-    "file": "img/gounian3.jpg",
-    "hash": "1e34dcdabd63c86d905673324fbe65cb"
   },
   {
     "file": "img/help.jpg",
@@ -269,15 +257,15 @@
   },
   {
     "file": "index.html",
-    "hash": "71374fa6797560f7462fe526b3aaf126"
+    "hash": "e6b1a37c07f67d477ee1235c9865d337"
   },
   {
     "file": "js/app-conf.js",
-    "hash": "61dc170a95fc8bb0d2ebf2a63ce58214"
+    "hash": "d91803b331d73b0712f71fc66c024750"
   },
   {
     "file": "js/app.js",
-    "hash": "2cf08ca20df9d1a07f46b4eac47c284d"
+    "hash": "12d246f40ec26d95db16955a34334975"
   },
   {
     "file": "js/controller/adminControllers.js",
@@ -285,7 +273,7 @@
   },
   {
     "file": "js/controller/appControllers.js",
-    "hash": "f1bc2a26c55578a4d199e4ec92a13119"
+    "hash": "690df2879279b1c5d2115d3f69b57cc2"
   },
   {
     "file": "js/controller/B11WorkShopController.js",
@@ -293,11 +281,11 @@
   },
   {
     "file": "js/controller/businiess2Controllers.js",
-    "hash": "a618c84410481b8eb32f76ccdea1904f"
+    "hash": "9e76ab030a1738ce958ac42d77e48045"
   },
   {
     "file": "js/controller/businiessControllers.js",
-    "hash": "c90c7986259d4e27e38fc353354cc4e1"
+    "hash": "433aadb3a73816b7a85405e8db5e9d20"
   },
   {
     "file": "js/controller/gbshrControllers.js",
@@ -305,7 +293,7 @@
   },
   {
     "file": "js/controller/pointsControllers.js",
-    "hash": "39999c4961a01a201b227b97e1e468eb"
+    "hash": "7bc08c3b0b0247186a2f35b8c1790143"
   },
   {
     "file": "js/controller/sharCarController.js",
@@ -345,7 +333,7 @@
   },
   {
     "file": "js/index.js",
-    "hash": "b8c5e2632d603c02453d6b364a65054a"
+    "hash": "ef97146cc56b9b3bc896cf592ca3269d"
   },
   {
     "file": "js/jquery-2.2.2.min.js",
@@ -424,12 +412,8 @@
     "hash": "9c5d681f2b7331b3511f915b0f83cd4a"
   },
   {
-    "file": "js/linq.min.js",
-    "hash": "ea54188beaaa06f0ceaa38f65c273c87"
-  },
-  {
     "file": "js/router.js",
-    "hash": "ea8dc48a2f078f0201b6a7502164dbc2"
+    "hash": "5613184d02048e7455705fde165baec1"
   },
   {
     "file": "js/service/appServices.js",
@@ -652,12 +636,12 @@
     "hash": "041db285c8b8eef45239f8242400b873"
   },
   {
-    "file": "lib/Chart/Chart.js",
-    "hash": "5efc2341472b1693f580c512b46dfbef"
+    "file": "lib/Chart/Chart.min.js",
+    "hash": "e02de81495e042046f7203722cc20603"
   },
   {
     "file": "lib/ion-datetime-picker/ion-datetime-picker.min.css",
-    "hash": "e43a78d7ee14465267bb9670e011ec8f"
+    "hash": "4ea89a33255a5c7a6d1abb60ed55cfce"
   },
   {
     "file": "lib/ion-datetime-picker/ion-datetime-picker.min.js",
@@ -665,7 +649,7 @@
   },
   {
     "file": "lib/ionic/css/ionic.css",
-    "hash": "6bc96991958d6b84f4d165a17bbbaa52"
+    "hash": "d056702978129c3b643eaffe291aff95"
   },
   {
     "file": "lib/ionic/css/ionic.min.css",
@@ -936,10 +920,6 @@
     "hash": "38bcf699c7f8f7eb1c0a86429f8573d0"
   },
   {
-    "file": "templates/38/38activity.html",
-    "hash": "7840047260b1b217cba8a389392e2291"
-  },
-  {
     "file": "templates/404.html",
     "hash": "01158fea1dad8732e3e65a6147a14222"
   },
@@ -953,7 +933,7 @@
   },
   {
     "file": "templates/account/account_password.html",
-    "hash": "e38a4fbc040d57d4ab7df74085ebc395"
+    "hash": "43028d174a4caf25409e26e324716b2a"
   },
   {
     "file": "templates/account/account_rebindPhone.html",
@@ -965,7 +945,7 @@
   },
   {
     "file": "templates/account/myAccountMoney.html",
-    "hash": "a3a7fd5511ab6c7cac30e2830ec06649"
+    "hash": "d8f603f7af513492ec856a0f992ad4ce"
   },
   {
     "file": "templates/activity/activity-list.html",
@@ -1088,34 +1068,6 @@
     "hash": "3ec5123dc25ed7777f9f9f698186acfc"
   },
   {
-    "file": "templates/b11Workshop/agenda.html",
-    "hash": "e7811064b4997e82c3e03da4d52866f1"
-  },
-  {
-    "file": "templates/b11Workshop/contact.html",
-    "hash": "53bf41a01894985f0649b53bcdcc123b"
-  },
-  {
-    "file": "templates/b11Workshop/HomePage.html",
-    "hash": "32d9cf7296d996a20745ca848d44ff08"
-  },
-  {
-    "file": "templates/b11Workshop/hotel.html",
-    "hash": "f0d5f1a707194cc3333f3b14af300563"
-  },
-  {
-    "file": "templates/b11Workshop/transport.html",
-    "hash": "bce0a9e3c72ae744754c29a305365fc5"
-  },
-  {
-    "file": "templates/b11Workshop/volunteer.html",
-    "hash": "fcae1bb47308c08019cafa65829fe977"
-  },
-  {
-    "file": "templates/baiduMap/gps.html",
-    "hash": "f9df44d4361b9b3d0e7de99b886dfea1"
-  },
-  {
     "file": "templates/carGps/tab-carBusTime.html",
     "hash": "40d92d7cc4fe2850f861d8e47e86491e"
   },
@@ -1136,60 +1088,16 @@
     "hash": "feb680f3347f3bfbb2d35eaa9c133c4e"
   },
   {
-    "file": "templates/chartRoom/tab-chartRoom.html",
-    "hash": "ee9041f8d19e2d226b7edfa9d1301535"
-  },
-  {
-    "file": "templates/choujiang/choujiangInPutName.html",
-    "hash": "d263eda86c1d4daab01c200edf042381"
-  },
-  {
-    "file": "templates/choujiang/choujiangNew.html",
-    "hash": "1eb00ff0829d65933d57ab8693e9b02c"
-  },
-  {
-    "file": "templates/choujiang/tab-choujiang.html",
-    "hash": "3859c38bac47cec83c853d6424a4da50"
-  },
-  {
-    "file": "templates/choujiangForGame/choujiangGame.html",
-    "hash": "f646b26ad436df0e5e3265c897502a73"
-  },
-  {
-    "file": "templates/chunwan/chunwan-list.html",
-    "hash": "46fcdc17f0c584d7f33d192d5ef2a2dc"
-  },
-  {
-    "file": "templates/chunwan/chunwanjiangpinHtml.html",
-    "hash": "e35810aeefd90d5035185dbf612e6f4b"
-  },
-  {
-    "file": "templates/chunwan/chunwanjiemuHtml.html",
-    "hash": "ad3af07b9028d50f6c95664ad62cbc6b"
-  },
-  {
-    "file": "templates/chunwan/chunwanNameListHtml.html",
-    "hash": "6260accbdd611a537064c87b90e38c8c"
-  },
-  {
-    "file": "templates/chunwan/chunwanZJ.html",
-    "hash": "b55ed62a48a3724741c306007efa83e0"
-  },
-  {
-    "file": "templates/chunwan/chunwanZJName.html",
-    "hash": "1a606e7017d5f34423a9fc2369242ea3"
-  },
-  {
     "file": "templates/comm/hongbao.html",
-    "hash": "cef98144a8a59e2ce5548e2dfcbd093e"
+    "hash": "a056ef2331a2db11c444fc9a1f2beed0"
   },
   {
     "file": "templates/comm/hongbaoChoujiang.html",
-    "hash": "48bd30d127d25cafbf3871b741ef0361"
+    "hash": "9110885ed3bb5a2f3105fbb4ecff13c5"
   },
   {
     "file": "templates/comm/msg_dlg.html",
-    "hash": "2da5ef9ef34a3e175c11f578f310d0b1"
+    "hash": "d5824cc3992ad4e5f872c6d6ec2cae35"
   },
   {
     "file": "templates/cser/cser-Date.html",
@@ -1233,7 +1141,7 @@
   },
   {
     "file": "templates/GBS/employeeDismiss/dismiss-list.html",
-    "hash": "c7038352785bda8b74d9fb65b245aab9"
+    "hash": "5610a7d4e07f5d1e18d525b65d2b0b95"
   },
   {
     "file": "templates/GBS/employeeDismiss/dismissIntro-list.html",
@@ -1261,7 +1169,7 @@
   },
   {
     "file": "templates/goldIdea/tab-goldIdeaShow.html",
-    "hash": "79538e13cfc68793f15fe8e34d4c4e54"
+    "hash": "cd16427def11cc370ad96a71c2ffe9c0"
   },
   {
     "file": "templates/goldIdea/tab-myGoldIdea.html",
@@ -1328,18 +1236,6 @@
     "hash": "331bf18a1df98e406e44ea6c68dbb53c"
   },
   {
-    "file": "templates/lightPower.html",
-    "hash": "9e8296c2321ea8849a08adfa9aa1c4bf"
-  },
-  {
-    "file": "templates/luckyDrawGame/luckydog.html",
-    "hash": "b7d07f5dc4c082321d8a20a01a25f953"
-  },
-  {
-    "file": "templates/luckyDrawGame/lucyGame.html",
-    "hash": "9f05b9bc5e18c590ded2fe0198175398"
-  },
-  {
     "file": "templates/mealOrder/mealProtocolHtml.html",
     "hash": "d5ceeb43c83db43c9c6e5becb0e3b088"
   },
@@ -1380,12 +1276,8 @@
     "hash": "c243ad0a8251a8ea574bdac3b94672a8"
   },
   {
-    "file": "templates/Photo.html",
-    "hash": "55f9f603eeca47c9da14151a63f5dcfd"
-  },
-  {
     "file": "templates/points/tab-account.html",
-    "hash": "6a6b1f4e1a5a4385d98215cc6d05774d"
+    "hash": "adf796aa56298d648936d44c0bfe848a"
   },
   {
     "file": "templates/points/tab-points.html",
@@ -1409,7 +1301,7 @@
   },
   {
     "file": "templates/research/research-list.html",
-    "hash": "bc144ec17dcbcf642193ee240f4e4276"
+    "hash": "a625a84ea52e06a12d6c8ee031ce92f7"
   },
   {
     "file": "templates/research/researchHtml.html",
@@ -1417,7 +1309,7 @@
   },
   {
     "file": "templates/research/researchTrainer.html",
-    "hash": "6bcb71c16a877c1d55a25fad8ce4c78e"
+    "hash": "5336f308256f4778cced1d9b51211c63"
   },
   {
     "file": "templates/shareCar/protocolHtml.html",
@@ -1457,14 +1349,14 @@
   },
   {
     "file": "templates/tab-login.html",
-    "hash": "0a43df92665e0c68bf73af90e4ac5f76"
+    "hash": "9a8f1f1fc35b38400fa60bc50f7feb77"
   },
   {
     "file": "templates/tab-signin.html",
-    "hash": "f95f295d3b21abd346206c98dddc3ca6"
+    "hash": "53b59ef18d4cb14a50e98410f05834ac"
   },
   {
     "file": "templates/tabs.html",
-    "hash": "998c4d59fe604bfae557d90dbb25a2a7"
+    "hash": "172d332c20d3d20a8e66cf8e3d0e9f93"
   }
 ]

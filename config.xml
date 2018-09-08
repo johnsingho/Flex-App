@@ -13,9 +13,9 @@
         <config-file url="https://zhmobile.flextronics.com/EvaluationApp/www/chcp.json" />
     </chcp>
     <content src="index.html" />
-    <access origin="*" />
     <access launch-external="yes" origin="tel:*" />
     <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
     <allow-intent href="*" />
     <access origin="*" />
     <preference name="webviewbounce" value="false" />
