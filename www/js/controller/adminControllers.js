@@ -821,8 +821,22 @@ angular.module('evaluationApp.adminControllers', [])
             commonServices.submit(paras, url).then(function (resp) {
                 if (resp) {
                     if (!resp.success) {
+                        /* 不作强制检查
                         alertService.showAlert("报修失败："+resp.message);
                         $ionicHistory.goBack();
+                        */
+                        $scope.model.DormAddress = '';
+                        //来自TB_DormRepair_Type，这里写死
+                        $scope.deviceTypes = [
+                            { name: '空调' },
+                            { name: '热水器' },
+                            { name: '窗户' },
+                            { name: '房门' },
+                            { name: '厕所' },
+                            { name: '床' },
+                            { name: '其它' }
+                        ];
+                        $scope.canSubmit = true;
                     } else {
                         var checkInInfo = resp.obj;
                         $scope.model.DormAddress = checkInInfo.DormAddress;
@@ -849,7 +863,7 @@ angular.module('evaluationApp.adminControllers', [])
             sTemp = $.trim($scope.model.DormAddress);
             $scope.model.DormAddress=sTemp;
             if(isEmptyString(sTemp)){
-                alertService.showAlert("请提供你的宿舍地址!");
+                alertService.showAlert("请提供宿舍地址(例：北厂宿舍77栋A77房Z床)!");
                 $scope.isSumbiting = false;
                 return;     
             }
