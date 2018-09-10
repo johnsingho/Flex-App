@@ -628,7 +628,7 @@ angular.module('evaluationApp.adminControllers', [])
             yesNo.push({name:"否",value:false});
             $scope.yesNo=yesNo;
 
-            var url = commonServices.getUrl("DormManageService.ashx", "GetDormArea");
+            var url = commonServices.getUrl("DormManageService.ashx", "BeforeApplyDorm");
             commonServices.submit(paras, url).then(function (resp) {
                 if (resp) {
                     if(!resp.success){
@@ -636,6 +636,11 @@ angular.module('evaluationApp.adminControllers', [])
                         $ionicHistory.goBack();
                     }else{                        
                         $scope.dormAreas = resp.list; //ID,SiteID,Name
+                        var hasHousingAllowance = !!resp.data;
+                        if(hasHousingAllowance){
+                            $scope.yesNo = [{name:"是",value:true}];
+                            $scope.model.HasHousingAllowance = hasHousingAllowance;
+                        }
                         $scope.canSubmit=true;
                     }
                 }
@@ -673,6 +678,11 @@ angular.module('evaluationApp.adminControllers', [])
                 alertService.showAlert("是否正在享有住房补贴?");
                 $scope.isSumbiting = false;
                 return;     
+            }
+            if ($scope.model.HasHousingAllowance) {
+                alertService.showAlert("已享受住房津贴，不能申请宿舍!<br>请先到宿舍管理处申请取消津贴。");
+                $scope.isSumbiting = false;
+                return;
             }
             if(!$scope.model.RequireReason || !$scope.model.RequireReason.length){
                 alertService.showAlert("请填写入住理由!");
@@ -834,6 +844,7 @@ angular.module('evaluationApp.adminControllers', [])
                             { name: '房门' },
                             { name: '厕所' },
                             { name: '床' },
+                            { name: '风扇' },
                             { name: '其它' }
                         ];
                         $scope.canSubmit = true;
