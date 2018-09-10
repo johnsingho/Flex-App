@@ -845,7 +845,7 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2018-08-29",
+    LAST_PUBLISH_DATE: "2018-09-08",
     //keys
     KEY_DORM_NOTICE_ID: "KEY_DORM_NOTICE_ID",
     KEY_ASK_AND_ANS_ID: "KEY_ASK_AND_ANS_ID",
