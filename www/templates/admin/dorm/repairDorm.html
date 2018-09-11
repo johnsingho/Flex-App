@@ -18,6 +18,11 @@
                 <input type="text" style="font-size:80%" placeholder="{{Language.shareCar.mobile}}" ng-model="model.MobileNo" />
             </div>
             <div class="item item-input">
+                <span class="input-label" style="width: 50px;font-size:80%">{{Language.dormManage.dormArea}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <select class="button" id="idDormArea" ng-options='t.ID as t.Name for t in dormAreas' ng-model="model.DormArea"></select>
+            </div>
+            <div class="item item-input">
                 <span class="input-label" style="width: 50px;font-size:80%">{{Language.dormManage.dormAddress}}</span>
                 <span class="input-label" style="width: 10px;color: red">*</span>
                 <input type="text" style="font-size:80%" ng-model="model.DormAddress" />

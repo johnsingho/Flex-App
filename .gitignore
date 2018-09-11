@@ -8,3 +8,5 @@ plugins/
 .vscode/
 .vs/
 /www/Web.config
+/jsconfig.json
+/typings/cordova-typings.d.ts

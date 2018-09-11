@@ -4,8 +4,8 @@
  */
 angular.module('evaluationApp.adminControllers', [])
     .controller('AdminCtrl', function ($scope, $rootScope, $state, $ionicHistory,$ionicPopup,
-        commonServices, CacheFactory, alertService, actionVisitServices, externalLinksService) {
-        //! temp for test
+        commonServices, CacheFactory, alertService, actionVisitServices, externalLinksService) 
+    {
         $scope.canUseAction = function (action) {
             return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
         };
@@ -762,7 +762,7 @@ angular.module('evaluationApp.adminControllers', [])
             commonServices.submit(paras, url).then(function (resp) {
                 if (resp) {
                     if(!resp.success){
-                        alertService.showAlert("获取宿舍公告失败!");
+                        alertService.showAlert("最近没有宿舍公告!");
                         $ionicHistory.goBack();
                     }else{                        
                         $scope.noticeList = resp.list;
@@ -816,6 +816,7 @@ angular.module('evaluationApp.adminControllers', [])
             CName: baseInfo.CName,
             WorkdayNO: baseInfo.WorkdayNO,
             MobileNo: baseInfo.MobileNo,
+            DormArea: null,
             DormAddress: null,
             RepairTime: moment().add(1,'h').minute(0).toDate(),
             DeviceType: null,
@@ -829,32 +830,27 @@ angular.module('evaluationApp.adminControllers', [])
                 Extra: "GetRepairType"
             };
             commonServices.submit(paras, url).then(function (resp) {
-                if (resp) {
+                if (resp && resp.obj) {
+                    var curCheckInfo = resp.obj;
                     if (!resp.success) {
                         /* 不作强制检查
                         alertService.showAlert("报修失败："+resp.message);
                         $ionicHistory.goBack();
                         */
-                        $scope.model.DormAddress = '';
-                        //来自TB_DormRepair_Type，这里写死
-                        $scope.deviceTypes = [
-                            { name: '空调' },
-                            { name: '热水器' },
-                            { name: '窗户' },
-                            { name: '房门' },
-                            { name: '厕所' },
-                            { name: '床' },
-                            { name: '风扇' },
-                            { name: '其它' }
-                        ];
+                        $scope.model.DormAddress = '';                        
                         $scope.canSubmit = true;
                     } else {
-                        var checkInInfo = resp.obj;
+                        var checkInInfo = curCheckInfo.CheckInfo;
+                        $scope.model.DormArea = checkInInfo.DormAreaID;
                         $scope.model.DormAddress = checkInInfo.DormAddress;
-                        var arr = JSON.parse(resp.data);
-                        $scope.deviceTypes = arr;
                         $scope.canSubmit=true;
                     }
+                    var arr = JSON.parse(resp.data);
+                    $scope.deviceTypes = arr;
+                    $scope.dormAreas = curCheckInfo.DormAreas;
+                }else{
+                    alertService.showAlert("获取报修信息失败，请稍候再试!");
+                    return;
                 }
             });
         }
@@ -871,12 +867,22 @@ angular.module('evaluationApp.adminControllers', [])
                 $scope.isSumbiting = false;
                 return;
             }
-            sTemp = $.trim($scope.model.DormAddress);
-            $scope.model.DormAddress=sTemp;
-            if(isEmptyString(sTemp)){
-                alertService.showAlert("请提供宿舍地址(例：北厂宿舍77栋A77房Z床)!");
+            if (!$scope.model.DormArea) {
+                alertService.showAlert("请选择宿舍区!");
                 $scope.isSumbiting = false;
                 return;     
+            }
+            sTemp = $.trim($scope.model.DormAddress);            
+            if(isEmptyString(sTemp)){
+                alertService.showAlert("请提供具体地址(例：北厂宿舍77栋A77房Z床)!");
+                $scope.isSumbiting = false;
+                return;
+            }else{
+                var sDormArea = $.trim($("#idDormArea option:selected").text());
+                if(0!=sTemp.indexOf(sDormArea)){
+                    sTemp = sDormArea + sTemp;
+                }
+                $scope.model.DormAddress=sTemp;
             }
             sTemp = $.trim($scope.model.RepairTime);
             if (isEmptyString(sTemp)) {
