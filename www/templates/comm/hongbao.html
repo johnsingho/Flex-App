@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <title></title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+ <meta http-equiv="Pragma" content="no-cache">
+ <meta http-equiv="Cache-control" content="no-cache">
+<title></title>
     <style type="text/css">
         *{
             margin:0;
@@ -61,6 +61,7 @@
             width: 300px;
             height: 345px;
             border-radius: 15px;
+            box-shadow: 1px 1px 20px #666;
             position: absolute;
             top:50%;
             left: 50%;
@@ -142,44 +143,48 @@
             display: none;
         }
     </style>
-    <script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
+    <script src="js/jquery-2.2.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
 
-
-
-            $(".red").fadeIn(5000);
+	$(".red").click(function(){
+		$(this).addClass("shake");
+		setTimeout(function(){
+			$(".red").removeClass("shake");
+			$(".windows").fadeIn();
+			$(".opacity").fadeIn();
+            var $body = angular.element(document.body);
+            var $rootScope = $body.scope().$root;
             setTimeout(function(){
-                var $body = angular.element(document.body);
-                var $rootScope = $body.scope().$root;
-                if($rootScope.dog=='congratulate.png'){
-                    setTimeout(function(){
-                        $(".red").fadeOut(3000);
-                        $rootScope.rebagPopup.close();
-                    },6000);
-                }else{
-                    setTimeout(function(){
-                        $(".red").fadeOut(3000);
-                        $rootScope.rebagPopup.close();
-                    },3000);
-                }
+                $(".windows").fadeOut();
+                $(".opacity").fadeOut();
+                $(".red").fadeOut();
+                $rootScope.rebagPopup.close();
+            },3000);
+		},2000);
+	});
+	$(".close").click(function(){
+//        $(this).parent().fadeOut();
+//        $(".opacity").fadeOut();
+        $(".windows").fadeOut();
+        $(".opacity").fadeOut();
+        $(".red").fadeOut();
+        var $body = angular.element(document.body);
+        var $rootScope = $body.scope().$root;
+        $rootScope.rebagPopup.close();
 
-            },2000);
-//            $(".red").click(function(){
-//
-//            });
-
-        });
-    </script>
+    })
+});
+</script>
 </head>
 <body>
 <div class="opacity"></div>
 <div class="red">
-    <img  src="img/luckyGame/{{dog}}">
+    <img src="img/asd23.png">
 </div>
 <div class="windows">
     <div class="text">{{money}}</div>
-    <!--<div class="close"><img src="img/close.png"/></div>-->
+	<!--<div class="close"><img src="img/close.png"/></div>-->
 </div>
 
 </body>

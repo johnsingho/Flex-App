@@ -13,45 +13,70 @@ var app = {
     // Usually you should subscribe on 'deviceready' event to know, when you can start calling cordova modules
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('chcp_updateInstalled', this.onUpdateInstalled, false);
+
+        document.addEventListener('chcp_updateLoadFailed', this.onUpdateFailed, false);
+        document.addEventListener('chcp_updateInstallFailed', this.onUpdateFailed, false);
+        document.addEventListener('chcp_assetsInstallationError', this.onUpdateFailed, false);
+        
 //        document.addEventListener('chcp_updateIsReadyToInstall', this.onUpdateReady, false);
     },
+    showError:function(error){
+        var sErr = 'Failed to update, error code:' + error.code;
+        sErr += '\n';
+        sErr += error.description;
+        console.log(sErr);
+        if (IsShowUpdateDetial) {
+            alert(sErr);
+        }
+    },
     onDeviceReady:function(){
-//        alert('deviceready');
         app.checkForUpdate();
     },
+    checkForUpdate: function () {
+        // 先检查有没有得更新
+        chcp.isUpdateAvailableForInstallation(function (error, data) {
+            if (error) {
+                //Nothing to install
+                app.showError(error);
+                chcp.fetchUpdate(function(error, data) {
+                    if (error) {
+                        app.showError(error);
+                        return;//返回
+                    }
+                    //有更新，立即更新，此处容易出错
+                    chcp.installUpdate(app.installationCallback);
+                });
+                return;
+            }
 
-    checkForUpdate: function() {
-        chcp.fetchUpdate(this.fetchUpdateCallback);
+            // update is in cache and can be installed,install it
+            console.log('Current version: ' + data.currentVersion);
+            console.log('About to install: ' + data.readyToInstallVersion);
+            chcp.installUpdate(app.installationCallback);
+        });
     },
-
-    fetchUpdateCallback: function(error, data) {
-        if (error) {
-//            alert('Failed to load the update with error code: ' + error.code);
-//            alert(error.description);
-        } else {
-//            alert('Update is loaded');
+    onUpdateInstalled:function(){
+        console.log('**Update Installed ok!');
+        if (IsShowUpdateDetial) {
+            alert('**Update Installed ok!');
         }
-        chcp.installUpdate(this.installationCallback);
     },
-
-    onUpdateReady: function(eventData) {
-        var error = eventData.details.error;
-        if (error) {
-//            alert('chcp_updateIsReadyToInstall: error'+error.description);
-            chcp.installUpdate(this.installationCallback);
-        } else {
-//            alert('chcp_updateIsReadyToInstall');
-            chcp.installUpdate(this.installationCallback);
+    onUpdateFailed: function (eventData) {
+        //更新失败
+        if (eventData.details && eventData.details.error) {
+            app.showError(eventData.details.error);
         }
     },
     installationCallback: function(error) {
-
         if (error) {
-//            alert('installationCallback: ' + error.description);
-            console.log(error.description);
-        } else {
-//            alert('Update installed!');
-
+            if (IsShowUpdateDetial || IsShowUpdateInstalledErr) {
+                var sErr = 'Failed to install update, error code:' + error.code;
+                sErr += '\n';
+                sErr += error.description;
+                console.log(sErr);
+                alert(sErr);
+            }
         }
     }
 };

@@ -134,11 +134,11 @@ angular.module('evaluationApp.router', [])
                 controller: 'HotPhoneCtrl'
             })
 
-            .state('38Activity', {
-                url: '/38activity',
-                templateUrl: 'templates/38/38activity.html',
-                controller: '38ActivityCtrl'
-            })
+            //.state('38Activity', {
+            //    url: '/38activity',
+            //    templateUrl: 'templates/38/38activity.html',
+            //    controller: '38ActivityCtrl'
+            //})
 
             .state('tabPoints', {
                 url: "/tabPoints",
@@ -764,7 +764,27 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/generalNotice/generalNoticeDetial.html',
                 controller: 'GeneralNoticeDetialCtrl'
             })
-            
+            .state('employeeDismiss', {
+                url: '/employeeDismiss',
+                templateUrl: 'templates/GBS/employeeDismiss/dismiss-list.html',
+                controller: 'EmployeeDismissCtrl'
+            })
+            .state('dismissIntro', {
+                url: '/dismissIntro',
+                templateUrl: 'templates/GBS/employeeDismiss/dismissIntro-list.html',
+                controller: 'DismissIntroCtrl'
+            })        
+            .state('dismissStatus', {
+                url: '/dismissStatus',
+                templateUrl: 'templates/GBS/employeeDismiss/dismissStatus.html',
+                controller: 'DismissStatusCtrl'
+            })
+            .state('researchTrainer', {
+                url: '/researchTrainer',
+                templateUrl: 'templates/research/researchTrainer.html',
+                controller: 'ResearchTrainerCtrl'
+            })
+
         $urlRouterProvider.otherwise('signin');
 
     }])

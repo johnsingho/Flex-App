@@ -2,9 +2,15 @@
  * 默认程序设置 会被写如localStorage
  */
 
- //开关
- //是否本地开发调试
- var IsDebugMode = false; //false;
+//开关
+//是否本地开发调试
+var IsDebugMode = false; //false;
+
+//是否显示详细升级信息
+var IsShowUpdateDetial = false; //false;
+
+//是否显示升级安装失败信息
+var IsShowUpdateInstalledErr = true;
 
 //新的测试页面控制，与 actionVisitServices, ESE_ACTION_UPDATE表配合使用
 //  $scope.canUseAction = function (action) {
@@ -331,7 +337,19 @@ var ZH_CN = {
         LTP:'LTP密码重置',
         basicGuide:'菜鸟手册',
         SocialInsurance:'社会保险',
-        HousingFund:'住房公积金信息',
+        HousingFund: '住房公积金信息',
+        EmployeeDismiss: '离职须知',
+        DismissIntro: '离职手续简介',
+        DismissStatus: '离职手续状态查询',
+        DismissIntro_SOUTH: '南厂',
+        DismissIntro_NORTH: '北厂',
+        DismissIntro_FOREIGN: '外籍',
+        DismissLastDay: '最后工作日',
+        DismissBeginDay: '启动办理日期',
+        Status: '状态',
+        NoStatus: '只有正在办理离职的员工才有这些状态!',
+        Done: '办结',
+        Required: '待办',
     },
     xfcx:{
         title:"消费查询",
@@ -671,7 +689,19 @@ var ZH_US = {
         LTP:'LTP Password Reset',
         basicGuide:'Basic Guide',
         SocialInsurance:'Social Insurance',
-        HousingFund:'Housing Fund',
+        HousingFund: 'Housing Fund',
+        EmployeeDismiss: 'Employee Dismission',
+        DismissIntro: 'Dismission Introduce',
+        DismissStatus: 'Dismission Status',
+        DismissIntro_SOUTH: 'South Campus',
+        DismissIntro_NORTH: 'North Campus',
+        DismissIntro_FOREIGN: 'Foreigner',
+        DismissLastDay: 'Last working day',
+        DismissBeginDay: 'Dismiss begin day',
+        Status: 'Status',
+        NoStatus: 'Only dismissing employee has this status',
+        Done: 'Done',
+        Required: 'Required',
     },
     xfcx:{
         title:" Consume Inquiry ",
@@ -815,7 +845,7 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2018-08-01",
+    LAST_PUBLISH_DATE: "2018-09-08",
     //keys
     KEY_DORM_NOTICE_ID: "KEY_DORM_NOTICE_ID",
     KEY_ASK_AND_ANS_ID: "KEY_ASK_AND_ANS_ID",

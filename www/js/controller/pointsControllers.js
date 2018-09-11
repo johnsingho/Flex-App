@@ -122,7 +122,7 @@ angular.module('evaluationApp.pointsControllers', [])
                         $rootScope.money='红包金额:'+response.data+'元';
                         $rootScope.rebagPopup=$ionicPopup.show({
                             cssClass:'er-popup',
-                            templateUrl: 'hongbao.html',
+                            templateUrl: 'templates/comm/hongbao.html',
                             scope: $rootScope
                         });
                         $rootScope.rebagPopup.then(function(res) {
@@ -150,111 +150,101 @@ angular.module('evaluationApp.pointsControllers', [])
         }
 
     })
-    .controller('38ActivityCtrl', function($scope ,commonServices,$rootScope,$window,$stateParams,$ionicSlideBoxDelegate,$ionicPopup, $state,$ionicHistory,CacheFactory, SettingFactory, alertService, pointsService,IonicService) {
-        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        if (!$scope.accessEmployee) {
-            alertService.showAlert('凭证过时，请重新登录');
-            $state.go('signin');
-        }
-//        alertService.showAlert('由于Flex+地球日活动开启，红包活动暂停至3月24号');
-        $scope.BgCSS="background:url(img/nvshenjie.jpg);background-repeat:round;background-size:cover";
-        $scope.showSlide=false;
-        $scope.showFirst=true;
+//    .controller('38ActivityCtrl', function($scope ,commonServices,$rootScope,$window,$stateParams,$ionicSlideBoxDelegate,$ionicPopup, $state,$ionicHistory,CacheFactory, SettingFactory, alertService, pointsService,IonicService) {
+//        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
+//        if (!$scope.accessEmployee) {
+//            alertService.showAlert('凭证过时，请重新登录');
+//            $state.go('signin');
+//        }
+////        alertService.showAlert('由于Flex+地球日活动开启，红包活动暂停至3月24号');
+//        $scope.BgCSS="background:url(img/nvshenjie.jpg);background-repeat:round;background-size:cover";
+//        $scope.showSlide=false;
+//        $scope.showFirst=true;
 
-        $scope.Start=function(){
+//        $scope.Start=function(){
 
-            $scope.showFirst=false;
-            $scope.showSlide=true;
-            $scope.BgCSS="";
-//            $ionicSlideBoxDelegate.next();
-            $ionicSlideBoxDelegate.$getByHandle("slideImg").update();
-        };
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-
-
-        $scope.evaluate_ID ='AEB99986-3E5D-4A2A-96C1-C3BA40F02609';
-        if(CacheFactory.get('evaluate_Name')=="做更好的自己 员工自我评估"){
-            $scope.evaluate_name = CacheFactory.get('evaluate_Name').split(' ')[1];
-        }
-        else {
-            $scope.evaluate_name = CacheFactory.get('evaluate_Name');
-        }
-
-        var parameter={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token,Evaluate_ID:$scope.evaluate_ID,Employee_ID:$scope.accessEmployee.WorkdayNO };
-        pointsService.getPointsRuls(parameter).then(function(data) {
-            if(data=="Token is TimeOut")
-            {
-                alertService.showAlert("登录失效，请重新登录");
-                $state.transitionTo('signin');
-            }
-            $scope.rules = data;
-        });
-
-        $scope.isShowSubmit=false;
-        $scope.showdescription=false;
-        //radio选择事件，记录并显示分数，记录选择的Item名，以便写入分数明细表
-        $scope.CheckChang=function(rule,sorce) {
-            rule.Points=sorce.ItemSorce;
-            rule.SelItem=sorce.Item;
-            rule.ItemName=sorce.ItemName;
-            if(rule.Points!=10)
-            {
-                alertService.showLoading("答案没选对呢");
-                return;
-            }
-            if(rule.Sort<$scope.rules.length){
-                $ionicSlideBoxDelegate.next();
-            }
-
-            if(rule.Sort==$scope.rules.length&&$rootScope.Power)
-            $scope.isShowSubmit=true;
-        };
-
-        $scope.Submit=function() {
-
-            $scope.isSumbiting=true;
+//            $scope.showFirst=false;
+//            $scope.showSlide=true;
+//            $scope.BgCSS="";
+////            $ionicSlideBoxDelegate.next();
+//            $ionicSlideBoxDelegate.$getByHandle("slideImg").update();
+//        };
+//        $scope.closePass=function(){
+//            $ionicHistory.nextViewOptions({
+//                disableAnimate: true,
+//                disableBack: true
+//            });
+//            $state.go('tab.home');
+//        }
 
 
+//        $scope.evaluate_ID ='AEB99986-3E5D-4A2A-96C1-C3BA40F02609';
+//        if(CacheFactory.get('evaluate_Name')=="做更好的自己 员工自我评估"){
+//            $scope.evaluate_name = CacheFactory.get('evaluate_Name').split(' ')[1];
+//        }
+//        else {
+//            $scope.evaluate_name = CacheFactory.get('evaluate_Name');
+//        }
 
-            var url=commonServices.getUrl("ChoujiangService.ashx","Choujiang_Game");
+//        var parameter={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token,Evaluate_ID:$scope.evaluate_ID,Employee_ID:$scope.accessEmployee.WorkdayNO };
+//        pointsService.getPointsRuls(parameter).then(function(data) {
+//            if(data=="Token is TimeOut")
+//            {
+//                alertService.showAlert("登录失效，请重新登录");
+//                $state.transitionTo('signin');
+//            }
+//            $scope.rules = data;
+//        });
 
-            try{
-                commonServices.submit(parameter,url).then(function(data){
-                    if (data.success) {
-                        $scope.isSumbiting=false;
-                        $rootScope.money=''+data.data;
-                        $rootScope.rebagPopup=$ionicPopup.show({
-                            cssClass:'my-custom-popup',
-                            templateUrl: 'hongbaoChoujiang.html',
-                            scope: $rootScope
-                        });
-                        $rootScope.rebagPopup.then(function(res) {
+//        $scope.isShowSubmit=false;
+//        $scope.showdescription=false;
+//        //radio选择事件，记录并显示分数，记录选择的Item名，以便写入分数明细表
+//        $scope.CheckChang=function(rule,sorce) {
+//            rule.Points=sorce.ItemSorce;
+//            rule.SelItem=sorce.Item;
+//            rule.ItemName=sorce.ItemName;
+//            if(rule.Points!=10)
+//            {
+//                alertService.showLoading("答案没选对呢");
+//                return;
+//            }
+//            if(rule.Sort<$scope.rules.length){
+//                $ionicSlideBoxDelegate.next();
+//            }
 
-//                    $state.go('tabPoints.points');
-                        });
+//            if(rule.Sort==$scope.rules.length&&$rootScope.Power)
+//            $scope.isShowSubmit=true;
+//        };
 
-                    }
-                    else {
-                        $scope.isSumbiting=false;
-                        alertService.showAlert('提示',data.message);
-                    }
+//        $scope.Submit=function() {
 
-                });
-            }
-            catch(ex){
+//            $scope.isSumbiting=true;
+//            var url=commonServices.getUrl("ChoujiangService.ashx","Choujiang_Game");
 
-            }
-
-
-        }
-
-    })
+//            try{
+//                commonServices.submit(parameter,url).then(function(data){
+//                    if (data.success) {
+//                        $scope.isSumbiting=false;
+//                        $rootScope.money=''+data.data;
+//                        $rootScope.rebagPopup=$ionicPopup.show({
+//                            cssClass:'my-custom-popup',
+//                            templateUrl: 'templates/comm/hongbaoChoujiang.html',
+//                            scope: $rootScope
+//                        });
+//                        $rootScope.rebagPopup.then(function(res) {
+////                    $state.go('tabPoints.points');
+//                        });
+//                    }
+//                    else {
+//                        $scope.isSumbiting=false;
+//                        alertService.showAlert('提示',data.message);
+//                    }
+//                });
+//            }
+//            catch(ex){
+//            }
+//        }
+//    })
     .controller('PointsCtrl', function($scope,$rootScope,$stateParams,$ionicHistory,$state,alertService,IonicService,CacheFactory) {
 
         $scope.closePass=function(){

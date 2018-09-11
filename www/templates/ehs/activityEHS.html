@@ -1,5 +1,8 @@
 <!-- EHS有奖答题 -->
-<ion-view view-title="{{Language.ehsAct.title}}" cache-view="false">
+<ion-view cache-view="false">
+    <ion-nav-title>
+        {{Language.ehsAct.title}}
+    </ion-nav-title>
     <ion-content scroll="true" lazy-scroll>
         <!--<div style="text-align: center;font-size: 20px">{{ResearchName}}</div>-->
         <ion-slide-box does-continue="true" auto-play="false"  show-pager="false" ng-if="imgUrl!=null">
@@ -49,6 +52,3 @@
 
     </ion-content>
 </ion-view>
-
-
-

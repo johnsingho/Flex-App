@@ -37,9 +37,13 @@ angular.module('evaluationApp.gbshrControllers', [])
                     break;
                 case "社会保险":
                 case "公积金信息":
-                  CacheFactory.remove('gnAction');
-                  CacheFactory.save('gnAction', action);
-                  $state.go("generalNotice");
+                    CacheFactory.remove('gnAction');
+                    CacheFactory.save('gnAction', action);
+                    $state.go("generalNotice");
+                    break;
+                case "离职须知":
+                    $state.go("employeeDismiss");
+                    break;
                   break;
             }
         }
@@ -569,6 +573,97 @@ angular.module('evaluationApp.gbshrControllers', [])
     }
     InitInfo();
 
+    })
+    .controller('EmployeeDismissCtrl', function ($scope, $rootScope, $state, $ionicHistory,$ionicPopup,
+                                                 commonServices, CacheFactory, alertService, actionVisitServices)
+    {
+        //离职须知
+        $scope.canUseAction = function (action) {
+            return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+        };
+
+        $scope.open = function (action) {
+            switch (action) {
+                case "离职手续简介":
+                    $state.go('dismissIntro');
+                    break;
+                case "离职手续状态查询":
+                    $state.go('dismissStatus');
+                    break;
+                default: break;
+            }
+        };
+    })
+    .controller('DismissIntroCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                                 commonServices, CacheFactory, alertService, actionVisitServices) {
+        //离职手续简介
+        $scope.open = function (action) {
+            switch (action) {
+                case "南厂":
+                    $scope.openGeneralNotice(0, '07FEA336-C85E-4B45-BB3F-F5587D3B6A02');
+                    break;
+                case "北厂":
+                    $scope.openGeneralNotice(0, '165B122C-108F-475E-9B3B-DDB5C4247D93');
+                    break;
+                case "外籍":
+                    $scope.openGeneralNotice(0, '8DF15700-B6BF-4BEB-9796-7D6D0EFA213E');
+                    break;
+                default: break;
+            }
+        };
+        $scope.openGeneralNotice = function (isUrlHtml, id, html) {
+            if (isUrlHtml) {
+                //打开外链
+                try {
+                    externalLinksService.openUr(html);
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+            } else {
+                CacheFactory.remove('gnID');
+                CacheFactory.save('gnID', id);
+                $state.go("generalNoticeDetial");
+            }
+        };
+
+    })
+    .controller('DismissStatusCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                               commonServices, CacheFactory, alertService)
+    {
+        //离职手续状态
+        function InitInfo() {
+            var url = commonServices.getUrl("EmployeeDismissService.ashx", "GetStatus");
+            var paras = commonServices.getBaseParas();
+            $scope.model = paras;
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if (!resp.success) {
+                        alertService.showAlert("获取信息失败，请稍后再试。" + resp.message);
+                        $ionicHistory.goBack();
+                    } else {
+                        var dismiss = resp.obj;
+                        if (!dismiss) {
+                            return;
+                        }
+                        $scope.list = dismiss.dismissSteps;
+                        var dismissTim = dismiss.dismissTime;
+                        if (dismissTim) {
+                            $scope.lastWorkingDay = dismissTim.lastWorkingDay || '';
+                            $scope.dismissBeginDay = dismissTim.dismissBeginDay || '';
+                        }                        
+                    }
+                }
+            });
+        }
+        InitInfo();
+
+        $scope.HasStatus = function () {
+            return $scope.list && $scope.list.length > 0;
+        }
+        $scope.GetStatusText = function (st) {
+            return st ? $rootScope.Language.GBSHR.Done : $rootScope.Language.GBSHR.Required;
+        }
 
     })
     

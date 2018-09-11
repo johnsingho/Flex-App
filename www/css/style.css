@@ -197,3 +197,56 @@ ul{
 .font90{
     font-size: 90% !important;
 }
+
+.option-input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	position: relative;
+	top: 8.33333px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 24px;
+	width: 24px;
+	transition: all 0.15s ease-out 0s;
+	background: #cbd1d8;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	margin-right: 0.5rem;
+	outline: none;
+	position: relative;
+	z-index: 1000;
+}
+.option-input:hover {
+	background: #9faab7;
+}
+.option-input:checked {
+	background: #40e0d0;
+}
+.option-input:checked::before {
+	height: 24px;
+	width: 24px;
+	position: absolute;
+	content: '✔';
+	display: inline-block;
+	font-size: 18px;
+	text-align: center;
+	line-height: 24px;
+}
+.option-input:checked::after {
+	background: #40e0d0;
+	content: '';
+	display: block;
+	position: relative;
+	z-index: 100;
+}
+.option-input.radio {
+	border-radius: 50%;
+}
+.option-input.radio::after {
+	border-radius: 50%;
+}
+
