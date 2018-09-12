@@ -1,0 +1,31 @@
+<!-- 热线号码 -->
+<style>
+  .bgpic{
+    width:100%;
+    min-height: 380px;
+    background: url(img/union/hotline.png);
+    background-repeat: round;
+    background-size: contain;
+  }
+  .callBtn{
+    text-align:center;
+    position:relative;
+    top:-35px;
+    height:20px;
+  }
+</style>
+<ion-view cache-view="true">
+  <ion-nav-title>
+    {{Language.union.hotline}}
+  </ion-nav-title>
+  <ion-content scroll="false">
+    <div class="bgpic">
+    </div>
+    <div class="callBtn">
+        <a class="button button-small button-positive ion-ios-telephone" href="tel:4001099899">
+          <span style="font-size:14px">
+          {{Language.rexian.button}}</span>
+        </a>
+    </div>
+  </ion-content>
+</ion-view>

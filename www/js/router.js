@@ -784,7 +784,44 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/research/researchTrainer.html',
                 controller: 'ResearchTrainerCtrl'
             })
-
+        .state('union', {
+            url: '/union',
+            templateUrl: 'templates/union/union-list.html',
+            controller: 'UnionCtrl'
+        })
+            /*sub of union*/
+            .state('union_commu', {
+                url: '/union_commu',
+                templateUrl: 'templates/union/communicate.html',
+                controller: 'UnionCommuCtrl'
+            })
+            .state('union_commu_hotline',{
+                url: '/union_commu_hotline',
+                templateUrl: 'templates/union/commu_hotline.html',
+                controller: null
+            })
+            .state('union_commu_other',{
+                url: '/union_commu_other',
+                templateUrl: 'templates/union/commu_other.html',
+                controller: 'CommuOtherCtrl'
+            })            
+            .state('union_welfare', {
+                url: '/union_welfare',
+                templateUrl: 'templates/union/welfare.html'
+            })
+            .state('union_activity', {
+                url: '/union_activity',
+                templateUrl: 'templates/union/union-activity.html'
+            })
+            .state('union_helpsupport', {
+                url: '/union_helpsupport',
+                templateUrl: 'templates/union/helpSupport.html'
+            })
+            .state('union_wonderfulmoment', {
+                url: '/union_wonderfulmoment',
+                templateUrl: 'templates/union/wonderfulMoment.html'
+            })
+        
         $urlRouterProvider.otherwise('signin');
 
     }])

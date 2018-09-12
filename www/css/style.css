@@ -250,3 +250,21 @@ ul{
 	border-radius: 50%;
 }
 
+.myTab {
+    border-collapse: collapse;        
+}
+.myTab th{
+    background: blue;
+    color: white;
+    border: 1px solid gray;
+}
+.myTab td{
+    border: 1px solid gray;
+}
+.myTab td.tdCenter{
+    text-align: center;
+}
+
+.myLink{
+    text-decoration: none;
+}

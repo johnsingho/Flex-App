@@ -210,7 +210,8 @@ var ZH_CN = {
         GBS:'人事综合',
         admin:"行政",
         earthday:"地球周",
-        dormManage:"宿舍管理"
+        dormManage:"宿舍管理",
+        union:"工会之窗",
     },
     myFlex:{
         employee_ID: "工号",
@@ -493,7 +494,7 @@ var ZH_CN = {
         dormNotice:"宿舍公告",
         repairDorm:"宿舍报修",
         reissueKey:"补办钥匙",
-        dormAddress:"宿舍地址",
+        dormAddress:"具体地址",
         repairTime:"预约时间",
         deviceType:"待维修设备",
         repairDesc:"报修内容",
@@ -508,6 +509,15 @@ var ZH_CN = {
         hisSuggest:"以前的建议",
         suggestSucc:"感谢您的建议!",
         respSuggest:"回复",
+    },
+    union:{
+        communicate:"员工沟通",
+        welfare:"员工福利",
+        activity:"工会活动及报名",
+        helpSupport:"员工帮扶",
+        wonderfulMoment:"精彩瞬间",
+        hotline:"热线号码",
+        otherCommunMethod:"其他沟通渠道",
     }
 };
 
@@ -562,7 +572,8 @@ var ZH_US = {
         GBS:'GBS HR',
         admin:"Admin",
         earthday:"Earth Week",
-        dormManage:"Dormitory Management"
+        dormManage:"Dormitory Management",
+        union:"Flex Union",
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -826,6 +837,13 @@ var ZH_US = {
     },
     dormManage:{
         housingAllowance:"Housing Allowance",
+    },
+    union:{
+        communicate:"Communicate",
+        welfare:"Welfare",
+        activity:"Activities",
+        helpSupport:"Help Support",
+        wonderfulMoment:"Wonderful Moment",
     }
 };
 

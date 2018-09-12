@@ -314,6 +314,9 @@ angular.module('evaluationApp.appControllers', [])
                 case "admin":
                     $state.go("admin");
                     break;
+                case "工会之窗":
+                    $state.go("union");
+                    break;
             }
             
             if(action=='自评'){

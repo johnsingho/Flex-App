@@ -34,7 +34,7 @@ var app = {
         app.checkForUpdate();
     },
     checkForUpdate: function () {
-        // ÏÈ¼ì²éÓĞÃ»ÓĞµÃ¸üĞÂ
+        // å…ˆæ£€æŸ¥æœ‰æ²¡æœ‰å¾—æ›´æ–°
         chcp.isUpdateAvailableForInstallation(function (error, data) {
             if (error) {
                 //Nothing to install
@@ -42,9 +42,9 @@ var app = {
                 chcp.fetchUpdate(function(error, data) {
                     if (error) {
                         app.showError(error);
-                        return;//·µ»Ø
+                        return;//è¿”å›
                     }
-                    //ÓĞ¸üĞÂ£¬Á¢¼´¸üĞÂ£¬´Ë´¦ÈİÒ×³ö´í
+                    //æœ‰æ›´æ–°ï¼Œç«‹å³æ›´æ–°ï¼Œæ­¤å¤„å®¹æ˜“å‡ºé”™
                     chcp.installUpdate(app.installationCallback);
                 });
                 return;
@@ -63,7 +63,7 @@ var app = {
         }
     },
     onUpdateFailed: function (eventData) {
-        //¸üĞÂÊ§°Ü
+        //æ›´æ–°å¤±è´¥
         if (eventData.details && eventData.details.error) {
             app.showError(eventData.details.error);
         }
