@@ -1,0 +1,63 @@
+<!-- 公司爱心帮扶 -->
+<ion-view cache-view="true">
+  <ion-nav-title>
+    公司爱心帮扶
+  </ion-nav-title>
+
+  <ion-content>
+    <p class="myTitle">
+      1）伟创力爱心帮扶基金常规帮扶
+    </p>
+    <div>
+      <table class="myTab" style="margin:0 4px 0 2px;">
+        <thead>
+          <tr>
+            <th style="width:20px;">#</th>
+            <th style="width:70px;">帮扶类别</th>
+            <th>对象</th>
+            <th style="min-width:50px">备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in helps">
+            <td class="tdCenter">{{$index+1}}</td>
+            <td class="tdCenter">{{item.ItemName}}</td>
+            <td>{{item.Object}}</td>
+            <td>{{item.Memo}}</td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <span style="font-weight:700;color:red">所需材料：</span><br>
+              爱心帮扶基金申请表、身份证复印件、厂牌复印件及相关致困证明等
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br><br>
+    <p class="myTitle">
+      2）项目式帮扶
+    </p>
+    <div>
+      <table class="myTab" style="margin:0 4px 0 2px;">
+        <thead>
+          <tr>
+            <th style="width:20px;">#</th>
+            <th style="width:70px;">帮扶类别</th>
+            <th style="width:80px;">对象</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in projHelps">
+            <td class="tdCenter">{{$index+1}}</td>
+            <td class="tdCenter">{{item.ItemName}}</td>
+            <td>{{item.Object}}</td>
+            <td>{{item.Memo}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br><br><br>
+  </ion-content>
+</ion-view>

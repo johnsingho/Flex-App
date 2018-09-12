@@ -269,6 +269,13 @@ ul{
     text-decoration: none;
 }
 
+/*文章内小标题*/
+.myTitle{
+    margin-top: 8px;
+    font-size:19px;
+    font-family:'微软雅黑',sans-serif;
+}
+
 .welTitle {
     max-width: 100%;
     box-sizing: border-box !important;

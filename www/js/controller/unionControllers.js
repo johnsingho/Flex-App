@@ -74,6 +74,7 @@ angular.module('evaluationApp.unionControllers', [])
     })    
     .controller('UnionWelfareCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory)
     {
+        //员工福利
         $scope.open = function (action) {
             switch (action) {
               case "年节福利":
@@ -96,6 +97,7 @@ angular.module('evaluationApp.unionControllers', [])
     })
     .controller('UnionWelfareDMCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,UrlServices)
     {
+        //斗门工公众号福利汇
         $scope.open = function (action) {
             switch (action) {
               case "往期福利":
@@ -111,6 +113,55 @@ angular.module('evaluationApp.unionControllers', [])
             }
         }
     })
+    .controller('UnionHelpSupportCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory)
+    {
+        //员工帮扶
+        $scope.open = function (action) {
+            switch (action) {
+              case "公司爱心帮扶":
+                $state.go("union_helpSupport_flex");
+                break;
+              case "斗门总工会帮扶":
+                $state.go("union_helpSupport_dm");
+                break;
+              case "联系方式":
+                $state.go("union_helpSupport_contact");
+                break;
+              default:
+                break;
+            }
+        }
+    })
+    .controller('UnionHelpSupportFlexCtrl',function($scope,$state,$ionicHistory)
+    {
+        //公司爱心帮扶
+        $scope.helps = [
+            {ItemName:"死亡", Object:"职工本人", Memo:"一次性"},
+            {ItemName:"死亡", Object:"配偶", Memo:"一次性"},
+            {ItemName:"重大疾病", Object:"职工本人", Memo:"一次性"},
+            {ItemName:"重大疾病", Object:"配偶或子女", Memo:"一次性"},
+            {ItemName:"重大疾病", Object:"父母", Memo:"一次性"},
+            {ItemName:"工伤住院", Object:"职工本人", Memo:"一次性"},
+            {ItemName:"生活困难", Object:"一人收入照顾全家（家庭成员非主动失业且人均收入低于本地区最低生活保障线）", Memo:"一次性"},
+            {ItemName:"灾难救助", Object:"职工本人", Memo:"一次性"}
+        ];
+
+        $scope.projHelps = [
+            {ItemName:"阳光助学", Object:"职工子女", Memo:"不与金秋助学重复申领，不限户籍"},
+            {ItemName:"金秋助学补充项目", Object:"职工子女", Memo:""}
+        ];
+    })
+    .controller('UnionHelpSupportContactCtrl',function($scope,$state,$ionicHistory)
+    {
+        //爱心帮扶联系方式
+        $scope.contacts = [
+            {Building:"CR & RR", hrPeople:"Ellis Zhou", hrPhone:"5188777", basePeople:"Mingzhan Jia", basePhone:"5181699"},
+            {Building:"Mechanical", hrPeople:"Boswell Jin", hrPhone:"5181017", basePeople:"Sirong He", basePhone:"5189160"},
+            {Building:"PCBA-B11", hrPeople:"Sandy Liu", hrPhone:"5183914", basePeople:"Willa Wan", basePhone:"5183394"},
+            {Building:"PCBA-South Campus", hrPeople:"Aaron Guo", hrPhone:"5186026", basePeople:"Minhua Lu", basePhone:"5186714"},
+        ];
+    })
+    
     
 
 ;    
