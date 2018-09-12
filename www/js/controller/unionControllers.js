@@ -72,6 +72,45 @@ angular.module('evaluationApp.unionControllers', [])
             closable:false
         });
     })    
+    .controller('UnionWelfareCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory)
+    {
+        $scope.open = function (action) {
+            switch (action) {
+              case "年节福利":
+                $state.go("union_welfare_fest");
+                break;
+              case "工会福利汇":
+                $state.go("union_welfare_union");
+                break;
+              case "斗门工公众号福利汇":
+                $state.go("union_welfare_dmUnion");
+                break;
+              case "领取通知":
+                $state.go("union_welfare_notice");
+                break;
+              default:
+                break;
+            }
+        }
+
+    })
+    .controller('UnionWelfareDMCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,UrlServices)
+    {
+        $scope.open = function (action) {
+            switch (action) {
+              case "往期福利":
+                $state.go("union_welfare_dm_his");
+                break;
+              case "关注指南":
+                $state.go("union_welfare_dm_guide");
+                break;
+              case "幸运抽奖":
+                UrlServices.openForeignUrl('https://www.wjx.top/jq/21587410.aspx');
+              default:
+                break;
+            }
+        }
+    })
     
 
 ;    

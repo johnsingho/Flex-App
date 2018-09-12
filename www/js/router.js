@@ -795,20 +795,51 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/union/communicate.html',
                 controller: 'UnionCommuCtrl'
             })
-            .state('union_commu_hotline',{
-                url: '/union_commu_hotline',
-                templateUrl: 'templates/union/commu_hotline.html',
-                controller: null
-            })
-            .state('union_commu_other',{
-                url: '/union_commu_other',
-                templateUrl: 'templates/union/commu_other.html',
-                controller: 'CommuOtherCtrl'
-            })            
+                .state('union_commu_hotline',{
+                    url: '/union_commu_hotline',
+                    templateUrl: 'templates/union/commu_hotline.html',
+                    controller: null
+                })
+                .state('union_commu_other',{
+                    url: '/union_commu_other',
+                    templateUrl: 'templates/union/commu_other.html',
+                    controller: 'CommuOtherCtrl'
+                })            
             .state('union_welfare', {
                 url: '/union_welfare',
-                templateUrl: 'templates/union/welfare.html'
+                templateUrl: 'templates/union/welfare.html',
+                controller: 'UnionWelfareCtrl'
             })
+                .state('union_welfare_fest', {
+                    url: '/union_welfare_fest',
+                    templateUrl: 'templates/union/welfare_fest.html',
+                    controller: null
+                })
+                .state('union_welfare_union', {
+                    url: '/union_welfare_union',
+                    templateUrl: 'templates/union/welfare_union.html',
+                    controller: null
+                })
+                .state('union_welfare_dmUnion', {
+                    url: '/union_welfare_dmUnion',
+                    templateUrl: 'templates/union/welfare_dmUnion.html',
+                    controller: 'UnionWelfareDMCtrl'
+                })
+                    .state('union_welfare_dm_his', {
+                        url: '/union_welfare_dm_his',
+                        templateUrl: 'templates/union/welfare_dm_history.html',
+                        controller: null
+                    })
+                    .state('union_welfare_dm_guide', {
+                        url: '/union_welfare_dm_guide',
+                        templateUrl: 'templates/union/welfare_dm_guide.html',
+                        controller: null
+                    })                
+                .state('union_welfare_notice', {
+                    url: '/union_welfare_notice',
+                    templateUrl: 'templates/union/welfare_notice.html',
+                    controller: null
+                })
             .state('union_activity', {
                 url: '/union_activity',
                 templateUrl: 'templates/union/union-activity.html'

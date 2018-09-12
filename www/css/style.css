@@ -268,3 +268,24 @@ ul{
 .myLink{
     text-decoration: none;
 }
+
+.welTitle {
+    max-width: 100%;
+    box-sizing: border-box !important;
+    word-wrap: break-word !important;
+  }
+    .welTitle .bg{
+        margin-left: 20px;
+        padding-top: 10px;
+        background-image:
+        url(/img/union/festTitleBg.png);
+        background-position:center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 268px;
+        height: 59px;
+        display:inline-block;
+        overflow: hidden;
+        word-wrap: break-word !important;
+    }
+

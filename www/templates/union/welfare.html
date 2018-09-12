@@ -1,1 +1,19 @@
 <!-- 员工福利 -->
+<ion-view view-title="{{Language.union.communicate}}" cache-view="true">
+  <ion-content scroll="true" overflow-scroll="true">
+    <div class="list list-inset">
+      <div class="item" ng-click="open('年节福利');">
+        {{Language.union.welfare_fest}}
+      </div>
+      <div class="item" ng-click="open('工会福利汇');">
+        {{Language.union.welfare_union}}
+      </div>
+      <div class="item" ng-click="open('斗门工公众号福利汇');">
+        {{Language.union.welfare_dmUnion}}
+      </div>
+      <div class="item" ng-click="open('领取通知');">
+        {{Language.union.welfare_notice}}
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

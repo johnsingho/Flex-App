@@ -4,7 +4,7 @@
 
 //开关
 //是否本地开发调试
-var IsDebugMode = false; //false;
+var IsDebugMode = true; //false;
 
 //是否显示详细升级信息
 var IsShowUpdateDetial = false; //false;
@@ -518,6 +518,11 @@ var ZH_CN = {
         wonderfulMoment:"精彩瞬间",
         hotline:"热线号码",
         otherCommunMethod:"其他沟通渠道",
+        welfare_fest:"年节福利",
+        welfare_union:"工会福利汇",
+        welfare_dmUnion:"斗门工公众号福利汇",
+        welfare_notice:"领取通知",
+
     }
 };
 
