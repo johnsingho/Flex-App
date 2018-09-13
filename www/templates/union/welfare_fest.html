@@ -40,7 +40,7 @@
     <table class="myTab">
     <thead>
         <tr>
-        <th style="width:30px">序号</th>
+        <th style="width:20px">#</th>
         <th style="width:70px;">年节福利</th>
         <th style="width:60px">参与员工</th>
         <th>内容</th>
@@ -48,48 +48,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-        <td>1</td>
-        <td>餐厅赠餐</td>
-        <td>全体员工</td>
-        <td>春节、元宵节、端午节、中秋节在各餐厅赠餐（饺子/汤圆/粽子）</td>
-        <td>节日当天</td>
-        </tr>
-        <tr>
-        <td>2</td>
-        <td>生日红包</td>
-        <td>全体员工</td>
-        <td>生日礼金60元（生日当月转至工资卡）</td>
-        <td>每月</td>
-        </tr>
-        <tr>
-        <td>3</td>
-        <td>端午节礼包</td>
-        <td>全体员工</td>
-        <td>端午礼包一份</td>
-        <td>节前一周</td>
-        </tr>
-        <tr>
-        <td>4</td>
-        <td>夏送清凉</td>
-        <td>全体员工</td>
-        <td>全园送凉茶，每月每人2罐，发放3个月</td>
-        <td>7月&mdash;9月</td>
-        </tr>
-        <tr>
-        <td>5</td>
-        <td>中秋节礼包</td>
-        <td>全体员工</td>
-        <td>中秋大礼包一份</td>
-        <td>节前一周</td>
-        </tr>
-        <tr>
-        <td>6</td>
-        <td>开工红包</td>
-        <td>全体员工</td>
-        <td>开工红包50元（转至工资卡）</td>
-        <td>春节后开工之月</td>
-        </tr>
+    <tr ng-repeat="item in Items">
+        <td class="tdCenter">{{$index+1}}</td>
+        <td>{{item.welfare}}</td>
+        <td>{{item.target}}</td>
+        <td>{{item.detail}}</td>
+        <td>{{item.date}}</td>
+    </tr>
     </tbody>
     </table>
     </div>

@@ -64,6 +64,13 @@ angular.module('evaluationApp.unionControllers', [])
             UrlServices.openForeignUrl('https://www.wjx.top/jq/18783879.aspx');
         };
 
+        $scope.contacts = [
+            {building:"Mechanical", basePeople:"Iris Jin", baseEmail:"iris.jin@flex.com", basePhone:"5187155"},
+            {building:"PCBA-South Campus", basePeople:"Minhua Lu", baseEmail:"minhua.lu@flex.com", basePhone:"5186714"},
+            {building:"PCBA-B11", basePeople:"Willa Wan", baseEmail:"willa.wan@flex.com", basePhone:"5183394"},
+            {building:"CR&RR", basePeople:"Ellis Zhou", baseEmail:"ellis.zhou@flex.com", basePhone:"5189889"}
+        ];
+
         $("#auto-loop").lightGallery({
             mobileSrc         : false, // If "data-responsive-src" attr. should be used for mobiles.
             mobileSrcMaxWidth : 640,   // Max screen resolution for alternative images to be loaded for.
@@ -95,6 +102,18 @@ angular.module('evaluationApp.unionControllers', [])
         }
 
     })
+    .controller('UnionWelfareFestCtrl',function($scope,$state,$ionicHistory)
+    {
+        //年节福利
+        $scope.Items = [
+            {welfare:"餐厅赠餐", target:"全体员工", detail:"春节、元宵节、端午节、中秋节在各餐厅赠餐（饺子/汤圆/粽子）", date:"节日当天"},
+            {welfare:"生日红包", target:"全体员工", detail:"生日礼金60元（生日当月转至工资卡）", date:"每月"},
+            {welfare:"端午节礼包", target:"全体员工", detail:"端午礼包一份", date:"节前一周"},
+            {welfare:"夏送清凉", target:"全体员工", detail:"全园送凉茶，每月每人2罐，发放3个月", date:"7月-9月"},
+            {welfare:"中秋节礼包", target:"全体员工", detail:"中秋大礼包一份", date:"节前一周"},
+            {welfare:"开工红包", target:"全体员工", detail:"开工红包50元（转至工资卡）", date:"春节后开工之月"}
+        ];
+    })    
     .controller('UnionWelfareDMCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,UrlServices)
     {
         //斗门工公众号福利汇
