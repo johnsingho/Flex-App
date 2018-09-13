@@ -1,10 +1,10 @@
-/**
+﻿/**
  * 默认程序设置 会被写如localStorage
  */
 
 //开关
 //是否本地开发调试
-var IsDebugMode = true; //false;
+var IsDebugMode = false; //false;
 
 //是否显示详细升级信息
 var IsShowUpdateDetial = false; //false;
@@ -516,6 +516,7 @@ var ZH_CN = {
         activity:"工会活动及报名",
         helpSupport:"员工帮扶",
         wonderfulMoment:"精彩瞬间",
+        suggest:"建议留言",
         hotline:"热线号码",
         otherCommunMethod:"其他沟通渠道",
         welfare_fest:"年节福利",

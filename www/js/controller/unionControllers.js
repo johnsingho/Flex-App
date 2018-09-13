@@ -27,6 +27,8 @@ angular.module('evaluationApp.unionControllers', [])
               case "精彩瞬间":
                 $state.go('union_wonderfulmoment');
                 break;
+              case "建议留言":
+                $state.go('union_suggest');
               default:
                 break;
             }

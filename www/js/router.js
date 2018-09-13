@@ -863,12 +863,18 @@ angular.module('evaluationApp.router', [])
                 url: '/union_helpSupport_contact',
                 templateUrl: 'templates/union/helpSupportContact.html',
                 controller: 'UnionHelpSupportContactCtrl'
-            })
-            
+            })            
             .state('union_wonderfulmoment', {
                 url: '/union_wonderfulmoment',
-                templateUrl: 'templates/union/wonderfulMoment.html'
+                templateUrl: 'templates/union/wonderfulMoment.html',
+                controller: null
             })
+            .state('union_suggest', {
+                url: '/union_suggest',
+                templateUrl: 'templates/union/suggest.html',
+                controller: null
+            })
+            
         
         $urlRouterProvider.otherwise('signin');
 
