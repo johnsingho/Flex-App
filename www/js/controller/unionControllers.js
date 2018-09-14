@@ -4,7 +4,7 @@
  */
 angular.module('evaluationApp.unionControllers', [])
     .controller('UnionCtrl', function ($scope, $rootScope, $state, $ionicHistory,$ionicPopup,
-        commonServices, CacheFactory, alertService, actionVisitServices, UrlServices) 
+        commonServices, CacheFactory, alertService, actionVisitServices) 
     {
         $scope.canUseAction = function (action) {
             return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
@@ -182,6 +182,84 @@ angular.module('evaluationApp.unionControllers', [])
             {Building:"PCBA-South Campus", hrPeople:"Aaron Guo", hrPhone:"5186026", basePeople:"Minhua Lu", basePhone:"5186714"},
         ];
     })
+    .controller('UnionActivityCtrl',function($scope,$rootScope,$ionicPopup,
+        $state,$ionicHistory,commonServices,CacheFactory,alertService,UrlServices)
+    {
+        //工会活动及报名
+        var baseInfo = commonServices.getBaseParas();
+        function InitInfo() {
+            var url = commonServices.getUrl("UnionService.ashx", "GetActList");            
+            var paras = {
+                Segment: baseInfo.Organization
+            };
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if (resp.success) {
+                        $scope.items = resp.list;
+                    }
+                }else{
+                    var msg = $rootScope.Language.common.CommunicationErr;
+                    alertService.showAlert(msg);
+                }
+            });
+        }
+        InitInfo();
+
+        $scope.open = function(act){
+            if (act.Url && act.Url.length > 0) {
+              //访问外链
+              UrlServices.openForeignUrl(act.Url);
+            } else if (act.ContentLen > 0) {
+              //打开动态内容页
+              var objDyn = {
+                PageTitle: '活动详情',
+                TabName: 'ESE_UnionActivity',
+                SrcCol: 'Content',
+                WhereColName: 'ID',
+                WhereColVal: act.ID
+              };
+              CacheFactory.save(GLOBAL_INFO.KEY_DYNPAGE, JSON.stringify(objDyn));
+              $state.go("dynpage");
+            }
+        };
+
+        $scope.isSumbiting = false;
+        function SubmitAttend(actID){
+            $scope.isSumbiting = true;            
+            var paras = baseInfo;
+            paras.ActID = actID;
+            var url = commonServices.getUrl("UnionService.ashx", "ActBook");
+            try {
+                commonServices.submit(paras, url).then(function (resp) {
+                    if (resp) {
+                        var msg = resp.message;
+                        alertService.showAlert(msg);
+                        //$ionicHistory.goBack();
+                    }
+                    else {
+                        var msg = $rootScope.Language.common.CommunicationErr;
+                        alertService.showAlert(msg);
+                        $ionicHistory.goBack();
+                    }
+                });
+            } finally {
+                $scope.isSumbiting = false;
+            }
+        }
+
+        $scope.Submit = function(actID){            
+            $ionicPopup.confirm({
+                title: '提示',
+                template: '确定报名吗？',
+                okText:"OK"
+            }).then(function(res) {
+                if(res) {
+                    SubmitAttend(actID);
+                }
+            });
+        };
+            
+    })    
     
     
 

@@ -50,7 +50,7 @@ angular.module('evaluationApp.adminControllers', [])
             }else{
                 CacheFactory.remove('gnID');
                 CacheFactory.save('gnID', id);
-                $state.go("generalNoticeDetial");
+                $state.go("generalNoticeDetail");
             }
         };
     })
@@ -1142,6 +1142,31 @@ angular.module('evaluationApp.adminControllers', [])
         };
 
     })
+    .controller('DynpageCtrl', function($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+        commonServices, CacheFactory, alertService, duplicateSubmitServices)
+    {
+        //动态只读页
+        var baseInfo = commonServices.getBaseParas();
+        function InitInfo() {
+            var url = commonServices.getUrl("Common.ashx", "GetDynPage");
+            var objDyn = JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_DYNPAGE));
+            var paras = {
+                WorkdayNO: baseInfo.WorkdayNO,
+                Token: baseInfo.Token,
+                TabName: objDyn.TabName,
+                SrcCol: objDyn.SrcCol,
+                WhereColName: objDyn.WhereColName,
+                WhereColVal: objDyn.WhereColVal
+            };
 
-
+            $scope.pageTitle = objDyn.PageTitle;
+            commonServices.submit(paras, url).then(function (resp) {
+              if (resp && resp.success) {
+                $scope.html = resp.data;
+              }
+            });
+        }
+        InitInfo();
+    })
+    
 ;

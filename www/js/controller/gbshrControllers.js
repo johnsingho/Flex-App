@@ -539,12 +539,12 @@ angular.module('evaluationApp.gbshrControllers', [])
             }else{
                 CacheFactory.remove('gnID');
                 CacheFactory.save('gnID', id);
-                $state.go("generalNoticeDetial");
+                $state.go("generalNoticeDetail");
             }
         };
 
     })
-    .controller('GeneralNoticeDetialCtrl',function($scope,$rootScope,$state,$ionicHistory,
+    .controller('generalNoticeDetailCtrl',function($scope,$rootScope,$state,$ionicHistory,
                                                    commonServices,CacheFactory,alertService,$ionicPopup)
     {
     //GeneralNotice 详细
@@ -623,7 +623,7 @@ angular.module('evaluationApp.gbshrControllers', [])
             } else {
                 CacheFactory.remove('gnID');
                 CacheFactory.save('gnID', id);
-                $state.go("generalNoticeDetial");
+                $state.go("generalNoticeDetail");
             }
         };
 

@@ -166,6 +166,7 @@ var ZH_CN = {
         grade:"薪资级别",
         yuan:"元",
         InfoProvideIDNO:"请提供身份证号码!",
+        CommunicationErr:"通讯异常，请稍候再试!",
     },
     signin: {
         username: "工号",
@@ -523,7 +524,12 @@ var ZH_CN = {
         welfare_union:"工会福利汇",
         welfare_dmUnion:"斗门工公众号福利汇",
         welfare_notice:"领取通知",
-
+        AttendAct:"一键报名",
+        ActTime:"活动时间",
+        ActVenue:"活动地点",
+        ActDateBegin:"起始日期",
+        ActDateEnd:"结束日期",
+        
     }
 };
 
@@ -534,6 +540,7 @@ var ZH_US = {
         grade:"grade",
         yuan:"RMB",
         InfoProvideIDNO:"The IDNO is required!",
+        CommunicationErr:"Communication error, please retry later!",
     },
     signin: {
         username: "Employee ID",
@@ -873,4 +880,5 @@ var GLOBAL_INFO = {
     //keys
     KEY_DORM_NOTICE_ID: "KEY_DORM_NOTICE_ID",
     KEY_ASK_AND_ANS_ID: "KEY_ASK_AND_ANS_ID",
+    KEY_DYNPAGE: "KEY_DYNPAGE",
 };

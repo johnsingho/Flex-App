@@ -19,7 +19,7 @@ angular.module('evaluationApp.utilServices', [])
         }else{
             CacheFactory.remove('gnID');
             CacheFactory.save('gnID', id);
-            $state.go("generalNoticeDetial");
+            $state.go("generalNoticeDetail");
         }
     };
 

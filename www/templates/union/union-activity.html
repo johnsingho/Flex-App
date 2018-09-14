@@ -1,7 +1,43 @@
 <!-- 工会活动及报名 -->
+<style>
+  .font13{
+    font-size:13px;
+  }
+  .row + .row {
+    margin-top: -12px;
+}
+</style>
 <ion-view view-title="{{Language.union.activity}}" cache-view="true">
   <ion-content scroll="true" overflow-scroll="true">
-    <h3>建设中...</h3>
-
+    <ion-list>
+      <ion-item class="item item-body" ng-repeat="item in items">
+        <div ng-click="open(item)">
+          <div class="row">
+            <div class="col"><span style="font-size:14px;font-weight: bold">{{item.ActName}}</span></div>
+          </div>
+          <div class="row">
+            <div class="col col-20"><span class="font13">{{Language.union.ActTime}}</span></div>
+            <div class="col col-75"><span style="color: darkblue;font-size: 13px">{{item.Time}}</span></div>
+          </div>
+          <div class="row">
+            <div class="col col-25"><span class="font13">{{Language.union.ActVenue}}</span></div>
+            <div class="col col-75"><span style="color: darkblue;font-size: 13px">{{item.Venue}}</span></div>
+          </div>
+          <div class="row">
+            <div class="col col-20"><span class="font13">{{Language.union.ActDateBegin}}</span></div>
+            <div class="col col-30"><span style="color:darkblue;font-size: 13px">{{item.DateStart|date:"yyyy-MM-dd"}}</span></div>
+            <div class="col col-20"><span class="font13">{{Language.union.ActDateEnd}}</span></div>
+            <div class="col col-30"><span style="color:darkblue;font-size: 13px">{{item.DateEnd|date:"yyyy-MM-dd"}}</span></div>
+          </div>
+        </div>
+        <div class="row" ng-if="item.NeedBook>0">
+          <div style="margin-left:45%;">
+            <button class="button button-balanced button-small" style="text-align:center" ng-click="Submit(item.ID)">
+              {{Language.union.AttendAct}}
+            </button>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

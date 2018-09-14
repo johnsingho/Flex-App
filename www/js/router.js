@@ -759,10 +759,10 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/generalNotice/generalNoticeList.html',
                 controller: 'GeneralNoticeCtrl'
             })
-            .state('generalNoticeDetial', {
-                url: '/generalNoticeDetial',
-                templateUrl: 'templates/generalNotice/generalNoticeDetial.html',
-                controller: 'GeneralNoticeDetialCtrl'
+            .state('generalNoticeDetail', {
+                url: '/generalNoticeDetail',
+                templateUrl: 'templates/generalNotice/generalNoticeDetail.html',
+                controller: 'generalNoticeDetailCtrl'
             })
             .state('employeeDismiss', {
                 url: '/employeeDismiss',
@@ -784,6 +784,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/research/researchTrainer.html',
                 controller: 'ResearchTrainerCtrl'
             })
+        .state('dynpage', {
+            url: '/dynpage',
+            templateUrl: 'templates/generalNotice/dynPage.html',
+            controller: 'DynpageCtrl'
+        })
         .state('union', {
             url: '/union',
             templateUrl: 'templates/union/union-list.html',
@@ -842,7 +847,8 @@ angular.module('evaluationApp.router', [])
                 })
             .state('union_activity', {
                 url: '/union_activity',
-                templateUrl: 'templates/union/union-activity.html'
+                templateUrl: 'templates/union/union-activity.html',
+                controller: 'UnionActivityCtrl'
             })
             .state('union_helpsupport', {
                 url: '/union_helpsupport',

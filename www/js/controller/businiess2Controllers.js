@@ -45,7 +45,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
             }else{
                 CacheFactory.remove('gnID');
                 CacheFactory.save('gnID', id);
-                $state.go("generalNoticeDetial");
+                $state.go("generalNoticeDetail");
             }
         };
 
