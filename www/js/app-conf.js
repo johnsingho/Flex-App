@@ -4,7 +4,7 @@
 
 //开关
 //是否本地开发调试
-var IsDebugMode = false; //false;
+var IsDebugMode = true; //false;
 
 //是否显示详细升级信息
 var IsShowUpdateDetial = false; //false;
@@ -876,9 +876,10 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2018-09-08",
+    LAST_PUBLISH_DATE: "2018-09-14",
     //keys
     KEY_DORM_NOTICE_ID: "KEY_DORM_NOTICE_ID",
     KEY_ASK_AND_ANS_ID: "KEY_ASK_AND_ANS_ID",
     KEY_DYNPAGE: "KEY_DYNPAGE",
+    KEY_WONDERFULMON_ID: "KEY_WONDERFULMON_ID",
 };

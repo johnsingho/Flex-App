@@ -190,7 +190,7 @@ angular.module('evaluationApp.unionControllers', [])
         function InitInfo() {
             var url = commonServices.getUrl("UnionService.ashx", "GetActList");            
             var paras = {
-                Segment: baseInfo.Organization
+                WorkdayNo: baseInfo.WorkdayNO
             };
             commonServices.submit(paras, url).then(function (resp) {
                 if (resp) {
@@ -259,8 +259,118 @@ angular.module('evaluationApp.unionControllers', [])
             });
         };
             
-    })    
-    
+    })
+    .controller('UnionWonderfulmomentCtrl',function($scope,$rootScope,$ionicPopup,
+                    $state,$ionicHistory,commonServices,CacheFactory,alertService,UrlServices)
+    {
+        //精彩瞬间
+        var baseInfo = commonServices.getBaseParas();
+        function InitInfo() {
+            var url = commonServices.getUrl("UnionService.ashx", "GetWonderfulMomList");            
+            var paras = {
+                WorkdayNo: baseInfo.WorkdayNO
+            };
+            commonServices.submit(paras, url).then(function (resp) {
+                if (resp) {
+                    if (resp.success) {
+                        $scope.items = resp.list;
+                    }
+                }else{
+                    var msg = $rootScope.Language.common.CommunicationErr;
+                    alertService.showAlert(msg);
+                }
+            });
+        }
+        InitInfo();
+
+        $scope.open=function(item){
+            if(item.IsOutLink){
+                UrlServices.openForeignUrl(item.Html);
+                return;
+            }
+            CacheFactory.save(GLOBAL_INFO.KEY_WONDERFULMON_ID, item.ID);
+            $state.go('dormNoticeDetail');
+        };
+    }
+    .controller('UnionWonderfulmomentDetailCtrl', function ($scope, $rootScope, $ionicPopup,
+                    $state, $ionicHistory, commonServices, CacheFactory, alertService, duplicateSubmitServices) 
+    {
+      //精彩瞬间 详细
+      var wonderfulMomID = CacheFactory.get(GLOBAL_INFO.KEY_WONDERFULMON_ID);
+
+      function InitInfo() {
+        var url = commonServices.getUrl("UnionService.ashx", "GetWonderfulMomDetail");
+        //var baseInfo = commonServices.getBaseParas();
+        var paras = {
+          "WonderfulMomID": wonderfulMomID
+        };
+        commonServices.submit(paras, url).then(function (resp) {
+          if (resp) {
+            if (!resp.success) {
+              var msg = $rootScope.Language.common.CommunicationErr;
+              alertService.showAlert(msg);
+              $ionicHistory.goBack();
+            } else {
+              $scope.ret = resp.obj;
+            }
+          }
+        });
+      }
+      InitInfo();
+
+      $scope.like=function(){
+        var url=commonServices.getUrl("UnionService.ashx","AddLike");
+        commonServices.submit(params,url).then(function(data){
+            if(data.success){
+                $scope.ret.LikeCount = $scope.ret.LikeCount+1;
+            }
+        });
+    };
+
+      $ionicModal.fromTemplateUrl('templates/modalWriteMsg.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function (modal) {
+        $scope.modal = modal
+      })
+      $scope.writeMsg = function () {
+        $scope.modal.show();
+      };
+      $scope.closeModal = function () {
+        $scope.modal.hide();
+      };
+      $scope.$on('$destroy', function () {
+        $scope.modal.remove();
+      });
+
+      $scope.submitComment = function () {
+        var Comments = $("#Comments").val();
+        if (Comments.length == 0) {
+          console.log(Comments);
+          return;
+        }
+
+        var baseInfo = commonServices.getBaseParas();
+        var para = {
+          "SubmitGuid": duplicateSubmitServices.genGUID(),
+          "WonderfulMomID": wonderfulMomID,
+          "WorkdayNo": baseInfo.WorkdayNO,
+          "Comments": Comments
+        };
+
+        var url = commonServices.getUrl("UnionService.ashx", "AddWonderfulMomComments");
+        commonServices.submit(para, url).then(function (data) {
+          if (data.success) {
+            $scope.modal.hide();
+            InitInfo(); //refresh
+          } else {
+            alertService.showAlert(data.message);
+          }
+        });
+      };
+
+    }    
+
     
 
 ;    

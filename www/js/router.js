@@ -873,8 +873,13 @@ angular.module('evaluationApp.router', [])
             .state('union_wonderfulmoment', {
                 url: '/union_wonderfulmoment',
                 templateUrl: 'templates/union/wonderfulMoment.html',
-                controller: null
+                controller: 'UnionWonderfulmomentCtrl'
             })
+                .state('union_wonderfulmoment_detail', {
+                    url: '/union_wonderfulmoment_detail',
+                    templateUrl: 'templates/union/wonderfulMomentDetail.html',
+                    controller: 'UnionWonderfulmomentDetailCtrl'
+                })
             .state('union_suggest', {
                 url: '/union_suggest',
                 templateUrl: 'templates/union/suggest.html',

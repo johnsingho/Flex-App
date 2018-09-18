@@ -1,7 +1,17 @@
 <!-- 精彩瞬间 -->
 <ion-view view-title="{{Language.union.wonderfulMoment}}" cache-view="true">
   <ion-content scroll="true" overflow-scroll="true">
-    <h3>建设中...</h3>
-
+        <!-- 用于包含图标、日期的列表 -->
+        <ion-list>
+          <ion-item ng-repeat="item in list" class="item item-thumbnail-left"
+                    ng-click="open(item);">
+              <img ng-src="{{item.ImgPath}}" ng-if="item.ImgPath!=null">
+              <img ng-src="img/user-100.png" ng-if="item.ImgPath==null">
+              <br>
+              <h3 class="ng-binding">{{item.Title}}</h3>
+              <br>
+              <p>{{item.CreateDate| date:"yyyy-MM-dd"}}</p>
+          </ion-item>
+      </ion-list>
   </ion-content>
 </ion-view>
