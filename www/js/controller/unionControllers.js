@@ -289,18 +289,18 @@ angular.module('evaluationApp.unionControllers', [])
                 return;
             }
             CacheFactory.save(GLOBAL_INFO.KEY_WONDERFULMON_ID, item.ID);
-            $state.go('dormNoticeDetail');
+            $state.go('union_wonderfulmoment_detail');
         };
-    }
-    .controller('UnionWonderfulmomentDetailCtrl', function ($scope, $rootScope, $ionicPopup,
+    })
+    .controller('UnionWonderfulmomentDetailCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal,
                     $state, $ionicHistory, commonServices, CacheFactory, alertService, duplicateSubmitServices) 
     {
       //精彩瞬间 详细
       var wonderfulMomID = CacheFactory.get(GLOBAL_INFO.KEY_WONDERFULMON_ID);
+      var baseInfo = commonServices.getBaseParas();
 
       function InitInfo() {
-        var url = commonServices.getUrl("UnionService.ashx", "GetWonderfulMomDetail");
-        //var baseInfo = commonServices.getBaseParas();
+        var url = commonServices.getUrl("UnionService.ashx", "GetWonderfulMomDetail");        
         var paras = {
           "WonderfulMomID": wonderfulMomID
         };
@@ -312,6 +312,7 @@ angular.module('evaluationApp.unionControllers', [])
               $ionicHistory.goBack();
             } else {
               $scope.ret = resp.obj;
+              $('#div_html').html(resp.obj.Html);
             }
           }
         });
@@ -319,8 +320,13 @@ angular.module('evaluationApp.unionControllers', [])
       InitInfo();
 
       $scope.like=function(){
+        var paras = {
+            //"SubmitGuid": duplicateSubmitServices.genGUID(),
+            "WonderfulMomID": wonderfulMomID,
+            "WorkdayNo": baseInfo.WorkdayNO,
+          };
         var url=commonServices.getUrl("UnionService.ashx","AddLike");
-        commonServices.submit(params,url).then(function(data){
+        commonServices.submit(paras,url).then(function(data){
             if(data.success){
                 $scope.ret.LikeCount = $scope.ret.LikeCount+1;
             }
@@ -350,7 +356,6 @@ angular.module('evaluationApp.unionControllers', [])
           return;
         }
 
-        var baseInfo = commonServices.getBaseParas();
         var para = {
           "SubmitGuid": duplicateSubmitServices.genGUID(),
           "WonderfulMomID": wonderfulMomID,
@@ -369,8 +374,8 @@ angular.module('evaluationApp.unionControllers', [])
         });
       };
 
-    }    
+    })
 
     
-
-;    
+///////////////////////////////////////
+;

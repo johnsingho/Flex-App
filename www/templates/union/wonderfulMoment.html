@@ -3,7 +3,7 @@
   <ion-content scroll="true" overflow-scroll="true">
         <!-- 用于包含图标、日期的列表 -->
         <ion-list>
-          <ion-item ng-repeat="item in list" class="item item-thumbnail-left"
+          <ion-item ng-repeat="item in items" class="item item-thumbnail-left"
                     ng-click="open(item);">
               <img ng-src="{{item.ImgPath}}" ng-if="item.ImgPath!=null">
               <img ng-src="img/user-100.png" ng-if="item.ImgPath==null">

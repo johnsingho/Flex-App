@@ -4,7 +4,7 @@
         <button ng-if="fromHome=='home'" class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.back}}</button>
     </ion-nav-buttons> -->
  <ion-content  class="padding" scroll="true" overflow-scroll="true" >
-     <div style="white-space:normal;" ng-bind-html="resp.Html"></div>
+     <div id="div_html"></div>
      <br>
      <div class="row">
          <div class="col col-25">  <div style="float:left;"><span style="color: #808080;font-size: 15px" >阅读 {{ret.ReadCount}}</span></div></div>
