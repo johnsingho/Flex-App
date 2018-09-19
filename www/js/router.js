@@ -843,7 +843,7 @@ angular.module('evaluationApp.router', [])
                 .state('union_welfare_notice', {
                     url: '/union_welfare_notice',
                     templateUrl: 'templates/union/welfare_notice.html',
-                    controller: null
+                    controller: 'UnionWelfareNoticeCtrl'
                 })
             .state('union_activity', {
                 url: '/union_activity',

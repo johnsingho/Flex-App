@@ -122,6 +122,59 @@ angular.module('evaluationApp.unionControllers', [])
       }
     };
 
+    var baseInfo = commonServices.getBaseParas();
+    function InitInfo() {
+      var url = commonServices.getUrl("UnionService.ashx", "CheckWelfareNotice");
+      var paras = {
+        WorkdayNo: baseInfo.WorkdayNO
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            $scope.hasNewWelfareNotice = resp.obj;
+          }
+        } else {
+          var msg = $rootScope.Language.common.CommunicationErr;
+          alertService.showAlert(msg);
+        }
+      });
+    }
+    InitInfo();
+  })
+  .controller('UnionWelfareNoticeCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory) 
+  {
+    //领取通知
+    var baseInfo = commonServices.getBaseParas();
+    function InitInfo() {
+      var url = commonServices.getUrl("UnionService.ashx", "GetWelfareNoticeList");
+      var paras = {
+        WorkdayNo: baseInfo.WorkdayNO
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            $scope.items = resp.list;
+          }
+        } else {
+          var msg = $rootScope.Language.common.CommunicationErr;
+          alertService.showAlert(msg);
+        }
+      });
+    }
+    InitInfo();
+
+    $scope.open = function(ID){
+      //打开动态内容页
+      var objDyn = {
+        PageTitle: '详情',
+        TabName: 'ESE_Union_WelNotice',
+        SrcCol: 'Html',
+        WhereColName: 'ID',
+        WhereColVal: ID
+      };
+      CacheFactory.save(GLOBAL_INFO.KEY_DYNPAGE, JSON.stringify(objDyn));
+      $state.go("dynpage");
+    };
   })
   .controller('UnionWelfareFestCtrl', function ($scope, $state, $ionicHistory) 
   {
