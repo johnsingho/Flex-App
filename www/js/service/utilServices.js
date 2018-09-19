@@ -1,13 +1,19 @@
 /**
  * 工具类
+ * johnsing he 2018-09-11
  */
-angular.module('evaluationApp.utilServices', [])
-  .service('UrlServices', function ($state,externalLinksService,alertService,CacheFactory) 
+angular.module('evaluationApp.utilServices', ['ngCordova'])
+  .service('UrlServices', function ($state,alertService,CacheFactory) 
   {
-    var openForeignUrl = function(url){
-        //打开外链
+    //打开外链
+    var openForeignUrl = function(url){        
+        url = url.toLocaleLowerCase();
+        if(0!=url.indexOf("http")){
+            url = "http://"+url;
+        }
         try {
-            externalLinksService.openUr(url);
+            //externalLinksService.openUr(url);
+            cordova.InAppBrowser.open(url, '_system', 'location=yes');
         }
         catch (ex) {
             alertService.showAlert(ex.message);

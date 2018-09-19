@@ -4,7 +4,8 @@
  */
 angular.module('evaluationApp.unionControllers', [])
   .controller('UnionCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-    commonServices, CacheFactory, alertService, actionVisitServices) {
+                                      commonServices, CacheFactory, alertService, actionVisitServices) 
+  {
     $scope.canUseAction = function (action) {
       return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
     };
@@ -42,7 +43,8 @@ angular.module('evaluationApp.unionControllers', [])
 
   })
   /*sub of UnionCtrl*/
-  .controller('UnionCommuCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory) {
+  .controller('UnionCommuCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory) 
+  {
     $scope.open = function (action) {
       switch (action) {
         case "热线号码":
@@ -57,7 +59,8 @@ angular.module('evaluationApp.unionControllers', [])
     }
 
   })
-  .controller('CommuOtherCtrl', function ($scope, $state, $ionicHistory, commonServices, UrlServices) {
+  .controller('CommuOtherCtrl', function ($scope, $state, $ionicHistory, commonServices, UrlServices) 
+  {
     //其他沟通渠道
     $scope.openCanteenFeedback = function () {
       UrlServices.openForeignUrl('https://www.wjx.top/jq/18783879.aspx');
@@ -97,7 +100,8 @@ angular.module('evaluationApp.unionControllers', [])
       closable: false
     });
   })
-  .controller('UnionWelfareCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory) {
+  .controller('UnionWelfareCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory) 
+  {
     //员工福利
     $scope.open = function (action) {
       switch (action) {
@@ -116,10 +120,11 @@ angular.module('evaluationApp.unionControllers', [])
         default:
           break;
       }
-    }
+    };
 
   })
-  .controller('UnionWelfareFestCtrl', function ($scope, $state, $ionicHistory) {
+  .controller('UnionWelfareFestCtrl', function ($scope, $state, $ionicHistory) 
+  {
     //年节福利
     $scope.Items = [{
         welfare: "餐厅赠餐",
@@ -159,7 +164,9 @@ angular.module('evaluationApp.unionControllers', [])
       }
     ];
   })
-  .controller('UnionWelfareDMCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory, UrlServices) {
+  .controller('UnionWelfareDMCtrl', function ($scope, $state, $ionicHistory, 
+                                              commonServices, CacheFactory, UrlServices) 
+  {
     //斗门工公众号福利汇
     $scope.open = function (action) {
       switch (action) {
@@ -176,7 +183,8 @@ angular.module('evaluationApp.unionControllers', [])
       }
     }
   })
-  .controller('UnionHelpSupportCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory) {
+  .controller('UnionHelpSupportCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory) 
+  {
     //员工帮扶
     $scope.open = function (action) {
       switch (action) {
@@ -194,7 +202,8 @@ angular.module('evaluationApp.unionControllers', [])
       }
     }
   })
-  .controller('UnionHelpSupportFlexCtrl', function ($scope, $state, $ionicHistory) {
+  .controller('UnionHelpSupportFlexCtrl', function ($scope, $state, $ionicHistory) 
+  {
     //公司爱心帮扶
     $scope.helps = [{
         ItemName: "死亡",
@@ -250,7 +259,8 @@ angular.module('evaluationApp.unionControllers', [])
       }
     ];
   })
-  .controller('UnionHelpSupportContactCtrl', function ($scope, $state, $ionicHistory) {
+  .controller('UnionHelpSupportContactCtrl', function ($scope, $state, $ionicHistory) 
+  {
     //爱心帮扶联系方式
     $scope.contacts = [{
         Building: "CR & RR",
@@ -283,7 +293,8 @@ angular.module('evaluationApp.unionControllers', [])
     ];
   })
   .controller('UnionActivityCtrl', function ($scope, $rootScope, $ionicPopup,
-    $state, $ionicHistory, commonServices, CacheFactory, alertService, UrlServices) {
+    $state, $ionicHistory, commonServices, CacheFactory, alertService, UrlServices) 
+  {
     //工会活动及报名
     var baseInfo = commonServices.getBaseParas();
 
@@ -324,7 +335,6 @@ angular.module('evaluationApp.unionControllers', [])
     };
 
     $scope.isSumbiting = false;
-
     function SubmitAttend(actID) {
       $scope.isSumbiting = true;
       var paras = baseInfo;
@@ -361,7 +371,8 @@ angular.module('evaluationApp.unionControllers', [])
 
   })
   .controller('UnionWonderfulmomentCtrl', function ($scope, $rootScope, $ionicPopup,
-    $state, $ionicHistory, commonServices, CacheFactory, alertService, UrlServices) {
+    $state, $ionicHistory, commonServices, CacheFactory, alertService, UrlServices) 
+  {
     //精彩瞬间
     var baseInfo = commonServices.getBaseParas();
 
@@ -386,14 +397,15 @@ angular.module('evaluationApp.unionControllers', [])
     $scope.open = function (item) {
       if (item.IsOutLink) {
         UrlServices.openForeignUrl(item.Html);
-        return;
+      }else{
+        CacheFactory.save(GLOBAL_INFO.KEY_WONDERFULMON_ID, item.ID);
+        $state.go('union_wonderfulmoment_detail');
       }
-      CacheFactory.save(GLOBAL_INFO.KEY_WONDERFULMON_ID, item.ID);
-      $state.go('union_wonderfulmoment_detail');
     };
   })
   .controller('UnionWonderfulmomentDetailCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal,
-    $state, $ionicHistory, commonServices, CacheFactory, alertService, duplicateSubmitServices) {
+      $state, $ionicHistory, commonServices, CacheFactory, alertService, duplicateSubmitServices)
+  {
     //精彩瞬间 详细
     var wonderfulMomID = CacheFactory.get(GLOBAL_INFO.KEY_WONDERFULMON_ID);
     var baseInfo = commonServices.getBaseParas();
@@ -475,7 +487,8 @@ angular.module('evaluationApp.unionControllers', [])
 
   })
   .controller('UnionSuggestCtrl', function ($scope, $rootScope, $ionicPopup,
-    $state, $ionicHistory, commonServices) {
+                                            $state, $ionicHistory, commonServices) 
+  {
     //建议留言
     $scope.open = function (action) {
       switch (action) {
@@ -491,7 +504,7 @@ angular.module('evaluationApp.unionControllers', [])
     };
   })
   .controller('UnionSuggestMyCtrl', function ($scope, $rootScope, $ionicPopup,
-        $state, $ionicHistory, commonServices, alertService, duplicateSubmitServices) 
+      $state, $ionicHistory, commonServices, alertService, duplicateSubmitServices) 
   {
     //我的留言
     var baseInfo = commonServices.getBaseParas();
@@ -578,13 +591,15 @@ angular.module('evaluationApp.unionControllers', [])
     };
   })
   .controller('UnionSuggestOpenDetailCtrl', function ($scope, commonServices, CacheFactory) 
- {
+  {
     //留言公开 详情
     var suggID = CacheFactory.get(GLOBAL_INFO.KEY_UNION_SUGGOPEN_ID);
     //var baseInfo = commonServices.getBaseParas();
     function InitInfo() {
       var url = commonServices.getUrl("UnionService.ashx", "GetOpenSuggestDetail");
-      var paras = {suggID: suggID};
+      var paras = {
+        suggID: suggID
+      };
       commonServices.submit(paras, url).then(function (resp) {
         if (resp) {
           if (resp.success) {
