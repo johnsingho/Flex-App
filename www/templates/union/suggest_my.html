@@ -1,0 +1,51 @@
+<!-- 我的留言 -->
+<style>
+.myPadding{
+    padding:0 5px 0 5px;
+}
+.myDivBorder{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ddd;
+}
+.myDivBorder p{
+    margin-bottom: 2px;
+}
+.myResp{
+    color: red;
+}
+</style>
+<ion-view view-title="{{Language.union.mySuggest}}" cache-view="false">
+  <ion-content class="myPadding" scroll="true" lazy-scroll>
+    <div>
+      <h4>
+        <label class="ng-binding">{{Language.dormManage.yourSuggest}}：</label>
+      </h4>
+      <label class="item item-input">
+        <textarea rows="6" ng-model="model.Suggest" class="ng-pristine ng-valid ng-touched"></textarea>
+      </label>
+    </div>
+
+    <div style="text-align:center;margin:10px;">
+      <button class="button button-positive" ng-disabled="0==GetSuggest().length" ng-click="Submit()">{{Language.menu.submit}}</button>
+    </div>
+
+    <div ng-if="hisSuggest.length>0">
+      <fieldset>
+        <h4 style="color: royalblue">{{Language.dormManage.hisSuggest}}</h4>
+        <div ng-repeat="sugg in hisSuggest">
+          <div class="myDivBorder">
+            <p>{{sugg.CreateDate| date: "yyyy-MM-dd HH:mm"}}</p>
+            <p style="white-space:normal;" ng-bind-html="sugg.Suggest"></p>
+          </div>
+          <div class="myDivBorder" ng-if="sugg.Response && sugg.Response.length>0">
+            <p class="myResp">{{Language.dormManage.respSuggest}}:&nbsp;</p>
+            <p style="color:teal;white-space:normal;" ng-bind-html="sugg.Response"></p>
+          </div>
+          <br>
+        </div>
+      </fieldset>
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -883,9 +883,23 @@ angular.module('evaluationApp.router', [])
             .state('union_suggest', {
                 url: '/union_suggest',
                 templateUrl: 'templates/union/suggest.html',
-                controller: null
+                controller: 'UnionSuggestCtrl'
             })
-            
+                .state('union_suggest_my', {
+                    url: '/union_suggest_my',
+                    templateUrl: 'templates/union/suggest_my.html',
+                    controller: 'UnionSuggestMyCtrl'
+                })
+                .state('union_suggest_open', {
+                    url: '/union_suggest_open',
+                    templateUrl: 'templates/union/suggest_open.html',
+                    controller: 'UnionSuggestOpenCtrl'
+                })
+                .state('union_suggest_openDetail', {
+                    url: '/union_suggest_openDetail',
+                    templateUrl: 'templates/union/suggest_openDetail.html',
+                    controller: 'UnionSuggestOpenDetailCtrl'
+                })
         
         $urlRouterProvider.otherwise('signin');
 

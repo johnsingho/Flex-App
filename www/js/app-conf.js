@@ -529,7 +529,8 @@ var ZH_CN = {
         ActVenue:"活动地点",
         ActDateBegin:"起始日期",
         ActDateEnd:"结束日期",
-        
+        mySuggest:"我的留言",
+        openSuggest:"留言公开",
     }
 };
 
@@ -882,4 +883,5 @@ var GLOBAL_INFO = {
     KEY_ASK_AND_ANS_ID: "KEY_ASK_AND_ANS_ID",
     KEY_DYNPAGE: "KEY_DYNPAGE",
     KEY_WONDERFULMON_ID: "KEY_WONDERFULMON_ID",
+    KEY_UNION_SUGGOPEN_ID: "KEY_UNION_SUGGOPEN_ID",
 };

@@ -1,7 +1,13 @@
 <!-- 建议留言 -->
 <ion-view view-title="{{Language.union.suggest}}" cache-view="true">
   <ion-content scroll="true" overflow-scroll="true">
-    <h3>建设中...</h3>
-
+    <div class="list list-inset">
+      <div class="item" ng-click="open('我的留言');">
+        {{Language.union.mySuggest}}
+      </div>
+      <div class="item" ng-click="open('留言公开');">
+        {{Language.union.openSuggest}}
+      </div>
+    </div>
   </ion-content>
 </ion-view>

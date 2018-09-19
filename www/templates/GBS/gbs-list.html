@@ -17,14 +17,18 @@
                 <i style="font-size:50px;" class="ion-android-document"></i>
                 <div>{{Language.certificate.title}}</div>
             </div>
-            <div  class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('LTP');">
+            <!-- <div  class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('LTP');">
                 <i style="font-size:50px;" class="ion-unlocked"></i>
                 <div>{{Language.GBSHR.LTP}}</div>
-            </div>
-            <div class="col custom-og light" style="Margin:1px" ng-click="open('菜鸟手册');">
+            </div> -->
+            <div class="col col-25 custom-og light" style="Margin:1px" ng-click="open('菜鸟手册');">
                 <i style="font-size:50px;" class="ion-ios-calendar"></i>
                 <div>{{Language.GBSHR.basicGuide}}</div>
-            </div>            
+            </div>
+            <div class="col positive-bg light" style="Margin:1px" ng-click="open('离职须知');" ng-if="canUseAction('离职须知');">
+                <i style="font-size:50px;" class="ion-ios-calendar"></i>
+                <div>{{Language.GBSHR.EmployeeDismiss}}</div>
+            </div>
         </div>
         <div class="row" style="height:110px;text-align: center">
             <div class="col col-25 balanced-bg light" style="Margin:1px" ng-click="open('保险');">
@@ -39,10 +43,7 @@
                 <i style="font-size:50px;" class="ion-ios-home"></i>
                 <div>{{Language.GBSHR.HousingFund}}</div>
             </div>
-            <div class="col positive-bg light" style="Margin:1px" ng-click="open('离职须知');" ng-if="canUseAction('离职须知');">
-                <i style="font-size:50px;" class="ion-ios-calendar"></i>
-                <div>{{Language.GBSHR.EmployeeDismiss}}</div>
-            </div>
+
         </div>
 
     </ion-content>
