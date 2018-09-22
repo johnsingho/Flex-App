@@ -4,7 +4,7 @@
 
 //开关
 //是否本地开发调试
-var IsDebugMode = true; //false;
+var IsDebugMode = false; //false;
 
 //是否显示详细升级信息
 var IsShowUpdateDetial = false; //false;
@@ -451,7 +451,7 @@ var ZH_CN = {
         DateEnd:"结束日期"
     },
     activityGood:{
-        title:"2018书法培训班结业作品展",
+        title:"点赞抽奖---2018书法作品展",
         name:"作品名",
         employee_ID:"工号",
         department:"部门",
@@ -824,11 +824,11 @@ var ZH_US = {
         DateEnd:"End date"
     },
     activityGood:{
-        title:" Sign Language Culture Poster Design Competition",
+        title:"Calligraphy Training Graduation Exhibition",
         name: "Title",
         employee_ID: "Employee ID",
         department: "Department",
-        designer:"Designer",
+        designer:"Author",
         designConcept: "Design Concept"
     },
     ehsAct:{
@@ -850,11 +850,26 @@ var ZH_US = {
         housingAllowance:"Housing Allowance",
     },
     union:{
-        communicate:"Communicate",
+        communicate:"Hotlines",
         welfare:"Welfare",
         activity:"Activities",
         helpSupport:"Help Support",
-        wonderfulMoment:"Wonderful Moment",
+        wonderfulMoment:"Wonderful Moments",
+        suggest:"Suggestion",
+        hotline:"Hotlines",
+        otherCommunMethod:"Othe Communications",
+        welfare_fest:"Festival Welfare",
+        welfare_union:"Union Welfare",
+        welfare_dmUnion:"Doumen Union Welfare",
+        welfare_notice:"Welfare Notices",
+        AttendAct:"Attend",
+        ActTime:"Time",
+        ActVenue:"Location",
+        ActDateBegin:"Begin",
+        ActDateEnd:"End",
+        mySuggest:"My suggestion",
+        openSuggest:"Public suggestion",
+
     }
 };
 

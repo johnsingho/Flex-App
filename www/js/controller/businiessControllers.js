@@ -1010,7 +1010,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         };
 
         //2018-09-22 活动点赞
-        $scope.activityGoodName="2018书法培训班结业作品展";
+        $scope.activityGoodName="点赞抽奖---2018书法作品展";
         $scope.activityGoodIcon="img/other/shufaIcon.png";
         $scope.openActivityGood = function(){
             $state.go('activityGood');
@@ -1067,7 +1067,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         }
         InitInfo();
 
-        var MAX_CLICK = 99; //一个人的最多点赞个数
+        var MAX_CLICK = 5; //一个人的最多点赞个数
         var TActivityGoodEntry = function(itemID, WorkDayNo){
             var self=this;
             self.RefActivityGoodID=0;
@@ -1081,7 +1081,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             var likeInfo = GetActivityGoodCache();
             var nClick = likeInfo.length;
             if(nClick >= MAX_CLICK){
-                alertService.showAlert("最多只能点赞"+MAX_CLICK+"次");
+                alertService.showAlert("最多只能点赞"+MAX_CLICK+"个作品");
                 return;
             }
             var hasClicked=false;
