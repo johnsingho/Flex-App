@@ -1,45 +1,42 @@
 <!--活动点赞 2018-05-23-->
-<ion-view view-title="{{Language.activityGood.title}}" cache-view="false"  hide-tabs >
+<ion-view view-title="{{Language.activityGood.title}}" cache-view="true">
     <ion-content style="background-color:lavender">
-
-        <ion-slide-box   does-continue="true" auto-play="false"  show-pager="false" >
-            <img  ng-src="{{imgUrl}}" >
+        <ion-slide-box does-continue="true" auto-play="false"  show-pager="false" >
+            <img  ng-src="{{titleImgUrl}}" >
         </ion-slide-box>
         
         <div class="list card">
             <ion-list>
                 <ion-item ng-repeat="act in Activities"  >
-
                     <div class="item item-avatar">
-                        <img src="img/shouyu.png">
-                        <h3>{{act.Name}}</h3>
-                        <h3>{{Language.activityGood.designer}}：{{act.Designer}}</h3>
+                        <img ng-src="{{activityGoodIcon}}">
+                        <!-- <h3>{{act.Name}}</h3> -->
+                        <h3 ng-if="act.Designer">{{Language.activityGood.employee_ID}}：{{act.Designer}}</h3>
+                        <h3 ng-if="act.Describe">{{Language.activityGood.department}}：{{act.Describe}}</h3>
+                        <h3>{{Language.activityGood.designer}}：{{act.Name}}</h3>
                     </div>
 
                     <div class="item item-body">
                         <img class="full-image" ng-src="{{act.ImgPath}}">
-                        <p class="text-left small">{{Language.activityGood.designConcept}}：</p>
-                        <p>
-                            {{act.Describe}}
-                        </p>
+                        <!-- <div ng-if="act.Describe">
+                            <p class="text-left small">{{Language.activityGood.designConcept}}：</p>
+                            <p>
+                                {{act.Describe}}
+                            </p>
+                        </div> -->
                         <p ng-if="act.Like>0">
                             <a href="#" class="subdued">{{act.Like}} 赞</a>
                         </p>
                     </div>
 
                     <div class="item tabs tabs-secondary tabs-icon-right">
-                        <a class="tab-item"   ng-click="like(act)">
+                        <a class="tab-item" ng-click="like(act)">
                             <i class="icon ion-thumbsup"></i>
-                            赞
+                            点赞
                         </a>
                     </div>
-
                 </ion-item>
-
             </ion-list>
         </div>
-
-
     </ion-content>
-
 </ion-view>

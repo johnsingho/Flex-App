@@ -439,29 +439,6 @@ angular.module('evaluationApp.businessServices', [])
         }
 
     })
-    .service("activityGoodService",function($http, $q, HttpFactory){
-        return {
-            getActivityGoods:function(paras){
-                var deferred = $q.defer();
-                HttpFactory.send({
-                    url:API.getActivityGoods,
-                    params: paras,
-                    method: 'post',
-                    mask: true
-                }).success(function (response) {
-                    if(response.success){
-                        deferred.resolve(response);
-                    } else{
-                        deferred.resolve(response.message);
-                    }
-                }) .error(function(response) {
-                    deferred.reject(response.template);   // 声明执行失败，即服务器返回错误
-                });
-                return deferred.promise;
-            }
-
-        }
-    })
     .service("eHSActService",function($http, $q, HttpFactory){
         //对应于 EHS有奖答题
         return {

@@ -21,6 +21,18 @@
             <!--</ion-item>-->
         <!--</ion-list>-->
 
+        <!-- johnsing 2018-09-22 -->
+        <!--活动点赞-->
+        <ion-list>
+        <ion-item class="item item-thumbnail-left" ng-click="openActivityGood()" ng-if="canUseAction('活动点赞');">
+            <img src="{{activityGoodIcon}}">
+            <br>
+            <h2>{{activityGoodName}}</h2>
+            <br>
+            <p>2018-09-22</p>
+        </ion-item>
+        </ion-list>
+
         <ion-list>
             <ion-item ng-repeat="activity in activityList" class="item item-thumbnail-left"  ng-click="open(activity)">
                 <img src="{{activity.ImgPath}}">
@@ -75,7 +87,6 @@
 
         <!--</div>-->
 
-        <!-- johnsing 2018-06-20 -->
         <!--EHS有奖答题-->
         <ion-list ng-if="canShow">
             <ion-item ng-repeat="activity in ehsActList" class="item item-thumbnail-left"  ng-click="openEHS(activity)">                
@@ -102,17 +113,6 @@
         </ion-list>
 
         <!-- 放置已下线活动 -->
-        <!--活动点赞-->
-        <ion-list>
-                <ion-item class="item item-thumbnail-left OutDate" 
-                    ng-click="openOfflineAct()">
-                    <img src="{{activityGoodImg}}">
-                    <br>
-                    <h2>{{activityGoodName}}</h2>
-                    <br>
-                    <p>2018-05-28</p>
-                </ion-item>
-        </ion-list>
         <ion-list>
             <ion-item ng-repeat="activity in outDateActivities" class="item item-thumbnail-left OutDate" 
                 ng-click="openOfflineAct()">

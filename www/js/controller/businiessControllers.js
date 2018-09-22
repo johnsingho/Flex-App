@@ -903,9 +903,12 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 //            $ionicHistory.goBack();
 //        };
     })
-    .controller('ActivityListCtrl', function($scope,CacheFactory,noticeService,alertService,eHSActService,
+    .controller('ActivityListCtrl', function($scope,$rootScope,CacheFactory,noticeService,alertService,eHSActService,
         $state,$ionicHistory,commonServices,$location,actionVisitServices) 
     {
+        $scope.canUseAction = function (action) {
+            return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+        };
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
 
@@ -1006,9 +1009,9 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             alertService.showAlert('该活动已下线，欢迎下次参与!');
         };
 
-        //2018-05-23 活动点赞
-        $scope.activityGoodName="手语海报设计大赛";
-        $scope.activityGoodImg="img/other/handSign.png";
+        //2018-09-22 活动点赞
+        $scope.activityGoodName="2018书法培训班结业作品展";
+        $scope.activityGoodIcon="img/other/shufaIcon.png";
         $scope.openActivityGood = function(){
             $state.go('activityGood');
         };
@@ -1041,40 +1044,38 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         $scope.outDateActivities=[];
         actionVisitServices.getOutDateActivity($scope);        
     })
-    .controller('ActivityGoodCtrl',function($scope,CacheFactory,activityGoodService,alertService,$state,$ionicHistory,commonServices,$location) {
-        //2018-05-23 活动点赞
-        $scope.imgUrl='img/other/diversity.jpg';
+    .controller('ActivityGoodCtrl',function($scope,CacheFactory,alertService,
+        $state,$ionicHistory,commonServices,$location) 
+    {
+        //2018-09-22 活动点赞        
+        var baseInfo = commonServices.getBaseParas();
+        function InitInfo() {
+            $scope.titleImgUrl='img/other/shufaTitle.jpg';
+            $scope.activityGoodIcon="img/other/shufaIcon.png";
+            var url = commonServices.getUrl("EvaluationAppService.ashx", "getActivityGoods");
+            var paras = {
+                Token: baseInfo.Token,
+                WorkdayNO:baseInfo.WorkdayNO,                
+            };            
+            commonServices.submit(paras, url).then(function (resp) {
+              if (resp && resp.success) {
+                $scope.Activities=resp.list;
+                var arr = JSON.parse(resp.data);
+                CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ID, arr);
+              }
+            });
+        }
+        InitInfo();
 
-        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        var loginInfo=commonServices.getBaseParas();
-        loginInfo.opType='活动点赞';
-        loginInfo.opContent='点击进入';
-        commonServices.operationLog(loginInfo).then(function(data){
-            $scope.sucess==data;
-        });
-
-        var MAX_CLICK = 3;
-        var KEY_ACT_GOOD='ActivityGood';
+        var MAX_CLICK = 99; //一个人的最多点赞个数
         var TActivityGoodEntry = function(itemID, WorkDayNo){
             var self=this;
             self.RefActivityGoodID=0;
             self.WorkdayNo=0;
         }
-
-        //重新加载刷新
-        function RefreshActivityGoodList(){
-            var loginInfo= commonServices.getBaseParas();
-            activityGoodService.getActivityGoods(loginInfo).then(function(resp){
-                $scope.Activities=resp.list;
-                var arr = JSON.parse(resp.data);
-                CacheFactory.save(KEY_ACT_GOOD, arr);
-            });
-        }
         function GetActivityGoodCache(){
-            return JSON.parse(CacheFactory.get(KEY_ACT_GOOD)) || []; //数组
+            return JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_ACT_GOOD_ID)) || []; //数组
         }
-
-        RefreshActivityGoodList();
 
         $scope.like = function(item){
             var likeInfo = GetActivityGoodCache();
@@ -1095,21 +1096,24 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 }
             }
             if(!hasClicked){
-                var para={
-                    WorkdayNO: $scope.accessEmployee.WorkdayNO,
-                    CName: $scope.accessEmployee.CName,
-                    Token:$scope.accessEmployee.Token,
+                var url = commonServices.getUrl("EvaluationAppService.ashx", "addActivityGoods");
+                var paras={
+                    Token: baseInfo.Token,
+                    WorkdayNO: baseInfo.WorkdayNO,
+                    CName: baseInfo.CName,
+                    Token:baseInfo.Token,
                     ItemID:item.ID
                 };
-                commonServices.submit(para, API.addActivityGoods).then(function(data){
-                    if(data.success){
+          
+                commonServices.submit(paras, url).then(function (resp) {
+                    if(resp.success){
                         var likeInfo = GetActivityGoodCache();
                         likeInfo.push(new TActivityGoodEntry(item.ID, $scope.accessEmployee.WorkdayNO));
-                        CacheFactory.save(KEY_ACT_GOOD, likeInfo);
+                        CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ID, likeInfo);
                         //刷新
-                        RefreshActivityGoodList();
+                        InitInfo();
                     }
-                })
+                });
             }
         };
     })
