@@ -106,7 +106,8 @@
             <div class="col custom-bule1 light" style="Margin:1px;" ng-click="open('活动');">
                 <i style="font-size:50px;" class="icon ion-ios-people"></i>
                 <div>{{Language.home.activity}}
-                    <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="activityUpdateCount>0">{{activityUpdateCount}}</span>
+                    <span style="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('活动')">New</span>
+                    <span style="font-size: 10px" class="badge badge-assertive" ng-if="!checkActionUpdate('活动') && (activityUpdateCount>0)">{{activityUpdateCount}}</span>
                 </div>
             </div>
 
