@@ -1044,8 +1044,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         $scope.outDateActivities=[];
         actionVisitServices.getOutDateActivity($scope);        
     })
-    .controller('ActivityGoodCtrl',function($scope,CacheFactory,alertService,
-        $state,$ionicHistory,commonServices,$location) 
+    .controller('ActivityGoodCtrl',function($scope,CacheFactory,alertService,commonServices) 
     {
         //2018-09-22 活动点赞        
         var baseInfo = commonServices.getBaseParas();
@@ -1062,6 +1061,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 $scope.Activities=resp.list;
                 var arr = JSON.parse(resp.data);
                 CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ID, arr);
+                setTimeout(InitPhotoScale, 1500);
               }
             });
         }

@@ -235,7 +235,7 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router', 'evaluationApp
             return false;
         }, 101);
     })
-    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $sceDelegateProvider) {
 
         $ionicConfigProvider.platform.ios.tabs.style('standard');
         $ionicConfigProvider.platform.ios.tabs.position('bottom');
@@ -250,5 +250,9 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router', 'evaluationApp
 
         $ionicConfigProvider.platform.ios.views.transition('ios');
         $ionicConfigProvider.platform.android.views.transition('android');
+
+        var orgin = $sceDelegateProvider.resourceUrlWhitelist();
+        orgin.push('https://s*.ax1x.com/2018/**');
+        $sceDelegateProvider.resourceUrlWhitelist(orgin);
 
     });

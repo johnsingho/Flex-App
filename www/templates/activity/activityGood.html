@@ -17,7 +17,15 @@
                     </div>
 
                     <div class="item item-body">
-                        <img class="full-image" ng-src="{{act.ImgPath}}">
+                        <!-- <img class="full-image" ng-src="{{act.ImgPath}}"> -->
+                        <ul class="lightgallery">
+                        <li data-src="{{act.ImgPath}}">
+                            <a href="#">
+                            <img class="full-image" src="{{act.ImgPath}}" />
+                            </a>
+                        </li>
+                        </ul>
+
                         <!-- <div ng-if="act.Describe">
                             <p class="text-left small">{{Language.activityGood.designConcept}}：</p>
                             <p>

@@ -52,3 +52,15 @@ function CheckIdCard(idcard) {
     }
 }
 
+/**
+ * 图片缩放
+ */
+function InitPhotoScale(){
+   $(".lightgallery").lightGallery({
+       mobileSrc: false, // If "data-responsive-src " attr. should be used for mobiles.
+       mobileSrcMaxWidth: 640, // Max screen resolution for alternative images to be loaded for.
+       swipeThreshold: 50, // How far user must swipe for the next/prev image (in px).
+       hideControlOnEnd: false,
+       closable: false
+   });
+}
