@@ -117,6 +117,9 @@ angular.module('evaluationApp.unionControllers', [])
         case "领取通知":
           $state.go("union_welfare_notice");
           break;
+        case "补贴申请结果查询":
+          $state.go("union_welfare_applyResult");
+          break;
         default:
           break;
       }
@@ -235,6 +238,31 @@ angular.module('evaluationApp.unionControllers', [])
           break;
       }
     }
+  })
+  .controller('UnionWelfareApplyResultCtrl', function ($scope, $state, $ionicHistory,
+        commonServices, CacheFactory, UrlServices) 
+  {
+    //补贴申请结果查询
+    var baseInfo = commonServices.getBaseParas();
+    function InitInfo() {
+      var url = commonServices.getUrl("UnionService.ashx", "GetWelfareApplyResult");
+      var paras = {
+        WorkdayNo: baseInfo.WorkdayNO
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            $scope.items = resp.list;
+          }else{
+            $scope.errMessage = resp.message;
+          }
+        } else {
+          var msg = $rootScope.Language.common.CommunicationErr;
+          alertService.showAlert(msg);
+        }
+      });
+    }
+    InitInfo();
   })
   .controller('UnionHelpSupportCtrl', function ($scope, $state, $ionicHistory, commonServices, CacheFactory) 
   {
