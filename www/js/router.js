@@ -789,6 +789,11 @@ angular.module('evaluationApp.router', [])
             templateUrl: 'templates/generalNotice/dynPage.html',
             controller: 'DynpageCtrl'
         })
+        .state('testPage', {
+            url: '/testPage',
+            templateUrl: 'templates/test/testPage.html',
+            controller: 'TestPageCtrl'
+        })
         .state('union', {
             url: '/union',
             templateUrl: 'templates/union/union-list.html',

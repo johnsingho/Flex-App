@@ -10,7 +10,7 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router', 'evaluationApp
     'evaluationApp.pointsService', 'evaluationApp.businessServices', 'evaluationApp.businiess2Controllers', 'evaluationApp.B11WorkShopController',
     'ngCordova', 'angularMoment', 'chart.js', 'evaluationApp.sharCarController', 
     'ion-datetime-picker', 'evaluationApp.adminControllers', 'evaluationApp.gbshrControllers', 
-    'evaluationApp.unionControllers'
+    'evaluationApp.unionControllers', 'evaluationApp.testControllers'
     ])
     //angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.controllers', 'evaluationApp.services'])
 

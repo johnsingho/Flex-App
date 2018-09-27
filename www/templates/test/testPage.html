@@ -1,0 +1,53 @@
+<!-- test page -->
+<style>
+.smallPic{
+    max-height: 120px;
+    max-width: 120px;
+    margin:2px 0 0 2px;
+}
+</style>
+<!-- <script>
+    $(function(){
+        Reset();
+    });
+</script> -->
+<ion-view view-title="my test page" cache-view="false"  hide-tabs >
+    <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
+      </ion-nav-buttons>
+
+    <ion-content style="background-color:lavender">
+        <!-- <div class="list card font90" >
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;">{{Language.like.name}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" readonly="readonly" ng-model="model.CName" />
+            </div>            
+            <div class="item item-input">
+                <span class="input-label" style="width:30px;">{{Language.like.employee_ID}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" readonly="readonly" ng-model="model.WorkdayNO" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width:30px;">{{Language.realName.idNO}}</span>
+                <span class="input-label" style="width: 10px;color: red">*</span>
+                <input type="text" maxlength="18" placeholder="{{Language.realName.idNO}}" ng-model="model.IDNO"/>
+            </div>
+        </div> -->
+
+        <button class="button button-calm button-small" ng-click="SelPic(false);">从相册中选择</button>
+        <button class="button button-calm button-small" ng-click="SelPic(true);">拍照</button>
+        <button class="button button-calm button-small" ng-click="Reset();">Reset</button>
+        <!-- images here -->
+        <div>Image count: <span>{{imgs.length}}</span></div>
+        <div id="images" style="margin-top:10px;" ng-if="imgs.length>0">
+            <img class='smallPic' src='{{item}}' ng-repeat='item in imgs'>            
+        </div>
+        
+        <div style="text-align: center">
+            <!-- <button class="button button-positive" ng-disabled="0==imgs.length" ng-click="doUpload()">上传文件</button> -->
+            <button class="button button-positive" ng-click="doUpload()">上传文件</button>
+        </div>
+    </ion-content>
+
+</ion-view>

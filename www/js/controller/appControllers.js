@@ -431,12 +431,13 @@ angular.module('evaluationApp.appControllers', [])
             }
             else if(action=="拍照"){
                 $location.path("Photo");
-
+            }
+            else if(action=="testPage"){
+                $state.go('testPage');
             }
             else if(action=="问卷调查"){
                $location.path("researchList");
                 //$state.go("tab.404");
-
             }
             else if(action=="我要求助"){
 
