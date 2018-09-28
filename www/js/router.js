@@ -838,7 +838,7 @@ angular.module('evaluationApp.router', [])
                     .state('union_welfare_dm_his', {
                         url: '/union_welfare_dm_his',
                         templateUrl: 'templates/union/welfare_dm_history.html',
-                        controller: null
+                        controller: 'UnionWelfareDMHistoryCtrl'
                     })
                     .state('union_welfare_dm_guide', {
                         url: '/union_welfare_dm_guide',
@@ -865,15 +865,10 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/union/helpSupport.html',
                 controller: 'UnionHelpSupportCtrl'
             })
-            .state('union_helpSupport_flex', {
-                url: '/union_helpSupport_flex',
-                templateUrl: 'templates/union/helpSupportFlex.html',
-                controller: 'UnionHelpSupportFlexCtrl'
-            })
-            .state('union_helpSupport_dm', {
-                url: '/union_helpSupport_dm',
-                templateUrl: 'templates/union/helpSupportDM.html',
-                controller: null
+            .state('union_helpSupport_guide', {
+                url: '/union_helpSupport_guide',
+                templateUrl: 'templates/union/helpSupportGuide.html',
+                controller: 'UnionHelpSupportGuideCtrl'
             })
             .state('union_helpSupport_contact', {
                 url: '/union_helpSupport_contact',

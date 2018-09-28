@@ -5,36 +5,37 @@
   </ion-nav-title>
   <ion-content scroll="false">
     <div>
-        <section class="welTitle" style="margin: 10px auto;text-align: center;">
+      <section class="welTitle" style="margin: 10px auto;text-align: center;">
         <section class="welTitle bg">
-            <section class="welTitle" style="margin-right: 20px;height: 25px;overflow: hidden;">
+          <section class="welTitle" style="margin-right: 20px;height: 25px;overflow: hidden;">
             <p class="welTitle" style="max-width:100%;min-height:1em;font-size: 18px;color:#ffffff;">
-                年节福利∙普惠全员
+              年节福利∙普惠全员
             </p>
-            </section>
+          </section>
         </section>
-        </section>
+      </section>
     </div>
     <div>
-    <table class="myTab">
-    <thead>
-        <tr>
-        <th style="width:20px">#</th>
-        <th style="width:70px;">年节福利</th>
-        <th style="width:60px">参与员工</th>
-        <th>内容</th>
-        <th style="width:60px">实施月份</th>
-        </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="item in Items">
-        <td class="tdCenter">{{$index+1}}</td>
-        <td>{{item.welfare}}</td>
-        <td>{{item.target}}</td>
-        <td>{{item.detail}}</td>
-        <td>{{item.date}}</td>
-    </tr>
-    </tbody>
-    </table>
+      <table class="myTab">
+        <thead>
+          <tr>
+            <th style="width:20px">#</th>
+            <th style="width:70px;">年节福利</th>
+            <th style="width:60px">参与员工</th>
+            <th>内容</th>
+            <th style="width:60px">实施月份</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in Items">
+            <td class="tdCenter">{{$index+1}}</td>
+            <td>{{item.welfare}}</td>
+            <td>{{item.target}}</td>
+            <td>{{item.detail}}</td>
+            <td>{{item.date}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </ion-content>
 </ion-view>

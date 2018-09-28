@@ -532,7 +532,7 @@ var ZH_CN = {
         ActDateBegin:"起始日期",
         ActDateEnd:"结束日期",
         mySuggest:"我的留言",
-        openSuggest:"留言公开",
+        openSuggest:"他们说",
     }
 };
 
@@ -878,7 +878,7 @@ var ZH_US = {
         ActDateBegin:"Begin",
         ActDateEnd:"End",
         mySuggest:"My suggestion",
-        openSuggest:"Public suggestion",
+        openSuggest:"They said",
 
     }
 };

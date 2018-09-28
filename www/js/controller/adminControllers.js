@@ -870,6 +870,7 @@ angular.module('evaluationApp.adminControllers', [])
             $scope.imgs=[];
         };
         Reset();
+        $scope.Reset = Reset;
 
         $scope.isSumbiting = false;
         $scope.Submit = function () {
@@ -920,7 +921,7 @@ angular.module('evaluationApp.adminControllers', [])
             // }
 
             var paras = $scope.model;
-            if(!$scope.imgs || !scope.imgs.length){
+            if(!$scope.imgs || !$scope.imgs.length){
                 try {
                   DoSubmit(paras);
                 } finally {
