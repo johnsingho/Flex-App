@@ -296,3 +296,8 @@ ul{
         word-wrap: break-word !important;
     }
 
+.smallPic{
+    max-height: 120px;
+    max-width: 120px;
+    margin:2px 0 0 2px;
+}

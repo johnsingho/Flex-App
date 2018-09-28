@@ -29,7 +29,7 @@ angular.module('evaluationApp.testControllers', [])
 
     var Reset=function(){
         $scope.imgs=[];
-        $("#images").empty();
+        //$("#images").empty();
     };
     Reset();
     $scope.Reset=Reset;

@@ -1512,29 +1512,36 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         if($scope.hotItems==1){
             // 园区热线
-            $scope.items=[{description:"400员工服务热线",phone:"4001099899",bz:"24小时值班电话"},
+            $scope.items=[
+                {description:"400员工服务热线",phone:"4001099899",bz:"24小时值班电话"},
                 {description:"工会热线",phone:"18926985395",bz:"24小时值班电话"},
                 {description:"心灵热线",phone:"18926985442",bz:"24小时值班电话"},
                 {description:"医务室",phone:"18926985310",bz:"24小时值班电话"},
                 {description:"园区安全部",phone:"18926988110",bz:"24小时值班电话"},
-                {description:"餐厅饭卡",phone:"18926980035",bz:"正常工作日8:30~17:30"},
-                {description:"宿舍管理",phone:"18926985305",bz:"24小时值班电话"},
-                {description:"园区DL招聘热线",phone:"4001662221",bz:"正常工作日8:30~17:30"} ];
+                {description:"餐厅饭卡",phone:"5121667 18926980035",bz:"正常工作日8:30~17:30"},
+                {description:"南厂宿舍管理",phone:"18926980025",bz:"24小时值班电话"},
+                {description:"园区DL招聘热线",phone:"4001662221",bz:"正常工作日8:30~17:30"},
+                {description:"Flex+ / LTP密码重置",phone:"0755-86155600转2",bz:"正常工作日8:30~17:30"},
+            ];
         }
         else if($scope.hotItems==2){
-            // B13热线
+            // B13 PCBA-South Campus热线
             $scope.items=[
-                {description:"事业部安全部（门禁卡、手机标签）",phone:"5186489",bz:"正常工作日8:30~17:30"},
-                {description:"工衣柜管理",phone:"5186335",bz:"24小时值班电话"},
+                {description:"新入职DL接待热线",phone:"5186137",bz:"正常工作日8:30~17:30"},
+                {description:"安全部（门禁卡、手机标签）",phone:"5186489",bz:"正常工作日8:30~17:30"},
+                {description:"工衣柜管理",phone:"18926971043",bz:"24小时值班电话"},
                 {description:"在职考勤咨询",phone:"5189082",bz:"正常工作日8:30~17:30"},
-                {description:"在职薪资咨询",phone:"5188140",bz:"正常工作日8:30~17:30"},
-                {description:"薪酬福利咨询",phone:"5188006",bz:"正常工作日8:30~17:30"},
-                {description:"DL新员工咨询热线",phone:"5186137",bz:"正常工作日8:30~17:30"},
-                {description:"社会保险咨询",phone:"5188140",bz:"正常工作日8:30~17:30"},
-                {description:"工伤事故咨询",phone:"5186629 5189489",bz:"正常工作日8:30~17:30"},
+                {description:"在职薪资/住房公积金咨询",phone:"5188140 5186514",bz:"正常工作日8:30~17:30"},
+                {description:"离职薪资/生日礼金咨询",phone:"5189541",bz:"正常工作日8:30~17:30"},
                 {description:"离职考勤咨询",phone:"5186300",bz:"正常工作日8:30~17:30"},
-                {description:"离职薪资&住房公积金咨询",phone:"5189541",bz:"正常工作日8:30~17:30"},
-                {description:"HR沟通热线",phone:"5186026 5186656",bz:"正常工作日8:30~17:30"}];
+                {description:"社会保险咨询",phone:"5189005",bz:"正常工作日8:30~17:30"},
+                {description:"工伤保险咨询",phone:"5189216 5188672",bz:"正常工作日8:30~17:30"},
+                {description:"商业保险咨询",phone:"5188108",bz:"正常工作日8:30~17:30"},                
+                {description:"员工申诉投诉",phone:"5186026 5186829 5186866",bz:"正常工作日8:30~17:30"},
+                {description:"违纪单咨询",phone:"5186866",bz:"正常工作日8:30~17:30"},
+                {description:"员工服务中心",phone:"5186509",bz:"周一至周六07:30~20:30"},
+                {description:"员工培训中心",phone:"5186133",bz:"正常工作日08:30~17:30"},
+            ];
         }
         else{
             $scope.items=[
