@@ -806,7 +806,8 @@ angular.module('evaluationApp.adminControllers', [])
         InitInfo();
     })
     .controller('RepairDormCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-                                            commonServices, CacheFactory, alertService, duplicateSubmitServices) 
+                                            commonServices, CacheFactory, alertService, duplicateSubmitServices,
+                                            PicServices, UrlServices) 
     {            
         //宿舍报修
         var baseInfo = commonServices.getBaseParas();
@@ -856,6 +857,20 @@ angular.module('evaluationApp.adminControllers', [])
         }
         InitInfo();
 
+        $scope.imgs = [];
+        $scope.SelPic = function(bCamera){
+            PicServices.selectImage(function(pic){
+                PicServices.resizeImage(1024, pic, function(sdata){
+                    $scope.imgs.push(sdata);
+                });
+            }, bCamera);
+        };
+    
+        var Reset=function(){
+            $scope.imgs=[];
+        };
+        Reset();
+
         $scope.isSumbiting = false;
         $scope.Submit = function () {
             $scope.isSumbiting = true;
@@ -898,30 +913,59 @@ angular.module('evaluationApp.adminControllers', [])
             }           
             sTemp = $.trim($scope.model.RepairDesc);
             $scope.model.RepairDesc = sTemp;
-            if (isEmptyString(sTemp)) {
-                alertService.showAlert("请填写报修内容!");
-                $scope.isSumbiting = false;
-                return;     
-            }
+            // if (isEmptyString(sTemp)) {
+            //     alertService.showAlert("请填写报修内容!");
+            //     $scope.isSumbiting = false;
+            //     return;     
+            // }
 
             var paras = $scope.model;
-            var url = commonServices.getUrl("DormManageService.ashx", "SubmitRepairDorm");
-            try {
-                commonServices.submit(paras, url).then(function (resp) {
-                    if (resp.success) {
-                        var msg = $rootScope.Language.dormManage.repairDormSucc;
-                        alertService.showAlert(msg);
-                        $ionicHistory.goBack();
+            if(!$scope.imgs || !scope.imgs.length){
+                try {
+                  DoSubmit(paras);
+                } finally {
+                  $scope.isSumbiting = false;
+                }
+            }else{
+                alertService.showOperating('Processing...');
+                var url = commonServices.getUrl("UploadService.ashx","");
+                UrlServices.uploadImages('DormRepair', '宿舍报修', $scope.imgs, url, function(resp){
+                    alertService.hideOperating();
+                    if(resp){
+                        if(resp.success){
+                            paras.ImageBatchNo = resp.obj;
+                            try{
+                                DoSubmit(paras);
+                            }catch(e){
+                                console.log(e);
+                            }                            
+                        }else{
+                            alertService.showAlert("上传图片失败, " + resp.message);
+                        }
+                    }else{
+                        alertService.showAlert("上传图片失败!");
                     }
-                    else {
-                        alertService.showAlert(resp.message);
-                        $ionicHistory.goBack();
-                    }
+                    $scope.isSumbiting = false;
+                },
+                function(msg){
+                    alertService.showAlert("上传图片失败, " + msg);
                 });
-            } finally {
-                $scope.isSumbiting = false;
             }
         };
+
+        function DoSubmit(paras){            
+            var url = commonServices.getUrl("DormManageService.ashx", "SubmitRepairDorm");
+            commonServices.submit(paras, url).then(function (resp) {
+              if (resp.success) {
+                var msg = $rootScope.Language.dormManage.repairDormSucc;
+                alertService.showAlert(msg);
+                $ionicHistory.goBack();
+              } else {
+                alertService.showAlert(resp.message);
+                $ionicHistory.goBack();
+              }
+            });
+        }
     })
     .controller('ReissueKeyCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
                                             commonServices, CacheFactory, alertService, duplicateSubmitServices) 

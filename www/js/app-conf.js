@@ -164,6 +164,10 @@ var ZH_CN = {
         yuan:"元",
         InfoProvideIDNO:"请提供身份证号码!",
         CommunicationErr:"通讯异常，请稍候再试!",
+        picture: "照片",
+        takePhoto: "拍照",
+        selectPhoto:"从相册中选取",
+        clear:"清除",
     },
     signin: {
         username: "工号",
@@ -540,6 +544,10 @@ var ZH_US = {
         yuan:"RMB",
         InfoProvideIDNO:"The IDNO is required!",
         CommunicationErr:"Communication error, please retry later!",
+        picture: "Picture",
+        takePhoto: "Take photo",
+        selectPhoto:"Select from Album",
+        clear:"Clear",
     },
     signin: {
         username: "Employee ID",
