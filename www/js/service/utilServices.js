@@ -85,6 +85,13 @@ angular.module('evaluationApp.utilServices', ['ngCordova'])
               }
             }
           };
+
+          request.timeout = 120 * 1000; //2分钟
+          request.ontimeout = function () {
+            if (cbFailed) {
+              cbFailed('**Request time out');
+            }
+          };
           request.open('POST', url);
           request.send(fd);
         });

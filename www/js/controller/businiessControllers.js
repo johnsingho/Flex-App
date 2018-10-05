@@ -1519,7 +1519,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 {description:"医务室",phone:"18926985310",bz:"24小时值班电话"},
                 {description:"园区安全部",phone:"18926988110",bz:"24小时值班电话"},
                 {description:"餐厅饭卡",phone:"5121667 18926980035",bz:"正常工作日8:30~17:30"},
-                {description:"南厂宿舍管理",phone:"18926980025",bz:"24小时值班电话"},
+                {description:"南厂宿舍管理",phone:"15912607056",bz:"24小时值班电话"},
                 {description:"园区DL招聘热线",phone:"4001662221",bz:"正常工作日8:30~17:30"},
                 {description:"Flex+ / LTP密码重置",phone:"0755-86155600转2",bz:"正常工作日8:30~17:30"},
             ];
