@@ -168,6 +168,7 @@ var ZH_CN = {
         takePhoto: "拍照",
         selectPhoto:"从相册中选取",
         clear:"清除",
+        NoData:"没有相关数据。",
     },
     signin: {
         username: "工号",
@@ -548,6 +549,7 @@ var ZH_US = {
         takePhoto: "Take photo",
         selectPhoto:"Select from Album",
         clear:"Clear",
+        NoData:"No data yet.",
     },
     signin: {
         username: "Employee ID",

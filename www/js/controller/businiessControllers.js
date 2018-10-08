@@ -1009,6 +1009,14 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             alertService.showAlert('该活动已下线，欢迎下次参与!');
         };
 
+        $scope.openOutLink=function(url){
+            //打开外链
+            try {
+                window.cordova.InAppBrowser.open(url, '_system', 'location=yes');
+            } catch (ex) {
+                alertService.showAlert(ex.message);
+            }
+        };
         //2018-09-22 活动点赞
         $scope.activityGoodName="点赞抽奖---2018书法作品展";
         $scope.activityGoodIcon="img/other/shufaIcon.png";

@@ -9,6 +9,9 @@
 </style>
 <ion-view view-title="{{Language.union.activity}}" cache-view="true">
   <ion-content scroll="true" overflow-scroll="true">
+    <div ng-if="!items || !items.length">
+      <h4 style="color:red">{{Language.common.NoData}}</h4>
+    </div>
     <ion-list>
       <ion-item class="item item-body" ng-repeat="item in items">
         <div ng-click="open(item)">

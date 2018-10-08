@@ -21,9 +21,20 @@
             <!--</ion-item>-->
         <!--</ion-list>-->
 
+        <!-- 放置外链 -->
+        <ion-item class="item item-thumbnail-left" 
+            ng-click="openOutLink('https://www.wjx.top/jq/28806313.aspx')"
+            ng-if="canUseAction('MECH基层分工会第二期');"
+            >
+        <img src="img/gh.JPG">
+        <br>
+        <h2>MECH基层分工会第二期线上趣味答题</h2>
+        <br>
+        </ion-item>
+
         <!-- johnsing 2018-09-22 -->
         <!--活动点赞-->
-        <ion-list>
+        <!-- <ion-list>
         <ion-item class="item item-thumbnail-left" ng-click="openActivityGood()" ng-if="canUseAction('活动点赞');">
             <img src="{{activityGoodIcon}}">
             <br>
@@ -31,7 +42,7 @@
             <br>
             <p>2018-09-22</p>
         </ion-item>
-        </ion-list>
+        </ion-list> -->
 
         <ion-list>
             <ion-item ng-repeat="activity in activityList" class="item item-thumbnail-left"  ng-click="open(activity)">
