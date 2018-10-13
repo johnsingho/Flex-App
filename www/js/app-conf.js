@@ -456,11 +456,12 @@ var ZH_CN = {
         DateEnd:"结束日期"
     },
     activityGood:{
-        title:"点赞抽奖---2018书法作品展",
-        name:"作品名",
+        title:"优秀融合管理员评选活动",
+        name:"姓名",
         employee_ID:"工号",
         department:"部门",
         designer:"作者",
+        desc:"主要事迹",
         designConcept: "设计理念"
     },
     ehsAct:{
@@ -835,11 +836,12 @@ var ZH_US = {
         DateEnd:"End date"
     },
     activityGood:{
-        title:"Calligraphy Training Graduation Exhibition",
-        name: "Title",
+        title:"an Inclusive Leader Political Competition",
+        name: "Name",
         employee_ID: "Employee ID",
         department: "Department",
         designer:"Author",
+        desc:"Describe",
         designConcept: "Design Concept"
     },
     ehsAct:{

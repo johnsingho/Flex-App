@@ -1018,8 +1018,6 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             }
         };
         //2018-09-22 活动点赞
-        $scope.activityGoodName="点赞抽奖---2018书法作品展";
-        $scope.activityGoodIcon="img/other/shufaIcon.png";
         $scope.openActivityGood = function(){
             $state.go('activityGood');
         };
@@ -1057,8 +1055,8 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         //2018-09-22 活动点赞        
         var baseInfo = commonServices.getBaseParas();
         function InitInfo() {
-            $scope.titleImgUrl='img/other/shufaTitle.jpg';
-            $scope.activityGoodIcon="img/other/shufaIcon.png";
+            $scope.titleImgUrl=null;//'img/other/shufaTitle.jpg';
+            $scope.activityGoodIcon="img/user.jpg";
             var url = commonServices.getUrl("EvaluationAppService.ashx", "getActivityGoods");
             var paras = {
                 Token: baseInfo.Token,
@@ -1069,13 +1067,13 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 $scope.Activities=resp.list;
                 var arr = JSON.parse(resp.data);
                 CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ID, arr);
-                setTimeout(InitPhotoScale, 1500);
+                //setTimeout(InitPhotoScale, 1500); //图片缩放
               }
             });
         }
         InitInfo();
 
-        var MAX_CLICK = 5; //一个人的最多点赞个数
+        var MAX_CLICK = 99; //一个人的最多点赞个数
         var TActivityGoodEntry = function(itemID, WorkDayNo){
             var self=this;
             self.RefActivityGoodID=0;
