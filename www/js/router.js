@@ -828,7 +828,7 @@ angular.module('evaluationApp.router', [])
                 .state('union_welfare_union', {
                     url: '/union_welfare_union',
                     templateUrl: 'templates/union/welfare_union.html',
-                    controller: null
+                    controller: 'UnionWelfareWnionCtrl'
                 })
                 .state('union_welfare_dmUnion', {
                     url: '/union_welfare_dmUnion',

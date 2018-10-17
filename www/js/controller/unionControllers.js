@@ -110,9 +110,6 @@ angular.module('evaluationApp.unionControllers', [])
         case "领取通知":
           $state.go("union_welfare_notice");
           break;
-        case "补贴申请结果查询":
-          $state.go("union_welfare_applyResult");
-          break;
         default:
           break;
       }
@@ -296,6 +293,42 @@ angular.module('evaluationApp.unionControllers', [])
       },
     ];
   })
+  .controller('UnionWelfareWnionCtrl', function ($scope, $state, $ionicHistory,
+    commonServices, CacheFactory, UrlServices) 
+  {
+    //工会福利汇
+    $scope.Items = [{
+        type: "医疗",
+        business: "拜博口腔",
+        detail: "<ul><li>洁牙套餐A-【挂号+口腔检查+超声波洁牙+抛光】188元（原价200）；</li>"+
+                "<li>洁牙套餐B-【挂号+口腔检查+超声波洁牙+抛光+喷砂】200元（原价280元）;</li>"+
+                "<li>拍全景口腔片免费（原价100元）；</li>"+
+                "<li>小孩窝沟封闭免费治疗（原价100元/1颗）；</li>"+
+                "<li>口腔检查、治疗（除洁牙项目外）凭厂牌，员工及家属享受8折优惠（不可同享店内其他优惠）</li></ul>",
+        beginDate: "7/1/2018",
+        endDate: "7/1/2019",
+        contact: "0756-2160088",
+      },
+      {
+        type: "教育",
+        business: "九拍音乐教育机构",
+        detail: "<ul><li>2018年10月31日至2019年12月30日 课时费享8折优惠；</li>"+
+                "<li>后续续费5年内享8折 首次报名可报多期课程（享5折优惠）;</li>"+
+                "<li>2018年10月31日至2019年12月30日 课时费享8折优惠</li></ul>",
+        beginDate: "8/17/2018",
+        endDate: "12/30/2019",
+        contact: "梁老师 18025078894",
+      },
+      {
+        type: "购房",
+        business: "华发又一城",
+        detail: "凭厂牌享华发内部折扣价，最高优惠2%",
+        beginDate: "8/10/2018",
+        endDate: "\\",
+        contact: "0756-5888888",
+      }
+    ];
+  })    
   .controller('UnionWelfareApplyResultCtrl', function ($scope, $state, $ionicHistory,
     commonServices, CacheFactory, UrlServices) {
     //补贴申请结果查询
@@ -330,6 +363,9 @@ angular.module('evaluationApp.unionControllers', [])
           break;
         case "联系信息":
           $state.go("union_helpSupport_contact");
+          break;
+        case "补贴申请结果查询":
+          $state.go("union_welfare_applyResult");
           break;
         default:
           break;
