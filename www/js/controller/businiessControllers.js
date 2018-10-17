@@ -1073,7 +1073,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         }
         InitInfo();
 
-        var MAX_CLICK = 99; //一个人的最多点赞个数
+        var MAX_CLICK = 7; //一个人的最多点赞个数
         var TActivityGoodEntry = function(itemID, WorkDayNo){
             var self=this;
             self.RefActivityGoodID=0;
