@@ -104,6 +104,9 @@ angular.module('evaluationApp.unionControllers', [])
         case "工会福利汇":
           $state.go("union_welfare_union");
           break;
+        case "往期工会福利":
+          $state.go("union_welfare_old");
+          break;
         case "斗门工公众号福利汇":
           $state.go("union_welfare_dmUnion");
           break;
@@ -334,6 +337,122 @@ angular.module('evaluationApp.unionControllers', [])
     $scope.openGeneralNotice = function (isUrlHtml, id, html) {
       UrlServices.openGeneralNotice(isUrlHtml,id,html);
     };
+  })
+  .controller('UnionWelfareOldCtrl', function ($scope, $state, $ionicHistory,
+    commonServices, CacheFactory, UrlServices) 
+  {
+    //往期工会福利
+    $scope.Items = [{
+      "date": "元旦、新春",
+      "type": "购物",
+      "business": "威丝曼",
+      "detail": "服饰特价专享"
+    }, {
+      "date": "年节",
+      "type": "购物",
+      "business": "罗西尼",
+      "detail": "手表特卖"
+    }, {
+      "date": "不定期",
+      "type": "购物",
+      "business": "山姆会员店",
+      "detail": "办卡、续卡享额外好礼"
+    }, {
+      "date": "不定期",
+      "type": "餐饮",
+      "business": "来魅力酒店",
+      "detail": "自助餐，午餐158，晚餐215"
+    }, {
+      "date": "不定期",
+      "type": "购房",
+      "business": "华发楼盘",
+      "detail": "华发各楼盘凭厂牌享华发内部折扣价"
+    }, {
+      "date": "夏季（约7~10月）",
+      "type": "休闲",
+      "business": "梦幻水城",
+      "detail": "梦幻水城特享门票"
+    }, {
+      "date": "不定期",
+      "type": "休闲",
+      "business": "御温泉",
+      "detail": "温泉及大餐庙会特惠"
+    }, {
+      "date": "寒暑假、年节",
+      "type": "休闲",
+      "business": "腾飞假期",
+      "detail": "各地景点优惠门票、旅游报团"
+    }, {
+      "date": "不定期",
+      "type": "休闲",
+      "business": "长隆酒店",
+      "detail": "长隆酒店住宿优惠"
+    }, {
+      "date": "不定期",
+      "type": "休闲",
+      "business": "海泉湾",
+      "detail": "酒店、温泉、景点门票优惠"
+    }, {
+      "date": "不定期",
+      "type": "理财",
+      "business": "中国银行",
+      "detail": "粤通卡、信用卡、志愿者证、理财产品办理"
+    }, {
+      "date": "年节时期",
+      "type": "家居",
+      "business": "华帝",
+      "detail": "购买优惠，工厂价格，价保全年，差价3倍返"
+    }, {
+      "date": "年节时期",
+      "type": "家居",
+      "business": "劳卡",
+      "detail": "家具定制优惠 11月11日专场优惠"
+    }, {
+      "date": "每季度",
+      "type": "家居",
+      "business": "国美",
+      "detail": "内购会"
+    }, {
+      "date": "不定期",
+      "type": "医疗",
+      "business": "摩尔口腔",
+      "detail": "优惠口腔健康检查、牙齿治疗、洁牙美白、矫正种植"
+    }, {
+      "date": "航展",
+      "type": "休闲",
+      "business": "中国邮政",
+      "detail": "航展优惠门票，最优折扣"
+    }, {
+      "date": "开学、寒暑假前",
+      "type": "教育",
+      "business": "卓越艺术",
+      "detail": "兴趣班优惠"
+    }, {
+      "date": "开学、寒暑假前",
+      "type": "教育",
+      "business": "景山实验学校",
+      "detail": "子女就读优惠"
+    }, {
+      "date": "开学、寒暑假前",
+      "type": "教育",
+      "business": "箐华学校",
+      "detail": "子女就读优惠"
+    }, {
+      "date": "开学、寒暑假前",
+      "type": "教育",
+      "business": "睿恩幼稚",
+      "detail": "子女就读、托管优惠"
+    }, {
+      "date": "开学、寒暑假前",
+      "type": "教育",
+      "business": "九拍音乐教育机构",
+      "detail": "兴趣班优惠"
+    }, {
+      "date": "开学、寒暑假前",
+      "type": "教育",
+      "business": "香山安琪儿幼儿园",
+      "detail": "子女就读、托管、兴趣班优惠"
+    }];
   })    
   .controller('UnionWelfareApplyResultCtrl', function ($scope, $state, $ionicHistory,
     commonServices, CacheFactory, UrlServices) {
