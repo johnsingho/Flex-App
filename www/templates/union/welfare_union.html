@@ -1,4 +1,12 @@
 <!-- 工会福利汇 -->
+<style>
+.myTab {
+    width: 99.5%;
+}
+td.vertMiddle{
+  vertical-align: middle;
+}
+</style>
 <ion-view cache-view="true">
   <ion-nav-title>
     {{Language.union.welfare_union}}
@@ -19,13 +27,13 @@
       <table class="myTab">
         <thead>
           <tr>
-            <th style="width:20px">#</th>
-            <th style="width:70px;">类型</th>
-            <th style="width:60px">商家</th>
+            <th style="width:16px">#</th>
+            <th><div style="width:30px;">类型</div></th>
+            <th><div style="width:30px;">商家</div></th>
             <th>项目介绍</th>
-            <th style="width:60px">实施日期</th>
-            <th style="width:60px">截止日期</th>
-            <th style="width:80px">咨询电话</th>
+            <th>实施日期</th>
+            <th>截止日期</th>
+            <th>咨询电话</th>
           </tr>
         </thead>
         <tbody>
@@ -33,10 +41,10 @@
             <td class="tdCenter">{{$index+1}}</td>
             <td>{{item.type}}</td>
             <td>{{item.business}}</td>
-            <td><div ng-bind-html="item.detail"></div></td>
-            <td>{{item.beginDate}}</td>
-            <td>{{item.endDate}}</td>
-            <td>{{item.contact}}</td>
+            <td><div style="min-width:40%" compile="item.detail"></div></td>
+            <td class="vertMiddle"><div style="width:40px;">{{item.beginDate}}</div></td>
+            <td class="vertMiddle"><div style="width:40px">{{item.endDate}}</div></td>
+            <td class="vertMiddle"><div style="width:60px;">{{item.contact}}</div></td>
           </tr>
         </tbody>
       </table>

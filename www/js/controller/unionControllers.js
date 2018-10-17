@@ -297,6 +297,7 @@ angular.module('evaluationApp.unionControllers', [])
     commonServices, CacheFactory, UrlServices) 
   {
     //工会福利汇
+    //"<a class='padding' href='#' ng-click='openGeneralNotice(0, \"751A73EC-E97B-4099-974F-79068BBEBE4C\")'>了解详情</a>"
     $scope.Items = [{
         type: "医疗",
         business: "拜博口腔",
@@ -304,7 +305,8 @@ angular.module('evaluationApp.unionControllers', [])
                 "<li>洁牙套餐B-【挂号+口腔检查+超声波洁牙+抛光+喷砂】200元（原价280元）;</li>"+
                 "<li>拍全景口腔片免费（原价100元）；</li>"+
                 "<li>小孩窝沟封闭免费治疗（原价100元/1颗）；</li>"+
-                "<li>口腔检查、治疗（除洁牙项目外）凭厂牌，员工及家属享受8折优惠（不可同享店内其他优惠）</li></ul>",
+                "<li>口腔检查、治疗（除洁牙项目外）凭厂牌，员工及家属享受8折优惠（不可同享店内其他优惠）</li></ul>"
+                ,
         beginDate: "7/1/2018",
         endDate: "7/1/2019",
         contact: "0756-2160088",
@@ -328,6 +330,10 @@ angular.module('evaluationApp.unionControllers', [])
         contact: "0756-5888888",
       }
     ];
+
+    $scope.openGeneralNotice = function (isUrlHtml, id, html) {
+      UrlServices.openGeneralNotice(isUrlHtml,id,html);
+    };
   })    
   .controller('UnionWelfareApplyResultCtrl', function ($scope, $state, $ionicHistory,
     commonServices, CacheFactory, UrlServices) {
