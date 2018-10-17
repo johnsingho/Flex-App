@@ -531,7 +531,7 @@ angular.module('evaluationApp.unionControllers', [])
       },
       {
         ItemName: "生活困难",
-        Object: "一人收入照顾全家（家庭成员非主动失业且人均收入低于本地区最低生活保障线）",
+        Object: "一人收入照顾全家※",
         Memo: "一次性"
       },
       {
@@ -542,14 +542,43 @@ angular.module('evaluationApp.unionControllers', [])
     ];
 
     $scope.projHelps = [{
-        ItemName: "阳光助学",
+        ItemName: "阳光助学<br>金秋助学补充项目",
         Object: "职工子女",
         Memo: "不与金秋助学重复申领，不限户籍"
+      }
+    ];
+
+    $scope.dmHelps=[
+      {
+        ItemName: "临时困难救助",
+        Object: "职工本人或家庭成员",
+        Memo: "一次性",
+        Material:"<span class='redtext'>临救申请表</span>、档案表、户口薄复印件、近1年社保清单、家庭成员收入证明、银行卡复印件、<span class='redtext'>发票复印件</span>及致困相关证明"
       },
       {
-        ItemName: "金秋助学补充项目",
+        ItemName: "大病救助",
+        Object: "患重大疾病的职工本人",
+        Memo: "一次性",
+        Material:"<span class='redtext'>大病申请表</span>、档案表、户口薄复印件、近1年社保清单、家庭成员收入证明、银行卡复印件、<span class='redtext'>发票原件</span>及致困相关证明"
+      },
+      {
+        ItemName: "农民工子女成长关爱",
+        Object: "外来工或本地户籍农民工",
+        Memo: "隔年申请",
+        Material:"<span class='redtext'>助学申请表</span>、档案表、户口薄复印件、近1年社保清单、家庭成员收入证明、银行卡复印件、<span class='redtext'>发票复印件</span>及致困相关证明"
+      },
+    ];
+
+    $scope.dmProjHelps=[
+      {
+        ItemName: "秋送助学",
         Object: "职工子女",
-        Memo: ""
+        Memo: "珠海就读高中"
+      },
+      {
+        ItemName: "冬送温暖",
+        Object: "职工本人或家庭成员",
+        Memo: "/"
       }
     ];
 
@@ -560,9 +589,9 @@ angular.module('evaluationApp.unionControllers', [])
     $scope.contacts = [{
         Building: "CR & RR",
         hrPeople: "Ellis Zhou",
-        hrPhone: "5188777",
-        basePeople: "Mingzhan Jia",
-        basePhone: "5181699"
+        hrPhone: "5189889",
+        basePeople: "Tara Qiu",
+        basePhone: "5188838"
       },
       {
         Building: "Mechanical",
