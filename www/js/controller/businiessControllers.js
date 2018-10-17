@@ -1087,7 +1087,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             var likeInfo = GetActivityGoodCache();
             var nClick = likeInfo.length;
             if(nClick >= MAX_CLICK){
-                alertService.showAlert("最多只能点赞"+MAX_CLICK+"个作品");
+                alertService.showAlert("最多只能点赞"+MAX_CLICK+"个");
                 return;
             }
             var hasClicked=false;
