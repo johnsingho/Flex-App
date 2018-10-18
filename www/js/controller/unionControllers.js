@@ -101,13 +101,13 @@ angular.module('evaluationApp.unionControllers', [])
         case "年节福利":
           $state.go("union_welfare_fest");
           break;
-        case "工会福利汇":
+        case "工惠福利汇":
           $state.go("union_welfare_union");
           break;
-        case "往期工会福利":
+        case "工惠福利汇往期福利":
           $state.go("union_welfare_old");
           break;
-        case "斗门工公众号福利汇":
+        case "斗门公众号福利":
           $state.go("union_welfare_dmUnion");
           break;
         case "领取通知":
@@ -215,7 +215,7 @@ angular.module('evaluationApp.unionControllers', [])
   })
   .controller('UnionWelfareDMCtrl', function ($scope, $state, $ionicHistory,
     commonServices, CacheFactory, UrlServices) {
-    //斗门工公众号福利汇
+    //斗门公众号福利
     $scope.open = function (action) {
       switch (action) {
         case "往期福利":
@@ -299,7 +299,7 @@ angular.module('evaluationApp.unionControllers', [])
   .controller('UnionWelfareWnionCtrl', function ($scope, $state, $ionicHistory,
     commonServices, CacheFactory, UrlServices) 
   {
-    //工会福利汇
+    //工惠福利汇
     //"<a class='padding' href='#' ng-click='openGeneralNotice(0, \"751A73EC-E97B-4099-974F-79068BBEBE4C\")'>了解详情</a>"
     $scope.Items = [{
         type: "医疗",
@@ -341,7 +341,7 @@ angular.module('evaluationApp.unionControllers', [])
   .controller('UnionWelfareOldCtrl', function ($scope, $state, $ionicHistory,
     commonServices, CacheFactory, UrlServices) 
   {
-    //往期工会福利
+    //工惠福利汇往期福利
     $scope.Items = [{
       "date": "元旦、新春",
       "type": "购物",
@@ -488,9 +488,6 @@ angular.module('evaluationApp.unionControllers', [])
           break;
         case "联系信息":
           $state.go("union_helpSupport_contact");
-          break;
-        case "补贴申请结果查询":
-          $state.go("union_welfare_applyResult");
           break;
         default:
           break;

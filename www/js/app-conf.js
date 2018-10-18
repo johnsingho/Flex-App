@@ -23,6 +23,9 @@ function isSouthCamp(org){
 function isMultek(org){
     return /multek/i.test(org);
 }
+function isMech(org){
+    return /mech/i.test(org);
+}
 
 function isChineseLang(vRootScope){
     return vRootScope.Language==ZH_CN;
@@ -524,11 +527,11 @@ var ZH_CN = {
         hotline:"热线号码",
         otherCommunMethod:"其他沟通渠道",
         welfare_fest:"年节福利",
-        welfare_union:"工会福利汇",
-        welfare_dmUnion:"斗门工公众号福利汇",
+        welfare_union:"工惠福利汇",
+        welfare_dmUnion:"斗门公众号福利",
         welfare_notice:"领取通知",
-        welfare_applyResult:"补贴申请结果查询",
-        welfare_old:"往期工会福利",
+        welfare_applyResult:"“异地务工人员暑期亲子团聚关爱”补贴结果查询",
+        welfare_old:"工惠福利汇往期福利",
         AttendAct:"一键报名",
         ActTime:"活动时间",
         ActVenue:"活动地点",
@@ -905,7 +908,7 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2018-09-22",
+    LAST_PUBLISH_DATE: "2018-10-17",
     //keys
     KEY_ACT_GOOD_ID: "KEY_ActivityGood",
     KEY_DORM_NOTICE_ID: "KEY_DORM_NOTICE_ID",

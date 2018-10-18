@@ -911,6 +911,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         };
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
+        $scope.isMechanical = isMech($scope.accessEmployee.Organization);
 
         var params=commonServices.getBaseParas();
         //获取一般活动列表
@@ -1046,6 +1047,16 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             $state.go('activityEHS');
         };
 
+        $scope.openSpecial = function(action){
+            switch (action) {
+                case "补贴申请结果查询":
+                  $state.go("union_welfare_applyResult");
+                  break;
+                default:
+                  break;
+              }
+        };
+        
         //历史活动列表
         $scope.outDateActivities=[];
         actionVisitServices.getOutDateActivity($scope);        
