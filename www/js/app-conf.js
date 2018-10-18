@@ -530,7 +530,7 @@ var ZH_CN = {
         welfare_union:"工惠福利汇",
         welfare_dmUnion:"斗门公众号福利",
         welfare_notice:"领取通知",
-        welfare_applyResult:"“异地务工人员暑期亲子团聚关爱”补贴结果查询",
+        welfare_applyResult:"补贴申请结果查询",
         welfare_old:"工惠福利汇往期福利",
         AttendAct:"一键报名",
         ActTime:"活动时间",

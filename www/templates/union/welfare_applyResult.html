@@ -1,10 +1,10 @@
 <!-- 补贴申请结果查询 -->
 <style>
   .failed-text {
-    color: orangered;
+    color: black;
   }
   .success-text {
-    color: green;
+    color: red;
     font-weight: 700;
   }
   .myPadding {
@@ -22,7 +22,8 @@
 <ion-view view-title="" cache-view="false">
   <ion-content class="myPadding" scroll="true" lazy-scroll>
     <div ng-if="items.length>0">
-        <h4 style="color: royalblue">{{Language.union.welfare_applyResult}}</h4>
+        <!-- <h4 style="color: royalblue">{{Language.union.welfare_applyResult}}</h4> -->
+        <h4 style="color: royalblue">“异地务工人员暑期亲子团聚关爱”补贴结果查询</h4>
         <div ng-repeat="item in items">
           <div class="myDivBorder">（{{$index+1}}）&nbsp;
             <span style="white-space:normal;" ng-bind-html="item.WelfareName"></span>
