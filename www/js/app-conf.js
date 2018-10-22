@@ -218,6 +218,7 @@ var ZH_CN = {
         earthday:"地球周",
         dormManage:"宿舍管理",
         union:"工会之窗",
+        mechCharity:"MECH 基金会",
     },
     myFlex:{
         employee_ID: "工号",
@@ -601,6 +602,7 @@ var ZH_US = {
         earthday:"Earth Week",
         dormManage:"Dormitory Management",
         union:"Flex Union",
+        mechCharity:"MECH Charity",
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -911,6 +913,7 @@ var GLOBAL_INFO = {
     LAST_PUBLISH_DATE: "2018-10-17",
     //keys
     KEY_ACT_GOOD_ID: "KEY_ActivityGood",
+    KEY_ACT_GOOD_ITEMID: "KEY_ActivityGood_ITEMID",
     KEY_DORM_NOTICE_ID: "KEY_DORM_NOTICE_ID",
     KEY_ASK_AND_ANS_ID: "KEY_ASK_AND_ANS_ID",
     KEY_DYNPAGE: "KEY_DYNPAGE",

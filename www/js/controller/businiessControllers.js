@@ -1019,7 +1019,9 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             }
         };
         //2018-09-22 活动点赞
-        $scope.openActivityGood = function(){
+        $scope.openActivityGood = function(actID){
+            CacheFactory.remove(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID);
+            CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID, actID);
             $state.go('activityGood');
         };
         
@@ -1065,13 +1067,15 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
     {
         //2018-09-22 活动点赞        
         var baseInfo = commonServices.getBaseParas();
+        var actID = CacheFactory.get(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID);
         function InitInfo() {
             $scope.titleImgUrl=null;//'img/other/shufaTitle.jpg';
             $scope.activityGoodIcon="img/user.jpg";
             var url = commonServices.getUrl("EvaluationAppService.ashx", "getActivityGoods");
             var paras = {
                 Token: baseInfo.Token,
-                WorkdayNO:baseInfo.WorkdayNO,                
+                WorkdayNO:baseInfo.WorkdayNO,
+                ActID: actID,
             };            
             commonServices.submit(paras, url).then(function (resp) {
               if (resp && resp.success) {

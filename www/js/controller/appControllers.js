@@ -269,14 +269,6 @@ angular.module('evaluationApp.appControllers', [])
                     $state.go("tabGoldIdea.goldidea");
 //                    $location.path("handbook_item1");
                     break;
-                case "train":
-                    try {
-                        externalLinksService.openUr('https://zhmobile.flextronics.com/EvaluationApp/course/course/1.html');
-                    }
-                    catch (ex) {
-                        alertService.showAlert(ex.message);
-                    }
-                    break;
                 case "E-gate":
                 try {
 
@@ -316,6 +308,9 @@ angular.module('evaluationApp.appControllers', [])
                     break;
                 case "工会之窗":
                     $state.go("union");
+                    break;
+                case "MECH基金会":
+                    $state.go("mechCharity");
                     break;
             }
             

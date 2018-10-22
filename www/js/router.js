@@ -910,6 +910,11 @@ angular.module('evaluationApp.router', [])
                     templateUrl: 'templates/union/suggest_openDetail.html',
                     controller: 'UnionSuggestOpenDetailCtrl'
                 })
+        .state('mechCharity', {
+            url: '/mechCharity',
+            templateUrl: 'templates/mechCharity/mech-list.html',
+            controller: 'MechCharityCtrl'
+        })                
         
         $urlRouterProvider.otherwise('signin');
 

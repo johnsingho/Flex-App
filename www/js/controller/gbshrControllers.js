@@ -44,7 +44,15 @@ angular.module('evaluationApp.gbshrControllers', [])
                 case "离职须知":
                     $state.go("employeeDismiss");
                     break;
-                  break;
+                case "train":
+                    try {
+                        externalLinksService.openUr('https://zhmobile.flextronics.com/EvaluationApp/course/course/1.html');
+                    }
+                    catch (ex) {
+                        alertService.showAlert(ex.message);
+                    }
+                    break;
+                default:break;
             }
         }
         $scope.closePass = function () {
