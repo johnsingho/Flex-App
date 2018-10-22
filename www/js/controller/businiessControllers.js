@@ -1481,11 +1481,10 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             $scope.sucess=data;
         });
 
-        $scope.Hotline='4001099899';
-        $scope.callPhone=function(){
-            $window.location.href="tel:"+$scope.Hotline+"";
-
-        }
+        // $scope.Hotline='4001099899';
+        // $scope.callPhone=function(){
+        //     $window.location.href="tel:"+$scope.Hotline+"";
+        // }
 
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
@@ -1510,11 +1509,10 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             $scope.sucess=data;
         });
 
-        $scope.Hotline='4001099899';
-        $scope.callPhone=function(){
-            $window.location.href="tel:"+$scope.Hotline+"";
-
-        }
+        // $scope.Hotline='4001099899';
+        // $scope.callPhone=function(){
+        //     $window.location.href="tel:"+$scope.Hotline+"";
+        // }
 
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({

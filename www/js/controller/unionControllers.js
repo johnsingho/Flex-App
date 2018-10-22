@@ -26,8 +26,6 @@ angular.module('evaluationApp.unionControllers', [])
         case "精彩瞬间":
           $state.go('union_wonderfulmoment');
           break;
-        case "建议留言":
-          $state.go('union_suggest');
         default:
           break;
       }
@@ -51,6 +49,8 @@ angular.module('evaluationApp.unionControllers', [])
         case "其他沟通渠道":
           $state.go("union_commu_other");
           break;
+        case "建议留言":
+          $state.go('union_suggest');
         default:
           break;
       }
@@ -499,47 +499,47 @@ angular.module('evaluationApp.unionControllers', [])
     $scope.helps = [{
         ItemName: "死亡",
         Object: "职工本人",
-        Memo: "一次性"
+        Memo: "仅做一次性帮扶"
       },
       {
         ItemName: "死亡",
         Object: "配偶",
-        Memo: "一次性"
+        Memo: "仅做一次性帮扶"
       },
       {
         ItemName: "重大疾病",
         Object: "职工本人",
-        Memo: "一次性"
+        Memo: "仅做一次性帮扶"
       },
       {
         ItemName: "重大疾病",
         Object: "配偶或子女",
-        Memo: "一次性"
+        Memo: "仅做一次性帮扶"
       },
       {
         ItemName: "重大疾病",
         Object: "父母",
-        Memo: "一次性"
+        Memo: "仅做一次性帮扶"
       },
       {
         ItemName: "工伤住院",
         Object: "职工本人",
-        Memo: "一次性"
+        Memo: "仅做一次性帮扶"
       },
       {
         ItemName: "生活困难",
         Object: "一人收入照顾全家※",
-        Memo: "一次性"
+        Memo: "仅做一次性帮扶"
       },
       {
         ItemName: "灾难救助",
         Object: "职工本人",
-        Memo: "一次性"
+        Memo: "仅做一次性帮扶"
       }
     ];
 
     $scope.projHelps = [{
-        ItemName: "阳光助学<br>金秋助学补充项目",
+        ItemName: "阳光助学<br>（金秋助学补充项目）",
         Object: "职工子女",
         Memo: "不与金秋助学重复申领，不限户籍"
       }
@@ -549,13 +549,13 @@ angular.module('evaluationApp.unionControllers', [])
       {
         ItemName: "临时困难救助",
         Object: "职工本人或家庭成员",
-        Memo: "一次性",
+        Memo: "仅做一次性帮扶需发票复印件",
         Material:"<span class='redtext'>临救申请表</span>、档案表、户口薄复印件、近1年社保清单、家庭成员收入证明、银行卡复印件、<span class='redtext'>发票复印件</span>及致困相关证明"
       },
       {
         ItemName: "大病救助",
         Object: "患重大疾病的职工本人",
-        Memo: "一次性",
+        Memo: "仅做一次性帮扶需发票原件",
         Material:"<span class='redtext'>大病申请表</span>、档案表、户口薄复印件、近1年社保清单、家庭成员收入证明、银行卡复印件、<span class='redtext'>发票原件</span>及致困相关证明"
       },
       {
@@ -579,7 +579,6 @@ angular.module('evaluationApp.unionControllers', [])
       }
     ];
 
-    InitPhotoScale();
   })
   .controller('UnionHelpSupportContactCtrl', function ($scope, $state, $ionicHistory) {
     //爱心帮扶联系方式
