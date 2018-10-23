@@ -911,7 +911,8 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         };
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        $scope.isMechanical = isMech($scope.accessEmployee.Organization);
+        //$scope.isMechanical = isMech($scope.accessEmployee.Organization);
+        $scope.isB11 = isB11($scope.accessEmployee.Organization);
 
         var params=commonServices.getBaseParas();
         //获取一般活动列表
@@ -1071,6 +1072,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         function InitInfo() {
             $scope.titleImgUrl=null;//'img/other/shufaTitle.jpg';
             $scope.activityGoodIcon="img/user.jpg";
+            $scope.actDesc = '此活动竞猜仅限于PCBA-B11员工，前60名猜对的用户有奖，将于10月29日公布';
             var url = commonServices.getUrl("EvaluationAppService.ashx", "getActivityGoods");
             var paras = {
                 Token: baseInfo.Token,
@@ -1088,7 +1090,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         }
         InitInfo();
 
-        var MAX_CLICK = 7; //一个人的最多点赞个数
+        var MAX_CLICK = 1; //一个人的最多点赞个数
         var TActivityGoodEntry = function(itemID, WorkDayNo){
             var self=this;
             self.RefActivityGoodID=0;
@@ -1102,7 +1104,8 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             var likeInfo = GetActivityGoodCache();
             var nClick = likeInfo.length;
             if(nClick >= MAX_CLICK){
-                alertService.showAlert("最多只能点赞"+MAX_CLICK+"个");
+                //alertService.showAlert("最多只能点赞"+MAX_CLICK+"个");
+                alertService.showAlert("最多只能支持"+MAX_CLICK+"队");
                 return;
             }
             var hasClicked=false;
@@ -1111,7 +1114,8 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 if(item.ID==entry.RefActivityGoodID
                     && entry.WorkdayNo==$scope.accessEmployee.WorkdayNO
                    ){
-                    alertService.showAlert("你已经点过赞了");
+                    //alertService.showAlert("你已经点过赞了");
+                    alertService.showAlert("感谢您的支持");
                     hasClicked=true;
                     break;
                 }

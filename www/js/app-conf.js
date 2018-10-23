@@ -26,6 +26,9 @@ function isMultek(org){
 function isMech(org){
     return /mech/i.test(org);
 }
+function isB11(org){
+    return /b11/i.test(org);
+}
 
 function isChineseLang(vRootScope){
     return vRootScope.Language==ZH_CN;
@@ -460,7 +463,7 @@ var ZH_CN = {
         DateEnd:"结束日期"
     },
     activityGood:{
-        title:"优秀融合管理员评选活动",
+        title:"PCBA-B11第二届球类竞技赛冠军队有奖竞猜",
         name:"姓名",
         employee_ID:"工号",
         department:"部门",
@@ -842,7 +845,7 @@ var ZH_US = {
         DateEnd:"End date"
     },
     activityGood:{
-        title:"an Inclusive Leader Political Competition",
+        title:"PCBA-B11第二届球类竞技赛冠军队有奖竞猜",
         name: "Name",
         employee_ID: "Employee ID",
         department: "Department",
