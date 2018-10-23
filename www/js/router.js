@@ -914,7 +914,47 @@ angular.module('evaluationApp.router', [])
             url: '/mechCharity',
             templateUrl: 'templates/mechCharity/mech-list.html',
             controller: 'MechCharityCtrl'
-        })                
+        })
+            .state('mechCharity_introduce', {
+                url: '/mechCharity_introduce',
+                templateUrl: 'templates/mechCharity/mech-introduce.html',
+                controller: 'MechCharityIntroduceCtrl'
+            })
+                .state('mechCharity_introduce_detail', {
+                    url: '/mechCharity_introduce_detail',
+                    templateUrl: 'templates/mechCharity/mech-introDetail.html',
+                    controller: null
+                })
+                .state('mechCharity_introduce_arch', {
+                    url: '/mechCharity_introduce_arch',
+                    templateUrl: 'templates/mechCharity/mech-introArch.html',
+                    controller: null
+                })
+                .state('mechCharity_introduce_proj', {
+                    url: '/mechCharity_introduce_proj',
+                    templateUrl: 'templates/mechCharity/mech-introProj.html',
+                    controller: null
+                })                                
+            .state('mechCharity_activity', {
+                url: '/mechCharity_activity',
+                templateUrl: 'templates/mechCharity/mech-activity.html',
+                controller: 'MechCharityActivityCtrl'
+            })
+            .state('mechCharity_wonderfulMoment', {
+                url: '/mechCharity_wonderfulMoment',
+                templateUrl: 'templates/mechCharity/mech-wonderfulMoment.html',
+                controller: 'MechCharityWonderfulMomentCtrl'
+            })
+            .state('mechCharity_accountingPublic', {
+                url: '/mechCharity_accountingPublic',
+                templateUrl: 'templates/mechCharity/mech-accountingPublic.html',
+                controller: 'MechCharityAccountingPublicCtrl'
+            })
+            .state('mechCharity_research', {
+                url: '/mechCharity_research',
+                templateUrl: 'templates/mechCharity/mech-research.html',
+                controller: 'MechCharityResearchCtrl'
+            })
         
         $urlRouterProvider.otherwise('signin');
 

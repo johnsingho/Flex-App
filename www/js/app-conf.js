@@ -543,6 +543,15 @@ var ZH_CN = {
         ActDateEnd:"结束日期",
         mySuggest:"我的留言",
         openSuggest:"他们说",
+    },
+    mechCharity:{
+        introduce:"简介",
+        activity:"活动报名",
+        wonderfulMoment:"活动报道",
+        accountingPublic:"账务公示",
+        research:"问卷调查",
+        arch:"组织架构",
+        projArch:"项目体系",
     }
 };
 
@@ -894,6 +903,13 @@ var ZH_US = {
         mySuggest:"My suggestion",
         openSuggest:"They said",
 
+    },
+    mechCharity:{
+        introduce:"Introduction",
+        activity:"Activities",
+        wonderfulMoment:"Past Activities",
+        accountingPublic:"Accounting Public",
+        research:"Research",
     }
 };
 

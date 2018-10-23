@@ -3,38 +3,34 @@
   <ion-nav-buttons side="left">
     <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
   </ion-nav-buttons>
+<ion-content scroll="true" overflow-scroll="true">
+  <div class="row" style="height:110px;text-align: center">
+    <div class="col col-25  custom-og light" style="Margin:1px;" ng-click="open('MECH基金会简介');">
+      <i style="font-size:50px;" class="icon ion-clipboard"></i>
+      <div>{{Language.mechCharity.introduce}}</div>
+    </div>
+    <div class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('MECH基金会活动报名');" ng-if="canUseAction('MECH基金会活动报名');">
+      <i style="font-size:50px;" class="icon ion-ios-people"></i>
+      <div>
+        {{Language.mechCharity.activity}}
+        <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('MECH基金会活动报名')">New</span>
+      </div>
+    </div>
+    <div class="col col-25 positive-bg light" style="Margin:1px;" ng-click="open('MECH基金会活动报道');" ng-if="canUseAction('MECH基金会活动报道');">
+      <i style="font-size:50px;" class="ion-images"></i>
+      <div>{{Language.mechCharity.wonderfulMoment}}</div>
+    </div>
+    <div class="col calm-bg light" style="Margin:1px" ng-click="open('MECH基金会账务公示');" ng-if="canUseAction('MECH基金会账务公示');">
+      <i style="font-size:50px;" class="ion-cash"></i>
+      <div>{{Language.mechCharity.accountingPublic}}</div>
+    </div>
+  </div>
+  <div class="row" style="height:110px;text-align: center">
+    <div class="col col-25 royal-bg light" style="Margin:1px" ng-click="open('MECH基金会问卷调查');" ng-if="canUseAction('MECH基金会问卷调查');">
+      <i style="font-size:50px;" class="ion-heart"></i>
+      <div>{{Language.mechCharity.research}}</div>
+    </div>
+  </div>
 
-  <ion-content scroll="true" overflow-scroll="true">
-    <h3>建设中...</h3>
-    <!-- TODO            
-          <div class="row" style="height:110px;text-align: center">
-            <div class="col col-25  custom-og light" style="Margin:1px;" ng-click="open('员工沟通');">
-              <i style="font-size:50px;" class="icon ion-android-call"></i>
-              <div>{{Language.union.communicate}}</div>
-            </div>
-            <div class="col col-25 calm-bg light" style="Margin:1px" ng-click="open('员工福利');" ng-if="canUseAction('员工福利');">
-              <i style="font-size:50px;" class="ion-cash"></i>
-              <div>{{Language.union.welfare}}</div>
-            </div>
-            <div class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('工会活动及报名');" ng-if="canUseAction('工会活动及报名');">
-              <i style="font-size:50px;" class="icon ion-ios-people"></i>
-              <div>
-                  {{Language.union.activity}}
-                  <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('工会活动及报名')">New</span>
-              </div>
-            </div>
-            <div class="col royal-bg light" style="Margin:1px" ng-click="open('员工帮扶');" ng-if="canUseAction('员工帮扶');">
-              <i style="font-size:50px;" class="ion-heart"></i>
-              <div>{{Language.union.helpSupport}}</div>
-            </div>
-          </div>
-      
-          <div class="row" style="height:110px;text-align: center">
-            <div class="col col-25 positive-bg light" style="Margin:1px;" ng-click="open('精彩瞬间');" ng-if="canUseAction('精彩瞬间');">
-              <i style="font-size:50px;" class="ion-images"></i>
-              <div>{{Language.union.wonderfulMoment}}</div>
-            </div>
-          </div> -->
-
-  </ion-content>
+</ion-content>
 </ion-view>
