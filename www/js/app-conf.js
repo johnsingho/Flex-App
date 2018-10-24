@@ -175,6 +175,11 @@ var ZH_CN = {
         selectPhoto:"从相册中选取",
         clear:"清除",
         NoData:"没有相关数据。",
+        Cancel:"取消",
+        email:"邮箱",
+        sex:"性别",
+        sexMale:"男",
+        sexFeMale:"女",
     },
     signin: {
         username: "工号",
@@ -221,7 +226,7 @@ var ZH_CN = {
         earthday:"地球周",
         dormManage:"宿舍管理",
         union:"工会之窗",
-        mechCharity:"MECH 基金会",
+        mechCharity:"MECH基金会",
     },
     myFlex:{
         employee_ID: "工号",
@@ -552,6 +557,11 @@ var ZH_CN = {
         research:"问卷调查",
         arch:"组织架构",
         projArch:"项目体系",
+        AttendAct:"报 名",
+        manageEmail:"上司联系邮件",
+        favourite:"兴趣爱好",
+        pastActivities:"过去参加过的志愿活动类型",
+        freeTime:"可出席时间",
     }
 };
 
@@ -568,6 +578,7 @@ var ZH_US = {
         selectPhoto:"Select from Album",
         clear:"Clear",
         NoData:"No data yet.",
+        Cancel:"Cancel",
     },
     signin: {
         username: "Employee ID",

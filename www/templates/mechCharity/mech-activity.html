@@ -1,0 +1,128 @@
+<!-- MECH基金会活动报名 -->
+<style>
+.font13 {
+  font-size: 13px;
+}
+.row+.row {
+  margin-top: -12px;
+}
+.font80{
+  font-size: 80%;
+}
+</style>
+<ion-view view-title="{{Language.mechCharity.activity}}" cache-view="true">
+  <ion-content scroll="true" overflow-scroll="true">
+    <div ng-if="!items || !items.length">
+      <h4 style="color:red">{{Language.common.NoData}}</h4>
+    </div>
+    <ion-list>
+      <ion-item class="item item-body" ng-repeat="item in items">
+        <div ng-click="open(item)">
+          <div class="row">
+            <div class="col"><span style="font-size:14px;font-weight: bold">{{item.ActName}}</span></div>
+          </div>
+          <div class="row">
+            <div class="col col-20"><span class="font13">{{Language.union.ActTime}}</span></div>
+            <div class="col col-75"><span style="color: darkblue;font-size: 13px">{{item.Time}}</span></div>
+          </div>
+          <div class="row" ng-if="item.Venue">
+            <div class="col col-25"><span class="font13">{{Language.union.ActVenue}}</span></div>
+            <div class="col col-75"><span style="color: darkblue;font-size: 13px">{{item.Venue}}</span></div>
+          </div>
+          <div class="row">
+            <div class="col col-20"><span class="font13">{{Language.union.ActDateBegin}}</span></div>
+            <div class="col col-30"><span style="color:darkblue;font-size: 13px">{{item.DateStart|date:"yyyy-MM-dd"}}</span></div>
+            <div class="col col-20"><span class="font13">{{Language.union.ActDateEnd}}</span></div>
+            <div class="col col-30"><span style="color:darkblue;font-size: 13px">{{item.DateEnd|date:"yyyy-MM-dd"}}</span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div style="margin-left:45%;">
+            <button class="button button-balanced button-small" style="text-align:center" ng-click="Submit(item.ID)">
+              {{Language.mechCharity.AttendAct}}
+            </button>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+  <script id="submitForm.html" type="text/ng-template">
+    <ion-modal-view>
+<ion-header-bar class="bar bar-header bar-positive">
+    <button class="button button-clear button-primary" ng-click="modal.hide()">{{Language.common.Cancel}}</button>  
+    <h1 class="title">{{Language.mechCharity.AttendAct}}</h1>    
+</ion-header-bar>
+<ion-content class="padding">
+  <div class="list card">
+    <div class="item item-input">
+        <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <input type="text" style="font-size:80%" readonly="readonly" ng-model="modal.dat.CName" />
+    </div>
+    <div class="item item-input">
+        <span class="input-label" style="width:30px;font-size:80%">{{Language.like.employee_ID}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <input type="text" style="font-size:80%" readonly="readonly" ng-model="modal.dat.WorkdayNO" />
+    </div>
+    <div class="item item-input">
+        <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.department}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <input type="text" style="font-size:80%" readonly="readonly" ng-model="modal.dat.Organization" />
+    </div>
+    <div class="item item-input">
+        <span class="input-label" style="width: 50px;font-size:80%">{{Language.shareCar.mobile}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <input type="text" style="font-size:80%" placeholder="{{Language.shareCar.mobile}}" ng-model="modal.dat.MobileNo" />
+    </div>
+    <div class="item item-input">
+        <span class="input-label" style="width: 50px;font-size:80%">{{Language.common.sex}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <select class="button" ng-model="modal.dat.sex">
+          <option value="0">{{Language.common.sexFeMale}}</option>
+          <option value="1">{{Language.common.sexMale}}</option>
+        </select>
+    </div>
+    <div class="item item-input">
+        <span class="input-label" style="width: 50px;font-size:80%">{{Language.common.email}}</span>
+        <!-- <span class="input-label" style="width: 10px;color: red">*</span> -->
+        <input type="text" style="font-size:80%" ng-model="modal.dat.email" />
+    </div>            
+    <div class="item item-input">
+        <span class="input-label" style="width: 30px;font-size:80%">{{Language.mechCharity.manageEmail}}</span>
+        <!-- <span class="input-label" style="width: 10px;color: red">*</span> -->
+        <input type="text" style="font-size:80%" ng-model="modal.dat.manageEmail" />
+    </div>
+    <div class="item item-input">
+      <span class="input-label" style="width: 30px;font-size:80%">{{Language.mechCharity.favourite}}</span>
+      <input type="text" style="font-size:80%" ng-model="modal.dat.favourite" />
+  </div>
+  <div class="item">
+      <div class="input-label" style="font-size:80%">{{Language.mechCharity.pastActivities}}</div>
+      <div>
+          <div ng-repeat="item in pastActTypes" >
+              <ion-checkbox name="chkPastActType" color="dark" style="font-size:80%" 
+                ng-model="item.check" ng-checked="item.check">
+                {{item.name}}</ion-checkbox>
+          </div>
+      </div>
+  </div>
+<div class="item">
+  <div class="input-label" style="font-size:80%">{{Language.mechCharity.freeTime}}</div>
+  <div>
+      <div ng-repeat="item in freeTimeTypes" >
+          <ion-checkbox name="chkFreeTimeType" color="dark" style="font-size:80%"
+            ng-model="item.check" ng-checked="item.check">
+            {{item.name}}</ion-checkbox>
+      </div>
+  </div>
+</div>
+</div>
+  <br>
+  <div style="text-align: center">
+    <button class="button button-block  button-positive" ng-click="SubmitAttend(modal.params)">{{Language.menu.submit}}</button>
+  </div>
+</ion-content>
+</ion-modal-view>
+</script>
+</ion-view>

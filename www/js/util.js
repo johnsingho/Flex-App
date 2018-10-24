@@ -64,3 +64,39 @@ function InitPhotoScale(){
        closable: false
    });
 }
+
+/*自定义提示框*/
+function BindSubmitModal(vScope, vIonicModal, sForm, initData){
+    vIonicModal.fromTemplateUrl(sForm, {
+        scope: vScope,
+        animation: 'slide-in-up'
+      }).then(function(modal) {
+        vScope.modal = modal;
+        vScope.modal.dat = initData || {};//用于输出相关数据
+      });
+      vScope.openModal = function(params) {
+        vScope.modal.params = params; //输入数据
+        vScope.modal.show();
+      };
+      vScope.closeModal = function() {
+        vScope.modal.hide();
+      };
+      //Cleanup the modal when we're done with it!
+      vScope.$on('$destroy', function() {
+        vScope.modal.remove();
+      });
+      // Execute action on hide modal
+      vScope.$on('modal.hidden', function() {
+        // Execute action
+      });
+      // Execute action on remove modal
+      vScope.$on('modal.removed', function() {
+        // Execute action
+      });
+}
+
+function ValidateEmail(smail) 
+{
+    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(smail);
+}
+
