@@ -952,9 +952,15 @@ angular.module('evaluationApp.router', [])
             })
             .state('mechCharity_research', {
                 url: '/mechCharity_research',
-                templateUrl: 'templates/mechCharity/mech-research.html',
+                templateUrl: 'templates/mechCharity/mech-researchList.html',
                 controller: 'MechCharityResearchCtrl'
             })
+                .state('mechCharity_research_detail', {
+                    url: '/mechCharity_research_detail',
+                    templateUrl: 'templates/mechCharity/mech-researchDetail.html',
+                    controller: 'MechCharityResearchDetailCtrl'
+                })
+                
         
         $urlRouterProvider.otherwise('signin');
 
