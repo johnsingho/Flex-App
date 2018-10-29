@@ -955,6 +955,21 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/mechCharity/mech-accountingPublic.html',
                 controller: 'MechCharityAccountingPublicCtrl'
             })
+                .state('mechCharity_publicMoney', {
+                    url: '/mechCharity_publicMoney',
+                    templateUrl: 'templates/mechCharity/mech-accountingPublicMoney.html',
+                    controller: 'MechCharityAccountingPublicMoneyCtrl'
+                })
+                .state('mechCharity_publicMaterial', {
+                    url: '/mechCharity_publicMaterial',
+                    templateUrl: 'templates/mechCharity/mech-accountingPublicMaterial.html',
+                    controller: 'MechCharityAccountingPublicMaterialCtrl'
+                })
+                .state('mechCharity_publicYear', {
+                    url: '/mechCharity_publicYear',
+                    templateUrl: 'templates/mechCharity/mech-accountingPublicYear.html',
+                    controller: 'MechCharityAccountingPublicYearCtrl'
+                })            
             .state('mechCharity_research', {
                 url: '/mechCharity_research',
                 templateUrl: 'templates/mechCharity/mech-researchList.html',

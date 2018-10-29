@@ -322,20 +322,163 @@ angular.module('evaluationApp.mechCharityControllers', [])
     $scope.open = function (action) {
       switch (action) {
         case "资金捐赠公示":
-          $state.go("mechCharity_introduce");  //TODO
+          $state.go("mechCharity_publicMoney");  //TODO
           break;
         case "物资捐赠公示":
-          $state.go('mechCharity_activity');
+          $state.go('mechCharity_publicMaterial');
           break;
         case "年度账务报告":
-          $state.go('mechCharity_wonderfulMoment');
+          $state.go('mechCharity_publicYear');
           break;
         default:
           break;
       }
     };
-
   })
+  .controller('MechCharityAccountingPublicMoneyCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, CacheFactory, alertService) 
+  {
+    //MECH基金会账务公示 资金捐赠公示
+    function InitInfo(){
+      var url = commonServices.getUrl("MechCharityService.ashx", "GetPublicList");
+      var paras = {
+        "Type": "Money"
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (!resp.success) {
+            var msg = $rootScope.Language.common.CommunicationErr;
+            alertService.showAlert(msg);
+            $ionicHistory.goBack();
+          } else {
+            $scope.timeList = resp.list;
+          }
+        }
+      });
+    }
+    InitInfo();
+
+    $scope.model = {
+      selMon:null,
+    };
+    $scope.LoadData = function(){
+      if(isEmptyString($scope.model.selMon)){
+        alertService.showAlert($rootScope.Language.mechCharity.infoSelectMon);
+        return;
+      }
+      var url = commonServices.getUrl("MechCharityService.ashx", "LoadPublicMoney");
+      var paras = {
+        "Mon": $scope.model.selMon
+      };
+      alertService.showOperating('Processing...');
+      commonServices.submit(paras, url).then(function (resp) {
+        alertService.hideOperating();
+        if (resp) {
+          if (!resp.success) {
+            var msg = $rootScope.Language.common.CommunicationErr;
+            alertService.showAlert(msg);
+          } else {
+            $scope.items = resp.list;
+          }
+        }
+      });
+    };
+  })
+  .controller('MechCharityAccountingPublicMaterialCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, CacheFactory, alertService) 
+  {
+    //MECH基金会账务公示 物资捐赠公示
+    function InitInfo(){
+      var url = commonServices.getUrl("MechCharityService.ashx", "GetPublicList");
+      var paras = {
+        "Type": "Material"
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (!resp.success) {
+            var msg = $rootScope.Language.common.CommunicationErr;
+            alertService.showAlert(msg);
+            $ionicHistory.goBack();
+          } else {
+            $scope.timeList = resp.list;
+          }
+        }
+      });
+    }
+    InitInfo();
+
+    $scope.model = {
+      selMon:null,
+    };
+    $scope.LoadData = function(){
+      if(isEmptyString($scope.model.selMon)){
+        alertService.showAlert($rootScope.Language.mechCharity.infoSelectMon);
+        return;
+      }
+      var url = commonServices.getUrl("MechCharityService.ashx", "LoadPublicMaterial");
+      var paras = {
+        "Mon": $scope.model.selMon
+      };
+      alertService.showOperating('Processing...');
+      commonServices.submit(paras, url).then(function (resp) {
+        alertService.hideOperating();
+        if (resp) {
+          if (!resp.success) {
+            var msg = $rootScope.Language.common.CommunicationErr;
+            alertService.showAlert(msg);
+          } else {
+            $scope.items = resp.list;
+          }
+        }
+      });
+    };
+  })
+  .controller('MechCharityAccountingPublicYearCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, CacheFactory, alertService) 
+  {
+    //MECH基金会账务公示 年度账务报告
+    function InitInfo(){
+      var url = commonServices.getUrl("MechCharityService.ashx", "GetPublicList");
+      var paras = {
+        "Type": "Year"
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (!resp.success) {
+            var msg = $rootScope.Language.common.CommunicationErr;
+            alertService.showAlert(msg);
+            $ionicHistory.goBack();
+          } else {
+            $scope.timeList = resp.list;
+          }
+        }
+      });
+    }
+    InitInfo();
+
+    $scope.model = {
+      selYear:null,
+    };
+    $scope.LoadData = function(){
+      if(isEmptyString($scope.model.selYear)){
+        alertService.showAlert($rootScope.Language.mechCharity.infoSelectYear);
+        return;
+      }
+      var url = commonServices.getUrl("MechCharityService.ashx", "LoadPublicYear");
+      var paras = {
+        "Year": $scope.model.selYear
+      };
+      alertService.showOperating('Processing...');
+      commonServices.submit(paras, url).then(function (resp) {
+        alertService.hideOperating();
+        if (resp) {
+          if (!resp.success) {
+            var msg = $rootScope.Language.common.CommunicationErr;
+            alertService.showAlert(msg);
+          } else {
+            $scope.items = resp.list;
+          }
+        }
+      });
+    };
+  })  
   .controller('MechCharityResearchCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, CacheFactory, alertService) 
   {
     //MECH基金会问卷调查

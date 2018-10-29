@@ -1,0 +1,40 @@
+<!-- MECH基金会账务公示 年度账务报告公示 -->
+<ion-view view-title="{{Language.mechCharity.yearAccountingPublic}}" cache-view="false">
+
+  <ion-content class="padding" style="border:1px;">
+    <div class="item item-input searchHead">
+      <span class="input-label" style="width:30px;font-size:80%">{{Language.common.year}}</span>
+      <select style="min-width:200px;" ng-options='t.Mon as t.Mon for t in timeList' ng-model="model.selYear">
+      </select>
+      <button class="button button-icon" style="margin-left:10px" ng-click="LoadData();">
+        <i class="ion-android-search positive" style="font-size:32px;"></i>
+      </button>
+    </div>
+
+    <div ng-if="items.length>0">
+      <table class="myTab" style="margin:0 4px 0 2px;width:100%">
+        <thead>
+          <tr>
+            <th style="width:60px">{{Language.common.year}}</th>
+            <th>{{Language.common.income}}</th>
+            <th>{{Language.common.totalIncome}}</th>
+            <th>{{Language.common.expenditure}}</th>
+            <th style="min-width:70px">{{Language.common.balance}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in items">
+            <td>{{item.Year}}</td>
+            <td>{{item.Income}}</td>
+            <td>{{item.TotalIncome}}</td>
+            <td>{{item.Expenditure}}</td>
+            <td>{{item.Balance}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div ng-if="items.length==0">
+      <h4 style="color:red">{{Language.common.NoData}}</h4>
+    </div>
+  </ion-content>
+</ion-view>

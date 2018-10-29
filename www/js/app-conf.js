@@ -180,6 +180,14 @@ var ZH_CN = {
         sex:"性别",
         sexMale:"男",
         sexFeMale:"女",
+        month:"月份",
+        year:"年份",
+        workdayNO:"工号",
+        name:"姓名",
+        income:"收入",
+        totalIncome:"总收入",
+        expenditure:"支出",
+        balance:"余额",
     },
     signin: {
         username: "工号",
@@ -557,11 +565,18 @@ var ZH_CN = {
         research:"问卷调查",
         arch:"组织架构",
         projArch:"项目体系",
-        AttendAct:"报 名",
+        AttendAct:"志愿者报名",
         manageEmail:"上司联系邮件",
         favourite:"兴趣爱好",
         pastActivities:"过去参加过的志愿活动类型",
         freeTime:"可出席时间",
+        moneyPublic:"资金捐赠公示",
+        materialPublic:"物资捐赠公示",
+        yearAccountingPublic:"年度账务报告",
+        donation:"捐款金额(元)",
+        donationMaterial:"捐赠物资",
+        infoSelectMon:"请选择月份!",
+        infoSelectYear:"请选择年份!"
     }
 };
 
@@ -906,7 +921,7 @@ var ZH_US = {
         welfare_notice:"Welfare Notices",
         welfare_applyResult:"Welfare Application Result",
         welfare_old:"Past Union Welfare",
-        AttendAct:"Attend",
+        AttendAct:"Volunteer registration",
         ActTime:"Time",
         ActVenue:"Location",
         ActDateBegin:"Begin",
@@ -921,6 +936,16 @@ var ZH_US = {
         wonderfulMoment:"Past Activities",
         accountingPublic:"Accounting Public",
         research:"Research",
+        arch:"Organizational structure",
+        projArch:"Project system",
+        AttendAct:"Attend",
+        manageEmail:"Immediate Supervisor E-Mail",
+        favourite:"Hobbies",
+        pastActivities:"Types of volunteer activities in the past",
+        freeTime:"Attendance time",
+        moneyPublic:"Donation public",
+        materialPublic:"Materials donation public",
+        yearAccountingPublic:"Annual accounting report",
     }
 };
 
@@ -947,8 +972,9 @@ var GLOBAL_INFO = {
     KEY_DORM_NOTICE_ID: "KEY_DORM_NOTICE_ID",
     KEY_ASK_AND_ANS_ID: "KEY_ASK_AND_ANS_ID",
     KEY_DYNPAGE: "KEY_DYNPAGE",
-    KEY_WONDERFULMON_ID: "KEY_WONDERFULMON_ID",
+    KEY_UNION_WONDERFULMON_ID: "KEY_UNION_WONDERFULMON_ID",
     KEY_UNION_SUGGOPEN_ID: "KEY_UNION_SUGGOPEN_ID",
     KEY_MC_RESEARCH_ID: "KEY_MC_RESEARCH_ID",
     KEY_MC_RESEARCH_TITLE:"KEY_MC_RESEARCH_TITLE",
+    KEY_MC_WONDERFULMON_ID: "KEY_MC_WONDERFULMON_ID",
 };
