@@ -717,7 +717,7 @@ angular.module('evaluationApp.unionControllers', [])
       if (item.IsOutLink) {
         UrlServices.openForeignUrl(item.Html);
       } else {
-        CacheFactory.save(GLOBAL_INFO.KEY_WONDERFULMON_ID, item.ID);
+        CacheFactory.save(GLOBAL_INFO.KEY_UNION_WONDERFULMON_ID, item.ID);
         $state.go('union_wonderfulmoment_detail');
       }
     };
@@ -725,7 +725,7 @@ angular.module('evaluationApp.unionControllers', [])
   .controller('UnionWonderfulmomentDetailCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal,
     $state, $ionicHistory, commonServices, CacheFactory, alertService, duplicateSubmitServices) {
     //精彩瞬间 详细
-    var wonderfulMomID = CacheFactory.get(GLOBAL_INFO.KEY_WONDERFULMON_ID);
+    var wonderfulMomID = CacheFactory.get(GLOBAL_INFO.KEY_UNION_WONDERFULMON_ID);
     var baseInfo = commonServices.getBaseParas();
 
     function InitInfo() {

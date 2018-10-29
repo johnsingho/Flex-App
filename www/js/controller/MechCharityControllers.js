@@ -4,7 +4,8 @@
  */
 angular.module('evaluationApp.mechCharityControllers', [])
   .controller('MechCharityCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-    commonServices, CacheFactory, alertService, actionVisitServices) {
+    commonServices, CacheFactory, alertService, actionVisitServices) 
+{
     $scope.canUseAction = function (action) {
       return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
     };
@@ -212,43 +213,131 @@ angular.module('evaluationApp.mechCharityControllers', [])
     };
 
   })
-  .controller('MechCharityWonderfulMomentCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, CacheFactory, alertService) {
-    //MECH基金会活动报道 详情
+  .controller('MechCharityWonderfulMomentCtrl', function ($scope, $rootScope, $state, $ionicHistory, 
+      commonServices, CacheFactory, alertService,UrlServices) 
+  {
+    //MECH基金会活动报道
+    var baseInfo = commonServices.getBaseParas();
 
     function InitInfo() {
-      var url = commonServices.getUrl("UnionService.ashx", "GetOpenSuggestDetail");
+      var url = commonServices.getUrl("MechCharityService.ashx", "GetWonderfulMomList");
       var paras = {
-        suggID: suggID
+        WorkdayNo: baseInfo.WorkdayNO
       };
       commonServices.submit(paras, url).then(function (resp) {
         if (resp) {
           if (resp.success) {
-            $scope.item = resp.obj;
+            $scope.items = resp.list;
+          }
+        } else {
+          var msg = $rootScope.Language.common.CommunicationErr;
+          alertService.showAlert(msg);
+        }
+      });
+    }
+    InitInfo();
+
+    $scope.open = function (item) {
+      if (item.IsOutLink) {
+        UrlServices.openForeignUrl(item.Html);
+      } else {
+        CacheFactory.save(GLOBAL_INFO.KEY_MC_WONDERFULMON_ID, item.ID);
+        $state.go('mechCharity_wonderfulMoment_Detail');
+      }
+    };    
+  })
+  .controller('MechCharityWonderfulMomentDetailCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal,
+    $state, $ionicHistory, commonServices, CacheFactory, alertService, duplicateSubmitServices) 
+  {
+    //MECH基金会活动报道 详细
+    var wonderfulMomID = CacheFactory.get(GLOBAL_INFO.KEY_MC_WONDERFULMON_ID);
+    var baseInfo = commonServices.getBaseParas();
+
+    function InitInfo() {
+      var url = commonServices.getUrl("MechCharityService.ashx", "GetWonderfulMomDetail");
+      var paras = {
+        "WonderfulMomID": wonderfulMomID
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (!resp.success) {
+            var msg = $rootScope.Language.common.CommunicationErr;
+            alertService.showAlert(msg);
+            $ionicHistory.goBack();
+          } else {
+            $scope.ret = resp.obj;
+            $('#div_html').html(resp.obj.Html);
           }
         }
       });
     }
     InitInfo();
-  })
-  .controller('MechCharityAccountingPublicCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, CacheFactory, alertService) {
+
+    $scope.like = function () {
+      var paras = {
+        //"SubmitGuid": duplicateSubmitServices.genGUID(),
+        "WonderfulMomID": wonderfulMomID,
+        "WorkdayNo": baseInfo.WorkdayNO,
+      };
+      var url = commonServices.getUrl("MechCharityService.ashx", "AddLike");
+      commonServices.submit(paras, url).then(function (data) {
+        if (data.success) {
+          $scope.ret.LikeCount = $scope.ret.LikeCount + 1;
+        }
+      });
+    };
+
+    BindSubmitModal($scope, $ionicModal, 'modalWriteMsg.html');
+    $scope.writeMsg = function(){
+      $scope.openModal();
+    };
+    $scope.submitComment = function () {
+      var Comments = $.trim($("#Comments").val());
+      if (Comments.length == 0) {
+        return;
+      }
+
+      var para = {
+        "SubmitGuid": duplicateSubmitServices.genGUID(),
+        "WonderfulMomID": wonderfulMomID,
+        "WorkdayNo": baseInfo.WorkdayNO,
+        "Comments": Comments
+      };
+
+      var url = commonServices.getUrl("MechCharityService.ashx", "AddWonderfulMomComments");
+      commonServices.submit(para, url).then(function (data) {
+        if (data.success) {
+          $scope.closeModal();
+          InitInfo(); //refresh
+        } else {
+          alertService.showAlert(data.message);
+        }
+      });
+    };
+
+  })  
+  .controller('MechCharityAccountingPublicCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, CacheFactory, alertService) 
+  {
     //MECH基金会账务公示 详情
+    $scope.open = function (action) {
+      switch (action) {
+        case "资金捐赠公示":
+          $state.go("mechCharity_introduce");  //TODO
+          break;
+        case "物资捐赠公示":
+          $state.go('mechCharity_activity');
+          break;
+        case "年度账务报告":
+          $state.go('mechCharity_wonderfulMoment');
+          break;
+        default:
+          break;
+      }
+    };
 
-    function InitInfo() {
-      var url = commonServices.getUrl("UnionService.ashx", "GetOpenSuggestDetail");
-      var paras = {
-        suggID: suggID
-      };
-      commonServices.submit(paras, url).then(function (resp) {
-        if (resp) {
-          if (resp.success) {
-            $scope.item = resp.obj;
-          }
-        }
-      });
-    }
-    InitInfo();
   })
-  .controller('MechCharityResearchCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, CacheFactory, alertService) {
+  .controller('MechCharityResearchCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, CacheFactory, alertService) 
+  {
     //MECH基金会问卷调查
     var params = commonServices.getBaseParas();
     $scope.canUseAction = function (action) {

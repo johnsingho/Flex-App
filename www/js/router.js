@@ -945,6 +945,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/mechCharity/mech-wonderfulMoment.html',
                 controller: 'MechCharityWonderfulMomentCtrl'
             })
+                .state('mechCharity_wonderfulMoment_Detail', {
+                    url: '/mechCharity_wonderfulMoment_Detail',
+                    templateUrl: 'templates/mechCharity/mech-wonderfulMomentDetail.html',
+                    controller: 'MechCharityWonderfulMomentDetailCtrl'
+                })
             .state('mechCharity_accountingPublic', {
                 url: '/mechCharity_accountingPublic',
                 templateUrl: 'templates/mechCharity/mech-accountingPublic.html',
