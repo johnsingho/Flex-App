@@ -19,17 +19,20 @@
       <div class="col col-25 royal-bg light" style="Margin:1px" ng-click="open('MECH基金会问卷调查');" ng-if="canUseAction('MECH基金会问卷调查');">
         <i style="font-size:50px;" class="ion-clipboard"></i>
         <div>{{Language.mechCharity.research}}</div>
+        <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('MECH基金会问卷调查')">New</span>
       </div>
-
       <div class="col calm-bg light" style="Margin:1px" ng-click="open('MECH基金会账务公示');" ng-if="canUseAction('MECH基金会账务公示');">
         <i style="font-size:50px;" class="ion-cash"></i>
         <div>{{Language.mechCharity.accountingPublic}}</div>
+        <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('MECH基金会账务公示')">New</span>
       </div>
     </div>
+
     <div class="row" style="height:110px;text-align: center">
       <div class="col col-25 positive-bg light" style="Margin:1px;" ng-click="open('MECH基金会活动报道');" ng-if="canUseAction('MECH基金会活动报道');">
         <i style="font-size:50px;" class="ion-images"></i>
         <div>{{Language.mechCharity.wonderfulMoment}}</div>
+        <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('MECH基金会活动报道')">New</span>
       </div>
     </div>
 

@@ -1,5 +1,5 @@
 /**
- * 用于工会及相关子菜单
+ * 用于MECH Charity及相关子菜单
  * johnsing he 2018-10-22
  */
 angular.module('evaluationApp.mechCharityControllers', [])
@@ -9,8 +9,12 @@ angular.module('evaluationApp.mechCharityControllers', [])
     $scope.canUseAction = function (action) {
       return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
     };
+    $scope.checkActionUpdate = function (action) {
+      return actionVisitServices.checkUpdate(action);
+    };
 
     $scope.open = function (action) {
+      actionVisitServices.visit(action); //save state
       switch (action) {
         case "MECH基金会简介":
           $state.go("mechCharity_introduce");

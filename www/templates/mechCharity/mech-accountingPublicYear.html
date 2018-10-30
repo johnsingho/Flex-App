@@ -1,13 +1,13 @@
 <!-- MECH基金会账务公示 年度账务报告公示 -->
 <ion-view view-title="{{Language.mechCharity.yearAccountingPublic}}" cache-view="false">
 
-  <ion-content class="padding" style="border:1px;">
+  <ion-content class="padding5" style="border:1px;">
     <div class="item item-input searchHead">
       <span class="input-label" style="width:30px;font-size:80%">{{Language.common.year}}</span>
-      <select style="min-width:200px;" ng-options='t.Mon as t.Mon for t in timeList' ng-model="model.selYear">
+      <select class="button" style="min-width:40%;" ng-options='t.Mon as t.Mon for t in timeList' ng-model="model.selYear">
       </select>
       <button class="button button-icon" style="margin-left:10px" ng-click="LoadData();">
-        <i class="ion-android-search positive" style="font-size:32px;"></i>
+        <i class="ion-android-search positive" style="font-size:32px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;
       </button>
     </div>
 

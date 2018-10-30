@@ -584,6 +584,7 @@ var ZH_US = {
     common:{
         memo:"memo",
         Explain:"explain",
+        reason:"reason",
         grade:"grade",
         yuan:"RMB",
         InfoProvideIDNO:"The IDNO is required!",
@@ -594,6 +595,17 @@ var ZH_US = {
         clear:"Clear",
         NoData:"No data yet.",
         Cancel:"Cancel",
+        sex:"Gender",
+        sexMale:"Male",
+        sexFeMale:"Female",
+        month:"month",
+        year:"year",
+        workdayNO:"WorkdayNo",
+        name:"Name",
+        income:"Income",
+        totalIncome:"Total Income",
+        expenditure:"Expenditure",
+        balance:"Balance",
     },
     signin: {
         username: "Employee ID",
@@ -938,7 +950,7 @@ var ZH_US = {
         research:"Research",
         arch:"Organizational structure",
         projArch:"Project system",
-        AttendAct:"Attend",
+        AttendAct:"Volunteer registration",
         manageEmail:"Immediate Supervisor E-Mail",
         favourite:"Hobbies",
         pastActivities:"Types of volunteer activities in the past",
@@ -946,6 +958,10 @@ var ZH_US = {
         moneyPublic:"Donation public",
         materialPublic:"Materials donation public",
         yearAccountingPublic:"Annual accounting report",
+        donation:"Donation(Yuan)",
+        donationMaterial:"Material Donation",
+        infoSelectMon:"Please choose month!",
+        infoSelectYear:"Please choose Year!"
     }
 };
 
