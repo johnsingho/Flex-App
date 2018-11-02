@@ -650,6 +650,38 @@ angular.module('evaluationApp.router', [])
                 controller: 'VisaApplyCtrl'
 
             })
+            .state('lostFound', {
+                url: '/lostFound',
+                templateUrl: 'templates/GBS/lostFound/lostFound.html',
+                abstract: true,
+            })
+                .state('lostFound.List', {
+                    url: '/lostFoundList',
+                    views: {
+                        'lostFoundList': {
+                            templateUrl: 'templates/GBS/lostFound/lostFound_list.html',
+                            controller: 'LostFoundListCtrl'
+                        }
+                    }
+                })
+                .state('lostFound.Detail', {
+                    url: '/lostFoundDetail',
+                    views: {
+                        'lostFoundList': {
+                            templateUrl: 'templates/GBS/lostFound/lostFound_detail.html',
+                            controller: 'LostFoundDetailCtrl'
+                        }
+                    }
+                })
+                .state('lostFound.My', {
+                    url: '/lostFoundMy',
+                    views: {
+                        'lostFoundMy': {
+                            templateUrl: 'templates/GBS/lostFound/lostFound_my.html',
+                            controller: 'LostFoundMyCtrl'
+                        }
+                    }
+                })
 
             .state('earthWeekNoticeList', {
                 url: '/earthWeekNoticeList',

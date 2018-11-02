@@ -165,6 +165,7 @@ var ZH_CN = {
     common:{
         memo:"备注",
         Explain:"说明",
+        Description:"描述",
         reason:"原因",
         grade:"薪资级别",
         yuan:"元",
@@ -188,6 +189,7 @@ var ZH_CN = {
         totalIncome:"总收入",
         expenditure:"支出",
         balance:"余额",
+        mobile:"手机号码",
     },
     signin: {
         username: "工号",
@@ -374,6 +376,7 @@ var ZH_CN = {
         NoStatus: '只有正在办理离职的员工才有这些状态!',
         Done: '办结',
         Required: '待办',
+        LostFound: '失物招领',
     },
     xfcx:{
         title:"消费查询",
@@ -577,6 +580,13 @@ var ZH_CN = {
         donationMaterial:"捐赠物资",
         infoSelectMon:"请选择月份!",
         infoSelectYear:"请选择年份!"
+    },
+    lostFound:{
+        tabMy:"我的",
+        public:"发布",
+        lost:"寻找失物",
+        found:"拾金不昧",
+        msgPublicSuccess:"发布成功!",
     }
 };
 
@@ -792,6 +802,7 @@ var ZH_US = {
         NoStatus: 'Only dismissing employee has this status',
         Done: 'Done',
         Required: 'Required',
+        LostFound: 'Lost & Found',
     },
     xfcx:{
         title:" Consume Inquiry ",
@@ -993,4 +1004,5 @@ var GLOBAL_INFO = {
     KEY_MC_RESEARCH_ID: "KEY_MC_RESEARCH_ID",
     KEY_MC_RESEARCH_TITLE:"KEY_MC_RESEARCH_TITLE",
     KEY_MC_WONDERFULMON_ID: "KEY_MC_WONDERFULMON_ID",
+    KEY_LOSTFOUND_ID: "KEY_LOSTFOUND_ID",
 };

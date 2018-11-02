@@ -100,3 +100,7 @@ function ValidateEmail(smail)
     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(smail);
 }
 
+//固定位数，左填充0
+function fix(num, length) {
+    return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
+}

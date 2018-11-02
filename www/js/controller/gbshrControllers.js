@@ -52,6 +52,9 @@ angular.module('evaluationApp.gbshrControllers', [])
                         alertService.showAlert(ex.message);
                     }
                     break;
+                case "失物招领":
+                    $state.go("lostFound.List");
+                    break;
                 default:break;
             }
         }
@@ -674,5 +677,265 @@ angular.module('evaluationApp.gbshrControllers', [])
         }
 
     })
+    .controller('LostFoundListCtrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicScrollDelegate,
+                                            $ionicModal, $ionicHistory, commonServices, CacheFactory, alertService, PicServices) 
+    {
+      //失物招领 列表
+      var baseInfo = commonServices.getBaseParas();
+      //$scope.MobileNo=$rootScope.accessEmployee.MobileNo;
+
+      $scope.$on("$ionicView.beforeEnter", function () {
+        //clearHistoryForIndexPage
+        var history = $ionicHistory.forwardView();
+        if (!history) {
+          IninInfo();
+        }
+      });
+      $scope.closePass = function () {
+        $ionicHistory.nextViewOptions({
+          disableAnimate: true,
+          disableBack: true
+        });
+        $state.go('GBS');
+      };
+
+      function IninInfo() {
+        var url = commonServices.getUrl("GBSHRService.ashx", "GetLostFoundList");
+        commonServices.submit(baseInfo, url).then(function (resp) {
+          if (resp) {
+            if (resp == "Token is TimeOut") {
+              alertService.showAlert("登录失效，请重新登录");
+              $state.transitionTo('signin');
+            } else if (resp.success) {
+              $scope.items = resp.list;
+              $ionicScrollDelegate.scrollTop();
+            }
+          } else {
+            var msg = $rootScope.Language.common.CommunicationErr;
+            alertService.showAlert(msg);
+          }
+        });
+      };
+
+      $scope.viewDetail = function(lostID) {
+        CacheFactory.remove(GLOBAL_INFO.KEY_LOSTFOUND_ID);
+        CacheFactory.save(GLOBAL_INFO.KEY_LOSTFOUND_ID, lostID);
+        $state.go('lostFound.Detail');
+      };
+
+      $scope.lfTypes = [{
+        type: $rootScope.Language.lostFound.lost,
+        values: 1
+      }, {
+        type: $rootScope.Language.lostFound.found,
+        values: 0
+      }];
+      $scope.isLoser = 1;
+
+      var submitPara = {
+        CName: baseInfo.CName,
+        WorkdayNO: baseInfo.WorkdayNO,
+        MobileNo: baseInfo.MobileNo,
+        Description: null,
+        IsLoser: 1,
+        ImageBatchNo: -1,
+        Token: baseInfo.Token,
+      };
+      BindSubmitModal($scope, $ionicModal, 'public.html', submitPara);
+      $scope.showPublicDlg = function () {
+        $scope.openModal(baseInfo);
+      };
+
+      $scope.imgs = [];
+      $scope.SelPic = function (bCamera) {
+        PicServices.selectImage(function (pic) {
+          PicServices.resizeImage(1024, pic, function (sdata) {
+            $scope.imgs.push(sdata);
+          });
+        }, bCamera);
+      };
+      $scope.Reset = function () {
+        $scope.imgs = [];
+      };
+      $scope.Reset();
+
+      function CheckSubmit() {
+        var sTemp = $.trim(submitPara.MobileNo);
+        if (isEmptyString(sTemp)) {
+          alertService.showAlert("请要填写手机号码!");
+          return false;
+        }
+        submitPara.MobileNo = sTemp;
+
+        sTemp = $.trim(submitPara.Description);
+        if (isEmptyString(sTemp)) {
+          alertService.showAlert("请填写描述!");
+          return false;
+        }
+        submitPara.Description = sTemp;
+        return true;
+      }
+      $scope.isSumbiting = false;
+      $scope.submit = function () {
+        if (!CheckSubmit()) {
+          return;
+        }
+        submitPara.isLoser = $scope.isLoser;
+        $scope.isSumbiting = true;
+        if(!$scope.imgs || !$scope.imgs.length){
+            try {
+                DoSubmit(submitPara);
+            } finally {
+                $scope.isSumbiting = false;
+            }
+        }else{
+            alertService.showOperating('Processing...');
+            var url = commonServices.getUrl("UploadService.ashx","");
+            UrlServices.uploadImages('LostFound', '失物招领', $scope.imgs, url, function(resp){
+                alertService.hideOperating();
+                if(resp){
+                    if(resp.success){
+                        submitPara.ImageBatchNo = resp.obj;
+                        try{
+                            DoSubmit(submitPara);
+                        }catch(e){
+                            console.log(e);
+                        }                            
+                    }else{
+                        alertService.showAlert("上传图片失败, " + resp.message);
+                    }
+                }else{
+                    alertService.showAlert("上传图片失败!");
+                }
+                $scope.isSumbiting = false;
+            },
+            function(msg){
+                alertService.showAlert("上传图片失败, " + msg);
+            });
+        }
+      };
+
+      function DoSubmit(paras) {
+        var url = commonServices.getUrl("GBSHRService.ashx", "SubmitLostFound");
+        commonServices.submit(paras, url).then(function (resp) {
+          if (resp.success) {
+            var msg = $rootScope.Language.lostFound.msgPublicSuccess;
+            alertService.showAlert(msg);
+            $scope.closeModal();
+            IninInfo();
+            //$ionicHistory.goBack();
+          } else {
+            alertService.showAlert(resp.message);
+            $ionicHistory.goBack();
+          }
+        });
+      }
+
+    })
+    .controller('LostFoundDetailCtrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicScrollDelegate,
+                                            $ionicModal, $ionicHistory, commonServices, CacheFactory, alertService, PicServices) 
+    {
+        //失物招领 逐项详情
+        var baseInfo=commonServices.getBaseParas();
+        $scope.doRefresh = function(){
+            InitInfo();
+            $scope.$broadcast('scroll.refreshComplete');
+        };
+
+        var lostID = CacheFactory.get(GLOBAL_INFO.KEY_LOSTFOUND_ID);
+        function InitInfo(){
+            var paras = baseInfo;
+            paras.LostID = lostID;
+
+            var url=commonServices.getUrl("GBSHRService.ashx","GetLostFoundDetail");
+            commonServices.submit(baseInfo, url).then(function (resp) {
+                if(resp=="Token is TimeOut"){
+                    alertService.showAlert("登录失效，请重新登录");
+                    $state.transitionTo('signin');
+                }
+                else if (resp.success && resp.obj) {
+                    $scope.item = resp.obj.item;
+                    $scope.imgs = resp.obj.imgs;
+                    $scope.replyList = resp.obj.replyList;
+                }
+                else{
+                    $scope.item = {};
+                    $scope.imgs = [];
+                    $scope.replyList = [];
+                }
+            });
+        }
+
+        InitInfo();
+
+        $scope.ReplyContent=null;
+        $scope.ReplyPerson=null; //跟贴回复
+        $scope.submitReply=function(){
+            var sRep = $.trim($scope.ReplyContent);
+            if( isEmptyString(sRep)){
+                alertService.showLoading("请先填写内容");
+                return;
+            }
+
+            doSubmitReply(sRep, null);
+            $scope.ReplyContent="";
+        };
+
+        function doSubmitReply(sRep, chatID){
+            var paras = {
+                LostID: lostID,
+                WorkdayNo: baseInfo.WorkdayNO,
+                CName: baseInfo.CName,
+                Content: sRep,
+                ChatID: chatID || -1,
+                Token: baseInfo.Token
+            };
+            var url=commonServices.getUrl("GBSHRService.ashx","SubmitLostFoundReply");
+            commonServices.submit(paras, url).then(function(resp){
+                if(resp.success){
+                    InitInfo();                    
+                    alertService.showLoading("提交成功");
+                    $ionicScrollDelegate.scrollBottom();
+                }
+                else{
+                    alertService.showAlert(resp.message);
+                }
+            });
+        }
+
+        //跟贴回复
+        $scope.replyTo=function(chatID){
+            var myPopup = $ionicPopup.show({
+                template: '<textarea rows="5" style="font-size:80%" placeholder="发表回复"  ng-model="ReplyPerson"></textarea>',
+                title: '回复',
+                scope: $scope,
+                buttons: [
+                    { text: 'Cancel' },
+                    {
+                        text: '<b>Save</b>',
+                        type: 'button-positive',
+                        onTap: function(e) {
+                            if (isEmptyString($scope.ReplyPerson)) {
+                                alertService.showLoading("请填写回复内容");
+                                e.preventDefault();
+                            } else {
+                                return $scope.ReplyPerson;
+                            }
+                        }
+                    },
+                ]
+            });
+
+            myPopup.then(function(res) {
+                if (isEmptyString(res)) {
+                    return;
+                }
+                doSubmitReply(res, chatID);
+            });
+        }
+
+    })
     
+    
+///////////////////////////////////////////////    
 ;        

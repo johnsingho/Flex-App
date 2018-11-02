@@ -25,7 +25,7 @@
                 <i style="font-size:50px;" class="ion-ios-calendar"></i>
                 <div>{{Language.GBSHR.basicGuide}}</div>
             </div>
-            <div class="col positive-bg light" style="Margin:1px" ng-click="open('离职须知');" ng-if="canUseAction('离职须知');">
+            <div class="col positive-bg light" style="Margin:1px" ng-click="open('离职须知');">
                 <i style="font-size:50px;" class="ion-ios-calendar"></i>
                 <div>{{Language.GBSHR.EmployeeDismiss}}</div>
             </div>
@@ -35,11 +35,11 @@
                 <i style="font-size:50px;" class="ion-ios-paper"></i>
                 <div>{{Language.home.insurance}}</div>
             </div>
-            <div class="col col-25 royal-bg light" style="Margin:1px" ng-click="open('社会保险');" ng-if="canUseAction('社会保险');">
+            <div class="col col-25 royal-bg light" style="Margin:1px" ng-click="open('社会保险');">
                 <i style="font-size:50px;" class="ion-ios-heart"></i>
                 <div>{{Language.GBSHR.SocialInsurance}}</div>
             </div>
-            <div class="col col-25 calm-bg light" style="Margin:1px" ng-click="open('公积金信息');" ng-if="canUseAction('公积金信息');">
+            <div class="col col-25 calm-bg light" style="Margin:1px" ng-click="open('公积金信息');">
                 <i style="font-size:50px;" class="ion-ios-home"></i>
                 <div>{{Language.GBSHR.HousingFund}}</div>
             </div>
@@ -47,6 +47,13 @@
                     <i style="font-size:50px;" class="ion-ios-body"></i>
                     <div>{{Language.home.train}}</div>
             </div>
+        </div>
+        <div class="row" style="height:110px;text-align: center">
+            <div class="col col-25 positive-bg light" style="Margin:1px" ng-click="open('失物招领');" ng-if="canUseAction('失物招领');">
+                <i style="font-size:50px;" class="ion-ios-paw"></i>
+                <div>{{Language.GBSHR.LostFound}}</div>
+            </div>
+
         </div>
 
     </ion-content>
