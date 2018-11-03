@@ -933,9 +933,97 @@ angular.module('evaluationApp.gbshrControllers', [])
                 doSubmitReply(res, chatID);
             });
         }
-
     })
-    
-    
+    .controller('LostFoundMyCtrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicScrollDelegate,
+      $ionicModal, $ionicHistory, commonServices, CacheFactory, alertService, PicServices) 
+    {
+      //失物招领 我的发布
+      var baseInfo = commonServices.getBaseParas();
+
+      $scope.$on("$ionicView.beforeEnter", function () {
+        //clearHistoryForIndexPage
+        var history = $ionicHistory.forwardView();
+        if (!history) {
+          IninInfo();
+        }
+      });
+      $scope.closePass = function () {
+        $ionicHistory.nextViewOptions({
+          disableAnimate: true,
+          disableBack: true
+        });
+        $state.go('GBS');
+      };
+
+      function InitInfo() {
+        var paras = baseInfo;
+        var url = commonServices.getUrl("GBSHRService.ashx", "GetLostFoundMyDetail");
+        commonServices.submit(paras, url).then(function (resp) {
+          if (resp == "Token is TimeOut") {
+            alertService.showAlert("登录失效，请重新登录");
+            $state.transitionTo('signin');
+          } else if (resp.success && resp.obj) {
+            $scope.entrys = resp.list;
+          }
+        });
+      }
+
+      InitInfo();
+
+      $scope.ReplyPerson = null; //跟贴回复
+      function doSubmitReply(sRep, chatID) {
+        var paras = {
+          LostID: lostID,
+          WorkdayNo: baseInfo.WorkdayNO,
+          CName: baseInfo.CName,
+          Content: sRep,
+          ChatID: chatID || -1,
+          Token: baseInfo.Token
+        };
+        var url = commonServices.getUrl("GBSHRService.ashx", "SubmitLostFoundReply");
+        commonServices.submit(paras, url).then(function (resp) {
+          if (resp.success) {
+            InitInfo();
+            alertService.showLoading("提交成功");
+            $ionicScrollDelegate.scrollBottom();
+          } else {
+            alertService.showAlert(resp.message);
+          }
+        });
+      }
+
+      //跟贴回复
+      $scope.replyTo = function (chatID) {
+        var myPopup = $ionicPopup.show({
+          template: '<textarea rows="5" style="font-size:80%" placeholder="发表回复"  ng-model="ReplyPerson"></textarea>',
+          title: '回复',
+          scope: $scope,
+          buttons: [{
+              text: 'Cancel'
+            },
+            {
+              text: '<b>Save</b>',
+              type: 'button-positive',
+              onTap: function (e) {
+                if (isEmptyString($scope.ReplyPerson)) {
+                  alertService.showLoading("请填写回复内容");
+                  e.preventDefault();
+                } else {
+                  return $scope.ReplyPerson;
+                }
+              }
+            },
+          ]
+        });
+
+        myPopup.then(function (res) {
+          if (isEmptyString(res)) {
+            return;
+          }
+          doSubmitReply(res, chatID);
+        });
+      }
+    })
+
 ///////////////////////////////////////////////    
 ;        

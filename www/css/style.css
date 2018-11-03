@@ -351,3 +351,24 @@ ul{
 .padding5 {
   padding: 5px;
 }
+
+.LFlist .oName {
+    min-width: 80px;
+    display: inline-block;
+    color: blue;
+  }
+  .LFlist .eName {
+    min-width: 80px;
+    display: inline-block;
+    color: palevioletred;
+  }
+  .LFlist .tinyIcon {
+    max-width: 28px;
+    max-height: 28px;
+    vertical-align: middle;
+  }
+  .LFlist .repname{
+    position: relative;
+    white-space: nowrap;
+    align-items: center;
+  }

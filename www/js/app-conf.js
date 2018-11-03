@@ -582,11 +582,12 @@ var ZH_CN = {
         infoSelectYear:"请选择年份!"
     },
     lostFound:{
-        tabMy:"我的",
+        tabMy:"我的发布",
         public:"发布",
         lost:"寻找失物",
         found:"拾金不昧",
         msgPublicSuccess:"发布成功!",
+        closePublic:"关闭发布",
     }
 };
 

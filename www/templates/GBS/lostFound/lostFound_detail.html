@@ -1,26 +1,4 @@
 <!-- 失物招领 逐项详情 -->
-<style>
-  .oName {
-    min-width: 80px;
-    display: inline-block;
-    color: blue;
-  }
-  .eName {
-    min-width: 80px;
-    display: inline-block;
-    color: palevioletred;
-  }
-  .tinyIcon {
-    max-width: 28px;
-    max-height: 28px;
-    vertical-align: middle;
-  }
-  .repname{
-    position: relative;
-    white-space: nowrap;
-    align-items: center;
-  }
-</style>
 <ion-view view-title="" cache-view="false">
   <ion-content scroll="true" overflow-scroll="true" style="background-color:#c0c0c0">
     <ion-refresher pulling-text="Refresh" on-refresh="doRefresh()">
@@ -60,7 +38,7 @@
 
     <ion-list>
       <ion-item ng-repeat="reply in replyList" class="item">
-        <div class="item">
+        <div class="item LFlist">
           <div ng-repeat="talk in reply.replys">
             <div class="repname">
               <img class="tinyIcon" src="img/user.jpg">
