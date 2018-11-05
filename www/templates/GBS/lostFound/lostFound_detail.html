@@ -22,40 +22,41 @@
           </p>
         </div>
         <div class="item item-body">
-          <span style="color:blue;">{{Language.common.Description}}</span>
+          <span style="color:blue;font-size:12px;">{{Language.common.Description}}</span>
           <p style="Margin:1px" ng-bind-html="item.Content">
           </p>
         </div>
         <div class="item item-body" ng-if="imgs.length>0">
+          <span style="color:blue;font-size:12px;">{{Language.lostFound.relatePhoto}}</span>
           <div style="white-space:normal;">
-            <p id="images" style="margin-top:10px;white-space:normal;">
-              <img class='smallPic' src='{{pic}}' ng-repeat='pic in imgs'>
-            </p>
+            <ul class="lightgallery">
+              <li data-src="{{pic.FileUrl}}" ng-repeat='pic in imgs'>
+                <a href="#">
+                  <img class='smallPic' src="{{pic.FileUrl}}" />
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </ion-item>
-    </ion-list>
-
-    <ion-list>
-      <ion-item ng-repeat="reply in replyList" class="item">
-        <div class="item LFlist">
-          <div ng-repeat="talk in reply.replys">
-            <div class="repname">
-              <img class="tinyIcon" src="img/user.jpg">
-              <span ng-class="{'oName': $index%2==0,'eName':$index%2==1}">
-                {{talk.UserName}}
-              </span>
-              <span style="font-size:11px;font-weight:400;color:black;">{{talk.CreateDate| date:"yyyy-MM-dd HH:mm"}}</span>
+        <div ng-repeat="reply in replyList" class="item">
+            <div class="item LFlist">
+              <div ng-repeat="talk in reply.replys">
+                <div class="repname">
+                  <img class="tinyIcon" src="img/user.jpg">
+                  <span ng-class="{'oName': $index%2==0,'eName':$index%2==1}">
+                    {{talk.UserName}}
+                  </span>
+                  <span style="font-size:11px;font-weight:400;color:black;">{{talk.CreateDate| date:"yyyy-MM-dd HH:mm"}}</span>
+                </div>
+                <p ng-bind-html="talk.Content"></p>
+              </div>
+              <div style="float:right;">
+                <a style="text-decoration:underline;" ng-click="replyTo(reply.ChatID)">回复</a>
+              </div>
             </div>
-            <p ng-bind-html="talk.Content"></p>
           </div>
-          <div style="float:right;">
-            <a style="text-decoration:underline;" ng-click="replyTo(reply.ChatID)">回复</a>
-          </div>
-        </div>
       </ion-item>
     </ion-list>
-    <br>
     <br>
   </ion-content>
   <div class="bar bar-subfooter">
@@ -64,7 +65,6 @@
         <textarea rows="5" style="font-size:80%" placeholder="发表回帖" ng-model="ReplyContent"></textarea>
       </label>
     </h2>
-    <button class="button button-balanced pull-right" ng-click="submitReply()">{{Language.menu.submit}}</button>
+    <button class="button button-balanced button-small pull-right" ng-click="submitReply()">{{Language.common.Reply}}</button>
   </div>
-
 </ion-view>

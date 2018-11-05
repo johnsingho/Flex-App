@@ -190,6 +190,7 @@ var ZH_CN = {
         expenditure:"支出",
         balance:"余额",
         mobile:"手机号码",
+        Reply:"回复",
     },
     signin: {
         username: "工号",
@@ -588,6 +589,7 @@ var ZH_CN = {
         found:"拾金不昧",
         msgPublicSuccess:"发布成功!",
         closePublic:"关闭发布",
+        relatePhoto:"相关照片",
     }
 };
 
@@ -595,6 +597,7 @@ var ZH_US = {
     common:{
         memo:"memo",
         Explain:"explain",
+        Description:"Description",
         reason:"reason",
         grade:"grade",
         yuan:"RMB",
@@ -606,6 +609,7 @@ var ZH_US = {
         clear:"Clear",
         NoData:"No data yet.",
         Cancel:"Cancel",
+        email:"E-mail",
         sex:"Gender",
         sexMale:"Male",
         sexFeMale:"Female",
@@ -617,6 +621,8 @@ var ZH_US = {
         totalIncome:"Total Income",
         expenditure:"Expenditure",
         balance:"Balance",
+        mobile:"Mobile",
+        Reply:"Reply",
     },
     signin: {
         username: "Employee ID",
@@ -974,6 +980,15 @@ var ZH_US = {
         donationMaterial:"Material Donation",
         infoSelectMon:"Please choose month!",
         infoSelectYear:"Please choose Year!"
+    },
+    lostFound:{
+        tabMy:"My public",
+        public:"public",
+        lost:"Lost something",
+        found:"Found",
+        msgPublicSuccess:"Public ok!",
+        closePublic:"Cancel Public",
+        relatePhoto:"Relate photos",
     }
 };
 

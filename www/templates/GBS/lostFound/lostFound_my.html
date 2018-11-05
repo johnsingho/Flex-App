@@ -34,29 +34,32 @@
             </p>
           </div>
         </div>
-      </ion-item>
-      <ion-item ng-repeat="reply in entry.replyList" class="item">
-        <div class="item LFlist">
-          <div ng-repeat="talk in reply.replys">
-            <div class="repname">
-              <img class="tinyIcon" src="img/user.jpg">
-              <span ng-class="{'oName': $index%2==0,'eName':$index%2==1}">
-                {{talk.UserName}}
-              </span>
-              <span style="font-size:11px;font-weight:400;color:black;">
-                {{talk.CreateDate| date:"yyyy-MM-dd HH:mm"}}</span>
+        <div ng-repeat="reply in entry.replyList" class="item">
+          <div class="LFlist">
+            <div ng-repeat="talk in reply.replys">
+              <div class="repname">
+                <img class="tinyIcon" src="img/user.jpg">
+                <span ng-class="{'oName': $index%2==0,'eName':$index%2==1}">
+                  {{talk.UserName}}
+                </span>
+                <span style="font-size:11px;font-weight:400;color:black;">
+                  {{talk.CreateDate| date:"yyyy-MM-dd HH:mm"}}</span>
+              </div>
+              <p ng-bind-html="talk.Content"></p>
             </div>
-            <p ng-bind-html="talk.Content"></p>
+            <div style="float:right;" ng-if="entry.item.Status==0">
+              <a style="text-decoration:underline;" ng-click="replyTo(reply.ChatID)">回复</a>
+            </div>
           </div>
-          <div style="float:right;">
-            <a style="text-decoration:underline;" ng-click="replyTo(reply.ChatID)">回复</a>
+        </div>
+        <div class="row" ng-if="entry.item.Status==0">
+          <div style="margin:auto;">
+            <button class="button button-balanced button-small" style="text-align:center" ng-click="closePublic(entry.item.ID)">
+              {{Language.lostFound.closePublic}}
+            </button>
           </div>
         </div>
       </ion-item>
-      <div class="bar bar-subfooter" ng-if="entry.item.Status">
-        <button class="button button-balanced pull-right" ng-click="closePublic()">
-            {{Language.lostFound.closePublic}}</button>
-      </div>
     </ion-list>
   </ion-content>
 </ion-view>

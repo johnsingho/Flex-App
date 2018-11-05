@@ -664,15 +664,6 @@ angular.module('evaluationApp.router', [])
                         }
                     }
                 })
-                .state('lostFound.Detail', {
-                    url: '/lostFoundDetail',
-                    views: {
-                        'lostFoundList': {
-                            templateUrl: 'templates/GBS/lostFound/lostFound_detail.html',
-                            controller: 'LostFoundDetailCtrl'
-                        }
-                    }
-                })
                 .state('lostFound.My', {
                     url: '/lostFoundMy',
                     views: {
@@ -682,7 +673,15 @@ angular.module('evaluationApp.router', [])
                         }
                     }
                 })
-
+                .state('lostFound.Detail', {
+                    url: '/lostFoundDetail',
+                    views: {
+                        'lostFoundList': {
+                            templateUrl: 'templates/GBS/lostFound/lostFound_detail.html',
+                            controller: 'LostFoundDetailCtrl'
+                        }
+                    }
+                })
             .state('earthWeekNoticeList', {
                 url: '/earthWeekNoticeList',
                 templateUrl: 'templates/earthWeek/notice-list.html',

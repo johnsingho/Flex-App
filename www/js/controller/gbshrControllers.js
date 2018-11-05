@@ -833,7 +833,7 @@ angular.module('evaluationApp.gbshrControllers', [])
 
     })
     .controller('LostFoundDetailCtrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicScrollDelegate,
-                                            $ionicModal, $ionicHistory, commonServices, CacheFactory, alertService, PicServices) 
+                                            $ionicModal, $ionicHistory, commonServices, CacheFactory, alertService) 
     {
         //失物招领 逐项详情
         var baseInfo=commonServices.getBaseParas();
@@ -857,6 +857,10 @@ angular.module('evaluationApp.gbshrControllers', [])
                     $scope.item = resp.obj.item;
                     $scope.imgs = resp.obj.imgs;
                     $scope.replyList = resp.obj.replyList;
+                    setTimeout(function () {
+                        //图片缩放
+                        InitPhotoScale();
+                    }, 1500);
                 }
                 else{
                     $scope.item = {};
@@ -869,7 +873,6 @@ angular.module('evaluationApp.gbshrControllers', [])
         InitInfo();
 
         $scope.ReplyContent=null;
-        $scope.ReplyPerson=null; //跟贴回复
         $scope.submitReply=function(){
             var sRep = $.trim($scope.ReplyContent);
             if( isEmptyString(sRep)){
@@ -905,8 +908,9 @@ angular.module('evaluationApp.gbshrControllers', [])
 
         //跟贴回复
         $scope.replyTo=function(chatID){
+            $scope.FollowReply = {};; //跟贴回复
             var myPopup = $ionicPopup.show({
-                template: '<textarea rows="5" style="font-size:80%" placeholder="发表回复"  ng-model="ReplyPerson"></textarea>',
+                template: '<textarea rows="5" style="font-size:80%" placeholder="发表回复"  ng-model="FollowReply.ReplyPerson"></textarea>',
                 title: '回复',
                 scope: $scope,
                 buttons: [
@@ -915,11 +919,11 @@ angular.module('evaluationApp.gbshrControllers', [])
                         text: '<b>Save</b>',
                         type: 'button-positive',
                         onTap: function(e) {
-                            if (isEmptyString($scope.ReplyPerson)) {
+                            if (isEmptyString($scope.FollowReply.ReplyPerson)) {
                                 alertService.showLoading("请填写回复内容");
                                 e.preventDefault();
                             } else {
-                                return $scope.ReplyPerson;
+                                return $scope.FollowReply.ReplyPerson;
                             }
                         }
                     },
@@ -932,7 +936,7 @@ angular.module('evaluationApp.gbshrControllers', [])
                 }
                 doSubmitReply(res, chatID);
             });
-        }
+        };
     })
     .controller('LostFoundMyCtrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicScrollDelegate,
       $ionicModal, $ionicHistory, commonServices, CacheFactory, alertService, PicServices) 
@@ -944,7 +948,7 @@ angular.module('evaluationApp.gbshrControllers', [])
         //clearHistoryForIndexPage
         var history = $ionicHistory.forwardView();
         if (!history) {
-          IninInfo();
+            InitInfo();
         }
       });
       $scope.closePass = function () {
@@ -970,7 +974,6 @@ angular.module('evaluationApp.gbshrControllers', [])
 
       InitInfo();
 
-      $scope.ReplyPerson = null; //跟贴回复
       function doSubmitReply(sRep, chatID) {
         var paras = {
           LostID: lostID,
@@ -994,8 +997,9 @@ angular.module('evaluationApp.gbshrControllers', [])
 
       //跟贴回复
       $scope.replyTo = function (chatID) {
+        $scope.FollowReply = {};; //跟贴回复
         var myPopup = $ionicPopup.show({
-          template: '<textarea rows="5" style="font-size:80%" placeholder="发表回复"  ng-model="ReplyPerson"></textarea>',
+          template: '<textarea rows="5" style="font-size:80%" placeholder="发表回复"  ng-model="FollowReply.ReplyPerson"></textarea>',
           title: '回复',
           scope: $scope,
           buttons: [{
@@ -1005,11 +1009,11 @@ angular.module('evaluationApp.gbshrControllers', [])
               text: '<b>Save</b>',
               type: 'button-positive',
               onTap: function (e) {
-                if (isEmptyString($scope.ReplyPerson)) {
+                if (isEmptyString($scope.FollowReply.ReplyPerson)) {
                   alertService.showLoading("请填写回复内容");
                   e.preventDefault();
                 } else {
-                  return $scope.ReplyPerson;
+                  return $scope.FollowReply.ReplyPerson;
                 }
               }
             },
@@ -1022,7 +1026,25 @@ angular.module('evaluationApp.gbshrControllers', [])
           }
           doSubmitReply(res, chatID);
         });
-      }
+      };
+
+      $scope.closePublic = function(lostID){
+        var paras = {
+            LostID: lostID,
+            WorkdayNo: baseInfo.WorkdayNO,
+            Token: baseInfo.Token
+          };
+          var url = commonServices.getUrl("GBSHRService.ashx", "SubmitLostFoundClose");
+          commonServices.submit(paras, url).then(function (resp) {
+            if (resp.success) {
+              InitInfo();
+              alertService.showLoading("提交成功");
+              $ionicScrollDelegate.scrollBottom();
+            } else {
+              alertService.showAlert(resp.message);
+            }
+          });
+      };
     })
 
 ///////////////////////////////////////////////    
