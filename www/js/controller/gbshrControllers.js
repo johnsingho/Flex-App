@@ -678,7 +678,7 @@ angular.module('evaluationApp.gbshrControllers', [])
 
     })
     .controller('LostFoundListCtrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicScrollDelegate,
-                                            $ionicModal, $ionicHistory, commonServices, CacheFactory, alertService, PicServices) 
+                                            $ionicModal, $ionicHistory, commonServices, CacheFactory, alertService, PicServices, UrlServices) 
     {
       //失物招领 列表
       var baseInfo = commonServices.getBaseParas();
@@ -810,6 +810,7 @@ angular.module('evaluationApp.gbshrControllers', [])
                 $scope.isSumbiting = false;
             },
             function(msg){
+                alertService.hideOperating();
                 alertService.showAlert("上传图片失败, " + msg);
             });
         }
