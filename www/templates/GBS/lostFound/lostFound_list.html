@@ -1,5 +1,12 @@
 <!-- 失物招领 列表 -->
-<ion-view view-title="{{Language.GBSHR.LostFound}}" cache-view="true">
+<style>
+.imgch{
+    height: 32px;
+    width: 32px;
+    vertical-align: middle;
+}
+</style>
+<ion-view view-title="{{Language.GBSHR.LostFound}}" cache-view="false">
   <ion-nav-buttons side="left">
     <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.home.GBS}}</button>
   </ion-nav-buttons>
@@ -30,7 +37,7 @@
       </div>
 
       <div class="item item-body">
-        <span style="color:blue;">{{Language.common.Description}}</span>
+        <span style="color:blue;font-size:12px;">{{Language.common.Description}}</span>
         <p style="Margin:1px" ng-bind-html="item.Content">
         </p>
       </div>
@@ -50,8 +57,13 @@
             </ion-header-bar>
             <ion-content class="padding">
                 <div class="list card" >
-                    <ion-list ng-repeat="t in lfTypes">
-                        <ion-radio name="1" ng-model="isLoser" ng-value="t.values">{{t.type}}</ion-radio>
+                    <ion-list>
+                        <ion-radio name="loser" ng-repeat="t in lfTypes" 
+                            ng-value="t.value" ng-model="modal.dat.IsLoser">
+                            <img class="imgch" ng-if="t.value==1" src="img/other/lost.png">
+                            <img class="imgch" ng-if="t.value==0" src="img/other/found.png">
+                            {{t.name}}
+                        </ion-radio>
                     </ion-list>
                 </div>
 

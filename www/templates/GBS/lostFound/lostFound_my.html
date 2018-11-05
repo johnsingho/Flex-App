@@ -5,6 +5,9 @@
       {{Language.home.GBS}}</button>
   </ion-nav-buttons>
   <ion-content scroll="true" overflow-scroll="true" style="background-color:#c0c0c0">
+    <div ng-if="!entrys || !entrys.length">
+      <h4 style="color:red">{{Language.common.NoData}}</h4>
+    </div>
     <ion-list ng-repeat="entry in entrys">
       <ion-item>
         <div class="item item-avatar">
@@ -23,15 +26,19 @@
           </p>
         </div>
         <div class="item item-body">
-          <span style="color:blue;">{{Language.common.Description}}</span>
+          <span style="color:blue;font-size:12px;">{{Language.common.Description}}</span>
           <p style="Margin:1px" ng-bind-html="entry.item.Content">
           </p>
         </div>
         <div class="item item-body" ng-if="entry.imgs.length>0">
           <div style="white-space:normal;">
-            <p id="images" style="margin-top:10px;white-space:normal;">
-              <img class='smallPic' src='{{pic}}' ng-repeat='pic in entry.imgs'>
-            </p>
+            <ul class="lightgallery">
+                <li data-src="{{pic.FileUrl}}" ng-repeat='pic in entry.imgs'>
+                  <a href="#">
+                    <img class='smallPic' src="{{pic.FileUrl}}" />
+                  </a>
+                </li>
+              </ul>
           </div>
         </div>
         <div ng-repeat="reply in entry.replyList" class="item">

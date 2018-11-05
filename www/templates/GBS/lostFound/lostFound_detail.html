@@ -1,4 +1,10 @@
 <!-- 失物招领 逐项详情 -->
+<style>
+  .myImg{
+    max-width: 75%;
+    margin: 2px 0 0 2px;
+  }
+</style>
 <ion-view view-title="" cache-view="false">
   <ion-content scroll="true" overflow-scroll="true" style="background-color:#c0c0c0">
     <ion-refresher pulling-text="Refresh" on-refresh="doRefresh()">
@@ -32,14 +38,14 @@
             <ul class="lightgallery">
               <li data-src="{{pic.FileUrl}}" ng-repeat='pic in imgs'>
                 <a href="#">
-                  <img class='smallPic' src="{{pic.FileUrl}}" />
+                  <img class='myImg' src="{{pic.FileUrl}}" />
                 </a>
               </li>
             </ul>
           </div>
         </div>
         <div ng-repeat="reply in replyList" class="item">
-            <div class="item LFlist">
+            <div class="LFlist">
               <div ng-repeat="talk in reply.replys">
                 <div class="repname">
                   <img class="tinyIcon" src="img/user.jpg">
@@ -59,12 +65,10 @@
     </ion-list>
     <br>
   </ion-content>
-  <div class="bar bar-subfooter">
-    <h2 class="title">
-      <label class="item item-input" style="width: 90%">
-        <textarea rows="5" style="font-size:80%" placeholder="发表回帖" ng-model="ReplyContent"></textarea>
-      </label>
-    </h2>
-    <button class="button button-balanced button-small pull-right" ng-click="submitReply()">{{Language.common.Reply}}</button>
+<div class="bar bar-subfooter" style="height:54px;">
+  <div class="item item-input" style="margin-left:10px;width:82%">
+    <textarea rows="2" style="font-size:80%" placeholder="发表回帖" ng-model="ReplyContent"></textarea>
   </div>
+  <button class="button button-balanced button-small pull-right" ng-click="submitReply()">{{Language.common.Reply}}</button>
+</div>
 </ion-view>

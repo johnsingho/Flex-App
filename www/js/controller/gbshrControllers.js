@@ -717,20 +717,19 @@ angular.module('evaluationApp.gbshrControllers', [])
         });
       };
 
-      $scope.viewDetail = function(lostID) {
+      $scope.viewDetail = function (lostID) {
         CacheFactory.remove(GLOBAL_INFO.KEY_LOSTFOUND_ID);
         CacheFactory.save(GLOBAL_INFO.KEY_LOSTFOUND_ID, lostID);
         $state.go('lostFound.Detail');
       };
 
       $scope.lfTypes = [{
-        type: $rootScope.Language.lostFound.lost,
-        values: 1
+        name: $rootScope.Language.lostFound.lost,
+        value: 1
       }, {
-        type: $rootScope.Language.lostFound.found,
-        values: 0
+        name: $rootScope.Language.lostFound.found,
+        value: 0
       }];
-      $scope.isLoser = 1;
 
       var submitPara = {
         CName: baseInfo.CName,
@@ -742,7 +741,14 @@ angular.module('evaluationApp.gbshrControllers', [])
         Token: baseInfo.Token,
       };
       BindSubmitModal($scope, $ionicModal, 'public.html', submitPara);
+
+      function ClearLastFill() {
+        $scope.imgs = [];
+        submitPara.Description = null;
+        submitPara.ImageBatchNo = -1;
+      }
       $scope.showPublicDlg = function () {
+        ClearLastFill();
         $scope.openModal(baseInfo);
       };
 
@@ -759,6 +765,15 @@ angular.module('evaluationApp.gbshrControllers', [])
       };
       $scope.Reset();
 
+      var swMap = null;
+
+      function HasSensWord(txt) {
+        if (!swMap) {
+          swMap = sw_buildMap();
+        }
+        return sw_check(swMap, txt)
+      }
+
       function CheckSubmit() {
         var sTemp = $.trim(submitPara.MobileNo);
         if (isEmptyString(sTemp)) {
@@ -772,46 +787,56 @@ angular.module('evaluationApp.gbshrControllers', [])
           alertService.showAlert("请填写描述!");
           return false;
         }
+        if (HasSensWord(sTemp)) {
+          alertService.showAlert("请填写描述!");
+          submitPara.Description="";
+          return false;
+        }
+
         submitPara.Description = sTemp;
         return true;
       }
       $scope.isSumbiting = false;
       $scope.submit = function () {
+        if ($scope.isSumbiting) {
+          return;
+        }
         if (!CheckSubmit()) {
           return;
         }
-        submitPara.isLoser = $scope.isLoser;
         $scope.isSumbiting = true;
-        if(!$scope.imgs || !$scope.imgs.length){
-            try {
-                DoSubmit(submitPara);
-            } finally {
-                $scope.isSumbiting = false;
-            }
-        }else{
+        if (!$scope.imgs || !$scope.imgs.length) {
+          try {
             alertService.showOperating('Processing...');
-            var url = commonServices.getUrl("UploadService.ashx","");
-            UrlServices.uploadImages('LostFound', '失物招领', $scope.imgs, url, function(resp){
-                alertService.hideOperating();
-                if(resp){
-                    if(resp.success){
-                        submitPara.ImageBatchNo = resp.obj;
-                        try{
-                            DoSubmit(submitPara);
-                        }catch(e){
-                            console.log(e);
-                        }                            
-                    }else{
-                        alertService.showAlert("上传图片失败, " + resp.message);
-                    }
-                }else{
-                    alertService.showAlert("上传图片失败!");
+            DoSubmit(submitPara);
+          } finally {
+            alertService.hideOperating();
+            $scope.isSumbiting = false;
+          }
+        } else {
+          alertService.showOperating('Processing...');
+          var url = commonServices.getUrl("UploadService.ashx", "");
+          UrlServices.uploadImages('LostFound', '失物招领', $scope.imgs, url, function (resp) {
+              alertService.hideOperating();
+              if (resp) {
+                if (resp.success) {
+                  submitPara.ImageBatchNo = resp.obj;
+                  try {
+                    DoSubmit(submitPara);
+                  } catch (e) {
+                    console.log(e);
+                  }
+                } else {
+                  alertService.showAlert("上传图片失败, " + resp.message);
                 }
-                $scope.isSumbiting = false;
+              } else {
+                alertService.showAlert("上传图片失败!");
+              }
+              $scope.isSumbiting = false;
             },
-            function(msg){
-                alertService.hideOperating();
-                alertService.showAlert("上传图片失败, " + msg);
+            function (msg) {
+              alertService.hideOperating();
+              alertService.showAlert("上传图片失败, " + msg);
             });
         }
       };
@@ -873,10 +898,22 @@ angular.module('evaluationApp.gbshrControllers', [])
 
         InitInfo();
 
+        var swMap=null;
+        function HasSensWord(txt){
+            if(!swMap){
+                swMap = sw_buildMap();
+            }
+            return sw_check(swMap, txt)
+        }
         $scope.ReplyContent=null;
         $scope.submitReply=function(){
             var sRep = $.trim($scope.ReplyContent);
             if( isEmptyString(sRep)){
+                alertService.showLoading("请先填写内容");
+                return;
+            }
+            if(HasSensWord(sRep)){
+                $scope.ReplyContent='';
                 alertService.showLoading("请先填写内容");
                 return;
             }
@@ -885,6 +922,7 @@ angular.module('evaluationApp.gbshrControllers', [])
             $scope.ReplyContent="";
         };
 
+        
         function doSubmitReply(sRep, chatID){
             var paras = {
                 LostID: lostID,
@@ -935,6 +973,11 @@ angular.module('evaluationApp.gbshrControllers', [])
                 if (isEmptyString(res)) {
                     return;
                 }
+                if(HasSensWord(res)){
+                    $scope.FollowReply.ReplyPerson='';
+                    alertService.showLoading("请填写回复内容");
+                    return;
+                }
                 doSubmitReply(res, chatID);
             });
         };
@@ -949,7 +992,7 @@ angular.module('evaluationApp.gbshrControllers', [])
         //clearHistoryForIndexPage
         var history = $ionicHistory.forwardView();
         if (!history) {
-            InitInfo();
+          InitInfo();
         }
       });
       $scope.closePass = function () {
@@ -969,6 +1012,10 @@ angular.module('evaluationApp.gbshrControllers', [])
             $state.transitionTo('signin');
           } else if (resp.success && resp.obj) {
             $scope.entrys = resp.list;
+            setTimeout(function () {
+              //图片缩放
+              InitPhotoScale();
+            }, 1500);
           }
         });
       }
@@ -1025,26 +1072,40 @@ angular.module('evaluationApp.gbshrControllers', [])
           if (isEmptyString(res)) {
             return;
           }
+          if (HasSensWord(sRep)) {
+            $scope.ReplyContent = '';
+            alertService.showLoading("请先填写内容");
+            return;
+          }
           doSubmitReply(res, chatID);
         });
       };
 
-      $scope.closePublic = function(lostID){
+      var swMap = null;
+
+      function HasSensWord(txt) {
+        if (!swMap) {
+          swMap = sw_buildMap();
+        }
+        return sw_check(swMap, txt)
+      }
+
+      $scope.closePublic = function (lostID) {
         var paras = {
-            LostID: lostID,
-            WorkdayNo: baseInfo.WorkdayNO,
-            Token: baseInfo.Token
-          };
-          var url = commonServices.getUrl("GBSHRService.ashx", "SubmitLostFoundClose");
-          commonServices.submit(paras, url).then(function (resp) {
-            if (resp.success) {
-              InitInfo();
-              alertService.showLoading("提交成功");
-              $ionicScrollDelegate.scrollBottom();
-            } else {
-              alertService.showAlert(resp.message);
-            }
-          });
+          LostID: lostID,
+          WorkdayNo: baseInfo.WorkdayNO,
+          Token: baseInfo.Token
+        };
+        var url = commonServices.getUrl("GBSHRService.ashx", "SubmitLostFoundClose");
+        commonServices.submit(paras, url).then(function (resp) {
+          if (resp.success) {
+            InitInfo();
+            alertService.showLoading("提交成功");
+            $ionicScrollDelegate.scrollBottom();
+          } else {
+            alertService.showAlert(resp.message);
+          }
+        });
       };
     })
 
