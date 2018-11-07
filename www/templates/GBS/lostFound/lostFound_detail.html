@@ -54,7 +54,7 @@
                   </span>
                   <span style="font-size:11px;font-weight:400;color:black;">{{talk.CreateDate| date:"yyyy-MM-dd HH:mm"}}</span>
                 </div>
-                <p ng-bind-html="talk.Content"></p>
+                <p style="white-space:normal" ng-bind-html="talk.Content"></p>
               </div>
               <div style="float:right;">
                 <a style="text-decoration:underline;" ng-click="replyTo(reply.ChatID)">回复</a>

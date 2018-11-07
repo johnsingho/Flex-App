@@ -849,9 +849,16 @@ angular.module('evaluationApp.unionControllers', [])
       Suggest: ""
     };
     $scope.GetSuggest = function () {
-      var txt = $.trim($scope.model.Suggest);
-      return txt;
+      return $.trim($scope.model.Suggest);
     };
+
+    var swMap = null;
+    function HasSensWord(txt) {
+      if (!swMap) {
+        swMap = sw_buildMap();
+      }
+      return sw_check(swMap, txt)
+    }
 
     $scope.isSumbiting = false;
     $scope.Submit = function () {
@@ -859,6 +866,12 @@ angular.module('evaluationApp.unionControllers', [])
       var sugg = $scope.GetSuggest();
       if (sugg.length < 3) {
         alertService.showAlert("请填写你的建议!");
+        $scope.isSumbiting = false;
+        return;
+      }
+      if(HasSensWord(sugg)){
+        alertService.showAlert("请填写你的建议!");
+        $scope.model.Suggest="";
         $scope.isSumbiting = false;
         return;
       }
