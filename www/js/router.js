@@ -723,6 +723,11 @@ angular.module('evaluationApp.router', [])
                 url: '/housingAllowance',
                 templateUrl: 'templates/admin/dorm/housingAllowance.html',
                 controller: 'HousingAllowanceCtrl'
+            })            
+            .state('dormNoticeProtocol',{
+                url: '/dormNoticeProtocol',
+                templateUrl: 'templates/admin/dorm/protocolDormPage.html',
+                controller:null
             })
             .state('applyDorm',{
                 url: '/applyDorm',

@@ -471,6 +471,9 @@ angular.module('evaluationApp.adminControllers', [])
                 case "住房津贴":
                     $state.go('housingAllowance');
                     break;
+                case "入住需知":
+                    $state.go('dormNoticeProtocol');
+                    break;                    
                 case "宿舍申请":
                     $state.go('applyDorm');
                     break;
@@ -589,7 +592,7 @@ angular.module('evaluationApp.adminControllers', [])
             }
         };
     })
-    .controller('ApplyDormCtrl', function ($scope, $rootScope, $state, $ionicHistory, 
+    .controller('ApplyDormCtrl', function ($scope, $rootScope, $state, $ionicHistory,$ionicPopup, 
                                             commonServices, CacheFactory, alertService, duplicateSubmitServices) 
     {
         //宿舍申请
@@ -610,6 +613,22 @@ angular.module('evaluationApp.adminControllers', [])
         };
        
         function InitInfo() {
+            $ionicPopup.show({
+                title: '入住需知',
+                cssClass:'my-custom-popup-Alter',
+                templateUrl: 'templates/admin/dorm/protocolDorm.html',
+                scope: $scope,
+                buttons: [
+                    {
+                        text: '<b>确定</b>',
+                        type: 'button-positive',
+                        onTap: function(e) {
+                            return ;
+                        }
+                    }
+                ]
+            });
+
             var grades=[];
             for(var i=0;i<7;i++){
                 grades.push(i+1);
