@@ -612,9 +612,12 @@ angular.module('evaluationApp.adminControllers', [])
             memo: ""
         };
        
+        $scope.protocol = {
+            IsAggree:0
+        };
         function InitInfo() {
             $ionicPopup.show({
-                title: '入住需知',
+                title: '入住宿舍承诺书',
                 cssClass:'my-custom-popup-Alter',
                 templateUrl: 'templates/admin/dorm/protocolDorm.html',
                 scope: $scope,
@@ -623,7 +626,12 @@ angular.module('evaluationApp.adminControllers', [])
                         text: '<b>确定</b>',
                         type: 'button-positive',
                         onTap: function(e) {
-                            return ;
+                            if(!$scope.protocol.IsAggree){
+                                alertService.showLoading("请接受承诺书！");
+                                e.preventDefault();
+                            }else{
+                                return;
+                            }                            
                         }
                     }
                 ]
