@@ -8,7 +8,7 @@
 </style>
 <ion-view view-title="{{Language.GBSHR.LostFound}}" cache-view="false">
   <ion-nav-buttons side="left">
-    <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.home.GBS}}</button>
+    <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
     <button class="button button-clear" ng-click="showPublicDlg()">{{Language.lostFound.public}}</button>
@@ -95,7 +95,7 @@
                     <span class="input-label" style="width:50px;font-size:90%;display:inline-block;">{{Language.common.picture}}</span>
                     <button class="button button-calm button-small" ng-click="SelPic(false);">{{Language.common.selectPhoto}}</button>
                     <button class="button button-calm button-small" ng-click="SelPic(true);">{{Language.common.takePhoto}}</button>
-                    <button class="button button-calm button-small" ng-click="Reset();">{{Language.common.clear}}</button>
+                    <button class="button button-calm button-small" ng-if="imgs.length>0" ng-click="Reset();">{{Language.common.clear}}</button>
                 </p>
                 <p id="images" style="margin-top:10px;white-space:normal;" ng-if="imgs.length>0">
                     <img class='smallPic' src='{{pic}}' ng-repeat='pic in imgs'>

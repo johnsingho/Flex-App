@@ -166,22 +166,28 @@ angular.module('evaluationApp.utilServices', ['ngCordova'])
       }, function (err) {
         var msg = 'Failed: ' + err;
         console.log(msg);
-        alert(msg);        
+        alert(msg);
       });
     };
 
     //选择或拍摄图片
     var selectImage = function (cbImg, bCamera) {
+      if(!navigator.camera){
+        //通常是摄像头模块未安装
+        alert('无法' + (bCamera?'拍摄':'获取') + '照片');
+        return;
+      }
       var srcType = bCamera ? Camera.PictureSourceType.CAMERA : Camera.PictureSourceType.PHOTOLIBRARY;
       var opt = createOptions(srcType);
-      navigator.camera.getPicture(function (f) {
-        //var newHtml = "<img src='"+f+"'>";
-        //$imagesDiv.append(newHtml);
-        cbImg(f);
-      }, function (e) {
-        //select error
-        console.dir(e);
-      }, opt);
+      
+        navigator.camera.getPicture(function (f) {
+          //var newHtml = "<img src='"+f+"'>";
+          //$imagesDiv.append(newHtml);
+          cbImg(f);
+        }, function (e) {
+          //select error
+          console.dir(e);
+        }, opt);
     };
 
     return {

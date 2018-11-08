@@ -53,7 +53,7 @@
                 <span class="input-label" style="width:50px;font-size:90%;display:inline-block;">{{Language.common.picture}}</span>
                 <button class="button button-calm button-small" ng-click="SelPic(false);">{{Language.common.selectPhoto}}</button>
                 <button class="button button-calm button-small" ng-click="SelPic(true);">{{Language.common.takePhoto}}</button>
-                <button class="button button-calm button-small" ng-click="Reset();">{{Language.common.clear}}</button>
+                <button class="button button-calm button-small" ng-if="imgs.length>0" ng-click="Reset();">{{Language.common.clear}}</button>
                 </p>
                 <!-- for test -->
                 <!-- <p id="images" style="margin-top:10px;white-space:normal;" >

@@ -665,7 +665,7 @@ var ZH_US = {
         handbook: "Employee Handbook",
         apply: "Sign Up",
         insurance: "Commercial Insurance",
-        GBS:'GBS HR',
+        GBS:'HR',
         admin:"Admin",
         earthday:"Earth Week",
         dormManage:"Dormitory Management",

@@ -434,8 +434,10 @@ angular.module('evaluationApp.appControllers', [])
                $location.path("researchList");
                 //$state.go("tab.404");
             }
+            else if(action=="失物招领"){
+                $state.go("lostFound.List");
+             }
             else if(action=="我要求助"){
-
                 $state.go("tabAskForHelp.askForHelp");
             }
             else if(action=="shareCar"){
@@ -460,9 +462,6 @@ angular.module('evaluationApp.appControllers', [])
             else if(action=="B11Workshop"){
                 $state.go("b11WorkShopHome");
             }
-
-
-
 
         }
     })

@@ -52,9 +52,6 @@ angular.module('evaluationApp.gbshrControllers', [])
                         alertService.showAlert(ex.message);
                     }
                     break;
-                case "失物招领":
-                    $state.go("lostFound.List");
-                    break;
                 default:break;
             }
         }
@@ -696,7 +693,7 @@ angular.module('evaluationApp.gbshrControllers', [])
           disableAnimate: true,
           disableBack: true
         });
-        $state.go('GBS');
+        $state.go('tab.home');
       };
 
       function IninInfo() {
@@ -983,7 +980,7 @@ angular.module('evaluationApp.gbshrControllers', [])
         };
     })
     .controller('LostFoundMyCtrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicScrollDelegate,
-      $ionicModal, $ionicHistory, commonServices, CacheFactory, alertService, PicServices) 
+      $ionicModal, $ionicHistory, commonServices, CacheFactory, alertService) 
     {
       //失物招领 我的发布
       var baseInfo = commonServices.getBaseParas();
@@ -1000,7 +997,7 @@ angular.module('evaluationApp.gbshrControllers', [])
           disableAnimate: true,
           disableBack: true
         });
-        $state.go('GBS');
+        $state.go('tab.home');
       };
 
       function InitInfo() {

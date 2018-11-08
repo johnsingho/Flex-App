@@ -727,7 +727,7 @@ angular.module('evaluationApp.router', [])
             .state('dormNoticeProtocol',{
                 url: '/dormNoticeProtocol',
                 templateUrl: 'templates/admin/dorm/protocolDormPage.html',
-                controller:null
+                controller:'ProtocolDormPageCtrl'
             })
             .state('applyDorm',{
                 url: '/applyDorm',

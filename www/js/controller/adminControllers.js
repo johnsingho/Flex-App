@@ -7,10 +7,14 @@ angular.module('evaluationApp.adminControllers', [])
         commonServices, CacheFactory, alertService, actionVisitServices, externalLinksService) 
     {
         $scope.canUseAction = function (action) {
-            return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+          return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+        };
+        $scope.checkActionUpdate = function (action) {
+          return actionVisitServices.checkUpdate(action);
         };
 
         $scope.open = function (action) {
+            actionVisitServices.visit(action); //save state
             switch (action) {
                 case "班车信息":
                     $state.go("Carlist");
@@ -463,10 +467,14 @@ angular.module('evaluationApp.adminControllers', [])
     {        
         //宿舍管理
         $scope.canUseAction = function (action) {
-            return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+          return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+        };
+        $scope.checkActionUpdate = function (action) {
+          return actionVisitServices.checkUpdate(action);
         };
 
         $scope.open=function(action){
+            actionVisitServices.visit(action); //save state
             switch (action) {
                 case "住房津贴":
                     $state.go('housingAllowance');
@@ -1213,6 +1221,27 @@ angular.module('evaluationApp.adminControllers', [])
             }
         };
 
+    })
+    .controller('ProtocolDormPageCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup, commonServices) 
+    {
+      //宿舍申请协议
+      var baseInfo = commonServices.getBaseParas();
+
+      function InitInfo() {
+        var url = commonServices.getUrl("DormManageService.ashx", "AddProtocolRead");
+        var paras = {
+          WorkdayNO: baseInfo.WorkdayNO,
+          CName: baseInfo.CName,
+        };
+        commonServices.submit(paras, url).then(function (resp) {
+          if (resp) {
+            if (resp.success) {
+              $scope.ReadCount = resp.obj;
+            }
+          }
+        });
+      }
+      InitInfo();
     })
     .controller('DynpageCtrl', function($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
         commonServices, CacheFactory, alertService, duplicateSubmitServices)
