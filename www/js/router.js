@@ -718,77 +718,77 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/admin/dormManage-list.html',
                 controller: 'DormManageCtrl'
             })
-            /*sub of dormManage*/
-            .state('housingAllowance',{
-                url: '/housingAllowance',
-                templateUrl: 'templates/admin/dorm/housingAllowance.html',
-                controller: 'HousingAllowanceCtrl'
-            })            
-            .state('dormNoticeProtocol',{
-                url: '/dormNoticeProtocol',
-                templateUrl: 'templates/admin/dorm/protocolDormPage.html',
-                controller:'ProtocolDormPageCtrl'
-            })
-            .state('applyDorm',{
-                url: '/applyDorm',
-                templateUrl: 'templates/admin/dorm/applyDorm.html',
-                controller: 'ApplyDormCtrl'
-            })
-            .state('chargingDefine',{
-                url: '/chargingDefine',
-                templateUrl: 'templates/admin/dorm/chargingDefine.html',
-                controller: 'ChargingDefineCtrl'
-            })
-            .state('dormMap', {
-                url: '/dormMap',
-                templateUrl: 'templates/admin/dorm/dormMap.html',
-                controller: 'DormMapCtrl'
-            })
-            .state('dormNotice', {
-                url: '/dormNotice',
-                templateUrl: 'templates/admin/dorm/dormNotice-list.html',
-                controller: 'DormNoticeCtrl'
-            })
-            .state('dormNoticeDetail', {
-                url: '/dormNoticeDetail',
-                templateUrl: 'templates/admin/dorm/dormNotice-detail.html',
-                controller: 'DormNoticeDetailCtrl'
-            })
-            .state('repairDorm', {
-                url: '/repairDorm',
-                templateUrl: 'templates/admin/dorm/repairDorm.html',
-                controller: 'RepairDormCtrl'
-            })
-            .state('reissueKey', {
-                url: '/reissueKey',
-                templateUrl: 'templates/admin/dorm/reissueKey.html',
-                controller: 'ReissueKeyCtrl'
-            })
-            .state('freeDormWifi', {
-                url: '/freeDormWifi',
-                templateUrl: 'templates/admin/dorm/freeDormWifi.html',
-                controller: 'FreeDormWifiCtrl'
-            })
-            .state('freeDormWifi_ios', {
-                url: '/freeDormWifi_ios',
-                templateUrl: 'templates/admin/dorm/freeDormWifi_ios.html',
-                controller: null
-            })
-            .state('freeDormWifi_android', {
-                url: '/freeDormWifi_android',
-                templateUrl: 'templates/admin/dorm/freeDormWifi_android.html',
-                controller: null
-            })
-            .state('dormAskAndAns', {
-                url: '/dormAskAndAns',
-                templateUrl: 'templates/admin/dorm/dormAskAndAns.html',
-                controller: 'DormAskAndAnsCtrl'
-            })
-            .state('dormSuggest', {
-                url: '/dormSuggest',
-                templateUrl: 'templates/admin/dorm/dormSuggest.html',
-                controller: 'DormSuggestCtrl'
-            })
+                /*sub of dormManage*/
+                .state('housingAllowance',{
+                    url: '/housingAllowance',
+                    templateUrl: 'templates/admin/dorm/housingAllowance.html',
+                    controller: 'HousingAllowanceCtrl'
+                })            
+                .state('dormNoticeProtocol',{
+                    url: '/dormNoticeProtocol',
+                    templateUrl: 'templates/admin/dorm/protocolDormPage.html',
+                    controller:'ProtocolDormPageCtrl'
+                })
+                .state('applyDorm',{
+                    url: '/applyDorm',
+                    templateUrl: 'templates/admin/dorm/applyDorm.html',
+                    controller: 'ApplyDormCtrl'
+                })
+                .state('chargingDefine',{
+                    url: '/chargingDefine',
+                    templateUrl: 'templates/admin/dorm/chargingDefine.html',
+                    controller: 'ChargingDefineCtrl'
+                })
+                .state('dormMap', {
+                    url: '/dormMap',
+                    templateUrl: 'templates/admin/dorm/dormMap.html',
+                    controller: 'DormMapCtrl'
+                })
+                .state('dormNotice', {
+                    url: '/dormNotice',
+                    templateUrl: 'templates/admin/dorm/dormNotice-list.html',
+                    controller: 'DormNoticeCtrl'
+                })
+                .state('dormNoticeDetail', {
+                    url: '/dormNoticeDetail',
+                    templateUrl: 'templates/admin/dorm/dormNotice-detail.html',
+                    controller: 'DormNoticeDetailCtrl'
+                })
+                .state('repairDorm', {
+                    url: '/repairDorm',
+                    templateUrl: 'templates/admin/dorm/repairDorm.html',
+                    controller: 'RepairDormCtrl'
+                })
+                .state('reissueKey', {
+                    url: '/reissueKey',
+                    templateUrl: 'templates/admin/dorm/reissueKey.html',
+                    controller: 'ReissueKeyCtrl'
+                })
+                .state('freeDormWifi', {
+                    url: '/freeDormWifi',
+                    templateUrl: 'templates/admin/dorm/freeDormWifi.html',
+                    controller: 'FreeDormWifiCtrl'
+                })
+                .state('freeDormWifi_ios', {
+                    url: '/freeDormWifi_ios',
+                    templateUrl: 'templates/admin/dorm/freeDormWifi_ios.html',
+                    controller: null
+                })
+                .state('freeDormWifi_android', {
+                    url: '/freeDormWifi_android',
+                    templateUrl: 'templates/admin/dorm/freeDormWifi_android.html',
+                    controller: null
+                })
+                .state('dormAskAndAns', {
+                    url: '/dormAskAndAns',
+                    templateUrl: 'templates/admin/dorm/dormAskAndAns.html',
+                    controller: 'DormAskAndAnsCtrl'
+                })
+                .state('dormSuggest', {
+                    url: '/dormSuggest',
+                    templateUrl: 'templates/admin/dorm/dormSuggest.html',
+                    controller: 'DormSuggestCtrl'
+                })
             /*sub of GBSHR*/
             .state('generalNotice', {
                 url: '/generalNotice',
@@ -1016,7 +1016,12 @@ angular.module('evaluationApp.router', [])
                     templateUrl: 'templates/mechCharity/mech-researchDetail.html',
                     controller: 'MechCharityResearchDetailCtrl'
                 })
-                
+        .state('canteenImg', {
+            url: '/canteenImg',
+            templateUrl: 'templates/admin/canteen-list.html',
+            controller: 'CanteenImgCtrl'
+        })                
+                                
         
         $urlRouterProvider.otherwise('signin');
 

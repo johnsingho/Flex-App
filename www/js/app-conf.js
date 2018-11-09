@@ -501,7 +501,8 @@ var ZH_CN = {
         promptCancel:"取消",
         promptReportLost:"确定要挂失你的IC卡？",
         lastRequest:"最近一次申请",
-        submitSucc:'您的挂失申请已提交，正在等待一卡通后台处理，谢谢！'
+        submitSucc:'您的挂失申请已提交，正在等待一卡通后台处理，谢谢！',
+        canteenMenu:'餐厅菜单',
     },
     dormManage:{
         housingAllowance:"住房津贴",
@@ -932,7 +933,8 @@ var ZH_US = {
         promptCancel:"Cancel",
         promptReportLost:"Are you sure to report you IC card lost?",
         lastRequest:"Last Request",
-        submitSucc:'Your report loss was commited, thank you!'
+        submitSucc:'Your report loss was commited, thank you!',
+        canteenMenu:'Cafeteria Menu',
     },
     dormManage:{
         housingAllowance:"Housing Allowance",
@@ -1017,7 +1019,7 @@ var ZH_US = {
     },
     lostFound:{
         tabMy:"My public",
-        public:"public",
+        public:"publish",
         lost:"Lost something",
         found:"Found",
         msgPublicSuccess:"Public ok!",

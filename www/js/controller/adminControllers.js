@@ -31,6 +31,9 @@ angular.module('evaluationApp.adminControllers', [])
                 case "dormManage":
                     $state.go('dormManage');
                     break;
+                case "餐厅菜单":
+                    $state.go('canteenImg');
+                    break;                    
                 default: break;
             }
         }
@@ -1269,5 +1272,27 @@ angular.module('evaluationApp.adminControllers', [])
         }
         InitInfo();
     })
-    
+    .controller('CanteenImgCtrl', function($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+        commonServices, CacheFactory, alertService, externalLinksService)
+    {
+        //餐厅菜单
+        $scope.openGeneralNotice = function(isUrlHtml, id, html){
+            if(isUrlHtml){
+                //打开外链
+                try {
+                    externalLinksService.openUr(html);
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+            }else{
+                CacheFactory.remove('gnID');
+                CacheFactory.save('gnID', id);
+                $state.go("generalNoticeDetail");
+            }
+        };
+        
+    })
+
+///////////////////////////////////////////////////////    
 ;
