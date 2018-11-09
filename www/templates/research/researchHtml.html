@@ -1,65 +1,71 @@
-<ion-view view-title="{{Language.survey.title}}"  cache-view="false" >
-    <!--<ion-nav-buttons side="left">-->
-        <!--<button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">返回</button>-->
-    <!--</ion-nav-buttons>-->
- <ion-content  scroll="true"  lazy-scroll >
+<ion-view view-title="{{Language.survey.title}}" cache-view="false">
+  <!--<ion-nav-buttons side="left">-->
+  <!--<button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">返回</button>-->
+  <!--</ion-nav-buttons>-->
+  <ion-content scroll="true" lazy-scroll>
 
     <!--<div style="text-align: center;font-size: 20px">{{ResearchName}}</div>-->
 
-     <div id="html"></div>
+    <div id="html"></div>
 
-     <div  ng-repeat="detail in researchDetailList" >
-         <fieldset>
-             <h4 style="color: royalblue">{{detail.sort}}.{{detail.Content}}</h4>
-             <div ng-repeat="checkItem in detail.listItem">
-                 <div ng-if="checkItem.Type!='Comments'">
-                     <h4><label><input id="{{detail.sort}}{{checkItem.SelItem}}"  type="radio"  name="{{detail.sort}}" value="{{checkItem.SelItem}}^{{checkItem.Items}}^{{checkItem.ItemScore}}" /> {{checkItem.Items}}</label></h4>
-                     <div ng-if="checkItem.Type=='text'">
-                         <!--<h4 ><label>{{checkItem.Items}}</label></h4>-->
-                         <label class="item item-input" >
-                             <textarea rows="2" name="{{detail.sort}}" style="font-size:80%" placeholder=""  ng-model="detail.OtherText"></textarea>
-                         </label>
-                     </div>
+    <div ng-repeat="detail in researchDetailList">
+      <fieldset>
+        <h4 style="color: royalblue">{{detail.sort}}.{{detail.Content}}</h4>
+        <div ng-repeat="checkItem in detail.listItem">
 
-                 </div>
+          <div ng-if="checkItem.Type=='radio'">
+            <h4><label><input id="{{detail.sort}}{{checkItem.SelItem}}" type="radio" name="{{detail.sort}}" value="{{checkItem.SelItem}}^{{checkItem.Items}}^{{checkItem.ItemScore}}" />
+                {{checkItem.Items}}</label>
+            </h4>
+            <div ng-if="checkItem.Type=='text'">
+              <!--<h4 ><label>{{checkItem.Items}}</label></h4>-->
+              <label class="item item-input">
+                <textarea rows="2" name="{{detail.sort}}" style="font-size:80%" placeholder="" ng-model="detail.OtherText"></textarea>
+              </label>
+            </div>
+          </div>
 
-                 <div ng-if="checkItem.Type=='Comments'">
-                     <h4 ><label>{{checkItem.Items}}</label></h4>
-                     <label class="item item-input" >
-                        <div ng-if="checkItem.Items==''">
-                            <input type="text" name="{{detail.sort}}" style="font-size:80%;width: 350px"  ng-model="detail.Comments"/>
-                       </div>
-                         <div ng-if="checkItem.Items!=''">
-                             <textarea rows="2" name="{{detail.sort}}" style="width: 350px"  placeholder=""  ng-model="detail.Comments"></textarea>
-                         </div>
-                     </label>
-                 </div>
+          <div ng-if="checkItem.Type=='Comments'">
+            <h4><label>{{checkItem.Items}}</label></h4>
+            <label class="item item-input">
+              <div ng-if="checkItem.Items==''">
+                <span>checkItem.Items==''</span>
+                <input type="text" name="{{detail.sort}}" style="font-size:80%;width: 350px" ng-model="detail.Comments" />
+              </div>
+              <div ng-if="checkItem.Items!=''">
+                <textarea rows="3" name="{{detail.sort}}" style="width: 350px" placeholder="请输入" ng-model="detail.Comments"></textarea>
+              </div>
+            </label>
+          </div>
 
-             </div>
-         </fieldset>
-      </div>
+          <!-- 输入文本 -->
+          <div ng-if="checkItem.Type=='InputText'">
+            <h4><label>{{checkItem.Items}}</label></h4>
+            <textarea rows="3" name="{{detail.sort}}" style="width: 350px" placeholder="请输入" ng-model="detail.Comments"></textarea>
+          </div>
+        </div>
+      </fieldset>
+    </div>
 
-     <!--<div class="list card">-->
-         <!--<ion-list>-->
-             <!--<ion-item ng-repeat="detail in researchDetailList"  >-->
-                 <!--<div class="item">-->
-                     <!--<h2>{{detail.sort}}.{{detail.Content}}</h2>-->
-                 <!--</div>-->
-                <!--<fieldset>-->
-                 <!--<div class="item item-body">-->
+    <!--<div class="list card">-->
+    <!--<ion-list>-->
+    <!--<ion-item ng-repeat="detail in researchDetailList"  >-->
+    <!--<div class="item">-->
+    <!--<h2>{{detail.sort}}.{{detail.Content}}</h2>-->
+    <!--</div>-->
+    <!--<fieldset>-->
+    <!--<div class="item item-body">-->
 
-                     <!--<div ng-repeat="checkItem in detail.listItem">-->
-                          <!--<h4><input   type="radio"  name="{{detail.Content}}" value="{{checkItem.SelItem}} {{checkItem.Items}}" /> {{checkItem.Items}}</h4>-->
-                     <!--</div>-->
-                 <!--</div>-->
-                <!--</fieldset>-->
-             <!--</ion-item>-->
-         <!--</ion-list>-->
-     <!--</div>-->
-     <br>
-     <div style="text-align: center"><button ng-if="isActivate==1" class="button  button-positive" ng-click="Submit()">{{Language.menu.submit}}</button></div>
+    <!--<div ng-repeat="checkItem in detail.listItem">-->
+    <!--<h4><input   type="radio"  name="{{detail.Content}}" value="{{checkItem.SelItem}} {{checkItem.Items}}" /> {{checkItem.Items}}</h4>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</fieldset>-->
+    <!--</ion-item>-->
+    <!--</ion-list>-->
+    <!--</div>-->
+    <br>
+    <div style="text-align: center"><button ng-if="isActivate==1" class="button  button-positive" ng-click="Submit()">{{Language.menu.submit}}</button></div>
 
-
-
-    </ion-content>
+  </ion-content>
 </ion-view>

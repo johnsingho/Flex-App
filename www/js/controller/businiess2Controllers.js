@@ -114,14 +114,9 @@ angular.module('evaluationApp.businiess2Controllers', [])
         });
         url=commonServices.getUrl("ResearchService.ashx","GetsResearchDetails");
         commonServices.getDataList(params,url).then(function(data){
-
             if(data=="Token is TimeOut"){
                 alertService.showAlert("登录失效，请重新登录");
                 $state.transitionTo('signin');
-            }
-            if(data=="抱歉！本次调查的对象是2018-6-14前入职的住宿员工，谢谢你的关注！"){
-                alertService.showAlert("抱歉！本次调查的对象是2018-6-14前入职的住宿员工，谢谢你的关注！");
-                return;
             }
             $scope.researchDetailList=data;
 
@@ -158,31 +153,42 @@ angular.module('evaluationApp.businiess2Controllers', [])
                             return;
                         }
                     }
-                    $scope.SubmitList.push({ResearchID:researchID,ResearchDetailsID:$scope.researchDetailList[i].DetailsID,SelItem:selVaule,Comments:$scope.researchDetailList[i].Comments});
-                }
+                    $scope.SubmitList.push({
+                      ResearchID: researchID,
+                      ResearchDetailsID: $scope.researchDetailList[i].DetailsID,
+                      SelItem: selVaule,
+                      Comments: $scope.researchDetailList[i].Comments
+                    });
+                    }
                 else
                 {
-                    if( $scope.researchDetailList[i].listItem.length==1&&$scope.researchDetailList[i].listItem[0].Type=='Comments'){
+                    if( $scope.researchDetailList[i].listItem.length==1
+                        &&$scope.researchDetailList[i].listItem[0].Type=='Comments')
+                    {
                         var Comments= $("input[name='"+rname+"'"+"]").val();
-                        $scope.SubmitList.push({ResearchID:researchID,ResearchDetailsID:$scope.researchDetailList[i].DetailsID,Comments:Comments});
+                        $scope.SubmitList.push({
+                          ResearchID: researchID,
+                          ResearchDetailsID: $scope.researchDetailList[i].DetailsID,
+                          Comments: Comments
+                        });
                     }
-
+                    else if($scope.researchDetailList[i].listItem[0].Type=='InputText'){
+                        var inputText= $.trim($scope.researchDetailList[i].Comments);
+                        if( !isEmptyString(inputText)){
+                            $scope.SubmitList.push({
+                                ResearchID: researchID,
+                                ResearchDetailsID: $scope.researchDetailList[i].DetailsID,
+                                Comments: inputText
+                              });
+                        }
+                    }
                 }
-
             }
 
-
-
-
             if($scope.SubmitList.length!=$scope.researchDetailList.length){
-//                alertService.showLoading("还有未选择的项目，请选择完成后再提交");
                  alertService.showAlert("还有未选择的项目，请选择完成后再提交");
                 $scope.isSumbiting=false;
             }
-//            else if($scope.sumScore!=100){
-//                alertService.showAlert("答案还没有全对哦！再想想...");
-//                $scope.isSumbiting=false;
-//            }
             else{
                 $scope.SubmitList=angular.toJson($scope.SubmitList);
                 params.SubmitResult=$scope.SubmitList;
@@ -210,10 +216,6 @@ angular.module('evaluationApp.businiess2Controllers', [])
                             $ionicHistory.goBack();
                             $rootScope.updateSlideBox();
                         }
-//                        alertService.showAlert('问卷调查提交成功，谢谢你的参与');
-//
-//                        $ionicHistory.goBack();
-//                        $rootScope.updateSlideBox();
                     }
                     else{
                         $scope.isSumbiting=false;
