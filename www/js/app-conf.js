@@ -480,7 +480,7 @@ var ZH_CN = {
         DateEnd:"结束日期"
     },
     activityGood:{
-        title:"PCBA-B11第二届球类竞技赛冠军队有奖竞猜",
+        title:"南厂餐厅一楼档口风味满意度调查",
         name:"姓名",
         employee_ID:"工号",
         department:"部门",
@@ -1044,7 +1044,7 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2018-10-17",
+    LAST_PUBLISH_DATE: "2018-11-12",
     //keys
     KEY_ACT_GOOD_ID: "KEY_ActivityGood",
     KEY_ACT_GOOD_ITEMID: "KEY_ActivityGood_ITEMID",

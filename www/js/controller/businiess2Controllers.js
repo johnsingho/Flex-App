@@ -11,6 +11,13 @@ angular.module('evaluationApp.businiess2Controllers', [])
             return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
         };
 
+        $scope.isSouthCamp = isSouthCamp($scope.accessEmployee.Organization); 
+        $scope.openActivityGood = function(actID){
+            CacheFactory.remove(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID);
+            CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID, actID);
+            $state.go('activityGood');
+        };
+
         function InitInfo(){
             var url=commonServices.getUrl("ResearchService.ashx","GetResearchList");
             //获取一般活动列表，GeneralNotice列表

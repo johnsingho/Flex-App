@@ -1,62 +1,94 @@
 <!--活动点赞 2018-05-23-->
 <style>
-.headpic{
-    margin-left:auto; 
-    margin-right:auto; 
-    max-width:96%;
-}
+  .headpic {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 96%;
+  }
 </style>
 <ion-view view-title="{{Language.activityGood.title}}" cache-view="true">
-    <ion-content style="background-color:lavender">
-        <!-- 标题图，有的话 -->
-        <ion-slide-box does-continue="true" auto-play="false"  show-pager="false" ng-if="titleImgUrl">
-            <img  ng-src="{{titleImgUrl}}" >
-        </ion-slide-box>
-        <!-- 标题描述，有的话 -->
-        <div class="divOff lightRedBack" ng-if="actDesc">
-            <div class="divOff" style="font-size:14px;" ng-bind-html="actDesc">                
+  <ion-content style="background-color:lavender">
+    <!-- 标题图，有的话 -->
+    <ion-slide-box does-continue="true" auto-play="false" show-pager="false" ng-if="titleImgUrl">
+      <img ng-src="{{titleImgUrl}}">
+    </ion-slide-box>
+    <!-- 标题描述，有的话 -->
+    <div class="divOff lightRedBack" ng-if="actDesc">
+      <div class="divOff" style="font-size:14px;" ng-bind-html="actDesc">
+      </div>
+    </div>
+
+    <div class="list card">
+      <ion-list>
+        <ion-item ng-repeat="act in Activities">
+          <div class="item item-avatar">
+            <!-- <img ng-src="{{activityGoodIcon}}"> -->
+            <h3>{{act.Name}}</h3>
+            <!-- <h3>{{act.Designer}}</h3> -->
+            <!-- <h3>{{Language.activityGood.employee_ID}}：{{act.Designer}}</h3> -->
+            <!-- <h3 ng-if="act.BU">{{Language.activityGood.department}}：{{act.BU}}</h3> -->
+          </div>
+
+          <div class="item item-body">
+            <!-- <img class="headpic" ng-src="{{act.ImgPath}}"> -->
+            <ul class="lightgallery">
+              <li data-src="{{act.ImgPath}}">
+                <a href="#">
+                  <img class="full-image" src="{{act.ImgPath}}" />
+                </a>
+              </li>
+            </ul>
+
+            <div ng-if="act.Describe" style="margin-top:10px;">
+              <!-- <p class="text-left small">{{Language.activityGood.desc}}：</p> -->
+              <!-- <p ng-bind-html="act.Describe"></p> -->
+              <div compile="act.Describe"></div>
             </div>
-        </div>
-        
-        <div class="list card">
-            <ion-list>
-                <ion-item ng-repeat="act in Activities"  >
-                    <div class="item item-avatar">
-                        <img ng-src="{{activityGoodIcon}}">
-                        <h3>{{act.Name}}</h3>
-                        <h3>{{act.Designer}}</h3>
-                        <!-- <h3>{{Language.activityGood.employee_ID}}：{{act.Designer}}</h3> -->
-                        <h3 ng-if="act.BU">{{Language.activityGood.department}}：{{act.BU}}</h3>
-                    </div>
+            <p ng-if="act.Like>0">
+              <a href="#" class="subdued">{{act.Like}} 票</a>
+            </p>
+          </div>
 
-                    <div class="item item-body">
-                        <img class="headpic" ng-src="{{act.ImgPath}}">
-                        <!-- <ul class="lightgallery">
-                        <li data-src="{{act.ImgPath}}">
-                            <a href="#">
-                            <img class="full-image" src="{{act.ImgPath}}" />
-                            </a>
-                        </li>
-                        </ul> -->
-
-                        <div ng-if="act.Describe">
-                            <p class="text-left small">{{Language.activityGood.desc}}：</p>
-                            <p ng-bind-html="act.Describe">
-                            </p>
-                        </div>
-                        <p ng-if="act.Like>0">
-                            <a href="#" class="subdued">{{act.Like}} 支持</a>
-                        </p>
-                    </div>
-
-                    <div class="item tabs tabs-secondary tabs-icon-right">
-                        <a class="tab-item" ng-click="like(act)">
+          <div class="item tabs tabs-secondary tabs-icon-right">
+            <!-- <a class="tab-item" ng-click="like(act)">
                             <i class="icon ion-thumbsup"></i>
                             为他们加油
-                        </a>
-                    </div>
-                </ion-item>
-            </ion-list>
-        </div>
-    </ion-content>
+            </a> -->
+            <div style="margin:auto;margin-top: 10px;">
+              <button class="button button-balanced button-small" style="text-align:center" ng-click="like(act)">
+                <i class="icon ion-thumbsup"></i>
+                投一票
+              </button>
+            </div>
+          </div>
+        </ion-item>
+        <ion-item ng-if="IsSuggest">
+            <!-- 2018-11-12特殊处理，这里允许输入建议 -->
+            <div>
+                <h4>
+                  <label>其它建议(比如)：</label>
+                </h4>
+                <div class="divOff" style="font-size:14px;">
+                <ul>
+                    <li>沙县小吃</li>
+                    <li>兰州拉面</li>
+                    <li>杭州小笼包</li>
+                    <li>重庆小面</li>
+                    <li>重庆小面</li>
+                    <li>常德米粉</li>
+                    <li>等等</li>
+                </ul>
+                </div>
+                <div style="font-size:14px;color:deeppink;margin-top:10px;">{{checkItem.ItemText}}</div>
+                <textarea rows="4" style="width:98%;border-style:dashed; border-width:1px; border-color:pink"
+                    ng-model="model.suggestion"></textarea>
+              </div>          
+              <div style="text-align:center;margin:10px;">
+                <button class="button button-positive" ng-disabled="!model.suggestion||!model.suggestion.length" 
+                    ng-click="submitSuggest()">{{Language.menu.submit}}</button>
+              </div>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
 </ion-view>

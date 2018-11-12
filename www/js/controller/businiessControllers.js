@@ -1064,15 +1064,20 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         $scope.outDateActivities=[];
         actionVisitServices.getOutDateActivity($scope);        
     })
-    .controller('ActivityGoodCtrl',function($scope,CacheFactory,alertService,commonServices) 
+    .controller('ActivityGoodCtrl',function($scope,$ionicHistory,CacheFactory,alertService,commonServices,UrlServices) 
     {
-        //2018-09-22 活动点赞        
+        //2018-11-12 活动点赞        
         var baseInfo = commonServices.getBaseParas();
-        var actID = CacheFactory.get(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID);
+        var actID = Number.parseInt(CacheFactory.get(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID));
+        if(actID > 9000){
+            $scope.IsSuggest = true; //2018-11-12 特殊处理，是否录入建议
+            actID -= 9000;
+        }
+
         function InitInfo() {
             $scope.titleImgUrl=null;//'img/other/shufaTitle.jpg';
             $scope.activityGoodIcon="img/user.jpg";
-            $scope.actDesc = '此活动竞猜仅限于PCBA-B11员工，前60名猜对的用户有奖，将于10月29日公布';
+            $scope.actDesc = '欢迎参与“南厂餐厅一楼风味档口喜欢度调查问卷”，每个人最多可投三票。';
             var url = commonServices.getUrl("EvaluationAppService.ashx", "getActivityGoods");
             var paras = {
                 Token: baseInfo.Token,
@@ -1084,13 +1089,13 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 $scope.Activities=resp.list;
                 var arr = JSON.parse(resp.data);
                 CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ID, arr);
-                //setTimeout(InitPhotoScale, 1500); //图片缩放
+                setTimeout(InitPhotoScale, 1500); //图片缩放
               }
             });
         }
         InitInfo();
 
-        var MAX_CLICK = 1; //一个人的最多点赞个数
+        var MAX_CLICK = 3; //一个人的最多点赞个数
         var TActivityGoodEntry = function(itemID, WorkDayNo){
             var self=this;
             self.RefActivityGoodID=0;
@@ -1105,7 +1110,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             var nClick = likeInfo.length;
             if(nClick >= MAX_CLICK){
                 //alertService.showAlert("最多只能点赞"+MAX_CLICK+"个");
-                alertService.showAlert("最多只能支持"+MAX_CLICK+"队");
+                alertService.showAlert("最多只能投"+MAX_CLICK+"票");
                 return;
             }
             var hasClicked=false;
@@ -1115,7 +1120,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                     && entry.WorkdayNo==$scope.accessEmployee.WorkdayNO
                    ){
                     //alertService.showAlert("你已经点过赞了");
-                    alertService.showAlert("感谢您的支持");
+                    alertService.showAlert("你已经投过票了");
                     hasClicked=true;
                     break;
                 }
@@ -1126,7 +1131,6 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                     Token: baseInfo.Token,
                     WorkdayNO: baseInfo.WorkdayNO,
                     CName: baseInfo.CName,
-                    Token:baseInfo.Token,
                     ItemID:item.ID
                 };
           
@@ -1136,10 +1140,38 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                         likeInfo.push(new TActivityGoodEntry(item.ID, $scope.accessEmployee.WorkdayNO));
                         CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ID, likeInfo);
                         //刷新
-                        InitInfo();
+                        InitInfo();                        
                     }
                 });
             }
+        };
+
+        $scope.model={
+            suggestion:""
+        };
+        $scope.submitSuggest = function(){
+            var sugg = $.trim($scope.model.suggestion);
+            if(isEmptyString(sugg)){
+                return;
+            }
+            var url = commonServices.getUrl("EvaluationAppService.ashx", "submitActivityGoodSuggest");
+            var paras={
+                Token: baseInfo.Token,
+                ActID: actID,
+                WorkdayNO: baseInfo.WorkdayNO,
+                CName: baseInfo.CName,
+                Suggest: sugg
+            };
+      
+            commonServices.submit(paras, url).then(function (resp) {
+                if(resp.success){
+                    alertService.showAlert("感谢您的建议");
+                }
+                $ionicHistory.goBack();
+            });
+        };
+        $scope.openGeneralNotice = function(isUrlHtml, id, html) {
+            UrlServices.openGeneralNotice(isUrlHtml,id,html);
         };
     })
     .controller('ActivityEHSCtrl',function($scope,$rootScope,$ionicPopup,
