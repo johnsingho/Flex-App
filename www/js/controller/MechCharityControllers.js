@@ -228,7 +228,10 @@ angular.module('evaluationApp.mechCharityControllers', [])
       var paras = {
         WorkdayNo: baseInfo.WorkdayNO
       };
+
+      alertService.showOperating('Loading...');
       commonServices.submit(paras, url).then(function (resp) {
+        alertService.hideOperating();
         if (resp) {
           if (resp.success) {
             $scope.items = resp.list;
@@ -237,6 +240,9 @@ angular.module('evaluationApp.mechCharityControllers', [])
           var msg = $rootScope.Language.common.CommunicationErr;
           alertService.showAlert(msg);
         }
+      },
+      function(err){
+        alertService.hideOperating();
       });
     }
     InitInfo();
