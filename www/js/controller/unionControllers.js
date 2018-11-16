@@ -4,12 +4,17 @@
  */
 angular.module('evaluationApp.unionControllers', [])
   .controller('UnionCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-    commonServices, CacheFactory, alertService, actionVisitServices) {
+    commonServices, CacheFactory, alertService, actionVisitServices) 
+  {
     $scope.canUseAction = function (action) {
       return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
     };
+    $scope.checkActionUpdate = function (action) {
+      return actionVisitServices.checkUpdate(action);
+    };
 
     $scope.open = function (action) {
+      actionVisitServices.visit(action); //save state
       switch (action) {
         case "员工沟通":
           $state.go("union_commu");
@@ -613,7 +618,8 @@ angular.module('evaluationApp.unionControllers', [])
     ];
   })
   .controller('UnionActivityCtrl', function ($scope, $rootScope, $ionicPopup,
-    $state, $ionicHistory, commonServices, CacheFactory, alertService, UrlServices) {
+    $state, $ionicHistory, commonServices, CacheFactory, alertService, UrlServices) 
+  {
     //工会活动及报名
     var baseInfo = commonServices.getBaseParas();
 
@@ -622,7 +628,9 @@ angular.module('evaluationApp.unionControllers', [])
       var paras = {
         WorkdayNo: baseInfo.WorkdayNO
       };
+      alertService.showOperating('Loading...');
       commonServices.submit(paras, url).then(function (resp) {
+        alertService.hideOperating();
         if (resp) {
           if (resp.success) {
             $scope.items = resp.list;
@@ -631,6 +639,9 @@ angular.module('evaluationApp.unionControllers', [])
           var msg = $rootScope.Language.common.CommunicationErr;
           alertService.showAlert(msg);
         }
+      },
+      function(err){
+        alertService.hideOperating();
       });
     }
     InitInfo();
@@ -691,7 +702,8 @@ angular.module('evaluationApp.unionControllers', [])
 
   })
   .controller('UnionWonderfulmomentCtrl', function ($scope, $rootScope, $ionicPopup,
-    $state, $ionicHistory, commonServices, CacheFactory, alertService, UrlServices) {
+    $state, $ionicHistory, commonServices, CacheFactory, alertService, UrlServices) 
+  {
     //精彩瞬间
     var baseInfo = commonServices.getBaseParas();
 
@@ -700,7 +712,9 @@ angular.module('evaluationApp.unionControllers', [])
       var paras = {
         WorkdayNo: baseInfo.WorkdayNO
       };
+      alertService.showOperating('Loading...');
       commonServices.submit(paras, url).then(function (resp) {
+        alertService.hideOperating();
         if (resp) {
           if (resp.success) {
             $scope.items = resp.list;
@@ -709,6 +723,9 @@ angular.module('evaluationApp.unionControllers', [])
           var msg = $rootScope.Language.common.CommunicationErr;
           alertService.showAlert(msg);
         }
+      },
+      function(err){
+        alertService.hideOperating();
       });
     }
     InitInfo();
@@ -821,7 +838,8 @@ angular.module('evaluationApp.unionControllers', [])
     };
   })
   .controller('UnionSuggestMyCtrl', function ($scope, $rootScope, $ionicPopup,
-    $state, $ionicHistory, commonServices, alertService, duplicateSubmitServices) {
+    $state, $ionicHistory, commonServices, alertService, duplicateSubmitServices) 
+  {
     //我的留言
     var baseInfo = commonServices.getBaseParas();
     $scope.hisSuggest = [];

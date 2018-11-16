@@ -30,7 +30,10 @@
     <div class="row" style="height:110px;text-align: center">
       <div class="col col-25 positive-bg light" style="Margin:1px;" ng-click="open('精彩瞬间');">
         <i style="font-size:50px;" class="ion-images"></i>
-        <div>{{Language.union.wonderfulMoment}}</div>
+        <div>
+          {{Language.union.wonderfulMoment}}
+          <span style="font-size:10px" class="badge badge-assertive" ng-if="checkActionUpdate('精彩瞬间')">New</span>
+        </div>
       </div>
     </div>
 
