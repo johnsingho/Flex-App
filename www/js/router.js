@@ -687,11 +687,26 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/earthWeek/notice-list.html',
                 controller: 'EarthdayNoticeListCtrl'
             })
-            .state('cserDate', {
-                url: '/cserDate',
-                templateUrl: 'templates/cser/cser-Date.html',
-                controller: 'CserDateCtrl'
+            .state('cser', {
+                url: '/cser',
+                templateUrl: 'templates/cser/cser-list.html',
+                controller: 'CSERCtrl'
             })
+                .state('cserDate', {
+                    url: '/cserDate',
+                    templateUrl: 'templates/cser/cser-Date.html',
+                    controller: 'CserDateCtrl'
+                })
+                .state('cser_kidsCaring', {
+                    url: '/cser_kidsCaring',
+                    templateUrl: 'templates/cser/cser-kidsCaring.html',
+                    controller: 'CSERKidsCaringCtrl'
+                })
+                .state('cser_sumwinCamp', {
+                    url: '/cser_sumwinCamp',
+                    templateUrl: 'templates/cser/cser-sumwinCamp.html',
+                    controller: 'CSERSumwinCampCtrl'
+                })
             .state('activityEHS',{
                 url: '/activityEHS',
                 templateUrl: 'templates/ehs/activityEHS.html',

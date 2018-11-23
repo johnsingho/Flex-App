@@ -238,6 +238,7 @@ var ZH_CN = {
         dormManage:"宿舍管理",
         union:"工会之窗",
         mechCharity:"MECH基金会",
+        CSER:"CSER企业社会环境责任",
     },
     myFlex:{
         employee_ID: "工号",
@@ -475,9 +476,12 @@ var ZH_CN = {
         ExplainTxt:"适用于已实名制的用户更换手机号码"
     },
     CSER:{
-        title:"CSER日历",
-        title2:"可点击相关主题进行报名",
-        DateEnd:"结束日期"
+        cserDate:"CSER日历",
+        cserDatePrompt:"可点击相关主题进行报名",
+        DateEnd:"结束日期",
+        calender:"CSER日历",
+        kidsCaring:"托管",
+        sumwinCamp:"夏令营/冬令营",
     },
     activityGood:{
         title:"南厂餐厅一楼档口风味满意度调查",
@@ -672,6 +676,7 @@ var ZH_US = {
         dormManage:"Dormitory Management",
         union:"Flex Union",
         mechCharity:"MECH Charity",
+        CSER:"CSER",
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -907,10 +912,13 @@ var ZH_US = {
         ExplainTxt:"For confirmed users who changed the mobile number"
     },
     CSER:{
-        title:"CSER Calendar",
-        title2:"You can click on related topics to sign up",
-        DateEnd:"End date"
-    },
+        cserDate:"CSER Calendar",
+        cserDatePrompt:"You can click on related topics to sign up",
+        DateEnd:"End date",
+        calender:"CSER Calendar",
+        kidsCaring:"Kids Caring",
+        sumwinCamp:"Summer/Winner Camp",
+    },    
     activityGood:{
         title:"PCBA-B11第二届球类竞技赛冠军队有奖竞猜",
         name: "Name",

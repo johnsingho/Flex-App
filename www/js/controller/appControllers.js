@@ -284,8 +284,8 @@ angular.module('evaluationApp.appControllers', [])
                 case "报名":
                     $state.go("apply");
                     break;
-                case "CSERCal":
-                    $state.go("cserDate");
+                case "CSER":
+                    $state.go("cser");
                     break;
                 case "map":
                     $state.go("baiduMap");

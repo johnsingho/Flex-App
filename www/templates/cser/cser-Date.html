@@ -1,10 +1,11 @@
-<ion-view view-title="{{Language.CSER.title}}" >
-    <ion-nav-buttons side="left">
+<!-- CSER日历 -->
+<ion-view view-title="{{Language.CSER.cserDate}}" >
+    <!-- <ion-nav-buttons side="left">
         <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
-    </ion-nav-buttons>
+    </ion-nav-buttons> -->
     <ion-content>
         <ion-list>
-            <ion-item class="item item-divider">{{Language.CSER.title2}}</ion-item>
+            <ion-item class="item item-divider">{{Language.CSER.cserDatePrompt}}</ion-item>
             <ion-item class="item item-body" ng-if="CserDateList" ng-repeat="cserDate in CserDateList" ng-click="open(cserDate)">
                 <div class="row">
                     <div class="col col-25"><span style="color:darkblue;font-size: 13px">{{cserDate.DateStart| date:"yyyy-MM-dd"}}</span></div>
@@ -18,10 +19,7 @@
                     <div class="col"><span style="font-size: 13px;font-weight: bold">{{cserDate.Project}}</span></div>
                 </div>
 
-
-
             </ion-item>
         </ion-list>
-
     </ion-content>
 </ion-view>
