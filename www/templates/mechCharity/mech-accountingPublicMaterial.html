@@ -1,0 +1,39 @@
+<!-- MECH基金会账务公示 物资捐赠公示 -->
+<ion-view view-title="{{Language.mechCharity.materialPublic}}" cache-view="false">
+
+  <ion-content class="padding5" style="border:1px;">
+    <div class="item item-input searchHead">
+      <span class="input-label" style="width:30px;font-size:80%">{{Language.common.month}}</span>
+      <select class="button" style="min-width:40%;" 
+        ng-options='t.Mon as t.Mon for t in timeList' ng-model="model.selMon">
+      </select>
+      <button class="button button-icon" style="margin-left:20px" ng-click="LoadData();">
+        <i class="ion-android-search positive" style="font-size:32px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+      </button>
+    </div>
+
+    <div ng-if="items.length>0">
+      <table class="myTab" style="margin:0 4px 0 2px;width:100%">
+        <thead>
+          <tr>
+            <th style="width:90px">{{Language.common.month}}</th>
+            <th>{{Language.common.workdayNO}}</th>
+            <th>{{Language.common.name}}</th>
+            <th style="min-width:70px">{{Language.mechCharity.donationMaterial}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in items">
+            <td>{{item.Mon}}</td>
+            <td>{{item.WorkdayNo}}</td>
+            <td>{{item.CName}}</td>
+            <td>{{item.Material}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div ng-if="items.length==0">
+      <h4 style="color:red">{{Language.common.NoData}}</h4>
+    </div>
+  </ion-content>
+</ion-view>

@@ -903,11 +903,16 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 //            $ionicHistory.goBack();
 //        };
     })
-    .controller('ActivityListCtrl', function($scope,CacheFactory,noticeService,alertService,eHSActService,
+    .controller('ActivityListCtrl', function($scope,$rootScope,CacheFactory,noticeService,alertService,eHSActService,
         $state,$ionicHistory,commonServices,$location,actionVisitServices) 
     {
+        $scope.canUseAction = function (action) {
+            return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
+        };
 
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
+        //$scope.isMechanical = isMech($scope.accessEmployee.Organization);
+        $scope.isB11 = isB11($scope.accessEmployee.Organization);
 
         var params=commonServices.getBaseParas();
         //获取一般活动列表
@@ -1006,10 +1011,18 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             alertService.showAlert('该活动已下线，欢迎下次参与!');
         };
 
-        //2018-05-23 活动点赞
-        $scope.activityGoodName="手语海报设计大赛";
-        $scope.activityGoodImg="img/other/handSign.png";
-        $scope.openActivityGood = function(){
+        $scope.openOutLink=function(url){
+            //打开外链
+            try {
+                window.cordova.InAppBrowser.open(url, '_system', 'location=yes');
+            } catch (ex) {
+                alertService.showAlert(ex.message);
+            }
+        };
+        //2018-09-22 活动点赞
+        $scope.openActivityGood = function(actID){
+            CacheFactory.remove(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID);
+            CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID, actID);
             $state.go('activityGood');
         };
         
@@ -1037,50 +1050,67 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             $state.go('activityEHS');
         };
 
+        $scope.openSpecial = function(action){
+            switch (action) {
+                case "补贴申请结果查询":
+                  $state.go("union_welfare_applyResult");
+                  break;
+                default:
+                  break;
+              }
+        };
+        
         //历史活动列表
         $scope.outDateActivities=[];
         actionVisitServices.getOutDateActivity($scope);        
     })
-    .controller('ActivityGoodCtrl',function($scope,CacheFactory,activityGoodService,alertService,$state,$ionicHistory,commonServices,$location) {
-        //2018-05-23 活动点赞
-        $scope.imgUrl='img/other/diversity.jpg';
+    .controller('ActivityGoodCtrl',function($scope,$ionicHistory,CacheFactory,alertService,commonServices,UrlServices) 
+    {
+        //2018-11-12 活动点赞        
+        var baseInfo = commonServices.getBaseParas();
+        var actID = Number.parseInt(CacheFactory.get(GLOBAL_INFO.KEY_ACT_GOOD_ITEMID));
+        if(actID > 9000){
+            $scope.IsSuggest = true; //2018-11-12 特殊处理，是否录入建议
+            actID -= 9000;
+        }
 
-        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        var loginInfo=commonServices.getBaseParas();
-        loginInfo.opType='活动点赞';
-        loginInfo.opContent='点击进入';
-        commonServices.operationLog(loginInfo).then(function(data){
-            $scope.sucess==data;
-        });
+        function InitInfo() {
+            $scope.titleImgUrl=null;//'img/other/shufaTitle.jpg';
+            $scope.activityGoodIcon="img/user.jpg";
+            $scope.actDesc = '欢迎参与“南厂餐厅一楼风味档口喜欢度调查问卷”，每个人最多可投三票。';
+            var url = commonServices.getUrl("EvaluationAppService.ashx", "getActivityGoods");
+            var paras = {
+                Token: baseInfo.Token,
+                WorkdayNO:baseInfo.WorkdayNO,
+                ActID: actID,
+            };            
+            commonServices.submit(paras, url).then(function (resp) {
+              if (resp && resp.success) {
+                $scope.Activities=resp.list;
+                var arr = JSON.parse(resp.data);
+                CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ID, arr);
+                setTimeout(InitPhotoScale, 1500); //图片缩放
+              }
+            });
+        }
+        InitInfo();
 
-        var MAX_CLICK = 3;
-        var KEY_ACT_GOOD='ActivityGood';
+        var MAX_CLICK = 3; //一个人的最多点赞个数
         var TActivityGoodEntry = function(itemID, WorkDayNo){
             var self=this;
             self.RefActivityGoodID=0;
             self.WorkdayNo=0;
         }
-
-        //重新加载刷新
-        function RefreshActivityGoodList(){
-            var loginInfo= commonServices.getBaseParas();
-            activityGoodService.getActivityGoods(loginInfo).then(function(resp){
-                $scope.Activities=resp.list;
-                var arr = JSON.parse(resp.data);
-                CacheFactory.save(KEY_ACT_GOOD, arr);
-            });
-        }
         function GetActivityGoodCache(){
-            return JSON.parse(CacheFactory.get(KEY_ACT_GOOD)) || []; //数组
+            return JSON.parse(CacheFactory.get(GLOBAL_INFO.KEY_ACT_GOOD_ID)) || []; //数组
         }
-
-        RefreshActivityGoodList();
 
         $scope.like = function(item){
             var likeInfo = GetActivityGoodCache();
             var nClick = likeInfo.length;
             if(nClick >= MAX_CLICK){
-                alertService.showAlert("最多只能点赞"+MAX_CLICK+"次");
+                //alertService.showAlert("最多只能点赞"+MAX_CLICK+"个");
+                alertService.showAlert("最多只能投"+MAX_CLICK+"票");
                 return;
             }
             var hasClicked=false;
@@ -1089,28 +1119,59 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 if(item.ID==entry.RefActivityGoodID
                     && entry.WorkdayNo==$scope.accessEmployee.WorkdayNO
                    ){
-                    alertService.showAlert("你已经点过赞了");
+                    //alertService.showAlert("你已经点过赞了");
+                    alertService.showAlert("你已经投过票了");
                     hasClicked=true;
                     break;
                 }
             }
             if(!hasClicked){
-                var para={
-                    WorkdayNO: $scope.accessEmployee.WorkdayNO,
-                    CName: $scope.accessEmployee.CName,
-                    Token:$scope.accessEmployee.Token,
+                var url = commonServices.getUrl("EvaluationAppService.ashx", "addActivityGoods");
+                var paras={
+                    Token: baseInfo.Token,
+                    WorkdayNO: baseInfo.WorkdayNO,
+                    CName: baseInfo.CName,
                     ItemID:item.ID
                 };
-                commonServices.submit(para, API.addActivityGoods).then(function(data){
-                    if(data.success){
+          
+                commonServices.submit(paras, url).then(function (resp) {
+                    if(resp.success){
                         var likeInfo = GetActivityGoodCache();
                         likeInfo.push(new TActivityGoodEntry(item.ID, $scope.accessEmployee.WorkdayNO));
-                        CacheFactory.save(KEY_ACT_GOOD, likeInfo);
+                        CacheFactory.save(GLOBAL_INFO.KEY_ACT_GOOD_ID, likeInfo);
                         //刷新
-                        RefreshActivityGoodList();
+                        InitInfo();                        
                     }
-                })
+                });
             }
+        };
+
+        $scope.model={
+            suggestion:""
+        };
+        $scope.submitSuggest = function(){
+            var sugg = $.trim($scope.model.suggestion);
+            if(isEmptyString(sugg)){
+                return;
+            }
+            var url = commonServices.getUrl("EvaluationAppService.ashx", "submitActivityGoodSuggest");
+            var paras={
+                Token: baseInfo.Token,
+                ActID: actID,
+                WorkdayNO: baseInfo.WorkdayNO,
+                CName: baseInfo.CName,
+                Suggest: sugg
+            };
+      
+            commonServices.submit(paras, url).then(function (resp) {
+                if(resp.success){
+                    alertService.showAlert("感谢您的建议");
+                }
+                $ionicHistory.goBack();
+            });
+        };
+        $scope.openGeneralNotice = function(isUrlHtml, id, html) {
+            UrlServices.openGeneralNotice(isUrlHtml,id,html);
         };
     })
     .controller('ActivityEHSCtrl',function($scope,$rootScope,$ionicPopup,
@@ -1460,11 +1521,10 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             $scope.sucess=data;
         });
 
-        $scope.Hotline='4001099899';
-        $scope.callPhone=function(){
-            $window.location.href="tel:"+$scope.Hotline+"";
-
-        }
+        // $scope.Hotline='4001099899';
+        // $scope.callPhone=function(){
+        //     $window.location.href="tel:"+$scope.Hotline+"";
+        // }
 
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
@@ -1489,11 +1549,10 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             $scope.sucess=data;
         });
 
-        $scope.Hotline='4001099899';
-        $scope.callPhone=function(){
-            $window.location.href="tel:"+$scope.Hotline+"";
-
-        }
+        // $scope.Hotline='4001099899';
+        // $scope.callPhone=function(){
+        //     $window.location.href="tel:"+$scope.Hotline+"";
+        // }
 
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
@@ -1508,29 +1567,36 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
         $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
         if($scope.hotItems==1){
             // 园区热线
-            $scope.items=[{description:"400员工服务热线",phone:"4001099899",bz:"24小时值班电话"},
+            $scope.items=[
+                {description:"400员工服务热线",phone:"4001099899",bz:"24小时值班电话"},
                 {description:"工会热线",phone:"18926985395",bz:"24小时值班电话"},
                 {description:"心灵热线",phone:"18926985442",bz:"24小时值班电话"},
                 {description:"医务室",phone:"18926985310",bz:"24小时值班电话"},
                 {description:"园区安全部",phone:"18926988110",bz:"24小时值班电话"},
-                {description:"餐厅饭卡",phone:"18926980035",bz:"正常工作日8:30~17:30"},
-                {description:"宿舍管理",phone:"18926985305",bz:"24小时值班电话"},
-                {description:"园区DL招聘热线",phone:"4001662221",bz:"正常工作日8:30~17:30"} ];
+                {description:"餐厅饭卡",phone:"5121667 18926980035",bz:"正常工作日8:30~17:30"},
+                {description:"南厂宿舍管理",phone:"15912607056",bz:"24小时值班电话"},
+                {description:"园区DL招聘热线",phone:"4001662221",bz:"正常工作日8:30~17:30"},
+                {description:"Flex+ / LTP密码重置",phone:"0755-86155600转2",bz:"正常工作日8:30~17:30"},
+            ];
         }
         else if($scope.hotItems==2){
-            // B13热线
+            // B13 PCBA-South Campus热线
             $scope.items=[
-                {description:"事业部安全部（门禁卡、手机标签）",phone:"5186489",bz:"正常工作日8:30~17:30"},
-                {description:"工衣柜管理",phone:"5186335",bz:"24小时值班电话"},
+                {description:"新入职DL接待热线",phone:"5186137",bz:"正常工作日8:30~17:30"},
+                {description:"安全部（门禁卡、手机标签）",phone:"5186489",bz:"正常工作日8:30~17:30"},
+                {description:"工衣柜管理",phone:"18926971043",bz:"24小时值班电话"},
                 {description:"在职考勤咨询",phone:"5189082",bz:"正常工作日8:30~17:30"},
-                {description:"在职薪资咨询",phone:"5188140",bz:"正常工作日8:30~17:30"},
-                {description:"薪酬福利咨询",phone:"5188006",bz:"正常工作日8:30~17:30"},
-                {description:"DL新员工咨询热线",phone:"5186137",bz:"正常工作日8:30~17:30"},
-                {description:"社会保险咨询",phone:"5188140",bz:"正常工作日8:30~17:30"},
-                {description:"工伤事故咨询",phone:"5186629 5189489",bz:"正常工作日8:30~17:30"},
+                {description:"在职薪资/住房公积金咨询",phone:"5188140 5186514",bz:"正常工作日8:30~17:30"},
+                {description:"离职薪资/生日礼金咨询",phone:"5189541",bz:"正常工作日8:30~17:30"},
                 {description:"离职考勤咨询",phone:"5186300",bz:"正常工作日8:30~17:30"},
-                {description:"离职薪资&住房公积金咨询",phone:"5189541",bz:"正常工作日8:30~17:30"},
-                {description:"HR沟通热线",phone:"5186026 5186656",bz:"正常工作日8:30~17:30"}];
+                {description:"社会保险咨询",phone:"5189005",bz:"正常工作日8:30~17:30"},
+                {description:"工伤保险咨询",phone:"5189216 5188672",bz:"正常工作日8:30~17:30"},
+                {description:"商业保险咨询",phone:"5188108",bz:"正常工作日8:30~17:30"},                
+                {description:"员工申诉投诉",phone:"5186026 5186829 5186866",bz:"正常工作日8:30~17:30"},
+                {description:"违纪单咨询",phone:"5186866",bz:"正常工作日8:30~17:30"},
+                {description:"员工服务中心",phone:"5186509",bz:"周一至周六07:30~20:30"},
+                {description:"员工培训中心",phone:"5186133",bz:"正常工作日08:30~17:30"},
+            ];
         }
         else{
             $scope.items=[

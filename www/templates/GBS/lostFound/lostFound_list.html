@@ -1,0 +1,117 @@
+<!-- 失物招领 列表 -->
+<style>
+.imgch{
+    height: 32px;
+    width: 32px;
+    vertical-align: middle;
+}
+</style>
+<ion-view view-title="{{Language.GBSHR.LostFound}}" cache-view="false">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ng-click="showPublicDlg()">{{Language.lostFound.public}}</button>
+  </ion-nav-buttons>
+
+  <ion-content scroll="true" overflow-scroll="true">
+    <form>
+      <div class="bar bar-header item-input-inset" style="height: 50px;">
+        <label class="item-input-wrapper">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Search" ng-model="queryContent">
+        </label>
+      </div>
+    </form>
+
+    <div class="list card" style="margin-top:8px;margin-bottom:8px" 
+        ng-repeat="item in items | filter:queryContent"
+        ng-click="viewDetail(item.ID)">
+
+      <div class="item item-avatar">
+        <img ng-if="item.IsLoser>0" src="img/other/lost.png">
+        <img ng-if="item.IsLoser==0" src="img/other/found.png">
+        <h2 ng-if="item.IsLoser>0" style="Margin:1px;color:orangered">{{Language.lostFound.lost}}</h2>
+        <h2 ng-if="item.IsLoser==0" style="Margin:1px;color:blue">{{Language.lostFound.found}}</h2>
+        <p style="font-size:12px;Margin:1px"><em class="agotime" am-time-ago="item.CreateDate"></em></p>
+      </div>
+
+      <div class="item item-body">
+        <span style="color:blue;font-size:12px;">{{Language.common.Description}}</span>
+        <p style="Margin:1px" ng-bind-html="item.Content">
+        </p>
+      </div>
+      <div class="item">
+        <p>
+          <a href="#" class="subdued">{{item.ReplyCount}}回复</a>
+        </p>
+      </div>
+    </div>
+  </ion-content>
+
+  <script id="public.html" type="text/ng-template">
+    <ion-modal-view>
+            <ion-header-bar class="bar bar-header bar-positive">
+                <h1 class="title">{{Language.GBSHR.LostFound}}</h1>
+                <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+            </ion-header-bar>
+            <ion-content class="padding">
+                <div class="list card" >
+                    <ion-list>
+                        <ion-radio name="loser" ng-repeat="t in lfTypes" 
+                            ng-value="t.value" ng-model="modal.dat.IsLoser">
+                            <img class="imgch" ng-if="t.value==1" src="img/other/lost.png">
+                            <img class="imgch" ng-if="t.value==0" src="img/other/found.png">
+                            {{t.name}}
+                        </ion-radio>
+                    </ion-list>
+                </div>
+
+            <div class="list card">
+            <div class="item item-input">
+                <span class="input-label" style="width:30px;font-size:80%">{{Language.like.name}}</span><span class="input-label"
+                style="width: 5px;color: red">*</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="modal.params.CName" />                
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.employee_ID}}</span><span class="input-label"
+                    style="width: 5px;color: red">*</span>
+                <input type="text" style="width:30px;font-size:80%" readonly="readonly" ng-model="modal.params.WorkdayNO" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">{{Language.common.mobile}}</span><span class="input-label"
+                style="width: 5px;color: red">*</span>
+                <input type="text" style="font-size:80%" ng-model="modal.dat.MobileNo" />
+            </div>
+            <div class="item item-input">
+            <span class="input-label" style="width: 30px;font-size:80%">{{Language.common.Description}}：</span><span class="input-label"
+                style="width: 10px;color: red">*</span>
+                <textarea rows="5" id="bz" style="font-size:80%;width:500px" 
+                    ng-model="modal.dat.Description"></textarea>
+            </div>
+            <div class="item item-input">
+                <div style="white-space:normal;">
+                <p>
+                    <span class="input-label" style="width:50px;font-size:90%;display:inline-block;">{{Language.common.picture}}</span>
+                    <button class="button button-calm button-small" ng-click="SelPic(false);">{{Language.common.selectPhoto}}</button>
+                    <button class="button button-calm button-small" ng-click="SelPic(true);">{{Language.common.takePhoto}}</button>
+                    <button class="button button-calm button-small" ng-if="imgs.length>0" ng-click="Reset();">{{Language.common.clear}}</button>
+                </p>
+                <p id="images" style="margin-top:10px;white-space:normal;" ng-if="imgs.length>0">
+                    <img class='smallPic' src='{{pic}}' ng-repeat='pic in imgs'>
+                </p>
+                </div>
+            </div>
+            </div>
+
+            <br>
+            <div style="text-align: center">
+                <button class="button button-block button-positive" 
+                    ng-disabled="!modal.dat.Description || !modal.dat.Description.length"
+                    ng-click="submit()">{{Language.menu.submit}}</button>
+            </div>
+            </ion-content>
+        </ion-modal-view>
+    </script>
+
+</ion-view>

@@ -1,0 +1,62 @@
+<!-- MECH charity 问卷调查详细 -->
+<style>
+  .item {
+    border-style: none;
+  }
+
+  .font12 {
+    font-size: 12px;
+  }
+</style>
+<ion-view cache-view="false">
+  <ion-nav-title>
+    {{ ResearchName }}
+  </ion-nav-title>
+  <ion-content scroll="true" lazy-scroll>
+    <ion-slide-box does-continue="true" auto-play="false" show-pager="false" ng-if="act.ImageUrl!=null">
+      <img ng-src="{{act.ImageUrl}}">
+    </ion-slide-box>
+    <div class="divOff lightGrayBack" compile="act.HtmlConent">
+    </div>
+
+    <div ng-repeat="detail in researchDetailList">
+      <div class="divOff">
+        <div style="color: royalblue;font-size: 15px;">
+          {{$index+1}}. <span ng-bind-html="detail.SubjectText"></span>
+        </div>
+        <div ng-repeat="checkItem in detail.Items">
+          <!-- 单选 -->
+          <div ng-if="checkItem.Type=='radio'">
+            <h4>
+            <label>
+                <input type="radio" name="Rad{{detail.Sort}}" value="{{detail.Sort}}_{{$index}}" />
+                {{checkItem.ItemText}}
+            </label>
+            </h4>
+          </div>
+          <!-- 多选 -->
+          <div ng-if="checkItem.Type=='checkbox'">
+            <h4>
+            <label>
+                <input type="checkbox" name="Chk{{detail.Sort}}" value="{{detail.Sort}}_{{$index}}" />
+                {{checkItem.ItemText}}
+            </label>
+            </h4>
+          </div>
+          <!-- 文本输入 -->
+          <div ng-if="checkItem.Type=='text'">
+            <div style="font-size:14px;color:deeppink;margin-top:10px;">{{checkItem.ItemText}}</div>
+            <textarea name="Text{{detail.Sort}}_{{$index}}"
+                rows="5" style="width:98%;border-style:dashed; border-width:1px; border-color:pink"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div style="text-align: center">
+      <button class="button  button-positive" ng-disabled="isSumbiting"
+        ng-click="Submit()">{{Language.menu.submit}}</button>
+    </div>
+  </ion-content>
+</ion-view>

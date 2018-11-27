@@ -1,0 +1,74 @@
+<!-- 失物招领 逐项详情 -->
+<style>
+  .myImg{
+    max-width: 75%;
+    margin: 2px 0 0 2px;
+  }
+</style>
+<ion-view view-title="" cache-view="false">
+  <ion-content scroll="true" overflow-scroll="true" style="background-color:#c0c0c0">
+    <ion-refresher pulling-text="Refresh" on-refresh="doRefresh()">
+    </ion-refresher>
+
+    <ion-list>
+      <ion-item>
+        <div class="item item-avatar">
+          <img ng-if="item.IsLoser>0" src="img/other/lost.png">
+          <img ng-if="item.IsLoser==0" src="img/other/found.png">
+          <h2 ng-if="item.IsLoser>0" style="Margin:1px;color:orangered">{{Language.lostFound.lost}}</h2>
+          <h2 ng-if="item.IsLoser==0" style="Margin:1px;color:blue">{{Language.lostFound.found}}</h2>
+          <p style="font-size:12px;Margin:1px"><em class="agotime" am-time-ago="item.CreateDate"></em></p>
+        </div>
+        <div class="item item-body">
+          <p style="Margin:1px">
+            {{Language.like.name}}：{{item.UserName}}
+          </p>
+          <p style="Margin:1px">
+            {{Language.shareCar.mobile}}：{{item.Phone}}
+          </p>
+        </div>
+        <div class="item item-body">
+          <span style="color:blue;font-size:12px;">{{Language.common.Description}}</span>
+          <p style="Margin:1px" ng-bind-html="item.Content">
+          </p>
+        </div>
+        <div class="item item-body" ng-if="imgs.length>0">
+          <span style="color:blue;font-size:12px;">{{Language.lostFound.relatePhoto}}</span>
+          <div style="white-space:normal;">
+            <ul class="lightgallery">
+              <li data-src="{{pic.FileUrl}}" ng-repeat='pic in imgs'>
+                <a href="#">
+                  <img class='myImg' src="{{pic.FileUrl}}" />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div ng-repeat="reply in replyList" class="item">
+            <div class="LFlist">
+              <div ng-repeat="talk in reply.replys">
+                <div class="repname">
+                  <img class="tinyIcon" src="img/user.jpg">
+                  <span ng-class="{'oName': $index%2==0,'eName':$index%2==1}">
+                    {{talk.UserName}}
+                  </span>
+                  <span style="font-size:11px;font-weight:400;color:black;">{{talk.CreateDate| date:"yyyy-MM-dd HH:mm"}}</span>
+                </div>
+                <p style="white-space:normal" ng-bind-html="talk.Content"></p>
+              </div>
+              <div style="float:right;">
+                <a style="text-decoration:underline;" ng-click="replyTo(reply.ChatID)">回复</a>
+              </div>
+            </div>
+          </div>
+      </ion-item>
+    </ion-list>
+    <br>
+  </ion-content>
+<div class="bar bar-subfooter" style="height:54px;">
+  <div class="item item-input" style="margin-left:10px;width:82%">
+    <textarea rows="2" style="font-size:80%" placeholder="发表回帖" ng-model="ReplyContent"></textarea>
+  </div>
+  <button class="button button-balanced button-small pull-right" ng-click="submitReply()">{{Language.common.Reply}}</button>
+</div>
+</ion-view>

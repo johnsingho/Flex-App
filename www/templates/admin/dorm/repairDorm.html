@@ -1,4 +1,9 @@
 <!-- 宿舍报修 -->
+<style>
+.button+.button {
+    margin-left: 5px;
+}
+</style>
 <ion-view view-title="{{Language.dormManage.repairDorm}}" cache-view="false" hide-tabs>
     <ion-content style="background-color:lavender">
         <div class="list card">
@@ -43,8 +48,25 @@
                     ng-model="model.DeviceType"></select>
             </div>
             <div class="item item-input">
+            <div style="white-space:normal;">
+                <p>
+                <span class="input-label" style="width:50px;font-size:90%;display:inline-block;">{{Language.common.picture}}</span>
+                <button class="button button-calm button-small" ng-click="SelPic(false);">{{Language.common.selectPhoto}}</button>
+                <button class="button button-calm button-small" ng-click="SelPic(true);">{{Language.common.takePhoto}}</button>
+                <button class="button button-calm button-small" ng-if="imgs.length>0" ng-click="Reset();">{{Language.common.clear}}</button>
+                </p>
+                <!-- for test -->
+                <!-- <p id="images" style="margin-top:10px;white-space:normal;" >
+                                    <img class='smallPic' title="宿舍地图" src="https://s1.ax1x.com/2018/08/23/PTHsFx.png"/>
+                                    <img class='smallPic' title="宿舍地图" src="https://s1.ax1x.com/2018/08/23/PTHsFx.png"/>                        
+                            </p>    -->
+                <p id="images" style="margin-top:10px;white-space:normal;" ng-if="imgs.length>0">
+                <img class='smallPic' src='{{item}}' ng-repeat='item in imgs'>
+                </p>
+            </div>
+            </div>
+            <div class="item item-input">
                 <span class="input-label" style="width: 30px;font-size:80%">{{Language.dormManage.repairDesc}}</span>
-                <span class="input-label" style="width: 10px;color: red">*</span>
                 <textarea rows="6" style="font-size:90%" class="ng-pristine ng-valid ng-touched" ng-model="model.RepairDesc"></textarea>
             </div>
         </div>

@@ -1,0 +1,15 @@
+<!-- 留言公开 -->
+<ion-view view-title="{{Language.union.openSuggest}}" cache-view="false">
+  <ion-content scroll="true" overflow-scroll="true">
+    <ion-list>
+      <div class="list list-inset">
+        <ion-item class="item" ng-repeat="item in items" ng-click="open(item.ID);">
+          <div>
+            <h3 class="ng-binding">{{item.Suggest}}</h3>
+            <p class="ng-binding">{{item.CreateDate| date:"yyyy-MM-dd"}}</p>
+          </div>
+        </ion-item>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

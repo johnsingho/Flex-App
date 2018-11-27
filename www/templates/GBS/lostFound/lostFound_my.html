@@ -1,0 +1,71 @@
+<!-- 失物招领 我的发布 -->
+<ion-view view-title="{{Language.lostFound.tabMy}}" cache-view="false">
+  <ion-nav-buttons side="left">
+  <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
+  </ion-nav-buttons>
+  <ion-content scroll="true" overflow-scroll="true" style="background-color:#c0c0c0">
+    <div ng-if="!entrys || !entrys.length">
+      <h4 style="color:red">{{Language.common.NoData}}</h4>
+    </div>
+    <ion-list ng-repeat="entry in entrys">
+      <ion-item>
+        <div class="item item-avatar">
+          <img ng-if="entry.item.IsLoser>0" src="img/other/lost.png">
+          <img ng-if="entry.item.IsLoser==0" src="img/other/found.png">
+          <h2 ng-if="entry.item.IsLoser>0" style="Margin:1px;color:orangered">{{Language.lostFound.lost}}</h2>
+          <h2 ng-if="entry.item.IsLoser==0" style="Margin:1px;color:blue">{{Language.lostFound.found}}</h2>
+          <p style="font-size:12px;Margin:1px"><em class="agotime" am-time-ago="entry.item.CreateDate"></em></p>
+        </div>
+        <div class="item item-body">
+          <p style="Margin:1px">
+            {{Language.like.name}}：{{entry.item.UserName}}
+          </p>
+          <p style="Margin:1px">
+            {{Language.shareCar.mobile}}：{{entry.item.Phone}}
+          </p>
+        </div>
+        <div class="item item-body">
+          <span style="color:blue;font-size:12px;">{{Language.common.Description}}</span>
+          <p style="Margin:1px" ng-bind-html="entry.item.Content">
+          </p>
+        </div>
+        <div class="item item-body" ng-if="entry.imgs.length>0">
+          <div style="white-space:normal;">
+            <ul class="lightgallery">
+                <li data-src="{{pic.FileUrl}}" ng-repeat='pic in entry.imgs'>
+                  <a href="#">
+                    <img class='smallPic' src="{{pic.FileUrl}}" />
+                  </a>
+                </li>
+              </ul>
+          </div>
+        </div>
+        <div ng-repeat="reply in entry.replyList" class="item">
+          <div class="LFlist">
+            <div ng-repeat="talk in reply.replys">
+              <div class="repname">
+                <img class="tinyIcon" src="img/user.jpg">
+                <span ng-class="{'oName': $index%2==0,'eName':$index%2==1}">
+                  {{talk.UserName}}
+                </span>
+                <span style="font-size:11px;font-weight:400;color:black;">
+                  {{talk.CreateDate| date:"yyyy-MM-dd HH:mm"}}</span>
+              </div>
+              <p style="white-space:normal" ng-bind-html="talk.Content"></p>
+            </div>
+            <div style="float:right;" ng-if="entry.item.Status==0">
+              <a style="text-decoration:underline;" ng-click="replyTo(reply.ChatID)">回复</a>
+            </div>
+          </div>
+        </div>
+        <div class="row" ng-if="entry.item.Status==0">
+          <div style="margin:auto;">
+            <button class="button button-balanced button-small" style="text-align:center" ng-click="closePublic(entry.item.ID)">
+              {{Language.lostFound.closePublic}}
+            </button>
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

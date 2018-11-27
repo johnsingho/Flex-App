@@ -5,6 +5,9 @@
     <ion-content class="padding" scroll="true" overflow-scroll="true">
         <!-- <div id="div_html" ng-bind-html="html"></div> -->
         <div id="div_html" compile="html"></div>
+        <div ng-if="!html">
+            <h4 style="color:red">{{Language.common.NoData}}</h4>
+        </div>
         <br>
         <br>
     </ion-content>

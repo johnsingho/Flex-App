@@ -6,9 +6,11 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('evaluationApp', ['ionic', 'evaluationApp.router', 'evaluationApp.appControllers', 'evaluationApp.pointsControllers', 'evaluationApp.businiessControllers',
-    'evaluationApp.appServices', 'evaluationApp.directives', 'evaluationApp.pointsService', 'evaluationApp.businessServices', 'evaluationApp.businiess2Controllers', 'evaluationApp.B11WorkShopController',
+    'evaluationApp.appServices', 'evaluationApp.directives', 'evaluationApp.utilServices',
+    'evaluationApp.pointsService', 'evaluationApp.businessServices', 'evaluationApp.businiess2Controllers', 'evaluationApp.B11WorkShopController',
     'ngCordova', 'angularMoment', 'chart.js', 'evaluationApp.sharCarController', 
-    'ion-datetime-picker', 'evaluationApp.adminControllers', 'evaluationApp.gbshrControllers'
+    'ion-datetime-picker', 'evaluationApp.adminControllers', 'evaluationApp.gbshrControllers', 
+    'evaluationApp.unionControllers', 'evaluationApp.testControllers', 'evaluationApp.mechCharityControllers'
     ])
     //angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.controllers', 'evaluationApp.services'])
 
@@ -233,7 +235,7 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router', 'evaluationApp
             return false;
         }, 101);
     })
-    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider, $sceDelegateProvider) {
 
         $ionicConfigProvider.platform.ios.tabs.style('standard');
         $ionicConfigProvider.platform.ios.tabs.position('bottom');
@@ -248,5 +250,11 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router', 'evaluationApp
 
         $ionicConfigProvider.platform.ios.views.transition('ios');
         $ionicConfigProvider.platform.android.views.transition('android');
+
+        var orgin = $sceDelegateProvider.resourceUrlWhitelist();
+        orgin.push('https://s*.ax1x.com/2018/**');
+        orgin.push('https://s*.ax1x.com/2019/**');
+        orgin.push('https://zhmobile.flextronics.com/EvaluationApp/Upload/**');
+        $sceDelegateProvider.resourceUrlWhitelist(orgin);
 
     });

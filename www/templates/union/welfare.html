@@ -1,0 +1,31 @@
+<!-- 员工福利 -->
+<style>
+.item .badge {
+    display: inline-block;
+    position: relative;
+    top:0;
+    right:0;
+}
+</style>
+<ion-view view-title="{{Language.union.welfare}}" cache-view="true">
+  <ion-content scroll="true" overflow-scroll="true">
+    <div class="list list-inset">
+      <div class="item" ng-click="open('年节福利');">
+        {{Language.union.welfare_fest}}
+      </div>
+      <div class="item" ng-click="open('工惠福利汇');">
+        {{Language.union.welfare_union}}
+      </div>
+      <div class="item" ng-click="open('工惠福利汇往期福利');">
+        {{Language.union.welfare_old}}
+      </div>
+      <div class="item" ng-click="open('领取通知');">
+        {{Language.union.welfare_notice}}
+        <span style="font-size:10px;" class="badge badge-assertive" ng-if="hasNewWelfareNotice">New</span>
+      </div>
+      <div class="item" ng-click="open('斗门公众号福利');">
+        {{Language.union.welfare_dmUnion}}
+      </div>      
+    </div>
+  </ion-content>
+</ion-view>

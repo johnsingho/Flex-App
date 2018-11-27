@@ -21,6 +21,40 @@
             <!--</ion-item>-->
         <!--</ion-list>-->
 
+        <!-- 放置外链 -->
+        <ion-item class="item item-thumbnail-left" 
+            ng-click="openOutLink('https://www.wjx.top/jq/28806313.aspx')"
+            ng-if="isMechanical&&canUseAction('MECH基层分工会第二期');"
+            >
+        <img src="img/gh.JPG">
+        <br>
+        <h2>MECH基层分工会第二期线上趣味答题</h2>
+        <br>
+        </ion-item>
+
+        <!-- johnsing 2018-10-18 -->
+        <!--活动点赞-->
+        <ion-list>
+        <ion-item class="item item-thumbnail-left" ng-click="openSpecial('补贴申请结果查询')">
+            <img src="img/user-100.png">
+            <br>
+            <h3>“异地务工人员暑期亲子团聚关爱”</h3>
+            <h3>补贴结果查询</h3>
+        </ion-item>
+        </ion-list>
+
+        <!-- johnsing 2018-10-11 -->
+        <!--活动点赞-->
+        <!-- <ion-list>
+        <ion-item class="item item-thumbnail-left" ng-click="openActivityGood(2)" ng-if="canUseAction('活动点赞');">
+            <img src="img/user-100.png">
+            <br>
+            <h3>{{Language.activityGood.title}}</h3>
+            <br>
+            <p>2018-10-26</p>
+        </ion-item>
+        </ion-list> -->
+
         <ion-list>
             <ion-item ng-repeat="activity in activityList" class="item item-thumbnail-left"  ng-click="open(activity)">
                 <img src="{{activity.ImgPath}}">
@@ -68,14 +102,11 @@
 
         <!--有奖活动-->
         <!--<div class="list list-inset">-->
-
             <!--<div class="item" ng-repeat="resear in researchList" ng-click="openDC(resear)">-->
                 <!--{{resear.ResearchName}} ({{resear.ActivateDate}}开始)-->
             <!--</div>-->
-
         <!--</div>-->
 
-        <!-- johnsing 2018-06-20 -->
         <!--EHS有奖答题-->
         <ion-list ng-if="canShow">
             <ion-item ng-repeat="activity in ehsActList" class="item item-thumbnail-left"  ng-click="openEHS(activity)">                
@@ -92,27 +123,16 @@
                 <!--<i class="icon ion-ios-arrow-forward"></i>-->
             </ion-item>
 
-            <ion-item class="item item-thumbnail-left"
+            <!-- <ion-item class="item item-thumbnail-left"
                       ng-click="openHandelAddAct()">
                 <img src="img/gh.JPG">
                 <br>
                 <h2>异地务工人员暑期亲子团聚关爱金</h2>
                 <br>
-            </ion-item>
+            </ion-item> -->
         </ion-list>
 
         <!-- 放置已下线活动 -->
-        <!--活动点赞-->
-        <ion-list>
-                <ion-item class="item item-thumbnail-left OutDate" 
-                    ng-click="openOfflineAct()">
-                    <img src="{{activityGoodImg}}">
-                    <br>
-                    <h2>{{activityGoodName}}</h2>
-                    <br>
-                    <p>2018-05-28</p>
-                </ion-item>
-        </ion-list>
         <ion-list>
             <ion-item ng-repeat="activity in outDateActivities" class="item item-thumbnail-left OutDate" 
                 ng-click="openOfflineAct()">

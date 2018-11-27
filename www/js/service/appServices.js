@@ -466,16 +466,28 @@ angular.module('evaluationApp.appServices', [])
     })
     .service('alertService', ['$ionicPopup','$ionicLoading' ,function ($ionicPopup,$ionicLoading) {
         return {
-            showAlert: function (stitle,sMsg) {
+            showAlert: function (stitle, sMsg) {
                 $ionicPopup.alert({
-                    title:stitle,
-                    template: sMsg
+                  title: stitle,
+                  template: sMsg
                 });
-            },
-           showLoading:function(sMsg){
-               $ionicLoading.show({ template: sMsg, noBackdrop: true, duration: 2000 });
-           }
+              },
+              showLoading: function (sMsg) {
+                $ionicLoading.show({
+                  template: sMsg,
+                  noBackdrop: true,
+                  duration: 2000
+                });
+              },
 
+              showOperating: function (sMsg) {
+                $ionicLoading.show({
+                  template: sMsg
+                });
+              },
+              hideOperating: function () {
+                $ionicLoading.hide();
+              }
       }
     }])
     .service('externalLinksService',function () {

@@ -1,0 +1,29 @@
+<!-- 往期福利 -->
+<ion-view cache-view="true">
+  <ion-nav-title>
+    往期福利
+  </ion-nav-title>
+
+  <ion-content>
+      <div>
+          <table class="myTab">
+            <thead>
+              <tr>
+                <th style="width:20px">#</th>
+                <th style="width:70px;">福利季节</th>
+                <th>内容</th>
+                <th style="width:60px">福利类别</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in Items">
+                <td class="tdCenter">{{$index+1}}</td>
+                <td>{{item.date}}</td>
+                <td>{{item.detail}}</td>
+                <td>{{item.category}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  </ion-content>
+</ion-view>

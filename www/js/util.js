@@ -52,3 +52,55 @@ function CheckIdCard(idcard) {
     }
 }
 
+/**
+ * 图片缩放
+ */
+function InitPhotoScale(){
+   $(".lightgallery").lightGallery({
+       mobileSrc: false, // If "data-responsive-src " attr. should be used for mobiles.
+       mobileSrcMaxWidth: 640, // Max screen resolution for alternative images to be loaded for.
+       swipeThreshold: 50, // How far user must swipe for the next/prev image (in px).
+       hideControlOnEnd: false,
+       closable: false
+   });
+}
+
+/*自定义提示框*/
+function BindSubmitModal(vScope, vIonicModal, sForm, initData){
+    vIonicModal.fromTemplateUrl(sForm, {
+        scope: vScope,
+        animation: 'slide-in-up'
+      }).then(function(modal) {
+        vScope.modal = modal;
+        vScope.modal.dat = initData || {};//用于输出相关数据
+      });
+      vScope.openModal = function(params) {
+        vScope.modal.params = params; //输入数据
+        vScope.modal.show();
+      };
+      vScope.closeModal = function() {
+        vScope.modal.hide();
+      };
+      //Cleanup the modal when we're done with it!
+      vScope.$on('$destroy', function() {
+        vScope.modal.remove();
+      });
+      // Execute action on hide modal
+      vScope.$on('modal.hidden', function() {
+        // Execute action
+      });
+      // Execute action on remove modal
+      vScope.$on('modal.removed', function() {
+        // Execute action
+      });
+}
+
+function ValidateEmail(smail) 
+{
+    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(smail);
+}
+
+//固定位数，左填充0
+function fix(num, length) {
+    return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num;
+}

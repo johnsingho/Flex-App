@@ -82,11 +82,19 @@
         <div class="row" style="height:110px;text-align: center">
             <div   class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('GBS');">
                 <i style="font-size:50px;" class="ion-android-list"></i>
-                <div>{{Language.home.GBS}}
+                <div>
+                    {{Language.home.GBS}}
                     <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('GBS')">New</span>
                 </div>
             </div>
 
+            <div class="col col-25 balanced-bg light" style="Margin:1px" ng-click="open('工会之窗');">            
+                <i style="font-size:50px;" class="icon ion-android-contacts"></i>
+                <div>
+                    {{Language.home.union}}
+                    <span style="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('工会之窗')">New</span>
+                </div>
+            </div>
             <div id="tzgg" class="col col-25 energized-bg light" style="Margin:1px" ng-click="open('园区公告');">            
                 <i style="font-size:50px;" class="icon ion-calendar"></i>
                 <div>
@@ -95,15 +103,12 @@
                 </div>
             </div>
 
-            <div class="col col-25 custom-bule1 light" style="Margin:1px;" ng-click="open('活动');">
+            <div class="col custom-bule1 light" style="Margin:1px;" ng-click="open('活动');">
                 <i style="font-size:50px;" class="icon ion-ios-people"></i>
                 <div>{{Language.home.activity}}
-                    <span STYLE="font-size: 10px" class="badge badge-assertive" ng-if="activityUpdateCount>0">{{activityUpdateCount}}</span>
+                    <span style="font-size: 10px" class="badge badge-assertive" ng-if="checkActionUpdate('活动')">New</span>
+                    <span style="font-size: 10px" class="badge badge-assertive" ng-if="!checkActionUpdate('活动') && (activityUpdateCount>0)">{{activityUpdateCount}}</span>
                 </div>
-            </div>
-            <div id="wyd" class="col custom-bule1 light" style="Margin:1px;" ng-click="open('问与答');">
-                <i style="font-size:50px;" class="icon ion-help-circled"></i>
-                <div>问与答</div>
             </div>
 
             <!--<div id="B11Workshop"  class="col  positive-bg light"  style=";Margin-left:1px" ng-click="open('B11Workshop');">-->
@@ -114,9 +119,13 @@
         </div>
         <div class="row" style="height:110px;text-align: center">
             <div   class="col-25  calm-bg light"  style="Margin:1px" ng-click="open('shareCar');">
-
                 <i style="font-size:50px;" class="ion-model-s"></i>
                 <div>{{Language.home.shareCar}}</div>
+            </div>
+
+            <div  class="col col-25 positive-bg light"  style="Margin:1px" ng-click="open('失物招领');">
+                <i style="font-size:50px;" class="ion-ios-paw"></i>
+                <div>{{Language.GBSHR.LostFound}}</div>
             </div>
 
             <div  class="col col-25 royal-bg light"  style="Margin:1px" ng-click="open('问卷调查');">
@@ -126,15 +135,11 @@
                 </div>
             </div>
 
-            <div   class="col-25  energized-bg light"  style="Margin:1px" ng-click="open('train');">
-                <i style="font-size:50px;" class="ion-ios-body"></i>
-                <div>{{Language.home.train}}</div>
+            <div class="col positive-bg light"  style="Margin:1px" ng-click="open('MECH基金会');">
+                <i style="font-size:50px;" class="ion-heart"></i>
+                <div>{{Language.home.mechCharity}}</div>
             </div>
 
-            <div   class="col custom-og light"  style="Margin:1px" ng-click="open('E-gate');">
-                <i style="font-size:50px;" class="ion-filing"></i>
-                <div>{{Language.home.egate}}</div>
-            </div>
             <!--<div  class="col-33  positive-bg light"  style=";Margin:1px" ng-click="open('B11Workshop');">-->
 
             <!--<div>Workshop</div>-->
@@ -143,8 +148,11 @@
 
         </div>
         <div class="row" style="height:110px;text-align: center">
+            <div class="col col-25 custom-og light"  style="Margin:1px" ng-click="open('E-gate');">
+                <i style="font-size:50px;" class="ion-filing"></i>
+                <div>{{Language.home.egate}}</div>
+            </div>
             <div class="col col-25 custom-bule1 light"  style="Margin:1px" ng-click="open('CSERCal');">
-
                 <i style="font-size:50px;" class="ion-person-add"></i>
                 <div>{{Language.CSER.title}}</div>
             </div>
@@ -162,12 +170,11 @@
                 <!--<div><img ng-src="img/nbzp.jpg" style="position:absolute;left:0px;top:0px;width:100%;height:100%; "></div>-->
                 <!--<img ng-src="img/nbzp.jpg" class="Size" >-->
             </div>
-            <!--<div  class="col  positive-bg light" style=";Margin:1px;" ng-click="open('内部招聘');">-->
+            <div id="wyd" class="col custom-bule1 light" style="Margin:1px;" ng-click="open('问与答');">
+                <i style="font-size:50px;" class="icon ion-help-circled"></i>
+                <div>问与答</div>
+            </div>
 
-                <!--<i style="font-size:50px;" class="icon ion-laptop"></i>-->
-                <!--<div>IC卡挂失</div>-->
-              <!---->
-            <!--</div>-->
             <!--<div class="col col custom-bule1 light"  style=";Margin:1px" ng-click="open('CSERCal');">-->
 
                 <!--<i style="font-size:50px;" class="ion-person-add"></i>-->
@@ -189,6 +196,13 @@
             <!--<div >抽奖</div>-->
             <!--</div>-->            
 
+        </div>
+
+        <div class="row" style="height:110px;text-align: center">
+        <div class="col col-25 custom-og light" style="Margin:1px" ng-if="canUseAction('testPage')" ng-click="open('testPage')">
+            <i style="font-size:50px;" class="ion-android-bus"></i>
+            <div>my test page</div>
+        </div>
         </div>
 
         <div class="row" style="height:110px;text-align: center;display: none" ng-if="Power">

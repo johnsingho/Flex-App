@@ -269,14 +269,6 @@ angular.module('evaluationApp.appControllers', [])
                     $state.go("tabGoldIdea.goldidea");
 //                    $location.path("handbook_item1");
                     break;
-                case "train":
-                    try {
-                        externalLinksService.openUr('https://zhmobile.flextronics.com/EvaluationApp/course/course/1.html');
-                    }
-                    catch (ex) {
-                        alertService.showAlert(ex.message);
-                    }
-                    break;
                 case "E-gate":
                 try {
 
@@ -313,6 +305,12 @@ angular.module('evaluationApp.appControllers', [])
                     break;
                 case "admin":
                     $state.go("admin");
+                    break;
+                case "工会之窗":
+                    $state.go("union");
+                    break;
+                case "MECH基金会":
+                    $state.go("mechCharity");
                     break;
             }
             
@@ -428,15 +426,18 @@ angular.module('evaluationApp.appControllers', [])
             }
             else if(action=="拍照"){
                 $location.path("Photo");
-
+            }
+            else if(action=="testPage"){
+                $state.go('testPage');
             }
             else if(action=="问卷调查"){
                $location.path("researchList");
                 //$state.go("tab.404");
-
             }
+            else if(action=="失物招领"){
+                $state.go("lostFound.List");
+             }
             else if(action=="我要求助"){
-
                 $state.go("tabAskForHelp.askForHelp");
             }
             else if(action=="shareCar"){
@@ -461,9 +462,6 @@ angular.module('evaluationApp.appControllers', [])
             else if(action=="B11Workshop"){
                 $state.go("b11WorkShopHome");
             }
-
-
-
 
         }
     })

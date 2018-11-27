@@ -1,0 +1,11 @@
+<!-- MECH charity 问卷调查列表 -->
+<ion-view view-title="{{Language.mechCharity.research}}" cache-view="false">
+  <!-- <ion-nav-buttons side="left">
+    <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
+  </ion-nav-buttons> -->
+  <ion-content scroll="true" overflow-scroll="true">
+    <div class="item" ng-repeat="resear in researchList" ng-click="open(resear)">
+      {{resear.ResearchName}}
+    </div>
+  </ion-content>
+</ion-view>

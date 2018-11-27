@@ -1,0 +1,56 @@
+<!-- 组织架构 -->
+<style>
+  .gallery li {
+    height: auto;
+    width: auto;
+  }
+
+  .myul {
+    margin-left: 30px;
+    list-style: disc;
+  }
+</style>
+<ion-view view-title="{{Language.mechCharity.projArch}}" cache-view="true">
+  <ion-content class="padding" scroll="true" overflow-scroll="true">
+    <div style="text-align: center;">
+      <ul class="lightgallery">
+        <li data-src="img/mechCharity/projArch.png">
+          <a href="#">
+            <img style="max-width:96%;" alt="组织架构" src="img/mechCharity/projArch.png" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <div class="myDivOff">
+      <ul>
+        <li>成长版块
+          <ul class="myul">
+            <li>夏令营</li>
+            <li>乡村六一儿童节</li>
+            <li>高中生暑期实习</li>
+          </ul>
+        </li>
+        <li>教学版块
+          <ul class="myul">
+            <li>支教</li>
+            <li>图书角</li>
+            <li>乡村校长老师培训</li>
+          </ul>
+        </li>
+        <li>助学版块
+          <ul class="myul">
+            <li>学生资助</li>
+            <li>校服认购</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </ion-content>
+</ion-view>
+<script>
+  setTimeout(function () {
+    //图片缩放
+    InitPhotoScale();
+  }, 1000);
+</script>

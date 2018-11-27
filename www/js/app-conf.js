@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 默认程序设置 会被写如localStorage
  */
 
@@ -22,6 +22,12 @@ function isSouthCamp(org){
 }
 function isMultek(org){
     return /multek/i.test(org);
+}
+function isMech(org){
+    return /mech/i.test(org);
+}
+function isB11(org){
+    return /b11/i.test(org);
 }
 
 function isChineseLang(vRootScope){
@@ -101,9 +107,6 @@ var API = {
 
     addGoodEmployeeLike:API_HOST + '/EvaluationAppService.ashx?action=AddGoodEmployeeLike',
 
-    getActivityGoods: API_HOST + '/EvaluationAppService.ashx?action=getActivityGoods',
-    addActivityGoods: API_HOST + '/EvaluationAppService.ashx?action=addActivityGoods',
-
     Submit: API_HOST + '/EvaluationAppService.ashx?action=Submit',
 
     SubmitGoldIdea: API_HOST + '/EvaluationAppService.ashx?action=SubmitGoldIdea',
@@ -162,10 +165,32 @@ var ZH_CN = {
     common:{
         memo:"备注",
         Explain:"说明",
+        Description:"描述",
         reason:"原因",
         grade:"薪资级别",
         yuan:"元",
         InfoProvideIDNO:"请提供身份证号码!",
+        CommunicationErr:"通讯异常，请稍候再试!",
+        picture: "照片",
+        takePhoto: "拍照",
+        selectPhoto:"从相册中选取",
+        clear:"清除",
+        NoData:"没有相关数据。",
+        Cancel:"取消",
+        email:"邮箱",
+        sex:"性别",
+        sexMale:"男",
+        sexFeMale:"女",
+        month:"月份",
+        year:"年份",
+        workdayNO:"工号",
+        name:"姓名",
+        income:"收入",
+        totalIncome:"总收入",
+        expenditure:"支出",
+        balance:"余额",
+        mobile:"手机号码",
+        Reply:"回复",
     },
     signin: {
         username: "工号",
@@ -210,7 +235,9 @@ var ZH_CN = {
         GBS:'人事综合',
         admin:"行政",
         earthday:"地球周",
-        dormManage:"宿舍管理"
+        dormManage:"宿舍管理",
+        union:"工会之窗",
+        mechCharity:"MECH基金会",
     },
     myFlex:{
         employee_ID: "工号",
@@ -350,6 +377,7 @@ var ZH_CN = {
         NoStatus: '只有正在办理离职的员工才有这些状态!',
         Done: '办结',
         Required: '待办',
+        LostFound: '失物招领',
     },
     xfcx:{
         title:"消费查询",
@@ -452,11 +480,12 @@ var ZH_CN = {
         DateEnd:"结束日期"
     },
     activityGood:{
-        title:"手语海报设计大赛",
-        name:"作品名",
+        title:"南厂餐厅一楼档口风味满意度调查",
+        name:"姓名",
         employee_ID:"工号",
         department:"部门",
-        designer:"设计者",
+        designer:"作者",
+        desc:"主要事迹",
         designConcept: "设计理念"
     },
     ehsAct:{
@@ -472,7 +501,8 @@ var ZH_CN = {
         promptCancel:"取消",
         promptReportLost:"确定要挂失你的IC卡？",
         lastRequest:"最近一次申请",
-        submitSucc:'您的挂失申请已提交，正在等待一卡通后台处理，谢谢！'
+        submitSucc:'您的挂失申请已提交，正在等待一卡通后台处理，谢谢！',
+        canteenMenu:'餐厅菜单',
     },
     dormManage:{
         housingAllowance:"住房津贴",
@@ -491,9 +521,10 @@ var ZH_CN = {
         noFeeRecord:"没有扣费记录",
         dormMap:"宿舍地图",
         dormNotice:"宿舍公告",
+        dormNoticeProtocol:"入住需知",
         repairDorm:"宿舍报修",
         reissueKey:"补办钥匙",
-        dormAddress:"宿舍地址",
+        dormAddress:"具体地址",
         repairTime:"预约时间",
         deviceType:"待维修设备",
         repairDesc:"报修内容",
@@ -508,6 +539,59 @@ var ZH_CN = {
         hisSuggest:"以前的建议",
         suggestSucc:"感谢您的建议!",
         respSuggest:"回复",
+    },
+    union:{
+        communicate:"员工沟通",
+        welfare:"员工福利",
+        activity:"工会活动及报名",
+        helpSupport:"员工帮扶",
+        wonderfulMoment:"精彩瞬间",
+        suggest:"建议留言",
+        hotline:"热线号码",
+        otherCommunMethod:"其他沟通渠道",
+        welfare_fest:"年节福利",
+        welfare_union:"工惠福利汇",
+        welfare_dmUnion:"斗门公众号福利",
+        welfare_notice:"领取通知",
+        welfare_applyResult:"补贴申请结果查询",
+        welfare_old:"工惠福利汇往期福利",
+        AttendAct:"一键报名",
+        ActTime:"活动时间",
+        ActVenue:"活动地点",
+        ActDateBegin:"报名起始",
+        ActDateEnd:"报名截止",
+        mySuggest:"我的留言",
+        openSuggest:"他们说",
+    },
+    mechCharity:{
+        introduce:"简介",
+        activity:"活动报名",
+        wonderfulMoment:"活动报道",
+        accountingPublic:"账务公示",
+        research:"问卷调查",
+        arch:"组织架构",
+        projArch:"项目体系",
+        AttendAct:"志愿者报名",
+        manageEmail:"上司联系邮件",
+        favourite:"兴趣爱好",
+        pastActivities:"过去参加过的志愿活动类型",
+        freeTime:"可出席时间",
+        moneyPublic:"资金捐赠公示",
+        materialPublic:"物资捐赠公示",
+        yearAccountingPublic:"年度账务报告",
+        donation:"捐款金额(元)",
+        donationMaterial:"捐赠物资",
+        infoSelectMon:"请选择月份!",
+        infoSelectYear:"请选择年份!"
+    },
+    lostFound:{
+        tabMy:"我的发布",
+        public:"发布",
+        lost:"寻找失物",
+        found:"拾金不昧",
+        msgPublicSuccess:"发布成功!",
+        closePublic:"关闭发布",
+        relatePhoto:"相关照片",
     }
 };
 
@@ -515,9 +599,32 @@ var ZH_US = {
     common:{
         memo:"memo",
         Explain:"explain",
+        Description:"Description",
+        reason:"reason",
         grade:"grade",
         yuan:"RMB",
         InfoProvideIDNO:"The IDNO is required!",
+        CommunicationErr:"Communication error, please retry later!",
+        picture: "Picture",
+        takePhoto: "Take photo",
+        selectPhoto:"Select from Album",
+        clear:"Clear",
+        NoData:"No data yet.",
+        Cancel:"Cancel",
+        email:"E-mail",
+        sex:"Gender",
+        sexMale:"Male",
+        sexFeMale:"Female",
+        month:"month",
+        year:"year",
+        workdayNO:"WorkdayNo",
+        name:"Name",
+        income:"Income",
+        totalIncome:"Total Income",
+        expenditure:"Expenditure",
+        balance:"Balance",
+        mobile:"Mobile",
+        Reply:"Reply",
     },
     signin: {
         username: "Employee ID",
@@ -559,10 +666,12 @@ var ZH_US = {
         handbook: "Employee Handbook",
         apply: "Sign Up",
         insurance: "Commercial Insurance",
-        GBS:'GBS HR',
+        GBS:'HR',
         admin:"Admin",
         earthday:"Earth Week",
-        dormManage:"Dormitory Management"
+        dormManage:"Dormitory Management",
+        union:"Flex Union",
+        mechCharity:"MECH Charity",
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -702,6 +811,7 @@ var ZH_US = {
         NoStatus: 'Only dismissing employee has this status',
         Done: 'Done',
         Required: 'Required',
+        LostFound: 'Lost & Found',
     },
     xfcx:{
         title:" Consume Inquiry ",
@@ -802,11 +912,12 @@ var ZH_US = {
         DateEnd:"End date"
     },
     activityGood:{
-        title:" Sign Language Culture Poster Design Competition",
-        name: "Title",
+        title:"PCBA-B11第二届球类竞技赛冠军队有奖竞猜",
+        name: "Name",
         employee_ID: "Employee ID",
         department: "Department",
-        designer:"Designer",
+        designer:"Author",
+        desc:"Describe",
         designConcept: "Design Concept"
     },
     ehsAct:{
@@ -822,10 +933,98 @@ var ZH_US = {
         promptCancel:"Cancel",
         promptReportLost:"Are you sure to report you IC card lost?",
         lastRequest:"Last Request",
-        submitSucc:'Your report loss was commited, thank you!'
+        submitSucc:'Your report loss was commited, thank you!',
+        canteenMenu:'Cafeteria Menu',
     },
     dormManage:{
         housingAllowance:"Housing Allowance",
+        checkInState:"Checked in",
+        checkOutDate:"Check out date",
+        hiredDate:"Hire date",
+        allowanceSucc:"Housing Allowance apply success, effective date:",
+        applyDorm:"Apply Dormitory",
+        hasHousingAllowance:"Has Housing Allowance",
+        requireType:"Check in type",
+        requireReason:"Reason",
+        chargingDefine:"Fee inquiry",
+        dormArea:"Dormitory area",
+        applyDormSucc:"Your required was submit",
+        rcenetMonth:"Recent one month",
+        noFeeRecord:"No Feed Record",
+        dormMap:"Dormitory Map",
+        dormNotice:"Dormitory Notices",
+        dormNoticeProtocol:"Dormitory Protocol",
+        repairDorm:"Repair",
+        reissueKey:"Reissue key(s)",
+        dormAddress:"Address",
+        repairTime:"Depair time",
+        deviceType:"Device type",
+        repairDesc:"报修内容",
+        keyType:"Key",
+        repairDormSucc:"Your required was submit",
+        reissueKeySucc:"Your required was submit",
+        totalMoney:"Total",
+        freeDormWifi:"Free Wifi",
+        dormAskAndAns:"Dormitory FAQ",
+        dormSuggest:"Suggestion",
+        yourSuggest:"Your suggestion",
+        hisSuggest:"History",
+        suggestSucc:"Thanks for you suggestion!",
+        respSuggest:"Reply",
+    },
+    union:{
+        communicate:"Hotlines",
+        welfare:"Welfare",
+        activity:"Activities",
+        helpSupport:"Help Support",
+        wonderfulMoment:"Wonderful Moments",
+        suggest:"Suggestion",
+        hotline:"Hotlines",
+        otherCommunMethod:"Othe Communications",
+        welfare_fest:"Festival Welfare",
+        welfare_union:"Union Welfare",
+        welfare_dmUnion:"Doumen Union Welfare",
+        welfare_notice:"Welfare Notices",
+        welfare_applyResult:"Welfare Application Result",
+        welfare_old:"Past Union Welfare",
+        AttendAct:"Volunteer registration",
+        ActTime:"Time",
+        ActVenue:"Location",
+        ActDateBegin:"Begin",
+        ActDateEnd:"End",
+        mySuggest:"My suggestion",
+        openSuggest:"They said",
+
+    },
+    mechCharity:{
+        introduce:"Introduction",
+        activity:"Activities",
+        wonderfulMoment:"Past Activities",
+        accountingPublic:"Accounting Public",
+        research:"Research",
+        arch:"Organizational structure",
+        projArch:"Project system",
+        AttendAct:"Volunteer registration",
+        manageEmail:"Immediate Supervisor E-Mail",
+        favourite:"Hobbies",
+        pastActivities:"Types of volunteer activities in the past",
+        freeTime:"Attendance time",
+        moneyPublic:"Donation public",
+        materialPublic:"Materials donation public",
+        yearAccountingPublic:"Annual accounting report",
+        donation:"Donation(Yuan)",
+        donationMaterial:"Material Donation",
+        infoSelectMon:"Please choose month!",
+        infoSelectYear:"Please choose Year!"
+    },
+    lostFound:{
+        tabMy:"My public",
+        public:"publish",
+        lost:"Lost something",
+        found:"Found",
+        msgPublicSuccess:"Public ok!",
+        closePublic:"Cancel Public",
+        relatePhoto:"Relate photos",
     }
 };
 
@@ -845,8 +1044,17 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2018-09-08",
+    LAST_PUBLISH_DATE: "2018-11-13",
     //keys
+    KEY_ACT_GOOD_ID: "KEY_ActivityGood",
+    KEY_ACT_GOOD_ITEMID: "KEY_ActivityGood_ITEMID",
     KEY_DORM_NOTICE_ID: "KEY_DORM_NOTICE_ID",
     KEY_ASK_AND_ANS_ID: "KEY_ASK_AND_ANS_ID",
+    KEY_DYNPAGE: "KEY_DYNPAGE",
+    KEY_UNION_WONDERFULMON_ID: "KEY_UNION_WONDERFULMON_ID",
+    KEY_UNION_SUGGOPEN_ID: "KEY_UNION_SUGGOPEN_ID",
+    KEY_MC_RESEARCH_ID: "KEY_MC_RESEARCH_ID",
+    KEY_MC_RESEARCH_TITLE:"KEY_MC_RESEARCH_TITLE",
+    KEY_MC_WONDERFULMON_ID: "KEY_MC_WONDERFULMON_ID",
+    KEY_LOSTFOUND_ID: "KEY_LOSTFOUND_ID",
 };
