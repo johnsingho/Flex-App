@@ -71,10 +71,13 @@ angular.module('evaluationApp.CSERControllers', [])
     }
 
   })
-  .controller('CSERKidsCaringCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, CacheFactory, alertService) 
+  .controller('CSERKidsCaringCtrl', function ($scope, $rootScope, $state, $ionicHistory, 
+        commonServices, CacheFactory, alertService, UrlServices) 
   {
     //CSER托管
-
+    $scope.openGeneralNotice = function (isUrlHtml, id, html) {
+      UrlServices.openGeneralNotice(isUrlHtml, id, html);
+    };
   })
   .controller('CSERSumwinCampCtrl', function ($scope, $rootScope, $ionicPopup, $ionicModal,
     $state, $ionicHistory, commonServices, CacheFactory, alertService, UrlServices) 

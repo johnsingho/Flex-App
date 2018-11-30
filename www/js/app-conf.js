@@ -596,6 +596,7 @@ var ZH_CN = {
         msgPublicSuccess:"发布成功!",
         closePublic:"关闭发布",
         relatePhoto:"相关照片",
+        Publisher:"发布者",
     }
 };
 
@@ -1033,6 +1034,7 @@ var ZH_US = {
         msgPublicSuccess:"Public ok!",
         closePublic:"Cancel Public",
         relatePhoto:"Relate photos",
+        Publisher:"Publisher",
     }
 };
 
@@ -1052,7 +1054,7 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2018-11-13",
+    LAST_PUBLISH_DATE: "2018-11-29",
     //keys
     KEY_ACT_GOOD_ID: "KEY_ActivityGood",
     KEY_ACT_GOOD_ITEMID: "KEY_ActivityGood_ITEMID",

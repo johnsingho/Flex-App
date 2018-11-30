@@ -36,11 +36,15 @@ angular.module('evaluationApp.appServices', [])
                         result.msg='登录成功';
                     } else {
                         result.success=false;
-                        if($rootScope.Language==ZH_CN)
+                        if(!isEmptyString(response.message)){
+                            result.msg=response.message;
+                        }
+                        else if($rootScope.Language==ZH_CN){
                             result.msg='用户名或密码错误,未注册请先注册';
-                        else
-
-                        result.msg='Incorrect username or password. Please register first without registration';
+                        }                            
+                        else{
+                            result.msg='Incorrect username or password. Please register first without registration';
+                        }                        
                     }
                     deferred.resolve(result);
                 }) .error(function(response) {

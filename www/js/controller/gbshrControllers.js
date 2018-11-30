@@ -685,7 +685,7 @@ angular.module('evaluationApp.gbshrControllers', [])
         //clearHistoryForIndexPage
         var history = $ionicHistory.forwardView();
         if (!history) {
-          IninInfo();
+          IninInfo(true);
         }
       });
       $scope.closePass = function () {
@@ -696,7 +696,36 @@ angular.module('evaluationApp.gbshrControllers', [])
         $state.go('tab.home');
       };
 
-      function IninInfo() {
+      $scope.protocol = {
+        IsAggree: 0
+      };
+      function PromptProtocol(){
+        $ionicPopup.show({
+            title: '失物招领使用承诺书',
+            cssClass:'my-custom-popup-Alter',
+            templateUrl: 'templates/GBS/lostFound/protocolLostFound.html',
+            scope: $scope,
+            buttons: [
+                {
+                    text: '<b>确定</b>',
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        if(!$scope.protocol.IsAggree){
+                            alertService.showLoading("请接受承诺书！");
+                            e.preventDefault();
+                        }else{
+                            return;
+                        }                            
+                    }
+                }
+            ]
+        });
+      }
+
+      function IninInfo(showProtocol) {
+        if(showProtocol){
+            PromptProtocol();
+        } 
         var url = commonServices.getUrl("GBSHRService.ashx", "GetLostFoundList");
         commonServices.submit(baseInfo, url).then(function (resp) {
           if (resp) {
@@ -845,7 +874,7 @@ angular.module('evaluationApp.gbshrControllers', [])
             var msg = $rootScope.Language.lostFound.msgPublicSuccess;
             alertService.showAlert(msg);
             $scope.closeModal();
-            IninInfo();
+            IninInfo(false);
             //$ionicHistory.goBack();
           } else {
             alertService.showAlert(resp.message);

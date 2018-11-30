@@ -37,7 +37,11 @@
       </div>
 
       <div class="item item-body">
-        <span style="color:blue;font-size:12px;">{{Language.common.Description}}</span>
+        <div style="font-size:14px;">
+            <span style="color:blue;">{{Language.lostFound.Publisher}}:&nbsp;</span>
+            <span>{{item.UserName}}</span>
+        </div>
+        <span style="color:blue;font-size:14px;">{{Language.common.Description}}</span>
         <p style="Margin:1px" ng-bind-html="item.Content">
         </p>
       </div>

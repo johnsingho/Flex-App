@@ -864,6 +864,7 @@ angular.module('evaluationApp.unionControllers', [])
       CName: baseInfo.CName,
       WorkdayNO: baseInfo.WorkdayNO,
       MobileNo: baseInfo.MobileNo,
+      Organization: baseInfo.Organization,
       Suggest: ""
     };
     $scope.GetSuggest = function () {
