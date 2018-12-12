@@ -166,6 +166,13 @@ angular.module('evaluationApp.unionControllers', [])
     InitInfo();
 
     $scope.open = function (ID) {
+      var url = commonServices.getUrl("UnionService.ashx", "SubmitWelfareNoticeRead");
+      var paras = {
+        'NoticeID': ID,
+        'WorkdayNo': baseInfo.WorkdayNO,
+      };
+      commonServices.submit(paras, url);    
+
       //打开动态内容页
       var objDyn = {
         PageTitle: '详情',

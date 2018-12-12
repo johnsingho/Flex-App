@@ -68,7 +68,7 @@ angular.module('evaluationApp.gbshrControllers', [])
         //var bTestAccount = IsTestAccount(accessEmployee.WorkdayNO);
         //屏蔽multek
         //var bIsNotMultek = accessEmployee.Organization.toLowerCase().indexOf("multek")<0;
-        $scope.canShow = !isMultek(accessEmployee.Organization);
+        $scope.isMultek = isMultek(accessEmployee.Organization);
 
         $scope.open = function (action) {
             switch (action) {
