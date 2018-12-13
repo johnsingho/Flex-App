@@ -593,10 +593,15 @@ var ZH_CN = {
         public:"发布",
         lost:"寻找失物",
         found:"拾金不昧",
+        lostFoundPublic:"失物寻主",
         msgPublicSuccess:"发布成功!",
         closePublic:"关闭发布",
         relatePhoto:"相关照片",
         Publisher:"发布者",
+        PublishTime:"发布时间",
+        goodName:"物品名称",
+        location:"目前位置",
+        phone:"保管人电话",
     }
 };
 
@@ -1031,10 +1036,15 @@ var ZH_US = {
         public:"publish",
         lost:"Lost something",
         found:"Found",
+        lostFoundPublic:"Find Owner",
         msgPublicSuccess:"Public ok!",
         closePublic:"Cancel Public",
         relatePhoto:"Relate photos",
         Publisher:"Publisher",
+        PublishTime:"Publish Time",
+        goodName:"Name",
+        location:"Temporary keep place",
+        phone:"Contact Number",
     }
 };
 
@@ -1054,7 +1064,7 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2018-12-11",
+    LAST_PUBLISH_DATE: "2018-12-13",
     //keys
     KEY_ACT_GOOD_ID: "KEY_ActivityGood",
     KEY_ACT_GOOD_ITEMID: "KEY_ActivityGood_ITEMID",

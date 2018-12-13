@@ -1134,6 +1134,41 @@ angular.module('evaluationApp.gbshrControllers', [])
         });
       };
     })
+    .controller('LostFoundPublicCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, alertService) 
+    {
+      //失物招领 失物寻主
+      var baseInfo = commonServices.getBaseParas();
 
+      $scope.$on("$ionicView.beforeEnter", function () {
+        //clearHistoryForIndexPage
+        var history = $ionicHistory.forwardView();
+        if (!history) {
+          InitInfo();
+        }
+      });
+      $scope.closePass = function () {
+        $ionicHistory.nextViewOptions({
+          disableAnimate: true,
+          disableBack: true
+        });
+        $state.go('tab.home');
+      };
+
+      function InitInfo() {
+        var paras = baseInfo;
+        var url = commonServices.getUrl("GBSHRService.ashx", "GetLostFoundPublic");
+        commonServices.submit(paras, url).then(function (resp) {
+          if (resp == "Token is TimeOut") {
+            alertService.showAlert("登录失效，请重新登录");
+            $state.transitionTo('signin');
+          } else if (resp.success && resp.obj) {
+            $scope.entrys = resp.list;
+          }
+        });
+      }
+
+      InitInfo();
+
+    })
 ///////////////////////////////////////////////    
 ;        

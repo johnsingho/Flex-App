@@ -673,6 +673,15 @@ angular.module('evaluationApp.router', [])
                         }
                     }
                 })
+                .state('lostFound.Public', {
+                    url: '/lostFoundPublic',
+                    views: {
+                        'lostFoundPublic': {
+                            templateUrl: 'templates/GBS/lostFound/lostFound_public.html',
+                            controller: 'LostFoundPublicCtrl'
+                        }
+                    }
+                })
                 .state('lostFound.Detail', {
                     url: '/lostFoundDetail',
                     views: {
