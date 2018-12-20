@@ -221,7 +221,7 @@ angular.module('evaluationApp', ['ionic', 'ionic.native',
                 || $location.path() == '/tabPoints/PointsAccount') {
                 showConfirm();
             } else if ($ionicHistory.backView()) {
-                if ($cordovaKeyboard.isVisible()) {
+                if ($cordovaKeyboard.isVisible) {
                     $cordovaKeyboard.close();
                 } else {
                     $ionicHistory.goBack();
