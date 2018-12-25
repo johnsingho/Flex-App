@@ -1,10 +1,4 @@
 <!-- 失物寻主 -->
-<style>
-  .leftTitle {
-    color: darkblue;
-    font-size: 13px;
-  }
-</style>
 <ion-view view-title="{{Language.lostFound.lostFoundPublic}}" cache-view="false">
   <ion-nav-buttons side="left">
     <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
@@ -13,7 +7,13 @@
     <div ng-if="!entrys || !entrys.length">
       <h4 style="color:red">{{Language.common.NoData}}</h4>
     </div>
-
+    <style>
+      .leftTitle {
+        color: darkblue;
+        font-size: 13px;
+      }
+    </style>
+    
     <ion-list>
       <ion-item class="item item-body" ng-repeat="entry in entrys">
         <div class="row">
@@ -21,7 +21,7 @@
           <div class="col"> <span style="color:crimson;">{{entry.GoodName}}</span></div>
         </div>
         <div class="row">
-          <div class="col col-25"><span class="leftTitle">{{Language.lostFound.location}}</span></div>
+          <div class="col col-25"><span class="leftTitle">{{Language.lostFound.curLoc}}</span></div>
           <div class="col"><span>{{entry.Location}}</span></div>
         </div>
         <div class="row">

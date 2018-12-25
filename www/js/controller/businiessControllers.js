@@ -656,144 +656,142 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 
 
     })
-    .controller('ApplyTicketCtrl', function($scope,$rootScope,CacheFactory,noticeService,alertService,$state,$ionicPopup,$ionicHistory,$location,commonServices) {
-
+    .controller('ApplyTicketCtrl', function($scope,$rootScope,CacheFactory,noticeService,
+        alertService,$state,$ionicPopup,$ionicHistory,$location,commonServices) 
+    {
         var myPopup = $ionicPopup.show({
-            templateUrl: 'templates/applySubmit/ticketProtocolHtml.html',
-            cssClass:'my-custom-popup-Alter',
-            title: '免责声明',
-            subTitle: '',
-            scope: $scope,
-            buttons: [
-                {
-                    text: '<b>确定</b>',
-                    type: 'button-positive',
-                    onTap: function(e) {
-                        return ;
-                    }
-                }
-            ]
+          templateUrl: 'templates/applySubmit/ticketProtocolHtml.html',
+          cssClass: 'my-custom-popup-Alter',
+          title: '免责声明',
+          subTitle: '',
+          scope: $scope,
+          buttons: [{
+            text: '<b>确定</b>',
+            type: 'button-positive',
+            onTap: function (e) {
+              return;
+            }
+          }]
         });
-        var strHtml='';
-        var paras= commonServices.getBaseParas();
+        var strHtml = '';
+        var paras = commonServices.getBaseParas();
 
+        $scope.selDateList = [{
+          date: '请选择'
+        }, {
+          date: '2019-01-02'
+        }, {
+          date: '2019-01-03'
+        }, {
+          date: '2019-01-04'
+        }, {
+          date: '2019-01-05'
+        }, {
+          date: '2019-01-06'
+        }, {
+          date: '2019-01-07'
+        }, {
+          date: '2019-01-08'
+        }];
 
-
-
-
-        $scope.selDateList=[{date:'请选择'},{date:'2018-02-10'},{date:'2018-02-11'},{date:'2018-02-12'},{date:'2018-02-13'},{date:'2018-02-14'},{date:'2018-02-15'}];
-
-
-
-        $scope.Submitdata ={
-            selectedDate:"请选择",
-            selectedLine : "",
-            selectedStation: "",
-            MobileNoByUser: $rootScope.accessEmployee.MobileNo
+        $scope.Submitdata = {
+          selectedDate: "请选择",
+          selectedLine: "",
+          selectedStation: "",
+          MobileNoByUser: $rootScope.accessEmployee.MobileNo
         }
 
-        $scope.selDate=function(selectedDate){
-            $scope.Linelist='';
-            $scope.Stationlist='';
-            $scope.Submitdata.selectedLine='';
-            $scope.Submitdata.selectedStation='';
-            $scope.Submitdata.selectedDate=selectedDate;
-            paras.selDate=selectedDate;
-            var  url=commonServices.getUrl("ApplySubmitService.ashx","GetApplyTickeLine");
-            commonServices.getDataList(paras,url).then(function(data){
+        $scope.selDate = function (selectedDate) {
+          $scope.Linelist = '';
+          $scope.Stationlist = '';
+          $scope.Submitdata.selectedLine = '';
+          $scope.Submitdata.selectedStation = '';
+          $scope.Submitdata.selectedDate = selectedDate;
+          paras.selDate = selectedDate;
+          var url = commonServices.getUrl("ApplySubmitService.ashx", "GetApplyTickeLine");
+          commonServices.getDataList(paras, url).then(function (data) {
 
-                if(data=="Token is TimeOut"){
-                    alertService.showAlert("登录失效，请重新登录");
-                    $state.transitionTo('signin');
-                }
-                $scope.Linelist=data;
+            if (data == "Token is TimeOut") {
+              alertService.showAlert("登录失效，请重新登录");
+              $state.transitionTo('signin');
+            }
+            $scope.Linelist = data;
+          });
+
+        }
+
+        $scope.other = 'false';
+
+        $scope.selLine = function (selectedLine) {
+          $scope.Submitdata.selectedLine = selectedLine;
+
+          if (selectedLine == '其他线路') {
+            $scope.other = 'true';
+          } else {
+            $scope.other = 'false';
+            paras.selline = selectedLine;
+            paras.selDate = $scope.Submitdata.selectedDate;
+            var url = commonServices.getUrl("ApplySubmitService.ashx", "GetApplyTickeStation");
+            commonServices.getDataList(paras, url).then(function (data) {
+
+              if (data == "Token is TimeOut") {
+                alertService.showAlert("登录失效，请重新登录");
+                $state.transitionTo('signin');
+              }
+              $scope.Stationlist = data;
             });
-
+          }
         }
 
-        $scope.other='false';
-
-        $scope.selLine=function(selectedLine){
-            $scope.Submitdata.selectedLine=selectedLine;
-
-
-
-            if(selectedLine=='其他线路'){
-                $scope.other='true';
-            }else{
-                $scope.other='false';
-                paras.selline=selectedLine;
-                paras.selDate=$scope.Submitdata.selectedDate;
-                var  url=commonServices.getUrl("ApplySubmitService.ashx","GetApplyTickeStation");
-                commonServices.getDataList(paras,url).then(function(data){
-
-                    if(data=="Token is TimeOut"){
-                        alertService.showAlert("登录失效，请重新登录");
-                        $state.transitionTo('signin');
-                    }
-                    $scope.Stationlist=data;
-                });
-            }
-
+        $scope.selStation = function (selectedStation) {
+          $scope.Submitdata.selectedStation = selectedStation;
         }
 
+        $scope.Submit = function () {
+          if ($scope.Submitdata.selectedDate == "请选择") {
+            alertService.showAlert('请选择一个日期');
+            return;
+          }
 
-        $scope.selStation=function(selectedStation){
-             $scope.Submitdata.selectedStation=selectedStation;
-
-        }
-
-
-
-
-        $scope.Submit=function() {
-            if($scope.Submitdata.selectedDate=="请选择"){
-                alertService.showAlert('请选择一个日期');
-                return;
-            }
-
-            if($scope.Submitdata.selectedLine==""){
-                alertService.showAlert('请选择一个线路');
-                return;
-            }
-            if($scope.Submitdata.selectedStation==""){
-                alertService.showAlert('请选择或者填写一个站点');
-                return;
-            }
+          if ($scope.Submitdata.selectedLine == "") {
+            alertService.showAlert('请选择一个线路');
+            return;
+          }
+          if ($scope.Submitdata.selectedStation == "") {
+            alertService.showAlert('请选择或者填写一个站点');
+            return;
+          }
 
 
-            $ionicPopup.confirm({
-                title: '提示',
-                template: '确定报名吗？',
-                okText:"OK"
-            }) .then(function(res) {
-                if(res) {
-                    paras.submitDate=$scope.Submitdata.selectedDate;
-                    paras.submitLine=$scope.Submitdata.selectedLine;
-                    paras.submitStation=$scope.Submitdata.selectedStation;
-                    paras.submitMobileNo=$scope.Submitdata.MobileNoByUser;
+          $ionicPopup.confirm({
+            title: '提示',
+            template: '确定报名吗？',
+            okText: "OK"
+          }).then(function (res) {
+            if (res) {
+              paras.submitDate = $scope.Submitdata.selectedDate;
+              paras.submitLine = $scope.Submitdata.selectedLine;
+              paras.submitStation = $scope.Submitdata.selectedStation;
+              paras.submitMobileNo = $scope.Submitdata.MobileNoByUser;
 
 
-                    console.log( paras);
+              console.log(paras);
 
-                    var url=commonServices.getUrl("ApplySubmitService.ashx","SubmitApplyTicke");
-                    commonServices.submit(paras, url).then(function (data) {
-                        if (data.success) {
-                            alertService.showAlert('提交成功,后续会有工作人员联系购票事宜');
+              var url = commonServices.getUrl("ApplySubmitService.ashx", "SubmitApplyTicke");
+              commonServices.submit(paras, url).then(function (data) {
+                if (data.success) {
+                  alertService.showAlert('提交成功,后续会有工作人员联系购票事宜');
 
-                            $ionicHistory.goBack();
+                  $ionicHistory.goBack();
 
-                        }
-                        else {
-                            alertService.showAlert(data.message);
-                        }
-                    });
+                } else {
+                  alertService.showAlert(data.message);
                 }
-            });
+              });
+            }
+          });
 
         }
-
-
 
     })
     .controller('InsuranceCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {

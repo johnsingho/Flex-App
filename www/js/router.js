@@ -650,12 +650,12 @@ angular.module('evaluationApp.router', [])
                 controller: 'VisaApplyCtrl'
 
             })
-            .state('lostFound', {
-                url: '/lostFound',
+            .state('tab_LostFound', {
+                url: '/tab_LostFound',
                 templateUrl: 'templates/GBS/lostFound/lostFound.html',
                 abstract: true,
             })
-                .state('lostFound.List', {
+                .state('tab_LostFound.List', {
                     url: '/lostFoundList',
                     views: {
                         'lostFoundList': {
@@ -664,7 +664,7 @@ angular.module('evaluationApp.router', [])
                         }
                     }
                 })
-                .state('lostFound.My', {
+                .state('tab_LostFound.My', {
                     url: '/lostFoundMy',
                     views: {
                         'lostFoundMy': {
@@ -673,7 +673,7 @@ angular.module('evaluationApp.router', [])
                         }
                     }
                 })
-                .state('lostFound.Public', {
+                .state('tab_LostFound.Public', {
                     url: '/lostFoundPublic',
                     views: {
                         'lostFoundPublic': {
@@ -682,7 +682,7 @@ angular.module('evaluationApp.router', [])
                         }
                     }
                 })
-                .state('lostFound.Detail', {
+                .state('tab_LostFound.Detail', {
                     url: '/lostFoundDetail',
                     views: {
                         'lostFoundList': {

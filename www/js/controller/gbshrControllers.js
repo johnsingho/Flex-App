@@ -746,7 +746,7 @@ angular.module('evaluationApp.gbshrControllers', [])
       $scope.viewDetail = function (lostID) {
         CacheFactory.remove(GLOBAL_INFO.KEY_LOSTFOUND_ID);
         CacheFactory.save(GLOBAL_INFO.KEY_LOSTFOUND_ID, lostID);
-        $state.go('lostFound.Detail');
+        $state.go('tab_LostFound.Detail');
       };
 
       $scope.lfTypes = [{
@@ -792,7 +792,6 @@ angular.module('evaluationApp.gbshrControllers', [])
       $scope.Reset();
 
       var swMap = null;
-
       function HasSensWord(txt) {
         if (!swMap) {
           swMap = sw_buildMap();
@@ -883,6 +882,7 @@ angular.module('evaluationApp.gbshrControllers', [])
         });
       }
 
+      //IninInfo(true);//初始化
     })
     .controller('LostFoundDetailCtrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicScrollDelegate,
                                             $ionicModal, $ionicHistory, commonServices, CacheFactory, alertService) 

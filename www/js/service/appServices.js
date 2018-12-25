@@ -427,13 +427,11 @@ angular.module('evaluationApp.appServices', [])
                 if(false==IsDebugMode){
                     API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
                 }                
-                if (error.status == 0) {
+                if (error.status <= 0) {
                     error.data = {
-                        template: !navigator.onLine || error.data == '' ?
-                            '网络不通':
-                          '请求失败, 请稍后重试...'
-
-                    }
+                      template: !navigator.onLine || error.data == '' ?
+                        '网络不通' : '请求失败, 请稍后重试...'
+                    };
                 } else if (error.data.error_msg == ERROR.WRONG_ACCESSTOKEN || status == 403) {
                     error.data = {
                         template: '好像是鉴权失效了，该不会是<b>@alsotang</b>的API有啥问题吧？'

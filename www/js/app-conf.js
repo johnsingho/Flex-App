@@ -600,7 +600,7 @@ var ZH_CN = {
         Publisher:"发布者",
         PublishTime:"发布时间",
         goodName:"物品名称",
-        location:"目前位置",
+        curLoc:"目前位置",
         phone:"保管人电话",
     }
 };
@@ -1043,7 +1043,7 @@ var ZH_US = {
         Publisher:"Publisher",
         PublishTime:"Publish Time",
         goodName:"Name",
-        location:"Temporary keep place",
+        curLoc:"Temporary keep place",
         phone:"Contact Number",
     }
 };
