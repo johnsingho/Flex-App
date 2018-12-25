@@ -589,10 +589,9 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             $state.go('applyHtml');
         };
 
-        $scope.openTicket=function(apply){
-
-            $state.go('applyTicket');
-        };
+        // $scope.openTicket=function(apply){
+        //     $state.go('applyTicket');
+        // };
 
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
@@ -659,6 +658,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
     .controller('ApplyTicketCtrl', function($scope,$rootScope,CacheFactory,noticeService,
         alertService,$state,$ionicPopup,$ionicHistory,$location,commonServices) 
     {
+        //团购车票
         var myPopup = $ionicPopup.show({
           templateUrl: 'templates/applySubmit/ticketProtocolHtml.html',
           cssClass: 'my-custom-popup-Alter',
@@ -673,41 +673,25 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             }
           }]
         });
-        var strHtml = '';
+
         var paras = commonServices.getBaseParas();
-
-        $scope.selDateList = [{
-          date: '请选择'
-        }, {
-          date: '2019-01-02'
-        }, {
-          date: '2019-01-03'
-        }, {
-          date: '2019-01-04'
-        }, {
-          date: '2019-01-05'
-        }, {
-          date: '2019-01-06'
-        }, {
-          date: '2019-01-07'
-        }, {
-          date: '2019-01-08'
-        }];
-
+        var dtInit = new Date();
+        if(dtInit<Date.parse('2019-01-15') || dtInit>Date.parse('2019-02-04')){
+            dtInit = '2019-01-15';
+        }
         $scope.Submitdata = {
-          selectedDate: "请选择",
+          selectedDate: dtInit,
           selectedLine: "",
           selectedStation: "",
           MobileNoByUser: $rootScope.accessEmployee.MobileNo
         }
 
-        $scope.selDate = function (selectedDate) {
+        $scope.selDate = function () {
           $scope.Linelist = '';
           $scope.Stationlist = '';
           $scope.Submitdata.selectedLine = '';
           $scope.Submitdata.selectedStation = '';
-          $scope.Submitdata.selectedDate = selectedDate;
-          paras.selDate = selectedDate;
+          paras.selDate = $scope.Submitdata.selectedDate;
           var url = commonServices.getUrl("ApplySubmitService.ashx", "GetApplyTickeLine");
           commonServices.getDataList(paras, url).then(function (data) {
 

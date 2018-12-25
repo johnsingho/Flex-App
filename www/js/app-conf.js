@@ -566,6 +566,7 @@ var ZH_CN = {
         ActDateEnd:"报名截止",
         mySuggest:"我的留言",
         openSuggest:"他们说",
+        carTicket:"春运汽车票团购",
     },
     mechCharity:{
         introduce:"简介",
@@ -1008,7 +1009,7 @@ var ZH_US = {
         ActDateEnd:"End",
         mySuggest:"My suggestion",
         openSuggest:"They said",
-
+        carTicket:"Car Tickets",
     },
     mechCharity:{
         introduce:"Introduction",
