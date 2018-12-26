@@ -217,6 +217,10 @@ angular.module('evaluationApp.appServices', [])
                 };
                 return parameter;
             },
+            getLoginServerTime:function(){
+                var accessEmployee = $rootScope.accessEmployee;
+                return new Date(accessEmployee.LoginServerTime);
+            },
             getUrl:function(pageName,methodName){
 //                API_HOST+'/MealOrder.ashx?action=GetMealList'
                 return API_HOST+'/'+pageName+'?action='+methodName;

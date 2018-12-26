@@ -647,16 +647,10 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                     });
                 }
             });
-
-
-
             }
-
-
-
     })
     .controller('ApplyTicketCtrl', function($scope,$rootScope,CacheFactory,noticeService,
-        alertService,$state,$ionicPopup,$ionicHistory,$location,commonServices) 
+        alertService,$state,$ionicPopup,$ionicHistory,$location,commonServices,duplicateSubmitServices) 
     {
         //团购车票
         var myPopup = $ionicPopup.show({
@@ -674,50 +668,54 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
           }]
         });
 
-        var paras = commonServices.getBaseParas();
-        var dtInit = new Date();
-        if(dtInit<Date.parse('2019-01-15') || dtInit>Date.parse('2019-02-04')){
-            dtInit = '2019-01-15';
-        }
+        var baseInfo = $.extend({}, commonServices.getBaseParas());
+        baseInfo.SubmitGuid = duplicateSubmitServices.genGUID();
+        // var dtInit = new Date();
+        // var dtBegin = new Date('2019-01-15');
+        // var dtEnd = new Date('2019-02-04');
+        // if(dtInit<dtBegin || dtInit>dtEnd){
+        //     dtInit = dtBegin;
+        // }
+        var dtInit=null;
         $scope.Submitdata = {
+          CName: baseInfo.CName,
+          WorkdayNO: baseInfo.WorkdayNO,
+          Organization: baseInfo.Organization,
+          MobileNo: baseInfo.MobileNo,
           selectedDate: dtInit,
           selectedLine: "",
-          selectedStation: "",
-          MobileNoByUser: $rootScope.accessEmployee.MobileNo
-        }
+          selectedDownStation: "",
+          Memo:"",
+        };
 
         $scope.selDate = function () {
           $scope.Linelist = '';
           $scope.Stationlist = '';
           $scope.Submitdata.selectedLine = '';
-          $scope.Submitdata.selectedStation = '';
-          paras.selDate = $scope.Submitdata.selectedDate;
+          $scope.Submitdata.selectedDownStation = '';
+          baseInfo.selDate = moment($scope.Submitdata.selectedDate).format("YYYY-MM-DD");
           var url = commonServices.getUrl("ApplySubmitService.ashx", "GetApplyTickeLine");
-          commonServices.getDataList(paras, url).then(function (data) {
-
+          commonServices.getDataList(baseInfo, url).then(function (data) {
             if (data == "Token is TimeOut") {
               alertService.showAlert("登录失效，请重新登录");
               $state.transitionTo('signin');
             }
             $scope.Linelist = data;
           });
-
         }
 
         $scope.other = 'false';
-
-        $scope.selLine = function (selectedLine) {
-          $scope.Submitdata.selectedLine = selectedLine;
-
+        $scope.selLine = function() {
+          var selectedLine = $scope.Submitdata.selectedLine;
           if (selectedLine == '其他线路') {
             $scope.other = 'true';
           } else {
             $scope.other = 'false';
-            paras.selline = selectedLine;
-            paras.selDate = $scope.Submitdata.selectedDate;
+            $scope.Stationlist=null;
+            baseInfo.selline = selectedLine;
+            baseInfo.selDate = moment($scope.Submitdata.selectedDate).format("YYYY-MM-DD");
             var url = commonServices.getUrl("ApplySubmitService.ashx", "GetApplyTickeStation");
-            commonServices.getDataList(paras, url).then(function (data) {
-
+            commonServices.getDataList(baseInfo, url).then(function (data) {
               if (data == "Token is TimeOut") {
                 alertService.showAlert("登录失效，请重新登录");
                 $state.transitionTo('signin');
@@ -725,27 +723,45 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
               $scope.Stationlist = data;
             });
           }
-        }
+        };
 
-        $scope.selStation = function (selectedStation) {
-          $scope.Submitdata.selectedStation = selectedStation;
-        }
+        $scope.selDownStation = function(){
+            var st = $scope.Submitdata.selectedDownStation;
+            for(var i=0; i<$scope.Stationlist.length; i++){
+                if(st == $scope.Stationlist[i].DownStation){
+                    $scope.Submitdata.Memo = $scope.Stationlist[i].memo;
+                    break;
+                }
+            }            
+        };
+
+        $scope.isNotValid = function(params) {
+            if (isEmptyString($scope.Submitdata.selectedDate) || $scope.Submitdata.selectedDate=="请选择") {
+                return '请选择一个日期';
+              }
+              if (isEmptyString($scope.Submitdata.selectedLine)) {
+                return '请选择一个线路';
+              }
+              if (isEmptyString($scope.Submitdata.selectedDownStation)) {
+                return '请选择落客站点';
+              }
+              return null;
+        };
 
         $scope.Submit = function () {
-          if ($scope.Submitdata.selectedDate == "请选择") {
-            alertService.showAlert('请选择一个日期');
+          var serr = $scope.isNotValid();
+          if(!isEmptyString(serr)){
+            alertService.showAlert(serr);
             return;
           }
-
-          if ($scope.Submitdata.selectedLine == "") {
-            alertService.showAlert('请选择一个线路');
+          var dtLogin = commonServices.getLoginServerTime();
+          var dtBegin = new Date('2019-01-02 09:00');
+          var dtEnd = new Date('2019-01-08 14:00');
+          if (dtLogin < dtBegin || dtLogin > dtEnd) {
+            alertService.showAlert('无法提交：<br>预购票时间：2019年1月2日 9:00 ~ 2019年1月8日 14:00');
+            $ionicHistory.goBack();
             return;
           }
-          if ($scope.Submitdata.selectedStation == "") {
-            alertService.showAlert('请选择或者填写一个站点');
-            return;
-          }
-
 
           $ionicPopup.confirm({
             title: '提示',
@@ -753,30 +769,23 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             okText: "OK"
           }).then(function (res) {
             if (res) {
-              paras.submitDate = $scope.Submitdata.selectedDate;
-              paras.submitLine = $scope.Submitdata.selectedLine;
-              paras.submitStation = $scope.Submitdata.selectedStation;
-              paras.submitMobileNo = $scope.Submitdata.MobileNoByUser;
-
-
-              console.log(paras);
+              baseInfo.submitDate = moment($scope.Submitdata.selectedDate).format("YYYY-MM-DD");
+              baseInfo.submitLine = $scope.Submitdata.selectedLine;
+              baseInfo.submitStation = $scope.Submitdata.selectedDownStation;
+              baseInfo.submitMobileNo = $scope.Submitdata.MobileNo;
 
               var url = commonServices.getUrl("ApplySubmitService.ashx", "SubmitApplyTicke");
-              commonServices.submit(paras, url).then(function (data) {
+              commonServices.submit(baseInfo, url).then(function (data) {
                 if (data.success) {
-                  alertService.showAlert('提交成功,后续会有工作人员联系购票事宜');
-
+                  alertService.showAlert('预报名提交成功，请保持手机畅通，以方便工作人员通知最新情况');
                   $ionicHistory.goBack();
-
                 } else {
                   alertService.showAlert(data.message);
                 }
               });
             }
           });
-
         }
-
     })
     .controller('InsuranceCtrl', function($scope,CacheFactory,noticeService,alertService,$state,$ionicHistory,commonServices) {
         //商业保险
@@ -1699,162 +1708,6 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             });
         }
         GetList(paras);
-    })
-    .controller('ChartRoomCtrl', function($scope,CacheFactory,commonServices,$state,$ionicHistory,$interval) {
-        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-
-        //记录点击
-        var paras1={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token,opType:'聊天室',opContent:'点击进入'};
-        commonServices.operationLog(paras1).then(function(data){
-            $scope.sucess=data;
-        });
-
-        var socket;
-        var isSocketConnect = false;
-
-        //建立socket连接
-        $scope.socketConnect=function (){
-            if (isSocketConnect && (socket.readyState == 1 || socket.readyState == 0)) {
-//                $scope.sendSocketMessage(event, "离开聊天室");
-                socket.close();
-//                $("#btnWs").val("连接");
-                // $("#btnWs").ena
-                return;
-            }
-            try {
-//                socket = new WebSocket("wss://zhmobile.flextronics.com/chatroom/Socket/SupperWebSocketHandle.ashx"); //socket连接服务端地址
-//                socket = new WebSocket("ws://218.213.76.1:8077"); //socket连接服务端地址
-                           socket = new WebSocket("wss://zhmobile.flextronics.com/chatroom/Socket/SocketHandler.ashx"); //socket连接服务端地址
-//                   socket =new WebSocket("ws://echo.websocket.org/");
-
-            }
-            catch (ex) {
-
-                log("系统消息^您的浏览器不支持WebSocket");
-                return;
-            }
-
-            $scope.timer = $interval(function(){
-                $scope.sendSocketMessage(Event, "$$keeplive");
-            },30000);
-
-            function reconnect (){
-                $scope.socketConnect();
-            }
-
-            //相应的socket事件
-            //socket建立连接
-            socket.onopen = function () {
-                //连接成功，将消息广播出去
-                isSocketConnect = true;
-                $scope.sendSocketMessage(Event, "进入聊天室");
-
-
-            }
-            //socket得到服务端广播的消息
-            socket.onmessage = function (event) {
-                Log(event.data);
-            }
-            //socket连接关闭
-            socket.onclose = function (event) {
-
-                if(isSocketConnect){
-                    Log("系统消息^掉线正在重连");
-                    $scope.reconect=$interval(function(){
-                        $scope.socketConnect();
-                        if (socket.readyState == WebSocket.OPEN){
-                            $interval.clear($scope.reconect);
-                        }
-                    },5000);
-                }
-
-
-            }
-            //socket连接出现错误
-            socket.onerror = function (event) {
-
-                Log("系统消息^socket connect error"+event.data);
-            }
-        }
-
-        $scope.socketConnect();
-
-        $scope.sendMsg=function(chat){
-            $scope.sendSocketMessage(Event, chat);
-        }
-
-        $scope.sendSocketMessage=function(event, msg) {
-            if (socket.readyState == WebSocket.OPEN) {
-                if ($("#txtMsg").val() == "") {
-                    if (!msg) {
-                        return; //空文本不发送消息
-                    }
-                }
-                if (!msg) {
-                    msg = $scope.accessEmployee.CName+"^"+ $("#txtMsg").val();
-                }
-                else {
-                    msg =  $scope.accessEmployee.CName+"^"+msg;
-                }
-                socket.send(msg);
-                $("#txtMsg").val(""); //清空已输入的数据
-                $("#txtMsg").focus();
-            }
-            else {
-                Log("系统消息^你的手机暂时不支持聊天室");
-            }
-        }
-
-
-
-        function Log(msg) {
-
-            $scope.mytime = new Date().toLocaleTimeString();
-
-            var div = document.getElementById("msgContainer1");
-
-            console.log(msg);
-
-            var sMsg= msg.split('^');
-
-            var sName=sMsg[0];
-            msg=sMsg[1];
-
-            var sender="sender";
-            var triangle="left_triangle";
-            if(sName==$scope.accessEmployee.CName){
-                sender="receiver";
-                triangle="right_triangle";
-            }
-
-
-            msg="<div style=\"width: 40%; margin: auto;\"><p style='font-size: 9px'>"+$scope.mytime+"</p></div><div class=\""+sender+"\"><div><img src=\"img/user.jpg\"> <p>"+sName+"</p></div><div style=\"width: 250px\"><div class=\""+triangle+"\"></div><p>"+msg+"</p></div></div>"
-
-            if(div.innerHTML.length>20000)
-            {
-                div.innerHTML="";
-            }
-
-            msg = div.innerHTML + msg;
-
-            div.innerHTML =msg;
-
-            div.scrollTop = div.scrollHeight;
-        }
-
-
-        $scope.closePass=function(){
-            $interval.cancel($scope.timer);
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            isSocketConnect=false;
-            socket.close();
-
-            $state.go('tab.home');
-        }
-
     })
     .controller('LightPowerCtrl', function($scope,$rootScope,$ionicSlideBoxDelegate ,$timeout,$state,$location,alertService, CacheFactory ,commonServices,externalLinksService) {
         $rootScope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));

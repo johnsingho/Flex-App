@@ -365,7 +365,7 @@ var ZH_CN = {
         LTP:'LTP密码重置',
         basicGuide:'菜鸟手册',
         SocialInsurance:'社会保险',
-        HousingFund: '住房公积金信息',
+        HousingFund: '住房公积金 & 个税',
         EmployeeDismiss: '离职须知',
         DismissIntro: '离职手续简介',
         DismissStatus: '离职手续状态查询',
@@ -1065,7 +1065,7 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2018-12-13",
+    LAST_PUBLISH_DATE: "2018-12-26",
     //keys
     KEY_ACT_GOOD_ID: "KEY_ActivityGood",
     KEY_ACT_GOOD_ITEMID: "KEY_ActivityGood_ITEMID",
