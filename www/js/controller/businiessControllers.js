@@ -685,6 +685,7 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
           selectedDate: dtInit,
           selectedLine: "",
           selectedDownStation: "",
+          expectTime: "",
           Memo:"",
         };
 
@@ -755,10 +756,10 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             return;
           }
           var dtLogin = commonServices.getLoginServerTime();
-          var dtBegin = new Date('2019-01-02 09:00');
+          var dtBegin = new Date('2019-01-03 14:00');
           var dtEnd = new Date('2019-01-08 14:00');
           if (dtLogin < dtBegin || dtLogin > dtEnd) {
-            alertService.showAlert('无法提交：<br>预购票时间：2019年1月2日 9:00 ~ 2019年1月8日 14:00');
+            alertService.showAlert('无法提交：<br>预购票时间：2019年1月3日 14:00 ~ 2019年1月8日 14:00');
             $ionicHistory.goBack();
             return;
           }
@@ -773,11 +774,13 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
               baseInfo.submitLine = $scope.Submitdata.selectedLine;
               baseInfo.submitStation = $scope.Submitdata.selectedDownStation;
               baseInfo.submitMobileNo = $scope.Submitdata.MobileNo;
-
+              var timSel = $scope.Submitdata.expectTime;
+              baseInfo.expectTime = !!timSel ? moment(timSel).format("HH:mm") :"";
+              
               var url = commonServices.getUrl("ApplySubmitService.ashx", "SubmitApplyTicke");
               commonServices.submit(baseInfo, url).then(function (data) {
                 if (data.success) {
-                  alertService.showAlert('预报名提交成功，请保持手机畅通，以方便工作人员通知最新情况');
+                  alertService.showAlert('预报名提交成功，信禾公司将与你确认订票、是否成团等情况，请保持手机畅通!');
                   $ionicHistory.goBack();
                 } else {
                   alertService.showAlert(data.message);
