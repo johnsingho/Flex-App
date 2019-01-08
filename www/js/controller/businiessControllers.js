@@ -757,9 +757,9 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
           }
           var dtLogin = commonServices.getLoginServerTime();
           var dtBegin = new Date('2019-01-03 14:00');
-          var dtEnd = new Date('2019-01-08 14:00');
+          var dtEnd = new Date('2019-01-10 11:00');
           if (dtLogin < dtBegin || dtLogin > dtEnd) {
-            alertService.showAlert('无法提交：<br>预购票时间：2019年1月3日 14:00 ~ 2019年1月8日 14:00');
+            alertService.showAlert('无法提交：<br>预购票时间：2019年1月3日 14:00 ~ 2019年1月10日 11:00');
             $ionicHistory.goBack();
             return;
           }

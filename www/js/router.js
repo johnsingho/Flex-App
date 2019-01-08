@@ -345,17 +345,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/carGps/tab-map.html',
                 controller: 'BaiduMapCtrl'
             })
-            .state('carBusTime', {
-                url: '/carBusTime',
-                templateUrl: 'templates/carGps/tab-carBusTime.html',
-                controller: 'CarPictureCtrl'
-            })
-
-            .state('carPicture', {
-                url: '/carPicture',
-                templateUrl: 'templates/carPicture.html',
-                controller: 'CarPictureCtrl'
-            })
+            // .state('carBusTime', {
+            //     url: '/carBusTime',
+            //     templateUrl: 'templates/carGps/tab-carBusTime.html',
+            //     controller: 'CarPictureCtrl'
+            // })
             .state('chartRoom', {
                 url: '/chartRoom',
                 templateUrl: 'templates/chartRoom/tab-chartRoom.html',

@@ -62,11 +62,27 @@ angular.module('evaluationApp.adminControllers', [])
         };
     })
     /*sub of AdminCtrl*/
-    .controller('CarListCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService)
+    .controller('CarListCtrl',function($scope,$state,$ionicHistory,commonServices,CacheFactory,alertService,externalLinksService)
     {
         //班车信息
         var params=commonServices.getBaseParas();
         var url=commonServices.getUrl("MapService.ashx","GetCarList");
+        $scope.openGeneralNotice = function(isUrlHtml, id, html){
+            if(isUrlHtml){
+                //打开外链
+                try {
+                    externalLinksService.openUr(html);
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+            }else{
+                CacheFactory.remove('gnID');
+                CacheFactory.save('gnID', id);
+                $state.go("generalNoticeDetail");
+            }
+        };
+
         //获取car列表
         commonServices.getDataList(params,url).then(function(data){
             if(data=="Token is TimeOut"){
@@ -82,7 +98,8 @@ angular.module('evaluationApp.adminControllers', [])
             $state.go("CarMap");
         };
         $scope.openBusTime=function(){
-            $state.go("carBusTime");
+            //$state.go("carBusTime");
+            $scope.openGeneralNotice(0, '51586037-E097-4080-B571-85B433DF8070');
         };
         $scope.closePass=function(){
             $ionicHistory.nextViewOptions({
@@ -92,30 +109,30 @@ angular.module('evaluationApp.adminControllers', [])
             $state.go('admin');
         }
     })
-    .controller('CarPictureCtrl', function($scope,CacheFactory,commonServices,$state,$ionicHistory) {
-        $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
-        //记录点击
-        var paras1={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token,opType:'班车查询',opContent:'点击进入'};
-        commonServices.operationLog(paras1).then(function(data){
-            $scope.sucess=data;
-        });
+    // .controller('CarPictureCtrl', function($scope,CacheFactory,commonServices,$state,$ionicHistory) {
+    //     $scope.accessEmployee = JSON.parse(CacheFactory.get('accessEmployee'));
+    //     //记录点击
+    //     var paras1={ WorkdayNO: $scope.accessEmployee.WorkdayNO,Token:$scope.accessEmployee.Token,opType:'班车查询',opContent:'点击进入'};
+    //     commonServices.operationLog(paras1).then(function(data){
+    //         $scope.sucess=data;
+    //     });
 
-        $("#auto-loop").lightGallery({
-            mobileSrc         : false, // If "data-responsive-src" attr. should be used for mobiles.
-            mobileSrcMaxWidth : 640,   // Max screen resolution for alternative images to be loaded for.
-            swipeThreshold    : 50,    // How far user must swipe for the next/prev image (in px).
-            hideControlOnEnd : false,
-            closable:false
-        });
+    //     $("#auto-loop").lightGallery({
+    //         mobileSrc         : false, // If "data-responsive-src" attr. should be used for mobiles.
+    //         mobileSrcMaxWidth : 640,   // Max screen resolution for alternative images to be loaded for.
+    //         swipeThreshold    : 50,    // How far user must swipe for the next/prev image (in px).
+    //         hideControlOnEnd : false,
+    //         closable:false
+    //     });
 
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('admin');
-        }
-    })
+    //     $scope.closePass=function(){
+    //         $ionicHistory.nextViewOptions({
+    //             disableAnimate: true,
+    //             disableBack: true
+    //         });
+    //         $state.go('admin');
+    //     }
+    // })
     .controller('MealListCtrl',function($scope,$rootScope,$state,$ionicModal,$ionicHistory,commonServices,CacheFactory,alertService,$ionicPopup)
     {
         //点餐
