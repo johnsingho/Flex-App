@@ -1044,14 +1044,17 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
             $state.go('activityEHS');
         };
 
-        $scope.openSpecial = function(action){
-            switch (action) {
-                case "补贴申请结果查询":
-                  $state.go("union_welfare_applyResult");
-                  break;
-                default:
-                  break;
-              }
+        $scope.openSpecial = function (action) {
+          switch (action) {
+            case "补贴申请结果查询":
+              $state.go("union_welfare_applyResult");
+              break;
+            case "2019年新春文艺晚会门票":
+              $state.go("act_AnnualPartyTicket2019");
+              break;
+            default:
+              break;
+          }
         };
         
         //历史活动列表
@@ -2025,6 +2028,31 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 });
 
         }
+
+    })
+    .controller('AnnualPartyTicket2019Ctrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                                            commonServices, CacheFactory, alertService) 
+    {
+        //2019年新春文艺晚会
+        function InitInfo() {
+          var url = commonServices.getUrl("ApplySubmitService.ashx", "GetAnnualPartyTicket2019");
+          var paras = commonServices.getBaseParas();
+          $scope.model = paras;
+          $scope.ticket = '很抱歉，您还没有门票！';
+          $scope.bHasTicket=false;
+          $scope.clsTick="noTick";
+          commonServices.submit(paras, url).then(function (resp) {
+            if (resp) {
+              if (resp.success) {
+                var obj = resp.obj;
+                $scope.bHasTicket=true;
+                $scope.clsTick="hasTick";
+                $scope.ticket = obj.Employee_ID +'<br>'+obj.Chinese_Name+'<br>'+obj.Organization;
+              }
+            }
+          });
+        }
+        InitInfo();
 
     })
 ;

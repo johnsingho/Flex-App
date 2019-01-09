@@ -1039,7 +1039,11 @@ angular.module('evaluationApp.router', [])
             templateUrl: 'templates/admin/canteen-list.html',
             controller: 'CanteenImgCtrl'
         })                
-                                
+        .state('act_AnnualPartyTicket2019', {
+            url: '/act_AnnualPartyTicket2019',
+            templateUrl: 'templates/activity/annualPartyTicket2019.html',
+            controller: 'AnnualPartyTicket2019Ctrl'
+        })                   
         
         $urlRouterProvider.otherwise('signin');
 
