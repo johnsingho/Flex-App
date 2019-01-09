@@ -2031,14 +2031,14 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
 
     })
     .controller('AnnualPartyTicket2019Ctrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-                                            commonServices, CacheFactory, alertService) 
+                                            commonServices, CacheFactory, alertService, actionVisitServices) 
     {
         //2019年新春文艺晚会
         function InitInfo() {
           var url = commonServices.getUrl("ApplySubmitService.ashx", "GetAnnualPartyTicket2019");
           var paras = commonServices.getBaseParas();
           $scope.model = paras;
-          $scope.ticket = '很抱歉，您还没有门票！';
+          $scope.ticket = '很抱歉，您还没有2019春晚门票！';
           $scope.bHasTicket=false;
           $scope.clsTick="noTick";
           commonServices.submit(paras, url).then(function (resp) {

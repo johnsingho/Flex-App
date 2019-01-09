@@ -1,17 +1,15 @@
 <!-- 活动列表 -->
-<style>
-    .OutDate{
-        color: #000 !important;
-        background-color: gainsboro !important;
-    }
-</style>
-
-<ion-view view-title="{{Language.activity.title}}" cache-view="false" >
+<ion-view view-title="{{Language.activity.title}}" cache-view="false">    
     <ion-nav-buttons side="left">
         <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
     </ion-nav-buttons>
     <ion-content scroll="true" overflow-scroll="true" >
-
+    <style>
+    .OutDate {
+        color: #000 !important;
+        background-color: gainsboro !important;
+    }
+    </style>
         <!--<ion-list ng-if="shouCj">-->
             <!--<ion-item  class="item item-thumbnail-left"  ng-click="openCJ()">-->
                 <!--<img src="img/choujiang.jpg">-->
@@ -33,8 +31,10 @@
         </ion-item>
 
         <!--活动点赞-->
-        <ion-list>
-            <ion-item class="item item-thumbnail-left" ng-click="openSpecial('2019年新春文艺晚会门票')">
+        <ion-list> 
+            <ion-item class="item item-thumbnail-left" 
+                ng-click="openSpecial('2019年新春文艺晚会门票')"
+                ng-if="canUseAction('2019年新春文艺晚会门票');">
                 <img src="img/other/AnnualTick2019.PNG">
                 <br>
                 <h3>2019年新春文艺晚会门票</h3>

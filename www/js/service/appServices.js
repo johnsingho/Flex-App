@@ -661,7 +661,7 @@ angular.module('evaluationApp.appServices', [])
             if (!serUpdate || !workNo) {
                 return false;
             } else if (serUpdate.IsTesting) {
-                for(var i=0; i<serUpdate.TestingAccount.length; i++){
+                for(var i=0; i<serUpdate.TestingAccount&&serUpdate.TestingAccount.length; i++){
                     if (workNo == serUpdate.TestingAccount[i]) {
                         return true;
                     }
