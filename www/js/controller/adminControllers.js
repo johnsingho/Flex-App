@@ -483,7 +483,7 @@ angular.module('evaluationApp.adminControllers', [])
         // };
     })
     .controller('DormManageCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
-                commonServices, CacheFactory, alertService, actionVisitServices) 
+                commonServices, CacheFactory, alertService, actionVisitServices, externalLinksService) 
     {        
         //宿舍管理
         $scope.canUseAction = function (action) {
@@ -491,6 +491,21 @@ angular.module('evaluationApp.adminControllers', [])
         };
         $scope.checkActionUpdate = function (action) {
           return actionVisitServices.checkUpdate(action);
+        };
+        $scope.openGeneralNotice = function(isUrlHtml, id, html){
+            if(isUrlHtml){
+                //打开外链
+                try {
+                    externalLinksService.openUr(html);
+                }
+                catch (ex) {
+                    alertService.showAlert(ex.message);
+                }
+            }else{
+                CacheFactory.remove('gnID');
+                CacheFactory.save('gnID', id);
+                $state.go("generalNoticeDetail");
+            }
         };
 
         $scope.open=function(action){
@@ -512,7 +527,8 @@ angular.module('evaluationApp.adminControllers', [])
                     $state.go('dormNotice');
                     break;
                 case "宿舍地图":
-                    $state.go('dormMap');
+                    //$state.go('dormMap');
+                    $scope.openGeneralNotice(0, '671705D6-DEAE-4B19-9969-ABED6400F251');
                     break;
                 case "宿舍报修":
                     $state.go('repairDorm');

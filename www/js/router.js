@@ -757,11 +757,11 @@ angular.module('evaluationApp.router', [])
                     templateUrl: 'templates/admin/dorm/chargingDefine.html',
                     controller: 'ChargingDefineCtrl'
                 })
-                .state('dormMap', {
-                    url: '/dormMap',
-                    templateUrl: 'templates/admin/dorm/dormMap.html',
-                    controller: 'DormMapCtrl'
-                })
+                // .state('dormMap', {
+                //     url: '/dormMap',
+                //     templateUrl: 'templates/admin/dorm/dormMap.html',
+                //     controller: 'DormMapCtrl'
+                // })
                 .state('dormNotice', {
                     url: '/dormNotice',
                     templateUrl: 'templates/admin/dorm/dormNotice-list.html',

@@ -566,7 +566,9 @@ angular.module('evaluationApp.gbshrControllers', [])
             WorkdayNO: baseInfo.WorkdayNO,
             Extra: ""
         };
+        alertService.showOperating('Loading...');
         commonServices.submit(paras, url).then(function (resp) {
+            alertService.hideOperating();
             if (resp) {
                 if (!resp.success) {
                     alertService.showAlert("获取信息失败，请稍后再试。"+resp.message);
