@@ -660,8 +660,8 @@ angular.module('evaluationApp.appServices', [])
             var serUpdate = FindByActName(self.serverUpdate, actName);
             if (!serUpdate || !workNo) {
                 return false;
-            } else if (serUpdate.IsTesting) {
-                for(var i=0; i<serUpdate.TestingAccount&&serUpdate.TestingAccount.length; i++){
+            } else if (serUpdate.IsTesting && serUpdate.TestingAccount) {
+                for(var i=0; i<serUpdate.TestingAccount.length; i++){
                     if (workNo == serUpdate.TestingAccount[i]) {
                         return true;
                     }

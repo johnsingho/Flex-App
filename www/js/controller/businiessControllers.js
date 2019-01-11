@@ -2048,6 +2048,9 @@ angular.module('evaluationApp.businiessControllers', ['ngSanitize'])
                 $scope.bHasTicket=true;
                 $scope.clsTick="hasTick";
                 $scope.ticket = obj.Employee_ID +'<br>'+obj.Chinese_Name+'<br>'+obj.Organization;
+                if(!isEmptyString(obj.Employee_ID)){
+                    JsBarcode("#idBarcode", obj.Employee_ID);
+                }                
               }
             }
           });
