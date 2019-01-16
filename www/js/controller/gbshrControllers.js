@@ -68,7 +68,7 @@ angular.module('evaluationApp.gbshrControllers', [])
         //var bTestAccount = IsTestAccount(accessEmployee.WorkdayNO);
         //屏蔽multek
         //var bIsNotMultek = accessEmployee.Organization.toLowerCase().indexOf("multek")<0;
-        $scope.canShow = !isMultek(accessEmployee.Organization);
+        $scope.isMultek = isMultek(accessEmployee.Organization);
 
         $scope.open = function (action) {
             switch (action) {
@@ -566,7 +566,9 @@ angular.module('evaluationApp.gbshrControllers', [])
             WorkdayNO: baseInfo.WorkdayNO,
             Extra: ""
         };
+        alertService.showOperating('Loading...');
         commonServices.submit(paras, url).then(function (resp) {
+            alertService.hideOperating();
             if (resp) {
                 if (!resp.success) {
                     alertService.showAlert("获取信息失败，请稍后再试。"+resp.message);
@@ -685,7 +687,7 @@ angular.module('evaluationApp.gbshrControllers', [])
         //clearHistoryForIndexPage
         var history = $ionicHistory.forwardView();
         if (!history) {
-          IninInfo();
+          IninInfo(true);
         }
       });
       $scope.closePass = function () {
@@ -696,7 +698,36 @@ angular.module('evaluationApp.gbshrControllers', [])
         $state.go('tab.home');
       };
 
-      function IninInfo() {
+      $scope.protocol = {
+        IsAggree: 0
+      };
+      function PromptProtocol(){
+        $ionicPopup.show({
+            title: '失物招领使用承诺书',
+            cssClass:'my-custom-popup-Alter',
+            templateUrl: 'templates/GBS/lostFound/protocolLostFound.html',
+            scope: $scope,
+            buttons: [
+                {
+                    text: '<b>确定</b>',
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        if(!$scope.protocol.IsAggree){
+                            alertService.showLoading("请接受承诺书！");
+                            e.preventDefault();
+                        }else{
+                            return;
+                        }                            
+                    }
+                }
+            ]
+        });
+      }
+
+      function IninInfo(showProtocol) {
+        if(showProtocol){
+            PromptProtocol();
+        } 
         var url = commonServices.getUrl("GBSHRService.ashx", "GetLostFoundList");
         commonServices.submit(baseInfo, url).then(function (resp) {
           if (resp) {
@@ -717,7 +748,7 @@ angular.module('evaluationApp.gbshrControllers', [])
       $scope.viewDetail = function (lostID) {
         CacheFactory.remove(GLOBAL_INFO.KEY_LOSTFOUND_ID);
         CacheFactory.save(GLOBAL_INFO.KEY_LOSTFOUND_ID, lostID);
-        $state.go('lostFound.Detail');
+        $state.go('tab_LostFound.Detail');
       };
 
       $scope.lfTypes = [{
@@ -763,7 +794,6 @@ angular.module('evaluationApp.gbshrControllers', [])
       $scope.Reset();
 
       var swMap = null;
-
       function HasSensWord(txt) {
         if (!swMap) {
           swMap = sw_buildMap();
@@ -845,7 +875,7 @@ angular.module('evaluationApp.gbshrControllers', [])
             var msg = $rootScope.Language.lostFound.msgPublicSuccess;
             alertService.showAlert(msg);
             $scope.closeModal();
-            IninInfo();
+            IninInfo(false);
             //$ionicHistory.goBack();
           } else {
             alertService.showAlert(resp.message);
@@ -854,6 +884,7 @@ angular.module('evaluationApp.gbshrControllers', [])
         });
       }
 
+      //IninInfo(true);//初始化
     })
     .controller('LostFoundDetailCtrl', function ($scope, $rootScope, $state, $ionicPopup, $ionicScrollDelegate,
                                             $ionicModal, $ionicHistory, commonServices, CacheFactory, alertService) 
@@ -1105,6 +1136,41 @@ angular.module('evaluationApp.gbshrControllers', [])
         });
       };
     })
+    .controller('LostFoundPublicCtrl', function ($scope, $rootScope, $state, $ionicHistory, commonServices, alertService) 
+    {
+      //失物招领 失物寻主
+      var baseInfo = commonServices.getBaseParas();
 
+      $scope.$on("$ionicView.beforeEnter", function () {
+        //clearHistoryForIndexPage
+        var history = $ionicHistory.forwardView();
+        if (!history) {
+          InitInfo();
+        }
+      });
+      $scope.closePass = function () {
+        $ionicHistory.nextViewOptions({
+          disableAnimate: true,
+          disableBack: true
+        });
+        $state.go('tab.home');
+      };
+
+      function InitInfo() {
+        var paras = baseInfo;
+        var url = commonServices.getUrl("GBSHRService.ashx", "GetLostFoundPublic");
+        commonServices.submit(paras, url).then(function (resp) {
+          if (resp == "Token is TimeOut") {
+            alertService.showAlert("登录失效，请重新登录");
+            $state.transitionTo('signin');
+          } else if (resp.success && resp.obj) {
+            $scope.entrys = resp.list;
+          }
+        });
+      }
+
+      InitInfo();
+
+    })
 ///////////////////////////////////////////////    
 ;        

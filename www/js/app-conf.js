@@ -238,6 +238,7 @@ var ZH_CN = {
         dormManage:"宿舍管理",
         union:"工会之窗",
         mechCharity:"MECH基金会",
+        CSER:"CSER企业社会环境责任",
     },
     myFlex:{
         employee_ID: "工号",
@@ -364,7 +365,7 @@ var ZH_CN = {
         LTP:'LTP密码重置',
         basicGuide:'菜鸟手册',
         SocialInsurance:'社会保险',
-        HousingFund: '住房公积金信息',
+        HousingFund: '住房公积金 & 个税',
         EmployeeDismiss: '离职须知',
         DismissIntro: '离职手续简介',
         DismissStatus: '离职手续状态查询',
@@ -475,9 +476,12 @@ var ZH_CN = {
         ExplainTxt:"适用于已实名制的用户更换手机号码"
     },
     CSER:{
-        title:"CSER日历",
-        title2:"可点击相关主题进行报名",
-        DateEnd:"结束日期"
+        cserDate:"CSER日历",
+        cserDatePrompt:"可点击相关主题进行报名",
+        DateEnd:"结束日期",
+        calender:"CSER日历",
+        kidsCaring:"托管",
+        sumwinCamp:"夏令营/冬令营",
     },
     activityGood:{
         title:"南厂餐厅一楼档口风味满意度调查",
@@ -562,6 +566,7 @@ var ZH_CN = {
         ActDateEnd:"报名截止",
         mySuggest:"我的留言",
         openSuggest:"他们说",
+        carTicket:"春运汽车票团购",
     },
     mechCharity:{
         introduce:"简介",
@@ -589,9 +594,15 @@ var ZH_CN = {
         public:"发布",
         lost:"寻找失物",
         found:"拾金不昧",
+        lostFoundPublic:"失物寻主",
         msgPublicSuccess:"发布成功!",
         closePublic:"关闭发布",
         relatePhoto:"相关照片",
+        Publisher:"发布者",
+        PublishTime:"发布时间",
+        goodName:"物品名称",
+        curLoc:"目前位置",
+        phone:"保管人电话",
     }
 };
 
@@ -672,6 +683,7 @@ var ZH_US = {
         dormManage:"Dormitory Management",
         union:"Flex Union",
         mechCharity:"MECH Charity",
+        CSER:"CSER",
     },
     myFlex:{
         employee_ID: "Employee ID",
@@ -907,10 +919,13 @@ var ZH_US = {
         ExplainTxt:"For confirmed users who changed the mobile number"
     },
     CSER:{
-        title:"CSER Calendar",
-        title2:"You can click on related topics to sign up",
-        DateEnd:"End date"
-    },
+        cserDate:"CSER Calendar",
+        cserDatePrompt:"You can click on related topics to sign up",
+        DateEnd:"End date",
+        calender:"CSER Calendar",
+        kidsCaring:"Kids Caring",
+        sumwinCamp:"Summer/Winner Camp",
+    },    
     activityGood:{
         title:"PCBA-B11第二届球类竞技赛冠军队有奖竞猜",
         name: "Name",
@@ -994,7 +1009,7 @@ var ZH_US = {
         ActDateEnd:"End",
         mySuggest:"My suggestion",
         openSuggest:"They said",
-
+        carTicket:"Car Tickets",
     },
     mechCharity:{
         introduce:"Introduction",
@@ -1022,9 +1037,15 @@ var ZH_US = {
         public:"publish",
         lost:"Lost something",
         found:"Found",
+        lostFoundPublic:"Find Owner",
         msgPublicSuccess:"Public ok!",
         closePublic:"Cancel Public",
         relatePhoto:"Relate photos",
+        Publisher:"Publisher",
+        PublishTime:"Publish Time",
+        goodName:"Name",
+        curLoc:"Temporary keep place",
+        phone:"Contact Number",
     }
 };
 
@@ -1044,7 +1065,7 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2018-11-13",
+    LAST_PUBLISH_DATE: "2019-01-09",
     //keys
     KEY_ACT_GOOD_ID: "KEY_ActivityGood",
     KEY_ACT_GOOD_ITEMID: "KEY_ActivityGood_ITEMID",

@@ -345,17 +345,11 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/carGps/tab-map.html',
                 controller: 'BaiduMapCtrl'
             })
-            .state('carBusTime', {
-                url: '/carBusTime',
-                templateUrl: 'templates/carGps/tab-carBusTime.html',
-                controller: 'CarPictureCtrl'
-            })
-
-            .state('carPicture', {
-                url: '/carPicture',
-                templateUrl: 'templates/carPicture.html',
-                controller: 'CarPictureCtrl'
-            })
+            // .state('carBusTime', {
+            //     url: '/carBusTime',
+            //     templateUrl: 'templates/carGps/tab-carBusTime.html',
+            //     controller: 'CarPictureCtrl'
+            // })
             .state('chartRoom', {
                 url: '/chartRoom',
                 templateUrl: 'templates/chartRoom/tab-chartRoom.html',
@@ -650,12 +644,12 @@ angular.module('evaluationApp.router', [])
                 controller: 'VisaApplyCtrl'
 
             })
-            .state('lostFound', {
-                url: '/lostFound',
+            .state('tab_LostFound', {
+                url: '/tab_LostFound',
                 templateUrl: 'templates/GBS/lostFound/lostFound.html',
                 abstract: true,
             })
-                .state('lostFound.List', {
+                .state('tab_LostFound.List', {
                     url: '/lostFoundList',
                     views: {
                         'lostFoundList': {
@@ -664,7 +658,7 @@ angular.module('evaluationApp.router', [])
                         }
                     }
                 })
-                .state('lostFound.My', {
+                .state('tab_LostFound.My', {
                     url: '/lostFoundMy',
                     views: {
                         'lostFoundMy': {
@@ -673,7 +667,16 @@ angular.module('evaluationApp.router', [])
                         }
                     }
                 })
-                .state('lostFound.Detail', {
+                .state('tab_LostFound.Public', {
+                    url: '/lostFoundPublic',
+                    views: {
+                        'lostFoundPublic': {
+                            templateUrl: 'templates/GBS/lostFound/lostFound_public.html',
+                            controller: 'LostFoundPublicCtrl'
+                        }
+                    }
+                })
+                .state('tab_LostFound.Detail', {
                     url: '/lostFoundDetail',
                     views: {
                         'lostFoundList': {
@@ -687,11 +690,26 @@ angular.module('evaluationApp.router', [])
                 templateUrl: 'templates/earthWeek/notice-list.html',
                 controller: 'EarthdayNoticeListCtrl'
             })
-            .state('cserDate', {
-                url: '/cserDate',
-                templateUrl: 'templates/cser/cser-Date.html',
-                controller: 'CserDateCtrl'
+            .state('cser', {
+                url: '/cser',
+                templateUrl: 'templates/cser/cser-list.html',
+                controller: 'CSERCtrl'
             })
+                .state('cserDate', {
+                    url: '/cserDate',
+                    templateUrl: 'templates/cser/cser-Date.html',
+                    controller: 'CserDateCtrl'
+                })
+                .state('cser_kidsCaring', {
+                    url: '/cser_kidsCaring',
+                    templateUrl: 'templates/cser/cser-kidsCaring.html',
+                    controller: 'CSERKidsCaringCtrl'
+                })
+                .state('cser_sumwinCamp', {
+                    url: '/cser_sumwinCamp',
+                    templateUrl: 'templates/cser/cser-sumwinCamp.html',
+                    controller: 'CSERSumwinCampCtrl'
+                })
             .state('activityEHS',{
                 url: '/activityEHS',
                 templateUrl: 'templates/ehs/activityEHS.html',
@@ -739,11 +757,11 @@ angular.module('evaluationApp.router', [])
                     templateUrl: 'templates/admin/dorm/chargingDefine.html',
                     controller: 'ChargingDefineCtrl'
                 })
-                .state('dormMap', {
-                    url: '/dormMap',
-                    templateUrl: 'templates/admin/dorm/dormMap.html',
-                    controller: 'DormMapCtrl'
-                })
+                // .state('dormMap', {
+                //     url: '/dormMap',
+                //     templateUrl: 'templates/admin/dorm/dormMap.html',
+                //     controller: 'DormMapCtrl'
+                // })
                 .state('dormNotice', {
                     url: '/dormNotice',
                     templateUrl: 'templates/admin/dorm/dormNotice-list.html',
@@ -1021,7 +1039,11 @@ angular.module('evaluationApp.router', [])
             templateUrl: 'templates/admin/canteen-list.html',
             controller: 'CanteenImgCtrl'
         })                
-                                
+        .state('act_AnnualPartyTicket2019', {
+            url: '/act_AnnualPartyTicket2019',
+            templateUrl: 'templates/activity/annualPartyTicket2019.html',
+            controller: 'AnnualPartyTicket2019Ctrl'
+        })                   
         
         $urlRouterProvider.otherwise('signin');
 

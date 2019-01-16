@@ -1,80 +1,101 @@
-<ion-view view-title="预订票" cache-view="true" >
-    <!--<ion-nav-buttons side="left">-->
-        <!--<button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">返回</button>-->
-    <!--</ion-nav-buttons>-->
- <ion-content  scroll="true"  lazy-scroll >
+<ion-view view-title="春运汽车票团购" cache-view="true">
+  <!--<ion-nav-buttons side="left">-->
+  <!--<button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">返回</button>-->
+  <!--</ion-nav-buttons>-->
+  <ion-content scroll="true" lazy-scroll>
+    <div class="divOff lightRedBack">
+      <span class="text-left"><b>预购票须知：</b></span>
+      <div class="divOff" style="font-size:14px;">
+        <ol class="numOl">
+          <li>
+            购票流程：Flex+预约登记 → 信禾根据需求确认是否成团 → 信禾至园区售票 → 员工缴费取票（现金及微信支付，不接受刷卡及支付宝）；
+          </li>
+          <li>
+            各团购线路采取预报名方式，每条线路达到40人以上成团，享受团购价格；
+          </li>
+          <li>
+            未成团的预购者或未进行预购的同事如仍需购票，享9折优惠（仅限信禾来我司现场售票享受）；
+          </li>
+          <li>
+            预购票时间：<b>2019年1月3日 14:00 至 2019年1月10日 11:00</b>
+          </li>
+          <li>
+            您可以填写希望的出发时间点，以便信禾公司尽量安排时间，但<b>具体出发时间会以信禾公司的运营情况最终决定</b>。
+          </li>
+        </ol>
+      </div>
+    </div>
 
-     <p>
-         <strong><span style="color: rgb(227, 108, 9);">预购票须知：</span></strong>
-     </p>
-     <p>
-         <strong><span style="color: rgb(227, 108, 9);">1.&nbsp;&nbsp; 每条线路40人（含）以上成团，享受团购优惠；</span></strong>
-     </p>
-     <p>
-         <strong><span style="color: rgb(227, 108, 9);">2.&nbsp;&nbsp; 未成团的预购者如仍需购票，享9折优惠；</span></strong>
-     </p>
-     <p>
-         <strong><span style="color: rgb(227, 108, 9);">3.&nbsp;&nbsp; 届时信禾公司入厂售票，员工缴费取票。</span></strong>
-     </p>
-     <p>
-         <strong><span style="color: rgb(227, 108, 9);">4.&nbsp;&nbsp; 预购票时间：2018年1月22日9:00a.m. ~ 1月26日9:00 a.m.</span></strong>
-     </p>
-     <p class="MsoListParagraph" style=";margin-bottom: 0in;margin-left:.25in;margin-bottom:0;text-align:justify;text-justify: inter-ideograph">
-         <strong><span style="color: rgb(227, 108, 9);"></span></strong><br/>
-     </p>
-     <p>
-         <br/>
-     </p>
+    <div class="list card">
+      <div class="item item-input">
+        <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.name}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <input type="text" style="font-size:80%" readonly="readonly" ng-model="Submitdata.CName" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width:30px;font-size:80%">{{Language.like.employee_ID}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <input type="text" style="font-size:80%" readonly="readonly" ng-model="Submitdata.WorkdayNO" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width: 30px;font-size:80%">{{Language.like.department}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <input type="text" style="font-size:80%" readonly="readonly" ng-model="Submitdata.Organization" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width: 50px;font-size:80%">{{Language.shareCar.mobile}}</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <input type="text" placeholder="{{Language.shareCar.mobile}}" ng-model="Submitdata.MobileNo" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width: 30px;font-size:80%">出发日期：</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <div ion-datetime-picker date 
+          ng-model="Submitdata.selectedDate" 
+          only-valid="{'between': {'initial': '2019-01-15', 'final': '2019-02-04'}, 'inclusive': true}"
+          ng-change="selDate()" 
+          style="width:280px;">
+          <i class="icon ion-ios-calendar positive" style="font-size:28px;"></i>
+          <strong>{{Submitdata.selectedDate| date: "yyyy-MM-dd"}}</strong>
+          &nbsp;&nbsp;
+        </div>
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width: 50px;font-size:80%">线路：</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <select class="button" ng-options='l.Line as l.Line for l in Linelist' 
+          ng-model="Submitdata.selectedLine" ng-change="selLine()">
+        </select>
+        <!-- <select ng-model="Submitdata.selectedLine" ng-change="selLine()">
+          <option ng-repeat="line in Linelist">{{line.Line}}</option>
+        </select> -->
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width: 50px;font-size:80%">落客点（汽车站）：</span>
+        <span class="input-label" style="width: 10px;color: red">*</span>
+        <select class="button" ng-options='st.DownStation as st.DownStation for st in Stationlist' 
+          ng-model="Submitdata.selectedDownStation" ng-change="selDownStation()">
+        </select>
+      </div>
+      <div class="item">
+        <span class="input-label" style="width:30px;font-size:80%">如果包车成功，您希望的出发时间：</span>
+        <div ion-datetime-picker time 
+          ng-model="Submitdata.expectTime" 
+          style="width:280px;">
+          <i class="icon ion-ios-calendar positive" style="font-size:28px;"></i>
+          <strong>{{Submitdata.expectTime| date: "HH:mm"}}</strong>
+          &nbsp;&nbsp;
+        </div>
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="width: 50px;font-size:80%">备注：</span>
+        <textarea rows="3" ng-model="Submitdata.Memo" readonly placeholder="无"></textarea>
+      </div>
+    </div>
 
-     <div class="list">
+    <div style="text-align: center" ng-if="!isNotValid()">
+        <button class="button  button-positive" ng-click="Submit()">{{Language.menu.submit}}</button>
+    </div>
 
-         <label class="item item-input item-select">
-             <div class="input-label">
-                 出发日期：
-             </div>
-             <select ng-model="Submitdata.selectedDate" ng-change="selDate(Submitdata.selectedDate)">
-                 <option ng-repeat="seldata in selDateList">{{seldata.date}}</option>
-             </select>
-         </label>
-         <label class="item item-input item-select">
-             <div class="input-label">
-                 线路：
-             </div>
-             <select ng-model="Submitdata.selectedLine" ng-change="selLine(Submitdata.selectedLine)"   >
-                 <option ng-repeat="line in Linelist">{{line.Line}}</option>
-             </select>
-         </label>
-         <label class="item item-input item-select" ng-if="other=='false'">
-             <div class="input-label">
-                 站点：
-             </div>
-           <select ng-model="Submitdata.selectedStation" ng-change="selStation(Submitdata.selectedStation)"   >
-            <option ng-repeat="station in Stationlist">{{station.Time}} {{station.Station}}</option>
-          </select>
-
-         </label>
-
-         <label class="item item-input" ng-if="other=='true'">
-            <div class="input-label">
-                 站点(请填写线路+站点)：
-             </div>
-             <input type="text"   ng-model="Submitdata.selectedStation"/>
-         </label>
-
-         <label class="item item-input">
-             <div class="input-label">
-                 联系方式(重要请确认)：
-             </div>
-             <input type="text"  ng-model="Submitdata.MobileNoByUser"/>
-         </label>
-
-
-     </div>
-
-     <div style="text-align: center"><button   class="button  button-positive" ng-click="Submit()">报 名</button></div>
-
-     <!--<div style="text-align: center" ng-if="accessEmployee.strIsHRConfirm=='Registration'"><button   class="button  button-positive" ng-click="Submit()">报 名</button></div>-->
-     <!--<div style="text-align: center" ng-if="accessEmployee.strIsHRConfirm!='Registration'">实名制认证通过后可进行预订</div>-->
-
-    </ion-content>
+  </ion-content>
 </ion-view>

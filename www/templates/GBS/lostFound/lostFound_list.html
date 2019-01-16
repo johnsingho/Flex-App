@@ -1,12 +1,5 @@
 <!-- 失物招领 列表 -->
-<style>
-.imgch{
-    height: 32px;
-    width: 32px;
-    vertical-align: middle;
-}
-</style>
-<ion-view view-title="{{Language.GBSHR.LostFound}}" cache-view="false">
+<ion-view view-title="{{Language.GBSHR.LostFound}}" cache-view="true">
   <ion-nav-buttons side="left">
     <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
   </ion-nav-buttons>
@@ -23,6 +16,13 @@
         </label>
       </div>
     </form>
+    <style>
+    .imgch {
+        height: 32px;
+        width: 32px;
+        vertical-align: middle;
+    }
+    </style>
 
     <div class="list card" style="margin-top:8px;margin-bottom:8px" 
         ng-repeat="item in items | filter:queryContent"
@@ -37,7 +37,11 @@
       </div>
 
       <div class="item item-body">
-        <span style="color:blue;font-size:12px;">{{Language.common.Description}}</span>
+        <div style="font-size:14px;">
+            <span style="color:blue;">{{Language.lostFound.Publisher}}:&nbsp;</span>
+            <span>{{item.UserName}}</span>
+        </div>
+        <span style="color:blue;font-size:14px;">{{Language.common.Description}}</span>
         <p style="Margin:1px" ng-bind-html="item.Content">
         </p>
       </div>
@@ -98,7 +102,7 @@
                     <button class="button button-calm button-small" ng-if="imgs.length>0" ng-click="Reset();">{{Language.common.clear}}</button>
                 </p>
                 <p id="images" style="margin-top:10px;white-space:normal;" ng-if="imgs.length>0">
-                    <img class='smallPic' src='{{pic}}' ng-repeat='pic in imgs'>
+                    <img class='smallPic' ng-src='{{pic}}' ng-repeat='pic in imgs'>
                 </p>
                 </div>
             </div>

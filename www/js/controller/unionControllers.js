@@ -31,6 +31,9 @@ angular.module('evaluationApp.unionControllers', [])
         case "精彩瞬间":
           $state.go('union_wonderfulmoment');
           break;
+        case "团购汽车票": //临时
+          $state.go('applyTicket');
+          break;
         default:
           break;
       }
@@ -166,6 +169,13 @@ angular.module('evaluationApp.unionControllers', [])
     InitInfo();
 
     $scope.open = function (ID) {
+      var url = commonServices.getUrl("UnionService.ashx", "SubmitWelfareNoticeRead");
+      var paras = {
+        'NoticeID': ID,
+        'WorkdayNo': baseInfo.WorkdayNO,
+      };
+      commonServices.submit(paras, url);    
+
       //打开动态内容页
       var objDyn = {
         PageTitle: '详情',
@@ -864,6 +874,7 @@ angular.module('evaluationApp.unionControllers', [])
       CName: baseInfo.CName,
       WorkdayNO: baseInfo.WorkdayNO,
       MobileNo: baseInfo.MobileNo,
+      Organization: baseInfo.Organization,
       Suggest: ""
     };
     $scope.GetSuggest = function () {

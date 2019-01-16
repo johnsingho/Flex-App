@@ -1,25 +1,21 @@
-<ion-view view-title="{{Language.apply.title}}" cache-view="false" >
-    <ion-nav-buttons side="left">
-        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
-    </ion-nav-buttons>
-    <ion-content scroll="true" overflow-scroll="true" >
+<ion-view view-title="{{Language.apply.title}}" cache-view="false">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.menu.homePage}}</button>
+  </ion-nav-buttons>
+  <ion-content scroll="true" overflow-scroll="true">
 
-        <!--<div class="list list-inset">-->
+    <!-- <div class="list list-inset">
+      <div class="item" ng-click="openTicket()">
+        汽车票团购
+      </div>
+    </div> -->
 
-            <!--<div class="item"  ng-click="openTicket()">-->
-                <!--汽车票团购-->
-            <!--</div>-->
+    <ion-list>
+      <ion-item ng-repeat="apply in applyList" class="item" ng-click="open(apply)">
 
-        <!--</div>-->
+        <h3>{{apply.NoticeTitle}}</h3>
 
-
-
-        <ion-list>
-            <ion-item ng-repeat="apply in applyList" class="item"  ng-click="open(apply)">
-
-                <h3>{{apply.NoticeTitle}}</h3>
-
-            </ion-item>
-        </ion-list>
-    </ion-content>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-view>

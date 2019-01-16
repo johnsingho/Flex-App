@@ -284,8 +284,8 @@ angular.module('evaluationApp.appControllers', [])
                 case "报名":
                     $state.go("apply");
                     break;
-                case "CSERCal":
-                    $state.go("cserDate");
+                case "CSER":
+                    $state.go("cser");
                     break;
                 case "map":
                     $state.go("baiduMap");
@@ -435,7 +435,7 @@ angular.module('evaluationApp.appControllers', [])
                 //$state.go("tab.404");
             }
             else if(action=="失物招领"){
-                $state.go("lostFound.List");
+                $state.go("tab_LostFound.List");
              }
             else if(action=="我要求助"){
                 $state.go("tabAskForHelp.askForHelp");

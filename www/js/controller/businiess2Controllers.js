@@ -637,41 +637,7 @@ angular.module('evaluationApp.businiess2Controllers', [])
             $state.go('tab.home');
         }
     })    
-    .controller('CserDateCtrl',function($scope,$rootScope,$state,$ionicHistory,commonServices,CacheFactory,alertService,externalLinksService){
-        var paras= commonServices.getBaseParas();
-        var url=commonServices.getUrl("CSERSevice.ashx","GetCSERDate");
-
-        commonServices.getDataList(paras,url).then(function(data){
-
-            if(data=="Token is TimeOut"){
-                alertService.showAlert("Token is TimeOut");
-                $state.transitionTo('signin');
-            }
-
-            $scope.CserDateList=data;
-
-
-        });
-
-        $scope.open=function(cserDate){
-            try {
-
-                externalLinksService.openUr(cserDate.URL);
-            }
-            catch (ex) {
-                alertService.showAlert(ex.message);
-            }
-        };
-
-        $scope.closePass=function(){
-            $ionicHistory.nextViewOptions({
-                disableAnimate: true,
-                disableBack: true
-            });
-            $state.go('tab.home');
-        }
-
-    })
-
     
+
+//////////////////////////////////////////////
 ;

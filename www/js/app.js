@@ -5,26 +5,25 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('evaluationApp', ['ionic', 'evaluationApp.router', 'evaluationApp.appControllers', 'evaluationApp.pointsControllers', 'evaluationApp.businiessControllers',
+angular.module('evaluationApp', ['ionic', 'ionic.native',
+    'evaluationApp.router', 'evaluationApp.appControllers', 'evaluationApp.pointsControllers', 'evaluationApp.businiessControllers',
     'evaluationApp.appServices', 'evaluationApp.directives', 'evaluationApp.utilServices',
     'evaluationApp.pointsService', 'evaluationApp.businessServices', 'evaluationApp.businiess2Controllers', 'evaluationApp.B11WorkShopController',
-    'ngCordova', 'angularMoment', 'chart.js', 'evaluationApp.sharCarController', 
+    'angularMoment', 'chart.js', 'evaluationApp.sharCarController', 
     'ion-datetime-picker', 'evaluationApp.adminControllers', 'evaluationApp.gbshrControllers', 
-    'evaluationApp.unionControllers', 'evaluationApp.testControllers', 'evaluationApp.mechCharityControllers'
+    'evaluationApp.unionControllers', 'evaluationApp.testControllers', 'evaluationApp.mechCharityControllers',
+    'evaluationApp.CSERControllers'
     ])
     //angular.module('evaluationApp', ['ionic', 'evaluationApp.router','evaluationApp.controllers', 'evaluationApp.services'])
 
     .run(function ($ionicPlatform, SettingFactory, $http, $rootScope, $state, $location, $timeout, $ionicHistory, CacheFactory, commonServices, $window,
-        $cordovaAppVersion, $ionicPopup, $ionicLoading, $cordovaToast, $cordovaKeyboard, $cordovaFileTransfer, $cordovaFile, $ionicActionSheet, $cordovaFileOpener2, $cordovaProgress, amMoment) {
+        $cordovaAppVersion, $ionicPopup, $ionicLoading, $cordovaToast, $cordovaKeyboard, $cordovaTransfer, $cordovaFile, $ionicActionSheet, $cordovaFileOpener, amMoment) {
         $ionicPlatform.ready(function () {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
 
             $rootScope.isIOS = ionic.Platform.isIOS();
             $rootScope.isAndroid = ionic.Platform.isAndroid();
-
-
-
 
             if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -157,9 +156,9 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router', 'evaluationApp
                     var targetPath = "/mnt/sdcard/Flex.apk";
                     var trustHosts = true
                     var options = {};
-                    $cordovaFileTransfer.download(url, targetPath, options, trustHosts).then(function (result) {
+                    $cordovaTransfer.download(url, targetPath, options, trustHosts).then(function (result) {
                         // 打开下载下来的APP
-                        $cordovaFileOpener2.open(targetPath, 'application/vnd.android.package-archive'
+                        $cordovaFileOpener.open(targetPath, 'application/vnd.android.package-archive'
                         ).then(function () {
                             //$ionicLoading.hide();
                             // 成功
@@ -222,7 +221,7 @@ angular.module('evaluationApp', ['ionic', 'evaluationApp.router', 'evaluationApp
                 || $location.path() == '/tabPoints/PointsAccount') {
                 showConfirm();
             } else if ($ionicHistory.backView()) {
-                if ($cordovaKeyboard.isVisible()) {
+                if ($cordovaKeyboard.isVisible) {
                     $cordovaKeyboard.close();
                 } else {
                     $ionicHistory.goBack();

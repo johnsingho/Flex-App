@@ -2,7 +2,7 @@
  * 工具类
  * johnsing he 2018-09-11
  */
-angular.module('evaluationApp.utilServices', ['ngCordova'])
+angular.module('evaluationApp.utilServices', ['ionic.native'])
   .service('UrlServices', function ($state, alertService, CacheFactory) 
   {
     //打开外链

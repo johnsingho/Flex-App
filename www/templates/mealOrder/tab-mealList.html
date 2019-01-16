@@ -4,10 +4,8 @@
     </ion-nav-buttons>
 
     <ion-content scroll="true" overflow-scroll="true">
-
-
         <div class="list">
-            <a class="item item-thumbnail-left" ng-repeat="meal in mealList"  href="#">
+            <a class="item item-thumbnail-left" ng-repeat="meal in mealList">
                 <img src="{{meal.ImgPath}}">
                 <h2>{{meal.foodName}}</h2>
                 <div class="row" style="width: 100px;float: right">
@@ -22,8 +20,6 @@
                     <!--<div class="col col-30"> <button  class="button button-small  button-light icon ion-thumbsdown" ng-click="unLike(meal)"> {{meal.UnLikeQty}}人觉得还要改进</button></div>-->
                 </div>
             </a>
-
-
         </div>
 
         <!--<div class="list">-->
@@ -39,8 +35,8 @@
                 <!--<p style="font-size: 13px;color: orangered">¥{{meal.Price}}元/份</p>-->
             <!--</a>-->
         <!--</div>-->
-<br>
-      <br>
+        <br>
+        <br>
         <br>
     </ion-content>
     <div class="bar bar-subfooter" style="background-color: lavender">

@@ -36,11 +36,15 @@ angular.module('evaluationApp.appServices', [])
                         result.msg='登录成功';
                     } else {
                         result.success=false;
-                        if($rootScope.Language==ZH_CN)
+                        if(!isEmptyString(response.message)){
+                            result.msg=response.message;
+                        }
+                        else if($rootScope.Language==ZH_CN){
                             result.msg='用户名或密码错误,未注册请先注册';
-                        else
-
-                        result.msg='Incorrect username or password. Please register first without registration';
+                        }                            
+                        else{
+                            result.msg='Incorrect username or password. Please register first without registration';
+                        }                        
                     }
                     deferred.resolve(result);
                 }) .error(function(response) {
@@ -212,6 +216,10 @@ angular.module('evaluationApp.appServices', [])
                     Organization:accessEmployee.Organization
                 };
                 return parameter;
+            },
+            getLoginServerTime:function(){
+                var accessEmployee = $rootScope.accessEmployee;
+                return new Date(accessEmployee.LoginServerTime);
             },
             getUrl:function(pageName,methodName){
 //                API_HOST+'/MealOrder.ashx?action=GetMealList'
@@ -423,13 +431,11 @@ angular.module('evaluationApp.appServices', [])
                 if(false==IsDebugMode){
                     API_HOST = 'https://zhmobile.flextronics.com/EvaluationApp';
                 }                
-                if (error.status == 0) {
+                if (error.status <= 0) {
                     error.data = {
-                        template: !navigator.onLine || error.data == '' ?
-                            '网络不通':
-                          '请求失败, 请稍后重试...'
-
-                    }
+                      template: !navigator.onLine || error.data == '' ?
+                        '网络不通' : '请求失败, 请稍后重试...'
+                    };
                 } else if (error.data.error_msg == ERROR.WRONG_ACCESSTOKEN || status == 403) {
                     error.data = {
                         template: '好像是鉴权失效了，该不会是<b>@alsotang</b>的API有啥问题吧？'
@@ -654,7 +660,7 @@ angular.module('evaluationApp.appServices', [])
             var serUpdate = FindByActName(self.serverUpdate, actName);
             if (!serUpdate || !workNo) {
                 return false;
-            } else if (serUpdate.IsTesting) {
+            } else if (serUpdate.IsTesting && serUpdate.TestingAccount) {
                 for(var i=0; i<serUpdate.TestingAccount.length; i++){
                     if (workNo == serUpdate.TestingAccount[i]) {
                         return true;

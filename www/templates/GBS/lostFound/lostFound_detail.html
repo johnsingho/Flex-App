@@ -4,6 +4,10 @@
     max-width: 75%;
     margin: 2px 0 0 2px;
   }
+  .myLink{
+    font-size: 15px;
+    font-weight: 600;
+  }
 </style>
 <ion-view view-title="" cache-view="false">
   <ion-content scroll="true" overflow-scroll="true" style="background-color:#c0c0c0">
@@ -24,7 +28,7 @@
             {{Language.like.name}}：{{item.UserName}}
           </p>
           <p style="Margin:1px">
-            {{Language.shareCar.mobile}}：{{item.Phone}}
+            {{Language.shareCar.mobile}}：<a class="myLink" href="tel:{{item.Phone}}"><i class="icon ion-android-call"></i> {{item.Phone}}</a>
           </p>
         </div>
         <div class="item item-body">
