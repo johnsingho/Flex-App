@@ -82,6 +82,7 @@ angular.module('evaluationApp.appControllers', [])
         $scope.checkWorkday = '23328424565765889534562582566117';
         $scope.isSouthCamp = isSouthCamp($rootScope.accessEmployee.Organization);
         $scope.isChineseLang = isChineseLang($rootScope);
+    console.log(parameter);
 //
 //
        $rootScope.Power=$scope.checkWorkday.indexOf( $rootScope.accessEmployee.WorkdayNO)!=-1;

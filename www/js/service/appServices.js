@@ -213,6 +213,7 @@ angular.module('evaluationApp.appServices', [])
                     Token:accessEmployee.Token,
                     MobileNo:accessEmployee.MobileNo,
                     Segment_ID:accessEmployee.Segment_ID,
+                    ADAcount:accessEmployee.ADAccount,
                     Organization:accessEmployee.Organization
                 };
                 return parameter;

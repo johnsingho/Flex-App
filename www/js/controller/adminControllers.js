@@ -33,7 +33,10 @@ angular.module('evaluationApp.adminControllers', [])
                     break;
                 case "餐厅菜单":
                     $state.go('canteenImg');
-                    break;                    
+                    break;   
+                case "EAdmin":
+                     $state.go('EAdminList');
+                    break;
                 default: break;
             }
         }
@@ -1326,6 +1329,90 @@ angular.module('evaluationApp.adminControllers', [])
         };
         
     })
+
+.controller('EAdminListCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                commonServices, CacheFactory, alertService, externalLinksService) 
+    {        
+        //EAdmin
+      
+
+        $scope.open=function(action){
+           
+            switch (action) {
+                case "eCarApproveList":
+                    $state.go('eCarApproveList');
+                    break;
+               
+                default: break;
+            }
+        }
+       
+})
+.controller('ECarApproveListCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                commonServices, CacheFactory, alertService, externalLinksService) {
+    //EAdmin
+
+    var params = commonServices.getBaseParas();
+  
+    var url = commonServices.getUrl("AdminService.ashx", "eAdmin_eCar_GetApproveBill");
+
+    $scope.eCarApproverList;
+    commonServices.getDataList(params, url).then(function (data) {
+
+        if (data == "Token is TimeOut") {
+            alertService.showAlert("登录失效，请重新登录");
+            $state.transitionTo('signin');
+        }
+        $scope.eCarApproverList = data;
+       
+    });
+
+    $scope.open = function (eCar) {
+        CacheFactory.remove('eCar');
+        CacheFactory.save('eCar', eCar);
+      
+        $state.go('eCarApproveDetail');
+
+    };
+  
+})
+
+.controller('ECarApproveDetailsCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
+                commonServices, CacheFactory, alertService, externalLinksService) {
+    //EAdmin
+    $scope.eCar = JSON.parse(CacheFactory.get('eCar'));
+    var params = commonServices.getBaseParas();
+
+    $scope.Submit = function () {
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Approve',
+            template: 'Confirm Approve?'
+        });
+        confirmPopup.then(function (res) {
+            if (res) {
+
+                params.OrderNumber = eCar.OrderNumber;
+                params.Status = eCar.Status==1000?3000:4000;
+                var url = commonServices.getUrl("AdminService.ashx", "eAdmin_eCar_Approve");
+                commonServices.submit(params, url).then(function (data) {
+                    if (data.success) {
+                        $scope.modal.hide();
+
+                        $scope.GetDateList();
+
+                    }
+                    else {
+                        alertService.showAlert(data.message);
+                    }
+                });
+            } else {
+                return;
+            }
+        });
+          
+    };
+
+})
 
 ///////////////////////////////////////////////////////    
 ;

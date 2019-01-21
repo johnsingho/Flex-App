@@ -807,6 +807,22 @@ angular.module('evaluationApp.router', [])
                     templateUrl: 'templates/admin/dorm/dormSuggest.html',
                     controller: 'DormSuggestCtrl'
                 })
+            /*sub of EAdmin*/
+              .state('EAdminList',{
+                url: '/EAdminList',
+                templateUrl: 'templates/admin/EAdmin/eAdmin-List.html',
+                controller: 'EAdminListCtrl'
+            })
+            .state('eCarApproveList',{
+                url: '/eCarApproveList',
+                templateUrl: 'templates/admin/EAdmin/eCarApproveList-List.html',
+                controller: 'ECarApproveListCtrl'
+            })
+              .state('eCarApproveDetail', {
+                  url: '/eCarApproveDetail',
+                  templateUrl: 'templates/admin/EAdmin/eCarApprover_Details.html',
+                  controller: 'ECarApproveDetailsCtrl'
+              })
             /*sub of GBSHR*/
             .state('generalNotice', {
                 url: '/generalNotice',
