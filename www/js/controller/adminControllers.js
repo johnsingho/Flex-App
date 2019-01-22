@@ -1381,25 +1381,44 @@ angular.module('evaluationApp.adminControllers', [])
                 commonServices, CacheFactory, alertService, externalLinksService) {
     //EAdmin
     $scope.eCar = JSON.parse(CacheFactory.get('eCar'));
+    console.log($scope.eCar);
     var params = commonServices.getBaseParas();
+    $scope.CarFrom = '车队申请';
+
+    $scope.selCarFrom = function (CarFrom) {
+
+        switch (CarFrom) {
+            case '自有':
+                $scope.eCar.CarFrom = 1;
+                break;
+            case '车队申请':
+                $scope.eCar.CarFrom = 2;
+                break;
+            case '滴滴专车':
+                $scope.eCar.CarFrom = 3;
+                break;
+        }
+    };
+   
 
     $scope.Submit = function () {
+      
         var confirmPopup = $ionicPopup.confirm({
             title: 'Approve',
             template: 'Confirm Approve?'
         });
         confirmPopup.then(function (res) {
             if (res) {
-
+                var eCar = $scope.eCar;
                 params.OrderNumber = eCar.OrderNumber;
-                params.Status = eCar.Status==1000?3000:4000;
+                params.Status = eCar.Status == 1000 ? 3000 : 5000;
+                params.CarFrom = eCar.CarFrom == "" ? eCar.CarFrom = 2 : eCar.CarFrom;
+                params.IsApprove ='Yes';
                 var url = commonServices.getUrl("AdminService.ashx", "eAdmin_eCar_Approve");
                 commonServices.submit(params, url).then(function (data) {
                     if (data.success) {
-                        $scope.modal.hide();
-
-                        $scope.GetDateList();
-
+                        alertService.showAlert(data.message);
+                        $state.go('eCarApproveList');
                     }
                     else {
                         alertService.showAlert(data.message);
@@ -1410,6 +1429,46 @@ angular.module('evaluationApp.adminControllers', [])
             }
         });
           
+    };
+
+
+    $scope.Reject = 
+           { Reson: "" };
+   
+    $scope.Reject = function () {
+       
+        if (typeof ($scope.Reject.Reson) == "undefined") {
+            alertService.showAlert('请填写Reject理由');
+            return;
+        }
+
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Reject',
+            template: 'Confirm Reject?'
+        });
+        confirmPopup.then(function (res) {
+            if (res) {
+                var eCar = $scope.eCar;
+                params.OrderNumber = eCar.OrderNumber;
+                params.Status = -1;
+                params.CarFrom = "";
+                params.IsApprove = 'NO';
+                params.RejectReson = $scope.Reject.Reson;
+                var url = commonServices.getUrl("AdminService.ashx", "eAdmin_eCar_Approve");
+                commonServices.submit(params, url).then(function (data) {
+                    if (data.success) {
+                        alertService.showAlert(data.message);
+                        $state.go('eCarApproveList');
+                    }
+                    else {
+                        alertService.showAlert(data.message);
+                    }
+                });
+            } else {
+                return;
+            }
+        });
+
     };
 
 })

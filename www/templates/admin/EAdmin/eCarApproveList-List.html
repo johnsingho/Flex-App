@@ -1,0 +1,27 @@
+
+<ion-view view-title="EAdmin" cache-view="false" >
+    <!-- <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.home.admin}}</button>
+    </ion-nav-buttons> -->
+
+    <ion-content scroll="true" overflow-scroll="true" >
+    
+        <ion-list>
+
+            <ion-item ng-if="eCarApproverList" ng-repeat="eCar in eCarApproverList" class="item" ng-click="open(eCar)">
+                <div class="row">
+                    <div class="col"><p style="color:green">单号：{{eCar.OrderNumber}}</p></div>
+                  
+                </div>
+                <div class="row">
+                    <div class="col"> <p> 提单人：{{eCar.UserName}}</p></div>
+                    <div class="col"> <p> 时间：{{eCar.UpdateDate | date:"yyyy-MM-dd"}}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col"> <p> {{eCar.StatusNameChinese}}</p></div>
+                </div>
+             
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

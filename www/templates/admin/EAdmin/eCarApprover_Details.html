@@ -1,0 +1,111 @@
+
+<ion-view view-title="eCar Approve" cache-view="false" >
+    <!-- <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.home.admin}}</button>
+    </ion-nav-buttons> -->
+
+    <ion-content scroll="true" overflow-scroll="true" >
+
+        <div class="list card">
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">事业部：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.SegmentName}}" />
+                <span class="input-label" style="width: 30px;font-size:80%">部门：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.DeptName}}" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">项目：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.ProjectName}}" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">估算成本出发地：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.FromAddressName}}" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">实际详细出发地：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.FromAddressDetail}}" />
+            </div>
+          
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">估算成本目的地：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.ToAddressName}}" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">实际详细目的地：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.ToAddressDetail}}" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 20px;font-size:80%">出发时间：</span>
+                <input type="text" style="font-size:75%" readonly="readonly" value="{{eCar.FromDateTime}}" />
+                <span class="input-label" style="width: 30px;font-size:80%">部门审批人：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.DeptManagerName}}" />
+            </div>
+          
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">成本中心：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.CostCenter}}" />
+                <span class="input-label" style="width: 30px;font-size:80%">估算成本：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.TotalCost}}" />
+            </div>
+          
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">车辆类型：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="eCar.CarType" />
+             
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">往返信息：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="eCar.IsOneOrTwoName" />
+            </div>
+
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">客人类型：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" ng-model="eCar.CustomerType" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">乘车人信息：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.PassengerInfo}}" />
+
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">乘车人电话：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.PassengerTel}}" />
+                <span class="input-label" style="width: 30px;font-size:80%">乘车人数：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.NumOfPassenger}}" />
+            </div>
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">申请人：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.RaiserName}}" />
+                <span class="input-label" style="width: 30px;font-size:80%">申请人电话：</span>
+                <input type="text" style="font-size:80%" readonly="readonly" value="{{eCar.PassengerTel}}" />
+            </div>
+
+            <div class="item item-input">
+                <span class="input-label" style="width: 30px;font-size:80%">用车事由：</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <textarea rows="3" id="bz" style="font-size:80%;width: 500px" readonly="readonly" ng-model="eCar.RaiseReason"></textarea>
+            </div>
+
+            <div class="item item-input" ng-if="eCar.Status==3000">
+                <span class="input-label" style="width: 30px;font-size:80%">车辆来源：</span><span class="input-label" style="width: 10px;color: red">*</span>
+                <select ng-model="CarFrom" ng-change="selCarFrom(CarFrom)">
+                    <option>自有</option>
+                    <option selected="">车队申请</option>
+                    <option>滴滴专车</option>
+                  
+                </select>
+            </div>
+        </div>
+
+        <div style="text-align: center"><button class="button  button-positive" ng-click="Submit()">Approve</button></div>
+        <br/>
+        <h2 class="title">
+            <label class="item item-input">
+                <textarea rows="3" style="font-size:80%" placeholder="拒绝理由" ng-model="Reject.Reson"></textarea>
+            </label>
+        </h2>
+        <br/>
+        <div style="text-align: center"><button class="button  button-assertive" ng-click="Reject()">Reject</button></div>
+       <br/>
+       
+    </ion-content>
+</ion-view>
