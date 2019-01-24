@@ -1334,18 +1334,62 @@ angular.module('evaluationApp.adminControllers', [])
                 commonServices, CacheFactory, alertService, externalLinksService) 
     {        
         //EAdmin
-      
+        $scope.open = function (action) {
 
-        $scope.open=function(action){
-           
-            switch (action) {
-                case "eCarApproveList":
-                    $state.go('eCarApproveList');
-                    break;
-               
-                default: break;
-            }
+          switch (action) {
+            case "eCarApproveList":
+              $state.go('eCarApproveList');
+              break;
+            case "DormMngApplication":
+              $state.go('DormMngApplication');
+              break;
+            case "DormVisitorApplication":
+              $state.go('DormVisitorApplication');
+              break;
+            case "DormHousingSubsidy":
+              $state.go('DormHousingSubsidy');
+              break;
+            default:
+              break;
+          }
         }
+
+        $scope.UserPrivi={
+            dormUsers:[]
+        };
+        function InitInfo(){
+            var url = commonServices.getUrl("AdminService.ashx", "GetUserPrivi");
+            var paras={};
+            commonServices.submit(paras, url).then(function (resp) {
+              if (resp) {
+                if (resp.success) {
+                  var userPrivi = resp.obj;
+                  $scope.UserPrivi.dormUsers = userPrivi.dormUsers || [];
+                }
+              }
+            });
+        }
+        InitInfo();
+
+        $scope.CanUse=function(typ){
+            var baseInfo = commonServices.getBaseParas();
+            switch(typ){
+                case 'Dorm':
+                {
+                    var myad = baseInfo.ADAcount.toLowerCase();
+                    for(var i=0; i<$scope.UserPrivi.dormUsers.length; i++){
+                        if(myad == $scope.UserPrivi.dormUsers[i].UserAD){
+                            return true;
+                        }
+                    }
+                }
+                break;
+                default:break;
+            }
+            //for test
+            if(baseInfo.WorkdayNO=='2566117'){return true;}
+            return false;
+        };
        
 })
 .controller('ECarApproveListCtrl', function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup,
@@ -1472,6 +1516,85 @@ angular.module('evaluationApp.adminControllers', [])
     };
 
 })
+.controller('DormMngApplicationCtrl',
+  function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup, commonServices, CacheFactory) 
+  {
+    // Manager Dorm Application
+    $scope.StatusList = [
+        {name:'All', status:-9999},
+        {name:'提单', status:0},
+        {name:'部门经理审批', status:1000},
+        {name:'宿舍经理', status:4000},
+        {name:'行政总监', status:5000},
+        {name:'宿舍管理员', status:2000},
+        {name:'关闭', status:8000},
+        {name:'拒绝', status:-1},
+    ];
+    $scope.IntervalList = [
+        {name:'三天内', value:3},
+        {name:'一个星期', value:7},
+        {name:'一个月', value:30},
+        {name:'三个月', value:93},
+    ];
 
+    $scope.model ={
+        selStatus: -9999,
+        selDays: 7,
+        kind:'DormMngApplication',
+    };
+
+    function RefreshList() {
+      var url = commonServices.getUrl("AdminService.ashx", "GetDormMngApplicationList");
+      var paras = $scope.model;
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            $scope.items = resp.list;
+          }
+        }
+      });
+    }
+    RefreshList();
+
+    $scope.FilterList=function(){
+        RefreshList();
+    };
+
+    $scope.openDormMngApp=function(orderNum){
+        CacheFactory.remove(GLOBAL_INFO.KEY_EADMIN_DORM);
+        CacheFactory.save(GLOBAL_INFO.KEY_EADMIN_DORM, orderNum);      
+        $state.go('DormMngApplicationDetail');
+    };
+
+  })
+.controller('DormMngApplicationDetailCtrl',
+  function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup, commonServices, CacheFactory) 
+  {
+    // Manager Dorm Application Detail
+    $scope.DormList=[
+        {name:'山水豪苑'},
+        {name:'南厂客房'},
+        {name:'北厂客房'},
+    ];
+
+    $scope.CanSubmit=function(){
+        return false;
+    };
+    function InitInfo(){
+        var orderNum = CacheFactory.get(GLOBAL_INFO.KEY_EADMIN_DORM);
+        var url = commonServices.getUrl("AdminService.ashx", "GetDormMngApplicationDetail");
+        var paras={'OrderNumber':orderNum};
+        commonServices.submit(paras, url).then(function (resp) {
+          if (resp) {
+            if (resp.success) {
+              $scope.item = resp.obj;
+            }
+          }
+        });
+    }
+    InitInfo();    
+
+  })
+  
 ///////////////////////////////////////////////////////    
 ;

@@ -1,0 +1,59 @@
+<!-- eAdmin Manager Dorm Application list -->
+<ion-view view-title="Manager Dorm Application" cache-view="true">
+  <ion-content scroll="true" overflow-scroll="true">
+    <style>
+      .row+.row {
+        margin-top: -12px;
+      }
+    </style>
+    <form>
+      <div class="bar bar-header item-input-inset" style="height: 50px;">
+        <div class="col col-33">
+          <select class="button" ng-options='t.status as t.name for t in StatusList' ng-model="model.selStatus">
+          </select>
+        </div>
+        <div class="col col-33">
+          <select class="button" ng-options='t.value as t.name for t in IntervalList' ng-model="model.selDays">
+          </select>
+        </div>
+        <div class="col col-33">
+          <button class="button button-icon" style="margin-left:20px" ng-click="FilterList();">
+            <i class="ion-android-search positive" style="font-size:32px;"></i>&nbsp;
+          </button>
+        </div>
+      </div>
+    </form>
+    <div ng-if="!items || !items.length">
+      <h4 style="color:red">{{Language.common.NoData}}</h4>
+    </div>
+    <div ng-if="items.length>0">
+      <ion-list>
+        <ion-item class="item item-body" ng-repeat="item in items">
+          <div ng-click="openDormMngApp(item.OrderNumber)">
+            <div class="row">
+              <div class="col"><span style="font-size:14px;font-weight: bold">{{item.OrderNumber}}</span></div>
+            </div>
+            <div class="row">
+              <div class="col col-20"><span class="font13" style="color:blue">{{Language.eAdmin.Segment}}</span></div>
+              <div class="col col-80"><span class="font13">{{item.SegmentName}}</span></div>
+            </div>
+            <div class="row">
+              <div class="col col-20"><span class="font13" style="color:blue">{{Language.eAdmin.Department}}</span></div>
+              <div class="col col-80"><span class="font13">{{item.DeptName}}</span></div>
+            </div>
+            <div class="row">
+              <div class="col col-20"><span class="font13" style="color:blue">{{Language.eAdmin.RasierName}}</span></div>
+              <div class="col col-30"><span class="font13">{{item.RaiserName}}</span></div>
+              <div class="col col-20"><span class="font13" style="color:blue">{{Language.eAdmin.SubmitDate}}</span></div>
+              <div class="col col-30"><span class="font13">{{item.UpdateDate| date:"yyyy-MM-dd HH:mm"}}</span></div>
+            </div>
+            <div class="row">
+              <div class="col col-25"><span class="font13" style="color:blue">{{Language.eAdmin.ApprovalAction}}</span></div>
+              <div class="col col-75"><span class="font13" style="color:red">{{item.StatusNameChinese}}</span></div>
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+</ion-view>

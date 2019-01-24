@@ -823,6 +823,16 @@ angular.module('evaluationApp.router', [])
                   templateUrl: 'templates/admin/EAdmin/eCarApprover_Details.html',
                   controller: 'ECarApproveDetailsCtrl'
               })
+            .state('DormMngApplication',{
+                url: '/DormMngApplication',
+                templateUrl: 'templates/admin/EAdmin/DormMngApplication-List.html',
+                controller: 'DormMngApplicationCtrl'
+            })
+                .state('DormMngApplicationDetail',{
+                    url: '/DormMngApplicationDetail',
+                    templateUrl: 'templates/admin/EAdmin/DormMngApplication-Detail.html',
+                    controller: 'DormMngApplicationDetailCtrl'
+                })            
             /*sub of GBSHR*/
             .state('generalNotice', {
                 url: '/generalNotice',

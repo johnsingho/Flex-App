@@ -372,3 +372,10 @@ ul{
     white-space: nowrap;
     align-items: center;
   }
+
+  .font13{
+    font-size:13px;
+  }
+  .font80{
+    font-size: 80%;
+  }

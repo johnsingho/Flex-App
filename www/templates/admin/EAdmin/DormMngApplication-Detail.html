@@ -1,0 +1,181 @@
+<!-- eAdmin Manager Dorm Application Detail -->
+<ion-view view-title="Manager Dorm Application" cache-view="false" hide-tabs>
+  <ion-content style="background-color:lavender">
+    <style>
+    .myOff {
+    margin-left: 8px;
+    margin-right: 8px;
+    }
+    .mytitle{
+      font-size: 80%;
+      width: 20%;
+    }
+    </style>
+    <div class="list card">
+      <span class="text-left font13">{{Language.eAdmin.RequisitionFormInfo}}</span>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.Company}}</span>
+        <input type="text" readonly="readonly" ng-model="item.Company" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.Segment}}</span>
+        <input type="text" readonly="readonly" ng-model="item.SegmentName" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.Department}}</span>
+        <input type="text" readonly="readonly" ng-model="item.DeptName" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.Project}}</span>
+        <input type="text" readonly="readonly" ng-model="item.ProjectName" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.DeptApprover}}</span>
+        <input type="text" readonly="readonly" ng-model="item.DeptManagerName" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.CostCenter}}</span>
+        <input type="text" readonly="readonly" ng-model="item.CostCenter" />
+      </div>
+    </div>
+
+    <div class="list card">
+      <span class="text-left font13">{{Language.eAdmin.OccupantInfo}}</span>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.Name}}</span>
+        <input type="text" readonly="readonly" ng-model="item.OccupantName" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.Gender}}</span>
+        <input type="text" readonly="readonly" ng-model="item.OccupantSex" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.Nationality}}</span>
+        <input type="text" readonly="readonly" ng-model="item.OccupantNationality" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.EmployeeID}}</span>
+        <input type="text" readonly="readonly" ng-model="item.OccupantEmpoyeeID" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.Level}}</span>
+        <input type="text" readonly="readonly" ng-model="item.OccupantLevel" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.EmailAddress}}</span>
+        <input type="text" readonly="readonly" ng-model="item.OccupantEmail" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.CheckinTime}}</span>
+        <span class="font80">{{item.CheckInDate|date:"yyyy-MM-dd"}}</span>
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.TelNo}}</span>
+        <input type="text" readonly="readonly" ng-model="item.OccupantTelephone" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.TypeOfApply}}</span>
+        <input type="text" readonly="readonly" ng-model="item.ApplyReasonType" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.TypeOfRoom}}</span>
+        <input type="text" readonly="readonly" ng-model="item.RoomType" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.WithFamilyMembers}}</span>
+        <input type="text" readonly="readonly" ng-model="item.IsFamily" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.WithHousingSubsidy}}</span>
+        <input type="text" readonly="readonly" ng-model="item.IsHousing" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.FamilyMemberInfo}}</span>
+        <textarea rows="3" style="font-size:80%" ng-model="item.FamilyInfo"></textarea>
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.AgreeFamilyRegulations}}</span>
+        <input type="text" readonly="readonly" ng-model="item.IsAgreeFamily" />
+      </div>
+    </div>
+
+    <div class="list card">
+      <span class="text-left font13">{{Language.eAdmin.ContactPerson}}</span>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.ContactPerson}}</span>
+        <input type="text" readonly="readonly" ng-model="item.ContactPerson" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.ContactEmployeeID}}</span>
+        <input type="text" readonly="readonly" ng-model="item.ContactEmployeeID" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.ContactNo}}</span>
+        <input type="text" readonly="readonly" ng-model="item.ContactNo" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.Remark}}</span>
+        <input type="text" readonly="readonly" ng-model="item.Remark" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.Applicant}}</span>
+        <input type="text" readonly="readonly" ng-model="item.RaiserName" />
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.SubmitDate}}</span>
+        <span class="font80">{{item.UpdateDate|date:"yyyy-MM-dd HH:mm"}}</span>
+      </div>
+    </div>
+
+    <div class="list card">
+      <span class="text-left font13">{{Language.eAdmin.FilledbyCampusAdministration}}</span>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.DormArea}}</span>
+        <select class="button" ng-options='t.name as t.name for t in DormList' 
+          ng-model="item.DormArea"
+          ng-disabled="!CanSubmit()">
+        </select>
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.RoomNo}}</span>
+        <input type="text" ng-model="item.RoomNo" ng-readonly="!CanSubmit()"/>
+      </div>
+      <div class="item item-input">
+        <span class="input-label mytitle">{{Language.eAdmin.Remark}}</span>
+        <input type="text" ng-model="item.AdminRemark" ng-readonly="!CanSubmit()"/>
+      </div>
+    </div>
+    </div>
+
+    <div class="card" ng-if="ApprovelRecords && ApprovelRecords.length>0">
+      <span class="text-left font13">{{Language.eAdmin.ApprovalRecord}}</span>
+      <div>
+        <table class="myTab">
+          <thead>
+            <tr>
+              <th style="width:20%">{{Language.eAdmin.ApprovalAction}}</th>
+              <th style="width:20%">{{Language.eAdmin.Approver}}</th>
+              <th style="width:15%">{{Language.eAdmin.Action}}</th>
+              <th style="width:20%">{{Language.eAdmin.ApprovedTime}}</th>
+              <th>{{Language.eAdmin.Remark}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in ApprovelRecords">
+              <td>{{item.GroupName}}</td>
+              <td>{{item.ItemName}}</td>
+              <td>{{item.GroupName}}</td>
+              <td>{{item.ItemName}}</td>
+              <td>{{item.GroupName}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="text-align:center" ng-if="CanSubmit()>
+      <button class="button button-positive" ng-click="Approve()">{{Language.eAdmin.Approve}}</button>
+      <button class="button button-calm" ng-click="Reject()">{{Language.eAdmin.Reject}}</button>
+    </div>
+  </ion-content>
+</ion-view>
