@@ -1577,23 +1577,93 @@ angular.module('evaluationApp.adminControllers', [])
         {name:'北厂客房'},
     ];
 
+    $scope.ValidDate=function(sdt){
+        var dt = new Date(sdt);
+        var dtNow = new Date(2018,1,1,12,0,0);
+        return dt>dtNow;
+    }
     $scope.CanSubmit=function(){
+        var status = 0;
+        if($scope.item && $scope.item.Status){
+            status=$scope.item.Status;
+        }
+        if(0==status||-1==status||8000==status){
+            return false;
+        }
+        if($scope.IsApprover
+            &&(
+                1000==status
+                || 2000==status
+                || 4000==status
+                || 5000==status
+            )
+        ){
+            return true;
+        }
         return false;
     };
+
+    var baseInfo = commonServices.getBaseParas();
+    $scope.IsApprover=false;
     function InitInfo(){
         var orderNum = CacheFactory.get(GLOBAL_INFO.KEY_EADMIN_DORM);
         var url = commonServices.getUrl("AdminService.ashx", "GetDormMngApplicationDetail");
-        var paras={'OrderNumber':orderNum};
+        var paras={
+            'OrderNumber':orderNum,
+            'ADAcount':baseInfo.ADAcount
+        };
         commonServices.submit(paras, url).then(function (resp) {
           if (resp) {
             if (resp.success) {
               $scope.item = resp.obj;
+              $scope.IsApprover=$scope.item.IsApprover;
+              $scope.ApprovelRecords = JSON.parse(resp.data);
             }
           }
         });
     }
     InitInfo();    
 
+    $scope.Approve=function(){
+        var url = commonServices.getUrl("AdminService.ashx", "ApproveDormMngApplication");
+        var paras={
+            'OrderNumber':orderNum,
+            'ADAcount':baseInfo.ADAcount,
+            'DormArea':item.DormArea,
+            'RoomNo':item.RoomNo,
+            'AdminRemark':item.AdminRemark,
+        };
+        commonServices.submit(paras, url).then(function (resp) {
+          if (resp) {
+            if (resp.success) {                
+                alertService.showAlert('提交成功');
+                $ionicHistory.goBack();
+            }else{
+                alertService.showAlert(resp.message);
+                $ionicHistory.goBack();
+            }
+          }
+        });
+    };
+    $scope.Reject=function(){
+        var url = commonServices.getUrl("AdminService.ashx", "RejectDormMngApplication");
+        var paras={
+            'OrderNumber':orderNum,
+            'ADAcount':baseInfo.ADAcount,
+            'Remark':item.Remark,
+        };
+        commonServices.submit(paras, url).then(function (resp) {
+          if (resp) {
+            if (resp.success) {                
+                alertService.showAlert('提交成功');
+                $ionicHistory.goBack();
+            }else{
+                alertService.showAlert(resp.message);
+                $ionicHistory.goBack();
+            }
+          }
+        });
+    };
   })
   
 ///////////////////////////////////////////////////////    

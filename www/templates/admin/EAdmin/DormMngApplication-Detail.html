@@ -115,7 +115,7 @@
       </div>
       <div class="item item-input">
         <span class="input-label mytitle">{{Language.eAdmin.Remark}}</span>
-        <input type="text" readonly="readonly" ng-model="item.Remark" />
+        <input type="text" ng-readonly="!CanSubmit()" ng-model="item.Remark" />
       </div>
       <div class="item item-input">
         <span class="input-label mytitle">{{Language.eAdmin.Applicant}}</span>
@@ -150,32 +150,32 @@
     <div class="card" ng-if="ApprovelRecords && ApprovelRecords.length>0">
       <span class="text-left font13">{{Language.eAdmin.ApprovalRecord}}</span>
       <div>
-        <table class="myTab">
+        <table class="myTab" style="width:100%">
           <thead>
             <tr>
               <th style="width:20%">{{Language.eAdmin.ApprovalAction}}</th>
               <th style="width:20%">{{Language.eAdmin.Approver}}</th>
               <th style="width:15%">{{Language.eAdmin.Action}}</th>
-              <th style="width:20%">{{Language.eAdmin.ApprovedTime}}</th>
+              <th style="width:25%">{{Language.eAdmin.ApprovedTime}}</th>
               <th>{{Language.eAdmin.Remark}}</th>
             </tr>
           </thead>
           <tbody>
             <tr ng-repeat="item in ApprovelRecords">
-              <td>{{item.GroupName}}</td>
-              <td>{{item.ItemName}}</td>
-              <td>{{item.GroupName}}</td>
-              <td>{{item.ItemName}}</td>
-              <td>{{item.GroupName}}</td>
+              <td>{{item.StatusNameChinese}}</td>
+              <td>{{item.Username}}</td>
+              <td>{{item.Action}}</td>
+              <td><span ng-if=ValidDate(item.UpdateDate)>{{item.UpdateDate|date:"yyyy-MM-dd HH:mm"}}</span></td>
+              <td>{{item.Remark}}</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <div style="text-align:center" ng-if="CanSubmit()>
+    <div style="text-align:center" ng-if="CanSubmit()">
       <button class="button button-positive" ng-click="Approve()">{{Language.eAdmin.Approve}}</button>
-      <button class="button button-calm" ng-click="Reject()">{{Language.eAdmin.Reject}}</button>
+      <button class="button button-assertive" ng-click="Reject()">{{Language.eAdmin.Reject}}</button>
     </div>
   </ion-content>
 </ion-view>
