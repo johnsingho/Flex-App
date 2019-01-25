@@ -620,6 +620,7 @@ var ZH_CN = {
         Level:'级别',
         EmailAddress:'邮箱',
         CheckinTime:'入住时间',
+        CheckoutTime:'退宿时间',
         TelNo:'电话号码',
         TypeOfApply:'入住类型',
         TypeOfRoom:'房间类型',
@@ -645,6 +646,10 @@ var ZH_CN = {
         Approve:'批准',
         Reject:'拒绝',
         RasierName:'提单人',
+        ApplyReason:'申请原因',
+        CostChangeTo:'费用承担',
+        TotalCost:'总金额',
+        FromCompany:'来自公司',
         
     }
 };
@@ -1158,5 +1163,6 @@ var GLOBAL_INFO = {
     KEY_MC_RESEARCH_TITLE:"KEY_MC_RESEARCH_TITLE",
     KEY_MC_WONDERFULMON_ID: "KEY_MC_WONDERFULMON_ID",
     KEY_LOSTFOUND_ID: "KEY_LOSTFOUND_ID",
+    KEY_EADMIN_DORMAPP_TYPE: "KEY_EADMIN_DORMAPP_TYPE",
     KEY_EADMIN_DORM: "KEY_EADMIN_DORM",
 };

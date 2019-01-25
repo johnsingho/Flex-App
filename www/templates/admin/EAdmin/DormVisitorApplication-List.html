@@ -1,5 +1,5 @@
-<!-- eAdmin Manager Dorm Application list -->
-<ion-view view-title="{{title}}" cache-view="true">
+<!-- eAdmin Visitor House Application -->
+<ion-view view-title="Visitor House Application" cache-view="true">
   <ion-content scroll="true" overflow-scroll="true">
     <style>
       .row+.row {
@@ -37,7 +37,7 @@
               <div class="col col-20"><span class="font13" style="color:blue">{{Language.eAdmin.Segment}}</span></div>
               <div class="col col-80"><span class="font13">{{item.SegmentName}}</span></div>
             </div>
-            <div class="row">
+            <div class="row" ng-if="item.DeptName">
               <div class="col col-20"><span class="font13" style="color:blue">{{Language.eAdmin.Department}}</span></div>
               <div class="col col-80"><span class="font13">{{item.DeptName}}</span></div>
             </div>

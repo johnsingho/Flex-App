@@ -832,7 +832,17 @@ angular.module('evaluationApp.router', [])
                     url: '/DormMngApplicationDetail',
                     templateUrl: 'templates/admin/EAdmin/DormMngApplication-Detail.html',
                     controller: 'DormMngApplicationDetailCtrl'
-                })            
+                })
+                .state('DormVisitorApplicationDetail',{
+                    url: '/DormVisitorApplicationDetail',
+                    templateUrl: 'templates/admin/EAdmin/DormVisitorApplication-Detail.html',
+                    controller: 'DormVisitorApplicationDetailCtrl'
+                })
+                .state('DormHousingSubsidyDetail',{
+                    url: '/DormHousingSubsidyDetail',
+                    templateUrl: 'templates/admin/EAdmin/DormHousingSubsidyDetail-Detail.html',
+                    controller: 'DormHousingSubsidyDetailCtrl'
+                })
             /*sub of GBSHR*/
             .state('generalNotice', {
                 url: '/generalNotice',

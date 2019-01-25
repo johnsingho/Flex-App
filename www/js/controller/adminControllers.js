@@ -1341,13 +1341,19 @@ angular.module('evaluationApp.adminControllers', [])
               $state.go('eCarApproveList');
               break;
             case "DormMngApplication":
+              CacheFactory.remove(GLOBAL_INFO.KEY_EADMIN_DORMAPP_TYPE);
+              CacheFactory.save(GLOBAL_INFO.KEY_EADMIN_DORMAPP_TYPE, 'DormMngApplication');
               $state.go('DormMngApplication');
               break;
             case "DormVisitorApplication":
-              $state.go('DormVisitorApplication');
+              CacheFactory.remove(GLOBAL_INFO.KEY_EADMIN_DORMAPP_TYPE);
+              CacheFactory.save(GLOBAL_INFO.KEY_EADMIN_DORMAPP_TYPE, 'DormVisitorApplication');
+              $state.go('DormMngApplication');
               break;
             case "DormHousingSubsidy":
-              $state.go('DormHousingSubsidy');
+              CacheFactory.remove(GLOBAL_INFO.KEY_EADMIN_DORMAPP_TYPE);
+              CacheFactory.save(GLOBAL_INFO.KEY_EADMIN_DORMAPP_TYPE, 'DormHousingSubsidy');
+              $state.go('DormMngApplication');
               break;
             default:
               break;
@@ -1520,6 +1526,7 @@ angular.module('evaluationApp.adminControllers', [])
   function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup, commonServices, CacheFactory) 
   {
     // Manager Dorm Application
+    // 与Visitor House Application共用
     $scope.StatusList = [
         {name:'All', status:-9999},
         {name:'提单', status:0},
@@ -1535,17 +1542,30 @@ angular.module('evaluationApp.adminControllers', [])
         {name:'一个星期', value:7},
         {name:'一个月', value:30},
         {name:'三个月', value:93},
+        {name:'半年', value:186},
     ];
 
+    var appkind = CacheFactory.get(GLOBAL_INFO.KEY_EADMIN_DORMAPP_TYPE);
     $scope.model ={
         selStatus: -9999,
         selDays: 7,
-        kind:'DormMngApplication',
+        kind:appkind,
     };
 
     function RefreshList() {
+    switch (appkind) {
+        case 'DormMngApplication':
+            $scope.title = 'Manager Dorm Application';
+            break;
+        case 'DormVisitorApplication':
+            $scope.title = 'Visitor House Application';
+            break;
+        default:
+            break;
+        }
       var url = commonServices.getUrl("AdminService.ashx", "GetDormMngApplicationList");
       var paras = $scope.model;
+      paras.kind=appkind;
       commonServices.submit(paras, url).then(function (resp) {
         if (resp) {
           if (resp.success) {
@@ -1562,8 +1582,17 @@ angular.module('evaluationApp.adminControllers', [])
 
     $scope.openDormMngApp=function(orderNum){
         CacheFactory.remove(GLOBAL_INFO.KEY_EADMIN_DORM);
-        CacheFactory.save(GLOBAL_INFO.KEY_EADMIN_DORM, orderNum);      
-        $state.go('DormMngApplicationDetail');
+        CacheFactory.save(GLOBAL_INFO.KEY_EADMIN_DORM, orderNum);
+        switch (appkind) {
+          case 'DormMngApplication':
+            $state.go('DormMngApplicationDetail');
+            break;
+          case 'DormVisitorApplication':
+            $state.go('DormVisitorApplicationDetail');
+            break;
+          default:
+            break;
+        }        
     };
 
   })
@@ -1665,6 +1694,107 @@ angular.module('evaluationApp.adminControllers', [])
         });
     };
   })
+  .controller('DormVisitorApplicationDetailCtrl',
+    function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup, commonServices, CacheFactory) 
+  {
+    // Visitor House Application Detail
+    $scope.DormList = [
+      {name: '山水豪苑'},
+      {name: '南厂客房'},
+      {name: '北厂客房'},
+    ];
+
+    $scope.ValidDate = function (sdt) {
+      var dt = new Date(sdt);
+      var dtNow = new Date(2018, 1, 1, 12, 0, 0);
+      return dt > dtNow;
+    }
+    $scope.CanSubmit = function () {
+      var status = 0;
+      if ($scope.item && $scope.item.Status) {
+        status = $scope.item.Status;
+      }
+      if (0 == status || -1 == status || 8000 == status) {
+        return false;
+      }
+      if ($scope.IsApprover &&
+        (
+          1000 == status ||
+          2000 == status ||
+          4000 == status ||
+          5000 == status
+        )
+      ) {
+        return true;
+      }
+      return false;
+    };
+
+    var baseInfo = commonServices.getBaseParas();
+    $scope.IsApprover = false;
+
+    function InitInfo() {
+      var orderNum = CacheFactory.get(GLOBAL_INFO.KEY_EADMIN_DORM);
+      var url = commonServices.getUrl("AdminService.ashx", "GetDormVisitorApplicationDetail");
+      var paras = {
+        'OrderNumber': orderNum,
+        'ADAcount': baseInfo.ADAcount
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            $scope.item = resp.obj;
+            $scope.IsApprover = $scope.item.IsApprover;
+            $scope.ApprovelRecords = JSON.parse(resp.data);
+          }
+        }
+      });
+    }
+    InitInfo();
+
+    $scope.Approve = function () {
+      var url = commonServices.getUrl("AdminService.ashx", "ApproveDormMngApplication");
+      var paras = {
+        'OrderNumber': orderNum,
+        'ADAcount': baseInfo.ADAcount,
+        'DormArea': item.DormArea,
+        'RoomNo': item.RoomNo,
+        'AdminRemark': item.AdminRemark,
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            alertService.showAlert('提交成功');
+            $ionicHistory.goBack();
+          } else {
+            alertService.showAlert(resp.message);
+            $ionicHistory.goBack();
+          }
+        }
+      });
+    };
+    $scope.Reject = function () {
+      var url = commonServices.getUrl("AdminService.ashx", "RejectDormMngApplication");
+      var paras = {
+        'OrderNumber': orderNum,
+        'ADAcount': baseInfo.ADAcount,
+        'Remark': item.Remark,
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            alertService.showAlert('提交成功');
+            $ionicHistory.goBack();
+          } else {
+            alertService.showAlert(resp.message);
+            $ionicHistory.goBack();
+          }
+        }
+      });
+    };
+  })
+
+
   
 ///////////////////////////////////////////////////////    
 ;
