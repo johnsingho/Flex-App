@@ -1351,9 +1351,7 @@ angular.module('evaluationApp.adminControllers', [])
               $state.go('DormMngApplication');
               break;
             case "DormHousingSubsidy":
-              CacheFactory.remove(GLOBAL_INFO.KEY_EADMIN_DORMAPP_TYPE);
-              CacheFactory.save(GLOBAL_INFO.KEY_EADMIN_DORMAPP_TYPE, 'DormHousingSubsidy');
-              $state.go('DormMngApplication');
+              $state.go('DormHousingSubsidy');
               break;
             default:
               break;
@@ -1538,7 +1536,6 @@ angular.module('evaluationApp.adminControllers', [])
         {name:'拒绝', status:-1},
     ];
     $scope.IntervalList = [
-        {name:'三天内', value:3},
         {name:'一个星期', value:7},
         {name:'一个月', value:30},
         {name:'三个月', value:93},
@@ -1708,7 +1705,7 @@ angular.module('evaluationApp.adminControllers', [])
       var dt = new Date(sdt);
       var dtNow = new Date(2018, 1, 1, 12, 0, 0);
       return dt > dtNow;
-    }
+    };
     $scope.CanSubmit = function () {
       var status = 0;
       if ($scope.item && $scope.item.Status) {
@@ -1779,6 +1776,152 @@ angular.module('evaluationApp.adminControllers', [])
         'OrderNumber': orderNum,
         'ADAcount': baseInfo.ADAcount,
         'Remark': item.Remark,
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            alertService.showAlert('提交成功');
+            $ionicHistory.goBack();
+          } else {
+            alertService.showAlert(resp.message);
+            $ionicHistory.goBack();
+          }
+        }
+      });
+    };
+  })
+  .controller('DormHousingSubsidyCtrl',
+  function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup, commonServices, CacheFactory) 
+  {
+    // Manager Housing Subsidy
+    $scope.StatusList = [
+        {name:'All', status:-9999},
+        {name:'提单', status:0},
+        {name:'宿舍经理', status:1000},
+        {name:'行政总监', status:2000},
+        {name:'宿舍管理员', status:3000},
+        {name:'关闭', status:8000},
+        {name:'取消', status:9000},
+        {name:'拒绝', status:-1},
+    ];
+
+    $scope.IntervalList = [
+        {name:'一个星期', value:7},
+        {name:'一个月', value:30},
+        {name:'三个月', value:93},
+        {name:'半年', value:186},
+    ];
+
+    var appkind = CacheFactory.get(GLOBAL_INFO.KEY_EADMIN_DORMAPP_TYPE);
+    $scope.model ={
+        selStatus: -9999,
+        selDays: 7,
+    };
+
+    function RefreshList() {
+      var url = commonServices.getUrl("AdminService.ashx", "GetDormHousingSubsidyList");
+      var paras = $scope.model;
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            $scope.items = resp.list;
+          }
+        }
+      });
+    }
+    RefreshList();
+
+    $scope.FilterList=function(){
+        RefreshList();
+    };
+
+    $scope.openDormHousingSubsidy=function(orderNum){
+        CacheFactory.remove(GLOBAL_INFO.KEY_EADMIN_DORM);
+        CacheFactory.save(GLOBAL_INFO.KEY_EADMIN_DORM, orderNum);
+        $state.go('DormHousingSubsidyDetail');      
+    };
+
+  })
+  .controller('DormHousingSubsidyDetailCtrl',
+    function ($scope, $rootScope, $state, $ionicHistory, $ionicPopup, commonServices, CacheFactory) 
+  {
+    // Manager Housing Subsidy Detail
+    
+    $scope.ValidDate = function (sdt) {
+        var dt = new Date(sdt);
+        var dtNow = new Date(2018, 1, 1, 12, 0, 0);
+        return dt > dtNow;
+    };
+    $scope.CanSubmit = function () {
+      var status = 0;
+      if ($scope.item && $scope.item.Status) {
+        status = $scope.item.Status;
+      }
+      if (0==status || -1==status || 8000==status || 9000==status) {
+        return false;
+      }
+      if ($scope.IsApprover &&
+        (
+          1000 == status ||
+          2000 == status ||
+          3000 == status
+        )
+      ) {
+        return true;
+      }
+      return false;
+    };
+
+    var baseInfo = commonServices.getBaseParas();
+    $scope.IsApprover = false;
+
+    function InitInfo() {
+      var orderNum = CacheFactory.get(GLOBAL_INFO.KEY_EADMIN_DORM);
+      var url = commonServices.getUrl("AdminService.ashx", "GetDormHousingSubsidyDetail");
+      var paras = {
+        'OrderNumber': orderNum,
+        'ADAcount': baseInfo.ADAcount
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            $scope.item = resp.obj;
+            $scope.IsApprover = $scope.item.IsApprover;
+            $scope.ApprovelRecords = JSON.parse(resp.data);
+          }
+        }
+      });
+    }
+    InitInfo();
+
+    $scope.Approve = function () {
+      var url = commonServices.getUrl("AdminService.ashx", "ApproveDormHousingSubsidy");
+      var paras = {
+        'OrderNumber': orderNum,
+        'ADAcount': baseInfo.ADAcount,
+        'EffectiveDate': item.EffectiveDate,
+        'RoomNumber': item.RoomNumber,
+        'CheckOutDate': item.CheckOutDate,
+        'DormRemark': item.Remark2,
+      };
+      commonServices.submit(paras, url).then(function (resp) {
+        if (resp) {
+          if (resp.success) {
+            alertService.showAlert('提交成功');
+            $ionicHistory.goBack();
+          } else {
+            alertService.showAlert(resp.message);
+            $ionicHistory.goBack();
+          }
+        }
+      });
+    };
+    $scope.Reject = function () {
+      var url = commonServices.getUrl("AdminService.ashx", "RejectDormHousingSubsidy");
+      var paras = {
+        'OrderNumber': orderNum,
+        'ADAcount': baseInfo.ADAcount,
+        'DormRemark': item.Remark2,
       };
       commonServices.submit(paras, url).then(function (resp) {
         if (resp) {

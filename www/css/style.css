@@ -379,3 +379,10 @@ ul{
   .font80{
     font-size: 80%;
   }
+
+  .div-disabled
+  {
+    pointer-events: none;
+    opacity: 0.5;
+    background: #CCC;
+  }

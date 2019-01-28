@@ -4,7 +4,7 @@
 
 //开关
 //是否本地开发调试
-var IsDebugMode = true; //false;
+var IsDebugMode = false; //false;
 
 //是否显示详细升级信息
 var IsShowUpdateDetial = false; //false;
@@ -650,7 +650,12 @@ var ZH_CN = {
         CostChangeTo:'费用承担',
         TotalCost:'总金额',
         FromCompany:'来自公司',
-        
+        JoinDate:'入职日期',
+        Mobile:'电话',
+        JobGrade:'级别',
+        LiveInDorm:'是否住宿',
+        FilledbyDormGroup:'宿舍组更新信息',
+        SubsidyEffDate:'津贴生效日期',
     }
 };
 
@@ -1099,6 +1104,7 @@ var ZH_US = {
         RequisitionFormInfo:'Information Of Requisition Form',
         Company:'Company',
         Segment:'Segment',
+        Department:'Department',
         Project:'Project',
         DeptApprover:'Dept approver',
         CostCenter:'Cost Center',
@@ -1110,6 +1116,7 @@ var ZH_US = {
         Level:'Level',
         EmailAddress:'Email',
         CheckinTime:'Check in time',
+        CheckoutTime:'Check out time',
         TelNo:'Tel. No',
         TypeOfApply:'Type of apply',
         TypeOfRoom:'Type of room',
@@ -1129,8 +1136,22 @@ var ZH_US = {
         ApprovalRecord:'Approval record',
         ApprovalAction:'Approval action',
         Approver:'Approver',
+        ApproveStatus:'Approve status',
         Action:'Action',
         ApprovedTime:'Approved at',    
+        Approve:'Approve',
+        Reject:'Reject',
+        RasierName:'Rasier name',
+        ApplyReason:'Apply reason',
+        CostChangeTo:'Cost change to',
+        TotalCost:'total cost',
+        FromCompany:'from company',
+        JoinDate:'join date',
+        Mobile:'mobile',
+        JobGrade:'job grade',
+        LiveInDorm:'Is accommodation',
+        FilledbyDormGroup:'Filled by Dorm group',
+        SubsidyEffDate:'Subsidy effective date',
     }
 };
 
