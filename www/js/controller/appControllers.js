@@ -485,7 +485,7 @@ angular.module('evaluationApp.appControllers', [])
         else
             $scope.btnText='Get the verifying code';
 
-        $scope.myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(16[0-9]{1}))+\d{8})$/;
+        $scope.myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(16[0-9]{1}))+\d{8})$/;
         $scope.getSecurityCode=function(passmodels){
 
             if(! $scope.myreg.test(passmodels.mobile)) {

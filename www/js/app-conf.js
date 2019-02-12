@@ -1171,7 +1171,7 @@ String.prototype.formatParam = function(){
 };
 
 var GLOBAL_INFO = {
-    LAST_PUBLISH_DATE: "2019-01-22",
+    LAST_PUBLISH_DATE: "2019-02-11",
     //keys
     KEY_ACT_GOOD_ID: "KEY_ActivityGood",
     KEY_ACT_GOOD_ITEMID: "KEY_ActivityGood_ITEMID",
