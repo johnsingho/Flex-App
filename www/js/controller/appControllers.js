@@ -44,7 +44,7 @@ angular.module('evaluationApp.appControllers', [])
 
             if (typeof (user) == 'undefined') {
                 if($rootScope.Language==ZH_CN)
-                alertService.showAlert('工号或密码不能为空');
+                alertService.showAlert('工号或密码不能为�?);
                 else
                     alertService.showAlert('The EmployeeID or password can not be empty');
                 return false;
@@ -57,7 +57,7 @@ angular.module('evaluationApp.appControllers', [])
                    // $location.path("tab/home");
                 }else{
                    alertService.showAlert(result.msg);
-//                    alertService.showAlert('6月25号星期天8:00-20:30，系统服务器进行维护，预计12个小时，暂时无法登陆，对此造成的不便，敬请谅解');
+//                    alertService.showAlert('6�?5号星期天8:00-20:30，系统服务器进行维护，预�?2个小时，暂时无法登陆，对此造成的不便，敬请谅解');
                 }
             });
         };
@@ -128,7 +128,7 @@ angular.module('evaluationApp.appControllers', [])
                                     e.preventDefault();
                                 }
                                 else if($rootScope.data.PersonType=='中国'&&$rootScope.data.IDNO.length!=18) {
-                                    alertService.showAlert("身份证信息必须是18位");
+                                    alertService.showAlert("身份证信息必须是18�?);
                                     e.preventDefault();
                                 }else {
                                     console.log(2);
@@ -150,7 +150,7 @@ angular.module('evaluationApp.appControllers', [])
                         CacheFactory.save('accessEmployee', $rootScope.accessEmployee);
 
                         if($rootScope.Language==ZH_CN)
-                            alertService.showAlert('谢谢你的提交，身份证信息需要等待HR确认后，Flex+账户才正式生效');
+                            alertService.showAlert('谢谢你的提交，身份证信息需要等待HR确认后，Flex+账户才正式生�?);
                         else
                             alertService.showAlert('Thank you for your submission. The ID card information needs to wait for HR confirmation, and the Flex+ account will take effect.');
 
@@ -184,10 +184,10 @@ angular.module('evaluationApp.appControllers', [])
                 //    {
                 //        preferFrontCamera: false, // iOS and Android
                 //        showFlipCameraButton: true, // iOS and Android
-                //        showTorchButton: true, // iOS and Android 显示开起手电筒的按钮
+                //        showTorchButton: true, // iOS and Android 显示开起手电筒的按�?
                 //        torchOn: false, // Android, launch with the torch switched on (if available)  默认开启手电筒
-                //        prompt: "请将二维码放在扫描框中", // Android 提示信息
-                //        resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500 多久开始识别
+                //        prompt: "请将二维码放在扫描框�?, // Android 提示信息
+                //        resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500 多久开始识�?
                 //        formats: "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
                 //        orientation: "portrait"// Android only (portrait|landscape), default unset so it rotates with the device 垂直还是水平
                 //        // disableAnimations : true // iOS
@@ -253,7 +253,7 @@ angular.module('evaluationApp.appControllers', [])
         }        
         $scope.activityUpdateCount = 0;
         actionVisitServices.getActivityUpdateCount($scope, isMultek($rootScope.accessEmployee.Organization));
-        //控制是否显示项，在 ESE_ACTION_UPDATE 表设置
+        //控制是否显示项，�?ESE_ACTION_UPDATE 表设�?
         $scope.canUseAction = function(action){
             return actionVisitServices.canUseAction(action, $rootScope.accessEmployee.WorkdayNO);
         };
@@ -266,7 +266,7 @@ angular.module('evaluationApp.appControllers', [])
                 case "自评":
                       $state.go('tabPoints.rules');
                     break;
-                case "金点子":
+                case "金点�?:
                     $state.go("tabGoldIdea.goldidea");
 //                    $location.path("handbook_item1");
                     break;
@@ -310,14 +310,14 @@ angular.module('evaluationApp.appControllers', [])
                 case "工会之窗":
                     $state.go("union");
                     break;
-                case "MECH基金会":
+                case "MECH基金�?:
                     $state.go("mechCharity");
                     break;
             }
             
             if(action=='自评'){
                 $state.go('tabPoints.rules');
-            }else if(action=='金点子'){
+            }else if(action=='金点�?){
                 $state.go("tabGoldIdea.goldidea");
             }
             else if(action=="为TA点赞"){
@@ -409,11 +409,11 @@ angular.module('evaluationApp.appControllers', [])
                 $location.path("activityList");
 
             }
-            else if(action=="聊天室"){
+            else if(action=="聊天�?){
                 $location.path("chartRoom");
 
             }
-            else if(action=="问与答"){
+            else if(action=="问与�?){
                 $location.path("askAndAnswer");
 
             }
@@ -481,16 +481,14 @@ angular.module('evaluationApp.appControllers', [])
         };
 
         if($rootScope.Language==ZH_CN)
-            $scope.btnText='获取验证码';
+            $scope.btnText='获取验证�?;
         else
             $scope.btnText='Get the verifying code';
 
-        $scope.myreg = /^(((13[0-9]{1})|(14[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(16[0-9]{1}))+\d{8})$/;
         $scope.getSecurityCode=function(passmodels){
-
-            if(! $scope.myreg.test(passmodels.mobile)) {
+            if(!isValidMobile(passmodels.mobile)) {
                 if($rootScope.Language==ZH_CN)
-                    alertService.showAlert('请输入正确的手机号');
+                    alertService.showAlert('请输入正确的手机�?);
                 else
                     alertService.showAlert('Please enter the correct cell phone number');
 
@@ -498,7 +496,7 @@ angular.module('evaluationApp.appControllers', [])
             };
             if(passmodels.workdayNo.length==0) {
                 if($rootScope.Language==ZH_CN)
-                    alertService.showAlert('请输入工号');
+                    alertService.showAlert('请输入工�?);
                 else
                     alertService.showAlert('Please enter the employeeid');
 
@@ -506,7 +504,7 @@ angular.module('evaluationApp.appControllers', [])
             };
             if(passmodels.CName.length==0) {
                 if($rootScope.Language==ZH_CN)
-                    alertService.showAlert('请输入姓名');
+                    alertService.showAlert('请输入姓�?);
                 else
                     alertService.showAlert('Please enter the name');
 
@@ -521,7 +519,7 @@ angular.module('evaluationApp.appControllers', [])
                     var oBtn = document.getElementById('btnSecurity');
                     oBtn.disabled = 'disabled';
                     var i=60;
-                    $ionicLoading.show({ template: '验证码已发送', noBackdrop: true, duration: 2000 });
+                    $ionicLoading.show({ template: '验证码已发�?, noBackdrop: true, duration: 2000 });
                     var id= setInterval(function(){
                         i=i-1;
                         $scope.$apply(function(){
@@ -529,12 +527,12 @@ angular.module('evaluationApp.appControllers', [])
                         });
                         if(i==0){
                             $scope.$apply(function(){
-                                $scope.btnText='获取验证码';
+                                $scope.btnText='获取验证�?;
                             });
                             oBtn.disabled=false;
                             clearInterval(id);
                         };
-                    },1000);//1000为1秒钟
+                    },1000);//1000�?秒钟
 
                 }
                 else  {
@@ -548,16 +546,16 @@ angular.module('evaluationApp.appControllers', [])
             try{
                 if($rootScope.Language==ZH_CN){
                     if($scope.passmodels.IDNO ==null){
-                        alertService.showAlert("身份证号码必须是18位")
+                        alertService.showAlert("身份证号码必须是18�?)
                         return;
                     }
                     if(typeof ($scope.passmodels.IDNO) == 'undefined'){
-                        alertService.showAlert("身份证号码必须是18位")
+                        alertService.showAlert("身份证号码必须是18�?)
                         return;
                     }
 
                     if($scope.passmodels.IDNO.length!=18){
-                        alertService.showAlert("身份证号码必须是18位")
+                        alertService.showAlert("身份证号码必须是18�?)
                         return;;
                     }
                 }
@@ -586,13 +584,13 @@ angular.module('evaluationApp.appControllers', [])
 
             try{
                 if(passmodels.newPassword==null){
-                    alertService.showAlert( '密码不能为空！');
+                    alertService.showAlert( '密码不能为空�?);
 
                     return;
                 }
 
                 if(passmodels.newPassword.replace(""," ").length==0){
-                    alertService.showAlert( '密码不能为空！');
+                    alertService.showAlert( '密码不能为空�?);
                     return;
                 }
 
@@ -603,7 +601,7 @@ angular.module('evaluationApp.appControllers', [])
 
                 commonServices.register({WorkdayNo:passmodels.workdayNo,IDNO:passmodels.IDNO,Password:passmodels.newPassword}).then(function (response) {
                     if (response.success) {
-                        alertService.showAlert( '注册成功，请重新登录！');
+                        alertService.showAlert( '注册成功，请重新登录�?);
 
                         $location.path('signin');
                     }
@@ -630,13 +628,12 @@ angular.module('evaluationApp.appControllers', [])
             newPassword: null,
             newPasswordAgain: null
         };
-        $scope.btnText='获取验证码';
+        $scope.btnText='获取验证�?;
         $scope.closePass = function () {
             console.log($scope.passmodels);
             $location.path('signin');
         };
 
-        $scope.myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
         $scope.getSecurityCode=function(passmodels){
 
             commonServices.getForgetPswSecurityCode({WorkdayNo:passmodels.workdayNo,Mobile:passmodels.mobile}).then(function (response) {
@@ -653,12 +650,12 @@ angular.module('evaluationApp.appControllers', [])
 
                         if(i==0){
                             $scope.$apply(function(){
-                                $scope.btnText='获取验证码';
+                                $scope.btnText='获取验证�?;
                             });
                             oBtn.disabled=false;
                             clearInterval(id);
                         };
-                    },1000);//1000为1秒钟
+                    },1000);//1000�?秒钟
                 }
                 else  {
                     alertService.showAlert(  response.message);
@@ -690,11 +687,11 @@ angular.module('evaluationApp.appControllers', [])
 
             try{
                 if(passmodels.newPassword==null){
-                    alertService.showAlert( '密码不能为空！');
+                    alertService.showAlert( '密码不能为空�?);
                     return;
                 }
                 if(passmodels.newPassword.replace(""," ").length==0){
-                    alertService.showAlert( '密码不能为空！');
+                    alertService.showAlert( '密码不能为空�?);
                     return;
                 }
                 if(passmodels.newPassword!=passmodels.newPasswordAgain){
@@ -721,8 +718,8 @@ angular.module('evaluationApp.appControllers', [])
         };
     })
     .controller('RebindPhoneCtrl',  function($scope,$rootScope,$location,$ionicLoading,alertService,commonServices) {
-        // 修改绑定手机号
-        $scope.btnText = '获取验证码';
+        // 修改绑定手机�?
+        $scope.btnText = '获取验证�?;
 
         $scope.rebindModels = {
             workdayNo: null,
@@ -755,12 +752,12 @@ angular.module('evaluationApp.appControllers', [])
 
                         if (i == 0) {
                             $scope.$apply(function () {
-                                $scope.btnText = '获取验证码';
+                                $scope.btnText = '获取验证�?;
                             });
                             oBtn.disabled = false;
                             clearInterval(id);
                         };
-                    }, 1000);//1000为1秒钟
+                    }, 1000);//1000�?秒钟
                 }
                 else {
                     alertService.showAlert(response.message);
@@ -790,7 +787,7 @@ angular.module('evaluationApp.appControllers', [])
 
             commonServices.checkSecurityCode({WorkdayNo:model.workdayNo, Mobile:model.mobile, SecurityCode:model.securityCode}).then(function (response) {
                 if (response.success) {
-                    //有效验证码
+                    //有效验证�?
                     var url = commonServices.getUrl("AccountService.ashx", "RebindPhone");
                     var paras = {
                         WorkdayNo: model.workdayNo,
@@ -799,7 +796,7 @@ angular.module('evaluationApp.appControllers', [])
                     };
                     commonServices.submit(paras, url).then(function (data) {
                         if (data.success) {
-                            alertService.showAlert('修改绑定手机号成功!');
+                            alertService.showAlert('修改绑定手机号成�?');
                             $location.path('signin');
                         }
                         else {
@@ -831,7 +828,7 @@ angular.module('evaluationApp.appControllers', [])
             try{
 
                 if (passmodels.password == null) {
-                    warningForm(null, "当前密码不能为空！");
+                    warningForm(null, "当前密码不能为空�?);
                     return ;
                 }
                 if (passmodels.newPassword == null) {
@@ -839,7 +836,7 @@ angular.module('evaluationApp.appControllers', [])
                     return;
                 }
                 if (passmodels.newPasswordAgain == null) {
-                    warningForm(null, "重复密码和新密码输入不同！");
+                    warningForm(null, "重复密码和新密码输入不同�?);
                     return;
                 }
 
@@ -869,19 +866,19 @@ angular.module('evaluationApp.appControllers', [])
         $scope.realName="";
         switch ($rootScope.accessEmployee.strIsHRConfirm){
             case 'UnRegistration':
-                $scope.realName='未认证';
+                $scope.realName='未认�?;
                 break;
             case 'WaitRegistration':
                 $scope.realName='等待HR认证';
                 break;
             case 'Registration':
-                $scope.realName='已认证';
+                $scope.realName='已认�?;
                 break;
             case 'FailedRegistration':
                 $scope.realName='认证不通过';
                 break;
         }
-        // 退出
+        // 退�?
         $scope.signOut = function () {
 //            CacheFactory.remove('accessToken');
 //            CacheFactory.remove('accessEmployee');
