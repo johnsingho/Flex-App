@@ -1,0 +1,23 @@
+
+<ion-view view-title="EAdmin" cache-view="false" >
+    <!-- <ion-nav-buttons side="left">
+        <button class="button button-clear button-icon ion-ios-arrow-back" ng-click="closePass()">{{Language.home.admin}}</button>
+    </ion-nav-buttons> -->
+
+    <ion-content scroll="true" overflow-scroll="true" >
+        <div class="list list-inset">            
+            <div class="item" ng-click="open('eCarApproveList');">
+                eCar Approve
+            </div>
+            <div class="item" ng-click="open('DormMngApplication');" ng-if="CanUse('Dorm')">
+                Manager Dorm Application
+            </div>
+            <div class="item" ng-click="open('DormVisitorApplication');" ng-if="CanUse('Dorm')">
+                Visitor House Application
+            </div>
+            <div class="item" ng-click="open('DormHousingSubsidy');" ng-if="CanUse('Dorm')">
+                Manager Housing Subsidy
+            </div>                        
+        </div>
+    </ion-content>
+</ion-view>

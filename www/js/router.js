@@ -807,6 +807,47 @@ angular.module('evaluationApp.router', [])
                     templateUrl: 'templates/admin/dorm/dormSuggest.html',
                     controller: 'DormSuggestCtrl'
                 })
+            /*sub of EAdmin*/
+              .state('EAdminList',{
+                url: '/EAdminList',
+                templateUrl: 'templates/admin/EAdmin/eAdmin-List.html',
+                controller: 'EAdminListCtrl'
+            })
+            .state('eCarApproveList',{
+                url: '/eCarApproveList',
+                templateUrl: 'templates/admin/EAdmin/eCarApproveList-List.html',
+                controller: 'ECarApproveListCtrl'
+            })
+              .state('eCarApproveDetail', {
+                  url: '/eCarApproveDetail',
+                  templateUrl: 'templates/admin/EAdmin/eCarApprover_Details.html',
+                  controller: 'ECarApproveDetailsCtrl'
+              })
+            .state('DormMngApplication',{
+                url: '/DormMngApplication',
+                templateUrl: 'templates/admin/EAdmin/DormMngApplication-List.html',
+                controller: 'DormMngApplicationCtrl'
+            })
+                .state('DormMngApplicationDetail',{
+                    url: '/DormMngApplicationDetail',
+                    templateUrl: 'templates/admin/EAdmin/DormMngApplication-Detail.html',
+                    controller: 'DormMngApplicationDetailCtrl'
+                })
+                .state('DormVisitorApplicationDetail',{
+                    url: '/DormVisitorApplicationDetail',
+                    templateUrl: 'templates/admin/EAdmin/DormVisitorApplication-Detail.html',
+                    controller: 'DormVisitorApplicationDetailCtrl'
+                })
+            .state('DormHousingSubsidy',{
+                url: '/DormHousingSubsidy',
+                templateUrl: 'templates/admin/EAdmin/DormHousingSubsidy-List.html',
+                controller: 'DormHousingSubsidyCtrl'
+            })
+                .state('DormHousingSubsidyDetail',{
+                    url: '/DormHousingSubsidyDetail',
+                    templateUrl: 'templates/admin/EAdmin/DormHousingSubsidy-Detail.html',
+                    controller: 'DormHousingSubsidyDetailCtrl'
+                })
             /*sub of GBSHR*/
             .state('generalNotice', {
                 url: '/generalNotice',
